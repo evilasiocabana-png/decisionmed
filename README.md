@@ -22,3 +22,13 @@ Se as portas estiverem ocupadas: `python -m decisionmed.web --port 8775 --psychi
 - Pacote de Psiquiatria: `http://127.0.0.1:8766/`
 
 O hub está em modo `read-only`. Psiquiatria reutiliza o app local do baseline sem alterar o PsychRx original.
+
+## Catálogo científico separado
+
+O conhecimento científico é versionado no repositório privado
+[`decisionmed-knowledge`](https://github.com/evilasiocabana-png/decisionmed-knowledge),
+conforme a separação exigida pela ADR-0002 do PsychRx.
+
+A plataforma apenas carrega e valida releases externas assinadas por manifesto e
+hashes SHA-256. O catálogo inicial está vazio e em status `draft`; nenhum
+conteúdo está liberado para execução clínica.
