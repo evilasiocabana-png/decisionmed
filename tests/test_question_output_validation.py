@@ -3,6 +3,9 @@ from datetime import date, datetime, timedelta, timezone
 import unittest
 from unittest.mock import patch
 
+from decisionmed.application import QuestionEnginePreparationApplicationService
+from decisionmed.audit import AuditError, AuditLedger
+
 from decisionmed.domain import (
     ClinicalDataProvenance,
     ClinicalObservation,
@@ -63,6 +66,11 @@ class SyntheticQuestionEngine:
     def generate(self, input_value: GovernedReasoningInput) -> QuestionEngineResult:
         self.call_count += 1
         raise AssertionError("output validation must not invoke the engine")
+
+
+class FailingAuditLedger(AuditLedger):
+    def append(self, event, trace_id):  # type: ignore[no-untyped-def]
+        raise AuditError("audit.synthetic_failure", "synthetic audit failure")
 
 
 class QuestionEngineOutputValidatorTest(unittest.TestCase):
@@ -202,6 +210,81 @@ class QuestionEngineOutputValidatorTest(unittest.TestCase):
             )
         self.assertEqual(QuestionEngineReadinessStatus.BLOCKED, expired.status)
         self.assertIn("governed_knowledge_not_current", expired.reasons)
+        self.assertEqual(0, self.engine.call_count)
+
+    def test_question_preparation_is_audited_without_engine_invocation(self) -> None:
+        ledger = AuditLedger()
+        service = QuestionEnginePreparationApplicationService(
+            QuestionEngineReadiness(),
+            self._engine_registry(include_engine=True),
+            ledger,
+        )
+
+        report = service.prepare(self.input_value, engine_id=self.engine.engine_id)
+        record = ledger.records()[0]
+        payload = dict(record.payload)
+
+        self.assertTrue(report.structural_prerequisites_present)
+        self.assertEqual(
+            "reasoning.question_engine_preparation_completed",
+            record.event_name,
+        )
+        self.assertEqual(report.status.value, payload["status"])
+        self.assertEqual(self.input_value.content_fingerprint, payload["governed_input_fingerprint"])
+        self.assertEqual("false", payload["engine_invocation_allowed"])
+        self.assertEqual(0, self.engine.call_count)
+        self.assertTrue(ledger.verify())
+        self.assertFalse(service.engine_invocation_allowed)
+        self.assertFalse(service.reasoning_execution_allowed)
+        self.assertFalse(service.clinical_execution_allowed)
+        self.assertNotIn("Synthetic value", str(record))
+
+    def test_blocked_preparation_is_audited_and_audit_failure_prevents_return(self) -> None:
+        ledger = AuditLedger()
+        blocked_service = QuestionEnginePreparationApplicationService(
+            QuestionEngineReadiness(),
+            self._engine_registry(include_engine=False),
+            ledger,
+        )
+
+        report = blocked_service.prepare(
+            self.input_value,
+            engine_id=self.engine.engine_id,
+        )
+
+        self.assertEqual(QuestionEngineReadinessStatus.BLOCKED, report.status)
+        self.assertEqual("blocked", dict(ledger.records()[0].payload)["status"])
+        self.assertEqual(0, self.engine.call_count)
+
+        failing_service = QuestionEnginePreparationApplicationService(
+            QuestionEngineReadiness(),
+            self._engine_registry(include_engine=True),
+            FailingAuditLedger(),
+        )
+        with self.assertRaises(AuditError):
+            failing_service.prepare(
+                self.input_value,
+                engine_id=self.engine.engine_id,
+            )
+
+    def test_preparation_failure_records_only_safe_metadata(self) -> None:
+        ledger = AuditLedger()
+        service = QuestionEnginePreparationApplicationService(
+            QuestionEngineReadiness(),
+            self._engine_registry(include_engine=True),
+            ledger,
+        )
+
+        with self.assertRaises(ReasoningError):
+            service.prepare(self.input_value, engine_id="Invalid Engine")
+
+        record = ledger.records()[0]
+        self.assertEqual(
+            "reasoning.question_engine_preparation_failed",
+            record.event_name,
+        )
+        self.assertEqual("ReasoningError", dict(record.payload)["error_type"])
+        self.assertNotIn("Synthetic value", str(record))
         self.assertEqual(0, self.engine.call_count)
 
     def _engine_registry(self, *, include_engine: bool) -> QuestionEngineRegistry:
