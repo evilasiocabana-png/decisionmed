@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>DecisionMEd</title>
+  <style>
+    :root { color-scheme: light; font-family: Inter, system-ui, sans-serif; background: #f5f7fb; color: #172033; }
+    * { box-sizing: border-box; }
+    body { margin: 0; }
+    header { background: linear-gradient(135deg, #14233f, #214f73); color: white; padding: 38px max(24px, calc((100% - 1120px) / 2)); }
+    header p { max-width: 720px; color: #d6e7f4; }
+    main { max-width: 1120px; margin: 0 auto; padding: 32px 24px 56px; }
+    .notice { background: #fff7df; border: 1px solid #ead28a; border-radius: 14px; padding: 14px 18px; margin-bottom: 26px; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 18px; }
+    .card { background: white; border: 1px solid #dfe5ef; border-radius: 18px; padding: 22px; min-height: 180px; box-shadow: 0 8px 24px rgba(31, 50, 81, .06); }
+    .card h2 { margin: 12px 0 8px; font-size: 1.18rem; }
+    .card p { color: #5d687a; line-height: 1.45; }
+    .tag { display: inline-block; border-radius: 999px; padding: 5px 9px; background: #e8f5f0; color: #17684d; font-size: .78rem; font-weight: 700; }
+    .planned .tag { background: #edf0f5; color: #667085; }
+    .button { display: inline-block; margin-top: 10px; padding: 10px 14px; border-radius: 10px; background: #176b84; color: white; text-decoration: none; font-weight: 700; }
+    footer { color: #697386; margin-top: 30px; font-size: .9rem; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>DecisionMEd</h1>
+    <p>Plataforma clínica multiespecialidade para organizar raciocínio, segurança, evidência e acompanhamento — sempre com decisão final do médico.</p>
+  </header>
+  <main>
+    <div class="notice"><strong>Ambiente de desenvolvimento read-only.</strong> Não prescreve e não substitui avaliação médica.</div>
+    <section class="grid" aria-label="Especialidades">
+      <article class="card">
+        <span class="tag" id="psychiatry-status">Carregando</span>
+        <h2>Psiquiatria</h2>
+        <p>Fluxo estruturado do PsychRx preservado como primeiro SpecialtyPack.</p>
+        <a class="button" href="/psychiatry">Abrir fluxo</a>
+      </article>
+      <article class="card planned"><span class="tag">Planejada</span><h2>Clínica Médica</h2><p>Contexto geral, segurança e navegação diagnóstica.</p></article>
+      <article class="card planned"><span class="tag">Planejada</span><h2>Cardiologia</h2><p>Risco cardiovascular, exames, escores e seguimento.</p></article>
+      <article class="card planned"><span class="tag">Planejada</span><h2>Pediatria</h2><p>População, crescimento, doses e segurança pediátrica.</p></article>
+      <article class="card planned"><span class="tag">Planejada</span><h2>Neurologia</h2><p>Sintomas, síndromes, escalas e monitorização.</p></article>
+      <article class="card planned"><span class="tag">Planejada</span><h2>Emergência</h2><p>Triagem, risco agudo e protocolos governados.</p></article>
+    </section>
+    <footer id="platform-mode">Verificando estado da plataforma…</footer>
+  </main>
+  <script>
+    fetch('/api/app-state').then(r => r.json()).then(state => {
+      const psychiatry = state.specialties.find(item => item.key === 'psychiatry');
+      document.getElementById('psychiatry-status').textContent = psychiatry ? psychiatry.load_status : 'Indisponível';
+      document.getElementById('platform-mode').textContent = `Modo: ${state.mode} · Execução clínica: bloqueada`;
+    }).catch(() => {
+      document.getElementById('psychiatry-status').textContent = 'Indisponível';
+      document.getElementById('platform-mode').textContent = 'Não foi possível consultar o estado local.';
+    });
+  </script>
+</body>
+</html>
