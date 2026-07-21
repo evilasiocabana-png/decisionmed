@@ -7,7 +7,11 @@ from typing import Any, Iterable
 
 from .evidence import EvidenceRegistry
 from .knowledge import KnowledgeRegistry, SpecialtyFormSchemaRegistry
-from .safety import SafetyCheckRegistry, SafetyCheckStatus
+from .safety import (
+    SafetyCheckProviderRegistry,
+    SafetyCheckRegistry,
+    SafetyCheckStatus,
+)
 
 
 @dataclass(frozen=True, slots=True)
@@ -29,6 +33,7 @@ class PlatformReadinessService:
         knowledge: KnowledgeRegistry | None = None,
         form_schemas: SpecialtyFormSchemaRegistry | None = None,
         safety_checks: SafetyCheckRegistry | None = None,
+        safety_providers: SafetyCheckProviderRegistry | None = None,
     ) -> None:
         self._evidence = evidence or EvidenceRegistry()
         self._knowledge = knowledge or KnowledgeRegistry(self._evidence)
@@ -36,6 +41,9 @@ class PlatformReadinessService:
             self._knowledge
         )
         self._safety_checks = safety_checks or SafetyCheckRegistry(self._evidence)
+        self._safety_providers = safety_providers or SafetyCheckProviderRegistry(
+            self._safety_checks
+        )
 
     def report(self, specialty_statuses: Iterable[str]) -> dict[str, Any]:
         statuses = tuple(specialty_statuses)
@@ -74,6 +82,12 @@ class PlatformReadinessService:
         )
         unscheduled_safety_count = sum(
             item.review_due_on is None for item in safety_specifications
+        )
+        safety_provider_count = len(self._safety_providers.all())
+        safety_coverage = self._safety_providers.coverage()
+        missing_safety_provider_count = len(safety_coverage.missing_check_ids)
+        incompatible_safety_provider_count = len(
+            safety_coverage.incompatible_check_ids
         )
         specialty_ready = bool(statuses) and all(
             status == "ready_for_validation" for status in statuses
@@ -131,6 +145,7 @@ class PlatformReadinessService:
                 and validated_safety_count == safety_count
                 and not overdue_safety_count
                 and not unscheduled_safety_count
+                and safety_coverage.complete
                 else "blocked",
                 "no_safety_specifications"
                 if not safety_count
@@ -140,7 +155,13 @@ class PlatformReadinessService:
                 if overdue_safety_count
                 else "safety_review_schedule_missing"
                 if unscheduled_safety_count
-                else "safety_specifications_current",
+                else "no_safety_providers"
+                if not safety_provider_count
+                else "incompatible_safety_provider_versions"
+                if incompatible_safety_provider_count
+                else "incomplete_safety_provider_coverage"
+                if missing_safety_provider_count
+                else "safety_configuration_complete",
             ),
             ReadinessGate(
                 "specialty_validation",
@@ -179,6 +200,11 @@ class PlatformReadinessService:
                 "validated_safety_checks": validated_safety_count,
                 "overdue_safety_checks": overdue_safety_count,
                 "safety_checks_without_review_schedule": unscheduled_safety_count,
+                "safety_provider_bindings": safety_provider_count,
+                "missing_safety_providers": missing_safety_provider_count,
+                "incompatible_safety_providers": (
+                    incompatible_safety_provider_count
+                ),
             },
             "blocked_gate_count": blocked_count,
             "gates": [gate.to_dict() for gate in gates],

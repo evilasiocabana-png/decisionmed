@@ -54,7 +54,10 @@ class DecisionMedWebTest(unittest.TestCase):
         cls.server = create_server(
             port=0,
             psychiatry_url="http://127.0.0.1:9876/",
-            app_service=DecisionMedAppService(catalogs=cls._catalogs()),
+            app_service=DecisionMedAppService(
+                catalogs=cls._catalogs(),
+                safety_providers=cls._safety_providers(),
+            ),
         )
         cls.thread = Thread(target=cls.server.serve_forever, daemon=True)
         cls.thread.start()
@@ -149,13 +152,38 @@ class DecisionMedWebTest(unittest.TestCase):
         )
         self.assertFalse(readiness["clinical_execution_allowed"])
 
-    def test_validated_safety_metadata_only_clears_technical_gate(self) -> None:
+    def test_validated_safety_metadata_without_provider_stays_blocked(self) -> None:
         catalogs = self._catalogs()
         specification = catalogs.safety_checks.all.return_value[0]
         specification.status = SafetyCheckStatus.VALIDATED
         specification.review_due_on = date.today() + timedelta(days=30)
         specification.review_state = "current"
-        service = DecisionMedAppService(catalogs=catalogs)
+        service = DecisionMedAppService(
+            catalogs=catalogs,
+            safety_providers=self._safety_providers(),
+        )
+
+        state = service.get_app_state()
+        safety_gate = next(
+            gate
+            for gate in state["readiness"]["gates"]
+            if gate["key"] == "safety_configuration"
+        )
+
+        self.assertEqual("blocked", safety_gate["status"])
+        self.assertEqual("no_safety_providers", safety_gate["reason"])
+        self.assertFalse(state["clinical_execution_allowed"])
+
+    def test_complete_provider_coverage_only_clears_technical_gate(self) -> None:
+        catalogs = self._catalogs()
+        specification = catalogs.safety_checks.all.return_value[0]
+        specification.status = SafetyCheckStatus.VALIDATED
+        specification.review_due_on = date.today() + timedelta(days=30)
+        specification.review_state = "current"
+        service = DecisionMedAppService(
+            catalogs=catalogs,
+            safety_providers=self._safety_providers(bound=True),
+        )
 
         state = service.get_app_state()
         safety_gate = next(
@@ -165,8 +193,61 @@ class DecisionMedWebTest(unittest.TestCase):
         )
 
         self.assertEqual("available", safety_gate["status"])
-        self.assertEqual("safety_specifications_current", safety_gate["reason"])
+        self.assertEqual("safety_configuration_complete", safety_gate["reason"])
         self.assertFalse(state["clinical_execution_allowed"])
+
+    def test_incompatible_provider_version_has_specific_reason(self) -> None:
+        catalogs = self._catalogs()
+        specification = catalogs.safety_checks.all.return_value[0]
+        specification.status = SafetyCheckStatus.VALIDATED
+        specification.review_due_on = date.today() + timedelta(days=30)
+        specification.review_state = "current"
+        service = DecisionMedAppService(
+            catalogs=catalogs,
+            safety_providers=self._safety_providers(incompatible=True),
+        )
+
+        safety_gate = next(
+            gate
+            for gate in service.get_readiness()["gates"]
+            if gate["key"] == "safety_configuration"
+        )
+
+        self.assertEqual("blocked", safety_gate["status"])
+        self.assertEqual(
+            "incompatible_safety_provider_versions", safety_gate["reason"]
+        )
+
+    def test_partial_provider_coverage_has_specific_reason(self) -> None:
+        catalogs = self._catalogs()
+        first = catalogs.safety_checks.all.return_value[0]
+        first.status = SafetyCheckStatus.VALIDATED
+        first.review_due_on = date.today() + timedelta(days=30)
+        first.review_state = "current"
+        second = SimpleNamespace(
+            check_id="check.second-synthetic-safety",
+            specialty_key="cardiology",
+            status=SafetyCheckStatus.VALIDATED,
+            review_due_on=date.today() + timedelta(days=30),
+            review_state="current",
+            review_overdue=False,
+        )
+        catalogs.safety_checks.all.return_value = (first, second)
+        service = DecisionMedAppService(
+            catalogs=catalogs,
+            safety_providers=self._safety_providers(partial=True),
+        )
+
+        safety_gate = next(
+            gate
+            for gate in service.get_readiness()["gates"]
+            if gate["key"] == "safety_configuration"
+        )
+
+        self.assertEqual("blocked", safety_gate["status"])
+        self.assertEqual(
+            "incomplete_safety_provider_coverage", safety_gate["reason"]
+        )
 
     def test_home_page_and_psychiatry_redirect(self) -> None:
         home_status, _, home_body = self.request("/")
@@ -412,6 +493,32 @@ class DecisionMedWebTest(unittest.TestCase):
             evidence=evidence_registry,
             safety_checks=safety_checks,
         )
+
+    @staticmethod
+    def _safety_providers(
+        *,
+        bound: bool = False,
+        incompatible: bool = False,
+        partial: bool = False,
+    ) -> Mock:
+        registry = Mock()
+        registry.all.return_value = (
+            (SimpleNamespace(check_id="check.synthetic-safety"),)
+            if bound or incompatible or partial
+            else ()
+        )
+        registry.coverage.return_value = SimpleNamespace(
+            complete=bound and not incompatible and not partial,
+            missing_check_ids=("check.second-synthetic-safety",)
+            if partial
+            else ()
+            if bound or incompatible
+            else ("check.synthetic-safety",),
+            incompatible_check_ids=("check.synthetic-safety",)
+            if incompatible
+            else (),
+        )
+        return registry
 
 
 if __name__ == "__main__":
