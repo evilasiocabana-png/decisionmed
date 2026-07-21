@@ -29,6 +29,7 @@ class SpecialtyView:
     pack_status: str
     load_status: str
     execution_allowed: bool
+    available_capabilities: tuple[str, ...]
     missing_capabilities: tuple[str, ...]
     incompatible_capabilities: tuple[str, ...]
     blocking_reasons: tuple[str, ...]
@@ -44,6 +45,7 @@ class SpecialtyView:
             "pack_status": self.pack_status,
             "load_status": self.load_status,
             "execution_allowed": self.execution_allowed,
+            "available_capabilities": list(self.available_capabilities),
             "missing_capabilities": list(self.missing_capabilities),
             "incompatible_capabilities": list(self.incompatible_capabilities),
             "blocking_reasons": list(self.blocking_reasons),
@@ -64,7 +66,16 @@ class DecisionMedAppService:
         catalogs: GovernedCatalogs | None = None,
     ) -> None:
         self._registry = registry or build_default_specialty_registry()
-        self._resolver = resolver or build_reference_resolver()
+        if resolver is None:
+            catalog_specialty_keys = (
+                tuple(
+                    schema.specialty_key for schema in catalogs.form_schemas.all()
+                )
+                if catalogs is not None
+                else ()
+            )
+            resolver = build_reference_resolver(catalog_specialty_keys)
+        self._resolver = resolver
         self._workflows = workflows or build_default_workflow_registry(self._registry)
         self._catalogs = catalogs
         self._readiness = readiness or PlatformReadinessService(
@@ -94,6 +105,9 @@ class DecisionMedAppService:
                     pack_status=pack.status.value,
                     load_status=result.status.value,
                     execution_allowed=result.clinical_execution_allowed,
+                    available_capabilities=tuple(
+                        binding.capability for binding in result.bindings
+                    ),
                     missing_capabilities=result.missing_capabilities,
                     incompatible_capabilities=result.incompatible_capabilities,
                     blocking_reasons=result.blocking_reasons,

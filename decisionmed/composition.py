@@ -211,7 +211,26 @@ REFERENCE_CAPABILITY_BINDINGS = (
 )
 
 
-def build_reference_resolver() -> SpecialtyPackResolver:
-    """Build the read-only resolver for the copied PsychRx baseline."""
+def build_reference_resolver(
+    catalog_specialty_keys: Iterable[str] = (),
+) -> SpecialtyPackResolver:
+    """Build a read-only resolver from verified structural providers."""
 
-    return SpecialtyPackResolver(REFERENCE_CAPABILITY_BINDINGS)
+    if isinstance(catalog_specialty_keys, (str, bytes)):
+        raise TypeError("catalog_specialty_keys must be an iterable of identifiers")
+    specialty_keys = tuple(catalog_specialty_keys)
+    if any(
+        not isinstance(key, str) or not _IDENTIFIER_PATTERN.fullmatch(key)
+        for key in specialty_keys
+    ):
+        raise ValueError("catalog specialty keys must be canonical identifiers")
+    bindings = list(REFERENCE_CAPABILITY_BINDINGS)
+    bindings.extend(
+        CapabilityBinding(
+            f"{key}.evidence",
+            "decisionmed.catalog.evidence",
+            "0.1.0",
+        )
+        for key in sorted(set(specialty_keys))
+    )
+    return SpecialtyPackResolver(bindings)

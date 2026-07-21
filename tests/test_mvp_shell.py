@@ -26,6 +26,7 @@ class DecisionMedAppServiceTest(unittest.TestCase):
         )
         self.assertEqual(6, len(state["specialties"]))
         self.assertEqual("reference_only", psychiatry["load_status"])
+        self.assertEqual(7, len(psychiatry["available_capabilities"]))
         self.assertIn("PsychRx", psychiatry["intended_scope"])
         self.assertIn("Execução clínica.", psychiatry["excluded_uses"])
         self.assertEqual([], psychiatry["incompatible_capabilities"])
@@ -79,6 +80,12 @@ class DecisionMedWebTest(unittest.TestCase):
         state = json.loads(state_body)
         self.assertEqual("DecisionMEd", state["product"])
         self.assertTrue(state["knowledge_catalog"]["loaded"])
+        cardiology = next(
+            item for item in state["specialties"] if item["key"] == "cardiology"
+        )
+        self.assertIn("cardiology.evidence", cardiology["available_capabilities"])
+        self.assertNotIn("cardiology.evidence", cardiology["missing_capabilities"])
+        self.assertEqual("blocked", cardiology["load_status"])
         self.assertEqual(1, state["knowledge_catalog"]["form_schema_count"])
         self.assertEqual(200, readiness_status)
         readiness = json.loads(readiness_body)
