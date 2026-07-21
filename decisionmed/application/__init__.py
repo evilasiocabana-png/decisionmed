@@ -23,6 +23,7 @@ from .safety_review import (
     SafetyReviewApplicationError,
     SafetyReviewApplicationService,
 )
+from .question_preparation import QuestionEnginePreparationApplicationService
 
 __all__ = [
     "ClinicalInputIssue",
@@ -40,4 +41,5 @@ __all__ = [
     "SafetyReviewerAuthorityStatus",
     "SafetyReviewApplicationError",
     "SafetyReviewApplicationService",
+    "QuestionEnginePreparationApplicationService",
 ]
