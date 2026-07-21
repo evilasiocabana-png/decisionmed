@@ -87,6 +87,7 @@ class DecisionMedAppService:
             evidence=catalogs.evidence if catalogs is not None else None,
             knowledge=catalogs.knowledge if catalogs is not None else None,
             form_schemas=catalogs.form_schemas if catalogs is not None else None,
+            safety_checks=catalogs.safety_checks if catalogs is not None else None,
         )
         self._sessions = sessions or WorkflowSessionService(
             self._registry, self._workflows
@@ -275,6 +276,7 @@ class DecisionMedAppService:
             "status": self._catalogs.manifest.status.value,
             "clinical_execution_allowed": False,
             "form_schema_count": len(self._catalogs.form_schemas.all()),
+            "safety_check_count": len(self._catalogs.safety_checks.all()),
         }
 
     def get_readiness(self) -> dict[str, Any]:

@@ -7,6 +7,7 @@ from typing import Any, Iterable
 
 from .evidence import EvidenceRegistry
 from .knowledge import KnowledgeRegistry, SpecialtyFormSchemaRegistry
+from .safety import SafetyCheckRegistry, SafetyCheckStatus
 
 
 @dataclass(frozen=True, slots=True)
@@ -27,14 +28,14 @@ class PlatformReadinessService:
         evidence: EvidenceRegistry | None = None,
         knowledge: KnowledgeRegistry | None = None,
         form_schemas: SpecialtyFormSchemaRegistry | None = None,
-        expected_safety_check_ids: Iterable[str] = (),
+        safety_checks: SafetyCheckRegistry | None = None,
     ) -> None:
         self._evidence = evidence or EvidenceRegistry()
         self._knowledge = knowledge or KnowledgeRegistry(self._evidence)
         self._form_schemas = form_schemas or SpecialtyFormSchemaRegistry(
             self._knowledge
         )
-        self._expected_safety_check_ids = tuple(expected_safety_check_ids)
+        self._safety_checks = safety_checks or SafetyCheckRegistry(self._evidence)
 
     def report(self, specialty_statuses: Iterable[str]) -> dict[str, Any]:
         statuses = tuple(specialty_statuses)
@@ -62,7 +63,18 @@ class PlatformReadinessService:
         unscheduled_form_schema_count = sum(
             schema.review_due_on is None for schema in form_schemas
         )
-        safety_count = len(self._expected_safety_check_ids)
+        safety_specifications = self._safety_checks.all()
+        safety_count = len(safety_specifications)
+        validated_safety_count = sum(
+            item.status is SafetyCheckStatus.VALIDATED
+            for item in safety_specifications
+        )
+        overdue_safety_count = sum(
+            item.review_overdue for item in safety_specifications
+        )
+        unscheduled_safety_count = sum(
+            item.review_due_on is None for item in safety_specifications
+        )
         specialty_ready = bool(statuses) and all(
             status == "ready_for_validation" for status in statuses
         )
@@ -114,8 +126,21 @@ class PlatformReadinessService:
             ),
             ReadinessGate(
                 "safety_configuration",
-                "available" if safety_count else "blocked",
-                "checks_configured" if safety_count else "no_safety_checks_configured",
+                "available"
+                if safety_count
+                and validated_safety_count == safety_count
+                and not overdue_safety_count
+                and not unscheduled_safety_count
+                else "blocked",
+                "no_safety_specifications"
+                if not safety_count
+                else "unvalidated_safety_specifications"
+                if validated_safety_count != safety_count
+                else "overdue_safety_review"
+                if overdue_safety_count
+                else "safety_review_schedule_missing"
+                if unscheduled_safety_count
+                else "safety_specifications_current",
             ),
             ReadinessGate(
                 "specialty_validation",
@@ -151,6 +176,9 @@ class PlatformReadinessService:
                     unscheduled_form_schema_count
                 ),
                 "configured_safety_checks": safety_count,
+                "validated_safety_checks": validated_safety_count,
+                "overdue_safety_checks": overdue_safety_count,
+                "safety_checks_without_review_schedule": unscheduled_safety_count,
             },
             "blocked_gate_count": blocked_count,
             "gates": [gate.to_dict() for gate in gates],

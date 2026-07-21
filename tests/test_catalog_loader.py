@@ -19,6 +19,11 @@ class GovernedCatalogLoaderTest(unittest.TestCase):
         self.assertEqual("decisionmed.knowledge", catalogs.manifest.catalog_id)
         self.assertFalse(catalogs.manifest.clinical_execution_allowed)
         self.assertEqual(1, len(catalogs.knowledge.all()))
+        self.assertEqual(1, len(catalogs.safety_checks.all()))
+        self.assertEqual(
+            "check.synthetic-safety",
+            catalogs.safety_checks.all()[0].check_id,
+        )
         schema = catalogs.form_schemas.require(
             "cardiology", "decisionmed.cardiology.workflow.v1", "context"
         )
@@ -41,6 +46,14 @@ class GovernedCatalogLoaderTest(unittest.TestCase):
                 "source_id"
             ] = "missing"
             self._write(root / "knowledge.json", payloads["knowledge"])
+            self._write_manifest(root)
+            with self.assertRaises(CatalogLoadError) as context:
+                load_governed_catalogs(root)
+            self.assertEqual("catalog.invalid_content", context.exception.code)
+
+            payloads = self._write_catalog(root)
+            payloads["safety"]["items"][0]["evidence_source_ids"] = ["missing"]
+            self._write(root / "safety-checks.json", payloads["safety"])
             self._write_manifest(root)
             with self.assertRaises(CatalogLoadError) as context:
                 load_governed_catalogs(root)
@@ -111,6 +124,18 @@ class GovernedCatalogLoaderTest(unittest.TestCase):
 
             self.assertEqual("catalog.integrity", context.exception.code)
 
+    def test_empty_safety_catalog_is_valid_but_registers_no_checks(self) -> None:
+        with TemporaryDirectory() as temporary_directory:
+            root = Path(temporary_directory)
+            payloads = self._write_catalog(root)
+            payloads["safety"]["items"] = []
+            self._write(root / "safety-checks.json", payloads["safety"])
+            self._write_manifest(root)
+
+            catalogs = load_governed_catalogs(root)
+
+        self.assertEqual((), catalogs.safety_checks.all())
+
     @classmethod
     def _write_catalog(cls, root: Path) -> dict[str, dict[str, object]]:
         evidence = cls._envelope(
@@ -153,16 +178,36 @@ class GovernedCatalogLoaderTest(unittest.TestCase):
                 }],
             }]
         )
-        payloads = {"evidence": evidence, "knowledge": knowledge, "schemas": schemas}
+        safety = cls._envelope(
+            [{
+                "check_id": "check.synthetic-safety",
+                "specialty_key": "cardiology",
+                "purpose": "Synthetic metadata without a clinical rule.",
+                "limits": "Contract tests only; no patient evaluation.",
+                "evidence_source_ids": ["evidence.sample"],
+                "version": "0.1.0",
+                "status": "draft",
+                "reviewed_on": None,
+                "validated_by": None,
+                "review_due_on": None,
+            }]
+        )
+        payloads = {
+            "evidence": evidence,
+            "knowledge": knowledge,
+            "schemas": schemas,
+            "safety": safety,
+        }
         cls._write(root / "evidence.json", evidence)
         cls._write(root / "knowledge.json", knowledge)
         cls._write(root / "form-schemas.json", schemas)
+        cls._write(root / "safety-checks.json", safety)
         cls._write_manifest(root)
         return payloads
 
     @staticmethod
     def _envelope(items: list[dict[str, object]]) -> dict[str, object]:
-        return {"schema_version": "6.0.0", "items": items}
+        return {"schema_version": "7.0.0", "items": items}
 
     @staticmethod
     def _write(path: Path, payload: dict[str, object]) -> None:
@@ -172,10 +217,15 @@ class GovernedCatalogLoaderTest(unittest.TestCase):
     def _write_manifest(root: Path) -> None:
         files = {
             name: sha256((root / name).read_bytes()).hexdigest()
-            for name in ("evidence.json", "knowledge.json", "form-schemas.json")
+            for name in (
+                "evidence.json",
+                "knowledge.json",
+                "form-schemas.json",
+                "safety-checks.json",
+            )
         }
         manifest = {
-            "schema_version": "6.0.0",
+            "schema_version": "7.0.0",
             "catalog_id": "decisionmed.knowledge",
             "release_version": "0.1.0",
             "status": "draft",

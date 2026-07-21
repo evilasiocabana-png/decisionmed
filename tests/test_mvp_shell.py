@@ -1,6 +1,6 @@
 import http.client
 import json
-from datetime import date
+from datetime import date, timedelta
 from types import SimpleNamespace
 from threading import Thread
 import unittest
@@ -8,6 +8,7 @@ from unittest.mock import Mock
 
 from decisionmed.app import DecisionMedAppService
 from decisionmed.knowledge import KnowledgeError
+from decisionmed.safety import SafetyCheckStatus
 from decisionmed.web import create_psychiatry_server, create_server
 
 
@@ -21,6 +22,12 @@ class DecisionMedAppServiceTest(unittest.TestCase):
         self.assertFalse(state["knowledge_catalog"]["loaded"])
         self.assertFalse(state["readiness"]["clinical_execution_allowed"])
         self.assertEqual(5, state["readiness"]["blocked_gate_count"])
+        safety_gate = next(
+            gate
+            for gate in state["readiness"]["gates"]
+            if gate["key"] == "safety_configuration"
+        )
+        self.assertEqual("no_safety_specifications", safety_gate["reason"])
         psychiatry = next(
             item for item in state["specialties"] if item["key"] == "psychiatry"
         )
@@ -88,6 +95,7 @@ class DecisionMedWebTest(unittest.TestCase):
         state = json.loads(state_body)
         self.assertEqual("DecisionMEd", state["product"])
         self.assertTrue(state["knowledge_catalog"]["loaded"])
+        self.assertEqual(1, state["knowledge_catalog"]["safety_check_count"])
         cardiology = next(
             item for item in state["specialties"] if item["key"] == "cardiology"
         )
@@ -128,7 +136,37 @@ class DecisionMedWebTest(unittest.TestCase):
             if gate["key"] == "knowledge_catalog"
         )
         self.assertEqual("knowledge_review_schedule_missing", knowledge_gate["reason"])
+        self.assertEqual(1, readiness["counts"]["configured_safety_checks"])
+        self.assertEqual(0, readiness["counts"]["validated_safety_checks"])
+        safety_gate = next(
+            gate
+            for gate in readiness["gates"]
+            if gate["key"] == "safety_configuration"
+        )
+        self.assertEqual("blocked", safety_gate["status"])
+        self.assertEqual(
+            "unvalidated_safety_specifications", safety_gate["reason"]
+        )
         self.assertFalse(readiness["clinical_execution_allowed"])
+
+    def test_validated_safety_metadata_only_clears_technical_gate(self) -> None:
+        catalogs = self._catalogs()
+        specification = catalogs.safety_checks.all.return_value[0]
+        specification.status = SafetyCheckStatus.VALIDATED
+        specification.review_due_on = date.today() + timedelta(days=30)
+        specification.review_state = "current"
+        service = DecisionMedAppService(catalogs=catalogs)
+
+        state = service.get_app_state()
+        safety_gate = next(
+            gate
+            for gate in state["readiness"]["gates"]
+            if gate["key"] == "safety_configuration"
+        )
+
+        self.assertEqual("available", safety_gate["status"])
+        self.assertEqual("safety_specifications_current", safety_gate["reason"])
+        self.assertFalse(state["clinical_execution_allowed"])
 
     def test_home_page_and_psychiatry_redirect(self) -> None:
         home_status, _, home_body = self.request("/")
@@ -326,6 +364,14 @@ class DecisionMedWebTest(unittest.TestCase):
             review_state="unscheduled",
             review_overdue=False,
         )
+        safety_specification = SimpleNamespace(
+            check_id="check.synthetic-safety",
+            specialty_key="cardiology",
+            status=draft,
+            review_due_on=None,
+            review_state="unscheduled",
+            review_overdue=False,
+        )
         form_schemas = Mock()
 
         def require_schema(
@@ -353,6 +399,8 @@ class DecisionMedWebTest(unittest.TestCase):
         evidence_registry = Mock()
         evidence_registry.require.return_value = source
         evidence_registry.all.return_value = (source,)
+        safety_checks = Mock()
+        safety_checks.all.return_value = (safety_specification,)
         return SimpleNamespace(
             manifest=SimpleNamespace(
                 catalog_id="decisionmed.knowledge",
@@ -362,6 +410,7 @@ class DecisionMedWebTest(unittest.TestCase):
             form_schemas=form_schemas,
             knowledge=knowledge_registry,
             evidence=evidence_registry,
+            safety_checks=safety_checks,
         )
 
 
