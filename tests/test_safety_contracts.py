@@ -1,5 +1,6 @@
 from datetime import date, timedelta
 import unittest
+from unittest.mock import patch
 
 from decisionmed.evidence import (
     EvidenceRegistry,
@@ -142,6 +143,22 @@ class SafetyCoordinatorTest(unittest.TestCase):
 
         self.assertEqual(SafetyGateStatus.INCOMPLETE, assessment.status)
         self.assertIn("unvalidated_evidence:check.alpha", assessment.blocking_reasons)
+
+    def test_evidence_that_expires_after_registration_fails_closed(self) -> None:
+        providers, evidence_registry = self.configuration()
+
+        class FutureDate(date):
+            @classmethod
+            def today(cls) -> date:
+                return date.today() + timedelta(days=60)
+
+        with patch("decisionmed.evidence.models.date", FutureDate):
+            assessment = SafetyCoordinator(providers, evidence_registry).assess(
+                (result("check.alpha"), result("check.beta")), "trace.run"
+            )
+
+        self.assertEqual(SafetyGateStatus.INCOMPLETE, assessment.status)
+        self.assertIn("overdue_evidence:check.alpha", assessment.blocking_reasons)
 
     def test_incomplete_provider_coverage_rejects_coordinator(self) -> None:
         _, evidence_registry = self.configuration()

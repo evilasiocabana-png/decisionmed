@@ -76,6 +76,13 @@ class SafetyCoordinator:
             if item.outcome is not SafetyCheckOutcome.NOT_EVALUATED
             and not self._has_validated_evidence(item)
         )
+        overdue_evidence = tuple(
+            item.check_id
+            for item in items
+            if item.outcome is not SafetyCheckOutcome.NOT_EVALUATED
+            and self._has_validated_evidence(item)
+            and not self._has_current_evidence(item)
+        )
         undeclared_evidence = tuple(
             item.check_id
             for item in items
@@ -100,13 +107,20 @@ class SafetyCoordinator:
             [*(f"missing_check:{item}" for item in missing)]
             + [*(f"not_evaluated:{item}" for item in not_evaluated)]
             + [*(f"unvalidated_evidence:{item}" for item in unvalidated_evidence)]
+            + [*(f"overdue_evidence:{item}" for item in overdue_evidence)]
             + [*(f"undeclared_evidence:{item}" for item in undeclared_evidence)]
             + [*(f"critical_finding:{item}" for item in critical)]
             + [*(f"finding:{item}" for item in noncritical)]
         )
         if critical:
             status = SafetyGateStatus.BLOCKED
-        elif missing or not_evaluated or unvalidated_evidence or undeclared_evidence:
+        elif (
+            missing
+            or not_evaluated
+            or unvalidated_evidence
+            or overdue_evidence
+            or undeclared_evidence
+        ):
             status = SafetyGateStatus.INCOMPLETE
         elif has_findings:
             status = SafetyGateStatus.HUMAN_REVIEW_REQUIRED
@@ -130,6 +144,21 @@ class SafetyCoordinator:
         return bool(source_ids) and all(
             (source := self._evidence.get(source_id)) is not None
             and source.status is EvidenceStatus.VALIDATED
+            for source_id in source_ids
+        )
+
+    def _has_current_evidence(self, result: SafetyCheckResult) -> bool:
+        source_ids = set(result.evidence_source_ids)
+        source_ids.update(
+            source_id
+            for finding in result.findings
+            for source_id in finding.evidence_source_ids
+        )
+        return bool(source_ids) and all(
+            (source := self._evidence.get(source_id)) is not None
+            and source.status is EvidenceStatus.VALIDATED
+            and source.review_due_on is not None
+            and not source.review_overdue
             for source_id in source_ids
         )
 
