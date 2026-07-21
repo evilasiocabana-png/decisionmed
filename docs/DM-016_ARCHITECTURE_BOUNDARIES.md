@@ -11,9 +11,12 @@ verificação estática executada junto da suíte de testes do DecisionMEd.
 | --- | --- |
 | `domain` | nenhuma |
 | `evidence` | nenhuma |
-| `knowledge` | `evidence` |
+| `knowledge` | `domain`, `evidence` |
 | `safety` | `domain`, `evidence`, `knowledge` |
-| `audit` | `domain` |
+| `reasoning` | `domain`, `knowledge`, `evidence`, `safety` |
+| `application` | `domain`, `knowledge`, `evidence`, `reasoning`, `safety`, `audit` |
+| `interface` | `application` |
+| `audit` | `domain`, `application`, `reasoning`, `safety`, `evidence` |
 
 Importações dentro da própria camada são permitidas. Bibliotecas externas e da
 biblioteca padrão não participam desta verificação.
@@ -27,6 +30,10 @@ relativas que cruzem uma fronteira proibida geram violações determinísticas.
 O teste `test_current_source_respects_layer_boundaries` faz a política valer no
 CI. Testes isolados também provam que violações artificiais são detectadas e que
 dependências documentadas são aceitas.
+
+As camadas ainda não materializadas como pacotes também estão na política. Assim,
+quando `reasoning/`, `application/` e `interface/` forem criadas, o CI passa a
+verificá-las sem alteração adicional do analisador.
 
 ## Segurança e reversão
 

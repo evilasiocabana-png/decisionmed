@@ -11,14 +11,30 @@ from dataclasses import dataclass
 from pathlib import Path
 
 
-PROTECTED_LAYERS = ("domain", "evidence", "knowledge", "safety", "audit")
+PROTECTED_LAYERS = (
+    "domain",
+    "evidence",
+    "knowledge",
+    "safety",
+    "reasoning",
+    "application",
+    "interface",
+    "audit",
+)
 
 ALLOWED_DEPENDENCIES: dict[str, frozenset[str]] = {
     "domain": frozenset(),
     "evidence": frozenset(),
-    "knowledge": frozenset({"evidence"}),
+    "knowledge": frozenset({"domain", "evidence"}),
     "safety": frozenset({"domain", "evidence", "knowledge"}),
-    "audit": frozenset({"domain"}),
+    "reasoning": frozenset({"domain", "knowledge", "evidence", "safety"}),
+    "application": frozenset(
+        {"domain", "knowledge", "evidence", "reasoning", "safety", "audit"}
+    ),
+    "interface": frozenset({"application"}),
+    "audit": frozenset(
+        {"domain", "application", "reasoning", "safety", "evidence"}
+    ),
 }
 
 
