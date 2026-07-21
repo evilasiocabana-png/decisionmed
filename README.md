@@ -10,6 +10,15 @@ Plataforma clínica multiespecialidade derivada de uma cópia independente do Ps
 
 O PsychRx original em `C:\Users\evcab\PsychRx` não deve ser alterado pelo desenvolvimento do DecisionMEd.
 
-## Primeiro objetivo arquitetural
+## Executar o MVP local
 
-Extrair do baseline um núcleo clínico comum e um contrato de `SpecialtyPack`, mantendo psiquiatria como o primeiro pacote e sem duplicar conhecimento clínico na interface.
+```powershell
+python -m decisionmed.web
+```
+
+Se as portas estiverem ocupadas: `python -m decisionmed.web --port 8775 --psychiatry-port 8776`.
+
+- Hub DecisionMEd: `http://127.0.0.1:8765/`
+- Pacote de Psiquiatria: `http://127.0.0.1:8766/`
+
+O hub está em modo `read-only`. Psiquiatria reutiliza o app local do baseline sem alterar o PsychRx original.
