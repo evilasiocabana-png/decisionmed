@@ -16,6 +16,7 @@ from decisionmed.evidence import (
 from decisionmed.knowledge import (
     ClinicalFieldDefinition,
     ClinicalFieldValueType,
+    EvidenceAnchor,
     KnowledgeObject,
     KnowledgeObjectType,
     KnowledgeRegistry,
@@ -154,7 +155,13 @@ class ClinicalInputStructureValidatorTest(unittest.TestCase):
                     official_name=f"Structural {suffix}",
                     object_type=KnowledgeObjectType.OTHER,
                     description="Test-only metadata without a clinical claim.",
-                    evidence_source_ids=("evidence.form-structure",),
+                    evidence_anchors=(
+                        EvidenceAnchor(
+                            source_id="evidence.form-structure",
+                            section="Synthetic section",
+                            locator="https://example.test/source#section",
+                        ),
+                    ),
                     applicability="Unit tests only.",
                     limits="No clinical use.",
                     version="1.0.0",

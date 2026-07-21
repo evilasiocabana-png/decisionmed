@@ -129,6 +129,12 @@ class DecisionMedWebTest(unittest.TestCase):
         self.assertEqual("2026-07-21", source["reviewed_on"])
         self.assertEqual("Synthetic conflicts.", source["known_conflicts"])
         self.assertFalse(source["runtime_eligible"])
+        self.assertEqual("Table 3 — Nature", source["anchors"][0]["section"])
+        self.assertEqual(
+            "https://example.test/official-guideline#table-3",
+            source["anchors"][0]["locator"],
+        )
+        self.assertFalse(source["anchors"][0]["runtime_eligible"])
         self.assertEqual(
             "https://example.test/official-guideline",
             payload["fields"][0]["knowledge"]["evidence_sources"][0]["locator"],
@@ -143,6 +149,7 @@ class DecisionMedWebTest(unittest.TestCase):
         self.assertIn(b"api/workflows", body)
         self.assertIn(b"api/form-schemas", body)
         self.assertIn(b"known_conflicts", body)
+        self.assertIn("Seção específica".encode(), body)
         self.assertIn("Base científica e limites".encode(), body)
         self.assertIn("somente referência".encode(), body.lower())
         self.assertNotIn(b"<textarea", body.lower())
@@ -220,6 +227,13 @@ class DecisionMedWebTest(unittest.TestCase):
             status=draft,
             applicability="Synthetic applicability.",
             limits="Synthetic limits.",
+            evidence_anchors=(
+                SimpleNamespace(
+                    source_id="acc-aha.2021.chest-pain-guideline",
+                    section="Table 3 — Nature",
+                    locator="https://example.test/official-guideline#table-3",
+                ),
+            ),
             evidence_source_ids=("acc-aha.2021.chest-pain-guideline",),
         )
         source = SimpleNamespace(

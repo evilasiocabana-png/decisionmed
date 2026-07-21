@@ -110,7 +110,14 @@ class DecisionMedAppService:
         for field in schema.fields:
             knowledge = self._catalogs.knowledge.require(field.knowledge_object_id)
             sources = tuple(
-                self._catalogs.evidence.require(source_id)
+                (
+                    self._catalogs.evidence.require(source_id),
+                    tuple(
+                        anchor
+                        for anchor in knowledge.evidence_anchors
+                        if anchor.source_id == source_id
+                    ),
+                )
                 for source_id in knowledge.evidence_source_ids
             )
             fields.append(
@@ -151,9 +158,17 @@ class DecisionMedAppService:
                                 "clinical_applicability": (
                                     source.clinical_applicability
                                 ),
+                                "anchors": [
+                                    {
+                                        "section": anchor.section,
+                                        "locator": _public_locator(anchor.locator),
+                                        "runtime_eligible": False,
+                                    }
+                                    for anchor in anchors
+                                ],
                                 "runtime_eligible": False,
                             }
-                            for source in sources
+                            for source, anchors in sources
                         ],
                     },
                 }

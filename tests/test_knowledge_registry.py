@@ -11,6 +11,7 @@ from decisionmed.evidence import (
     RecommendationStrength,
 )
 from decisionmed.knowledge import (
+    EvidenceAnchor,
     KnowledgeError,
     KnowledgeObject,
     KnowledgeObjectType,
@@ -43,7 +44,13 @@ def knowledge(status: KnowledgeStatus = KnowledgeStatus.DRAFT) -> KnowledgeObjec
         official_name="Synthetic knowledge contract fixture",
         object_type=KnowledgeObjectType.OTHER,
         description="Non-clinical fixture content.",
-        evidence_source_ids=("source.synthetic",),
+        evidence_anchors=(
+            EvidenceAnchor(
+                source_id="source.synthetic",
+                section="Synthetic section",
+                locator="https://example.test/source#section",
+            ),
+        ),
         applicability="Contract tests only.",
         limits="Not clinical knowledge and never runtime eligible.",
         version="0.1.0",
@@ -62,12 +69,21 @@ class KnowledgeContractTest(unittest.TestCase):
         item = knowledge()
 
         self.assertFalse(item.runtime_eligible)
+        self.assertEqual(("source.synthetic",), item.evidence_source_ids)
+        self.assertFalse(item.evidence_anchors[0].runtime_eligible)
         with self.assertRaises(AttributeError):
             item.status = KnowledgeStatus.VALIDATED  # type: ignore[misc]
 
     def test_validated_object_requires_human_review_metadata(self) -> None:
         with self.assertRaises(KnowledgeError):
             replace(knowledge(), status=KnowledgeStatus.VALIDATED)
+
+    def test_object_requires_unique_precise_evidence_anchors(self) -> None:
+        anchor = knowledge().evidence_anchors[0]
+        with self.assertRaises(KnowledgeError) as context:
+            replace(knowledge(), evidence_anchors=(anchor, anchor))
+
+        self.assertEqual("knowledge_object.evidence_anchors", context.exception.code)
 
     def test_registry_rejects_unknown_evidence(self) -> None:
         with self.assertRaises(KnowledgeError) as error:

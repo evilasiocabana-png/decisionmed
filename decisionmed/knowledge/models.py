@@ -38,6 +38,40 @@ class KnowledgeStatus(str, Enum):
 
 
 @dataclass(frozen=True, slots=True)
+class EvidenceAnchor:
+    """Exact source location supporting a knowledge object."""
+
+    source_id: str
+    section: str
+    locator: str
+
+    def __post_init__(self) -> None:
+        if not isinstance(self.source_id, str) or not _IDENTIFIER.fullmatch(
+            self.source_id
+        ):
+            raise KnowledgeError(
+                "evidence_anchor.source_id", "source id must be canonical"
+            )
+        for field_name, value, maximum in (
+            ("section", self.section, 500),
+            ("locator", self.locator, 1000),
+        ):
+            if (
+                not isinstance(value, str)
+                or not value.strip()
+                or len(value) > maximum
+            ):
+                raise KnowledgeError(
+                    f"evidence_anchor.{field_name}",
+                    f"{field_name} must contain 1 to {maximum} characters",
+                )
+
+    @property
+    def runtime_eligible(self) -> bool:
+        return False
+
+
+@dataclass(frozen=True, slots=True)
 class KnowledgeObject:
     """Versioned content record; never an executable rule or runtime output."""
 
@@ -45,7 +79,7 @@ class KnowledgeObject:
     official_name: str
     object_type: KnowledgeObjectType
     description: str
-    evidence_source_ids: tuple[str, ...]
+    evidence_anchors: tuple[EvidenceAnchor, ...]
     applicability: str
     limits: str
     version: str
@@ -66,14 +100,14 @@ class KnowledgeObject:
         if not isinstance(self.status, KnowledgeStatus):
             raise TypeError("status must be a KnowledgeStatus")
 
-        source_ids = tuple(self.evidence_source_ids)
-        if not source_ids:
-            self._fail("evidence_source_ids", "at least one source is required")
-        for source_id in source_ids:
-            self._identifier("evidence_source_ids", source_id)
-        if len(set(source_ids)) != len(source_ids):
-            self._fail("evidence_source_ids", "source ids must be unique")
-        object.__setattr__(self, "evidence_source_ids", source_ids)
+        anchors = tuple(self.evidence_anchors)
+        if not anchors:
+            self._fail("evidence_anchors", "at least one evidence anchor is required")
+        if any(not isinstance(anchor, EvidenceAnchor) for anchor in anchors):
+            raise TypeError("evidence_anchors must contain EvidenceAnchor values")
+        if len(set(anchors)) != len(anchors):
+            self._fail("evidence_anchors", "evidence anchors must be unique")
+        object.__setattr__(self, "evidence_anchors", anchors)
 
         if self.reviewed_on is not None and not isinstance(self.reviewed_on, date):
             raise TypeError("reviewed_on must be a date or None")
@@ -108,3 +142,9 @@ class KnowledgeObject:
         """Foundation contracts never authorize clinical runtime use."""
 
         return False
+
+    @property
+    def evidence_source_ids(self) -> tuple[str, ...]:
+        """Unique source identifiers derived from the precise anchors."""
+
+        return tuple(dict.fromkeys(anchor.source_id for anchor in self.evidence_anchors))
