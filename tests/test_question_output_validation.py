@@ -378,6 +378,47 @@ class QuestionEngineOutputValidatorTest(unittest.TestCase):
         self.assertEqual(0, blocked_authority.call_count)
         self.assertEqual(0, self.engine.call_count)
 
+    def test_expired_authority_is_audited_before_engine_call(self) -> None:
+        self.engine.output = self._result()
+        ledger = AuditLedger()
+        service = QuestionEngineExecutionApplicationService(
+            QuestionEngineReadiness(),
+            self._engine_registry(include_engine=True),
+            SyntheticInvocationAuthority(self._decision()),
+            self.validator,
+            ledger,
+            max_authority_age=timedelta(seconds=30),
+            now=lambda: self.assembled_at + timedelta(seconds=31),
+        )
+
+        with self.assertRaises(QuestionEngineExecutionError) as expired:
+            service.generate(
+                self.input_value,
+                engine_id=self.engine.engine_id,
+                reviewer_id="reviewer.synthetic",
+                authority_reference="authority.synthetic-workflow",
+            )
+
+        self.assertEqual(
+            "question_engine_execution.authority_expired", expired.exception.code
+        )
+        self.assertEqual(
+            "reasoning.question-engine-authority-expired", ledger.records()[-1].event_name
+        )
+        self.assertEqual(0, self.engine.call_count)
+        self.assertTrue(ledger.verify())
+
+    def test_execution_rejects_non_positive_authority_age(self) -> None:
+        with self.assertRaises(ValueError):
+            QuestionEngineExecutionApplicationService(
+                QuestionEngineReadiness(),
+                self._engine_registry(include_engine=True),
+                SyntheticInvocationAuthority(self._decision()),
+                self.validator,
+                AuditLedger(),
+                max_authority_age=timedelta(0),
+            )
+
     def test_invalid_engine_output_is_audited_and_not_returned(self) -> None:
         self.engine.output = self._result(field_key="symptoms.unknown")
         authority = SyntheticInvocationAuthority(self._decision())
