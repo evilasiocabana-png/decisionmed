@@ -26,6 +26,8 @@ class DecisionMedAppServiceTest(unittest.TestCase):
         )
         self.assertEqual(6, len(state["specialties"]))
         self.assertEqual("reference_only", psychiatry["load_status"])
+        self.assertIn("PsychRx", psychiatry["intended_scope"])
+        self.assertIn("Execução clínica.", psychiatry["excluded_uses"])
         self.assertEqual([], psychiatry["incompatible_capabilities"])
         self.assertFalse(psychiatry["execution_allowed"])
 
@@ -90,6 +92,8 @@ class DecisionMedWebTest(unittest.TestCase):
 
         self.assertEqual(200, home_status)
         self.assertIn(b"DecisionMEd", home_body)
+        self.assertIn(b"item.intended_scope", home_body)
+        self.assertNotIn(b"innerHTML", home_body)
         self.assertEqual(303, redirect_status)
         self.assertEqual("http://127.0.0.1:9876/", redirect_headers["location"])
 

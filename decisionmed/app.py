@@ -23,6 +23,8 @@ from .workflows import (
 class SpecialtyView:
     key: str
     display_name: str
+    intended_scope: str
+    excluded_uses: tuple[str, ...]
     version: str
     pack_status: str
     load_status: str
@@ -36,6 +38,8 @@ class SpecialtyView:
         return {
             "key": self.key,
             "display_name": self.display_name,
+            "intended_scope": self.intended_scope,
+            "excluded_uses": list(self.excluded_uses),
             "version": self.version,
             "pack_status": self.pack_status,
             "load_status": self.load_status,
@@ -83,6 +87,8 @@ class DecisionMedAppService:
                 SpecialtyView(
                     key=pack.key,
                     display_name=pack.display_name,
+                    intended_scope=pack.intended_scope,
+                    excluded_uses=pack.excluded_uses,
                     version=pack.version,
                     pack_status=pack.status.value,
                     load_status=result.status.value,
