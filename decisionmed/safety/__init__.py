@@ -20,6 +20,11 @@ from .providers import (
     SafetyImplementationCoverage,
 )
 from .preflight import SafetyPreflight
+from .review import (
+    SafetyReviewDisposition,
+    SafetyReviewRecord,
+    safety_assessment_fingerprint,
+)
 
 __all__ = [
     "SafetyAssessment",
@@ -39,4 +44,7 @@ __all__ = [
     "SafetySeverity",
     "SafetyImplementationCoverage",
     "SafetyPreflight",
+    "SafetyReviewDisposition",
+    "SafetyReviewRecord",
+    "safety_assessment_fingerprint",
 ]
