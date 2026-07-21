@@ -14,6 +14,7 @@ from urllib.parse import urlparse
 
 from .app import DecisionMedAppService
 from .specialties import UnknownSpecialtyPackError
+from .sessions import WorkflowSessionError
 from .workflows import UnknownWorkflowError
 
 
@@ -53,6 +54,32 @@ class DecisionMedRequestHandler(SimpleHTTPRequestHandler):
             self.path = "/index.html"
         super().do_GET()
 
+    def do_POST(self) -> None:
+        parsed = urlparse(self.path)
+        try:
+            payload = self._read_json()
+            if parsed.path == "/api/sessions":
+                self._require_keys(payload, {"specialty_key"})
+                result = self._app_service.start_session(payload["specialty_key"])
+                self._send_json(result, status=201)
+                return
+
+            parts = parsed.path.strip("/").split("/")
+            if len(parts) == 4 and parts[:2] == ["api", "sessions"] and parts[3] == "advance":
+                self._require_keys(payload, {"step_key"})
+                result = self._app_service.advance_session(parts[2], payload["step_key"])
+                self._send_json(result)
+                return
+            self._send_json({"error": "endpoint_not_found"}, status=404)
+        except RequestPayloadError as exc:
+            self._send_json({"error": exc.code}, status=400)
+        except WorkflowSessionError as exc:
+            status = 404 if exc.code in {
+                "workflow_session.unknown",
+                "workflow_session.unknown_specialty",
+            } else 503 if exc.code == "workflow_session.capacity" else 409
+            self._send_json({"error": exc.code}, status=status)
+
     @property
     def _app_service(self) -> DecisionMedAppService:
         return self.server.app_service  # type: ignore[attr-defined]
@@ -66,8 +93,38 @@ class DecisionMedRequestHandler(SimpleHTTPRequestHandler):
         self.send_response(status)
         self.send_header("Content-Type", "application/json; charset=utf-8")
         self.send_header("Content-Length", str(len(body)))
+        self.send_header("Cache-Control", "no-store")
         self.end_headers()
         self.wfile.write(body)
+
+    def _read_json(self) -> dict[str, str]:
+        if not self.headers.get("Content-Type", "").lower().startswith(
+            "application/json"
+        ):
+            raise RequestPayloadError("invalid_content_type")
+        try:
+            length = int(self.headers.get("Content-Length", "0"))
+        except ValueError as exc:
+            raise RequestPayloadError("invalid_content_length") from exc
+        if not 1 <= length <= 1024:
+            raise RequestPayloadError("invalid_content_length")
+        try:
+            payload = json.loads(self.rfile.read(length).decode("utf-8"))
+        except (UnicodeDecodeError, json.JSONDecodeError) as exc:
+            raise RequestPayloadError("invalid_json") from exc
+        if not isinstance(payload, dict) or not all(
+            isinstance(key, str) and isinstance(value, str)
+            for key, value in payload.items()
+        ):
+            raise RequestPayloadError("invalid_payload")
+        if any(not value or len(value) > 200 for value in payload.values()):
+            raise RequestPayloadError("invalid_payload")
+        return payload
+
+    @staticmethod
+    def _require_keys(payload: dict[str, str], expected: set[str]) -> None:
+        if set(payload) != expected:
+            raise RequestPayloadError("unexpected_fields")
 
     def _redirect(self, location: str) -> None:
         self.send_response(303)
@@ -79,12 +136,19 @@ class DecisionMedRequestHandler(SimpleHTTPRequestHandler):
         return
 
 
+class RequestPayloadError(ValueError):
+    def __init__(self, code: str) -> None:
+        self.code = code
+        super().__init__(code)
+
+
 def create_server(
     host: str = "127.0.0.1",
     port: int = 8765,
     psychiatry_url: str = "http://127.0.0.1:8766/",
     app_service: DecisionMedAppService | None = None,
 ) -> ThreadingHTTPServer:
+    _require_loopback_host(host)
     server = ThreadingHTTPServer((host, port), DecisionMedRequestHandler)
     server.app_service = app_service or DecisionMedAppService()  # type: ignore[attr-defined]
     server.psychiatry_url = psychiatry_url  # type: ignore[attr-defined]
@@ -96,6 +160,7 @@ def create_psychiatry_server(
 ) -> ThreadingHTTPServer:
     """Create the existing PsychRx server without modifying its baseline."""
 
+    _require_loopback_host(host)
     if not PSYCHRX_BASELINE_ROOT.exists():
         raise FileNotFoundError("psychrx-baseline was not found")
     baseline_path = str(PSYCHRX_BASELINE_ROOT)
@@ -103,6 +168,11 @@ def create_psychiatry_server(
         sys.path.insert(0, baseline_path)
     module = importlib.import_module("interfaces.web.server")
     return module.create_server(host, port)
+
+
+def _require_loopback_host(host: str) -> None:
+    if host not in {"127.0.0.1", "localhost"}:
+        raise ValueError("DecisionMEd without authentication must bind to loopback")
 
 
 def run(host: str = "127.0.0.1", port: int = 8765, psychiatry_port: int = 8766) -> None:

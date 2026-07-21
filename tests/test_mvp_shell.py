@@ -40,14 +40,23 @@ class DecisionMedWebTest(unittest.TestCase):
         cls.server.server_close()
         cls.thread.join(timeout=2)
 
-    def request(self, path: str) -> tuple[int, dict[str, str], bytes]:
+    def request(
+        self,
+        path: str,
+        method: str = "GET",
+        payload: dict[str, str] | None = None,
+    ) -> tuple[int, dict[str, str], bytes]:
         connection = http.client.HTTPConnection("127.0.0.1", self.port, timeout=3)
-        connection.request("GET", path)
+        body = json.dumps(payload).encode("utf-8") if payload is not None else None
+        headers = {"Content-Type": "application/json"} if body is not None else {}
+        connection.request(method, path, body=body, headers=headers)
         response = connection.getresponse()
-        body = response.read()
-        headers = {key.lower(): value for key, value in response.getheaders()}
+        response_body = response.read()
+        response_headers = {
+            key.lower(): value for key, value in response.getheaders()
+        }
         connection.close()
-        return response.status, headers, body
+        return response.status, response_headers, response_body
 
     def test_health_and_app_state_endpoints(self) -> None:
         health_status, _, health_body = self.request("/health")
@@ -88,12 +97,48 @@ class DecisionMedWebTest(unittest.TestCase):
         self.assertIn(b"read-only", body.lower())
         self.assertIn(b"draft", body)
 
+    def test_structural_session_can_start_and_advance(self) -> None:
+        start_status, start_headers, start_body = self.request(
+            "/api/sessions", "POST", {"specialty_key": "cardiology"}
+        )
+        started = json.loads(start_body)
+        advance_status, _, advance_body = self.request(
+            f"/api/sessions/{started['session_id']}/advance",
+            "POST",
+            {"step_key": "context"},
+        )
+        advanced = json.loads(advance_body)
+
+        self.assertEqual(201, start_status)
+        self.assertEqual("no-store", start_headers["cache-control"])
+        self.assertEqual("context", started["current_step_key"])
+        self.assertEqual(200, advance_status)
+        self.assertEqual("risk", advanced["current_step_key"])
+        self.assertFalse(advanced["clinical_execution_allowed"])
+
+    def test_session_api_rejects_extra_or_free_text_fields(self) -> None:
+        status, _, body = self.request(
+            "/api/sessions",
+            "POST",
+            {"specialty_key": "cardiology", "notes": "must not reach backend"},
+        )
+
+        self.assertEqual(400, status)
+        self.assertEqual("unexpected_fields", json.loads(body)["error"])
+        self.assertNotIn(b"must not reach backend", body)
+
     def test_psychrx_baseline_server_can_be_created(self) -> None:
         server = create_psychiatry_server(port=0)
         try:
             self.assertGreater(server.server_address[1], 0)
         finally:
             server.server_close()
+
+    def test_unauthenticated_server_rejects_non_loopback_binding(self) -> None:
+        with self.assertRaises(ValueError):
+            create_server(host="0.0.0.0", port=0)
+        with self.assertRaises(ValueError):
+            create_psychiatry_server(host="0.0.0.0", port=0)
 
 
 if __name__ == "__main__":
