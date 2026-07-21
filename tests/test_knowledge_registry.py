@@ -66,6 +66,11 @@ def knowledge(status: KnowledgeStatus = KnowledgeStatus.DRAFT) -> KnowledgeObjec
         validated_by="reviewer.synthetic"
         if status is KnowledgeStatus.VALIDATED
         else None,
+        review_due_on=(
+            date.today() + timedelta(days=30)
+            if status is KnowledgeStatus.VALIDATED
+            else None
+        ),
     )
 
 
@@ -80,8 +85,29 @@ class KnowledgeContractTest(unittest.TestCase):
             item.status = KnowledgeStatus.VALIDATED  # type: ignore[misc]
 
     def test_validated_object_requires_human_review_metadata(self) -> None:
-        with self.assertRaises(KnowledgeError):
+        with self.assertRaises(KnowledgeError) as missing:
             replace(knowledge(), status=KnowledgeStatus.VALIDATED)
+        self.assertEqual("knowledge_object.validation", missing.exception.code)
+
+        item = knowledge(KnowledgeStatus.VALIDATED)
+        self.assertEqual("current", item.review_state)
+        self.assertFalse(item.review_overdue)
+
+    def test_object_review_lifecycle_fails_closed(self) -> None:
+        item = knowledge()
+        self.assertEqual("unscheduled", item.review_state)
+
+        with self.assertRaises(KnowledgeError) as no_review:
+            replace(item, review_due_on=date.today() + timedelta(days=1))
+        self.assertEqual("knowledge_object.review_due_on", no_review.exception.code)
+
+        overdue = replace(
+            item,
+            reviewed_on=date.today() - timedelta(days=2),
+            review_due_on=date.today() - timedelta(days=1),
+        )
+        self.assertEqual("overdue", overdue.review_state)
+        self.assertTrue(overdue.review_overdue)
 
     def test_object_requires_unique_precise_evidence_anchors(self) -> None:
         anchor = knowledge().evidence_anchors[0]

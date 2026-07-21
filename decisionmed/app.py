@@ -70,6 +70,7 @@ class DecisionMedAppService:
         self._readiness = readiness or PlatformReadinessService(
             evidence=catalogs.evidence if catalogs is not None else None,
             knowledge=catalogs.knowledge if catalogs is not None else None,
+            form_schemas=catalogs.form_schemas if catalogs is not None else None,
         )
         self._sessions = sessions or WorkflowSessionService(
             self._registry, self._workflows
@@ -148,6 +149,18 @@ class DecisionMedAppService:
                         "description": knowledge.description,
                         "version": knowledge.version,
                         "status": knowledge.status.value,
+                        "reviewed_on": (
+                            knowledge.reviewed_on.isoformat()
+                            if knowledge.reviewed_on is not None
+                            else None
+                        ),
+                        "review_due_on": (
+                            knowledge.review_due_on.isoformat()
+                            if knowledge.review_due_on is not None
+                            else None
+                        ),
+                        "review_state": knowledge.review_state,
+                        "validated_by": knowledge.validated_by,
                         "applicability": knowledge.applicability,
                         "limits": knowledge.limits,
                         "runtime_eligible": False,
@@ -198,6 +211,18 @@ class DecisionMedAppService:
             "step_key": schema.step_key,
             "version": schema.version,
             "status": schema.status.value,
+            "reviewed_on": (
+                schema.reviewed_on.isoformat()
+                if schema.reviewed_on is not None
+                else None
+            ),
+            "review_due_on": (
+                schema.review_due_on.isoformat()
+                if schema.review_due_on is not None
+                else None
+            ),
+            "review_state": schema.review_state,
+            "validated_by": schema.validated_by,
             "mode": "reference_only",
             "runtime_eligible": False,
             "clinical_execution_allowed": False,

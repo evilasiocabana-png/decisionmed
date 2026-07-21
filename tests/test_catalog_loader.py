@@ -137,7 +137,7 @@ class GovernedCatalogLoaderTest(unittest.TestCase):
                     "locator": "https://example.test/source#section",
                 }], "applicability": "Tests only.",
                 "limits": "No clinical use.", "version": "1.0.0", "status": "draft",
-                "reviewed_on": None, "validated_by": None,
+                "reviewed_on": None, "validated_by": None, "review_due_on": None,
             }]
         )
         schemas = cls._envelope(
@@ -145,7 +145,7 @@ class GovernedCatalogLoaderTest(unittest.TestCase):
                 "schema_id": "schema.cardiology.sample", "specialty_key": "cardiology",
                 "workflow_id": "decisionmed.cardiology.workflow.v1", "step_key": "context",
                 "version": "0.1.0", "status": "draft", "reviewed_on": None,
-                "validated_by": None, "fields": [{
+                "validated_by": None, "review_due_on": None, "fields": [{
                     "field_key": "symptoms.present", "label": "Structural sample",
                     "section": "symptoms", "value_type": "boolean",
                     "knowledge_object_id": "knowledge.sample", "required": True,
@@ -162,7 +162,7 @@ class GovernedCatalogLoaderTest(unittest.TestCase):
 
     @staticmethod
     def _envelope(items: list[dict[str, object]]) -> dict[str, object]:
-        return {"schema_version": "5.0.0", "items": items}
+        return {"schema_version": "6.0.0", "items": items}
 
     @staticmethod
     def _write(path: Path, payload: dict[str, object]) -> None:
@@ -175,7 +175,7 @@ class GovernedCatalogLoaderTest(unittest.TestCase):
             for name in ("evidence.json", "knowledge.json", "form-schemas.json")
         }
         manifest = {
-            "schema_version": "5.0.0",
+            "schema_version": "6.0.0",
             "catalog_id": "decisionmed.knowledge",
             "release_version": "0.1.0",
             "status": "draft",

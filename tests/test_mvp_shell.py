@@ -95,6 +95,19 @@ class DecisionMedWebTest(unittest.TestCase):
         self.assertEqual("blocked", evidence_gate["status"])
         self.assertEqual("review_schedule_missing", evidence_gate["reason"])
         self.assertEqual(1, readiness["counts"]["knowledge_objects"])
+        self.assertEqual(
+            1, readiness["counts"]["knowledge_objects_without_review_schedule"]
+        )
+        self.assertEqual(1, readiness["counts"]["form_schemas"])
+        self.assertEqual(
+            1, readiness["counts"]["form_schemas_without_review_schedule"]
+        )
+        knowledge_gate = next(
+            gate
+            for gate in readiness["gates"]
+            if gate["key"] == "knowledge_catalog"
+        )
+        self.assertEqual("knowledge_review_schedule_missing", knowledge_gate["reason"])
         self.assertFalse(readiness["clinical_execution_allowed"])
 
     def test_home_page_and_psychiatry_redirect(self) -> None:
@@ -136,10 +149,14 @@ class DecisionMedWebTest(unittest.TestCase):
         self.assertFalse(payload["fields"][0]["runtime_eligible"])
         knowledge = payload["fields"][0]["knowledge"]
         source = knowledge["evidence_sources"][0]
+        self.assertIsNone(payload["review_due_on"])
+        self.assertEqual("unscheduled", payload["review_state"])
         self.assertEqual("evidence", knowledge["object_type"])
         self.assertEqual("Synthetic applicability.", knowledge["applicability"])
         self.assertEqual("Synthetic limits.", knowledge["limits"])
         self.assertFalse(knowledge["runtime_eligible"])
+        self.assertIsNone(knowledge["review_due_on"])
+        self.assertEqual("unscheduled", knowledge["review_state"])
         self.assertEqual("insufficient", source["evidence_quality"])
         self.assertEqual(
             "insufficient_for_recommendation",
@@ -171,6 +188,7 @@ class DecisionMedWebTest(unittest.TestCase):
         self.assertIn(b"api/form-schemas", body)
         self.assertIn(b"known_conflicts", body)
         self.assertIn(b"review_due_on", body)
+        self.assertIn(b"review_state", body)
         self.assertIn("Seção específica".encode(), body)
         self.assertIn("Base científica e limites".encode(), body)
         self.assertIn("somente referência".encode(), body.lower())
@@ -238,6 +256,11 @@ class DecisionMedWebTest(unittest.TestCase):
             step_key="findings",
             version="0.1.0",
             status=draft,
+            reviewed_on=None,
+            review_due_on=None,
+            review_state="unscheduled",
+            review_overdue=False,
+            validated_by=None,
             fields=(field,),
         )
         knowledge = SimpleNamespace(
@@ -247,6 +270,11 @@ class DecisionMedWebTest(unittest.TestCase):
             description="Synthetic description.",
             version="0.1.0",
             status=draft,
+            reviewed_on=None,
+            review_due_on=None,
+            review_state="unscheduled",
+            review_overdue=False,
+            validated_by=None,
             applicability="Synthetic applicability.",
             limits="Synthetic limits.",
             evidence_anchors=(
