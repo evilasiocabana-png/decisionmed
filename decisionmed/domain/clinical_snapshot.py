@@ -5,6 +5,8 @@ from __future__ import annotations
 from dataclasses import dataclass, field
 from datetime import datetime, timezone
 from enum import Enum
+from hashlib import sha256
+import json
 import math
 import re
 from uuid import uuid4
@@ -168,6 +170,70 @@ class ClinicalSnapshot:
     @property
     def clinical_execution_allowed(self) -> bool:
         return False
+
+    @property
+    def content_fingerprint(self) -> str:
+        return clinical_snapshot_fingerprint(self)
+
+
+def clinical_snapshot_fingerprint(snapshot: ClinicalSnapshot) -> str:
+    """Return a deterministic digest of the complete pseudonymous snapshot."""
+
+    if not isinstance(snapshot, ClinicalSnapshot):
+        raise TypeError("snapshot must be a ClinicalSnapshot")
+    payload = {
+        "snapshot_id": str(snapshot.snapshot_id),
+        "lineage_id": str(snapshot.lineage_id),
+        "subject_reference": str(snapshot.subject_reference),
+        "session_id": str(snapshot.session_id),
+        "specialty_key": snapshot.specialty_key,
+        "captured_at": _canonical_datetime(snapshot.captured_at),
+        "observations": [
+            {
+                "observation_id": str(observation.observation_id),
+                "section": observation.section.value,
+                "field_key": observation.field_key,
+                "value": _canonical_value(observation.value),
+                "provenance": observation.provenance.value,
+                "observed_at": _canonical_datetime(observation.observed_at),
+            }
+            for observation in sorted(
+                snapshot.observations,
+                key=lambda item: str(item.observation_id),
+            )
+        ],
+        "previous_snapshot_id": (
+            str(snapshot.previous_snapshot_id)
+            if snapshot.previous_snapshot_id is not None
+            else None
+        ),
+        "trace_id": snapshot.trace_id,
+        "version": snapshot.version,
+    }
+    canonical = json.dumps(
+        payload,
+        ensure_ascii=True,
+        sort_keys=True,
+        separators=(",", ":"),
+        allow_nan=False,
+    ).encode("utf-8")
+    return sha256(canonical).hexdigest()
+
+
+def _canonical_datetime(value: datetime) -> str:
+    return value.astimezone(timezone.utc).isoformat(timespec="microseconds")
+
+
+def _canonical_value(value: ClinicalValue) -> dict[str, ClinicalValue]:
+    if isinstance(value, bool):
+        value_type = "boolean"
+    elif isinstance(value, int):
+        value_type = "integer"
+    elif isinstance(value, float):
+        value_type = "number"
+    else:
+        value_type = "text"
+    return {"type": value_type, "value": value}
 
 
 def _clinical_value(value: object) -> None:
