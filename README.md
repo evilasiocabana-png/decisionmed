@@ -13,4 +13,3 @@ O PsychRx original em `C:\Users\evcab\PsychRx` não deve ser alterado pelo desen
 ## Primeiro objetivo arquitetural
 
 Extrair do baseline um núcleo clínico comum e um contrato de `SpecialtyPack`, mantendo psiquiatria como o primeiro pacote e sem duplicar conhecimento clínico na interface.
-
