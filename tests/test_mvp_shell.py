@@ -37,6 +37,9 @@ class DecisionMedAppServiceTest(unittest.TestCase):
         self.assertEqual(13, psychiatry["workflow_step_count"])
         self.assertEqual([], psychiatry["reference_schema_step_keys"])
         self.assertEqual(13, len(psychiatry["missing_reference_schema_step_keys"]))
+        self.assertEqual(0, psychiatry["reference_knowledge_object_count"])
+        self.assertEqual(0, psychiatry["reference_evidence_source_count"])
+        self.assertEqual("catalog_not_loaded", psychiatry["reference_curation_state"])
         self.assertEqual(7, len(psychiatry["available_capabilities"]))
         self.assertIn("PsychRx", psychiatry["intended_scope"])
         self.assertIn("Execução clínica.", psychiatry["excluded_uses"])
@@ -116,6 +119,9 @@ class DecisionMedWebTest(unittest.TestCase):
         self.assertEqual("blocked", cardiology["load_status"])
         self.assertEqual(7, cardiology["workflow_step_count"])
         self.assertEqual(["findings"], cardiology["reference_schema_step_keys"])
+        self.assertEqual(1, cardiology["reference_knowledge_object_count"])
+        self.assertEqual(1, cardiology["reference_evidence_source_count"])
+        self.assertEqual("draft", cardiology["reference_curation_state"])
         self.assertEqual(
             ["context", "risk", "safety", "evidence", "decision", "monitoring"],
             cardiology["missing_reference_schema_step_keys"],

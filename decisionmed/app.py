@@ -31,6 +31,9 @@ class SpecialtyView:
     workflow_step_count: int
     reference_schema_step_keys: tuple[str, ...]
     missing_reference_schema_step_keys: tuple[str, ...]
+    reference_knowledge_object_count: int
+    reference_evidence_source_count: int
+    reference_curation_state: str
     pack_status: str
     load_status: str
     execution_allowed: bool
@@ -53,6 +56,9 @@ class SpecialtyView:
             "missing_reference_schema_step_keys": list(
                 self.missing_reference_schema_step_keys
             ),
+            "reference_knowledge_object_count": self.reference_knowledge_object_count,
+            "reference_evidence_source_count": self.reference_evidence_source_count,
+            "reference_curation_state": self.reference_curation_state,
             "pack_status": self.pack_status,
             "load_status": self.load_status,
             "execution_allowed": self.execution_allowed,
@@ -120,6 +126,8 @@ class DecisionMedAppService:
             workflow = self._workflows.require(pack.key)
             workflow_step_keys = tuple(step.key for step in workflow.steps)
             schema_step_keys = self._reference_schema_step_keys(workflow)
+            knowledge_object_ids = self._reference_knowledge_object_ids(workflow)
+            source_ids = self._reference_evidence_source_ids(knowledge_object_ids)
             views.append(
                 SpecialtyView(
                     key=pack.key,
@@ -134,6 +142,11 @@ class DecisionMedAppService:
                         step_key
                         for step_key in workflow_step_keys
                         if step_key not in schema_step_keys
+                    ),
+                    reference_knowledge_object_count=len(knowledge_object_ids),
+                    reference_evidence_source_count=len(source_ids),
+                    reference_curation_state=self._reference_curation_state(
+                        knowledge_object_ids
                     ),
                     pack_status=pack.status.value,
                     load_status=result.status.value,
@@ -162,6 +175,53 @@ class DecisionMedAppService:
                 and schema.workflow_id == workflow.workflow_id
             )
         )
+
+    def _reference_knowledge_object_ids(
+        self, workflow: SpecialtyWorkflow
+    ) -> tuple[str, ...]:
+        if self._catalogs is None:
+            return ()
+        return tuple(
+            sorted(
+                field.knowledge_object_id
+                for schema in self._catalogs.form_schemas.all()
+                if (
+                    schema.specialty_key == workflow.specialty_key
+                    and schema.workflow_id == workflow.workflow_id
+                )
+                for field in schema.fields
+            )
+        )
+
+    def _reference_evidence_source_ids(
+        self, knowledge_object_ids: tuple[str, ...]
+    ) -> tuple[str, ...]:
+        if self._catalogs is None:
+            return ()
+        return tuple(
+            sorted(
+                {
+                    source_id
+                    for object_id in knowledge_object_ids
+                    for source_id in self._catalogs.knowledge.require(
+                        object_id
+                    ).evidence_source_ids
+                }
+            )
+        )
+
+    def _reference_curation_state(
+        self, knowledge_object_ids: tuple[str, ...]
+    ) -> str:
+        if self._catalogs is None:
+            return "catalog_not_loaded"
+        if not knowledge_object_ids:
+            return "not_started"
+        statuses = {
+            self._catalogs.knowledge.require(object_id).status.value
+            for object_id in knowledge_object_ids
+        }
+        return "validated_reference_only" if statuses == {"validated"} else "draft"
 
     def _validate_catalog_workflow_bindings(self) -> None:
         """Reject reference schemas that do not map to a declared workflow step."""
