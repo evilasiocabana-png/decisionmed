@@ -14,6 +14,15 @@ from .specialties import (
     UnknownSpecialtyPackError,
     build_default_specialty_registry,
 )
+from .composition import (
+    REFERENCE_CAPABILITY_BINDINGS,
+    CapabilityBinding,
+    DuplicateCapabilityBindingError,
+    SpecialtyLoadResult,
+    SpecialtyLoadStatus,
+    SpecialtyPackResolver,
+    build_reference_resolver,
+)
 
 __all__ = [
     "DEFAULT_SPECIALTY_PACKS",
@@ -24,4 +33,11 @@ __all__ = [
     "SpecialtyPackStatus",
     "UnknownSpecialtyPackError",
     "build_default_specialty_registry",
+    "REFERENCE_CAPABILITY_BINDINGS",
+    "CapabilityBinding",
+    "DuplicateCapabilityBindingError",
+    "SpecialtyLoadResult",
+    "SpecialtyLoadStatus",
+    "SpecialtyPackResolver",
+    "build_reference_resolver",
 ]
