@@ -62,6 +62,16 @@ class DecisionMedWebTest(unittest.TestCase):
         self.assertEqual(303, redirect_status)
         self.assertEqual("http://127.0.0.1:9876/", redirect_headers["location"])
 
+    def test_workflow_endpoint_and_unknown_specialty(self) -> None:
+        status, _, body = self.request("/api/workflows/psychiatry")
+        missing_status, _, missing_body = self.request("/api/workflows/cardiology")
+
+        self.assertEqual(200, status)
+        self.assertEqual(13, len(json.loads(body)["steps"]))
+        self.assertFalse(json.loads(body)["clinical_execution_allowed"])
+        self.assertEqual(404, missing_status)
+        self.assertEqual("workflow_not_found", json.loads(missing_body)["error"])
+
     def test_psychrx_baseline_server_can_be_created(self) -> None:
         server = create_psychiatry_server(port=0)
         try:

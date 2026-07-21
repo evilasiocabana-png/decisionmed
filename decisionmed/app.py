@@ -7,6 +7,11 @@ from typing import Any
 
 from .composition import SpecialtyPackResolver, build_reference_resolver
 from .specialties import SpecialtyPackRegistry, build_default_specialty_registry
+from .workflows import (
+    SpecialtyWorkflow,
+    WorkflowRegistry,
+    build_default_workflow_registry,
+)
 
 
 @dataclass(frozen=True, slots=True)
@@ -42,9 +47,15 @@ class DecisionMedAppService:
         self,
         registry: SpecialtyPackRegistry | None = None,
         resolver: SpecialtyPackResolver | None = None,
+        workflows: WorkflowRegistry | None = None,
     ) -> None:
         self._registry = registry or build_default_specialty_registry()
         self._resolver = resolver or build_reference_resolver()
+        self._workflows = workflows or build_default_workflow_registry(self._registry)
+
+    def workflow(self, specialty_key: str) -> SpecialtyWorkflow:
+        self._registry.require(specialty_key)
+        return self._workflows.require(specialty_key)
 
     def specialties(self) -> tuple[SpecialtyView, ...]:
         views: list[SpecialtyView] = []
@@ -72,4 +83,5 @@ class DecisionMedAppService:
             "mode": "read-only",
             "clinical_execution_allowed": False,
             "specialties": [item.to_dict() for item in specialties],
+            "workflow_specialties": [item.key for item in specialties],
         }
