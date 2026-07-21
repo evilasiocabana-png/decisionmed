@@ -415,6 +415,8 @@ class DecisionMedWebTest(unittest.TestCase):
         self.assertIn("Seção específica".encode(), body)
         self.assertIn("Base científica e limites".encode(), body)
         self.assertIn("somente referência".encode(), body.lower())
+        self.assertIn(b"Fluxo governado", body)
+        self.assertIn(b"data-workspace=\"governed-reference\"", body)
         self.assertNotIn(b"<textarea", body.lower())
 
     def test_structural_session_can_start_and_advance(self) -> None:
