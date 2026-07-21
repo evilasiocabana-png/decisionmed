@@ -124,14 +124,34 @@ class DecisionMedAppService:
                     "runtime_eligible": False,
                     "knowledge": {
                         "object_id": knowledge.object_id,
+                        "official_name": knowledge.official_name,
+                        "object_type": knowledge.object_type.value,
+                        "description": knowledge.description,
                         "version": knowledge.version,
                         "status": knowledge.status.value,
+                        "applicability": knowledge.applicability,
+                        "limits": knowledge.limits,
+                        "runtime_eligible": False,
                         "evidence_sources": [
                             {
                                 "source_id": source.source_id,
                                 "title": source.title,
+                                "publication_year": source.publication_year,
+                                "evidence_type": source.evidence_type.value,
+                                "evidence_quality": source.evidence_quality.value,
+                                "recommendation_strength": (
+                                    source.recommendation_strength.value
+                                ),
                                 "locator": _public_locator(source.locator),
+                                "version": source.version,
                                 "status": source.status.value,
+                                "specialties": list(source.specialties),
+                                "reviewed_on": source.reviewed_on.isoformat(),
+                                "known_conflicts": source.known_conflicts,
+                                "clinical_applicability": (
+                                    source.clinical_applicability
+                                ),
+                                "runtime_eligible": False,
                             }
                             for source in sources
                         ],
@@ -146,6 +166,7 @@ class DecisionMedAppService:
             "version": schema.version,
             "status": schema.status.value,
             "mode": "reference_only",
+            "runtime_eligible": False,
             "clinical_execution_allowed": False,
             "fields": fields,
         }

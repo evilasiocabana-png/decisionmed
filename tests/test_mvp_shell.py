@@ -1,5 +1,6 @@
 import http.client
 import json
+from datetime import date
 from types import SimpleNamespace
 from threading import Thread
 import unittest
@@ -107,12 +108,27 @@ class DecisionMedWebTest(unittest.TestCase):
 
         self.assertEqual(200, status)
         self.assertEqual("reference_only", payload["mode"])
+        self.assertFalse(payload["runtime_eligible"])
         self.assertFalse(payload["clinical_execution_allowed"])
         self.assertEqual(
             "symptoms.chest_pain_or_discomfort_present",
             payload["fields"][0]["field_key"],
         )
         self.assertFalse(payload["fields"][0]["runtime_eligible"])
+        knowledge = payload["fields"][0]["knowledge"]
+        source = knowledge["evidence_sources"][0]
+        self.assertEqual("evidence", knowledge["object_type"])
+        self.assertEqual("Synthetic applicability.", knowledge["applicability"])
+        self.assertEqual("Synthetic limits.", knowledge["limits"])
+        self.assertFalse(knowledge["runtime_eligible"])
+        self.assertEqual("insufficient", source["evidence_quality"])
+        self.assertEqual(
+            "insufficient_for_recommendation",
+            source["recommendation_strength"],
+        )
+        self.assertEqual("2026-07-21", source["reviewed_on"])
+        self.assertEqual("Synthetic conflicts.", source["known_conflicts"])
+        self.assertFalse(source["runtime_eligible"])
         self.assertEqual(
             "https://example.test/official-guideline",
             payload["fields"][0]["knowledge"]["evidence_sources"][0]["locator"],
@@ -126,6 +142,8 @@ class DecisionMedWebTest(unittest.TestCase):
         self.assertEqual(200, status)
         self.assertIn(b"api/workflows", body)
         self.assertIn(b"api/form-schemas", body)
+        self.assertIn(b"known_conflicts", body)
+        self.assertIn("Base científica e limites".encode(), body)
         self.assertIn("somente referência".encode(), body.lower())
         self.assertNotIn(b"<textarea", body.lower())
 
@@ -195,15 +213,31 @@ class DecisionMedWebTest(unittest.TestCase):
         )
         knowledge = SimpleNamespace(
             object_id="knowledge.cardiology.chest-pain-presence",
+            official_name="Synthetic chest pain presence",
+            object_type=SimpleNamespace(value="evidence"),
+            description="Synthetic description.",
             version="0.1.0",
             status=draft,
+            applicability="Synthetic applicability.",
+            limits="Synthetic limits.",
             evidence_source_ids=("acc-aha.2021.chest-pain-guideline",),
         )
         source = SimpleNamespace(
             source_id="acc-aha.2021.chest-pain-guideline",
             title="Official synthetic guideline fixture",
+            publication_year=2021,
+            evidence_type=SimpleNamespace(value="guideline"),
+            evidence_quality=SimpleNamespace(value="insufficient"),
+            recommendation_strength=SimpleNamespace(
+                value="insufficient_for_recommendation"
+            ),
             locator="https://example.test/official-guideline",
+            version="1.0.0",
             status=draft,
+            specialties=("cardiology",),
+            reviewed_on=date(2026, 7, 21),
+            known_conflicts="Synthetic conflicts.",
+            clinical_applicability="Synthetic clinical applicability.",
         )
         form_schemas = Mock()
 
