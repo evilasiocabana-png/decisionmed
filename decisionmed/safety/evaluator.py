@@ -2,18 +2,22 @@
 
 from __future__ import annotations
 
-from typing import Protocol
+from typing import Protocol, runtime_checkable
 
 from decisionmed.domain import ClinicalSnapshot
 
 from .models import SafetyCheckResult
 
 
+@runtime_checkable
 class SafetyCheckEvaluator(Protocol):
     """Required shape of a future governed safety-check implementation."""
 
     @property
     def check_id(self) -> str: ...
+
+    @property
+    def provider(self) -> str: ...
 
     @property
     def specification_version(self) -> str: ...
