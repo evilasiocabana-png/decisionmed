@@ -55,6 +55,7 @@ class SyntheticEvaluator:
             check_id="check.other" if self.mode == "wrong_check" else self.check_id,
             outcome=SafetyCheckOutcome.PASSED,
             trace_id=trace_id,
+            explanation="Synthetic evaluated result for structural tests.",
             evidence_source_ids=("source.synthetic-preflight",),
         )
 
@@ -73,13 +74,20 @@ class SafetyPreflightTest(unittest.TestCase):
 
         self.assertEqual(SafetyGateStatus.READY_FOR_HUMAN_REVIEW, assessment.status)
         self.assertEqual(1, evaluator.call_count)
+        self.assertEqual(
+            "Synthetic evaluated result for structural tests.",
+            assessment.results[0].explanation,
+        )
         self.assertFalse(assessment.clinical_execution_allowed)
         self.assertFalse(preflight.clinical_execution_allowed)
 
     def test_incomplete_or_wrong_specialty_snapshot_is_not_evaluated(self) -> None:
-        for snapshot in (
-            self._snapshot(complete=False),
-            self._snapshot(complete=True, specialty_key="psychiatry"),
+        for snapshot, explanation_fragment in (
+            (self._snapshot(complete=False), "structurally incomplete"),
+            (
+                self._snapshot(complete=True, specialty_key="psychiatry"),
+                "specialty does not match",
+            ),
         ):
             evaluator = SyntheticEvaluator()
             assessment = self._preflight(evaluator).run(snapshot)
@@ -89,6 +97,7 @@ class SafetyPreflightTest(unittest.TestCase):
                 "not_evaluated:check.synthetic-preflight",
                 assessment.blocking_reasons,
             )
+            self.assertIn(explanation_fragment, assessment.results[0].explanation)
             self.assertEqual(0, evaluator.call_count)
 
     def test_evaluator_failure_or_invalid_result_fails_closed(self) -> None:
@@ -102,6 +111,9 @@ class SafetyPreflightTest(unittest.TestCase):
             self.assertIn(
                 "not_evaluated:check.synthetic-preflight",
                 assessment.blocking_reasons,
+            )
+            self.assertIn(
+                "valid governed result", assessment.results[0].explanation
             )
             self.assertEqual(1, evaluator.call_count)
 

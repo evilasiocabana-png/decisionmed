@@ -60,6 +60,7 @@ class SafetyCheckResult:
     check_id: str
     outcome: SafetyCheckOutcome
     trace_id: str
+    explanation: str
     evidence_source_ids: tuple[str, ...] = ()
     findings: tuple[SafetyFinding, ...] = ()
 
@@ -68,6 +69,9 @@ class SafetyCheckResult:
         if not isinstance(self.outcome, SafetyCheckOutcome):
             raise TypeError("outcome must be a SafetyCheckOutcome")
         _text("trace_id", self.trace_id)
+        _text("explanation", self.explanation)
+        if len(self.explanation) > 4000:
+            _fail("explanation", "explanation cannot exceed 4000 characters")
         source_ids = tuple(self.evidence_source_ids)
         if self.outcome is not SafetyCheckOutcome.NOT_EVALUATED:
             source_ids = _identifiers("evidence_source_ids", source_ids)

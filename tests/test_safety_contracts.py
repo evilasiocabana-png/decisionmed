@@ -59,6 +59,7 @@ def result(
         check_id=check_id,
         outcome=outcome,
         trace_id=trace_id,
+        explanation="Synthetic structural result for contract tests.",
         evidence_source_ids=(
             evidence_source_ids
             if evidence_source_ids is not None
@@ -283,6 +284,19 @@ class SafetyCoordinatorTest(unittest.TestCase):
             )
         with self.assertRaises(SafetyError):
             self.coordinator().assess((result("check.unknown"),), "trace.run")
+
+    def test_result_requires_an_explanation(self) -> None:
+        for invalid in ("", "x" * 4001):
+            with self.subTest(length=len(invalid)):
+                with self.assertRaises(SafetyError) as missing:
+                    SafetyCheckResult(
+                        check_id="check.alpha",
+                        outcome=SafetyCheckOutcome.NOT_EVALUATED,
+                        trace_id="trace.run",
+                        explanation=invalid,
+                    )
+
+                self.assertEqual("safety.explanation", missing.exception.code)
 
     def test_result_from_another_trace_is_rejected(self) -> None:
         with self.assertRaises(SafetyError) as mismatch:
