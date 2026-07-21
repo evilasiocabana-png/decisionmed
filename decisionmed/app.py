@@ -74,7 +74,12 @@ class DecisionMedAppService:
                 if catalogs is not None
                 else ()
             )
-            resolver = build_reference_resolver(catalog_specialty_keys)
+            resolver = build_reference_resolver(
+                catalog_specialty_keys,
+                platform_specialty_keys=tuple(
+                    pack.key for pack in self._registry.all()
+                ),
+            )
         self._resolver = resolver
         self._workflows = workflows or build_default_workflow_registry(self._registry)
         self._catalogs = catalogs

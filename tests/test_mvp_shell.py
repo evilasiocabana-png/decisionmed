@@ -31,6 +31,14 @@ class DecisionMedAppServiceTest(unittest.TestCase):
         self.assertIn("Execução clínica.", psychiatry["excluded_uses"])
         self.assertEqual([], psychiatry["incompatible_capabilities"])
         self.assertFalse(psychiatry["execution_allowed"])
+        cardiology = next(
+            item for item in state["specialties"] if item["key"] == "cardiology"
+        )
+        self.assertEqual(
+            ["cardiology.clinical-snapshot", "cardiology.audit"],
+            cardiology["available_capabilities"],
+        )
+        self.assertEqual(5, len(cardiology["missing_capabilities"]))
 
 
 class DecisionMedWebTest(unittest.TestCase):
@@ -84,7 +92,12 @@ class DecisionMedWebTest(unittest.TestCase):
             item for item in state["specialties"] if item["key"] == "cardiology"
         )
         self.assertIn("cardiology.evidence", cardiology["available_capabilities"])
+        self.assertIn(
+            "cardiology.clinical-snapshot", cardiology["available_capabilities"]
+        )
+        self.assertIn("cardiology.audit", cardiology["available_capabilities"])
         self.assertNotIn("cardiology.evidence", cardiology["missing_capabilities"])
+        self.assertEqual(4, len(cardiology["missing_capabilities"]))
         self.assertEqual("blocked", cardiology["load_status"])
         self.assertEqual(1, state["knowledge_catalog"]["form_schema_count"])
         self.assertEqual(200, readiness_status)

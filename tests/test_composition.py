@@ -66,6 +66,31 @@ class SpecialtyPackResolverTest(unittest.TestCase):
         self.assertEqual(6, len(result.missing_capabilities))
         self.assertFalse(result.clinical_execution_allowed)
 
+    def test_platform_core_binds_snapshot_and_audit_without_execution(self) -> None:
+        result = build_reference_resolver(
+            ("cardiology",), platform_specialty_keys=("cardiology",)
+        ).load(build_default_specialty_registry(), "cardiology")
+
+        self.assertEqual(
+            (
+                "cardiology.clinical-snapshot",
+                "cardiology.evidence",
+                "cardiology.audit",
+            ),
+            tuple(binding.capability for binding in result.bindings),
+        )
+        self.assertEqual(4, len(result.missing_capabilities))
+        self.assertEqual(SpecialtyLoadStatus.BLOCKED, result.status)
+        self.assertFalse(result.clinical_execution_allowed)
+
+    def test_platform_core_keys_fail_closed(self) -> None:
+        with self.assertRaises(ValueError):
+            build_reference_resolver(platform_specialty_keys=("Cardiology",))
+        with self.assertRaises(TypeError):
+            build_reference_resolver(
+                platform_specialty_keys="cardiology"  # type: ignore[arg-type]
+            )
+
     def test_catalog_binding_keys_are_validated_and_deduplicated(self) -> None:
         resolver = build_reference_resolver(("cardiology", "cardiology"))
         result = resolver.load(build_default_specialty_registry(), "cardiology")

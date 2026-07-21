@@ -213,17 +213,17 @@ REFERENCE_CAPABILITY_BINDINGS = (
 
 def build_reference_resolver(
     catalog_specialty_keys: Iterable[str] = (),
+    *,
+    platform_specialty_keys: Iterable[str] = (),
 ) -> SpecialtyPackResolver:
     """Build a read-only resolver from verified structural providers."""
 
-    if isinstance(catalog_specialty_keys, (str, bytes)):
-        raise TypeError("catalog_specialty_keys must be an iterable of identifiers")
-    specialty_keys = tuple(catalog_specialty_keys)
-    if any(
-        not isinstance(key, str) or not _IDENTIFIER_PATTERN.fullmatch(key)
-        for key in specialty_keys
-    ):
-        raise ValueError("catalog specialty keys must be canonical identifiers")
+    catalog_keys = _canonical_specialty_keys(
+        catalog_specialty_keys, "catalog_specialty_keys"
+    )
+    platform_keys = _canonical_specialty_keys(
+        platform_specialty_keys, "platform_specialty_keys"
+    )
     bindings = list(REFERENCE_CAPABILITY_BINDINGS)
     bindings.extend(
         CapabilityBinding(
@@ -231,6 +231,26 @@ def build_reference_resolver(
             "decisionmed.catalog.evidence",
             "0.1.0",
         )
-        for key in sorted(set(specialty_keys))
+        for key in catalog_keys
+    )
+    bindings.extend(
+        CapabilityBinding(f"{key}.{capability}", provider, "0.1.0")
+        for key in platform_keys
+        for capability, provider in (
+            ("clinical-snapshot", "decisionmed.domain.clinical-snapshot"),
+            ("audit", "decisionmed.audit.ledger"),
+        )
     )
     return SpecialtyPackResolver(bindings)
+
+
+def _canonical_specialty_keys(values: Iterable[str], field_name: str) -> tuple[str, ...]:
+    if isinstance(values, (str, bytes)):
+        raise TypeError(f"{field_name} must be an iterable of identifiers")
+    keys = tuple(values)
+    if any(
+        not isinstance(key, str) or not _IDENTIFIER_PATTERN.fullmatch(key)
+        for key in keys
+    ):
+        raise ValueError(f"{field_name} must contain canonical identifiers")
+    return tuple(sorted(set(keys)))
