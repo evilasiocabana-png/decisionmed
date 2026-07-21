@@ -43,6 +43,7 @@ from .question_invocation_replay import (
     InMemoryQuestionEngineInvocationReplayGuard,
     QuestionEngineInvocationReplayGuard,
 )
+from .durable_replay import SQLiteAuthorityDecisionReplayGuard
 
 __all__ = [
     "ClinicalInputIssue",
@@ -72,4 +73,5 @@ __all__ = [
     "QuestionEngineInvocationResult",
     "InMemoryQuestionEngineInvocationReplayGuard",
     "QuestionEngineInvocationReplayGuard",
+    "SQLiteAuthorityDecisionReplayGuard",
 ]
