@@ -174,7 +174,7 @@ class DecisionMedWebTest(unittest.TestCase):
         self.assertEqual("no_safety_providers", safety_gate["reason"])
         self.assertFalse(state["clinical_execution_allowed"])
 
-    def test_complete_provider_coverage_only_clears_technical_gate(self) -> None:
+    def test_complete_provider_coverage_without_evaluator_stays_blocked(self) -> None:
         catalogs = self._catalogs()
         specification = catalogs.safety_checks.all.return_value[0]
         specification.status = SafetyCheckStatus.VALIDATED
@@ -183,6 +183,30 @@ class DecisionMedWebTest(unittest.TestCase):
         service = DecisionMedAppService(
             catalogs=catalogs,
             safety_providers=self._safety_providers(bound=True),
+        )
+
+        state = service.get_app_state()
+        safety_gate = next(
+            gate
+            for gate in state["readiness"]["gates"]
+            if gate["key"] == "safety_configuration"
+        )
+
+        self.assertEqual("blocked", safety_gate["status"])
+        self.assertEqual("no_safety_evaluators", safety_gate["reason"])
+        self.assertFalse(state["clinical_execution_allowed"])
+
+    def test_complete_evaluator_coverage_only_clears_technical_gate(self) -> None:
+        catalogs = self._catalogs()
+        specification = catalogs.safety_checks.all.return_value[0]
+        specification.status = SafetyCheckStatus.VALIDATED
+        specification.review_due_on = date.today() + timedelta(days=30)
+        specification.review_state = "current"
+        providers = self._safety_providers(bound=True)
+        service = DecisionMedAppService(
+            catalogs=catalogs,
+            safety_providers=providers,
+            safety_evaluators=self._safety_evaluators(providers),
         )
 
         state = service.get_app_state()
@@ -248,6 +272,64 @@ class DecisionMedWebTest(unittest.TestCase):
         self.assertEqual(
             "incomplete_safety_provider_coverage", safety_gate["reason"]
         )
+
+    def test_partial_evaluator_coverage_has_specific_reason(self) -> None:
+        catalogs = self._catalogs()
+        first = catalogs.safety_checks.all.return_value[0]
+        first.status = SafetyCheckStatus.VALIDATED
+        first.review_due_on = date.today() + timedelta(days=30)
+        first.review_state = "current"
+        second = SimpleNamespace(
+            check_id="check.second-synthetic-safety",
+            specialty_key="cardiology",
+            status=SafetyCheckStatus.VALIDATED,
+            review_due_on=date.today() + timedelta(days=30),
+            review_state="current",
+            review_overdue=False,
+        )
+        catalogs.safety_checks.all.return_value = (first, second)
+        providers = Mock()
+        providers.all.return_value = (
+            SimpleNamespace(check_id=first.check_id),
+            SimpleNamespace(check_id=second.check_id),
+        )
+        providers.coverage.return_value = SimpleNamespace(
+            complete=True,
+            missing_check_ids=(),
+            incompatible_check_ids=(),
+        )
+        evaluators = Mock()
+        evaluators.providers = providers
+        evaluators.all.return_value = (SimpleNamespace(check_id=first.check_id),)
+        evaluators.missing_check_ids = (second.check_id,)
+        evaluators.complete = False
+        service = DecisionMedAppService(
+            catalogs=catalogs,
+            safety_providers=providers,
+            safety_evaluators=evaluators,
+        )
+
+        safety_gate = next(
+            gate
+            for gate in service.get_readiness()["gates"]
+            if gate["key"] == "safety_configuration"
+        )
+
+        self.assertEqual("blocked", safety_gate["status"])
+        self.assertEqual(
+            "incomplete_safety_evaluator_coverage", safety_gate["reason"]
+        )
+
+    def test_evaluator_and_provider_registries_must_match(self) -> None:
+        providers = self._safety_providers(bound=True)
+        other_providers = self._safety_providers(bound=True)
+
+        with self.assertRaises(ValueError):
+            DecisionMedAppService(
+                catalogs=self._catalogs(),
+                safety_providers=providers,
+                safety_evaluators=self._safety_evaluators(other_providers),
+            )
 
     def test_home_page_and_psychiatry_redirect(self) -> None:
         home_status, _, home_body = self.request("/")
@@ -518,6 +600,17 @@ class DecisionMedWebTest(unittest.TestCase):
             if incompatible
             else (),
         )
+        return registry
+
+    @staticmethod
+    def _safety_evaluators(providers: Mock) -> Mock:
+        registry = Mock()
+        registry.providers = providers
+        registry.all.return_value = (
+            (SimpleNamespace(check_id="check.synthetic-safety"),)
+        )
+        registry.missing_check_ids = ()
+        registry.complete = True
         return registry
 
 
