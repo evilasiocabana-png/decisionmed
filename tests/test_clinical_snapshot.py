@@ -100,6 +100,7 @@ class ClinicalSnapshotContractTest(unittest.TestCase):
     ) -> ClinicalSnapshot:
         return ClinicalSnapshot(
             snapshot_id=EntityId("snapshot-1"),
+            lineage_id=EntityId("lineage-1"),
             subject_reference=SubjectReference("sub-0123456789abcdef0123456789abcdef"),
             session_id=EntityId("session-1"),
             specialty_key="cardiology",

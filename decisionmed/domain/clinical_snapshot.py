@@ -104,18 +104,26 @@ class ClinicalSnapshot:
     """Read-only state at one instant; not a medical record or clinical decision."""
 
     snapshot_id: EntityId
+    lineage_id: EntityId
     subject_reference: SubjectReference
     session_id: EntityId
     specialty_key: str
     captured_at: datetime
     observations: tuple[ClinicalObservation, ...] = ()
+    previous_snapshot_id: EntityId | None = None
     trace_id: str = field(default_factory=lambda: f"clinical-snapshot:{uuid4()}")
     version: str = "0.1.0"
 
     def __post_init__(self) -> None:
-        for field_name in ("snapshot_id", "session_id"):
+        for field_name in ("snapshot_id", "lineage_id", "session_id"):
             if not isinstance(getattr(self, field_name), EntityId):
                 raise TypeError(f"{field_name} must be an EntityId")
+        if self.previous_snapshot_id is not None and not isinstance(
+            self.previous_snapshot_id, EntityId
+        ):
+            raise TypeError("previous_snapshot_id must be an EntityId or None")
+        if self.previous_snapshot_id == self.snapshot_id:
+            _fail("previous_snapshot_id", "snapshot cannot reference itself")
         if not isinstance(self.subject_reference, SubjectReference):
             raise TypeError("subject_reference must be a SubjectReference")
         if not isinstance(self.specialty_key, str) or not _IDENTIFIER.fullmatch(
