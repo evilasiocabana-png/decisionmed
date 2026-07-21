@@ -47,6 +47,14 @@ class SafetyCoordinator:
             raise SafetyError("safety.trace_id", "trace id cannot be empty")
         if not all(isinstance(item, SafetyCheckResult) for item in items):
             raise TypeError("results must contain only SafetyCheckResult values")
+        mismatched_traces = tuple(
+            item.check_id for item in items if item.trace_id != trace_id
+        )
+        if mismatched_traces:
+            raise SafetyError(
+                "safety.trace_mismatch",
+                "check results must belong to the assessment trace",
+            )
         ids = tuple(item.check_id for item in items)
         if len(set(ids)) != len(ids):
             raise SafetyError("safety.duplicate_result", "check results must be unique")

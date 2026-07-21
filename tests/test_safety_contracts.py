@@ -53,11 +53,12 @@ def result(
     outcome: SafetyCheckOutcome = SafetyCheckOutcome.PASSED,
     findings: tuple[SafetyFinding, ...] = (),
     evidence_source_ids: tuple[str, ...] | None = None,
+    trace_id: str = "trace.run",
 ) -> SafetyCheckResult:
     return SafetyCheckResult(
         check_id=check_id,
         outcome=outcome,
-        trace_id=f"trace.{check_id}",
+        trace_id=trace_id,
         evidence_source_ids=(
             evidence_source_ids
             if evidence_source_ids is not None
@@ -282,6 +283,18 @@ class SafetyCoordinatorTest(unittest.TestCase):
             )
         with self.assertRaises(SafetyError):
             self.coordinator().assess((result("check.unknown"),), "trace.run")
+
+    def test_result_from_another_trace_is_rejected(self) -> None:
+        with self.assertRaises(SafetyError) as mismatch:
+            self.coordinator().assess(
+                (
+                    result("check.alpha", trace_id="trace.other-run"),
+                    result("check.beta"),
+                ),
+                "trace.run",
+            )
+
+        self.assertEqual("safety.trace_mismatch", mismatch.exception.code)
 
 
 if __name__ == "__main__":
