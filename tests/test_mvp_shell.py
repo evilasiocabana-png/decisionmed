@@ -80,6 +80,8 @@ class DecisionMedWebTest(unittest.TestCase):
 
         self.assertEqual(200, status)
         self.assertIn(b"api/workflows", body)
+        self.assertIn(b"read-only", body.lower())
+        self.assertIn(b"draft", body)
 
     def test_psychrx_baseline_server_can_be_created(self) -> None:
         server = create_psychiatry_server(port=0)
