@@ -29,6 +29,8 @@ O conhecimento científico é versionado no repositório privado
 [`decisionmed-knowledge`](https://github.com/evilasiocabana-png/decisionmed-knowledge),
 conforme a separação exigida pela ADR-0002 do PsychRx.
 
-A plataforma apenas carrega e valida releases externas assinadas por manifesto e
-hashes SHA-256. O catálogo inicial está vazio e em status `draft`; nenhum
-conteúdo está liberado para execução clínica.
+A plataforma carrega e valida releases externas protegidas por manifesto e
+hashes SHA-256. O catálogo atual possui o primeiro campo cardiológico em status
+`draft`, exibido apenas como referência; nenhum conteúdo está liberado para
+execução clínica. Quando o repositório `DecisionMEd-Knowledge` está ao lado da
+plataforma, o comando padrão o descobre automaticamente.

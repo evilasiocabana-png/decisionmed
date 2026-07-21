@@ -1,9 +1,12 @@
 import http.client
 import json
+from types import SimpleNamespace
 from threading import Thread
 import unittest
+from unittest.mock import Mock
 
 from decisionmed.app import DecisionMedAppService
+from decisionmed.knowledge import KnowledgeError
 from decisionmed.web import create_psychiatry_server, create_server
 
 
@@ -14,6 +17,7 @@ class DecisionMedAppServiceTest(unittest.TestCase):
         self.assertEqual("DecisionMEd", state["product"])
         self.assertEqual("read-only", state["mode"])
         self.assertFalse(state["clinical_execution_allowed"])
+        self.assertFalse(state["knowledge_catalog"]["loaded"])
         self.assertFalse(state["readiness"]["clinical_execution_allowed"])
         self.assertEqual(5, state["readiness"]["blocked_gate_count"])
         psychiatry = next(
@@ -28,7 +32,9 @@ class DecisionMedWebTest(unittest.TestCase):
     @classmethod
     def setUpClass(cls) -> None:
         cls.server = create_server(
-            port=0, psychiatry_url="http://127.0.0.1:9876/"
+            port=0,
+            psychiatry_url="http://127.0.0.1:9876/",
+            app_service=DecisionMedAppService(catalogs=cls._catalogs()),
         )
         cls.thread = Thread(target=cls.server.serve_forever, daemon=True)
         cls.thread.start()
@@ -66,7 +72,10 @@ class DecisionMedWebTest(unittest.TestCase):
         self.assertEqual(200, health_status)
         self.assertEqual("ok", json.loads(health_body)["status"])
         self.assertEqual(200, state_status)
-        self.assertEqual("DecisionMEd", json.loads(state_body)["product"])
+        state = json.loads(state_body)
+        self.assertEqual("DecisionMEd", state["product"])
+        self.assertTrue(state["knowledge_catalog"]["loaded"])
+        self.assertEqual(1, state["knowledge_catalog"]["form_schema_count"])
         self.assertEqual(200, readiness_status)
         self.assertFalse(json.loads(readiness_body)["clinical_execution_allowed"])
 
@@ -89,13 +98,36 @@ class DecisionMedWebTest(unittest.TestCase):
         self.assertEqual(404, missing_status)
         self.assertEqual("workflow_not_found", json.loads(missing_body)["error"])
 
+    def test_governed_form_endpoint_exposes_sources_but_no_execution(self) -> None:
+        status, _, body = self.request("/api/form-schemas/cardiology/findings")
+        missing_status, _, missing_body = self.request(
+            "/api/form-schemas/cardiology/context"
+        )
+        payload = json.loads(body)
+
+        self.assertEqual(200, status)
+        self.assertEqual("reference_only", payload["mode"])
+        self.assertFalse(payload["clinical_execution_allowed"])
+        self.assertEqual(
+            "symptoms.chest_pain_or_discomfort_present",
+            payload["fields"][0]["field_key"],
+        )
+        self.assertFalse(payload["fields"][0]["runtime_eligible"])
+        self.assertEqual(
+            "https://example.test/official-guideline",
+            payload["fields"][0]["knowledge"]["evidence_sources"][0]["locator"],
+        )
+        self.assertEqual(404, missing_status)
+        self.assertEqual("form_schema_not_found", json.loads(missing_body)["error"])
+
     def test_generic_workflow_page_is_served(self) -> None:
         status, _, body = self.request("/workflow.html?specialty=cardiology")
 
         self.assertEqual(200, status)
         self.assertIn(b"api/workflows", body)
-        self.assertIn(b"read-only", body.lower())
-        self.assertIn(b"draft", body)
+        self.assertIn(b"api/form-schemas", body)
+        self.assertIn("somente referência".encode(), body.lower())
+        self.assertNotIn(b"<textarea", body.lower())
 
     def test_structural_session_can_start_and_advance(self) -> None:
         start_status, start_headers, start_body = self.request(
@@ -139,6 +171,75 @@ class DecisionMedWebTest(unittest.TestCase):
             create_server(host="0.0.0.0", port=0)
         with self.assertRaises(ValueError):
             create_psychiatry_server(host="0.0.0.0", port=0)
+
+    @staticmethod
+    def _catalogs() -> SimpleNamespace:
+        draft = SimpleNamespace(value="draft")
+        field = SimpleNamespace(
+            field_key="symptoms.chest_pain_or_discomfort_present",
+            label="Dor ou desconforto torácico presente",
+            section=SimpleNamespace(value="symptoms"),
+            value_type=SimpleNamespace(value="boolean"),
+            knowledge_object_id="knowledge.cardiology.chest-pain-presence",
+            required=False,
+            allowed_values=(),
+        )
+        schema = SimpleNamespace(
+            schema_id="schema.cardiology.chest-pain.findings",
+            specialty_key="cardiology",
+            workflow_id="decisionmed.cardiology.workflow.v1",
+            step_key="findings",
+            version="0.1.0",
+            status=draft,
+            fields=(field,),
+        )
+        knowledge = SimpleNamespace(
+            object_id="knowledge.cardiology.chest-pain-presence",
+            version="0.1.0",
+            status=draft,
+            evidence_source_ids=("acc-aha.2021.chest-pain-guideline",),
+        )
+        source = SimpleNamespace(
+            source_id="acc-aha.2021.chest-pain-guideline",
+            title="Official synthetic guideline fixture",
+            locator="https://example.test/official-guideline",
+            status=draft,
+        )
+        form_schemas = Mock()
+
+        def require_schema(
+            specialty_key: str, workflow_id: str, step_key: str
+        ) -> SimpleNamespace:
+            if (
+                specialty_key,
+                workflow_id,
+                step_key,
+            ) != (
+                "cardiology",
+                "decisionmed.cardiology.workflow.v1",
+                "findings",
+            ):
+                raise KnowledgeError(
+                    "specialty_form_schema_registry.unknown", "not registered"
+                )
+            return schema
+
+        form_schemas.require.side_effect = require_schema
+        form_schemas.all.return_value = (schema,)
+        knowledge_registry = Mock()
+        knowledge_registry.require.return_value = knowledge
+        evidence_registry = Mock()
+        evidence_registry.require.return_value = source
+        return SimpleNamespace(
+            manifest=SimpleNamespace(
+                catalog_id="decisionmed.knowledge",
+                release_version="0.5.0",
+                status=draft,
+            ),
+            form_schemas=form_schemas,
+            knowledge=knowledge_registry,
+            evidence=evidence_registry,
+        )
 
 
 if __name__ == "__main__":

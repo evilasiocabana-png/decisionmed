@@ -13,6 +13,8 @@ from typing import Any
 from urllib.parse import urlparse
 
 from .app import DecisionMedAppService
+from .application import load_governed_catalogs
+from .knowledge import KnowledgeError
 from .specialties import UnknownSpecialtyPackError
 from .sessions import WorkflowSessionError
 from .workflows import UnknownWorkflowError
@@ -21,6 +23,7 @@ from .workflows import UnknownWorkflowError
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 STATIC_ROOT = Path(__file__).resolve().parent / "static"
 PSYCHRX_BASELINE_ROOT = PROJECT_ROOT / "psychrx-baseline"
+DEFAULT_KNOWLEDGE_ROOT = PROJECT_ROOT.parent / "DecisionMEd-Knowledge"
 
 
 class DecisionMedRequestHandler(SimpleHTTPRequestHandler):
@@ -46,6 +49,15 @@ class DecisionMedRequestHandler(SimpleHTTPRequestHandler):
                 self._send_json({"error": "workflow_not_found"}, status=404)
                 return
             self._send_json(workflow.to_dict())
+            return
+        parts = parsed.path.strip("/").split("/")
+        if len(parts) == 4 and parts[:2] == ["api", "form-schemas"]:
+            try:
+                schema = self._app_service.form_schema(parts[2], parts[3])
+            except (UnknownSpecialtyPackError, UnknownWorkflowError, KnowledgeError):
+                self._send_json({"error": "form_schema_not_found"}, status=404)
+                return
+            self._send_json(schema)
             return
         if parsed.path == "/psychiatry":
             self._redirect(self._psychiatry_url)
@@ -147,10 +159,20 @@ def create_server(
     port: int = 8765,
     psychiatry_url: str = "http://127.0.0.1:8766/",
     app_service: DecisionMedAppService | None = None,
+    knowledge_root: Path | None = None,
 ) -> ThreadingHTTPServer:
     _require_loopback_host(host)
+    if app_service is not None and knowledge_root is not None:
+        raise ValueError("provide app_service or knowledge_root, not both")
     server = ThreadingHTTPServer((host, port), DecisionMedRequestHandler)
-    server.app_service = app_service or DecisionMedAppService()  # type: ignore[attr-defined]
+    if app_service is None:
+        catalogs = (
+            load_governed_catalogs(knowledge_root)
+            if knowledge_root is not None
+            else None
+        )
+        app_service = DecisionMedAppService(catalogs=catalogs)
+    server.app_service = app_service  # type: ignore[attr-defined]
     server.psychiatry_url = psychiatry_url  # type: ignore[attr-defined]
     return server
 
@@ -175,16 +197,25 @@ def _require_loopback_host(host: str) -> None:
         raise ValueError("DecisionMEd without authentication must bind to loopback")
 
 
-def run(host: str = "127.0.0.1", port: int = 8765, psychiatry_port: int = 8766) -> None:
-    psychiatry_server = create_psychiatry_server(host, psychiatry_port)
-    psychiatry_thread = Thread(target=psychiatry_server.serve_forever, daemon=True)
-    psychiatry_thread.start()
-
+def run(
+    host: str = "127.0.0.1",
+    port: int = 8765,
+    psychiatry_port: int = 8766,
+    knowledge_root: Path | None = None,
+) -> None:
     hub_server = create_server(
         host,
         port,
         psychiatry_url=f"http://{host}:{psychiatry_port}/",
+        knowledge_root=knowledge_root,
     )
+    try:
+        psychiatry_server = create_psychiatry_server(host, psychiatry_port)
+    except Exception:
+        hub_server.server_close()
+        raise
+    psychiatry_thread = Thread(target=psychiatry_server.serve_forever, daemon=True)
+    psychiatry_thread.start()
     print(f"DecisionMEd running at http://{host}:{port}")
     print(f"Psychiatry pack running at http://{host}:{psychiatry_port}")
     try:
@@ -200,8 +231,13 @@ def main() -> None:
     parser.add_argument("--host", default="127.0.0.1")
     parser.add_argument("--port", default=8765, type=int)
     parser.add_argument("--psychiatry-port", default=8766, type=int)
+    parser.add_argument(
+        "--knowledge-root",
+        type=Path,
+        default=DEFAULT_KNOWLEDGE_ROOT if DEFAULT_KNOWLEDGE_ROOT.is_dir() else None,
+    )
     args = parser.parse_args()
-    run(args.host, args.port, args.psychiatry_port)
+    run(args.host, args.port, args.psychiatry_port, args.knowledge_root)
 
 
 if __name__ == "__main__":
