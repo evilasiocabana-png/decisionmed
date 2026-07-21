@@ -1,6 +1,7 @@
 from dataclasses import FrozenInstanceError, replace
 from datetime import date, datetime, timedelta, timezone
 import unittest
+from unittest.mock import patch
 
 from decisionmed.domain import (
     ClinicalDataProvenance,
@@ -29,7 +30,11 @@ from decisionmed.knowledge import (
 from decisionmed.reasoning import (
     GovernedReasoningInput,
     QuestionEngineItem,
+    QuestionEngineBinding,
     QuestionEngineOutputValidator,
+    QuestionEngineReadiness,
+    QuestionEngineReadinessStatus,
+    QuestionEngineRegistry,
     QuestionEngineResult,
     QuestionEngineState,
     QuestionRequirement,
@@ -52,7 +57,11 @@ class SyntheticQuestionEngine:
     provider = "decisionmed.reasoning.question-engine.synthetic"
     contract_version = "0.1.0"
 
+    def __init__(self) -> None:
+        self.call_count = 0
+
     def generate(self, input_value: GovernedReasoningInput) -> QuestionEngineResult:
+        self.call_count += 1
         raise AssertionError("output validation must not invoke the engine")
 
 
@@ -150,6 +159,59 @@ class QuestionEngineOutputValidatorTest(unittest.TestCase):
             )
 
         self.assertEqual("question_validation.validated_at", rejected.exception.code)
+
+    def test_readiness_reports_structure_without_authorizing_invocation(self) -> None:
+        registry = self._engine_registry(include_engine=True)
+
+        report = QuestionEngineReadiness().assess(
+            self.input_value,
+            registry,
+            self.engine.engine_id,
+        )
+
+        self.assertEqual(
+            QuestionEngineReadinessStatus.STRUCTURAL_PREREQUISITES_PRESENT,
+            report.status,
+        )
+        self.assertTrue(report.structural_prerequisites_present)
+        self.assertIn("audited_invocation_orchestration_required", report.reasons)
+        self.assertEqual(0, self.engine.call_count)
+        self.assertFalse(report.engine_invocation_allowed)
+        self.assertFalse(report.reasoning_execution_allowed)
+        self.assertFalse(report.clinical_execution_allowed)
+        with self.assertRaises(ReasoningError):
+            replace(report, status=QuestionEngineReadinessStatus.BLOCKED)
+
+    def test_readiness_fails_closed_for_missing_engine_or_expired_knowledge(self) -> None:
+        report = QuestionEngineReadiness().assess(
+            self.input_value,
+            self._engine_registry(include_engine=False),
+            self.engine.engine_id,
+        )
+        self.assertEqual(QuestionEngineReadinessStatus.BLOCKED, report.status)
+        self.assertEqual(("engine_implementation_missing",), report.reasons)
+
+        with patch(
+            "decisionmed.reasoning.knowledge_binding._today",
+            return_value=date.today() + timedelta(days=60),
+        ):
+            expired = QuestionEngineReadiness().assess(
+                self.input_value,
+                self._engine_registry(include_engine=True),
+                self.engine.engine_id,
+            )
+        self.assertEqual(QuestionEngineReadinessStatus.BLOCKED, expired.status)
+        self.assertIn("governed_knowledge_not_current", expired.reasons)
+        self.assertEqual(0, self.engine.call_count)
+
+    def _engine_registry(self, *, include_engine: bool) -> QuestionEngineRegistry:
+        binding = QuestionEngineBinding(
+            engine_id=self.engine.engine_id,
+            provider=self.engine.provider,
+            contract_version=self.engine.contract_version,
+        )
+        engines = (self.engine,) if include_engine else ()
+        return QuestionEngineRegistry((binding,), engines)
 
     def _result(
         self,
