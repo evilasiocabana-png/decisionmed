@@ -166,6 +166,12 @@ class DecisionMedAppService:
                                 "status": source.status.value,
                                 "specialties": list(source.specialties),
                                 "reviewed_on": source.reviewed_on.isoformat(),
+                                "review_due_on": (
+                                    source.review_due_on.isoformat()
+                                    if source.review_due_on is not None
+                                    else None
+                                ),
+                                "review_state": source.review_state,
                                 "known_conflicts": source.known_conflicts,
                                 "clinical_applicability": (
                                     source.clinical_applicability

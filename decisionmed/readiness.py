@@ -34,7 +34,14 @@ class PlatformReadinessService:
 
     def report(self, specialty_statuses: Iterable[str]) -> dict[str, Any]:
         statuses = tuple(specialty_statuses)
-        evidence_count = len(self._evidence.all())
+        evidence_sources = self._evidence.all()
+        evidence_count = len(evidence_sources)
+        overdue_evidence_count = sum(
+            source.review_overdue for source in evidence_sources
+        )
+        unscheduled_evidence_count = sum(
+            source.review_due_on is None for source in evidence_sources
+        )
         knowledge_count = len(self._knowledge.all())
         safety_count = len(self._expected_safety_check_ids)
         specialty_ready = bool(statuses) and all(
@@ -49,8 +56,18 @@ class PlatformReadinessService:
             ),
             ReadinessGate(
                 "evidence_catalog",
-                "available" if evidence_count else "blocked",
-                "metadata_present" if evidence_count else "no_evidence_metadata",
+                "available"
+                if evidence_count
+                and not overdue_evidence_count
+                and not unscheduled_evidence_count
+                else "blocked",
+                "no_evidence_metadata"
+                if not evidence_count
+                else "overdue_evidence_review"
+                if overdue_evidence_count
+                else "review_schedule_missing"
+                if unscheduled_evidence_count
+                else "review_lifecycle_current",
             ),
             ReadinessGate(
                 "knowledge_catalog",
@@ -81,6 +98,10 @@ class PlatformReadinessService:
             "clinical_execution_allowed": False,
             "counts": {
                 "evidence_sources": evidence_count,
+                "overdue_evidence_sources": overdue_evidence_count,
+                "evidence_sources_without_review_schedule": (
+                    unscheduled_evidence_count
+                ),
                 "knowledge_objects": knowledge_count,
                 "configured_safety_checks": safety_count,
             },

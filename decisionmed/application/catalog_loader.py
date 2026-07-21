@@ -33,7 +33,7 @@ from decisionmed.knowledge import (
 )
 
 
-CATALOG_SCHEMA_VERSION = "4.0.0"
+CATALOG_SCHEMA_VERSION = "5.0.0"
 MAX_CATALOG_BYTES = 1_048_576
 MAX_CATALOG_ITEMS = 10_000
 _IDENTIFIER = re.compile(r"^[a-z][a-z0-9]*(?:[._-][a-z0-9]+)*$")
@@ -132,6 +132,7 @@ def load_governed_catalogs(root: Path) -> GovernedCatalogs:
                 reviewed_on=_date_or_none(item["reviewed_on"]),
                 known_conflicts=item["known_conflicts"],
                 clinical_applicability=item["clinical_applicability"],
+                review_due_on=_date_or_none(item["review_due_on"]),
             )
             for item in _items(evidence_payload, "evidence.json", _EVIDENCE_KEYS)
         )
@@ -319,7 +320,7 @@ _EVIDENCE_KEYS = frozenset(
         "source_id", "title", "publication_year", "evidence_type",
         "evidence_quality", "recommendation_strength", "locator", "version",
         "status", "specialties", "reviewed_on", "known_conflicts",
-        "clinical_applicability",
+        "clinical_applicability", "review_due_on",
     }
 )
 _KNOWLEDGE_KEYS = frozenset(

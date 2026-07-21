@@ -82,6 +82,7 @@ class EvidenceSource:
     reviewed_on: date
     known_conflicts: str
     clinical_applicability: str
+    review_due_on: date | None = None
 
     def __post_init__(self) -> None:
         if not isinstance(self.source_id, str) or not _IDENTIFIER.fullmatch(
@@ -131,6 +132,20 @@ class EvidenceSource:
             raise TypeError("reviewed_on must be a date")
         if self.reviewed_on > date.today():
             self._fail("reviewed_on", "review date cannot be in the future")
+        if self.review_due_on is not None:
+            if not isinstance(self.review_due_on, date):
+                raise TypeError("review_due_on must be a date or None")
+            if self.review_due_on <= self.reviewed_on:
+                self._fail(
+                    "review_due_on", "review due date must follow the review date"
+                )
+        if self.status is EvidenceStatus.VALIDATED and (
+            self.review_due_on is None or self.review_due_on <= date.today()
+        ):
+            self._fail(
+                "review_due_on",
+                "validated evidence requires a future review due date",
+            )
         self._text("known_conflicts", self.known_conflicts, 4000)
         self._text("clinical_applicability", self.clinical_applicability, 4000)
 
@@ -151,3 +166,17 @@ class EvidenceSource:
         """Source metadata alone never clears a clinical runtime gate."""
 
         return False
+
+    @property
+    def review_state(self) -> str:
+        if self.review_due_on is None:
+            return "unscheduled"
+        if self.review_due_on < date.today():
+            return "overdue"
+        if self.review_due_on == date.today():
+            return "due_today"
+        return "current"
+
+    @property
+    def review_overdue(self) -> bool:
+        return self.review_state == "overdue"

@@ -83,6 +83,17 @@ class DecisionMedWebTest(unittest.TestCase):
         self.assertEqual(200, readiness_status)
         readiness = json.loads(readiness_body)
         self.assertEqual(1, readiness["counts"]["evidence_sources"])
+        self.assertEqual(
+            1, readiness["counts"]["evidence_sources_without_review_schedule"]
+        )
+        self.assertEqual(0, readiness["counts"]["overdue_evidence_sources"])
+        evidence_gate = next(
+            gate
+            for gate in readiness["gates"]
+            if gate["key"] == "evidence_catalog"
+        )
+        self.assertEqual("blocked", evidence_gate["status"])
+        self.assertEqual("review_schedule_missing", evidence_gate["reason"])
         self.assertEqual(1, readiness["counts"]["knowledge_objects"])
         self.assertFalse(readiness["clinical_execution_allowed"])
 
@@ -135,6 +146,8 @@ class DecisionMedWebTest(unittest.TestCase):
             source["recommendation_strength"],
         )
         self.assertEqual("2026-07-21", source["reviewed_on"])
+        self.assertIsNone(source["review_due_on"])
+        self.assertEqual("unscheduled", source["review_state"])
         self.assertEqual("Synthetic conflicts.", source["known_conflicts"])
         self.assertFalse(source["runtime_eligible"])
         self.assertEqual("Table 3 — Nature", source["anchors"][0]["section"])
@@ -157,6 +170,7 @@ class DecisionMedWebTest(unittest.TestCase):
         self.assertIn(b"api/workflows", body)
         self.assertIn(b"api/form-schemas", body)
         self.assertIn(b"known_conflicts", body)
+        self.assertIn(b"review_due_on", body)
         self.assertIn("Seção específica".encode(), body)
         self.assertIn("Base científica e limites".encode(), body)
         self.assertIn("somente referência".encode(), body.lower())
@@ -260,6 +274,9 @@ class DecisionMedWebTest(unittest.TestCase):
             reviewed_on=date(2026, 7, 21),
             known_conflicts="Synthetic conflicts.",
             clinical_applicability="Synthetic clinical applicability.",
+            review_due_on=None,
+            review_state="unscheduled",
+            review_overdue=False,
         )
         form_schemas = Mock()
 

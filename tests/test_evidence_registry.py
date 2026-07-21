@@ -58,8 +58,36 @@ class EvidenceSourceTest(unittest.TestCase):
             reviewed_on=date(2026, 7, 21),
             known_conflicts="No known conflicts in this synthetic fixture.",
             clinical_applicability="Contract tests only.",
+            review_due_on=date.today() + timedelta(days=30),
         )
         self.assertFalse(validated.runtime_eligible)
+        self.assertEqual("current", validated.review_state)
+        self.assertFalse(validated.review_overdue)
+
+    def test_review_lifecycle_fails_closed(self) -> None:
+        unscheduled = source()
+        self.assertEqual("unscheduled", unscheduled.review_state)
+        self.assertFalse(unscheduled.review_overdue)
+
+        with self.assertRaises(EvidenceContractError) as missing_due_date:
+            replace(unscheduled, status=EvidenceStatus.VALIDATED)
+        self.assertEqual(
+            "evidence_source.review_due_on", missing_due_date.exception.code
+        )
+
+        with self.assertRaises(EvidenceContractError) as invalid_order:
+            replace(unscheduled, review_due_on=unscheduled.reviewed_on)
+        self.assertEqual(
+            "evidence_source.review_due_on", invalid_order.exception.code
+        )
+
+        overdue = replace(
+            unscheduled,
+            reviewed_on=date.today() - timedelta(days=2),
+            review_due_on=date.today() - timedelta(days=1),
+        )
+        self.assertEqual("overdue", overdue.review_state)
+        self.assertTrue(overdue.review_overdue)
 
     def test_rejects_invalid_year_version_and_specialties(self) -> None:
         base = {
