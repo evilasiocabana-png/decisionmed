@@ -37,7 +37,9 @@ class GovernedCatalogLoaderTest(unittest.TestCase):
             self.assertEqual("catalog.fields", context.exception.code)
 
             payloads = self._write_catalog(root)
-            payloads["knowledge"]["items"][0]["evidence_source_ids"] = ["missing"]
+            payloads["knowledge"]["items"][0]["evidence_anchors"][0][
+                "source_id"
+            ] = "missing"
             self._write(root / "knowledge.json", payloads["knowledge"])
             self._write_manifest(root)
             with self.assertRaises(CatalogLoadError) as context:
@@ -83,6 +85,21 @@ class GovernedCatalogLoaderTest(unittest.TestCase):
 
             self.assertEqual("catalog.collection", context.exception.code)
 
+    def test_evidence_anchors_require_exact_fields(self) -> None:
+        with TemporaryDirectory() as temporary_directory:
+            root = Path(temporary_directory)
+            payloads = self._write_catalog(root)
+            payloads["knowledge"]["items"][0]["evidence_anchors"][0][
+                "unexpected"
+            ] = True
+            self._write(root / "knowledge.json", payloads["knowledge"])
+            self._write_manifest(root)
+
+            with self.assertRaises(CatalogLoadError) as context:
+                load_governed_catalogs(root)
+
+            self.assertEqual("catalog.evidence_anchors", context.exception.code)
+
     def test_modified_file_is_rejected_before_parsing(self) -> None:
         with TemporaryDirectory() as temporary_directory:
             root = Path(temporary_directory)
@@ -113,7 +130,11 @@ class GovernedCatalogLoaderTest(unittest.TestCase):
             [{
                 "object_id": "knowledge.sample", "official_name": "Structural sample",
                 "object_type": "other", "description": "No clinical claim.",
-                "evidence_source_ids": ["evidence.sample"], "applicability": "Tests only.",
+                "evidence_anchors": [{
+                    "source_id": "evidence.sample",
+                    "section": "Synthetic section",
+                    "locator": "https://example.test/source#section",
+                }], "applicability": "Tests only.",
                 "limits": "No clinical use.", "version": "1.0.0", "status": "draft",
                 "reviewed_on": None, "validated_by": None,
             }]
@@ -140,7 +161,7 @@ class GovernedCatalogLoaderTest(unittest.TestCase):
 
     @staticmethod
     def _envelope(items: list[dict[str, object]]) -> dict[str, object]:
-        return {"schema_version": "3.0.0", "items": items}
+        return {"schema_version": "4.0.0", "items": items}
 
     @staticmethod
     def _write(path: Path, payload: dict[str, object]) -> None:
@@ -153,7 +174,7 @@ class GovernedCatalogLoaderTest(unittest.TestCase):
             for name in ("evidence.json", "knowledge.json", "form-schemas.json")
         }
         manifest = {
-            "schema_version": "3.0.0",
+            "schema_version": "4.0.0",
             "catalog_id": "decisionmed.knowledge",
             "release_version": "0.1.0",
             "status": "draft",

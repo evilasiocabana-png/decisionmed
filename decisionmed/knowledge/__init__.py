@@ -1,6 +1,7 @@
 """DecisionMEd Knowledge Layer contracts."""
 
 from .models import (
+    EvidenceAnchor,
     KnowledgeError,
     KnowledgeObject,
     KnowledgeObjectType,
@@ -15,6 +16,7 @@ from .schemas import (
 )
 
 __all__ = [
+    "EvidenceAnchor",
     "KnowledgeError",
     "KnowledgeObject",
     "KnowledgeObjectType",

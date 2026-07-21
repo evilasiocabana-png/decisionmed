@@ -14,6 +14,7 @@ from decisionmed.evidence import (
 from decisionmed.knowledge import (
     ClinicalFieldDefinition,
     ClinicalFieldValueType,
+    EvidenceAnchor,
     KnowledgeError,
     KnowledgeObject,
     KnowledgeObjectType,
@@ -213,7 +214,13 @@ class SpecialtyFormSchemaTest(unittest.TestCase):
             official_name="Structural sample field",
             object_type=KnowledgeObjectType.OTHER,
             description="Test-only metadata without a clinical claim.",
-            evidence_source_ids=("evidence.sample",),
+            evidence_anchors=(
+                EvidenceAnchor(
+                    source_id="evidence.sample",
+                    section="Synthetic section",
+                    locator="https://example.test/source#section",
+                ),
+            ),
             applicability="Unit tests only.",
             limits="No clinical use.",
             version="1.0.0",

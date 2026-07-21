@@ -23,6 +23,7 @@ from decisionmed.evidence import (
 from decisionmed.knowledge import (
     ClinicalFieldDefinition,
     ClinicalFieldValueType,
+    EvidenceAnchor,
     KnowledgeObject,
     KnowledgeObjectType,
     KnowledgeRegistry,
@@ -32,7 +33,7 @@ from decisionmed.knowledge import (
 )
 
 
-CATALOG_SCHEMA_VERSION = "3.0.0"
+CATALOG_SCHEMA_VERSION = "4.0.0"
 MAX_CATALOG_BYTES = 1_048_576
 MAX_CATALOG_ITEMS = 10_000
 _IDENTIFIER = re.compile(r"^[a-z][a-z0-9]*(?:[._-][a-z0-9]+)*$")
@@ -142,7 +143,7 @@ def load_governed_catalogs(root: Path) -> GovernedCatalogs:
                     official_name=item["official_name"],
                     object_type=KnowledgeObjectType(item["object_type"]),
                     description=item["description"],
-                    evidence_source_ids=_list(item, "evidence_source_ids"),
+                    evidence_anchors=_evidence_anchors(item),
                     applicability=item["applicability"],
                     limits=item["limits"],
                     version=item["version"],
@@ -292,6 +293,27 @@ def _list(item: dict[str, Any], key: str) -> tuple[Any, ...]:
     return tuple(value)
 
 
+def _evidence_anchors(item: dict[str, Any]) -> tuple[EvidenceAnchor, ...]:
+    values = item["evidence_anchors"]
+    if not isinstance(values, list) or not values:
+        raise CatalogLoadError(
+            "catalog.evidence_anchors", "evidence anchors are invalid"
+        )
+    expected = {"source_id", "section", "locator"}
+    if any(not isinstance(value, dict) or set(value) != expected for value in values):
+        raise CatalogLoadError(
+            "catalog.evidence_anchors", "evidence anchors are invalid"
+        )
+    return tuple(
+        EvidenceAnchor(
+            source_id=value["source_id"],
+            section=value["section"],
+            locator=value["locator"],
+        )
+        for value in values
+    )
+
+
 _EVIDENCE_KEYS = frozenset(
     {
         "source_id", "title", "publication_year", "evidence_type",
@@ -301,7 +323,7 @@ _EVIDENCE_KEYS = frozenset(
     }
 )
 _KNOWLEDGE_KEYS = frozenset(
-    {"object_id", "official_name", "object_type", "description", "evidence_source_ids", "applicability", "limits", "version", "status", "reviewed_on", "validated_by"}
+    {"object_id", "official_name", "object_type", "description", "evidence_anchors", "applicability", "limits", "version", "status", "reviewed_on", "validated_by"}
 )
 _SCHEMA_KEYS = frozenset(
     {
