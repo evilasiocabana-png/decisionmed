@@ -3,7 +3,14 @@ from datetime import date, datetime, timedelta, timezone
 import unittest
 from unittest.mock import patch
 
-from decisionmed.application import QuestionEnginePreparationApplicationService
+from decisionmed.application import (
+    QUESTION_ENGINE_INVOCATION_ACTION,
+    QuestionEngineExecutionApplicationService,
+    QuestionEngineExecutionError,
+    QuestionEngineInvocationAuthorityDecision,
+    QuestionEngineInvocationAuthorityStatus,
+    QuestionEnginePreparationApplicationService,
+)
 from decisionmed.audit import AuditError, AuditLedger
 
 from decisionmed.domain import (
@@ -62,10 +69,25 @@ class SyntheticQuestionEngine:
 
     def __init__(self) -> None:
         self.call_count = 0
+        self.output: QuestionEngineResult | None = None
 
     def generate(self, input_value: GovernedReasoningInput) -> QuestionEngineResult:
         self.call_count += 1
-        raise AssertionError("output validation must not invoke the engine")
+        if self.output is None:
+            raise AssertionError("test must configure synthetic engine output")
+        return self.output
+
+
+class SyntheticInvocationAuthority:
+    provider = "authority.synthetic-question-engine"
+
+    def __init__(self, decision: object) -> None:
+        self.decision = decision
+        self.call_count = 0
+
+    def verify(self, **kwargs: object) -> object:
+        self.call_count += 1
+        return self.decision
 
 
 class FailingAuditLedger(AuditLedger):
@@ -286,6 +308,146 @@ class QuestionEngineOutputValidatorTest(unittest.TestCase):
         self.assertEqual("ReasoningError", dict(record.payload)["error_type"])
         self.assertNotIn("Synthetic value", str(record))
         self.assertEqual(0, self.engine.call_count)
+
+    def test_authorized_execution_is_validated_and_audited(self) -> None:
+        self.engine.output = self._result()
+        authority = SyntheticInvocationAuthority(self._decision())
+        ledger = AuditLedger()
+        service = self._execution_service(authority, ledger)
+
+        invocation = service.generate(
+            self.input_value,
+            engine_id=self.engine.engine_id,
+            reviewer_id="reviewer.synthetic",
+            authority_reference="authority.synthetic-workflow",
+        )
+        record = ledger.records()[-1]
+        payload = dict(record.payload)
+
+        self.assertIs(self.engine.output, invocation.result)
+        self.assertEqual("decision.synthetic-question-engine", invocation.decision_reference)
+        self.assertEqual("reasoning.question-engine-generated", record.event_name)
+        self.assertEqual(invocation.receipt.result_fingerprint, payload["result_fingerprint"])
+        self.assertEqual(1, self.engine.call_count)
+        self.assertEqual(1, authority.call_count)
+        self.assertEqual(
+            "reasoning.question-engine-invocation-authorized",
+            ledger.records()[0].event_name,
+        )
+        self.assertTrue(ledger.verify())
+        self.assertFalse(invocation.engine_invocation_allowed)
+        self.assertFalse(invocation.reasoning_execution_allowed)
+        self.assertFalse(invocation.clinical_execution_allowed)
+        self.assertNotIn("Synthetic governed question?", str(record))
+
+    def test_execution_is_blocked_or_denied_before_engine_call(self) -> None:
+        self.engine.output = self._result()
+        denied_authority = SyntheticInvocationAuthority(
+            self._decision(QuestionEngineInvocationAuthorityStatus.DENIED)
+        )
+        denied_ledger = AuditLedger()
+        denied_service = self._execution_service(denied_authority, denied_ledger)
+
+        with self.assertRaises(QuestionEngineExecutionError) as denied:
+            denied_service.generate(
+                self.input_value,
+                engine_id=self.engine.engine_id,
+                reviewer_id="reviewer.synthetic",
+                authority_reference="authority.synthetic-workflow",
+            )
+        self.assertEqual("question_engine_execution.authority_denied", denied.exception.code)
+        self.assertEqual("reasoning.question-engine-authority-denied", denied_ledger.records()[0].event_name)
+        self.assertEqual(0, self.engine.call_count)
+
+        blocked_authority = SyntheticInvocationAuthority(self._decision())
+        blocked_ledger = AuditLedger()
+        blocked_service = self._execution_service(
+            blocked_authority,
+            blocked_ledger,
+            include_engine=False,
+        )
+        with self.assertRaises(QuestionEngineExecutionError) as blocked:
+            blocked_service.generate(
+                self.input_value,
+                engine_id=self.engine.engine_id,
+                reviewer_id="reviewer.synthetic",
+                authority_reference="authority.synthetic-workflow",
+            )
+        self.assertEqual("question_engine_execution.not_ready", blocked.exception.code)
+        self.assertEqual("reasoning.question-engine-invocation-blocked", blocked_ledger.records()[0].event_name)
+        self.assertEqual(0, blocked_authority.call_count)
+        self.assertEqual(0, self.engine.call_count)
+
+    def test_invalid_engine_output_is_audited_and_not_returned(self) -> None:
+        self.engine.output = self._result(field_key="symptoms.unknown")
+        authority = SyntheticInvocationAuthority(self._decision())
+        ledger = AuditLedger()
+        service = self._execution_service(authority, ledger)
+
+        with self.assertRaises(ReasoningError):
+            service.generate(
+                self.input_value,
+                engine_id=self.engine.engine_id,
+                reviewer_id="reviewer.synthetic",
+                authority_reference="authority.synthetic-workflow",
+            )
+
+        record = ledger.records()[-1]
+        self.assertEqual("reasoning.question-engine-output-rejected", record.event_name)
+        self.assertEqual(1, self.engine.call_count)
+        self.assertNotIn("Synthetic governed question?", str(record))
+
+    def test_audit_failure_prevents_engine_invocation(self) -> None:
+        self.engine.output = self._result()
+        service = self._execution_service(
+            SyntheticInvocationAuthority(self._decision()),
+            FailingAuditLedger(),
+        )
+
+        with self.assertRaises(AuditError):
+            service.generate(
+                self.input_value,
+                engine_id=self.engine.engine_id,
+                reviewer_id="reviewer.synthetic",
+                authority_reference="authority.synthetic-workflow",
+            )
+
+        self.assertEqual(0, self.engine.call_count)
+
+    def _execution_service(
+        self,
+        authority: SyntheticInvocationAuthority,
+        ledger: AuditLedger,
+        *,
+        include_engine: bool = True,
+    ) -> QuestionEngineExecutionApplicationService:
+        return QuestionEngineExecutionApplicationService(
+            QuestionEngineReadiness(),
+            self._engine_registry(include_engine=include_engine),
+            authority,
+            self.validator,
+            ledger,
+        )
+
+    def _decision(
+        self,
+        status: QuestionEngineInvocationAuthorityStatus = (
+            QuestionEngineInvocationAuthorityStatus.AUTHORIZED
+        ),
+    ) -> QuestionEngineInvocationAuthorityDecision:
+        return QuestionEngineInvocationAuthorityDecision(
+            reviewer_id="reviewer.synthetic",
+            authority_reference="authority.synthetic-workflow",
+            authority_provider="authority.synthetic-question-engine",
+            action=QUESTION_ENGINE_INVOCATION_ACTION,
+            trace_id=self.input_value.trace_id,
+            governed_input_fingerprint=self.input_value.content_fingerprint,
+            engine_id=self.engine.engine_id,
+            engine_contract_version=self.engine.contract_version,
+            status=status,
+            decision_reference="decision.synthetic-question-engine",
+            verified_at=self.assembled_at,
+        )
 
     def _engine_registry(self, *, include_engine: bool) -> QuestionEngineRegistry:
         binding = QuestionEngineBinding(

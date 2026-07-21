@@ -24,6 +24,17 @@ from .safety_review import (
     SafetyReviewApplicationService,
 )
 from .question_preparation import QuestionEnginePreparationApplicationService
+from .question_invocation_authority import (
+    QUESTION_ENGINE_INVOCATION_ACTION,
+    QuestionEngineInvocationAuthority,
+    QuestionEngineInvocationAuthorityDecision,
+    QuestionEngineInvocationAuthorityStatus,
+)
+from .question_execution import (
+    QuestionEngineExecutionApplicationService,
+    QuestionEngineExecutionError,
+    QuestionEngineInvocationResult,
+)
 
 __all__ = [
     "ClinicalInputIssue",
@@ -42,4 +53,11 @@ __all__ = [
     "SafetyReviewApplicationError",
     "SafetyReviewApplicationService",
     "QuestionEnginePreparationApplicationService",
+    "QUESTION_ENGINE_INVOCATION_ACTION",
+    "QuestionEngineInvocationAuthority",
+    "QuestionEngineInvocationAuthorityDecision",
+    "QuestionEngineInvocationAuthorityStatus",
+    "QuestionEngineExecutionApplicationService",
+    "QuestionEngineExecutionError",
+    "QuestionEngineInvocationResult",
 ]
