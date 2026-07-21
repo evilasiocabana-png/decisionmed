@@ -21,8 +21,10 @@ class SafetyCheckEvaluatorPortTest(unittest.TestCase):
 
     def test_port_requires_identity_and_exact_specification_version(self) -> None:
         self.assertIsInstance(SafetyCheckEvaluator.check_id, property)
+        self.assertIsInstance(SafetyCheckEvaluator.provider, property)
         self.assertIsInstance(SafetyCheckEvaluator.specification_version, property)
         self.assertIs(str, get_type_hints(SafetyCheckEvaluator.check_id.fget)["return"])
+        self.assertIs(str, get_type_hints(SafetyCheckEvaluator.provider.fget)["return"])
         self.assertIs(
             str,
             get_type_hints(SafetyCheckEvaluator.specification_version.fget)["return"],

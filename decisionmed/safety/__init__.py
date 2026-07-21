@@ -3,6 +3,7 @@
 from .coordinator import SafetyCoordinator
 from .definitions import SafetyCheckSpecification, SafetyCheckStatus
 from .evaluator import SafetyCheckEvaluator
+from .evaluator_registry import SafetyCheckEvaluatorRegistry
 from .models import (
     SafetyAssessment,
     SafetyCheckOutcome,
@@ -24,6 +25,7 @@ __all__ = [
     "SafetyCheckOutcome",
     "SafetyCheckResult",
     "SafetyCheckEvaluator",
+    "SafetyCheckEvaluatorRegistry",
     "SafetyCheckRegistry",
     "SafetyCheckSpecification",
     "SafetyCheckStatus",
