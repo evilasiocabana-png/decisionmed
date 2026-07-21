@@ -10,7 +10,12 @@ from decisionmed.domain import (
     SubjectReference,
 )
 from decisionmed.reasoning import ReasoningError, ReasoningGate, ReasoningGateStatus
-from decisionmed.safety import SafetyAssessment, SafetyGateStatus
+from decisionmed.safety import (
+    SafetyAssessment,
+    SafetyGateStatus,
+    SafetyReviewDisposition,
+    SafetyReviewRecord,
+)
 
 
 class ReasoningGateTest(unittest.TestCase):
@@ -62,6 +67,76 @@ class ReasoningGateTest(unittest.TestCase):
         self.assertEqual(("human_safety_validation_required",), result.reasons)
         self.assertFalse(result.reasoning_execution_allowed)
 
+    def test_exact_current_review_is_recorded_without_enabling_reasoning(self) -> None:
+        snapshot = self._snapshot(complete=True)
+        safety = self._safety(snapshot, SafetyGateStatus.READY_FOR_HUMAN_REVIEW)
+        review = self._review(snapshot, safety)
+
+        result = ReasoningGate().assess(snapshot, safety, review)
+
+        self.assertEqual(ReasoningGateStatus.SAFETY_REVIEW_RECORDED, result.status)
+        self.assertEqual(review.assessment_fingerprint, result.safety_review_fingerprint)
+        self.assertEqual(
+            ("human_safety_review_recorded", "reasoning_implementation_required"),
+            result.reasons,
+        )
+        self.assertFalse(result.reasoning_execution_allowed)
+        self.assertFalse(result.clinical_execution_allowed)
+
+    def test_reassessment_disposition_remains_fail_closed(self) -> None:
+        snapshot = self._snapshot(complete=True)
+        safety = self._safety(snapshot, SafetyGateStatus.READY_FOR_HUMAN_REVIEW)
+        review = self._review(
+            snapshot,
+            safety,
+            disposition=SafetyReviewDisposition.REASSESSMENT_REQUIRED,
+        )
+
+        result = ReasoningGate().assess(snapshot, safety, review)
+
+        self.assertEqual(
+            ReasoningGateStatus.SAFETY_REASSESSMENT_REQUIRED,
+            result.status,
+        )
+        self.assertFalse(result.reasoning_execution_allowed)
+
+    def test_review_of_changed_assessment_is_rejected(self) -> None:
+        snapshot = self._snapshot(complete=True)
+        reviewed_safety = self._safety(
+            snapshot, SafetyGateStatus.READY_FOR_HUMAN_REVIEW
+        )
+        changed_safety = SafetyAssessment(
+            status=SafetyGateStatus.READY_FOR_HUMAN_REVIEW,
+            expected_check_ids=("check.changed",),
+            results=(),
+            missing_check_ids=(),
+            blocking_reasons=(),
+            trace_id=snapshot.trace_id,
+        )
+
+        with self.assertRaises(ReasoningError) as mismatch:
+            ReasoningGate().assess(
+                snapshot,
+                changed_safety,
+                self._review(snapshot, reviewed_safety),
+            )
+
+        self.assertEqual("reasoning.safety_review_mismatch", mismatch.exception.code)
+
+    def test_review_that_predates_snapshot_is_rejected(self) -> None:
+        snapshot = self._snapshot(complete=True)
+        safety = self._safety(snapshot, SafetyGateStatus.READY_FOR_HUMAN_REVIEW)
+        stale_review = self._review(
+            snapshot,
+            safety,
+            reviewed_at=snapshot.captured_at - timedelta(seconds=1),
+        )
+
+        with self.assertRaises(ReasoningError) as stale:
+            ReasoningGate().assess(snapshot, safety, stale_review)
+
+        self.assertEqual("reasoning.safety_review_stale", stale.exception.code)
+
     def test_trace_mismatch_is_rejected(self) -> None:
         snapshot = self._snapshot(complete=True)
         safety = self._safety(
@@ -96,6 +171,26 @@ class ReasoningGateTest(unittest.TestCase):
                 for section in sections
             ),
             trace_id=f"trace.reasoning.{len(sections)}",
+        )
+
+    def _review(
+        self,
+        snapshot: ClinicalSnapshot,
+        safety: SafetyAssessment,
+        *,
+        disposition: SafetyReviewDisposition = (
+            SafetyReviewDisposition.VALIDATED_FOR_REASONING_REVIEW
+        ),
+        reviewed_at: datetime | None = None,
+    ) -> SafetyReviewRecord:
+        return SafetyReviewRecord.create(
+            safety,
+            reviewer_id="reviewer.synthetic",
+            authority_reference="authority.synthetic-workflow",
+            reviewed_at=reviewed_at
+            or snapshot.captured_at + timedelta(milliseconds=100),
+            disposition=disposition,
+            rationale="Synthetic structural review rationale.",
         )
 
     @staticmethod
