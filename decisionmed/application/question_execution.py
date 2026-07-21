@@ -22,6 +22,10 @@ from .question_invocation_authority import (
     QuestionEngineInvocationAuthority,
     QuestionEngineInvocationAuthorityDecision,
 )
+from .question_invocation_replay import (
+    InMemoryQuestionEngineInvocationReplayGuard,
+    QuestionEngineInvocationReplayGuard,
+)
 
 
 class QuestionEngineExecutionError(DomainError):
@@ -61,6 +65,7 @@ class QuestionEngineExecutionApplicationService:
         audit: AuditLedger,
         max_authority_age: timedelta = timedelta(minutes=5),
         now: Callable[[], datetime] | None = None,
+        replay_guard: QuestionEngineInvocationReplayGuard | None = None,
     ) -> None:
         if not isinstance(readiness, QuestionEngineReadiness):
             raise TypeError("readiness must be a QuestionEngineReadiness")
@@ -77,6 +82,12 @@ class QuestionEngineExecutionApplicationService:
             or max_authority_age <= timedelta(0)
         ):
             raise ValueError("max_authority_age must be positive")
+        if replay_guard is not None and not isinstance(
+            replay_guard, QuestionEngineInvocationReplayGuard
+        ):
+            raise TypeError(
+                "replay_guard must satisfy QuestionEngineInvocationReplayGuard"
+            )
         self._readiness = readiness
         self._registry = registry
         self._authority = authority
@@ -84,6 +95,7 @@ class QuestionEngineExecutionApplicationService:
         self._audit = audit
         self._max_authority_age = max_authority_age
         self._now = now or (lambda: datetime.now(timezone.utc))
+        self._replay_guard = replay_guard or InMemoryQuestionEngineInvocationReplayGuard()
 
     def generate(
         self,
@@ -198,6 +210,23 @@ class QuestionEngineExecutionApplicationService:
             raise QuestionEngineExecutionError(
                 "question_engine_execution.authority_expired",
                 "authority decision is no longer current",
+            )
+        if not self._replay_guard.reserve(
+            authority_provider=decision.authority_provider,
+            decision_reference=decision.decision_reference,
+        ):
+            self._append(
+                input_value,
+                "reasoning.question-engine-authority-replayed",
+                request_metadata
+                + (
+                    ("authority_provider", decision.authority_provider),
+                    ("decision_reference", decision.decision_reference),
+                ),
+            )
+            raise QuestionEngineExecutionError(
+                "question_engine_execution.authority_replayed",
+                "authority decision was already reserved",
             )
         self._append(
             input_value,
