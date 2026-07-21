@@ -13,6 +13,12 @@ from .catalog_loader import (
     load_governed_catalogs,
 )
 from .safety_preflight import SafetyPreflightApplicationService
+from .reviewer_authority import (
+    SAFETY_REVIEW_ACTION,
+    SafetyReviewerAuthority,
+    SafetyReviewerAuthorityDecision,
+    SafetyReviewerAuthorityStatus,
+)
 
 __all__ = [
     "ClinicalInputIssue",
@@ -24,4 +30,8 @@ __all__ = [
     "GovernedCatalogs",
     "load_governed_catalogs",
     "SafetyPreflightApplicationService",
+    "SAFETY_REVIEW_ACTION",
+    "SafetyReviewerAuthority",
+    "SafetyReviewerAuthorityDecision",
+    "SafetyReviewerAuthorityStatus",
 ]
