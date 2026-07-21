@@ -337,6 +337,8 @@ class DecisionMedWebTest(unittest.TestCase):
 
         self.assertEqual(200, home_status)
         self.assertIn(b"DecisionMEd", home_body)
+        self.assertIn(b"readiness-summary", home_body)
+        self.assertIn(b"catalog-status", home_body)
         self.assertIn(b"item.intended_scope", home_body)
         self.assertNotIn(b"innerHTML", home_body)
         self.assertEqual(303, redirect_status)
