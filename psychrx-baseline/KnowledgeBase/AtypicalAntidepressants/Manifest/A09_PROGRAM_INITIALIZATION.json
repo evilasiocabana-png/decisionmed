@@ -1,0 +1,36 @@
+{
+  "program": "A09",
+  "title": "Scientific Content Population: Atypical Antidepressants",
+  "status": "active",
+  "execution_scope": "internal_non_runtime_scientific_knowledge",
+  "initialized_at": "2026-07-05",
+  "missions": [
+    "A09-001",
+    "A09-002",
+    "A09-003",
+    "A09-004",
+    "A09-005",
+    "A09-006",
+    "A09-007",
+    "A09-008",
+    "A09-009",
+    "A09-010",
+    "A09-011",
+    "A09-012",
+    "A09-013",
+    "A09-014",
+    "A09-015",
+    "A09-016",
+    "A09-017"
+  ],
+  "permanent_restrictions": [
+    "no_prescription",
+    "no_therapeutic_recommendation",
+    "no_dose_suggestion",
+    "no_patient_specific_medication_selection",
+    "no_clinical_runtime_eligibility",
+    "no_runtime_consumption",
+    "no_unsourced_claims"
+  ],
+  "first_authorized_scientific_field": "mechanism"
+}

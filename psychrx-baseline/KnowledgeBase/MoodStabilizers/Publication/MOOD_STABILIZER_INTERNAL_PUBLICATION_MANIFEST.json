@@ -1,0 +1,11 @@
+{
+  "mission": "A12-014",
+  "status": "published_internal_non_runtime",
+  "package": "MOOD_STABILIZER_MECHANISM_PACKAGE",
+  "included_artifacts": [
+    "MOOD_STABILIZER_MECHANISM_SOURCE_TEXT_EXTRACTS.json",
+    "MOOD_STABILIZER_MECHANISM_POPULATED_DRAFT.json",
+    "MOOD_STABILIZER_DRAFT_EDITORIAL_REVIEW.json"
+  ],
+  "runtime_eligible": false
+}

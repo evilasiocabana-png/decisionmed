@@ -1,0 +1,19 @@
+{
+  "mission": "A13-015",
+  "status": "passed",
+  "traceability_chain": [
+    "AH-SRC-001",
+    "AH-SEL-001",
+    "AH-TEXT-001",
+    "AH-CLAIM-001",
+    "ANXIOLYTIC_HYPNOTIC_INTERNAL_PUBLICATION_MANIFEST"
+  ],
+  "gaps": [
+    {
+      "item": "class_level_mechanism_generalization",
+      "status": "UNRESOLVED"
+    }
+  ],
+  "claims_without_source": 0,
+  "runtime_eligible": false
+}

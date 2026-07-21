@@ -1,0 +1,14 @@
+{
+  "schema": "psychrx.knowledgebase.ssri.pd_baseline",
+  "program": "A03",
+  "mission": "A03-050",
+  "status": "draft_baseline_created_not_published",
+  "created_at": "2026-07-01",
+  "baseline_id": "A03_PHASE6_PD_DRAFT_BASELINE_0_1_0",
+  "included_records": ["SSRI_FLUOXETINE","SSRI_SERTRALINE","SSRI_PAROXETINE","SSRI_CITALOPRAM","SSRI_ESCITALOPRAM","SSRI_FLUVOXAMINE"],
+  "publication_allowed": false,
+  "runtime_consumption_allowed": false,
+  "clinical_recommendation_allowed": false,
+  "prescription_allowed": false,
+  "next_mission": "A03-051 - PHARMACODYNAMIC_PHASE6_GATE"
+}

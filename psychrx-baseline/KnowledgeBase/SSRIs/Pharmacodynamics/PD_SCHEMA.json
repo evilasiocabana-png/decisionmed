@@ -1,0 +1,43 @@
+﻿{
+    "schema_version":  "0.1.0",
+    "runtime_consumption_allowed":  false,
+    "pd_fields":  [
+                      "primary_pharmacodynamic_effect",
+                      "secondary_pharmacodynamic_effects",
+                      "synaptic_effect",
+                      "neuroplasticity_effect",
+                      "adaptive_changes",
+                      "downstream_effects",
+                      "delayed_effects",
+                      "persistent_effects",
+                      "clinical_correlation",
+                      "mechanism_relationship"
+                  ],
+    "mission":  "A03-025",
+    "prohibited_fields":  [
+                              "dose",
+                              "titration",
+                              "clinical_indication",
+                              "contraindication",
+                              "safety",
+                              "interaction",
+                              "monitoring",
+                              "recommendation",
+                              "prescription",
+                              "runtime_rule",
+                              "decision_engine_rule"
+                          ],
+    "required_fields":  [
+                            "pd_id",
+                            "drug_id",
+                            "profile_id",
+                            "scientific_version",
+                            "editorial_version",
+                            "schema_version",
+                            "validation_status",
+                            "publication_status"
+                        ],
+    "schema":  "psychrx.a03.pd_schema",
+    "status":  "structural_schema_only",
+    "program":  "A03"
+}

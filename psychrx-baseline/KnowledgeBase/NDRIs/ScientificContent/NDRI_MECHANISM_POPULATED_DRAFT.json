@@ -1,0 +1,53 @@
+{
+  "mission": "A05-012",
+  "status": "draft_review_required",
+  "runtime_eligible": false,
+  "drug_entries": [
+    {
+      "drug_id": "NDRI-BUPROPION",
+      "field": "mechanism",
+      "claim_status": "source_text_bound_internal_draft",
+      "entries": [
+        {
+          "entry_id": "A05-MECH-001",
+          "controlled_statement": "The exact antidepressant mechanism is not resolved in the selected source text.",
+          "source_text_records": [
+            "A05-TXT-001"
+          ],
+          "runtime_eligible": false
+        },
+        {
+          "entry_id": "A05-MECH-002",
+          "controlled_statement": "Selected source text links bupropion to norepinephrine and dopamine reuptake inhibition.",
+          "source_text_records": [
+            "A05-TXT-002",
+            "A05-TXT-004"
+          ],
+          "runtime_eligible": false
+        },
+        {
+          "entry_id": "A05-MECH-003",
+          "controlled_statement": "Selected source text marks serotonin reuptake inhibition as absent in this mechanism section.",
+          "source_text_records": [
+            "A05-TXT-003"
+          ],
+          "runtime_eligible": false
+        }
+      ],
+      "unresolved": [
+        {
+          "field": "class_level_ndri_generalization",
+          "status": "UNRESOLVED",
+          "reason": "A05 selected source text supports bupropion-specific mechanism only."
+        }
+      ]
+    }
+  ],
+  "forbidden_use": [
+    "runtime",
+    "prescription",
+    "recommendation",
+    "dose_suggestion",
+    "patient_specific_decision"
+  ]
+}

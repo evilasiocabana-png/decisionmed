@@ -1,0 +1,15 @@
+﻿{
+    "program":  "A03",
+    "mission":  "A03-024",
+    "pk_model_count":  6,
+    "schema":  "psychrx.a03.pk_index",
+    "pk_models_by_drug_id":  {
+                                 "SSRI_CITALOPRAM":  "A03_PK_SSRI_CITALOPRAM",
+                                 "SSRI_SERTRALINE":  "A03_PK_SSRI_SERTRALINE",
+                                 "SSRI_FLUVOXAMINE":  "A03_PK_SSRI_FLUVOXAMINE",
+                                 "SSRI_FLUOXETINE":  "A03_PK_SSRI_FLUOXETINE",
+                                 "SSRI_ESCITALOPRAM":  "A03_PK_SSRI_ESCITALOPRAM",
+                                 "SSRI_PAROXETINE":  "A03_PK_SSRI_PAROXETINE"
+                             },
+    "runtime_consumption_allowed":  false
+}

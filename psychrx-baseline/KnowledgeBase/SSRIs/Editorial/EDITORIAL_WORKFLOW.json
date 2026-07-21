@@ -1,0 +1,23 @@
+﻿{
+    "schema":  "psychrx.a03.editorial_workflow",
+    "program":  "A03",
+    "mission":  "A03-018",
+    "status":  "metadata_only",
+    "workflow":  [
+                     "draft",
+                     "initialized",
+                     "metadata_complete",
+                     "source_bound",
+                     "editorial_review",
+                     "scientific_review",
+                     "validated",
+                     "published"
+                 ],
+    "terminal_states":  [
+                            "archived"
+                        ],
+    "exception_states":  [
+                             "deprecated"
+                         ],
+    "scientific_content_populated":  false
+}

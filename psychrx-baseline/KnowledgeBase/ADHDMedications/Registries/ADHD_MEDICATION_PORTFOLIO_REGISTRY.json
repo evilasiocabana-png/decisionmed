@@ -1,0 +1,21 @@
+{
+  "mission": "A14-002",
+  "status": "complete",
+  "portfolio": [
+    {
+      "drug_id": "ADHD-METHYLPHENIDATE",
+      "name": "Methylphenidate",
+      "class_scope": "adhd_medication",
+      "profile_status": "shell_created",
+      "mechanism_scope": "authorized_for_internal_non_runtime_population",
+      "runtime_eligible": false
+    }
+  ],
+  "future_candidates": [
+    "amphetamine",
+    "lisdexamfetamine",
+    "atomoxetine",
+    "guanfacine",
+    "clonidine"
+  ]
+}

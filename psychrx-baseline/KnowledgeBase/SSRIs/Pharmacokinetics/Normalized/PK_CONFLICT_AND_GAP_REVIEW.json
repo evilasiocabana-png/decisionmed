@@ -1,0 +1,21 @@
+{
+  "schema": "psychrx.knowledgebase.ssri.pk_conflict_gap_review",
+  "program": "A03",
+  "mission": "A03-044",
+  "status": "completed_pending_editorial_review",
+  "created_at": "2026-07-01",
+  "records_reviewed": ["SSRI_FLUOXETINE","SSRI_SERTRALINE","SSRI_PAROXETINE","SSRI_CITALOPRAM","SSRI_ESCITALOPRAM","SSRI_FLUVOXAMINE"],
+  "conflicts": {
+    "detected": false,
+    "notes": "No structural conflict was detected in the normalized PK draft records. This is not final scientific approval."
+  },
+  "gaps": [
+    {"gap_type": "editorial_approval", "status": "open", "required_action": "Human scientific/editorial review required before publication."}
+  ],
+  "baseline_eligibility": {
+    "draft_baseline_allowed": true,
+    "publication_allowed": false,
+    "runtime_consumption_allowed": false
+  },
+  "next_mission": "A03-045 - PHARMACOKINETIC_BASELINE"
+}

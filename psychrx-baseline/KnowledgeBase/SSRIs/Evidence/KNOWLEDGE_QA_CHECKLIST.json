@@ -1,0 +1,45 @@
+{
+  "schema": "psychrx.knowledgebase.ssri.knowledge_qa_checklist",
+  "program": "A03",
+  "phase": "Phase 8 - Knowledge QA",
+  "mission": "A03-056",
+  "status": "checklist_initialized",
+  "checks": [
+    {
+      "check_id": "A03-QA-001",
+      "name": "source_binding_exists",
+      "required": true,
+      "status": "pass",
+      "artifact": "KnowledgeBase/SSRIs/Evidence/EVIDENCE_INTEGRATION_SOURCE_BINDING.json"
+    },
+    {
+      "check_id": "A03-QA-002",
+      "name": "traceability_matrix_exists",
+      "required": true,
+      "status": "pass",
+      "artifact": "KnowledgeBase/SSRIs/Evidence/EVIDENCE_TRACEABILITY_MATRIX.json"
+    },
+    {
+      "check_id": "A03-QA-003",
+      "name": "review_queue_exists",
+      "required": true,
+      "status": "pass",
+      "artifact": "KnowledgeBase/SSRIs/Evidence/EVIDENCE_REVIEW_QUEUE.json"
+    },
+    {
+      "check_id": "A03-QA-004",
+      "name": "no_runtime_consumption",
+      "required": true,
+      "status": "pass",
+      "artifact": "KnowledgeBase/SSRIs/Evidence/EVIDENCE_INTEGRATION_BASELINE.json"
+    },
+    {
+      "check_id": "A03-QA-005",
+      "name": "no_recommendation_or_prescription",
+      "required": true,
+      "status": "pass",
+      "artifact": "KnowledgeBase/SSRIs/Evidence/EVIDENCE_INTEGRATION_BASELINE.json"
+    }
+  ],
+  "next_mission": "A03-057 - KNOWLEDGE_QA_REPORT"
+}

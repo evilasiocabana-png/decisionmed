@@ -1,0 +1,45 @@
+{
+  "mission": "A09-011",
+  "status": "complete",
+  "extraction_mode": "exact_short_source_text_only",
+  "records": [
+    {
+      "record_id": "A09-TXT-001",
+      "selection_id": "A09-SEL-001",
+      "source_id": "ATYPICAL-SRC-001",
+      "drug_id": "ATYPICAL-TRAZODONE",
+      "field": "mechanism",
+      "section": "12.1 Mechanism of Action",
+      "exact_text": "mechanism of trazodone's antidepressant action is not fully understood",
+      "use_scope": "uncertainty_marker_only"
+    },
+    {
+      "record_id": "A09-TXT-002",
+      "selection_id": "A09-SEL-001",
+      "source_id": "ATYPICAL-SRC-001",
+      "drug_id": "ATYPICAL-TRAZODONE",
+      "field": "mechanism",
+      "section": "12.1 Mechanism of Action",
+      "exact_text": "related to its enhancement of serotonergic activity in the CNS",
+      "use_scope": "mechanism_fragment"
+    },
+    {
+      "record_id": "A09-TXT-003",
+      "selection_id": "A09-SEL-001",
+      "source_id": "ATYPICAL-SRC-001",
+      "drug_id": "ATYPICAL-TRAZODONE",
+      "field": "mechanism",
+      "section": "12.1 Mechanism of Action",
+      "exact_text": "selective serotonin reuptake inhibitor (SSRI) and a 5HT2 receptor antagonist",
+      "use_scope": "mechanism_fragment"
+    }
+  ],
+  "forbidden_transforms": [
+    "summary",
+    "paraphrase",
+    "inference",
+    "recommendation",
+    "prescription",
+    "runtime_use"
+  ]
+}

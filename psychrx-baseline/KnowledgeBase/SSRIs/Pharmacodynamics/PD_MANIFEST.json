@@ -1,0 +1,20 @@
+﻿{
+    "schema_version":  "0.1.0",
+    "publication_status":  "not_published",
+    "runtime_consumption_allowed":  false,
+    "scientific_status":  "not_populated",
+    "mission":  "A03-025",
+    "editorial_status":  "draft",
+    "files":  [
+                  "PD_SCHEMA.json",
+                  "PD_MODEL.json",
+                  "PD_INDEX.json",
+                  "PD_TRACEABILITY.json",
+                  "PD_VALIDATION.json",
+                  "PD_MANIFEST.json"
+              ],
+    "pd_model_count":  6,
+    "schema":  "psychrx.a03.pd_manifest",
+    "status":  "published_as_structural_draft",
+    "program":  "A03"
+}

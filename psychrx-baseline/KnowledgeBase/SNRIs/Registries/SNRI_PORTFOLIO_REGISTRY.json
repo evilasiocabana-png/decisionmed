@@ -1,0 +1,46 @@
+{
+  "schema": "psychrx.knowledgebase.snri.portfolio_registry",
+  "program": "A04",
+  "mission": "A04-002",
+  "status": "metadata_only_portfolio_initialized",
+  "items": [
+    {
+      "drug_id": "SNRI_VENLAFAXINE",
+      "canonical_name": "Venlafaxine",
+      "directory": "KnowledgeBase/SNRIs/Venlafaxine",
+      "scientific_population_status": "not_started",
+      "source_corpus_status": "missing"
+    },
+    {
+      "drug_id": "SNRI_DESVENLAFAXINE",
+      "canonical_name": "Desvenlafaxine",
+      "directory": "KnowledgeBase/SNRIs/Desvenlafaxine",
+      "scientific_population_status": "not_started",
+      "source_corpus_status": "missing"
+    },
+    {
+      "drug_id": "SNRI_DULOXETINE",
+      "canonical_name": "Duloxetine",
+      "directory": "KnowledgeBase/SNRIs/Duloxetine",
+      "scientific_population_status": "not_started",
+      "source_corpus_status": "missing"
+    },
+    {
+      "drug_id": "SNRI_LEVOMILNACIPRAN",
+      "canonical_name": "Levomilnacipran",
+      "directory": "KnowledgeBase/SNRIs/Levomilnacipran",
+      "scientific_population_status": "not_started",
+      "source_corpus_status": "missing"
+    },
+    {
+      "drug_id": "SNRI_MILNACIPRAN",
+      "canonical_name": "Milnacipran",
+      "directory": "KnowledgeBase/SNRIs/Milnacipran",
+      "scientific_population_status": "not_started",
+      "source_corpus_status": "missing"
+    }
+  ],
+  "publication_status": "not_published",
+  "runtime_consumption_allowed": false,
+  "next_mission": "A04-003 - SNRI_SOURCE_CORPUS_INTAKE"
+}

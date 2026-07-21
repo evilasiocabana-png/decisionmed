@@ -1,0 +1,21 @@
+{
+  "schema": "psychrx.scientific_corpus.snri.program_completion_gate.v1",
+  "program": "A04.0",
+  "mission": "A04.0-008 - PROGRAM_A04_0_COMPLETION_GATE",
+  "status": "passed",
+  "program_status": "completed",
+  "drug_class": "SNRIs",
+  "source_records": 19,
+  "corpus_status": "published_controlled_corpus",
+  "runtime_eligibility": "not_eligible",
+  "program_a04_unblocked": true,
+  "next_program": "A04 - Scientific Content Population: SNRIs",
+  "next_mission": "A04-003 - SNRI_SOURCE_CORPUS_INTAKE reconciliation",
+  "non_actions": {
+    "scientific_interpretation_performed": false,
+    "knowledge_objects_created": 0,
+    "runtime_objects_created": 0,
+    "recommendations_created": 0,
+    "prescriptions_created": 0
+  }
+}

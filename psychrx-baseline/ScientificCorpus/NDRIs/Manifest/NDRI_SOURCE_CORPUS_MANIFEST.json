@@ -1,0 +1,44 @@
+{
+  "mission": "A05-004",
+  "status": "complete",
+  "corpus": "ScientificCorpus/NDRIs",
+  "intake_mode": "metadata_and_locator_only_until_section_selection",
+  "sources": [
+    {
+      "source_id": "NDRI-SRC-001",
+      "drug": "bupropion",
+      "title": "BUPROPION HYDROCHLORIDE tablet, film coated",
+      "organization": "DailyMed / National Library of Medicine",
+      "document_type": "official_label",
+      "language": "en",
+      "access_status": "accessible",
+      "locator": "https://dailymed.nlm.nih.gov/dailymed/lookup.cfm?setid=b127d3fc-be5e-4c12-8026-205766bf8e7f",
+      "checksum": "not_captured",
+      "corpus_status": "registered"
+    },
+    {
+      "source_id": "NDRI-SRC-002",
+      "drug": "bupropion",
+      "title": "BUPROPION HYDROCHLORIDE tablet, extended release",
+      "organization": "DailyMed / National Library of Medicine",
+      "document_type": "official_label",
+      "language": "en",
+      "access_status": "accessible",
+      "locator": "https://dailymed.nlm.nih.gov/dailymed/lookup.cfm?setid=004d8121-59d4-46c4-acb8-b2dd097bf556",
+      "checksum": "not_captured",
+      "corpus_status": "registered"
+    },
+    {
+      "source_id": "NDRI-SRC-003",
+      "drug": "bupropion",
+      "title": "WELLBUTRIN XL prescribing information",
+      "organization": "U.S. Food and Drug Administration",
+      "document_type": "regulatory_label_pdf",
+      "language": "en",
+      "access_status": "accessible",
+      "locator": "https://www.accessdata.fda.gov/drugsatfda_docs/label/2022/021515s044lbl.pdf",
+      "checksum": "not_captured",
+      "corpus_status": "registered"
+    }
+  ]
+}

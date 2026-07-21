@@ -1,0 +1,16 @@
+{
+  "schema": "psychrx.scientific_corpus.snri.corpus_status.v1",
+  "program": "A04.0",
+  "mission": "A04.0-003 - SNRI_SOURCE_CORPUS_INTAKE",
+  "status": "intake_structure_completed",
+  "source_count": 19,
+  "directory_structure_created": true,
+  "manifest_created": true,
+  "indexes_created": true,
+  "metadata_normalization_completed": false,
+  "source_validation_completed": false,
+  "editorial_registration_completed": false,
+  "corpus_publication_completed": false,
+  "runtime_eligible": false,
+  "next_mission": "A04.0-004 - SNRI_SOURCE_METADATA_NORMALIZATION"
+}

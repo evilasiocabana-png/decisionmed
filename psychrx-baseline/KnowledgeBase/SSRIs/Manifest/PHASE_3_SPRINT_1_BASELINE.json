@@ -1,0 +1,35 @@
+{
+  "schema": "psychrx.a03.phase_3_sprint_1_baseline",
+  "program": "A03",
+  "mission": "A03-030",
+  "status": "baseline_complete",
+  "schema_version": "0.1.0",
+  "baseline_scope": [
+    "A03-021",
+    "A03-022",
+    "A03-023",
+    "A03-024",
+    "A03-025",
+    "A03-026",
+    "A03-027",
+    "A03-028",
+    "A03-029"
+  ],
+  "structural_domains_completed": [
+    "scientific_drug_profile",
+    "mechanism_of_action",
+    "receptor_and_neurotransmitter",
+    "pharmacokinetics",
+    "pharmacodynamics",
+    "indications",
+    "posology",
+    "contraindications",
+    "safety"
+  ],
+  "scientific_content_interpreted": false,
+  "clinical_recommendations_created": false,
+  "prescription_created": false,
+  "runtime_consumption_allowed": false,
+  "publication_status": "not_published",
+  "next_state": "cto_gate_review_required"
+}

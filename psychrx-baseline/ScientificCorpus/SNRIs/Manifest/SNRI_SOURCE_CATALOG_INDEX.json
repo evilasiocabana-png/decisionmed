@@ -1,0 +1,28 @@
+{
+  "schema": "psychrx.scientific_corpus.snri.source_catalog_index.v1",
+  "program": "A04.0",
+  "mission": "A04.0-002 - SNRI_SOURCE_CATALOG",
+  "status": "completed",
+  "catalog_index": [
+    { "catalog_id": "A04.0-CAT-001", "source_id": "A04.0-SD-B001", "category": "Books", "planned_corpus_location": "ScientificCorpus/SNRIs/Books/A04.0-SD-B001/" },
+    { "catalog_id": "A04.0-CAT-002", "source_id": "A04.0-SD-B002", "category": "Books", "planned_corpus_location": "ScientificCorpus/SNRIs/Books/A04.0-SD-B002/" },
+    { "catalog_id": "A04.0-CAT-003", "source_id": "A04.0-SD-B003", "category": "Books", "planned_corpus_location": "ScientificCorpus/SNRIs/Books/A04.0-SD-B003/" },
+    { "catalog_id": "A04.0-CAT-004", "source_id": "A04.0-SD-G001", "category": "Guidelines", "planned_corpus_location": "ScientificCorpus/SNRIs/Guidelines/A04.0-SD-G001/" },
+    { "catalog_id": "A04.0-CAT-005", "source_id": "A04.0-SD-G002", "category": "Guidelines", "planned_corpus_location": "ScientificCorpus/SNRIs/Guidelines/A04.0-SD-G002/" },
+    { "catalog_id": "A04.0-CAT-006", "source_id": "A04.0-SD-G003", "category": "Guidelines", "planned_corpus_location": "ScientificCorpus/SNRIs/Guidelines/A04.0-SD-G003/" },
+    { "catalog_id": "A04.0-CAT-007", "source_id": "A04.0-SD-G004", "category": "Guidelines", "planned_corpus_location": "ScientificCorpus/SNRIs/Guidelines/A04.0-SD-G004/" },
+    { "catalog_id": "A04.0-CAT-008", "source_id": "A04.0-SD-G005", "category": "Guidelines", "planned_corpus_location": "ScientificCorpus/SNRIs/Guidelines/A04.0-SD-G005/" },
+    { "catalog_id": "A04.0-CAT-009", "source_id": "A04.0-SD-R001", "category": "Regulatory", "planned_corpus_location": "ScientificCorpus/SNRIs/Regulatory/A04.0-SD-R001/" },
+    { "catalog_id": "A04.0-CAT-010", "source_id": "A04.0-SD-R002", "category": "Regulatory", "planned_corpus_location": "ScientificCorpus/SNRIs/Regulatory/A04.0-SD-R002/" },
+    { "catalog_id": "A04.0-CAT-011", "source_id": "A04.0-SD-R003", "category": "Regulatory", "planned_corpus_location": "ScientificCorpus/SNRIs/Regulatory/A04.0-SD-R003/" },
+    { "catalog_id": "A04.0-CAT-012", "source_id": "A04.0-SD-R004", "category": "Regulatory", "planned_corpus_location": "ScientificCorpus/SNRIs/Regulatory/A04.0-SD-R004/" },
+    { "catalog_id": "A04.0-CAT-013", "source_id": "A04.0-SD-R005", "category": "Regulatory", "planned_corpus_location": "ScientificCorpus/SNRIs/Regulatory/A04.0-SD-R005/" },
+    { "catalog_id": "A04.0-CAT-014", "source_id": "A04.0-SD-E001", "category": "Reference", "planned_corpus_location": "ScientificCorpus/SNRIs/Reference/A04.0-SD-E001/" },
+    { "catalog_id": "A04.0-CAT-015", "source_id": "A04.0-SD-E002", "category": "Reviews", "planned_corpus_location": "ScientificCorpus/SNRIs/Reviews/A04.0-SD-E002/" },
+    { "catalog_id": "A04.0-CAT-016", "source_id": "A04.0-SD-E003", "category": "RCT", "planned_corpus_location": "ScientificCorpus/SNRIs/RCT/A04.0-SD-E003/" },
+    { "catalog_id": "A04.0-CAT-017", "source_id": "A04.0-SD-S001", "category": "Safety", "planned_corpus_location": "ScientificCorpus/SNRIs/Safety/A04.0-SD-S001/" },
+    { "catalog_id": "A04.0-CAT-018", "source_id": "A04.0-SD-S002", "category": "Safety", "planned_corpus_location": "ScientificCorpus/SNRIs/Safety/A04.0-SD-S002/" },
+    { "catalog_id": "A04.0-CAT-019", "source_id": "A04.0-SD-S003", "category": "Safety", "planned_corpus_location": "ScientificCorpus/SNRIs/Safety/A04.0-SD-S003/" }
+  ],
+  "next_mission": "A04.0-003 - SNRI_SOURCE_CORPUS_INTAKE"
+}

@@ -1,0 +1,62 @@
+{
+  "schema": "psychrx.program_gate_validation.v1",
+  "program": "A04 - Scientific Content Population: SNRIs",
+  "mission": "A04-016 - A04_PROGRAM_GATE_VALIDATION",
+  "status": "passed",
+  "validated_missions": [
+    "A04-010 - SNRI_MECHANISM_SOURCE_TEXT_EXTRACTION",
+    "A04-011 - SNRI_MECHANISM_POPULATION",
+    "A04-012 - SNRI_MECHANISM_DRAFT_EDITORIAL_REVIEW",
+    "A04-013 - SNRI_MECHANISM_PUBLICATION",
+    "A04-014 - SNRI_TRACEABILITY_AUDIT",
+    "A04-015 - SNRI_PROGRAM_COMPLETION_REPORT",
+    "A04-016 - A04_PROGRAM_GATE_VALIDATION"
+  ],
+  "gate_checks": [
+    {
+      "check": "A04-010 completed",
+      "status": "passed"
+    },
+    {
+      "check": "A04-011 completed",
+      "status": "passed"
+    },
+    {
+      "check": "A04-012 completed",
+      "status": "passed"
+    },
+    {
+      "check": "A04-013 completed",
+      "status": "passed"
+    },
+    {
+      "check": "A04-014 completed",
+      "status": "passed"
+    },
+    {
+      "check": "A04-015 completed",
+      "status": "passed"
+    },
+    {
+      "check": "Traceability preserved",
+      "status": "passed"
+    },
+    {
+      "check": "Tests passed",
+      "status": "passed",
+      "command": "python -m unittest discover -s tests -t .",
+      "result": "Ran 149 tests. OK."
+    },
+    {
+      "check": "No runtime eligibility created",
+      "status": "passed"
+    },
+    {
+      "check": "No recommendation or prescription created",
+      "status": "passed"
+    }
+  ],
+  "program_result": "completed_internal_non_runtime_mechanism_package",
+  "runtime_eligibility": "not_eligible",
+  "next_action": "await_governance_authorization_for_next_program"
+}

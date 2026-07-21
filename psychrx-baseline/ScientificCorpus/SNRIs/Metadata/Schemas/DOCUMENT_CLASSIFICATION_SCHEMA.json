@@ -1,0 +1,16 @@
+{
+  "schema": "psychrx.scientific_corpus.snri.document_classification_schema.v1",
+  "program": "A04.0",
+  "mission": "A04.0-004 - SNRI_SOURCE_METADATA_NORMALIZATION",
+  "classifications": [
+    { "category": "Books", "document_types": ["book"] },
+    { "category": "Guidelines", "document_types": ["clinical_guideline", "clinical_guideline_family"] },
+    { "category": "Regulatory", "document_types": ["regulatory_database", "official_label_database"] },
+    { "category": "Reviews", "document_types": ["evidence_database"] },
+    { "category": "MetaAnalyses", "document_types": ["meta_analysis_source"] },
+    { "category": "RCT", "document_types": ["clinical_trial_registry"] },
+    { "category": "Safety", "document_types": ["safety_communications"] },
+    { "category": "Reference", "document_types": ["bibliographic_database"] }
+  ],
+  "classification_policy": "Administrative classification only. No evidence hierarchy, recommendation strength or clinical interpretation is assigned."
+}

@@ -1,0 +1,13 @@
+{
+  "mission": "A07-014",
+  "status": "published_internal_non_runtime",
+  "package_id": "A07-TCA-MECHANISM-INTERNAL-001",
+  "published_artifacts": [
+    "KnowledgeBase/TCAs/ScientificContent/TCA_MECHANISM_POPULATED_DRAFT.json",
+    "KnowledgeBase/TCAs/Review/TCA_DRAFT_EDITORIAL_REVIEW.json",
+    "KnowledgeBase/TCAs/Traceability/TCA_SOURCE_SECTION_SELECTION.json",
+    "KnowledgeBase/TCAs/SourceText/TCA_MECHANISM_SOURCE_TEXT_EXTRACTS.json"
+  ],
+  "runtime_eligible": false,
+  "publication_scope": "internal_scientific_knowledge_only"
+}

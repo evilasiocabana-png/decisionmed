@@ -1,0 +1,18 @@
+{
+  "schema": "psychrx.scientific_corpus.pd_source_anchors",
+  "program": "A03",
+  "mission": "A03-047",
+  "status": "anchor_intake_completed_full_core_ssri_scope",
+  "created_at": "2026-07-01",
+  "source_text_stored": false,
+  "pharmacodynamic_content_extracted": false,
+  "anchors": [
+    {"anchor_id":"A03-PD-ANCHOR-FLUOXETINE-001","drug_id":"SSRI_FLUOXETINE","xml_url":"https://dailymed.nlm.nih.gov/dailymed/services/v2/spls/9de65da4-73f8-4c88-8198-c92e63224ddb.xml","section_path":["12. CLINICAL PHARMACOLOGY","12.2. Pharmacodynamics"],"anchor_status":"anchor_ready","extraction_allowed_next_mission":true},
+    {"anchor_id":"A03-PD-ANCHOR-SERTRALINE-001","drug_id":"SSRI_SERTRALINE","xml_url":"https://dailymed.nlm.nih.gov/dailymed/services/v2/spls/fda754f6-d0f3-4dce-a17a-927d64f912f7.xml","section_path":["12 CLINICAL PHARMACOLOGY","12.2 Pharmacodynamics"],"anchor_status":"anchor_ready","extraction_allowed_next_mission":true},
+    {"anchor_id":"A03-PD-ANCHOR-PAROXETINE-001","drug_id":"SSRI_PAROXETINE","xml_url":"https://dailymed.nlm.nih.gov/dailymed/services/v2/spls/ef3b5cbe-f9e1-c1ac-79da-cfe14e3a7e7e.xml","section_path":["12 CLINICAL PHARMACOLOGY","12.2 Pharmacodynamics"],"anchor_status":"anchor_ready","extraction_allowed_next_mission":true},
+    {"anchor_id":"A03-PD-ANCHOR-CITALOPRAM-001","drug_id":"SSRI_CITALOPRAM","xml_url":"https://dailymed.nlm.nih.gov/dailymed/services/v2/spls/4259d9b1-de34-43a4-85a8-41dd214e9177.xml","section_path":["12 CLINICAL PHARMACOLOGY","12.2 Pharmacodynamics"],"anchor_status":"anchor_ready","extraction_allowed_next_mission":true},
+    {"anchor_id":"A03-PD-ANCHOR-ESCITALOPRAM-001","drug_id":"SSRI_ESCITALOPRAM","xml_url":"https://dailymed.nlm.nih.gov/dailymed/services/v2/spls/3019a647-9bcf-48cf-928c-0467f9b921a8.xml","section_path":["12 CLINICAL PHARMACOLOGY","12.2 Pharmacodynamics"],"anchor_status":"anchor_ready","extraction_allowed_next_mission":true},
+    {"anchor_id":"A03-PD-ANCHOR-FLUVOXAMINE-001","drug_id":"SSRI_FLUVOXAMINE","xml_url":"https://dailymed.nlm.nih.gov/dailymed/services/v2/spls/6eeb14df-6fcf-a737-5359-5744eb4accea.xml","section_path":["12 CLINICAL PHARMACOLOGY","12.2 Pharmacodynamics"],"anchor_status":"anchor_ready","extraction_allowed_next_mission":true}
+  ],
+  "next_mission": "A03-048 - PHARMACODYNAMIC_CONTENT_EXTRACTION"
+}

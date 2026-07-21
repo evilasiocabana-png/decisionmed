@@ -1,0 +1,11 @@
+{
+  "mission": "A13-014",
+  "status": "published_internal_non_runtime",
+  "package": "ANXIOLYTIC_HYPNOTIC_MECHANISM_PACKAGE",
+  "included_artifacts": [
+    "ANXIOLYTIC_HYPNOTIC_MECHANISM_SOURCE_TEXT_EXTRACTS.json",
+    "ANXIOLYTIC_HYPNOTIC_MECHANISM_POPULATED_DRAFT.json",
+    "ANXIOLYTIC_HYPNOTIC_DRAFT_EDITORIAL_REVIEW.json"
+  ],
+  "runtime_eligible": false
+}

@@ -1,0 +1,22 @@
+{
+  "schema": "psychrx.knowledgebase.ssri.pk_extraction",
+  "program": "A03",
+  "mission": "A03-042",
+  "drug_id": "SSRI_FLUVOXAMINE",
+  "source_anchor_id": "A03-PK-ANCHOR-FLUVOXAMINE-001",
+  "source_section": "12.3 Pharmacokinetics",
+  "extraction_claim": {
+    "bioavailability": "absolute_bioavailability_53_percent",
+    "food_effect": "oral_bioavailability_not_significantly_affected_by_food",
+    "steady_state": "about_one_week",
+    "peak_concentration_time": "3_to_8_hours_at_steady_state",
+    "dose_linearity": "nonlinear_pharmacokinetics_over_100_to_300mg_per_day",
+    "volume_of_distribution": "approximately_25_L_per_kg",
+    "protein_binding": "approximately_80_percent",
+    "metabolism": "extensively_metabolized_by_liver_with_oxidative_demethylation_and_deamination"
+  },
+  "reviewer_status": "awaiting_review",
+  "normalization_status": "awaiting_normalization",
+  "publication_status": "not_published",
+  "runtime_consumption_allowed": false
+}

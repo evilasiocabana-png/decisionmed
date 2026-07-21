@@ -1,0 +1,29 @@
+{
+  "schema": "psychrx.scientific_corpus.snri.source_index.v1",
+  "program": "A04.0",
+  "mission": "A04.0-001 - SNRI_SOURCE_DISCOVERY",
+  "status": "created",
+  "index_type": "raw_source_discovery_index",
+  "items": [
+    { "source_id": "A04.0-SD-B001", "category": "books", "title": "Stahl's Essential Psychopharmacology", "status": "candidate_identified" },
+    { "source_id": "A04.0-SD-B002", "category": "books", "title": "Stahl's Prescriber's Guide", "status": "candidate_identified" },
+    { "source_id": "A04.0-SD-B003", "category": "books", "title": "The Maudsley Prescribing Guidelines in Psychiatry", "status": "candidate_identified" },
+    { "source_id": "A04.0-SD-G001", "category": "guidelines", "title": "Depression in adults: treatment and management", "status": "candidate_identified" },
+    { "source_id": "A04.0-SD-G002", "category": "guidelines", "title": "CANMAT Depression Guidelines", "status": "candidate_identified" },
+    { "source_id": "A04.0-SD-G003", "category": "guidelines", "title": "Practice Guideline for the Treatment of Patients With Major Depressive Disorder", "status": "candidate_identified" },
+    { "source_id": "A04.0-SD-G004", "category": "guidelines", "title": "WFSBP Guidelines for the Biological Treatment of Unipolar Depressive Disorders", "status": "candidate_identified" },
+    { "source_id": "A04.0-SD-G005", "category": "guidelines", "title": "VA/DoD Clinical Practice Guideline for the Management of Major Depressive Disorder", "status": "candidate_identified" },
+    { "source_id": "A04.0-SD-R001", "category": "regulatory", "title": "Drugs@FDA", "status": "candidate_identified" },
+    { "source_id": "A04.0-SD-R002", "category": "regulatory", "title": "DailyMed", "status": "candidate_identified" },
+    { "source_id": "A04.0-SD-R003", "category": "regulatory", "title": "EMA Medicines", "status": "candidate_identified" },
+    { "source_id": "A04.0-SD-R004", "category": "regulatory", "title": "Consulta a Medicamentos", "status": "candidate_identified" },
+    { "source_id": "A04.0-SD-R005", "category": "regulatory", "title": "Bulario Eletronico", "status": "candidate_identified" },
+    { "source_id": "A04.0-SD-E001", "category": "evidence_sources", "title": "PubMed/MEDLINE", "status": "candidate_identified" },
+    { "source_id": "A04.0-SD-E002", "category": "evidence_sources", "title": "Cochrane Library", "status": "candidate_identified" },
+    { "source_id": "A04.0-SD-E003", "category": "evidence_sources", "title": "ClinicalTrials.gov", "status": "candidate_identified" },
+    { "source_id": "A04.0-SD-S001", "category": "safety_sources", "title": "FDA Drug Safety Communications", "status": "candidate_identified" },
+    { "source_id": "A04.0-SD-S002", "category": "safety_sources", "title": "EMA Pharmacovigilance and PRAC", "status": "candidate_identified" },
+    { "source_id": "A04.0-SD-S003", "category": "safety_sources", "title": "Farmacovigilancia", "status": "candidate_identified" }
+  ],
+  "next_mission": "A04.0-002 - SNRI_SOURCE_CATALOG"
+}

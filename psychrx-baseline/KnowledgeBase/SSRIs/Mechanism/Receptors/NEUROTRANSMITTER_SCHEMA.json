@@ -1,0 +1,18 @@
+﻿{
+    "program":  "A03",
+    "mission":  "A03-023",
+    "runtime_consumption_allowed":  false,
+    "schema":  "psychrx.a03.neurotransmitter_schema",
+    "allowed_vocabulary":  [
+                               "serotonin",
+                               "noradrenaline",
+                               "dopamine",
+                               "histamine",
+                               "acetylcholine",
+                               "glutamate",
+                               "GABA",
+                               "other_documented"
+                           ],
+    "status":  "structural_schema_only",
+    "schema_version":  "0.1.0"
+}

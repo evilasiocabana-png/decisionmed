@@ -1,0 +1,14 @@
+{
+  "schema": "psychrx.knowledgebase.ssri.mechanism_normalized_draft",
+  "program": "A03",
+  "mission": "A03-037",
+  "drug_id": "SSRI_ESCITALOPRAM",
+  "source_extraction_id": "A03-MOA-EXT-ESCITALOPRAM-001",
+  "mechanism_family": "serotonergic_modulation",
+  "mechanism_route": "serotonin_reuptake_inhibition",
+  "mechanism_certainty": "presumed",
+  "source_certainty_language": "presumed link",
+  "normalization_status": "normalized_pending_editorial_review",
+  "publication_status": "not_published",
+  "runtime_consumption_allowed": false
+}

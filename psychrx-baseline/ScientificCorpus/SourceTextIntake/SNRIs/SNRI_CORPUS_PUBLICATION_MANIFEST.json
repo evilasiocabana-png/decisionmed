@@ -1,0 +1,27 @@
+{
+  "schema": "psychrx.scientific_corpus.snri.corpus_publication_manifest.v1",
+  "program": "A04.0",
+  "mission": "A04.0-007 - SNRI_CORPUS_PUBLICATION",
+  "status": "published_controlled_corpus",
+  "drug_class": "SNRIs",
+  "publication_version": "0.1.0",
+  "publication_level": "controlled_internal_corpus",
+  "source_records": 19,
+  "source_validation_status": "structurally_validated_metadata_only",
+  "editorial_status": "registered_for_corpus_publication",
+  "runtime_eligibility": "not_eligible",
+  "published_artifacts": [
+    "ScientificCorpus/SNRIs/Manifest/SNRI_SOURCE_CORPUS_MANIFEST.json",
+    "ScientificCorpus/SNRIs/Metadata/SOURCE_METADATA_REGISTRY.json",
+    "ScientificCorpus/SourceTextIntake/SNRIs/SNRI_SOURCE_VALIDATION_REPORT.md",
+    "ScientificCorpus/SourceTextIntake/SNRIs/SNRI_EDITORIAL_REGISTRATION.json"
+  ],
+  "non_actions": {
+    "scientific_interpretation_performed": false,
+    "knowledge_objects_created": 0,
+    "runtime_objects_created": 0,
+    "recommendations_created": 0,
+    "prescriptions_created": 0
+  },
+  "next_mission": "A04.0-008 - PROGRAM_A04_0_COMPLETION_GATE"
+}

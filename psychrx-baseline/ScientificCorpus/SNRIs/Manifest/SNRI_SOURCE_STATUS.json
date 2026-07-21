@@ -1,0 +1,32 @@
+{
+  "schema": "psychrx.scientific_corpus.snri.source_status.v1",
+  "program": "A04.0",
+  "mission": "A04.0-001 - SNRI_SOURCE_DISCOVERY",
+  "status": "completed",
+  "phase": "Phase 1 - Source Discovery",
+  "summary": {
+    "candidate_sources_identified": 19,
+    "categories_identified": [
+      "books",
+      "guidelines",
+      "regulatory",
+      "evidence_sources",
+      "safety_sources"
+    ],
+    "portfolio_terms_defined": [
+      "venlafaxine",
+      "desvenlafaxine",
+      "duloxetine",
+      "levomilnacipran",
+      "milnacipran"
+    ],
+    "documents_downloaded": 0,
+    "knowledge_objects_created": 0,
+    "scientific_interpretations_created": 0
+  },
+  "program_a04_blocker_status": {
+    "a04_003_snri_source_corpus_intake": "still_blocked",
+    "reason": "Source discovery is complete, but source catalog, intake, metadata normalization, validation, editorial registration and corpus publication are not complete yet."
+  },
+  "next_mission": "A04.0-002 - SNRI_SOURCE_CATALOG"
+}

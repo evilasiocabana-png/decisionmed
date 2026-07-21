@@ -1,0 +1,25 @@
+{
+  "mission": "A12-007",
+  "drug_id": "MS-LITHIUM",
+  "name": "Lithium",
+  "class": "mood_stabilizer",
+  "fields": {
+    "mechanism": {
+      "status": "authorized_for_a12_population",
+      "content_ref": null
+    },
+    "pharmacokinetics": {
+      "status": "blocked"
+    },
+    "pharmacodynamics": {
+      "status": "blocked"
+    },
+    "safety": {
+      "status": "blocked"
+    },
+    "evidence": {
+      "status": "blocked"
+    }
+  },
+  "runtime_eligible": false
+}

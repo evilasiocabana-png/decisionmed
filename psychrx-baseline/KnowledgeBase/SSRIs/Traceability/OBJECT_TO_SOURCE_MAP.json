@@ -1,0 +1,220 @@
+﻿{
+    "schema":  "psychrx.a03.object_to_source_map",
+    "program":  "A03",
+    "mission":  "A03-017",
+    "status":  "metadata_only",
+    "objects":  [
+                    {
+                        "object_id":  "A03_REG_DRUG",
+                        "object_type":  "registry",
+                        "source_id":  [
+
+                                      ],
+                        "editorial_version":  "0.1.0",
+                        "schema_version":  "0.1.0",
+                        "created_at":  "2026-06-30",
+                        "updated_at":  "2026-06-30",
+                        "validation_status":  "structure_initialized_no_source_claim",
+                        "publication_status":  "not_published",
+                        "path":  "KnowledgeBase/SSRIs/Registries/DRUG_REGISTRY.json",
+                        "scientific_content_populated":  false
+                    },
+                    {
+                        "object_id":  "A03_REG_EDITORIAL",
+                        "object_type":  "registry",
+                        "source_id":  [
+
+                                      ],
+                        "editorial_version":  "0.1.0",
+                        "schema_version":  "0.1.0",
+                        "created_at":  "2026-06-30",
+                        "updated_at":  "2026-06-30",
+                        "validation_status":  "structure_initialized_no_source_claim",
+                        "publication_status":  "not_published",
+                        "path":  "KnowledgeBase/SSRIs/Registries/EDITORIAL_REGISTRY.json",
+                        "scientific_content_populated":  false
+                    },
+                    {
+                        "object_id":  "A03_REG_DRUG_PORTFOLIO_EDITORIAL",
+                        "object_type":  "registry",
+                        "source_id":  [
+
+                                      ],
+                        "editorial_version":  "0.1.0",
+                        "schema_version":  "0.1.0",
+                        "created_at":  "2026-06-30",
+                        "updated_at":  "2026-06-30",
+                        "validation_status":  "structure_initialized_no_source_claim",
+                        "publication_status":  "not_published",
+                        "path":  "KnowledgeBase/SSRIs/Registries/DRUG_PORTFOLIO_EDITORIAL_REGISTRY.json",
+                        "scientific_content_populated":  false
+                    },
+                    {
+                        "object_id":  "A03_REG_METADATA",
+                        "object_type":  "registry",
+                        "source_id":  [
+
+                                      ],
+                        "editorial_version":  "0.1.0",
+                        "schema_version":  "0.1.0",
+                        "created_at":  "2026-06-30",
+                        "updated_at":  "2026-06-30",
+                        "validation_status":  "structure_initialized_no_source_claim",
+                        "publication_status":  "not_published",
+                        "path":  "KnowledgeBase/SSRIs/Metadata/DRUG_PORTFOLIO_DEFINITION.json",
+                        "scientific_content_populated":  false
+                    },
+                    {
+                        "object_id":  "A03_REG_SOURCE",
+                        "object_type":  "registry",
+                        "source_id":  [
+
+                                      ],
+                        "editorial_version":  "0.1.0",
+                        "schema_version":  "0.1.0",
+                        "created_at":  "2026-06-30",
+                        "updated_at":  "2026-06-30",
+                        "validation_status":  "structure_initialized_no_source_claim",
+                        "publication_status":  "not_published",
+                        "path":  "ScientificCorpus/Metadata/NORMALIZED_SOURCE_REGISTRY.json",
+                        "scientific_content_populated":  false
+                    },
+                    {
+                        "object_id":  "A03_REG_BINDING",
+                        "object_type":  "registry",
+                        "source_id":  [
+
+                                      ],
+                        "editorial_version":  "0.1.0",
+                        "schema_version":  "0.1.0",
+                        "created_at":  "2026-06-30",
+                        "updated_at":  "2026-06-30",
+                        "validation_status":  "structure_initialized_no_source_claim",
+                        "publication_status":  "not_published",
+                        "path":  "KnowledgeBase/SSRIs/Traceability/DRUG_SOURCE_BINDING.json",
+                        "scientific_content_populated":  false
+                    },
+                    {
+                        "object_id":  "A03_REG_BINDING_INDEX",
+                        "object_type":  "registry",
+                        "source_id":  [
+
+                                      ],
+                        "editorial_version":  "0.1.0",
+                        "schema_version":  "0.1.0",
+                        "created_at":  "2026-06-30",
+                        "updated_at":  "2026-06-30",
+                        "validation_status":  "structure_initialized_no_source_claim",
+                        "publication_status":  "not_published",
+                        "path":  "KnowledgeBase/SSRIs/Traceability/DRUG_SOURCE_BINDING_INDEX.json",
+                        "scientific_content_populated":  false
+                    },
+                    {
+                        "object_id":  "A03_REG_BINDING_STATUS",
+                        "object_type":  "registry",
+                        "source_id":  [
+
+                                      ],
+                        "editorial_version":  "0.1.0",
+                        "schema_version":  "0.1.0",
+                        "created_at":  "2026-06-30",
+                        "updated_at":  "2026-06-30",
+                        "validation_status":  "structure_initialized_no_source_claim",
+                        "publication_status":  "not_published",
+                        "path":  "KnowledgeBase/SSRIs/Traceability/TRACEABILITY_STATUS.json",
+                        "scientific_content_populated":  false
+                    },
+                    {
+                        "object_id":  "A03_REG_TEMPLATE",
+                        "object_type":  "registry",
+                        "source_id":  [
+
+                                      ],
+                        "editorial_version":  "0.1.0",
+                        "schema_version":  "0.1.0",
+                        "created_at":  "2026-06-30",
+                        "updated_at":  "2026-06-30",
+                        "validation_status":  "structure_initialized_no_source_claim",
+                        "publication_status":  "not_published",
+                        "path":  "KnowledgeBase/SSRIs/Templates/TEMPLATE_MANIFEST.json",
+                        "scientific_content_populated":  false
+                    },
+                    {
+                        "object_id":  "A03_REG_TEMPLATE_STATUS",
+                        "object_type":  "registry",
+                        "source_id":  [
+
+                                      ],
+                        "editorial_version":  "0.1.0",
+                        "schema_version":  "0.1.0",
+                        "created_at":  "2026-06-30",
+                        "updated_at":  "2026-06-30",
+                        "validation_status":  "structure_initialized_no_source_claim",
+                        "publication_status":  "not_published",
+                        "path":  "KnowledgeBase/SSRIs/Templates/TEMPLATE_STATUS.json",
+                        "scientific_content_populated":  false
+                    },
+                    {
+                        "object_id":  "A03_REG_DIRECTORY",
+                        "object_type":  "registry",
+                        "source_id":  [
+
+                                      ],
+                        "editorial_version":  "0.1.0",
+                        "schema_version":  "0.1.0",
+                        "created_at":  "2026-06-30",
+                        "updated_at":  "2026-06-30",
+                        "validation_status":  "structure_initialized_no_source_claim",
+                        "publication_status":  "not_published",
+                        "path":  "KnowledgeBase/SSRIs/Indexes/DRUG_DIRECTORY_INDEX.json",
+                        "scientific_content_populated":  false
+                    },
+                    {
+                        "object_id":  "A03_REG_DIRECTORY_TREE",
+                        "object_type":  "registry",
+                        "source_id":  [
+
+                                      ],
+                        "editorial_version":  "0.1.0",
+                        "schema_version":  "0.1.0",
+                        "created_at":  "2026-06-30",
+                        "updated_at":  "2026-06-30",
+                        "validation_status":  "structure_initialized_no_source_claim",
+                        "publication_status":  "not_published",
+                        "path":  "KnowledgeBase/SSRIs/Indexes/DIRECTORY_TREE.json",
+                        "scientific_content_populated":  false
+                    },
+                    {
+                        "object_id":  "A03_REG_DIRECTORY_STATUS",
+                        "object_type":  "registry",
+                        "source_id":  [
+
+                                      ],
+                        "editorial_version":  "0.1.0",
+                        "schema_version":  "0.1.0",
+                        "created_at":  "2026-06-30",
+                        "updated_at":  "2026-06-30",
+                        "validation_status":  "structure_initialized_no_source_claim",
+                        "publication_status":  "not_published",
+                        "path":  "KnowledgeBase/SSRIs/Indexes/DIRECTORY_STATUS.json",
+                        "scientific_content_populated":  false
+                    },
+                    {
+                        "object_id":  "A03_REG_SOURCE_REFERENCE_TEMPLATE",
+                        "object_type":  "registry",
+                        "source_id":  [
+
+                                      ],
+                        "editorial_version":  "0.1.0",
+                        "schema_version":  "0.1.0",
+                        "created_at":  "2026-06-30",
+                        "updated_at":  "2026-06-30",
+                        "validation_status":  "structure_initialized_no_source_claim",
+                        "publication_status":  "not_published",
+                        "path":  "KnowledgeBase/SSRIs/Metadata/SOURCE_REFERENCE_TEMPLATE.json",
+                        "scientific_content_populated":  false
+                    }
+                ],
+    "scientific_content_populated":  false,
+    "clinical_content_interpreted":  false
+}

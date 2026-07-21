@@ -1,0 +1,4 @@
+{
+  "schema": "psychrx.scientific_corpus.snri.safety_index.v1",
+  "sources": ["A04.0-SD-S001", "A04.0-SD-S002", "A04.0-SD-S003"]
+}

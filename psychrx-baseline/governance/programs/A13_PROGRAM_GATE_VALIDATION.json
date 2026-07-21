@@ -1,0 +1,30 @@
+{
+  "mission": "A13-017",
+  "status": "passed",
+  "program": "A13",
+  "validated_at": "2026-07-05",
+  "checks": [
+    {
+      "check": "A13-001 through A13-016 completed",
+      "result": "pass"
+    },
+    {
+      "check": "source traceability preserved",
+      "result": "pass"
+    },
+    {
+      "check": "json files valid",
+      "result": "pass"
+    },
+    {
+      "check": "runtime remains prohibited",
+      "result": "pass"
+    },
+    {
+      "check": "prescription and recommendation absent",
+      "result": "pass"
+    }
+  ],
+  "final_status": "program_complete",
+  "next_program_authorized_by_inbox": null
+}

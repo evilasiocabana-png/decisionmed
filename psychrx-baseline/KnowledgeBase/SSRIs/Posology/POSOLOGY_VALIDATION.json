@@ -1,0 +1,24 @@
+{
+  "schema": "psychrx.a03.posology_validation",
+  "program": "A03",
+  "mission": "A03-027",
+  "status": "structurally_validated",
+  "schema_version": "0.1.0",
+  "validated_files": [
+    "KnowledgeBase/SSRIs/Posology/POSOLOGY_SCHEMA.json",
+    "KnowledgeBase/SSRIs/Posology/POSOLOGY_MODEL.json",
+    "KnowledgeBase/SSRIs/Posology/POSOLOGY_INDEX.json",
+    "KnowledgeBase/SSRIs/Posology/POSOLOGY_TRACEABILITY.json",
+    "KnowledgeBase/SSRIs/Posology/POSOLOGY_MANIFEST.json"
+  ],
+  "validation_checks": {
+    "six_core_ssris_present": true,
+    "value_fields_pending_extraction": true,
+    "dose_values_populated": false,
+    "titration_values_populated": false,
+    "runtime_consumption_allowed": false,
+    "clinical_recommendations_created": false,
+    "prescription_created": false,
+    "therapeutic_strategy_created": false
+  }
+}

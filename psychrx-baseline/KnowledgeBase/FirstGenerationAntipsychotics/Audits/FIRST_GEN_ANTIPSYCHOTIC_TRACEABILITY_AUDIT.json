@@ -1,0 +1,19 @@
+{
+  "mission": "A10-015",
+  "status": "passed",
+  "traceability_chain": [
+    "FGA-SRC-001",
+    "FGA-SEL-001",
+    "FGA-TEXT-001",
+    "FGA-CLAIM-001",
+    "FIRST_GEN_ANTIPSYCHOTIC_INTERNAL_PUBLICATION_MANIFEST"
+  ],
+  "gaps": [
+    {
+      "item": "class_level_mechanism_generalization",
+      "status": "UNRESOLVED"
+    }
+  ],
+  "claims_without_source": 0,
+  "runtime_eligible": false
+}

@@ -1,0 +1,19 @@
+{
+  "mission": "A10-008",
+  "status": "complete",
+  "matrix": [
+    {
+      "drug_id": "FGA-CHLORPROMAZINE",
+      "field": "mechanism",
+      "required_traceability": [
+        "source_id",
+        "source_url",
+        "section",
+        "exact_source_text_record_id",
+        "claim_id",
+        "review_status"
+      ],
+      "runtime_eligible": false
+    }
+  ]
+}

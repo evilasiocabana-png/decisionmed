@@ -1,0 +1,16 @@
+{
+  "schema": "psychrx.knowledgebase.ssri.pd_normalization_registry",
+  "program": "A03",
+  "mission": "A03-049",
+  "status": "normalized_pending_editorial_review",
+  "created_at": "2026-07-01",
+  "source_extraction_registry": "KnowledgeBase/SSRIs/Pharmacodynamics/Extractions/PD_EXTRACTION_REGISTRY.json",
+  "clinical_content_interpreted": false,
+  "recommendation_created": false,
+  "prescription_created": false,
+  "runtime_consumption_allowed": false,
+  "normalized_records": [
+    "SSRI_FLUOXETINE","SSRI_SERTRALINE","SSRI_PAROXETINE","SSRI_CITALOPRAM","SSRI_ESCITALOPRAM","SSRI_FLUVOXAMINE"
+  ],
+  "next_mission": "A03-050 - PHARMACODYNAMIC_BASELINE"
+}

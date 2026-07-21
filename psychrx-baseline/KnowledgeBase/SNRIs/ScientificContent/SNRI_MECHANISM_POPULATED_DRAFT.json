@@ -1,0 +1,102 @@
+{
+  "schema": "psychrx.knowledge_base.snri.mechanism_populated_draft.v1",
+  "program": "A04",
+  "mission": "A04-011 - SNRI_MECHANISM_POPULATION",
+  "status": "reviewed_internal_non_runtime",
+  "scope": "mechanism_field_only",
+  "runtime_eligibility": "not_eligible",
+  "policy": {
+    "source_text_basis": "KnowledgeBase/SNRIs/SourceText/SNRI_MECHANISM_SOURCE_TEXT_EXTRACTS.json",
+    "mechanism_claims_limited_to_source_text_records": true,
+    "summary_created": false,
+    "paraphrase_created": false,
+    "inference_created": false,
+    "pk_populated": false,
+    "pd_populated": false,
+    "safety_populated": false,
+    "recommendation_created": false,
+    "prescription_created": false,
+    "clinical_runtime_enabled": false
+  },
+  "class_level_mechanism": {
+    "status": "UNRESOLVED",
+    "reason": "A04-010 source text records are drug-specific label fragments. No independently selected class-level source section exists in A04-008G.",
+    "runtime_eligibility": "not_eligible"
+  },
+  "drug_mechanisms": [
+    {
+      "drug_id": "SNRI-VENLAFAXINE",
+      "drug_name": "Venlafaxine",
+      "field": "mechanism",
+      "status": "populated_non_runtime",
+      "source_text_records": ["A04-010-TEXT-001", "A04-010-TEXT-002"],
+      "controlled_fragments": [
+        "potentiation of serotonin and norepinephrine",
+        "potent inhibitors of neuronal serotonin and norepinephrine reuptake"
+      ],
+      "unresolved_items": []
+    },
+    {
+      "drug_id": "SNRI-DESVENLAFAXINE",
+      "drug_name": "Desvenlafaxine",
+      "field": "mechanism",
+      "status": "populated_non_runtime",
+      "source_text_records": ["A04-010-TEXT-003", "A04-010-TEXT-004"],
+      "controlled_fragments": [
+        "potent and selective SNRI",
+        "potent and selective serotonin and norepinephrine reuptake inhibitor"
+      ],
+      "unresolved_items": []
+    },
+    {
+      "drug_id": "SNRI-DULOXETINE",
+      "drug_name": "Duloxetine",
+      "field": "mechanism",
+      "status": "populated_non_runtime",
+      "source_text_records": ["A04-010-TEXT-005", "A04-010-TEXT-006"],
+      "controlled_fragments": [
+        "potentiation of serotonergic and noradrenergic activity in the CNS",
+        "potentiation of serotonergic and noradrenergic activity in the CNS"
+      ],
+      "unresolved_items": []
+    },
+    {
+      "drug_id": "SNRI-LEVOMILNACIPRAN",
+      "drug_name": "Levomilnacipran",
+      "field": "mechanism",
+      "status": "populated_non_runtime",
+      "source_text_records": ["A04-010-TEXT-007", "A04-010-TEXT-008"],
+      "controlled_fragments": [
+        "inhibition of reuptake at serotonin and norepinephrine transporters",
+        "potent and selective serotonin and norepinephrine reuptake inhibitor"
+      ],
+      "unresolved_items": []
+    },
+    {
+      "drug_id": "SNRI-MILNACIPRAN",
+      "drug_name": "Milnacipran",
+      "field": "mechanism",
+      "status": "populated_non_runtime",
+      "source_text_records": ["A04-010-TEXT-009", "A04-010-TEXT-010"],
+      "controlled_fragments": [
+        "potent inhibitor of neuronal norepinephrine and serotonin reuptake",
+        "potent inhibitor of neuronal norepinephrine and serotonin reuptake"
+      ],
+      "unresolved_items": []
+    }
+  ],
+  "unresolved_items": [
+    {
+      "item_id": "A04-011-UNRESOLVED-CLASS-MECHANISM",
+      "field": "class_level_mechanism",
+      "status": "UNRESOLVED",
+      "reason": "No A04-008G class-level source section was selected."
+    }
+  ],
+  "editorial_review": {
+    "mission": "A04-012 - SNRI_MECHANISM_DRAFT_EDITORIAL_REVIEW",
+    "status": "passed_with_unresolved_class_level_marker",
+    "review_artifact": "KnowledgeBase/SNRIs/Review/SNRI_MECHANISM_DRAFT_EDITORIAL_REVIEW.json"
+  },
+  "next_mission": "A04-013 - SNRI_MECHANISM_PUBLICATION"
+}

@@ -1,0 +1,12 @@
+{
+  "mission": "A10-004",
+  "status": "complete",
+  "corpus": "ScientificCorpus/FirstGenerationAntipsychotics",
+  "included_sources": [
+    "FGA-SRC-001",
+    "FGA-SRC-002"
+  ],
+  "document_access": "remote_locator_only",
+  "interpretation_performed": false,
+  "runtime_eligible": false
+}

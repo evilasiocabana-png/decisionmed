@@ -1,0 +1,14 @@
+{
+  "mission": "A05-014",
+  "status": "published_internal_non_runtime",
+  "package_id": "A05-NDRI-MECHANISM-INTERNAL-001",
+  "published_artifacts": [
+    "KnowledgeBase/NDRIs/ScientificContent/NDRI_MECHANISM_POPULATED_DRAFT.json",
+    "KnowledgeBase/NDRIs/ScientificContent/NDRI_MECHANISM_POPULATED_DRAFT.md",
+    "KnowledgeBase/NDRIs/Review/NDRI_DRAFT_EDITORIAL_REVIEW.json",
+    "KnowledgeBase/NDRIs/Traceability/NDRI_SOURCE_SECTION_SELECTION.json",
+    "KnowledgeBase/NDRIs/SourceText/NDRI_MECHANISM_SOURCE_TEXT_EXTRACTS.json"
+  ],
+  "runtime_eligible": false,
+  "publication_scope": "internal_scientific_knowledge_only"
+}

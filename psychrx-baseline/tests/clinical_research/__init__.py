@@ -1,0 +1,2 @@
+"""Clinical Research Platform tests."""
+

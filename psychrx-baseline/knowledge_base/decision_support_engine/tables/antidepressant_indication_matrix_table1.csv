@@ -1,0 +1,27 @@
+medicamento,dose_referencia_linha,TAG,TAG_visual_status,panico,transtorno_de_estresse,fobias,fobia_social,TOC,depressao_melancolica,depressao_ansiosa,depressao_com_agitacao_agressiva,depressao_atipica,dor,vicios,tabagismo,compulsao,bulimia_anorexia,TDPM,ideacao_suicida
+Venlafaxina,,75-225,dose_transcribed,75-225,75-225,75-150,75-225,225-300,150-300,75-225,150-300,75-225,150-225,150-225,,150-300,B 150-300 / A 75-150,75-150,150-225
+Desvenlafaxina,50-100,50-100,visual_present_no_dose_transcribed,50-100,50-100,50-100,50-100,50-100,50-100,50-100,50-100,50,50-100,50-100,50-100,50-100,50-100,50,50-100
+Duloxetina,60-120,60-120,visual_present_no_dose_transcribed,60-120,60-120,60-120,60-120,60-120,60-120,60-120,60-120,60,60-120,60-120,60-120,60-120,60-120,60,60-120
+Amitriptilina,,50-150,dose_transcribed,75-150,,75-150,100-200,100-200,100-200,75-150,100-200,,,,75-150,100-200 B,,100-200,
+Nortriptilina,,50-150,dose_transcribed,75-150,,,75-150,100-150,100-150,50-150,100-150,,,75-150,,75-150,100-150 B,,100-150
+Clomipramina,,75-150,dose_transcribed,75-150,75-150,,75-150,100-250,100-200,100-250,100-200,,25-75,,75-150,100-200,100-200 B / A:50-400,50-100,100-200
+Imipramina,,75-150,dose_transcribed,100-200,,,75-150,100-200,100-200,75-200,100-200,,,,,100-200,100-200 B,,100-200
+Doxepina,,75-150,dose_transcribed,100-200,,,75-150,100-200,100-200,100-200,100-200,,,,,100-200,100-200 B,,100-200
+Dosulepina,,75-150,dose_transcribed,75-150,,,75-150,100-200,100-200,75-150,,,,,,75-150,,,100-200
+Mirtazapina,,15-45,dose_transcribed,15-45,15-45,,15-45,,30-45,15-45,30-45,15-30,15-30,,,,,15-30,30-45
+Trazodona,,150-300,dose_transcribed,150-300,150-300,,150-300,,200-300,150-300,,,50-150,,,,,,200-300
+Mianserina,,30-90,dose_transcribed,30-90,30-90,,30-90,,60-90,100-600,,,30-60,,,,,,60-90
+Maprotilina,,75-150,dose_transcribed,75-150,75-150,,75-150,100-150,100-150,75-150,100-150,,25-75,,75-150,75-150,100-150 B / 50-900 A,,100-150
+Fluoxetina,,20-60,dose_transcribed,20-60,20-60,,20-60,20-60,40-60,20-40,40-60,20-40,,,,40-60,60 B / 20-40 A,20-40,40-60
+Citalopram,20-40,20-40,visual_present_no_dose_transcribed,20-40,20-40,20-40,20-40,20-40,20-40,20-40,20-40,10-20,20-40,20-40,20-40,20-40,10-20 A,20-30,20-40
+Escitalopram,10-20,10-20,dose_transcribed_medal_marker,10-20,10-20,10-20,10-20,15-20,10-20,10-20,10-20,10-20,10-20,10-20,10-20,5-10 A,10-20,10-20,10-20
+Sertralina,,50-150,dose_transcribed,50-200,50-200,,50-200,100-200,100-200,100-200,100-150,50-100,,,,100-200,100-200 B / 50-100 A,50-150,100-200
+Fluvoxamina,,100-200,dose_transcribed,100-300,100-200,,100-300,150-300,100-300,100-300,,,,,X,150-250,150-300 B / 50-400 A,100-200,150-300
+Paroxetina,,20-50,dose_transcribed,20-60,20-50,,20-50,40-60,20-50,20-50,,,,,X,40-60,40-60 B / 10-20 A,20-40,40-60
+Vortioxetina,,10-20,dose_transcribed,10-20,10-20,,10-20,,10-20,10-20,15-20,5-10,,,,,,10-20,15-20
+Agomelatina,,25-50,dose_transcribed,,,,,,25-50,,25-50,25,,,,,,,
+Vilazodona,,20-40,dose_transcribed,20-40,20-40,,20-40,,20-40,20-40,20-40,10-20,,,,,,20-40,20-40
+Bupropiona,150-300,120-300,blank_or_not_indicated,120-300,120-300,X,120-300,X,120-300,120-300,120-300,120-300,120-300,120-300,120-300,120-300,120-300,120-300,120-300
+Diazepam,TAG curto prazo/resgate: 2-5 mg inicial; 2-10 mg 2-4x/dia usual conforme bula e tolerabilidade,2-10,conditional_short_term_pending_formal_review,,,,,,,,,,,,,,,,
+Oxazepam,TAG curto prazo/sintomatico: 10 mg inicial; 10-15 mg 3-4x/dia usual conforme bula e tolerabilidade,10-15,conditional_short_term_pending_formal_review,,,,,,,,,,,,,,,,
+Naltrexona,Transtorno por uso de alcool: 25 mg teste de tolerabilidade; alvo 50 mg/dia,,not_applicable,,,,,,,,,,,25-50,,,,,

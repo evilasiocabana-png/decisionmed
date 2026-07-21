@@ -1,0 +1,203 @@
+{
+  "schema": "psychrx.knowledge_base.snri.field_traceability_matrix.v1",
+  "program": "A04",
+  "mission": "A04-007 - SNRI_FIELD_TRACEABILITY_MATRIX",
+  "status": "completed",
+  "drug_class": "SNRIs",
+  "purpose": "Define field-level traceability requirements before any SNRI scientific extraction.",
+  "basis": {
+    "source_anchor_plan": "KnowledgeBase/SNRIs/Traceability/SNRI_SOURCE_ANCHOR_PLAN.json",
+    "profile_shell_registry": "KnowledgeBase/SNRIs/ProfileShells/SNRI_PROFILE_SHELL_REGISTRY.json",
+    "source_catalog": "ScientificCorpus/SNRIs/Manifest/SNRI_SOURCE_CATALOG.json"
+  },
+  "drug_scope": [
+    "SNRI-VENLAFAXINE",
+    "SNRI-DESVENLAFAXINE",
+    "SNRI-DULOXETINE",
+    "SNRI-LEVOMILNACIPRAN",
+    "SNRI-MILNACIPRAN"
+  ],
+  "traceability_requirements": [
+    "source_id",
+    "source_anchor_id",
+    "source_location",
+    "source_section",
+    "extraction_note",
+    "normalization_status",
+    "scientific_review_status",
+    "editorial_review_status",
+    "runtime_eligibility"
+  ],
+  "field_matrix": [
+    {
+      "profile_field": "identification",
+      "planned_slot_id": "A04-SNRI-SLOT-IDENTIFICATION",
+      "candidate_source_ids": [
+        "A04.0-SD-R001",
+        "A04.0-SD-R002",
+        "A04.0-SD-R003",
+        "A04.0-SD-R004",
+        "A04.0-SD-R005",
+        "A04.0-SD-B002"
+      ],
+      "field_value_status": "unpopulated",
+      "traceability_status": "planned_pending_anchor_creation",
+      "runtime_eligibility": "not_eligible"
+    },
+    {
+      "profile_field": "mechanism",
+      "planned_slot_id": "A04-SNRI-SLOT-MECHANISM",
+      "candidate_source_ids": [
+        "A04.0-SD-B001",
+        "A04.0-SD-B002",
+        "A04.0-SD-B003",
+        "A04.0-SD-R001",
+        "A04.0-SD-R002",
+        "A04.0-SD-R003",
+        "A04.0-SD-R004",
+        "A04.0-SD-R005",
+        "A04.0-SD-E001",
+        "A04.0-SD-E002"
+      ],
+      "field_value_status": "unpopulated",
+      "traceability_status": "planned_pending_anchor_creation",
+      "runtime_eligibility": "not_eligible"
+    },
+    {
+      "profile_field": "pharmacokinetics",
+      "planned_slot_id": "A04-SNRI-SLOT-PHARMACOKINETICS",
+      "candidate_source_ids": [
+        "A04.0-SD-B002",
+        "A04.0-SD-B003",
+        "A04.0-SD-R001",
+        "A04.0-SD-R002",
+        "A04.0-SD-R003",
+        "A04.0-SD-R004",
+        "A04.0-SD-R005",
+        "A04.0-SD-E001"
+      ],
+      "field_value_status": "unpopulated",
+      "traceability_status": "planned_pending_anchor_creation",
+      "runtime_eligibility": "not_eligible"
+    },
+    {
+      "profile_field": "pharmacodynamics",
+      "planned_slot_id": "A04-SNRI-SLOT-PHARMACODYNAMICS",
+      "candidate_source_ids": [
+        "A04.0-SD-B001",
+        "A04.0-SD-B002",
+        "A04.0-SD-R001",
+        "A04.0-SD-R002",
+        "A04.0-SD-R003",
+        "A04.0-SD-R004",
+        "A04.0-SD-R005",
+        "A04.0-SD-E001",
+        "A04.0-SD-E002"
+      ],
+      "field_value_status": "unpopulated",
+      "traceability_status": "planned_pending_anchor_creation",
+      "runtime_eligibility": "not_eligible"
+    },
+    {
+      "profile_field": "indications",
+      "planned_slot_id": "A04-SNRI-SLOT-INDICATIONS",
+      "candidate_source_ids": [
+        "A04.0-SD-G001",
+        "A04.0-SD-G002",
+        "A04.0-SD-G003",
+        "A04.0-SD-G004",
+        "A04.0-SD-G005",
+        "A04.0-SD-R001",
+        "A04.0-SD-R002",
+        "A04.0-SD-R003",
+        "A04.0-SD-R004",
+        "A04.0-SD-R005"
+      ],
+      "field_value_status": "unpopulated",
+      "traceability_status": "planned_pending_anchor_creation",
+      "runtime_eligibility": "not_eligible"
+    },
+    {
+      "profile_field": "posology",
+      "planned_slot_id": "A04-SNRI-SLOT-POSOLOGY",
+      "candidate_source_ids": [
+        "A04.0-SD-B002",
+        "A04.0-SD-B003",
+        "A04.0-SD-R001",
+        "A04.0-SD-R002",
+        "A04.0-SD-R003",
+        "A04.0-SD-R004",
+        "A04.0-SD-R005"
+      ],
+      "field_value_status": "unpopulated",
+      "traceability_status": "planned_pending_anchor_creation",
+      "runtime_eligibility": "not_eligible"
+    },
+    {
+      "profile_field": "contraindications",
+      "planned_slot_id": "A04-SNRI-SLOT-CONTRAINDICATIONS",
+      "candidate_source_ids": [
+        "A04.0-SD-B002",
+        "A04.0-SD-B003",
+        "A04.0-SD-R001",
+        "A04.0-SD-R002",
+        "A04.0-SD-R003",
+        "A04.0-SD-R004",
+        "A04.0-SD-R005",
+        "A04.0-SD-S001",
+        "A04.0-SD-S002",
+        "A04.0-SD-S003"
+      ],
+      "field_value_status": "unpopulated",
+      "traceability_status": "planned_pending_anchor_creation",
+      "runtime_eligibility": "not_eligible"
+    },
+    {
+      "profile_field": "safety",
+      "planned_slot_id": "A04-SNRI-SLOT-SAFETY",
+      "candidate_source_ids": [
+        "A04.0-SD-B002",
+        "A04.0-SD-B003",
+        "A04.0-SD-R001",
+        "A04.0-SD-R002",
+        "A04.0-SD-R003",
+        "A04.0-SD-R004",
+        "A04.0-SD-R005",
+        "A04.0-SD-S001",
+        "A04.0-SD-S002",
+        "A04.0-SD-S003"
+      ],
+      "field_value_status": "unpopulated",
+      "traceability_status": "planned_pending_anchor_creation",
+      "runtime_eligibility": "not_eligible"
+    },
+    {
+      "profile_field": "evidence",
+      "planned_slot_id": "A04-SNRI-SLOT-EVIDENCE",
+      "candidate_source_ids": [
+        "A04.0-SD-G001",
+        "A04.0-SD-G002",
+        "A04.0-SD-G003",
+        "A04.0-SD-G004",
+        "A04.0-SD-G005",
+        "A04.0-SD-E001",
+        "A04.0-SD-E002",
+        "A04.0-SD-E003"
+      ],
+      "field_value_status": "unpopulated",
+      "traceability_status": "planned_pending_anchor_creation",
+      "runtime_eligibility": "not_eligible"
+    }
+  ],
+  "matrix_policy": {
+    "applies_to_all_drugs_in_scope": true,
+    "drug_specific_traceability_required_later": true,
+    "source_section_selection_required_before_extraction": true,
+    "field_population_allowed_by_this_matrix": false
+  },
+  "field_population_status": "not_started",
+  "scientific_interpretation_performed": false,
+  "knowledge_objects_created": 0,
+  "runtime_eligibility": "not_eligible",
+  "next_mission": "A04-008 - SNRI_EXTRACTION_GATES"
+}

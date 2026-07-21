@@ -1,0 +1,23 @@
+{
+  "mission": "A08-005",
+  "status": "complete",
+  "validation_scope": "authority_accessibility_relevance_only",
+  "validated_sources": [
+    {
+      "source_id": "MAOI-SRC-001",
+      "authority": "official_label",
+      "accessibility": "accessible",
+      "relevance": "mechanism_text_available",
+      "validation_status": "approved_for_mechanism_section_selection"
+    },
+    {
+      "source_id": "MAOI-SRC-002",
+      "authority": "regulatory_label",
+      "accessibility": "accessible",
+      "relevance": "mechanism_text_available",
+      "validation_status": "approved_for_supporting_mechanism_section_selection"
+    }
+  ],
+  "rejected_sources": [],
+  "blockers": []
+}

@@ -1,0 +1,93 @@
+[
+    {
+        "source_id":  "B001",
+        "url":  "",
+        "status":  "missing_url",
+        "http_status":  null,
+        "note":  "No URL available for validation"
+    },
+    {
+        "source_id":  "B002",
+        "url":  "",
+        "status":  "missing_url",
+        "http_status":  null,
+        "note":  "No URL available for validation"
+    },
+    {
+        "source_id":  "B003",
+        "url":  "",
+        "status":  "missing_url",
+        "http_status":  null,
+        "note":  "No URL available for validation"
+    },
+    {
+        "source_id":  "G001",
+        "url":  "",
+        "status":  "missing_url",
+        "http_status":  null,
+        "note":  "No URL available for validation"
+    },
+    {
+        "source_id":  "G004",
+        "url":  "",
+        "status":  "missing_url",
+        "http_status":  null,
+        "note":  "No URL available for validation"
+    },
+    {
+        "source_id":  "R004",
+        "url":  "https://www.ema.europa.eu/en/documents/scientific-guideline/guideline-clinical-investigation-medicinal-products-treatment-depression-revision-3_en.pdf",
+        "status":  "unreachable_or_blocked",
+        "http_status":  null,
+        "note":  "O servidor remoto retornou um erro: (401) Não Autorizado."
+    },
+    {
+        "source_id":  "R005",
+        "url":  "https://www.ema.europa.eu/en/documents/scientific-guideline/draft-guideline-clinical-investigation-medicinal-products-treatment-depression-revision-3_en.pdf",
+        "status":  "unreachable_or_blocked",
+        "http_status":  null,
+        "note":  "O servidor remoto retornou um erro: (401) Não Autorizado."
+    },
+    {
+        "source_id":  "R006",
+        "url":  "https://antigo.anvisa.gov.br/alertas/-/buscar?tagsName=antidepressivos",
+        "status":  "unreachable_or_blocked",
+        "http_status":  null,
+        "note":  "O servidor remoto retornou um erro: (403) Proibido."
+    },
+    {
+        "source_id":  "L001",
+        "url":  "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=9de65da4-73f8-4c88-8198-c92e63224ddb",
+        "status":  "unreachable_or_blocked",
+        "http_status":  null,
+        "note":  "O servidor remoto retornou um erro: (404) Não Localizado."
+    },
+    {
+        "source_id":  "L002",
+        "url":  "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=fe9e8b7d-61ea-409d-84aa-3ebd79a046b5",
+        "status":  "unreachable_or_blocked",
+        "http_status":  null,
+        "note":  "O tempo limite da operação foi atingido."
+    },
+    {
+        "source_id":  "L003",
+        "url":  "https://dailymed.nlm.nih.gov/dailymed/lookup.cfm?setid=ef3b5cbe-f9e1-c1ac-79da-cfe14e3a7e7e",
+        "status":  "unreachable_or_blocked",
+        "http_status":  null,
+        "note":  "O tempo limite da operação foi atingido."
+    },
+    {
+        "source_id":  "L004",
+        "url":  "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=26683db8-b319-4d67-8cd8-3c9803daa628",
+        "status":  "unreachable_or_blocked",
+        "http_status":  null,
+        "note":  "O servidor remoto retornou um erro: (404) Não Localizado."
+    },
+    {
+        "source_id":  "L005",
+        "url":  "https://dailymed.nlm.nih.gov/dailymed/lookup.cfm?setid=3019a647-9bcf-48cf-928c-0467f9b921a8",
+        "status":  "unreachable_or_blocked",
+        "http_status":  null,
+        "note":  "O tempo limite da operação foi atingido."
+    }
+]

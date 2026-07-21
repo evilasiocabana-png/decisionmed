@@ -1,0 +1,108 @@
+{
+  "project": "PsychRx",
+  "execution_model": "state_driven_governance",
+  "current_program": "AWAITING_NEXT_INBOX_PROGRAM",
+  "current_phase": "No Active Inbox Package",
+  "current_sprint": "Awaiting Governance Package",
+  "current_mission": "AWAITING_NEXT_INBOX_PACKAGE",
+  "status": "blocked_waiting_for_next_inbox_package",
+  "completed_missions": [
+    "A03 - Scientific Content Population: SSRIs",
+    "A04.0 - SNRI Scientific Corpus",
+    "A04 - Scientific Content Population: SNRIs",
+    "A05 - Scientific Content Population: NDRIs",
+    "A06 - Scientific Content Population: NaSSAs",
+    "A07 - Scientific Content Population: TCAs",
+    "A08 - Scientific Content Population: MAOIs",
+    "A09 - Scientific Content Population: Atypical Antidepressants",
+    "A10 - Scientific Content Population: First-Generation Antipsychotics",
+    "A11 - Scientific Content Population: Second-Generation Antipsychotics",
+    "A12 - Scientific Content Population: Mood Stabilizers",
+    "A13 - Scientific Content Population: Anxiolytics and Hypnotics",
+    "A14 - Scientific Content Population: ADHD Medications",
+    "A15 - Scientific Content Population: Cognitive Enhancers and Dementia-Related Psychopharmacology",
+    "TRACK B - Clinical Runtime Evolution Governance Execution",
+    "TRACK C - Clinical Experience Productization Governance Execution",
+    "TRACK C UX Implementation Package - Read-Only Clinical Workspace Presentation",
+    "TRACK D - Validation and Certification Governance Execution",
+    "TRACK E - Production Readiness Governance Execution"
+  ],
+  "blocked_items": [
+    {
+      "id": "A15_FUTURE_FIELD_EXTRACTION_NOT_AUTHORIZED",
+      "description": "Program A15 populated only the donepezil mechanism field as internal non-runtime scientific content. Future field extraction remains unauthorized unless a scoped package is present."
+    },
+    {
+      "id": "NEXT_INBOX_PACKAGE_MISSING",
+      "description": "No further executable package is present in codex/inbox after Track E production readiness governance execution."
+    },
+    {
+      "id": "TRACK_E_PRODUCTION_RELEASE_NOT_AUTHORIZED",
+      "description": "Track E completed E01 through E08 as production readiness governance artifacts only. Production deployment, patient data processing, compliance certification and release authorization are not granted."
+    },
+    {
+      "id": "TRACK_D_CERTIFICATION_NOT_GRANTED",
+      "description": "Track D completed D01 through D08 as validation governance artifacts only. Certification, regulatory compliance and release authorization are not granted."
+    },
+    {
+      "id": "TRACK_C_RUNTIME_IMPLEMENTATION_NOT_AUTHORIZED",
+      "description": "Track C UX Implementation Package authorizes only read-only presentation-layer UX. Clinical runtime, conduct logic, prescription, therapeutic recommendation, dose suggestion and patient-specific medication selection remain prohibited."
+    },
+    {
+      "id": "TRACK_B_RUNTIME_IMPLEMENTATION_NOT_AUTHORIZED",
+      "description": "Track B completed B01 through B08 as governance artifacts only. Clinical runtime implementation remains prohibited without a future explicit package."
+    }
+  ],
+  "resolved_gates": [
+    {
+      "id": "A15_PROGRAM_FINAL_GATE",
+      "resolution_scope": "internal_non_runtime_mechanism_package",
+      "resolved_by": "A15-017 - A15_PROGRAM_GATE_VALIDATION"
+    },
+    {
+      "id": "TRACK_B_GATE",
+      "resolution_scope": "governance_artifacts_only",
+      "resolved_by": "B08 - Track B Gate and Certification"
+    },
+    {
+      "id": "TRACK_C_GATE",
+      "resolution_scope": "product_ux_governance_artifacts_only",
+      "resolved_by": "C08 - Mobile Experience"
+    },
+    {
+      "id": "TRACK_C_UX_IMPLEMENTATION_PACKAGE",
+      "resolution_scope": "read_only_presentation_layer_only",
+      "resolved_by": "Governed Track C UX Implementation Request"
+    },
+    {
+      "id": "TRACK_D_GATE",
+      "resolution_scope": "validation_certification_governance_artifacts_only",
+      "resolved_by": "D08 - Release Validation"
+    },
+    {
+      "id": "TRACK_E_GATE",
+      "resolution_scope": "production_readiness_governance_artifacts_only",
+      "resolved_by": "E08 - Production Release"
+    }
+  ],
+  "active_gate": "NEXT_INBOX_PACKAGE_REQUIRED",
+  "next_mission_policy": "execute_next_inbox_program_package_when_dependencies_pass",
+  "program_execution_plan_required": true,
+  "program_execution_plan_protocol": "governance/PROGRAM_EXECUTION_PLAN_PROTOCOL.md",
+  "program_execution_library": "governance/programs/PROGRAM_EXECUTION_LIBRARY.md",
+  "source_of_truth": "governance/execution/EXECUTION_STATE.json",
+  "last_updated_by": "Codex",
+  "notes": [
+    "A15 completed as an internal non-runtime mechanism package for donepezil.",
+    "Track B B01 through B08 completed as governance artifacts only.",
+    "Track C C01 through C08 completed as product and UX governance artifacts only.",
+    "Track C UX Implementation Package created and initial read-only consultation surface refactor executed.",
+    "Track D D01 through D08 completed as validation and certification governance artifacts only.",
+    "Track E E01 through E08 completed as production readiness governance artifacts only.",
+    "Program Execution Library was created as plan-only governance; no program was executed by that mission.",
+    "No later package is currently present in codex/inbox.",
+    "The next real blocker is absence of a new governed inbox package.",
+    "Clinical runtime eligibility remains prohibited.",
+    "Prescription, therapeutic recommendation, dose suggestion and patient-specific medication selection remain prohibited."
+  ]
+}

@@ -1,0 +1,172 @@
+﻿{
+    "schema":  "psychrx.a03.editorial_status_framework",
+    "program":  "A03",
+    "mission":  "A03-018",
+    "status":  "metadata_only",
+    "schema_version":  "0.1.0",
+    "document_version":  "0.1.0",
+    "states":  [
+                   {
+                       "status_id":  "draft",
+                       "status_name":  "Draft",
+                       "description":  "Initial administrative state.",
+                       "allowed_previous_states":  [
+
+                                                   ],
+                       "allowed_next_states":  [
+                                                   "initialized"
+                                               ],
+                       "editable":  true,
+                       "publishable":  false,
+                       "requires_review":  false,
+                       "requires_validation":  false
+                   },
+                   {
+                       "status_id":  "initialized",
+                       "status_name":  "Initialized",
+                       "description":  "Structure exists and is ready for metadata completion.",
+                       "allowed_previous_states":  [
+                                                       "draft"
+                                                   ],
+                       "allowed_next_states":  [
+                                                   "metadata_complete"
+                                               ],
+                       "editable":  true,
+                       "publishable":  false,
+                       "requires_review":  false,
+                       "requires_validation":  false
+                   },
+                   {
+                       "status_id":  "metadata_complete",
+                       "status_name":  "Metadata Complete",
+                       "description":  "Required administrative metadata is present.",
+                       "allowed_previous_states":  [
+                                                       "initialized"
+                                                   ],
+                       "allowed_next_states":  [
+                                                   "source_bound"
+                                               ],
+                       "editable":  true,
+                       "publishable":  false,
+                       "requires_review":  false,
+                       "requires_validation":  false
+                   },
+                   {
+                       "status_id":  "source_bound",
+                       "status_name":  "Source Bound",
+                       "description":  "Object is structurally linked to source identifiers.",
+                       "allowed_previous_states":  [
+                                                       "metadata_complete"
+                                                   ],
+                       "allowed_next_states":  [
+                                                   "editorial_review"
+                                               ],
+                       "editable":  true,
+                       "publishable":  false,
+                       "requires_review":  false,
+                       "requires_validation":  false
+                   },
+                   {
+                       "status_id":  "editorial_review",
+                       "status_name":  "Editorial Review",
+                       "description":  "Object is awaiting editorial review.",
+                       "allowed_previous_states":  [
+                                                       "source_bound"
+                                                   ],
+                       "allowed_next_states":  [
+                                                   "scientific_review",
+                                                   "deprecated"
+                                               ],
+                       "editable":  true,
+                       "publishable":  false,
+                       "requires_review":  true,
+                       "requires_validation":  false
+                   },
+                   {
+                       "status_id":  "scientific_review",
+                       "status_name":  "Scientific Review",
+                       "description":  "Object is awaiting future scientific review after authorized population.",
+                       "allowed_previous_states":  [
+                                                       "editorial_review"
+                                                   ],
+                       "allowed_next_states":  [
+                                                   "validated",
+                                                   "deprecated"
+                                               ],
+                       "editable":  false,
+                       "publishable":  false,
+                       "requires_review":  true,
+                       "requires_validation":  true
+                   },
+                   {
+                       "status_id":  "validated",
+                       "status_name":  "Validated",
+                       "description":  "Object passed required future validation gates.",
+                       "allowed_previous_states":  [
+                                                       "scientific_review"
+                                                   ],
+                       "allowed_next_states":  [
+                                                   "published",
+                                                   "deprecated"
+                                               ],
+                       "editable":  false,
+                       "publishable":  true,
+                       "requires_review":  true,
+                       "requires_validation":  true
+                   },
+                   {
+                       "status_id":  "published",
+                       "status_name":  "Published",
+                       "description":  "Object is published after future authorization.",
+                       "allowed_previous_states":  [
+                                                       "validated"
+                                                   ],
+                       "allowed_next_states":  [
+                                                   "deprecated",
+                                                   "archived"
+                                               ],
+                       "editable":  false,
+                       "publishable":  true,
+                       "requires_review":  true,
+                       "requires_validation":  true
+                   },
+                   {
+                       "status_id":  "deprecated",
+                       "status_name":  "Deprecated",
+                       "description":  "Object should no longer be used after replacement or governance decision.",
+                       "allowed_previous_states":  [
+                                                       "editorial_review",
+                                                       "scientific_review",
+                                                       "validated",
+                                                       "published"
+                                                   ],
+                       "allowed_next_states":  [
+                                                   "archived"
+                                               ],
+                       "editable":  false,
+                       "publishable":  false,
+                       "requires_review":  true,
+                       "requires_validation":  true
+                   },
+                   {
+                       "status_id":  "archived",
+                       "status_name":  "Archived",
+                       "description":  "Object is retained for audit and no longer active.",
+                       "allowed_previous_states":  [
+                                                       "published",
+                                                       "deprecated"
+                                                   ],
+                       "allowed_next_states":  [
+
+                                               ],
+                       "editable":  false,
+                       "publishable":  false,
+                       "requires_review":  false,
+                       "requires_validation":  false
+                   }
+               ],
+    "scientific_content_populated":  false,
+    "clinical_content_interpreted":  false,
+    "runtime_consumption_allowed":  false,
+    "next_mission":  "A03-019 - PORTFOLIO_QUALITY_ASSURANCE"
+}

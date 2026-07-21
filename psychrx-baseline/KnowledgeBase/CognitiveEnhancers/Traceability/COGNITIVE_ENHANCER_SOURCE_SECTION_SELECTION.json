@@ -1,0 +1,23 @@
+{
+  "mission": "A15-010",
+  "status": "complete",
+  "selected_sections": [
+    {
+      "selection_id": "CE-SEL-001",
+      "source_id": "CE-SRC-001",
+      "drug_id": "CE-DONEPEZIL",
+      "field": "mechanism",
+      "section": "Description / mechanism-related label text",
+      "review_status": "selected_for_exact_source_text_extraction"
+    },
+    {
+      "selection_id": "CE-SEL-002",
+      "source_id": "CE-SRC-002",
+      "drug_id": "CE-DONEPEZIL",
+      "field": "mechanism",
+      "section": "Mechanism-related label text",
+      "review_status": "selected_for_cross_check"
+    }
+  ],
+  "runtime_eligible": false
+}

@@ -1,0 +1,22 @@
+{
+  "mission": "A09-008",
+  "status": "complete",
+  "matrix": [
+    {
+      "drug_id": "ATYPICAL-TRAZODONE",
+      "field": "mechanism",
+      "required_chain": [
+        "source_id",
+        "section_id",
+        "section_locator",
+        "source_text_record_id",
+        "field_entry_id"
+      ],
+      "candidate_sources": [
+        "ATYPICAL-SRC-001",
+        "ATYPICAL-SRC-002"
+      ],
+      "status": "ready_for_gate"
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "mission": "A12-012",
+  "status": "draft_internal_non_runtime",
+  "drug_id": "MS-LITHIUM",
+  "field": "mechanism",
+  "claims": [
+    {
+      "claim_id": "MS-CLAIM-001",
+      "statement": "The mechanism of action of lithium as a mood stabilizing agent is unknown.",
+      "source_text_records": [
+        "MS-TEXT-001"
+      ],
+      "review_status": "draft_reviewed",
+      "runtime_eligible": false
+    }
+  ],
+  "unresolved": [
+    {
+      "field": "class_level_mechanism_generalization",
+      "status": "UNRESOLVED",
+      "reason": "A12 scope only supports lithium label-derived mechanism statements."
+    },
+    {
+      "field": "specific_biochemical_mechanism",
+      "status": "UNRESOLVED",
+      "reason": "Official label states the mechanism is unknown."
+    }
+  ]
+}

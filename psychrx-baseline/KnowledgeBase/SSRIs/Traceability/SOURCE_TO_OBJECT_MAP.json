@@ -1,0 +1,270 @@
+﻿{
+    "schema":  "psychrx.a03.source_to_object_map",
+    "program":  "A03",
+    "mission":  "A03-017",
+    "status":  "metadata_only",
+    "sources":  [
+                    {
+                        "source_id":  "B001",
+                        "source_status":  "candidate_normalized",
+                        "availability_status":  "restricted",
+                        "can_be_referenced":  true,
+                        "referenced_by_objects":  [
+
+                                                  ],
+                        "clinical_content_interpreted":  false
+                    },
+                    {
+                        "source_id":  "B002",
+                        "source_status":  "candidate_normalized",
+                        "availability_status":  "restricted",
+                        "can_be_referenced":  true,
+                        "referenced_by_objects":  [
+
+                                                  ],
+                        "clinical_content_interpreted":  false
+                    },
+                    {
+                        "source_id":  "B003",
+                        "source_status":  "candidate_normalized",
+                        "availability_status":  "restricted",
+                        "can_be_referenced":  true,
+                        "referenced_by_objects":  [
+
+                                                  ],
+                        "clinical_content_interpreted":  false
+                    },
+                    {
+                        "source_id":  "G001",
+                        "source_status":  "candidate_normalized",
+                        "availability_status":  "restricted",
+                        "can_be_referenced":  true,
+                        "referenced_by_objects":  [
+
+                                                  ],
+                        "clinical_content_interpreted":  false
+                    },
+                    {
+                        "source_id":  "G002",
+                        "source_status":  "candidate_normalized",
+                        "availability_status":  "accessible",
+                        "can_be_referenced":  true,
+                        "referenced_by_objects":  [
+
+                                                  ],
+                        "clinical_content_interpreted":  false
+                    },
+                    {
+                        "source_id":  "G003",
+                        "source_status":  "candidate_normalized",
+                        "availability_status":  "accessible",
+                        "can_be_referenced":  true,
+                        "referenced_by_objects":  [
+
+                                                  ],
+                        "clinical_content_interpreted":  false
+                    },
+                    {
+                        "source_id":  "G004",
+                        "source_status":  "candidate_normalized",
+                        "availability_status":  "restricted",
+                        "can_be_referenced":  true,
+                        "referenced_by_objects":  [
+
+                                                  ],
+                        "clinical_content_interpreted":  false
+                    },
+                    {
+                        "source_id":  "G005",
+                        "source_status":  "duplicate_candidate",
+                        "availability_status":  "accessible",
+                        "can_be_referenced":  true,
+                        "referenced_by_objects":  [
+
+                                                  ],
+                        "clinical_content_interpreted":  false
+                    },
+                    {
+                        "source_id":  "G006",
+                        "source_status":  "duplicate_candidate",
+                        "availability_status":  "accessible",
+                        "can_be_referenced":  true,
+                        "referenced_by_objects":  [
+
+                                                  ],
+                        "clinical_content_interpreted":  false
+                    },
+                    {
+                        "source_id":  "G007",
+                        "source_status":  "duplicate_candidate",
+                        "availability_status":  "accessible",
+                        "can_be_referenced":  true,
+                        "referenced_by_objects":  [
+
+                                                  ],
+                        "clinical_content_interpreted":  false
+                    },
+                    {
+                        "source_id":  "G008",
+                        "source_status":  "candidate_normalized",
+                        "availability_status":  "accessible",
+                        "can_be_referenced":  true,
+                        "referenced_by_objects":  [
+
+                                                  ],
+                        "clinical_content_interpreted":  false
+                    },
+                    {
+                        "source_id":  "R001",
+                        "source_status":  "candidate_normalized",
+                        "availability_status":  "accessible",
+                        "can_be_referenced":  true,
+                        "referenced_by_objects":  [
+
+                                                  ],
+                        "clinical_content_interpreted":  false
+                    },
+                    {
+                        "source_id":  "R002",
+                        "source_status":  "candidate_normalized",
+                        "availability_status":  "accessible",
+                        "can_be_referenced":  true,
+                        "referenced_by_objects":  [
+
+                                                  ],
+                        "clinical_content_interpreted":  false
+                    },
+                    {
+                        "source_id":  "R003",
+                        "source_status":  "candidate_normalized",
+                        "availability_status":  "accessible",
+                        "can_be_referenced":  true,
+                        "referenced_by_objects":  [
+
+                                                  ],
+                        "clinical_content_interpreted":  false
+                    },
+                    {
+                        "source_id":  "R004",
+                        "source_status":  "duplicate_candidate",
+                        "availability_status":  "accessible",
+                        "can_be_referenced":  true,
+                        "referenced_by_objects":  [
+
+                                                  ],
+                        "clinical_content_interpreted":  false
+                    },
+                    {
+                        "source_id":  "R005",
+                        "source_status":  "review_required",
+                        "availability_status":  "accessible",
+                        "can_be_referenced":  true,
+                        "referenced_by_objects":  [
+
+                                                  ],
+                        "clinical_content_interpreted":  false
+                    },
+                    {
+                        "source_id":  "R006",
+                        "source_status":  "review_required",
+                        "availability_status":  "accessible",
+                        "can_be_referenced":  true,
+                        "referenced_by_objects":  [
+
+                                                  ],
+                        "clinical_content_interpreted":  false
+                    },
+                    {
+                        "source_id":  "L001",
+                        "source_status":  "candidate_normalized",
+                        "availability_status":  "accessible",
+                        "can_be_referenced":  true,
+                        "referenced_by_objects":  [
+
+                                                  ],
+                        "clinical_content_interpreted":  false
+                    },
+                    {
+                        "source_id":  "L002",
+                        "source_status":  "candidate_normalized",
+                        "availability_status":  "accessible",
+                        "can_be_referenced":  true,
+                        "referenced_by_objects":  [
+
+                                                  ],
+                        "clinical_content_interpreted":  false
+                    },
+                    {
+                        "source_id":  "L003",
+                        "source_status":  "candidate_normalized",
+                        "availability_status":  "accessible",
+                        "can_be_referenced":  true,
+                        "referenced_by_objects":  [
+
+                                                  ],
+                        "clinical_content_interpreted":  false
+                    },
+                    {
+                        "source_id":  "L004",
+                        "source_status":  "candidate_normalized",
+                        "availability_status":  "accessible",
+                        "can_be_referenced":  true,
+                        "referenced_by_objects":  [
+
+                                                  ],
+                        "clinical_content_interpreted":  false
+                    },
+                    {
+                        "source_id":  "L005",
+                        "source_status":  "candidate_normalized",
+                        "availability_status":  "accessible",
+                        "can_be_referenced":  true,
+                        "referenced_by_objects":  [
+
+                                                  ],
+                        "clinical_content_interpreted":  false
+                    },
+                    {
+                        "source_id":  "L006",
+                        "source_status":  "candidate_normalized",
+                        "availability_status":  "accessible",
+                        "can_be_referenced":  true,
+                        "referenced_by_objects":  [
+
+                                                  ],
+                        "clinical_content_interpreted":  false
+                    },
+                    {
+                        "source_id":  "L007",
+                        "source_status":  "review_required",
+                        "availability_status":  "accessible",
+                        "can_be_referenced":  true,
+                        "referenced_by_objects":  [
+
+                                                  ],
+                        "clinical_content_interpreted":  false
+                    },
+                    {
+                        "source_id":  "L008",
+                        "source_status":  "duplicate_candidate",
+                        "availability_status":  "accessible",
+                        "can_be_referenced":  true,
+                        "referenced_by_objects":  [
+
+                                                  ],
+                        "clinical_content_interpreted":  false
+                    },
+                    {
+                        "source_id":  "L009",
+                        "source_status":  "review_required",
+                        "availability_status":  "accessible",
+                        "can_be_referenced":  true,
+                        "referenced_by_objects":  [
+
+                                                  ],
+                        "clinical_content_interpreted":  false
+                    }
+                ],
+    "scientific_content_populated":  false,
+    "clinical_content_interpreted":  false
+}

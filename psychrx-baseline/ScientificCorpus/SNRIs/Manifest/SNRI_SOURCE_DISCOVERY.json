@@ -1,0 +1,300 @@
+{
+  "schema": "psychrx.scientific_corpus.snri.source_discovery.v1",
+  "program": "A04.0",
+  "phase": "Phase 1 - Source Discovery",
+  "mission": "A04.0-001 - SNRI_SOURCE_DISCOVERY",
+  "status": "completed",
+  "created_by": "Codex",
+  "scope": {
+    "drug_class": "SNRI",
+    "portfolio": [
+      "venlafaxine",
+      "desvenlafaxine",
+      "duloxetine",
+      "levomilnacipran",
+      "milnacipran"
+    ],
+    "purpose": "Identify candidate official scientific, regulatory and safety sources for the SNRI corpus.",
+    "excluded_actions": [
+      "document download",
+      "scientific interpretation",
+      "evidence grading",
+      "drug profile creation",
+      "runtime consumption",
+      "clinical recommendation"
+    ]
+  },
+  "source_categories": [
+    {
+      "category": "books",
+      "status": "candidate_sources_identified",
+      "sources": [
+        {
+          "source_id": "A04.0-SD-B001",
+          "title": "Stahl's Essential Psychopharmacology",
+          "organization_or_publisher": "Cambridge University Press",
+          "document_type": "book",
+          "language": "English",
+          "access_status": "restricted_or_commercial",
+          "download_status": "not_downloaded",
+          "interpretation_status": "not_interpreted",
+          "administrative_note": "Candidate reference book for later bibliographic cataloging only."
+        },
+        {
+          "source_id": "A04.0-SD-B002",
+          "title": "Stahl's Prescriber's Guide",
+          "organization_or_publisher": "Cambridge University Press",
+          "document_type": "book",
+          "language": "English",
+          "access_status": "restricted_or_commercial",
+          "download_status": "not_downloaded",
+          "interpretation_status": "not_interpreted",
+          "administrative_note": "Candidate reference book for later bibliographic cataloging only."
+        },
+        {
+          "source_id": "A04.0-SD-B003",
+          "title": "The Maudsley Prescribing Guidelines in Psychiatry",
+          "organization_or_publisher": "Wiley",
+          "document_type": "book",
+          "language": "English",
+          "access_status": "restricted_or_commercial",
+          "download_status": "not_downloaded",
+          "interpretation_status": "not_interpreted",
+          "administrative_note": "Candidate reference book for later bibliographic cataloging only."
+        }
+      ]
+    },
+    {
+      "category": "guidelines",
+      "status": "candidate_sources_identified",
+      "sources": [
+        {
+          "source_id": "A04.0-SD-G001",
+          "title": "Depression in adults: treatment and management",
+          "organization_or_publisher": "NICE",
+          "document_type": "clinical_guideline",
+          "identifier_or_url": "https://www.nice.org.uk/guidance/ng222",
+          "language": "English",
+          "access_status": "public",
+          "download_status": "not_downloaded",
+          "interpretation_status": "not_interpreted",
+          "administrative_note": "Candidate guideline source for later cataloging."
+        },
+        {
+          "source_id": "A04.0-SD-G002",
+          "title": "CANMAT Depression Guidelines",
+          "organization_or_publisher": "Canadian Network for Mood and Anxiety Treatments",
+          "document_type": "clinical_guideline",
+          "identifier_or_url": "https://www.canmat.org/resources/",
+          "language": "English",
+          "access_status": "public_or_restricted_by_article",
+          "download_status": "not_downloaded",
+          "interpretation_status": "not_interpreted",
+          "administrative_note": "Candidate guideline family for later edition-specific cataloging."
+        },
+        {
+          "source_id": "A04.0-SD-G003",
+          "title": "Practice Guideline for the Treatment of Patients With Major Depressive Disorder",
+          "organization_or_publisher": "American Psychiatric Association",
+          "document_type": "clinical_guideline",
+          "identifier_or_url": "https://psychiatryonline.org/guidelines",
+          "language": "English",
+          "access_status": "public_or_restricted_by_article",
+          "download_status": "not_downloaded",
+          "interpretation_status": "not_interpreted",
+          "administrative_note": "Candidate guideline source for later edition-specific cataloging."
+        },
+        {
+          "source_id": "A04.0-SD-G004",
+          "title": "WFSBP Guidelines for the Biological Treatment of Unipolar Depressive Disorders",
+          "organization_or_publisher": "World Federation of Societies of Biological Psychiatry",
+          "document_type": "clinical_guideline",
+          "identifier_or_url": "https://wfsbp.org/education/guidelines/",
+          "language": "English",
+          "access_status": "public_or_restricted_by_article",
+          "download_status": "not_downloaded",
+          "interpretation_status": "not_interpreted",
+          "administrative_note": "Candidate guideline family for later edition-specific cataloging."
+        },
+        {
+          "source_id": "A04.0-SD-G005",
+          "title": "VA/DoD Clinical Practice Guideline for the Management of Major Depressive Disorder",
+          "organization_or_publisher": "U.S. Department of Veterans Affairs and U.S. Department of Defense",
+          "document_type": "clinical_guideline",
+          "identifier_or_url": "https://www.healthquality.va.gov/guidelines/MH/mdd/",
+          "language": "English",
+          "access_status": "public",
+          "download_status": "not_downloaded",
+          "interpretation_status": "not_interpreted",
+          "administrative_note": "Candidate guideline source for later cataloging."
+        }
+      ]
+    },
+    {
+      "category": "regulatory",
+      "status": "candidate_sources_identified",
+      "sources": [
+        {
+          "source_id": "A04.0-SD-R001",
+          "title": "Drugs@FDA",
+          "organization_or_publisher": "U.S. Food and Drug Administration",
+          "document_type": "regulatory_database",
+          "identifier_or_url": "https://www.accessdata.fda.gov/scripts/cder/daf/",
+          "language": "English",
+          "access_status": "public",
+          "download_status": "not_downloaded",
+          "interpretation_status": "not_interpreted",
+          "administrative_note": "Candidate regulatory endpoint for labels and approval packages."
+        },
+        {
+          "source_id": "A04.0-SD-R002",
+          "title": "DailyMed",
+          "organization_or_publisher": "U.S. National Library of Medicine",
+          "document_type": "official_label_database",
+          "identifier_or_url": "https://dailymed.nlm.nih.gov/dailymed/",
+          "language": "English",
+          "access_status": "public",
+          "download_status": "not_downloaded",
+          "interpretation_status": "not_interpreted",
+          "administrative_note": "Candidate official labeling endpoint."
+        },
+        {
+          "source_id": "A04.0-SD-R003",
+          "title": "EMA Medicines",
+          "organization_or_publisher": "European Medicines Agency",
+          "document_type": "regulatory_database",
+          "identifier_or_url": "https://www.ema.europa.eu/en/medicines",
+          "language": "English",
+          "access_status": "public",
+          "download_status": "not_downloaded",
+          "interpretation_status": "not_interpreted",
+          "administrative_note": "Candidate regulatory endpoint for EPAR and medicine records."
+        },
+        {
+          "source_id": "A04.0-SD-R004",
+          "title": "Consulta a Medicamentos",
+          "organization_or_publisher": "ANVISA",
+          "document_type": "regulatory_database",
+          "identifier_or_url": "https://consultas.anvisa.gov.br/#/medicamentos/",
+          "language": "Portuguese",
+          "access_status": "public",
+          "download_status": "not_downloaded",
+          "interpretation_status": "not_interpreted",
+          "administrative_note": "Candidate Brazilian regulatory endpoint."
+        },
+        {
+          "source_id": "A04.0-SD-R005",
+          "title": "Bulario Eletronico",
+          "organization_or_publisher": "ANVISA",
+          "document_type": "official_label_database",
+          "identifier_or_url": "https://consultas.anvisa.gov.br/#/bulario/",
+          "language": "Portuguese",
+          "access_status": "public",
+          "download_status": "not_downloaded",
+          "interpretation_status": "not_interpreted",
+          "administrative_note": "Candidate official labeling endpoint."
+        }
+      ]
+    },
+    {
+      "category": "evidence_sources",
+      "status": "candidate_sources_identified",
+      "sources": [
+        {
+          "source_id": "A04.0-SD-E001",
+          "title": "PubMed/MEDLINE",
+          "organization_or_publisher": "U.S. National Library of Medicine",
+          "document_type": "bibliographic_database",
+          "identifier_or_url": "https://pubmed.ncbi.nlm.nih.gov/",
+          "language": "English",
+          "access_status": "public",
+          "download_status": "not_downloaded",
+          "interpretation_status": "not_interpreted",
+          "administrative_note": "Candidate endpoint for later bibliographic discovery."
+        },
+        {
+          "source_id": "A04.0-SD-E002",
+          "title": "Cochrane Library",
+          "organization_or_publisher": "Cochrane",
+          "document_type": "evidence_database",
+          "identifier_or_url": "https://www.cochranelibrary.com/",
+          "language": "English",
+          "access_status": "public_or_restricted_by_article",
+          "download_status": "not_downloaded",
+          "interpretation_status": "not_interpreted",
+          "administrative_note": "Candidate endpoint for later review and meta-analysis discovery."
+        },
+        {
+          "source_id": "A04.0-SD-E003",
+          "title": "ClinicalTrials.gov",
+          "organization_or_publisher": "U.S. National Library of Medicine",
+          "document_type": "clinical_trial_registry",
+          "identifier_or_url": "https://clinicaltrials.gov/",
+          "language": "English",
+          "access_status": "public",
+          "download_status": "not_downloaded",
+          "interpretation_status": "not_interpreted",
+          "administrative_note": "Candidate endpoint for later RCT registry discovery."
+        }
+      ]
+    },
+    {
+      "category": "safety_sources",
+      "status": "candidate_sources_identified",
+      "sources": [
+        {
+          "source_id": "A04.0-SD-S001",
+          "title": "FDA Drug Safety Communications",
+          "organization_or_publisher": "U.S. Food and Drug Administration",
+          "document_type": "safety_communications",
+          "identifier_or_url": "https://www.fda.gov/drugs/drug-safety-and-availability/drug-safety-communications",
+          "language": "English",
+          "access_status": "public",
+          "download_status": "not_downloaded",
+          "interpretation_status": "not_interpreted",
+          "administrative_note": "Candidate safety endpoint for later cataloging."
+        },
+        {
+          "source_id": "A04.0-SD-S002",
+          "title": "EMA Pharmacovigilance and PRAC",
+          "organization_or_publisher": "European Medicines Agency",
+          "document_type": "safety_communications",
+          "identifier_or_url": "https://www.ema.europa.eu/en/human-regulatory-overview/post-authorisation/pharmacovigilance-post-authorisation/pharmacovigilance-risk-assessment-committee-prac",
+          "language": "English",
+          "access_status": "public",
+          "download_status": "not_downloaded",
+          "interpretation_status": "not_interpreted",
+          "administrative_note": "Candidate safety endpoint for later cataloging."
+        },
+        {
+          "source_id": "A04.0-SD-S003",
+          "title": "Farmacovigilancia",
+          "organization_or_publisher": "ANVISA",
+          "document_type": "safety_communications",
+          "identifier_or_url": "https://www.gov.br/anvisa/pt-br/assuntos/fiscalizacao-e-monitoramento/farmacovigilancia",
+          "language": "Portuguese",
+          "access_status": "public",
+          "download_status": "not_downloaded",
+          "interpretation_status": "not_interpreted",
+          "administrative_note": "Candidate Brazilian pharmacovigilance endpoint."
+        }
+      ]
+    }
+  ],
+  "acceptance_check": {
+    "books_identified": true,
+    "guidelines_identified": true,
+    "fda_identified": true,
+    "ema_identified": true,
+    "anvisa_identified": true,
+    "pubmed_identified": true,
+    "cochrane_identified": true,
+    "rct_sources_identified": true,
+    "reviews_and_meta_analysis_sources_identified": true,
+    "safety_communications_identified": true,
+    "scientific_interpretation_performed": false,
+    "documents_downloaded": false,
+    "knowledge_objects_created": false
+  },
+  "next_mission": "A04.0-002 - SNRI_SOURCE_CATALOG"
+}

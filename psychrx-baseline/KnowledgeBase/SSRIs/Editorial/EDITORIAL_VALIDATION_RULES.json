@@ -1,0 +1,14 @@
+﻿{
+    "schema":  "psychrx.a03.editorial_validation_rules",
+    "program":  "A03",
+    "mission":  "A03-018",
+    "status":  "metadata_only",
+    "rules":  [
+                  "state_id_must_be_unique",
+                  "transition_target_must_exist",
+                  "publishable_requires_validated_or_published_state",
+                  "scientific_review_requires_future_authorized_population",
+                  "metadata_only_objects_cannot_be_published_as_scientific_content"
+              ],
+    "scientific_content_populated":  false
+}

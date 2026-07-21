@@ -1,0 +1,35 @@
+{
+  "mission": "A08-002",
+  "portfolio_status": "approved_for_a08_scope",
+  "class": {
+    "id": "MAOI",
+    "label": "Monoamine Oxidase Inhibitors",
+    "runtime_eligible": false
+  },
+  "included_drugs": [
+    {
+      "id": "MAOI-PHENELZINE",
+      "canonical_name": "phenelzine",
+      "status": "included",
+      "rationale": "Initial MAOI portfolio for A08 mechanism-field package.",
+      "runtime_eligible": false
+    }
+  ],
+  "excluded_or_unresolved_candidates": [
+    {
+      "name": "tranylcypromine",
+      "status": "review_required_future_scope",
+      "rationale": "Not included in this initial A08 package without a dedicated portfolio expansion mission."
+    },
+    {
+      "name": "isocarboxazid",
+      "status": "review_required_future_scope",
+      "rationale": "Not included in this initial A08 package without a dedicated portfolio expansion mission."
+    },
+    {
+      "name": "selegiline",
+      "status": "review_required_future_scope",
+      "rationale": "Requires separate treatment because formulation and selectivity issues may require dedicated governance."
+    }
+  ]
+}

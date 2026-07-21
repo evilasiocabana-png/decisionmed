@@ -1,0 +1,23 @@
+{
+  "mission": "A12-010",
+  "status": "complete",
+  "selected_sections": [
+    {
+      "selection_id": "MS-SEL-001",
+      "source_id": "MS-SRC-001",
+      "drug_id": "MS-LITHIUM",
+      "field": "mechanism",
+      "section": "12.1 Mechanism of Action",
+      "review_status": "selected_for_exact_source_text_extraction"
+    },
+    {
+      "selection_id": "MS-SEL-002",
+      "source_id": "MS-SRC-002",
+      "drug_id": "MS-LITHIUM",
+      "field": "mechanism",
+      "section": "12.1 Mechanism of Action",
+      "review_status": "selected_for_cross_check"
+    }
+  ],
+  "runtime_eligible": false
+}

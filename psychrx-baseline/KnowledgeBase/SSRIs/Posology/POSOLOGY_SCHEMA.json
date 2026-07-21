@@ -1,0 +1,41 @@
+{
+  "schema": "psychrx.a03.posology_schema",
+  "program": "A03",
+  "mission": "A03-027",
+  "status": "structural_schema_only",
+  "schema_version": "0.1.0",
+  "runtime_consumption_allowed": false,
+  "required_fields": [
+    "posology_id",
+    "drug_id",
+    "profile_id",
+    "scientific_version",
+    "editorial_version",
+    "schema_version",
+    "validation_status",
+    "publication_status"
+  ],
+  "posology_fields": [
+    "dosage_forms",
+    "routes",
+    "initial_dose",
+    "therapeutic_dose_range",
+    "maximum_dose",
+    "titration",
+    "adjustment_contexts",
+    "discontinuation",
+    "jurisdictional_label_status",
+    "source_binding",
+    "profile_relationship"
+  ],
+  "prohibited_fields": [
+    "patient_specific_recommendation",
+    "prescription_instruction",
+    "therapeutic_strategy",
+    "clinical_decision_rule",
+    "runtime_rule",
+    "decision_engine_rule",
+    "automated_order",
+    "broker_or_execution_action"
+  ]
+}

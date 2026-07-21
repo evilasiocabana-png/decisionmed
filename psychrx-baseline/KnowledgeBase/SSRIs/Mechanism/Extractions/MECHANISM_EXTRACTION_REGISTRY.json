@@ -1,0 +1,52 @@
+{
+  "schema": "psychrx.knowledgebase.ssri.mechanism_extraction_registry",
+  "program": "A03",
+  "mission": "A03-036",
+  "status": "complete_extraction_awaiting_review",
+  "created_at": "2026-07-01",
+  "source_anchor_manifest": "ScientificCorpus/SourceTextIntake/Mechanism/MECHANISM_SOURCE_ANCHORS.json",
+  "clinical_content_interpreted": false,
+  "recommendation_created": false,
+  "prescription_created": false,
+  "runtime_consumption_allowed": false,
+  "extractions": [
+    {
+      "extraction_id": "A03-MOA-EXT-FLUOXETINE-001",
+      "drug_id": "SSRI_FLUOXETINE",
+      "path": "KnowledgeBase/SSRIs/Fluoxetine/Mechanism/MECHANISM_EXTRACTION.json",
+      "status": "awaiting_review"
+    },
+    {
+      "extraction_id": "A03-MOA-EXT-PAROXETINE-001",
+      "drug_id": "SSRI_PAROXETINE",
+      "path": "KnowledgeBase/SSRIs/Paroxetine/Mechanism/MECHANISM_EXTRACTION.json",
+      "status": "awaiting_review"
+    },
+    {
+      "extraction_id": "A03-MOA-EXT-ESCITALOPRAM-001",
+      "drug_id": "SSRI_ESCITALOPRAM",
+      "path": "KnowledgeBase/SSRIs/Escitalopram/Mechanism/MECHANISM_EXTRACTION.json",
+      "status": "awaiting_review"
+    },
+    {
+      "extraction_id": "A03-MOA-EXT-FLUVOXAMINE-001",
+      "drug_id": "SSRI_FLUVOXAMINE",
+      "path": "KnowledgeBase/SSRIs/Fluvoxamine/Mechanism/MECHANISM_EXTRACTION.json",
+      "status": "awaiting_review"
+    },
+    {
+      "extraction_id": "A03-MOA-EXT-SERTRALINE-001",
+      "drug_id": "SSRI_SERTRALINE",
+      "path": "KnowledgeBase/SSRIs/Sertraline/Mechanism/MECHANISM_EXTRACTION.json",
+      "status": "awaiting_review"
+    },
+    {
+      "extraction_id": "A03-MOA-EXT-CITALOPRAM-001",
+      "drug_id": "SSRI_CITALOPRAM",
+      "path": "KnowledgeBase/SSRIs/Citalopram/Mechanism/MECHANISM_EXTRACTION.json",
+      "status": "awaiting_review"
+    }
+  ],
+  "not_extracted": [],
+  "next_mission": "A03-037 - MECHANISM_REVIEW_AND_NORMALIZATION"
+}

@@ -1,0 +1,57 @@
+axis,medication,status,candidate,condition,range,range_type,dose_reading,source
+humor/TEPT,Fluoxetina,ok,Fluoxetina,transtorno de estresse,20-60 (TM/T1),condition_range,available,TM/Aba 1/transtorno de estresse
+humor/TEPT,Sertralina,ok,Sertralina,transtorno de estresse,50-200 (TM/T1),condition_range,available,TM/Aba 1/transtorno de estresse
+humor/TEPT,Escitalopram,ok,Escitalopram,transtorno de estresse,10-20 (TM/T1),condition_range,available,TM/Aba 1/transtorno de estresse
+humor/TEPT,Venlafaxina,ok,Venlafaxina,transtorno de estresse,75-225 (TM/T1),condition_range,available,TM/Aba 1/transtorno de estresse
+humor/TEPT,Duloxetina,ok,Duloxetina,transtorno de estresse,60-120 (TM/T1),condition_range,available,TM/Aba 1/transtorno de estresse
+sono/sedacao,Trazodona,ok,Trazodona,Insonia,25-100 mg a noite (DM/ST-E/GG),condition_range,available,DM/ST-E/GG - dose-efeito/sono
+sono/sedacao,Mirtazapina,ok,Mirtazapina,TAG,15-45 (TM/T1),condition_range,available,TM/Aba 1/TAG
+sono/sedacao,Quetiapina,ok,Quetiapina,Transtorno bipolar - episodio depressivo,300 mg/dia ao deitar (DM),condition_range,available,DM
+sono/sedacao,Zolpidem,ok,Zolpidem,Insonia,dose_effect 5-10,dose_effect_range,available,FDA/Ambien e Ambien CR; Anvisa; diretrizes de insonia; DM:https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=9025a6f7-5501-4aba-875e-222ef39848c0
+ansiedade/resgate,Clonazepam,ok,Clonazepam,Transtorno do panico,"0,5-1 mg/dia (DM)",condition_range,available,DM
+ansiedade/resgate,Bromazepam,ok,Bromazepam,Ansiedade aguda,6-18 mg/dia (HC),condition_range,available,HC
+ansiedade/resgate,Diazepam,ok,Diazepam,TAG,2-10 (TM/T1),condition_range,available,TM/Aba 1/TAG
+ansiedade/resgate,Alprazolam,ok,Alprazolam,Ansiedade aguda,dose_effect 0.25-4,dose_effect_range,available,FDA/DailyMed Xanax/alprazolam; bula Anvisa; Stahl; Goodman & Gilman; Maudsley; DM:https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=fc5fe795-6b41-aecf-e053-6394a90af562
+ansiedade/resgate,Lorazepam,ok,Lorazepam,Ansiedade grave,dose_effect 0.5-2,dose_effect_range,available,FDA/Ativan; bula Anvisa; British Association for Psychopharmacology catatonia; ASAM; Maudsley; DM:https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=569e8a5a-ddf7-ebbc-e063-6294a90ab7a4
+impulsividade/irritabilidade,Divalproato,ok,Divalproato,Transtorno bipolar - mania/hipomania,750 mg/dia ate resposta; alvo serico 50-125 mcg/mL (DM),condition_range,available,DM
+impulsividade/irritabilidade,Carbamazepina,ok,Carbamazepina,Transtorno bipolar - mania/hipomania,dose_effect 200-400,dose_effect_range,available,"FDA/Tegretol Prescribing Information; CANMAT/ISBD Bipolar Guidelines; Maudsley; Goodman & Gilman, 14ª ed.; DM:https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=8d409411-aa9f-4f3a-a52c-fbcb0c3ec053"
+impulsividade/irritabilidade,Quetiapina,ok,Quetiapina,Transtorno bipolar - mania/hipomania,400-800 mg/dia (DM),condition_range,available,DM
+impulsividade/irritabilidade,Risperidona,ok,Risperidona,Transtorno bipolar - mania/hipomania,dose_effect 0.25-1,dose_effect_range,available,"FDA_RISPERDAL; STAHL_ESSENTIAL; STAHL_PG;
+GOODMAN_GILMAN; MAUDSLEY; DM:https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=5643c32b-310e-4888-e063-6394a90ab62f"
+compulsividade/TOC,Fluvoxamina,ok,Fluvoxamina,TOC,150-300 (TM/T1),condition_range,available,TM/Aba 1/TOC
+compulsividade/TOC,Sertralina,ok,Sertralina,TOC,100-200 (TM/T1),condition_range,available,TM/Aba 1/TOC
+compulsividade/TOC,Fluoxetina,ok,Fluoxetina,TOC,20-60 (TM/T1),condition_range,available,TM/Aba 1/TOC
+compulsividade/TOC,Clomipramina,ok,Clomipramina,TOC,100-250 (TM/T1),condition_range,available,TM/Aba 1/TOC
+substancias/craving,Naltrexona,ok,Naltrexona,vicios,25-50 (TM/T1),condition_range,available,TM/Aba 1/vicios
+substancias/craving,Acamprosato,ok,Acamprosato,Transtorno por uso de alcool,dose_effect 666-666,dose_effect_range,available,FDA/Campral; NICE alcool; APA Alcohol Use Disorder; Anvisa; DM:PENDENTE_PESQUISAR; DM:https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=f2bf6742-4b85-45e2-8daa-0f9bfc75a128
+substancias/craving,Buprenorfina,ok,Buprenorfina,Transtorno por uso de opioides,dose_effect 8-24,dose_effect_range,available,"FDA/Subutex, Suboxone, Sublocade, Brixadi; SAMHSA/ASAM; Anvisa; DM:https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=2e807ed0-6df3-47b5-b7ee-b421c5bf0aa7"
+substancias/craving,Bupropiona,ok,Bupropiona,vicios,120-300 (TM/T1),condition_range,available,TM/Aba 1/vicios
+dor/sintomas somaticos,Duloxetina,ok,Duloxetina,dor,60-120 (TM/T1),condition_range,available,TM/Aba 1/dor
+dor/sintomas somaticos,Amitriptilina,ok,Amitriptilina,TAG,50-150 (TM/T1),condition_range,available,TM/Aba 1/TAG
+dor/sintomas somaticos,Nortriptilina,ok,Nortriptilina,TAG,50-150 (TM/T1),condition_range,available,TM/Aba 1/TAG
+dor/sintomas somaticos,Venlafaxina,ok,Venlafaxina,dor,150-225 (TM/T1),condition_range,available,TM/Aba 1/dor
+energia/cognicao,Bupropiona,ok,Bupropiona,depressao melancolica,120-300 (TM/T1),condition_range,available,TM/Aba 1/depressao melancolica
+energia/cognicao,Venlafaxina,ok,Venlafaxina,depressao melancolica,150-300 (TM/T1),condition_range,available,TM/Aba 1/depressao melancolica
+energia/cognicao,Desvenlafaxina,ok,Desvenlafaxina,depressao melancolica,50-100 (TM/T1),condition_range,available,TM/Aba 1/depressao melancolica
+energia/cognicao,Metilfenidato IR,ok,Metilfenidato IR,Depressao resistente/fadiga,dose_effect 5-60,dose_effect_range,available,FDA/Ritalin; Anvisa; NICE ADHD; AAP; Goodman & Gilman; DM:https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=defc1205-8e90-4b1e-b862-05e4c35c7364
+energia/cognicao,Metilfenidato LP,ok,Metilfenidato LP,TDAH,18-72 mg uma vez ao dia pela manha (DM),condition_range,available,DM
+libido/funcao sexual,Bupropiona,ok,Bupropiona,TAG,120-300 (TM/T1),condition_range,available,TM/Aba 1/TAG
+libido/funcao sexual,Agomelatina,ok,Agomelatina,TAG,25-50 (TM/T1),condition_range,available,TM/Aba 1/TAG
+libido/funcao sexual,Vortioxetina,ok,Vortioxetina,TAG,10-20 (TM/T1),condition_range,available,TM/Aba 1/TAG
+peso/metabolico,Bupropiona,ok,Bupropiona,TAG,120-300 (TM/T1),condition_range,available,TM/Aba 1/TAG
+peso/metabolico,Agomelatina,ok,Agomelatina,TAG,25-50 (TM/T1),condition_range,available,TM/Aba 1/TAG
+peso/metabolico,Fluoxetina,ok,Fluoxetina,TAG,20-60 (TM/T1),condition_range,available,TM/Aba 1/TAG
+estabilizacao do humor,Litio,ok,Litio,Transtorno bipolar - mania/hipomania,dose_effect 0.6-1,dose_effect_range,available,"FDA_LITHIUM; CANMAT_ISBD; MAUDSLEY;
+STAHL_ESSENTIAL; GOODMAN_GILMAN; DM:https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=049902a9-3af1-4863-994e-15f36e7a9793"
+estabilizacao do humor,Lamotrigina,ok,Lamotrigina,Transtorno bipolar - mania/hipomania,dose_effect 25-25,dose_effect_range,available,"FDA_LAMICTAL; CANMAT_ISBD; MAUDSLEY;
+STAHL_ESSENTIAL; GOODMAN_GILMAN; DM:https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=55f41c7e-03a6-b84c-e063-6294a90a7d82"
+estabilizacao do humor,Divalproato,ok,Divalproato,Transtorno bipolar - mania/hipomania,750 mg/dia ate resposta; alvo serico 50-125 mcg/mL (DM),condition_range,available,DM
+estabilizacao do humor,Carbamazepina,ok,Carbamazepina,Transtorno bipolar - mania/hipomania,dose_effect 200-400,dose_effect_range,available,"FDA/Tegretol Prescribing Information; CANMAT/ISBD Bipolar Guidelines; Maudsley; Goodman & Gilman, 14ª ed.; DM:https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=8d409411-aa9f-4f3a-a52c-fbcb0c3ec053"
+psicose/organizacao do pensamento,Quetiapina,ok,Quetiapina,Agitacao ou psicose aguda,150-750 mg/dia quando contexto psicotico/esquizofrenia; agitacao isolada nao cadastrada (DM),condition_range,available,DM
+psicose/organizacao do pensamento,Risperidona,ok,Risperidona,Agitacao ou psicose aguda,dose_effect 0.25-1,dose_effect_range,available,"FDA_RISPERDAL; STAHL_ESSENTIAL; STAHL_PG;
+GOODMAN_GILMAN; MAUDSLEY; DM:https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=5643c32b-310e-4888-e063-6394a90ab62f"
+psicose/organizacao do pensamento,Olanzapina,ok,Olanzapina,Agitacao ou psicose aguda,dose_effect 2.5-5,dose_effect_range,available,"FDA_ZYPREXA; STAHL_ESSENTIAL; STAHL_PG;
+GOODMAN_GILMAN; MAUDSLEY; DM:https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=0ecbf540-572e-4ca4-b694-18ca1cd1c194"
+psicose/organizacao do pensamento,Aripiprazol,ok,Aripiprazol,Agitacao ou psicose aguda,dose_effect 2-5,dose_effect_range,available,"FDA_ABILIFY; STAHL_ESSENTIAL; STAHL_PG;
+GOODMAN_GILMAN; MAUDSLEY; DM:https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=042b725c-1c17-4cfb-80b2-c841226d795e"
+psicose/organizacao do pensamento,Haloperidol,ok,Haloperidol,Agitacao ou psicose aguda,dose_effect 0.5-2,dose_effect_range,available,"FDA/Haldol Prescribing Information; Stahl, 5ª ed.; Goodman & Gilman, 14ª ed.; Maudsley.; DM:https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=e2eed126-cb82-42b1-9b48-9cbeb6873b50"

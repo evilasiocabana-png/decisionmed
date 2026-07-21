@@ -1,0 +1,42 @@
+{
+  "mission": "A05-015",
+  "status": "passed",
+  "audit_scope": "A05 mechanism package",
+  "traceability_paths": [
+    {
+      "entry_id": "A05-MECH-001",
+      "path": [
+        "NDRI-SRC-001",
+        "A05-SEL-001",
+        "A05-TXT-001",
+        "A05-MECH-001",
+        "A05-NDRI-MECHANISM-INTERNAL-001"
+      ],
+      "result": "pass"
+    },
+    {
+      "entry_id": "A05-MECH-002",
+      "path": [
+        "NDRI-SRC-001/NDRI-SRC-003",
+        "A05-SEL-001/A05-SEL-003",
+        "A05-TXT-002/A05-TXT-004",
+        "A05-MECH-002",
+        "A05-NDRI-MECHANISM-INTERNAL-001"
+      ],
+      "result": "pass"
+    },
+    {
+      "entry_id": "A05-MECH-003",
+      "path": [
+        "NDRI-SRC-001",
+        "A05-SEL-001",
+        "A05-TXT-003",
+        "A05-MECH-003",
+        "A05-NDRI-MECHANISM-INTERNAL-001"
+      ],
+      "result": "pass"
+    }
+  ],
+  "gaps": [],
+  "runtime_status": "blocked"
+}

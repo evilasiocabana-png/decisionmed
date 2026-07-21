@@ -1,0 +1,42 @@
+{
+  "mission": "A07-015",
+  "status": "passed",
+  "audit_scope": "A07 mechanism package",
+  "traceability_paths": [
+    {
+      "entry_id": "A07-MECH-001",
+      "path": [
+        "TCA-SRC-001",
+        "A07-SEL-001",
+        "A07-TXT-001",
+        "A07-MECH-001",
+        "A07-TCA-MECHANISM-INTERNAL-001"
+      ],
+      "result": "pass"
+    },
+    {
+      "entry_id": "A07-MECH-002",
+      "path": [
+        "TCA-SRC-001",
+        "A07-SEL-001",
+        "A07-TXT-002",
+        "A07-MECH-002",
+        "A07-TCA-MECHANISM-INTERNAL-001"
+      ],
+      "result": "pass"
+    },
+    {
+      "entry_id": "A07-MECH-003",
+      "path": [
+        "TCA-SRC-001",
+        "A07-SEL-001",
+        "A07-TXT-003",
+        "A07-MECH-003",
+        "A07-TCA-MECHANISM-INTERNAL-001"
+      ],
+      "result": "pass"
+    }
+  ],
+  "gaps": [],
+  "runtime_status": "blocked"
+}

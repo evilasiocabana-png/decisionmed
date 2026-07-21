@@ -1,0 +1,34 @@
+{
+  "schema": "psychrx.evidence_anchoring.snri.source_inventory_review.v1",
+  "program": "A04.1",
+  "mission": "A04.1-001 - SOURCE_INVENTORY_REVIEW",
+  "status": "provisional_completed_pending_governance_review",
+  "drug_class": "SNRIs",
+  "source_package": "ScientificCorpus/SourceTextIntake/SNRIs/SourceTextPackage/SNRI_SOURCE_TEXT_ACQUISITION_PACKAGE.json",
+  "source_count": 19,
+  "category_counts": {
+    "books": 3,
+    "guidelines": 5,
+    "regulatory": 5,
+    "reference_or_evidence_databases": 3,
+    "safety": 3
+  },
+  "access_counts": {
+    "remote_source_locator": 16,
+    "manual_acquisition_required": 3,
+    "local_source_text_file": 0
+  },
+  "duplicate_source_ids_found": 0,
+  "ready_for_locator_mapping": 16,
+  "manual_acquisition_required": 3,
+  "ready_for_extraction": 0,
+  "a04_009_may_start": false,
+  "blocking_reason": "No selected and reviewable source sections exist.",
+  "scientific_interpretation_performed": false,
+  "scientific_content_extracted": false,
+  "knowledge_objects_created": 0,
+  "runtime_eligibility": "not_eligible",
+  "official_next_mission": "BLOCKED - A04_SOURCE_SECTION_SELECTION_REQUIRED",
+  "proposed_next_mission": "A04.1-002 - SECTION_MAPPING",
+  "governance_status": "pending_final_review"
+}

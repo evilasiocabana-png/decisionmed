@@ -1,0 +1,23 @@
+{
+  "mission": "A05-008",
+  "status": "complete",
+  "matrix": [
+    {
+      "drug_id": "NDRI-BUPROPION",
+      "field": "mechanism",
+      "required_chain": [
+        "source_id",
+        "section_id",
+        "section_locator",
+        "source_text_record_id",
+        "field_entry_id"
+      ],
+      "candidate_sources": [
+        "NDRI-SRC-001",
+        "NDRI-SRC-002",
+        "NDRI-SRC-003"
+      ],
+      "status": "ready_for_gate"
+    }
+  ]
+}

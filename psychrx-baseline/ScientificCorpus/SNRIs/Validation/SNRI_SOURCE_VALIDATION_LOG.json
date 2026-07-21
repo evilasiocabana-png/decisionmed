@@ -1,0 +1,32 @@
+{
+  "schema": "psychrx.scientific_corpus.snri.source_validation_log.v1",
+  "pipeline_execution_id": "PIPE-A04-0-SNRI-VALIDATION-001",
+  "historical_alias": "A04.0-005 - SNRI_SOURCE_VALIDATION",
+  "program": "A04.0",
+  "drug_class": "SNRIs",
+  "status": "completed",
+  "validation_mode": "metadata_only",
+  "records_reviewed": 19,
+  "checks": {
+    "source_count_consistency": "passed",
+    "source_id_uniqueness": "passed",
+    "required_metadata_presence": "passed",
+    "storage_path_existence": "passed",
+    "access_status_presence": "passed",
+    "acquisition_status_presence": "passed",
+    "validation_status_presence": "passed",
+    "scientific_interpretation_absence": "passed"
+  },
+  "results": {
+    "missing_required_metadata": 0,
+    "duplicate_source_ids": 0,
+    "missing_storage_paths": 0,
+    "knowledge_objects_created": 0,
+    "runtime_objects_created": 0,
+    "scientific_interpretation_performed": false
+  },
+  "administrative_notes": [
+    "The bibliographic title Stahl's Prescriber's Guide contains the word Prescriber's; this is a source title only and not a prescribing action."
+  ],
+  "next_mission": "A04.0-006 - SNRI_EDITORIAL_REGISTRATION"
+}

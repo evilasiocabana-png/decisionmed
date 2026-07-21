@@ -1,0 +1,22 @@
+{
+  "schema": "psychrx.knowledgebase.ssri.pk_extraction",
+  "program": "A03",
+  "mission": "A03-042",
+  "drug_id": "SSRI_CITALOPRAM",
+  "source_anchor_id": "A03-PK-ANCHOR-CITALOPRAM-001",
+  "source_section": "12.3 Pharmacokinetics",
+  "extraction_claim": {
+    "dose_linearity": "linear_and_dose_proportional_over_10_to_40mg_per_day",
+    "terminal_half_life": "about_35_hours",
+    "steady_state": "approximately_one_week_with_once_daily_dosing",
+    "accumulation": "about_2_5_times_single_dose_plasma_concentrations_at_steady_state",
+    "peak_concentration_time": "about_4_hours_after_single_40mg_oral_dose",
+    "bioavailability": "about_80_percent_relative_to_intravenous_dose",
+    "food_effect": "absorption_not_affected_by_food",
+    "metabolism": "mainly_hepatic_with_CYP3A4_and_CYP2C19_involved_in_N_demethylation"
+  },
+  "reviewer_status": "awaiting_review",
+  "normalization_status": "awaiting_normalization",
+  "publication_status": "not_published",
+  "runtime_consumption_allowed": false
+}

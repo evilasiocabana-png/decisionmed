@@ -1,0 +1,22 @@
+{
+  "mission": "A10-002",
+  "status": "complete",
+  "portfolio": [
+    {
+      "drug_id": "FGA-CHLORPROMAZINE",
+      "name": "Chlorpromazine",
+      "class_scope": "first_generation_antipsychotic",
+      "profile_status": "shell_created",
+      "mechanism_scope": "authorized_for_internal_non_runtime_population",
+      "runtime_eligible": false
+    }
+  ],
+  "future_candidates": [
+    "haloperidol",
+    "fluphenazine",
+    "perphenazine",
+    "thioridazine",
+    "trifluoperazine"
+  ],
+  "note": "Future candidates are listed only as portfolio expansion candidates and were not populated in A10."
+}

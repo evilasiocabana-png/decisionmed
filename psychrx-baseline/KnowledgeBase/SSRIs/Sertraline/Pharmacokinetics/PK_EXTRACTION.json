@@ -1,0 +1,21 @@
+{
+  "schema": "psychrx.knowledgebase.ssri.pk_extraction",
+  "program": "A03",
+  "mission": "A03-042",
+  "drug_id": "SSRI_SERTRALINE",
+  "source_anchor_id": "A03-PK-ANCHOR-SERTRALINE-001",
+  "source_section": "12.3 Pharmacokinetics",
+  "extraction_claim": {
+    "peak_concentration_time": "4_5_to_8_4_hours",
+    "terminal_half_life": "about_26_hours",
+    "steady_state": "about_one_week_with_once_daily_dosing",
+    "accumulation": "approximately_two_fold_to_steady_state",
+    "dose_proportionality": "linear_dose_proportional_over_50_to_200mg_in_single_dose_study",
+    "metabolism": "extensive_first_pass_metabolism_with_N_demethylation_as_principal_initial_pathway",
+    "protein_binding": "high_serum_protein_binding_98_percent_in_vitro"
+  },
+  "reviewer_status": "awaiting_review",
+  "normalization_status": "awaiting_normalization",
+  "publication_status": "not_published",
+  "runtime_consumption_allowed": false
+}

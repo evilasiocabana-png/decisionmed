@@ -1,0 +1,42 @@
+{
+  "schema": "psychrx.a03.indication_schema",
+  "program": "A03",
+  "mission": "A03-026",
+  "status": "structural_schema_only",
+  "schema_version": "0.1.0",
+  "runtime_consumption_allowed": false,
+  "required_fields": [
+    "indication_id",
+    "drug_id",
+    "profile_id",
+    "scientific_version",
+    "editorial_version",
+    "schema_version",
+    "validation_status",
+    "publication_status"
+  ],
+  "indication_fields": [
+    "regulatory_indications",
+    "guideline_mentions",
+    "diagnostic_scope",
+    "population_contexts",
+    "evidence_binding",
+    "jurisdictional_status",
+    "non_scope_exclusions",
+    "boundary_notes",
+    "profile_relationship"
+  ],
+  "prohibited_fields": [
+    "dose",
+    "titration",
+    "therapeutic_strategy",
+    "recommendation",
+    "prescription",
+    "contraindication",
+    "safety",
+    "interaction",
+    "monitoring",
+    "runtime_rule",
+    "decision_engine_rule"
+  ]
+}

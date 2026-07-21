@@ -1,0 +1,60 @@
+{
+  "schema": "psychrx.scientific_corpus.snri.source_corpus_manifest.v1",
+  "program": "A04.0",
+  "phase": "Phase 2 - Scientific Source Corpus",
+  "mission": "A04.0-003 - SNRI_SOURCE_CORPUS_INTAKE",
+  "status": "completed",
+  "manifest_version": "0.1.0",
+  "scope": {
+    "drug_class": "SNRI",
+    "portfolio": [
+      "venlafaxine",
+      "desvenlafaxine",
+      "duloxetine",
+      "levomilnacipran",
+      "milnacipran"
+    ]
+  },
+  "corpus_root": "ScientificCorpus/SNRIs/",
+  "source_count": 19,
+  "categories": [
+    "Books",
+    "Guidelines",
+    "Regulatory",
+    "Reviews",
+    "MetaAnalyses",
+    "RCT",
+    "Safety",
+    "Reference"
+  ],
+  "source_records": [
+    { "source_id": "A04.0-SD-B001", "official_title": "Stahl's Essential Psychopharmacology", "organization": "Cambridge University Press", "category": "Books", "document_type": "book", "edition": null, "version": null, "language": "English", "jurisdiction": "International", "storage_location": "ScientificCorpus/SNRIs/Books/A04.0-SD-B001/", "relative_path": "Books/A04.0-SD-B001/", "acquisition_status": "not_acquired", "availability_status": "restricted_or_commercial", "editorial_status": "intake_registered" },
+    { "source_id": "A04.0-SD-B002", "official_title": "Stahl's Prescriber's Guide", "organization": "Cambridge University Press", "category": "Books", "document_type": "book", "edition": null, "version": null, "language": "English", "jurisdiction": "International", "storage_location": "ScientificCorpus/SNRIs/Books/A04.0-SD-B002/", "relative_path": "Books/A04.0-SD-B002/", "acquisition_status": "not_acquired", "availability_status": "restricted_or_commercial", "editorial_status": "intake_registered" },
+    { "source_id": "A04.0-SD-B003", "official_title": "The Maudsley Prescribing Guidelines in Psychiatry", "organization": "Wiley", "category": "Books", "document_type": "book", "edition": null, "version": null, "language": "English", "jurisdiction": "International", "storage_location": "ScientificCorpus/SNRIs/Books/A04.0-SD-B003/", "relative_path": "Books/A04.0-SD-B003/", "acquisition_status": "not_acquired", "availability_status": "restricted_or_commercial", "editorial_status": "intake_registered" },
+    { "source_id": "A04.0-SD-G001", "official_title": "Depression in adults: treatment and management", "organization": "NICE", "category": "Guidelines", "document_type": "clinical_guideline", "edition": null, "version": null, "language": "English", "jurisdiction": "United Kingdom", "storage_location": "ScientificCorpus/SNRIs/Guidelines/A04.0-SD-G001/", "relative_path": "Guidelines/A04.0-SD-G001/", "acquisition_status": "not_acquired", "availability_status": "public", "editorial_status": "intake_registered" },
+    { "source_id": "A04.0-SD-G002", "official_title": "CANMAT Depression Guidelines", "organization": "Canadian Network for Mood and Anxiety Treatments", "category": "Guidelines", "document_type": "clinical_guideline_family", "edition": null, "version": null, "language": "English", "jurisdiction": "Canada", "storage_location": "ScientificCorpus/SNRIs/Guidelines/A04.0-SD-G002/", "relative_path": "Guidelines/A04.0-SD-G002/", "acquisition_status": "not_acquired", "availability_status": "public_or_restricted_by_article", "editorial_status": "intake_registered" },
+    { "source_id": "A04.0-SD-G003", "official_title": "Practice Guideline for the Treatment of Patients With Major Depressive Disorder", "organization": "American Psychiatric Association", "category": "Guidelines", "document_type": "clinical_guideline", "edition": null, "version": null, "language": "English", "jurisdiction": "United States", "storage_location": "ScientificCorpus/SNRIs/Guidelines/A04.0-SD-G003/", "relative_path": "Guidelines/A04.0-SD-G003/", "acquisition_status": "not_acquired", "availability_status": "public_or_restricted_by_article", "editorial_status": "intake_registered" },
+    { "source_id": "A04.0-SD-G004", "official_title": "WFSBP Guidelines for the Biological Treatment of Unipolar Depressive Disorders", "organization": "World Federation of Societies of Biological Psychiatry", "category": "Guidelines", "document_type": "clinical_guideline_family", "edition": null, "version": null, "language": "English", "jurisdiction": "International", "storage_location": "ScientificCorpus/SNRIs/Guidelines/A04.0-SD-G004/", "relative_path": "Guidelines/A04.0-SD-G004/", "acquisition_status": "not_acquired", "availability_status": "public_or_restricted_by_article", "editorial_status": "intake_registered" },
+    { "source_id": "A04.0-SD-G005", "official_title": "VA/DoD Clinical Practice Guideline for the Management of Major Depressive Disorder", "organization": "U.S. Department of Veterans Affairs and U.S. Department of Defense", "category": "Guidelines", "document_type": "clinical_guideline", "edition": null, "version": null, "language": "English", "jurisdiction": "United States", "storage_location": "ScientificCorpus/SNRIs/Guidelines/A04.0-SD-G005/", "relative_path": "Guidelines/A04.0-SD-G005/", "acquisition_status": "not_acquired", "availability_status": "public", "editorial_status": "intake_registered" },
+    { "source_id": "A04.0-SD-R001", "official_title": "Drugs@FDA", "organization": "U.S. Food and Drug Administration", "category": "Regulatory", "document_type": "regulatory_database", "edition": null, "version": null, "language": "English", "jurisdiction": "United States", "storage_location": "ScientificCorpus/SNRIs/Regulatory/A04.0-SD-R001/", "relative_path": "Regulatory/A04.0-SD-R001/", "acquisition_status": "not_acquired", "availability_status": "public", "editorial_status": "intake_registered" },
+    { "source_id": "A04.0-SD-R002", "official_title": "DailyMed", "organization": "U.S. National Library of Medicine", "category": "Regulatory", "document_type": "official_label_database", "edition": null, "version": null, "language": "English", "jurisdiction": "United States", "storage_location": "ScientificCorpus/SNRIs/Regulatory/A04.0-SD-R002/", "relative_path": "Regulatory/A04.0-SD-R002/", "acquisition_status": "not_acquired", "availability_status": "public", "editorial_status": "intake_registered" },
+    { "source_id": "A04.0-SD-R003", "official_title": "EMA Medicines", "organization": "European Medicines Agency", "category": "Regulatory", "document_type": "regulatory_database", "edition": null, "version": null, "language": "English", "jurisdiction": "European Union", "storage_location": "ScientificCorpus/SNRIs/Regulatory/A04.0-SD-R003/", "relative_path": "Regulatory/A04.0-SD-R003/", "acquisition_status": "not_acquired", "availability_status": "public", "editorial_status": "intake_registered" },
+    { "source_id": "A04.0-SD-R004", "official_title": "Consulta a Medicamentos", "organization": "ANVISA", "category": "Regulatory", "document_type": "regulatory_database", "edition": null, "version": null, "language": "Portuguese", "jurisdiction": "Brazil", "storage_location": "ScientificCorpus/SNRIs/Regulatory/A04.0-SD-R004/", "relative_path": "Regulatory/A04.0-SD-R004/", "acquisition_status": "not_acquired", "availability_status": "public", "editorial_status": "intake_registered" },
+    { "source_id": "A04.0-SD-R005", "official_title": "Bulario Eletronico", "organization": "ANVISA", "category": "Regulatory", "document_type": "official_label_database", "edition": null, "version": null, "language": "Portuguese", "jurisdiction": "Brazil", "storage_location": "ScientificCorpus/SNRIs/Regulatory/A04.0-SD-R005/", "relative_path": "Regulatory/A04.0-SD-R005/", "acquisition_status": "not_acquired", "availability_status": "public", "editorial_status": "intake_registered" },
+    { "source_id": "A04.0-SD-E001", "official_title": "PubMed/MEDLINE", "organization": "U.S. National Library of Medicine", "category": "Reference", "document_type": "bibliographic_database", "edition": null, "version": null, "language": "English", "jurisdiction": "International", "storage_location": "ScientificCorpus/SNRIs/Reference/A04.0-SD-E001/", "relative_path": "Reference/A04.0-SD-E001/", "acquisition_status": "not_acquired", "availability_status": "public", "editorial_status": "intake_registered" },
+    { "source_id": "A04.0-SD-E002", "official_title": "Cochrane Library", "organization": "Cochrane", "category": "Reviews", "document_type": "evidence_database", "edition": null, "version": null, "language": "English", "jurisdiction": "International", "storage_location": "ScientificCorpus/SNRIs/Reviews/A04.0-SD-E002/", "relative_path": "Reviews/A04.0-SD-E002/", "acquisition_status": "not_acquired", "availability_status": "public_or_restricted_by_article", "editorial_status": "intake_registered" },
+    { "source_id": "A04.0-SD-E003", "official_title": "ClinicalTrials.gov", "organization": "U.S. National Library of Medicine", "category": "RCT", "document_type": "clinical_trial_registry", "edition": null, "version": null, "language": "English", "jurisdiction": "International", "storage_location": "ScientificCorpus/SNRIs/RCT/A04.0-SD-E003/", "relative_path": "RCT/A04.0-SD-E003/", "acquisition_status": "not_acquired", "availability_status": "public", "editorial_status": "intake_registered" },
+    { "source_id": "A04.0-SD-S001", "official_title": "FDA Drug Safety Communications", "organization": "U.S. Food and Drug Administration", "category": "Safety", "document_type": "safety_communications", "edition": null, "version": null, "language": "English", "jurisdiction": "United States", "storage_location": "ScientificCorpus/SNRIs/Safety/A04.0-SD-S001/", "relative_path": "Safety/A04.0-SD-S001/", "acquisition_status": "not_acquired", "availability_status": "public", "editorial_status": "intake_registered" },
+    { "source_id": "A04.0-SD-S002", "official_title": "EMA Pharmacovigilance and PRAC", "organization": "European Medicines Agency", "category": "Safety", "document_type": "safety_communications", "edition": null, "version": null, "language": "English", "jurisdiction": "European Union", "storage_location": "ScientificCorpus/SNRIs/Safety/A04.0-SD-S002/", "relative_path": "Safety/A04.0-SD-S002/", "acquisition_status": "not_acquired", "availability_status": "public", "editorial_status": "intake_registered" },
+    { "source_id": "A04.0-SD-S003", "official_title": "Farmacovigilancia", "organization": "ANVISA", "category": "Safety", "document_type": "safety_communications", "edition": null, "version": null, "language": "Portuguese", "jurisdiction": "Brazil", "storage_location": "ScientificCorpus/SNRIs/Safety/A04.0-SD-S003/", "relative_path": "Safety/A04.0-SD-S003/", "acquisition_status": "not_acquired", "availability_status": "public", "editorial_status": "intake_registered" }
+  ],
+  "non_actions": {
+    "documents_opened": 0,
+    "documents_downloaded": 0,
+    "scientific_interpretation_performed": false,
+    "source_anchors_created": 0,
+    "knowledge_objects_created": 0,
+    "runtime_objects_created": 0
+  },
+  "next_mission": "A04.0-004 - SNRI_SOURCE_METADATA_NORMALIZATION"
+}

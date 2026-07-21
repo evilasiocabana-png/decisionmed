@@ -1,0 +1,11 @@
+{
+  "mission": "A10-014",
+  "status": "published_internal_non_runtime",
+  "package": "FIRST_GEN_ANTIPSYCHOTIC_MECHANISM_PACKAGE",
+  "included_artifacts": [
+    "FIRST_GEN_ANTIPSYCHOTIC_MECHANISM_SOURCE_TEXT_EXTRACTS.json",
+    "FIRST_GEN_ANTIPSYCHOTIC_MECHANISM_POPULATED_DRAFT.json",
+    "FIRST_GEN_ANTIPSYCHOTIC_DRAFT_EDITORIAL_REVIEW.json"
+  ],
+  "runtime_eligible": false
+}

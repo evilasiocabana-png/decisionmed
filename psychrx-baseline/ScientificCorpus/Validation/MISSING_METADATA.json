@@ -1,0 +1,1298 @@
+[
+    {
+        "source_id":  "B001",
+        "field":  "organization",
+        "value":  "pending_identification",
+        "status":  "missing_or_pending"
+    },
+    {
+        "source_id":  "B001",
+        "field":  "publisher",
+        "value":  "pending_identification",
+        "status":  "missing_or_pending"
+    },
+    {
+        "source_id":  "B001",
+        "field":  "publication_year",
+        "value":  null,
+        "status":  "missing_or_pending"
+    },
+    {
+        "source_id":  "B001",
+        "field":  "version",
+        "value":  "pending_identification",
+        "status":  "missing_or_pending"
+    },
+    {
+        "source_id":  "B001",
+        "field":  "edition",
+        "value":  "pending_identification",
+        "status":  "missing_or_pending"
+    },
+    {
+        "source_id":  "B001",
+        "field":  "language",
+        "value":  "pending_identification",
+        "status":  "missing_or_pending"
+    },
+    {
+        "source_id":  "B001",
+        "field":  "jurisdiction",
+        "value":  "pending_identification",
+        "status":  "missing_or_pending"
+    },
+    {
+        "source_id":  "B001",
+        "field":  "doi",
+        "value":  null,
+        "status":  "missing_or_pending"
+    },
+    {
+        "source_id":  "B001",
+        "field":  "pmid",
+        "value":  null,
+        "status":  "missing_or_pending"
+    },
+    {
+        "source_id":  "B001",
+        "field":  "isbn",
+        "value":  null,
+        "status":  "missing_or_pending"
+    },
+    {
+        "source_id":  "B001",
+        "field":  "url",
+        "value":  null,
+        "status":  "missing_or_pending"
+    },
+    {
+        "source_id":  "B001",
+        "field":  "license",
+        "value":  "pending_identification",
+        "status":  "missing_or_pending"
+    },
+    {
+        "source_id":  "B001",
+        "field":  "file_hash",
+        "value":  "pending_file_hash",
+        "status":  "missing_or_pending"
+    },
+    {
+        "source_id":  "B002",
+        "field":  "organization",
+        "value":  "pending_identification",
+        "status":  "missing_or_pending"
+    },
+    {
+        "source_id":  "B002",
+        "field":  "publisher",
+        "value":  "pending_identification",
+        "status":  "missing_or_pending"
+    },
+    {
+        "source_id":  "B002",
+        "field":  "publication_year",
+        "value":  null,
+        "status":  "missing_or_pending"
+    },
+    {
+        "source_id":  "B002",
+        "field":  "version",
+        "value":  "pending_identification",
+        "status":  "missing_or_pending"
+    },
+    {
+        "source_id":  "B002",
+        "field":  "edition",
+        "value":  "pending_identification",
+        "status":  "missing_or_pending"
+    },
+    {
+        "source_id":  "B002",
+        "field":  "language",
+        "value":  "pending_identification",
+        "status":  "missing_or_pending"
+    },
+    {
+        "source_id":  "B002",
+        "field":  "jurisdiction",
+        "value":  "pending_identification",
+        "status":  "missing_or_pending"
+    },
+    {
+        "source_id":  "B002",
+        "field":  "doi",
+        "value":  null,
+        "status":  "missing_or_pending"
+    },
+    {
+        "source_id":  "B002",
+        "field":  "pmid",
+        "value":  null,
+        "status":  "missing_or_pending"
+    },
+    {
+        "source_id":  "B002",
+        "field":  "isbn",
+        "value":  null,
+        "status":  "missing_or_pending"
+    },
+    {
+        "source_id":  "B002",
+        "field":  "url",
+        "value":  null,
+        "status":  "missing_or_pending"
+    },
+    {
+        "source_id":  "B002",
+        "field":  "license",
+        "value":  "pending_identification",
+        "status":  "missing_or_pending"
+    },
+    {
+        "source_id":  "B002",
+        "field":  "file_hash",
+        "value":  "pending_file_hash",
+        "status":  "missing_or_pending"
+    },
+    {
+        "source_id":  "B003",
+        "field":  "organization",
+        "value":  "pending_identification",
+        "status":  "missing_or_pending"
+    },
+    {
+        "source_id":  "B003",
+        "field":  "publisher",
+        "value":  "pending_identification",
+        "status":  "missing_or_pending"
+    },
+    {
+        "source_id":  "B003",
+        "field":  "publication_year",
+        "value":  null,
+        "status":  "missing_or_pending"
+    },
+    {
+        "source_id":  "B003",
+        "field":  "version",
+        "value":  "pending_identification",
+        "status":  "missing_or_pending"
+    },
+    {
+        "source_id":  "B003",
+        "field":  "edition",
+        "value":  "pending_identification",
+        "status":  "missing_or_pending"
+    },
+    {
+        "source_id":  "B003",
+        "field":  "language",
+        "value":  "pending_identification",
+        "status":  "missing_or_pending"
+    },
+    {
+        "source_id":  "B003",
+        "field":  "jurisdiction",
+        "value":  "pending_identification",
+        "status":  "missing_or_pending"
+    },
+    {
+        "source_id":  "B003",
+        "field":  "doi",
+        "value":  null,
+        "status":  "missing_or_pending"
+    },
+    {
+        "source_id":  "B003",
+        "field":  "pmid",
+        "value":  null,
+        "status":  "missing_or_pending"
+    },
+    {
+        "source_id":  "B003",
+        "field":  "isbn",
+        "value":  null,
+        "status":  "missing_or_pending"
+    },
+    {
+        "source_id":  "B003",
+        "field":  "url",
+        "value":  null,
+        "status":  "missing_or_pending"
+    },
+    {
+        "source_id":  "B003",
+        "field":  "license",
+        "value":  "pending_identification",
+        "status":  "missing_or_pending"
+    },
+    {
+        "source_id":  "B003",
+        "field":  "file_hash",
+        "value":  "pending_file_hash",
+        "status":  "missing_or_pending"
+    },
+    {
+        "source_id":  "G001",
+        "field":  "publication_year",
+        "value":  null,
+        "status":  "missing_or_pending"
+    },
+    {
+        "source_id":  "G001",
+        "field":  "version",
+        "value":  "pending_identification",
+        "status":  "missing_or_pending"
+    },
+    {
+        "source_id":  "G001",
+        "field":  "edition",
+        "value":  "pending_identification",
+        "status":  "missing_or_pending"
+    },
+    {
+        "source_id":  "G001",
+        "field":  "doi",
+        "value":  null,
+        "status":  "missing_or_pending"
+    },
+    {
+        "source_id":  "G001",
+        "field":  "pmid",
+        "value":  null,
+        "status":  "missing_or_pending"
+    },
+    {
+        "source_id":  "G001",
+        "field":  "isbn",
+        "value":  null,
+        "status":  "missing_or_pending"
+    },
+    {
+        "source_id":  "G001",
+        "field":  "url",
+        "value":  null,
+        "status":  "missing_or_pending"
+    },
+    {
+        "source_id":  "G001",
+        "field":  "license",
+        "value":  "pending_identification",
+        "status":  "missing_or_pending"
+    },
+    {
+        "source_id":  "G001",
+        "field":  "file_hash",
+        "value":  "pending_file_hash",
+        "status":  "missing_or_pending"
+    },
+    {
+        "source_id":  "G002",
+        "field":  "version",
+        "value":  "pending_identification",
+        "status":  "missing_or_pending"
+    },
+    {
+        "source_id":  "G002",
+        "field":  "edition",
+        "value":  "pending_identification",
+        "status":  "missing_or_pending"
+    },
+    {
+        "source_id":  "G002",
+        "field":  "doi",
+        "value":  null,
+        "status":  "missing_or_pending"
+    },
+    {
+        "source_id":  "G002",
+        "field":  "isbn",
+        "value":  null,
+        "status":  "missing_or_pending"
+    },
+    {
+        "source_id":  "G002",
+        "field":  "license",
+        "value":  "pending_identification",
+        "status":  "missing_or_pending"
+    },
+    {
+        "source_id":  "G002",
+        "field":  "file_hash",
+        "value":  "pending_file_hash",
+        "status":  "missing_or_pending"
+    },
+    {
+        "source_id":  "G003",
+        "field":  "version",
+        "value":  "pending_identification",
+        "status":  "missing_or_pending"
+    },
+    {
+        "source_id":  "G003",
+        "field":  "edition",
+        "value":  "pending_identification",
+        "status":  "missing_or_pending"
+    },
+    {
+        "source_id":  "G003",
+        "field":  "doi",
+        "value":  null,
+        "status":  "missing_or_pending"
+    },
+    {
+        "source_id":  "G003",
+        "field":  "pmid",
+        "value":  null,
+        "status":  "missing_or_pending"
+    },
+    {
+        "source_id":  "G003",
+        "field":  "isbn",
+        "value":  null,
+        "status":  "missing_or_pending"
+    },
+    {
+        "source_id":  "G003",
+        "field":  "license",
+        "value":  "pending_identification",
+        "status":  "missing_or_pending"
+    },
+    {
+        "source_id":  "G003",
+        "field":  "file_hash",
+        "value":  "pending_file_hash",
+        "status":  "missing_or_pending"
+    },
+    {
+        "source_id":  "G004",
+        "field":  "publication_year",
+        "value":  null,
+        "status":  "missing_or_pending"
+    },
+    {
+        "source_id":  "G004",
+        "field":  "version",
+        "value":  "pending_identification",
+        "status":  "missing_or_pending"
+    },
+    {
+        "source_id":  "G004",
+        "field":  "edition",
+        "value":  "pending_identification",
+        "status":  "missing_or_pending"
+    },
+    {
+        "source_id":  "G004",
+        "field":  "jurisdiction",
+        "value":  "pending_identification",
+        "status":  "missing_or_pending"
+    },
+    {
+        "source_id":  "G004",
+        "field":  "doi",
+        "value":  null,
+        "status":  "missing_or_pending"
+    },
+    {
+        "source_id":  "G004",
+        "field":  "pmid",
+        "value":  null,
+        "status":  "missing_or_pending"
+    },
+    {
+        "source_id":  "G004",
+        "field":  "isbn",
+        "value":  null,
+        "status":  "missing_or_pending"
+    },
+    {
+        "source_id":  "G004",
+        "field":  "url",
+        "value":  null,
+        "status":  "missing_or_pending"
+    },
+    {
+        "source_id":  "G004",
+        "field":  "license",
+        "value":  "pending_identification",
+        "status":  "missing_or_pending"
+    },
+    {
+        "source_id":  "G004",
+        "field":  "file_hash",
+        "value":  "pending_file_hash",
+        "status":  "missing_or_pending"
+    },
+    {
+        "source_id":  "G005",
+        "field":  "version",
+        "value":  "pending_identification",
+        "status":  "missing_or_pending"
+    },
+    {
+        "source_id":  "G005",
+        "field":  "edition",
+        "value":  "pending_identification",
+        "status":  "missing_or_pending"
+    },
+    {
+        "source_id":  "G005",
+        "field":  "doi",
+        "value":  null,
+        "status":  "missing_or_pending"
+    },
+    {
+        "source_id":  "G005",
+        "field":  "pmid",
+        "value":  null,
+        "status":  "missing_or_pending"
+    },
+    {
+        "source_id":  "G005",
+        "field":  "isbn",
+        "value":  null,
+        "status":  "missing_or_pending"
+    },
+    {
+        "source_id":  "G005",
+        "field":  "license",
+        "value":  "pending_identification",
+        "status":  "missing_or_pending"
+    },
+    {
+        "source_id":  "G005",
+        "field":  "file_hash",
+        "value":  "pending_file_hash",
+        "status":  "missing_or_pending"
+    },
+    {
+        "source_id":  "G006",
+        "field":  "version",
+        "value":  "pending_identification",
+        "status":  "missing_or_pending"
+    },
+    {
+        "source_id":  "G006",
+        "field":  "edition",
+        "value":  "pending_identification",
+        "status":  "missing_or_pending"
+    },
+    {
+        "source_id":  "G006",
+        "field":  "doi",
+        "value":  null,
+        "status":  "missing_or_pending"
+    },
+    {
+        "source_id":  "G006",
+        "field":  "pmid",
+        "value":  null,
+        "status":  "missing_or_pending"
+    },
+    {
+        "source_id":  "G006",
+        "field":  "isbn",
+        "value":  null,
+        "status":  "missing_or_pending"
+    },
+    {
+        "source_id":  "G006",
+        "field":  "license",
+        "value":  "pending_identification",
+        "status":  "missing_or_pending"
+    },
+    {
+        "source_id":  "G006",
+        "field":  "file_hash",
+        "value":  "pending_file_hash",
+        "status":  "missing_or_pending"
+    },
+    {
+        "source_id":  "G007",
+        "field":  "version",
+        "value":  "pending_identification",
+        "status":  "missing_or_pending"
+    },
+    {
+        "source_id":  "G007",
+        "field":  "edition",
+        "value":  "pending_identification",
+        "status":  "missing_or_pending"
+    },
+    {
+        "source_id":  "G007",
+        "field":  "doi",
+        "value":  null,
+        "status":  "missing_or_pending"
+    },
+    {
+        "source_id":  "G007",
+        "field":  "pmid",
+        "value":  null,
+        "status":  "missing_or_pending"
+    },
+    {
+        "source_id":  "G007",
+        "field":  "isbn",
+        "value":  null,
+        "status":  "missing_or_pending"
+    },
+    {
+        "source_id":  "G007",
+        "field":  "license",
+        "value":  "pending_identification",
+        "status":  "missing_or_pending"
+    },
+    {
+        "source_id":  "G007",
+        "field":  "file_hash",
+        "value":  "pending_file_hash",
+        "status":  "missing_or_pending"
+    },
+    {
+        "source_id":  "G008",
+        "field":  "version",
+        "value":  "pending_identification",
+        "status":  "missing_or_pending"
+    },
+    {
+        "source_id":  "G008",
+        "field":  "edition",
+        "value":  "pending_identification",
+        "status":  "missing_or_pending"
+    },
+    {
+        "source_id":  "G008",
+        "field":  "doi",
+        "value":  null,
+        "status":  "missing_or_pending"
+    },
+    {
+        "source_id":  "G008",
+        "field":  "pmid",
+        "value":  null,
+        "status":  "missing_or_pending"
+    },
+    {
+        "source_id":  "G008",
+        "field":  "isbn",
+        "value":  null,
+        "status":  "missing_or_pending"
+    },
+    {
+        "source_id":  "G008",
+        "field":  "license",
+        "value":  "pending_identification",
+        "status":  "missing_or_pending"
+    },
+    {
+        "source_id":  "G008",
+        "field":  "file_hash",
+        "value":  "pending_file_hash",
+        "status":  "missing_or_pending"
+    },
+    {
+        "source_id":  "R001",
+        "field":  "publication_year",
+        "value":  null,
+        "status":  "missing_or_pending"
+    },
+    {
+        "source_id":  "R001",
+        "field":  "version",
+        "value":  "pending_identification",
+        "status":  "missing_or_pending"
+    },
+    {
+        "source_id":  "R001",
+        "field":  "edition",
+        "value":  "pending_identification",
+        "status":  "missing_or_pending"
+    },
+    {
+        "source_id":  "R001",
+        "field":  "doi",
+        "value":  null,
+        "status":  "missing_or_pending"
+    },
+    {
+        "source_id":  "R001",
+        "field":  "pmid",
+        "value":  null,
+        "status":  "missing_or_pending"
+    },
+    {
+        "source_id":  "R001",
+        "field":  "isbn",
+        "value":  null,
+        "status":  "missing_or_pending"
+    },
+    {
+        "source_id":  "R001",
+        "field":  "license",
+        "value":  "pending_identification",
+        "status":  "missing_or_pending"
+    },
+    {
+        "source_id":  "R001",
+        "field":  "file_hash",
+        "value":  "pending_file_hash",
+        "status":  "missing_or_pending"
+    },
+    {
+        "source_id":  "R002",
+        "field":  "version",
+        "value":  "pending_identification",
+        "status":  "missing_or_pending"
+    },
+    {
+        "source_id":  "R002",
+        "field":  "edition",
+        "value":  "pending_identification",
+        "status":  "missing_or_pending"
+    },
+    {
+        "source_id":  "R002",
+        "field":  "doi",
+        "value":  null,
+        "status":  "missing_or_pending"
+    },
+    {
+        "source_id":  "R002",
+        "field":  "pmid",
+        "value":  null,
+        "status":  "missing_or_pending"
+    },
+    {
+        "source_id":  "R002",
+        "field":  "isbn",
+        "value":  null,
+        "status":  "missing_or_pending"
+    },
+    {
+        "source_id":  "R002",
+        "field":  "license",
+        "value":  "pending_identification",
+        "status":  "missing_or_pending"
+    },
+    {
+        "source_id":  "R002",
+        "field":  "file_hash",
+        "value":  "pending_file_hash",
+        "status":  "missing_or_pending"
+    },
+    {
+        "source_id":  "R003",
+        "field":  "publication_year",
+        "value":  null,
+        "status":  "missing_or_pending"
+    },
+    {
+        "source_id":  "R003",
+        "field":  "version",
+        "value":  "pending_identification",
+        "status":  "missing_or_pending"
+    },
+    {
+        "source_id":  "R003",
+        "field":  "edition",
+        "value":  "pending_identification",
+        "status":  "missing_or_pending"
+    },
+    {
+        "source_id":  "R003",
+        "field":  "doi",
+        "value":  null,
+        "status":  "missing_or_pending"
+    },
+    {
+        "source_id":  "R003",
+        "field":  "pmid",
+        "value":  null,
+        "status":  "missing_or_pending"
+    },
+    {
+        "source_id":  "R003",
+        "field":  "isbn",
+        "value":  null,
+        "status":  "missing_or_pending"
+    },
+    {
+        "source_id":  "R003",
+        "field":  "license",
+        "value":  "pending_identification",
+        "status":  "missing_or_pending"
+    },
+    {
+        "source_id":  "R003",
+        "field":  "file_hash",
+        "value":  "pending_file_hash",
+        "status":  "missing_or_pending"
+    },
+    {
+        "source_id":  "R004",
+        "field":  "version",
+        "value":  "pending_identification",
+        "status":  "missing_or_pending"
+    },
+    {
+        "source_id":  "R004",
+        "field":  "edition",
+        "value":  "pending_identification",
+        "status":  "missing_or_pending"
+    },
+    {
+        "source_id":  "R004",
+        "field":  "doi",
+        "value":  null,
+        "status":  "missing_or_pending"
+    },
+    {
+        "source_id":  "R004",
+        "field":  "pmid",
+        "value":  null,
+        "status":  "missing_or_pending"
+    },
+    {
+        "source_id":  "R004",
+        "field":  "isbn",
+        "value":  null,
+        "status":  "missing_or_pending"
+    },
+    {
+        "source_id":  "R004",
+        "field":  "license",
+        "value":  "pending_identification",
+        "status":  "missing_or_pending"
+    },
+    {
+        "source_id":  "R004",
+        "field":  "file_hash",
+        "value":  "pending_file_hash",
+        "status":  "missing_or_pending"
+    },
+    {
+        "source_id":  "R005",
+        "field":  "version",
+        "value":  "pending_identification",
+        "status":  "missing_or_pending"
+    },
+    {
+        "source_id":  "R005",
+        "field":  "edition",
+        "value":  "pending_identification",
+        "status":  "missing_or_pending"
+    },
+    {
+        "source_id":  "R005",
+        "field":  "doi",
+        "value":  null,
+        "status":  "missing_or_pending"
+    },
+    {
+        "source_id":  "R005",
+        "field":  "pmid",
+        "value":  null,
+        "status":  "missing_or_pending"
+    },
+    {
+        "source_id":  "R005",
+        "field":  "isbn",
+        "value":  null,
+        "status":  "missing_or_pending"
+    },
+    {
+        "source_id":  "R005",
+        "field":  "license",
+        "value":  "pending_identification",
+        "status":  "missing_or_pending"
+    },
+    {
+        "source_id":  "R005",
+        "field":  "file_hash",
+        "value":  "pending_file_hash",
+        "status":  "missing_or_pending"
+    },
+    {
+        "source_id":  "R006",
+        "field":  "publication_year",
+        "value":  null,
+        "status":  "missing_or_pending"
+    },
+    {
+        "source_id":  "R006",
+        "field":  "version",
+        "value":  "pending_identification",
+        "status":  "missing_or_pending"
+    },
+    {
+        "source_id":  "R006",
+        "field":  "edition",
+        "value":  "pending_identification",
+        "status":  "missing_or_pending"
+    },
+    {
+        "source_id":  "R006",
+        "field":  "doi",
+        "value":  null,
+        "status":  "missing_or_pending"
+    },
+    {
+        "source_id":  "R006",
+        "field":  "pmid",
+        "value":  null,
+        "status":  "missing_or_pending"
+    },
+    {
+        "source_id":  "R006",
+        "field":  "isbn",
+        "value":  null,
+        "status":  "missing_or_pending"
+    },
+    {
+        "source_id":  "R006",
+        "field":  "license",
+        "value":  "pending_identification",
+        "status":  "missing_or_pending"
+    },
+    {
+        "source_id":  "R006",
+        "field":  "file_hash",
+        "value":  "pending_file_hash",
+        "status":  "missing_or_pending"
+    },
+    {
+        "source_id":  "L001",
+        "field":  "publication_year",
+        "value":  null,
+        "status":  "missing_or_pending"
+    },
+    {
+        "source_id":  "L001",
+        "field":  "version",
+        "value":  "pending_identification",
+        "status":  "missing_or_pending"
+    },
+    {
+        "source_id":  "L001",
+        "field":  "edition",
+        "value":  "pending_identification",
+        "status":  "missing_or_pending"
+    },
+    {
+        "source_id":  "L001",
+        "field":  "doi",
+        "value":  null,
+        "status":  "missing_or_pending"
+    },
+    {
+        "source_id":  "L001",
+        "field":  "pmid",
+        "value":  null,
+        "status":  "missing_or_pending"
+    },
+    {
+        "source_id":  "L001",
+        "field":  "isbn",
+        "value":  null,
+        "status":  "missing_or_pending"
+    },
+    {
+        "source_id":  "L001",
+        "field":  "license",
+        "value":  "pending_identification",
+        "status":  "missing_or_pending"
+    },
+    {
+        "source_id":  "L001",
+        "field":  "file_hash",
+        "value":  "pending_file_hash",
+        "status":  "missing_or_pending"
+    },
+    {
+        "source_id":  "L002",
+        "field":  "publication_year",
+        "value":  null,
+        "status":  "missing_or_pending"
+    },
+    {
+        "source_id":  "L002",
+        "field":  "version",
+        "value":  "pending_identification",
+        "status":  "missing_or_pending"
+    },
+    {
+        "source_id":  "L002",
+        "field":  "edition",
+        "value":  "pending_identification",
+        "status":  "missing_or_pending"
+    },
+    {
+        "source_id":  "L002",
+        "field":  "doi",
+        "value":  null,
+        "status":  "missing_or_pending"
+    },
+    {
+        "source_id":  "L002",
+        "field":  "pmid",
+        "value":  null,
+        "status":  "missing_or_pending"
+    },
+    {
+        "source_id":  "L002",
+        "field":  "isbn",
+        "value":  null,
+        "status":  "missing_or_pending"
+    },
+    {
+        "source_id":  "L002",
+        "field":  "license",
+        "value":  "pending_identification",
+        "status":  "missing_or_pending"
+    },
+    {
+        "source_id":  "L002",
+        "field":  "file_hash",
+        "value":  "pending_file_hash",
+        "status":  "missing_or_pending"
+    },
+    {
+        "source_id":  "L003",
+        "field":  "publication_year",
+        "value":  null,
+        "status":  "missing_or_pending"
+    },
+    {
+        "source_id":  "L003",
+        "field":  "version",
+        "value":  "pending_identification",
+        "status":  "missing_or_pending"
+    },
+    {
+        "source_id":  "L003",
+        "field":  "edition",
+        "value":  "pending_identification",
+        "status":  "missing_or_pending"
+    },
+    {
+        "source_id":  "L003",
+        "field":  "doi",
+        "value":  null,
+        "status":  "missing_or_pending"
+    },
+    {
+        "source_id":  "L003",
+        "field":  "pmid",
+        "value":  null,
+        "status":  "missing_or_pending"
+    },
+    {
+        "source_id":  "L003",
+        "field":  "isbn",
+        "value":  null,
+        "status":  "missing_or_pending"
+    },
+    {
+        "source_id":  "L003",
+        "field":  "license",
+        "value":  "pending_identification",
+        "status":  "missing_or_pending"
+    },
+    {
+        "source_id":  "L003",
+        "field":  "file_hash",
+        "value":  "pending_file_hash",
+        "status":  "missing_or_pending"
+    },
+    {
+        "source_id":  "L004",
+        "field":  "publication_year",
+        "value":  null,
+        "status":  "missing_or_pending"
+    },
+    {
+        "source_id":  "L004",
+        "field":  "version",
+        "value":  "pending_identification",
+        "status":  "missing_or_pending"
+    },
+    {
+        "source_id":  "L004",
+        "field":  "edition",
+        "value":  "pending_identification",
+        "status":  "missing_or_pending"
+    },
+    {
+        "source_id":  "L004",
+        "field":  "doi",
+        "value":  null,
+        "status":  "missing_or_pending"
+    },
+    {
+        "source_id":  "L004",
+        "field":  "pmid",
+        "value":  null,
+        "status":  "missing_or_pending"
+    },
+    {
+        "source_id":  "L004",
+        "field":  "isbn",
+        "value":  null,
+        "status":  "missing_or_pending"
+    },
+    {
+        "source_id":  "L004",
+        "field":  "license",
+        "value":  "pending_identification",
+        "status":  "missing_or_pending"
+    },
+    {
+        "source_id":  "L004",
+        "field":  "file_hash",
+        "value":  "pending_file_hash",
+        "status":  "missing_or_pending"
+    },
+    {
+        "source_id":  "L005",
+        "field":  "publication_year",
+        "value":  null,
+        "status":  "missing_or_pending"
+    },
+    {
+        "source_id":  "L005",
+        "field":  "version",
+        "value":  "pending_identification",
+        "status":  "missing_or_pending"
+    },
+    {
+        "source_id":  "L005",
+        "field":  "edition",
+        "value":  "pending_identification",
+        "status":  "missing_or_pending"
+    },
+    {
+        "source_id":  "L005",
+        "field":  "doi",
+        "value":  null,
+        "status":  "missing_or_pending"
+    },
+    {
+        "source_id":  "L005",
+        "field":  "pmid",
+        "value":  null,
+        "status":  "missing_or_pending"
+    },
+    {
+        "source_id":  "L005",
+        "field":  "isbn",
+        "value":  null,
+        "status":  "missing_or_pending"
+    },
+    {
+        "source_id":  "L005",
+        "field":  "license",
+        "value":  "pending_identification",
+        "status":  "missing_or_pending"
+    },
+    {
+        "source_id":  "L005",
+        "field":  "file_hash",
+        "value":  "pending_file_hash",
+        "status":  "missing_or_pending"
+    },
+    {
+        "source_id":  "L006",
+        "field":  "publication_year",
+        "value":  null,
+        "status":  "missing_or_pending"
+    },
+    {
+        "source_id":  "L006",
+        "field":  "version",
+        "value":  "pending_identification",
+        "status":  "missing_or_pending"
+    },
+    {
+        "source_id":  "L006",
+        "field":  "edition",
+        "value":  "pending_identification",
+        "status":  "missing_or_pending"
+    },
+    {
+        "source_id":  "L006",
+        "field":  "doi",
+        "value":  null,
+        "status":  "missing_or_pending"
+    },
+    {
+        "source_id":  "L006",
+        "field":  "pmid",
+        "value":  null,
+        "status":  "missing_or_pending"
+    },
+    {
+        "source_id":  "L006",
+        "field":  "isbn",
+        "value":  null,
+        "status":  "missing_or_pending"
+    },
+    {
+        "source_id":  "L006",
+        "field":  "license",
+        "value":  "pending_identification",
+        "status":  "missing_or_pending"
+    },
+    {
+        "source_id":  "L006",
+        "field":  "file_hash",
+        "value":  "pending_file_hash",
+        "status":  "missing_or_pending"
+    },
+    {
+        "source_id":  "L007",
+        "field":  "publication_year",
+        "value":  null,
+        "status":  "missing_or_pending"
+    },
+    {
+        "source_id":  "L007",
+        "field":  "version",
+        "value":  "pending_identification",
+        "status":  "missing_or_pending"
+    },
+    {
+        "source_id":  "L007",
+        "field":  "edition",
+        "value":  "pending_identification",
+        "status":  "missing_or_pending"
+    },
+    {
+        "source_id":  "L007",
+        "field":  "doi",
+        "value":  null,
+        "status":  "missing_or_pending"
+    },
+    {
+        "source_id":  "L007",
+        "field":  "pmid",
+        "value":  null,
+        "status":  "missing_or_pending"
+    },
+    {
+        "source_id":  "L007",
+        "field":  "isbn",
+        "value":  null,
+        "status":  "missing_or_pending"
+    },
+    {
+        "source_id":  "L007",
+        "field":  "license",
+        "value":  "pending_identification",
+        "status":  "missing_or_pending"
+    },
+    {
+        "source_id":  "L007",
+        "field":  "file_hash",
+        "value":  "pending_file_hash",
+        "status":  "missing_or_pending"
+    },
+    {
+        "source_id":  "L008",
+        "field":  "publication_year",
+        "value":  null,
+        "status":  "missing_or_pending"
+    },
+    {
+        "source_id":  "L008",
+        "field":  "version",
+        "value":  "pending_identification",
+        "status":  "missing_or_pending"
+    },
+    {
+        "source_id":  "L008",
+        "field":  "edition",
+        "value":  "pending_identification",
+        "status":  "missing_or_pending"
+    },
+    {
+        "source_id":  "L008",
+        "field":  "doi",
+        "value":  null,
+        "status":  "missing_or_pending"
+    },
+    {
+        "source_id":  "L008",
+        "field":  "pmid",
+        "value":  null,
+        "status":  "missing_or_pending"
+    },
+    {
+        "source_id":  "L008",
+        "field":  "isbn",
+        "value":  null,
+        "status":  "missing_or_pending"
+    },
+    {
+        "source_id":  "L008",
+        "field":  "license",
+        "value":  "pending_identification",
+        "status":  "missing_or_pending"
+    },
+    {
+        "source_id":  "L008",
+        "field":  "file_hash",
+        "value":  "pending_file_hash",
+        "status":  "missing_or_pending"
+    },
+    {
+        "source_id":  "L009",
+        "field":  "publication_year",
+        "value":  null,
+        "status":  "missing_or_pending"
+    },
+    {
+        "source_id":  "L009",
+        "field":  "version",
+        "value":  "pending_identification",
+        "status":  "missing_or_pending"
+    },
+    {
+        "source_id":  "L009",
+        "field":  "edition",
+        "value":  "pending_identification",
+        "status":  "missing_or_pending"
+    },
+    {
+        "source_id":  "L009",
+        "field":  "doi",
+        "value":  null,
+        "status":  "missing_or_pending"
+    },
+    {
+        "source_id":  "L009",
+        "field":  "pmid",
+        "value":  null,
+        "status":  "missing_or_pending"
+    },
+    {
+        "source_id":  "L009",
+        "field":  "isbn",
+        "value":  null,
+        "status":  "missing_or_pending"
+    },
+    {
+        "source_id":  "L009",
+        "field":  "license",
+        "value":  "pending_identification",
+        "status":  "missing_or_pending"
+    },
+    {
+        "source_id":  "L009",
+        "field":  "file_hash",
+        "value":  "pending_file_hash",
+        "status":  "missing_or_pending"
+    }
+]

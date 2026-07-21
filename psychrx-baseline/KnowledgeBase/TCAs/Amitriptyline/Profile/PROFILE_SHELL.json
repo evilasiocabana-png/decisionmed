@@ -1,0 +1,27 @@
+{
+  "mission": "A07-007",
+  "drug_id": "TCA-AMITRIPTYLINE",
+  "canonical_name": "amitriptyline",
+  "class_id": "TCA",
+  "status": "internal_non_runtime_mechanism_package",
+  "runtime_eligible": false,
+  "fields": {
+    "mechanism": {
+      "status": "populated_internal_draft",
+      "traceability": [
+        "A07-MECH-001",
+        "A07-MECH-002",
+        "A07-MECH-003"
+      ],
+      "publication_package": "A07-TCA-MECHANISM-INTERNAL-001"
+    },
+    "pharmacokinetics": {
+      "status": "UNRESOLVED_BLOCKED_FUTURE_SCOPE",
+      "traceability": []
+    },
+    "safety": {
+      "status": "UNRESOLVED_BLOCKED_FUTURE_SCOPE",
+      "traceability": []
+    }
+  }
+}

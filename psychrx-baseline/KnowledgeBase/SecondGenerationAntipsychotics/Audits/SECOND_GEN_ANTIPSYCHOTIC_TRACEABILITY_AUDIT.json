@@ -1,0 +1,19 @@
+{
+  "mission": "A11-015",
+  "status": "passed",
+  "traceability_chain": [
+    "SGA-SRC-001",
+    "SGA-SEL-001",
+    "SGA-TEXT-001",
+    "SGA-CLAIM-001",
+    "SECOND_GEN_ANTIPSYCHOTIC_INTERNAL_PUBLICATION_MANIFEST"
+  ],
+  "gaps": [
+    {
+      "item": "class_level_mechanism_generalization",
+      "status": "UNRESOLVED"
+    }
+  ],
+  "claims_without_source": 0,
+  "runtime_eligible": false
+}

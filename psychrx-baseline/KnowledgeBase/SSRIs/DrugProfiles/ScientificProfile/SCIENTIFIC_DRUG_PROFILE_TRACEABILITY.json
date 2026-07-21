@@ -1,0 +1,59 @@
+{
+  "schema": "psychrx.a03.scientific_drug_profile_traceability",
+  "program": "A03",
+  "mission": "A03-021",
+  "status": "profile_shell_traceability_initialized",
+  "schema_version": "0.1.0",
+  "traceability_basis": [
+    "KnowledgeBase/SSRIs/Metadata/DRUG_PORTFOLIO_DEFINITION.json",
+    "KnowledgeBase/SSRIs/Registries/DRUG_PORTFOLIO_EDITORIAL_REGISTRY.json",
+    "KnowledgeBase/SSRIs/Traceability/DRUG_SOURCE_BINDING.json"
+  ],
+  "field_level_scientific_traceability": "pending_future_domain_missions",
+  "profile_traceability": [
+    {
+      "profile_id": "A03_PROFILE_SSRI_FLUOXETINE",
+      "drug_id": "SSRI_FLUOXETINE",
+      "portfolio_source": "KnowledgeBase/SSRIs/Metadata/DRUG_PORTFOLIO_DEFINITION.json",
+      "editorial_source": "KnowledgeBase/SSRIs/Registries/DRUG_PORTFOLIO_EDITORIAL_REGISTRY.json",
+      "source_binding_status": "available_for_future_field_extraction"
+    },
+    {
+      "profile_id": "A03_PROFILE_SSRI_SERTRALINE",
+      "drug_id": "SSRI_SERTRALINE",
+      "portfolio_source": "KnowledgeBase/SSRIs/Metadata/DRUG_PORTFOLIO_DEFINITION.json",
+      "editorial_source": "KnowledgeBase/SSRIs/Registries/DRUG_PORTFOLIO_EDITORIAL_REGISTRY.json",
+      "source_binding_status": "available_for_future_field_extraction"
+    },
+    {
+      "profile_id": "A03_PROFILE_SSRI_ESCITALOPRAM",
+      "drug_id": "SSRI_ESCITALOPRAM",
+      "portfolio_source": "KnowledgeBase/SSRIs/Metadata/DRUG_PORTFOLIO_DEFINITION.json",
+      "editorial_source": "KnowledgeBase/SSRIs/Registries/DRUG_PORTFOLIO_EDITORIAL_REGISTRY.json",
+      "source_binding_status": "available_for_future_field_extraction"
+    },
+    {
+      "profile_id": "A03_PROFILE_SSRI_CITALOPRAM",
+      "drug_id": "SSRI_CITALOPRAM",
+      "portfolio_source": "KnowledgeBase/SSRIs/Metadata/DRUG_PORTFOLIO_DEFINITION.json",
+      "editorial_source": "KnowledgeBase/SSRIs/Registries/DRUG_PORTFOLIO_EDITORIAL_REGISTRY.json",
+      "source_binding_status": "available_for_future_field_extraction"
+    },
+    {
+      "profile_id": "A03_PROFILE_SSRI_PAROXETINE",
+      "drug_id": "SSRI_PAROXETINE",
+      "portfolio_source": "KnowledgeBase/SSRIs/Metadata/DRUG_PORTFOLIO_DEFINITION.json",
+      "editorial_source": "KnowledgeBase/SSRIs/Registries/DRUG_PORTFOLIO_EDITORIAL_REGISTRY.json",
+      "source_binding_status": "available_for_future_field_extraction"
+    },
+    {
+      "profile_id": "A03_PROFILE_SSRI_FLUVOXAMINE",
+      "drug_id": "SSRI_FLUVOXAMINE",
+      "portfolio_source": "KnowledgeBase/SSRIs/Metadata/DRUG_PORTFOLIO_DEFINITION.json",
+      "editorial_source": "KnowledgeBase/SSRIs/Registries/DRUG_PORTFOLIO_EDITORIAL_REGISTRY.json",
+      "source_binding_status": "available_for_future_field_extraction"
+    }
+  ],
+  "clinical_assertions_created": false,
+  "runtime_consumption_allowed": false
+}

@@ -1,0 +1,42 @@
+{
+  "mission": "A11-012",
+  "status": "draft_internal_non_runtime",
+  "drug_id": "SGA-RISPERIDONE",
+  "field": "mechanism",
+  "claims": [
+    {
+      "claim_id": "SGA-CLAIM-001",
+      "statement": "The mechanism of action of risperidone in schizophrenia is unclear.",
+      "source_text_records": [
+        "SGA-TEXT-001"
+      ],
+      "review_status": "draft_reviewed",
+      "runtime_eligible": false
+    },
+    {
+      "claim_id": "SGA-CLAIM-002",
+      "statement": "The label proposes dopamine Type 2 and serotonin Type 2 receptor antagonism as a possible mediator of therapeutic activity in schizophrenia.",
+      "source_text_records": [
+        "SGA-TEXT-002"
+      ],
+      "review_status": "draft_reviewed",
+      "runtime_eligible": false
+    },
+    {
+      "claim_id": "SGA-CLAIM-003",
+      "statement": "The clinical effect described in the label involves risperidone and its major metabolite, 9-hydroxyrisperidone.",
+      "source_text_records": [
+        "SGA-TEXT-003"
+      ],
+      "review_status": "draft_reviewed",
+      "runtime_eligible": false
+    }
+  ],
+  "unresolved": [
+    {
+      "field": "class_level_mechanism_generalization",
+      "status": "UNRESOLVED",
+      "reason": "A11 scope only supports risperidone label-derived mechanism statements."
+    }
+  ]
+}

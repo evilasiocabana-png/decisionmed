@@ -1,0 +1,74 @@
+{
+  "schema": "psychrx.scientific_corpus.pk_source_anchors",
+  "program": "A03",
+  "mission": "A03-041",
+  "status": "anchor_intake_completed_full_core_ssri_scope",
+  "created_at": "2026-07-01",
+  "source_text_stored": false,
+  "clinical_content_interpreted": false,
+  "pharmacokinetic_content_extracted": false,
+  "anchors": [
+    {
+      "anchor_id": "A03-PK-ANCHOR-FLUOXETINE-001",
+      "drug_id": "SSRI_FLUOXETINE",
+      "source_anchor_dependency": "A03-MOA-ANCHOR-FLUOXETINE-001",
+      "source_type": "regulatory_label",
+      "xml_url": "https://dailymed.nlm.nih.gov/dailymed/services/v2/spls/9de65da4-73f8-4c88-8198-c92e63224ddb.xml",
+      "section_path": ["12. CLINICAL PHARMACOLOGY", "12.3 Pharmacokinetics"],
+      "anchor_status": "anchor_ready",
+      "extraction_allowed_next_mission": true
+    },
+    {
+      "anchor_id": "A03-PK-ANCHOR-PAROXETINE-001",
+      "drug_id": "SSRI_PAROXETINE",
+      "source_anchor_dependency": "A03-MOA-ANCHOR-PAROXETINE-001",
+      "source_type": "regulatory_label",
+      "xml_url": "https://dailymed.nlm.nih.gov/dailymed/services/v2/spls/ef3b5cbe-f9e1-c1ac-79da-cfe14e3a7e7e.xml",
+      "section_path": ["12 CLINICAL PHARMACOLOGY", "12.3 Pharmacokinetics"],
+      "anchor_status": "anchor_ready",
+      "extraction_allowed_next_mission": true
+    },
+    {
+      "anchor_id": "A03-PK-ANCHOR-ESCITALOPRAM-001",
+      "drug_id": "SSRI_ESCITALOPRAM",
+      "source_anchor_dependency": "A03-MOA-ANCHOR-ESCITALOPRAM-001",
+      "source_type": "regulatory_label",
+      "xml_url": "https://dailymed.nlm.nih.gov/dailymed/services/v2/spls/3019a647-9bcf-48cf-928c-0467f9b921a8.xml",
+      "section_path": ["12 CLINICAL PHARMACOLOGY", "12.3 Pharmacokinetics"],
+      "anchor_status": "anchor_ready",
+      "extraction_allowed_next_mission": true
+    },
+    {
+      "anchor_id": "A03-PK-ANCHOR-FLUVOXAMINE-001",
+      "drug_id": "SSRI_FLUVOXAMINE",
+      "source_anchor_dependency": "A03-MOA-ANCHOR-FLUVOXAMINE-001",
+      "source_type": "regulatory_label",
+      "xml_url": "https://dailymed.nlm.nih.gov/dailymed/services/v2/spls/6eeb14df-6fcf-a737-5359-5744eb4accea.xml",
+      "section_path": ["12 CLINICAL PHARMACOLOGY", "12.3 Pharmacokinetics"],
+      "anchor_status": "anchor_ready",
+      "extraction_allowed_next_mission": true
+    },
+    {
+      "anchor_id": "A03-PK-ANCHOR-SERTRALINE-001",
+      "drug_id": "SSRI_SERTRALINE",
+      "source_anchor_dependency": "A03-MOA-ANCHOR-SERTRALINE-002",
+      "source_type": "regulatory_label",
+      "xml_url": "https://dailymed.nlm.nih.gov/dailymed/services/v2/spls/fda754f6-d0f3-4dce-a17a-927d64f912f7.xml",
+      "section_path": ["12 CLINICAL PHARMACOLOGY", "12.3 Pharmacokinetics"],
+      "anchor_status": "anchor_ready",
+      "extraction_allowed_next_mission": true
+    },
+    {
+      "anchor_id": "A03-PK-ANCHOR-CITALOPRAM-001",
+      "drug_id": "SSRI_CITALOPRAM",
+      "source_anchor_dependency": "A03-MOA-ANCHOR-CITALOPRAM-002",
+      "source_type": "regulatory_label",
+      "xml_url": "https://dailymed.nlm.nih.gov/dailymed/services/v2/spls/4259d9b1-de34-43a4-85a8-41dd214e9177.xml",
+      "section_path": ["12 CLINICAL PHARMACOLOGY", "12.3 Pharmacokinetics"],
+      "anchor_status": "anchor_ready",
+      "extraction_allowed_next_mission": true
+    }
+  ],
+  "excluded_by_phase4_gate": [],
+  "next_mission": "A03-042 - PHARMACOKINETIC_CONTENT_EXTRACTION"
+}

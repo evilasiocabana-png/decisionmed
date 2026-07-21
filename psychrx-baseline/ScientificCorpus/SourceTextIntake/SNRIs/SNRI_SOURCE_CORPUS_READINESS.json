@@ -1,0 +1,42 @@
+{
+  "schema": "psychrx.scientific_corpus.snri.source_corpus_readiness",
+  "program": "A04.0",
+  "mission": "A04.0-004",
+  "status": "metadata_normalization_completed_validation_pending",
+  "required_before_population": [
+    "official source discovery",
+    "source corpus intake",
+    "source metadata normalization",
+    "source validation",
+    "editorial registration",
+    "corpus publication"
+  ],
+  "current_available_sources": [
+    "ScientificCorpus/SNRIs/Manifest/SNRI_SOURCE_DISCOVERY.json",
+    "ScientificCorpus/SNRIs/Manifest/SNRI_SOURCE_INDEX.json",
+    "ScientificCorpus/SNRIs/Manifest/SNRI_SOURCE_STATUS.json",
+    "ScientificCorpus/SNRIs/Manifest/SNRI_SOURCE_CATALOG.json",
+    "ScientificCorpus/SNRIs/Manifest/SNRI_SOURCE_CATALOG_INDEX.json",
+    "ScientificCorpus/SNRIs/Manifest/SNRI_SOURCE_CATEGORY_INDEX.json",
+    "ScientificCorpus/SNRIs/Manifest/SNRI_SOURCE_CATALOG_STATUS.json",
+    "ScientificCorpus/SNRIs/Manifest/SNRI_SOURCE_CORPUS_MANIFEST.json",
+    "ScientificCorpus/SNRIs/Manifest/SNRI_SOURCE_LOCATION_INDEX.json",
+    "ScientificCorpus/SNRIs/Manifest/SNRI_SOURCE_STORAGE_INDEX.json",
+    "ScientificCorpus/SNRIs/Manifest/SNRI_SOURCE_DISCOVERY_STATUS.json",
+    "ScientificCorpus/SNRIs/Manifest/SNRI_CORPUS_STATUS.json",
+    "ScientificCorpus/SNRIs/Metadata/SOURCE_METADATA_REGISTRY.json",
+    "ScientificCorpus/SNRIs/Metadata/SOURCE_NORMALIZATION_LOG.json"
+  ],
+  "blocked_reason": "A04 remains blocked because source discovery, source catalog, corpus intake and metadata normalization are complete but validation, editorial registration and corpus publication are not complete.",
+  "blocked_actions": [
+    "mechanism extraction",
+    "pharmacokinetic extraction",
+    "pharmacodynamic extraction",
+    "safety extraction",
+    "evidence integration",
+    "knowledge QA",
+    "publication package"
+  ],
+  "allowed_next_action": "A04.0-005 - SNRI_SOURCE_VALIDATION",
+  "runtime_consumption_allowed": false
+}

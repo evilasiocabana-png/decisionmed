@@ -1,0 +1,69 @@
+{
+  "schema": "psychrx.a03.drug_portfolio_definition",
+  "program": "A03",
+  "mission": "A03-011",
+  "status": "editorial_metadata_only",
+  "core_portfolio": [
+    {
+      "drug_id": "SSRI_FLUOXETINE",
+      "canonical_name": "Fluoxetine",
+      "portfolio_status": "core",
+      "profile_status": "not_created",
+      "scientific_content_status": "not_populated"
+    },
+    {
+      "drug_id": "SSRI_SERTRALINE",
+      "canonical_name": "Sertraline",
+      "portfolio_status": "core",
+      "profile_status": "not_created",
+      "scientific_content_status": "not_populated"
+    },
+    {
+      "drug_id": "SSRI_ESCITALOPRAM",
+      "canonical_name": "Escitalopram",
+      "portfolio_status": "core",
+      "profile_status": "not_created",
+      "scientific_content_status": "not_populated"
+    },
+    {
+      "drug_id": "SSRI_CITALOPRAM",
+      "canonical_name": "Citalopram",
+      "portfolio_status": "core",
+      "profile_status": "not_created",
+      "scientific_content_status": "not_populated"
+    },
+    {
+      "drug_id": "SSRI_PAROXETINE",
+      "canonical_name": "Paroxetine",
+      "portfolio_status": "core",
+      "profile_status": "not_created",
+      "scientific_content_status": "not_populated"
+    },
+    {
+      "drug_id": "SSRI_FLUVOXAMINE",
+      "canonical_name": "Fluvoxamine",
+      "portfolio_status": "core",
+      "profile_status": "not_created",
+      "scientific_content_status": "not_populated"
+    }
+  ],
+  "boundary_candidates": [
+    {
+      "candidate_name": "Vilazodone",
+      "boundary_status": "review_required",
+      "ontology_decision": "not_decided"
+    },
+    {
+      "candidate_name": "Vortioxetine",
+      "boundary_status": "review_required",
+      "ontology_decision": "not_decided"
+    }
+  ],
+  "drug_profiles_populated": false,
+  "clinical_content_interpreted": false,
+  "scientific_content_interpreted": false,
+  "ontology_mapping_performed": false,
+  "therapeutic_recommendations_created": false,
+  "runtime_consumption_allowed": false,
+  "next_mission": "A03-012 - Drug Portfolio Editorial Registry"
+}

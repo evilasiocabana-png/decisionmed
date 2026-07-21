@@ -1,0 +1,25 @@
+{
+  "mission": "A10-003",
+  "status": "complete",
+  "sources": [
+    {
+      "source_id": "FGA-SRC-001",
+      "title": "DailyMed - Chlorpromazine Hydrochloride tablet label",
+      "organization": "National Library of Medicine / DailyMed",
+      "source_type": "official_label",
+      "url": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=c2a8b8a3-187f-4000-bde3-b40bb0e5600f",
+      "access_status": "accessible",
+      "use_scope": "mechanism_source_text"
+    },
+    {
+      "source_id": "FGA-SRC-002",
+      "title": "DailyMed - Chlorpromazine tablet label",
+      "organization": "National Library of Medicine / DailyMed",
+      "source_type": "official_label",
+      "url": "https://dailymed.nlm.nih.gov/dailymed/lookup.cfm?setid=4a0b3268-1d5a-4c98-af77-2461fb488476",
+      "access_status": "accessible",
+      "use_scope": "mechanism_source_text_cross_check"
+    }
+  ],
+  "runtime_eligible": false
+}

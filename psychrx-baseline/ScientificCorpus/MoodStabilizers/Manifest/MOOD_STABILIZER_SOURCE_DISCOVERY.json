@@ -1,0 +1,25 @@
+{
+  "mission": "A12-003",
+  "status": "complete",
+  "sources": [
+    {
+      "source_id": "MS-SRC-001",
+      "title": "DailyMed - Lithium carbonate tablet label",
+      "organization": "National Library of Medicine / DailyMed",
+      "source_type": "official_label",
+      "url": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=d20ed2aa-aa56-4709-9e7a-9243c71465c9",
+      "access_status": "accessible",
+      "use_scope": "mechanism_source_text"
+    },
+    {
+      "source_id": "MS-SRC-002",
+      "title": "FDA - Lithium label PDF",
+      "organization": "FDA",
+      "source_type": "official_label_pdf",
+      "url": "https://www.accessdata.fda.gov/drugsatfda_docs/label/2018/017812s033%2C018421s032%2C018558s027lbl.pdf",
+      "access_status": "accessible",
+      "use_scope": "mechanism_source_text_cross_check"
+    }
+  ],
+  "runtime_eligible": false
+}

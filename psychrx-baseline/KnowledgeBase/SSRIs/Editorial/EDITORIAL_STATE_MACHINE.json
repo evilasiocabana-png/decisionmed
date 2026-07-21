@@ -1,0 +1,88 @@
+﻿{
+    "schema":  "psychrx.a03.editorial_state_machine",
+    "program":  "A03",
+    "mission":  "A03-018",
+    "status":  "metadata_only",
+    "initial_state":  "draft",
+    "states":  [
+                   "draft",
+                   "initialized",
+                   "metadata_complete",
+                   "source_bound",
+                   "editorial_review",
+                   "scientific_review",
+                   "validated",
+                   "published",
+                   "deprecated",
+                   "archived"
+               ],
+    "transitions":  [
+                        {
+                            "from":  "draft",
+                            "to":  "initialized",
+                            "relationship":  "allowed_transition"
+                        },
+                        {
+                            "from":  "initialized",
+                            "to":  "metadata_complete",
+                            "relationship":  "allowed_transition"
+                        },
+                        {
+                            "from":  "metadata_complete",
+                            "to":  "source_bound",
+                            "relationship":  "allowed_transition"
+                        },
+                        {
+                            "from":  "source_bound",
+                            "to":  "editorial_review",
+                            "relationship":  "allowed_transition"
+                        },
+                        {
+                            "from":  "editorial_review",
+                            "to":  "scientific_review",
+                            "relationship":  "allowed_transition"
+                        },
+                        {
+                            "from":  "editorial_review",
+                            "to":  "deprecated",
+                            "relationship":  "allowed_transition"
+                        },
+                        {
+                            "from":  "scientific_review",
+                            "to":  "validated",
+                            "relationship":  "allowed_transition"
+                        },
+                        {
+                            "from":  "scientific_review",
+                            "to":  "deprecated",
+                            "relationship":  "allowed_transition"
+                        },
+                        {
+                            "from":  "validated",
+                            "to":  "published",
+                            "relationship":  "allowed_transition"
+                        },
+                        {
+                            "from":  "validated",
+                            "to":  "deprecated",
+                            "relationship":  "allowed_transition"
+                        },
+                        {
+                            "from":  "published",
+                            "to":  "deprecated",
+                            "relationship":  "allowed_transition"
+                        },
+                        {
+                            "from":  "published",
+                            "to":  "archived",
+                            "relationship":  "allowed_transition"
+                        },
+                        {
+                            "from":  "deprecated",
+                            "to":  "archived",
+                            "relationship":  "allowed_transition"
+                        }
+                    ],
+    "invalid_cycles":  0,
+    "scientific_content_populated":  false
+}

@@ -1,0 +1,62 @@
+{
+  "schema": "psychrx.a03.evidence_registry",
+  "program": "A03",
+  "status": "source_binding_initialized",
+  "items": [
+    {
+      "id": "A03-EVIDENCE-BINDING-001",
+      "type": "source_binding",
+      "path": "KnowledgeBase/SSRIs/Evidence/EVIDENCE_INTEGRATION_SOURCE_BINDING.json",
+      "mission": "A03-052",
+      "status": "source_bound_not_evaluated",
+      "publication_status": "not_published",
+      "runtime_consumption_allowed": false
+    },
+    {
+      "id": "A03-EVIDENCE-TRACEABILITY-001",
+      "type": "traceability_matrix",
+      "path": "KnowledgeBase/SSRIs/Evidence/EVIDENCE_TRACEABILITY_MATRIX.json",
+      "mission": "A03-053",
+      "status": "traceability_matrix_initialized",
+      "publication_status": "not_published",
+      "runtime_consumption_allowed": false
+    },
+    {
+      "id": "A03-EVIDENCE-QUEUE-001",
+      "type": "review_queue",
+      "path": "KnowledgeBase/SSRIs/Evidence/EVIDENCE_REVIEW_QUEUE.json",
+      "mission": "A03-054",
+      "status": "review_queue_initialized",
+      "publication_status": "not_published",
+      "runtime_consumption_allowed": false
+    },
+    {
+      "id": "A03-EVIDENCE-BASELINE-001",
+      "type": "evidence_integration_baseline",
+      "path": "KnowledgeBase/SSRIs/Evidence/EVIDENCE_INTEGRATION_BASELINE.json",
+      "mission": "A03-055",
+      "status": "baseline_complete_metadata_only",
+      "publication_status": "ready_for_knowledge_qa",
+      "runtime_consumption_allowed": false
+    },
+    {
+      "id": "A03-KNOWLEDGE-QA-001",
+      "type": "knowledge_qa_gate",
+      "path": "KnowledgeBase/SSRIs/Evidence/KNOWLEDGE_QA_GATE.json",
+      "mission": "A03-058",
+      "status": "gate_passed_for_internal_publication_package",
+      "publication_status": "ready_for_internal_publication_package",
+      "runtime_consumption_allowed": false
+    },
+    {
+      "id": "A03-PUBLICATION-GATE-001",
+      "type": "internal_publication_gate",
+      "path": "KnowledgeBase/SSRIs/Manifest/PROGRAM_A03_PUBLICATION_GATE.json",
+      "mission": "A03-060",
+      "status": "program_a03_internal_publication_gate_passed",
+      "publication_status": "internal_draft_package_created",
+      "runtime_consumption_allowed": false
+    }
+  ],
+  "next_mission": "A04-001 - SNRI_PROGRAM_INITIALIZATION"
+}

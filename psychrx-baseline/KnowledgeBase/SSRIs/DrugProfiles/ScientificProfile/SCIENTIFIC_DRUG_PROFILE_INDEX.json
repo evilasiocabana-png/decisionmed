@@ -1,0 +1,27 @@
+{
+  "schema": "psychrx.a03.scientific_drug_profile_index",
+  "program": "A03",
+  "mission": "A03-021",
+  "status": "active",
+  "schema_version": "0.1.0",
+  "profiles_by_drug_id": {
+    "SSRI_FLUOXETINE": "A03_PROFILE_SSRI_FLUOXETINE",
+    "SSRI_SERTRALINE": "A03_PROFILE_SSRI_SERTRALINE",
+    "SSRI_ESCITALOPRAM": "A03_PROFILE_SSRI_ESCITALOPRAM",
+    "SSRI_CITALOPRAM": "A03_PROFILE_SSRI_CITALOPRAM",
+    "SSRI_PAROXETINE": "A03_PROFILE_SSRI_PAROXETINE",
+    "SSRI_FLUVOXAMINE": "A03_PROFILE_SSRI_FLUVOXAMINE"
+  },
+  "profiles_by_status": {
+    "initialized": [
+      "A03_PROFILE_SSRI_FLUOXETINE",
+      "A03_PROFILE_SSRI_SERTRALINE",
+      "A03_PROFILE_SSRI_ESCITALOPRAM",
+      "A03_PROFILE_SSRI_CITALOPRAM",
+      "A03_PROFILE_SSRI_PAROXETINE",
+      "A03_PROFILE_SSRI_FLUVOXAMINE"
+    ]
+  },
+  "profile_count": 6,
+  "runtime_consumption_allowed": false
+}

@@ -1,0 +1,33 @@
+﻿{
+    "schema":  "psychrx.a03.template_manifest",
+    "program":  "A03",
+    "mission":  "A03-015",
+    "status":  "metadata_only",
+    "template_count":  19,
+    "template_directory":  "KnowledgeBase/SSRIs/Templates",
+    "templates":  [
+                      "DRUG_PROFILE_TEMPLATE",
+                      "IDENTIFICATION_TEMPLATE",
+                      "MECHANISM_TEMPLATE",
+                      "PHARMACOKINETICS_TEMPLATE",
+                      "PHARMACODYNAMICS_TEMPLATE",
+                      "INDICATION_TEMPLATE",
+                      "POSOLOGY_TEMPLATE",
+                      "SAFETY_TEMPLATE",
+                      "CONTRAINDICATION_TEMPLATE",
+                      "PRECAUTION_TEMPLATE",
+                      "INTERACTION_TEMPLATE",
+                      "ADVERSE_EFFECT_TEMPLATE",
+                      "MONITORING_TEMPLATE",
+                      "GUIDELINE_TEMPLATE",
+                      "EVIDENCE_TEMPLATE",
+                      "EDITORIAL_TEMPLATE",
+                      "TRACEABILITY_TEMPLATE",
+                      "METADATA_TEMPLATE",
+                      "MANIFEST_TEMPLATE"
+                  ],
+    "scientific_content_populated":  false,
+    "clinical_content_interpreted":  false,
+    "runtime_consumption_allowed":  false,
+    "next_mission":  "A03-016 - PORTFOLIO_REGISTRY_LINKING"
+}

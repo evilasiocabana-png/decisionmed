@@ -1,0 +1,25 @@
+{
+  "mission": "A13-003",
+  "status": "complete",
+  "sources": [
+    {
+      "source_id": "AH-SRC-001",
+      "title": "DailyMed - Diazepam tablet label",
+      "organization": "National Library of Medicine / DailyMed",
+      "source_type": "official_label",
+      "url": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=1995880f-e2f3-4eda-b7ff-b28141d38185",
+      "access_status": "accessible",
+      "use_scope": "mechanism_source_text"
+    },
+    {
+      "source_id": "AH-SRC-002",
+      "title": "FDA - Valium label PDF",
+      "organization": "FDA",
+      "source_type": "official_label_pdf",
+      "url": "https://www.accessdata.fda.gov/drugsatfda_docs/label/2008/013263s083lbl.pdf",
+      "access_status": "accessible",
+      "use_scope": "mechanism_source_text_cross_check"
+    }
+  ],
+  "runtime_eligible": false
+}

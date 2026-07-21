@@ -1,0 +1,19 @@
+{
+  "schema": "psychrx.knowledge_base.snri.profile_shell_registry.v1",
+  "program": "A04",
+  "mission": "A04-005 - SNRI_PROFILE_SHELLS",
+  "status": "completed",
+  "drug_class": "SNRIs",
+  "profile_shells": [
+    { "drug_id": "SNRI-VENLAFAXINE", "name": "Venlafaxine", "path": "KnowledgeBase/SNRIs/Venlafaxine/Profile/PROFILE_SHELL.json" },
+    { "drug_id": "SNRI-DESVENLAFAXINE", "name": "Desvenlafaxine", "path": "KnowledgeBase/SNRIs/Desvenlafaxine/Profile/PROFILE_SHELL.json" },
+    { "drug_id": "SNRI-DULOXETINE", "name": "Duloxetine", "path": "KnowledgeBase/SNRIs/Duloxetine/Profile/PROFILE_SHELL.json" },
+    { "drug_id": "SNRI-LEVOMILNACIPRAN", "name": "Levomilnacipran", "path": "KnowledgeBase/SNRIs/Levomilnacipran/Profile/PROFILE_SHELL.json" },
+    { "drug_id": "SNRI-MILNACIPRAN", "name": "Milnacipran", "path": "KnowledgeBase/SNRIs/Milnacipran/Profile/PROFILE_SHELL.json" }
+  ],
+  "field_status": "empty_placeholders_only",
+  "source_anchor_status": "pending",
+  "runtime_eligibility": "not_eligible",
+  "scientific_interpretation_performed": false,
+  "knowledge_objects_created": 0
+}

@@ -1,0 +1,24 @@
+{
+  "track": "C",
+  "title": "Clinical Experience Productization",
+  "status": "passed_for_product_ux_governance_only",
+  "programs_executed": [
+    "C01",
+    "C02",
+    "C03",
+    "C04",
+    "C05",
+    "C06",
+    "C07",
+    "C08"
+  ],
+  "clinical_runtime_enabled": false,
+  "prescription_enabled": false,
+  "therapeutic_recommendation_enabled": false,
+  "dose_suggestion_enabled": false,
+  "autonomous_diagnosis_enabled": false,
+  "patient_specific_medication_selection_enabled": false,
+  "implementation_enabled": false,
+  "next_state": "awaiting_next_governed_inbox_package"
+}
+

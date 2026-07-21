@@ -1,0 +1,13 @@
+{
+  "schema": "psychrx.knowledgebase.ssri.knowledge_qa_gate",
+  "program": "A03",
+  "phase": "Phase 8 - Knowledge QA",
+  "mission": "A03-058",
+  "status": "gate_passed_for_internal_publication_package",
+  "qa_report": "KnowledgeBase/SSRIs/Evidence/KNOWLEDGE_QA_REPORT.json",
+  "allowed_next_phase": "Phase 9 - Publication",
+  "runtime_consumption_allowed": false,
+  "clinical_recommendation_allowed": false,
+  "prescription_allowed": false,
+  "next_mission": "A03-059 - INTERNAL_PUBLICATION_PACKAGE"
+}

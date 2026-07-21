@@ -1,0 +1,21 @@
+field_id,field_label,question_text,input_type,allowed_values,priority,required_for_actions,unlocks,blocking_if_missing
+patient_label,Nome do paciente,Qual o nome do paciente?,text,,60,documentation,summary,false
+birth_date,Data de nascimento,Qual a data de nascimento?,date,,60,documentation,summary,false
+diagnostic_context,Diagnostico se houver,Existe diagnostico conhecido ou esta em investigacao?,select_or_text,"known|under_investigation|not_informed",50,all,clinical_context,false
+suicide,Ideacao suicida,Ideacao suicida foi investigada?,single_select,"negado|presente|nao avaliado",1,all,safety_gate,true
+mania_or_hypomania,Mania ou hipomania,Sintomas maniformes/hipomaniformes foram investigados?,single_select,"negado|presente|nao avaliado",2,all,safety_gate,true
+substances,Uso de substancias,Uso de substancias foi investigado?,single_select,"negado|presente|nao avaliado",3,all,safety_gate,true
+symptoms,Sintomas atuais,Quais sintomas estao presentes hoje?,multi_select,"humor deprimido|ansiedade|insonia inicial|insonia terminal|anedonia|fadiga|irritabilidade|ideacao suicida",20,all,pharmacological_target,true
+observed_signs,Sinais observados,Quais sinais foram observados no exame do estado mental?,multi_select,"lentificacao|agitacao|hipomimia|fala pressionada|pensamento tangencial",30,investigate_before_change|substitute|increase_dose,clinical_context,false
+impairment_domains,Prejuizo,Em quais areas ha prejuizo?,multi_select,"sono|trabalho|rotina|relacoes|autocuidado|funcionalidade",20,substitute|increase_dose|associate,impairment_target,true
+impairment_severity,Gravidade do prejuizo,Qual a gravidade do prejuizo?,single_select,"leve|moderado|importante|grave",25,substitute|increase_dose|associate,confidence,true
+stability,Estabilidade clinica,Como esta o estado clinico atual?,single_select,"estavel|parcial|sem resposta|instavel|recaida|piora",10,all,decision_rule,true
+current_medication,Medicacao atual,Qual medicacao o paciente usa atualmente?,search_add,,15,maintain|increase_dose|substitute|associate,dose_target,true
+dose,Dose atual,Qual a dose atual?,number_unit,,15,increase_dose|substitute|associate,dose_comparison,true
+frequency,Frequencia,Quantas vezes por dia?,single_select,"1x/dia|2x/dia|3x/dia|noite|manha",15,increase_dose|substitute|associate,dose_comparison,true
+duration,Tempo de uso,Ha quanto tempo usa essa medicacao?,single_select,"<2 semanas|2-4 semanas|4-6 semanas|6-8 semanas|>8 semanas",15,increase_dose|substitute|associate,adequate_trial_check,true
+adherence,Adesao,A adesao esta boa?,single_select,"boa|irregular|ruim",5,all,safety_gate,true
+adverse_effects,Efeitos adversos,Ha efeitos adversos relevantes?,single_select,"ausentes|leves|relevantes|nao avaliado",5,all,safety_gate,true
+response,Resposta percebida,Qual resposta percebida ao tratamento atual?,single_select,"boa|parcial|sem resposta|piorou",15,maintain|increase_dose|substitute,decision_rule,true
+tolerability,Tolerabilidade,Ha efeitos adversos relevantes?,single_select,"ausentes|leves|moderados|relevantes",5,all,safety_gate,true
+comorbidities,Comorbidades,Ha comorbidades relevantes?,multi_select,"TAG|TOC|TDAH|bipolaridade|uso de substancias|hipertensao|gestacao/lactacao",35,substitute|associate,safety_and_target,false

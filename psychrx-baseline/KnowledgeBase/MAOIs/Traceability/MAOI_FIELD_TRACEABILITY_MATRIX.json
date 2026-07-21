@@ -1,0 +1,22 @@
+{
+  "mission": "A08-008",
+  "status": "complete",
+  "matrix": [
+    {
+      "drug_id": "MAOI-PHENELZINE",
+      "field": "mechanism",
+      "required_chain": [
+        "source_id",
+        "section_id",
+        "section_locator",
+        "source_text_record_id",
+        "field_entry_id"
+      ],
+      "candidate_sources": [
+        "MAOI-SRC-001",
+        "MAOI-SRC-002"
+      ],
+      "status": "ready_for_gate"
+    }
+  ]
+}

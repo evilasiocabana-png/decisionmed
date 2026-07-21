@@ -1,0 +1,75 @@
+﻿{
+    "schema":  "psychrx.a03.master_registry_index",
+    "program":  "A03",
+    "mission":  "A03-016",
+    "status":  "metadata_only",
+    "by_id":  {
+                  "A03_REG_DRUG_PORTFOLIO_EDITORIAL":  "KnowledgeBase/SSRIs/Registries/DRUG_PORTFOLIO_EDITORIAL_REGISTRY.json",
+                  "A03_REG_EDITORIAL":  "KnowledgeBase/SSRIs/Registries/EDITORIAL_REGISTRY.json",
+                  "A03_REG_DIRECTORY":  "KnowledgeBase/SSRIs/Indexes/DRUG_DIRECTORY_INDEX.json",
+                  "A03_REG_SOURCE_REFERENCE_TEMPLATE":  "KnowledgeBase/SSRIs/Metadata/SOURCE_REFERENCE_TEMPLATE.json",
+                  "A03_REG_DRUG":  "KnowledgeBase/SSRIs/Registries/DRUG_REGISTRY.json",
+                  "A03_REG_BINDING":  "KnowledgeBase/SSRIs/Traceability/DRUG_SOURCE_BINDING.json",
+                  "A03_REG_TEMPLATE":  "KnowledgeBase/SSRIs/Templates/TEMPLATE_MANIFEST.json",
+                  "A03_REG_DIRECTORY_STATUS":  "KnowledgeBase/SSRIs/Indexes/DIRECTORY_STATUS.json",
+                  "A03_REG_DIRECTORY_TREE":  "KnowledgeBase/SSRIs/Indexes/DIRECTORY_TREE.json",
+                  "A03_REG_TEMPLATE_STATUS":  "KnowledgeBase/SSRIs/Templates/TEMPLATE_STATUS.json",
+                  "A03_REG_BINDING_INDEX":  "KnowledgeBase/SSRIs/Traceability/DRUG_SOURCE_BINDING_INDEX.json",
+                  "A03_REG_SOURCE":  "ScientificCorpus/Metadata/NORMALIZED_SOURCE_REGISTRY.json",
+                  "A03_REG_BINDING_STATUS":  "KnowledgeBase/SSRIs/Traceability/TRACEABILITY_STATUS.json",
+                  "A03_REG_METADATA":  "KnowledgeBase/SSRIs/Metadata/DRUG_PORTFOLIO_DEFINITION.json"
+              },
+    "by_type":  {
+                    "metadata_registry":  [
+                                              "A03_REG_METADATA"
+                                          ],
+                    "editorial_registry":  [
+                                               "A03_REG_EDITORIAL"
+                                           ],
+                    "status_registry":  [
+                                            "A03_REG_BINDING_STATUS",
+                                            "A03_REG_TEMPLATE_STATUS",
+                                            "A03_REG_DIRECTORY_STATUS"
+                                        ],
+                    "directory_registry":  [
+                                               "A03_REG_DIRECTORY",
+                                               "A03_REG_DIRECTORY_TREE"
+                                           ],
+                    "binding_registry":  [
+                                             "A03_REG_BINDING"
+                                         ],
+                    "index_registry":  [
+                                           "A03_REG_BINDING_INDEX"
+                                       ],
+                    "portfolio_registry":  [
+                                               "A03_REG_DRUG_PORTFOLIO_EDITORIAL"
+                                           ],
+                    "domain_registry":  [
+                                            "A03_REG_DRUG"
+                                        ],
+                    "template_registry":  [
+                                              "A03_REG_TEMPLATE",
+                                              "A03_REG_SOURCE_REFERENCE_TEMPLATE"
+                                          ],
+                    "source_registry":  [
+                                            "A03_REG_SOURCE"
+                                        ]
+                },
+    "by_path":  {
+                    "KnowledgeBase/SSRIs/Metadata/SOURCE_REFERENCE_TEMPLATE.json":  "A03_REG_SOURCE_REFERENCE_TEMPLATE",
+                    "KnowledgeBase/SSRIs/Registries/DRUG_PORTFOLIO_EDITORIAL_REGISTRY.json":  "A03_REG_DRUG_PORTFOLIO_EDITORIAL",
+                    "KnowledgeBase/SSRIs/Traceability/TRACEABILITY_STATUS.json":  "A03_REG_BINDING_STATUS",
+                    "KnowledgeBase/SSRIs/Registries/EDITORIAL_REGISTRY.json":  "A03_REG_EDITORIAL",
+                    "KnowledgeBase/SSRIs/Indexes/DIRECTORY_STATUS.json":  "A03_REG_DIRECTORY_STATUS",
+                    "KnowledgeBase/SSRIs/Metadata/DRUG_PORTFOLIO_DEFINITION.json":  "A03_REG_METADATA",
+                    "ScientificCorpus/Metadata/NORMALIZED_SOURCE_REGISTRY.json":  "A03_REG_SOURCE",
+                    "KnowledgeBase/SSRIs/Templates/TEMPLATE_MANIFEST.json":  "A03_REG_TEMPLATE",
+                    "KnowledgeBase/SSRIs/Templates/TEMPLATE_STATUS.json":  "A03_REG_TEMPLATE_STATUS",
+                    "KnowledgeBase/SSRIs/Traceability/DRUG_SOURCE_BINDING.json":  "A03_REG_BINDING",
+                    "KnowledgeBase/SSRIs/Indexes/DRUG_DIRECTORY_INDEX.json":  "A03_REG_DIRECTORY",
+                    "KnowledgeBase/SSRIs/Registries/DRUG_REGISTRY.json":  "A03_REG_DRUG",
+                    "KnowledgeBase/SSRIs/Indexes/DIRECTORY_TREE.json":  "A03_REG_DIRECTORY_TREE",
+                    "KnowledgeBase/SSRIs/Traceability/DRUG_SOURCE_BINDING_INDEX.json":  "A03_REG_BINDING_INDEX"
+                },
+    "scientific_content_populated":  false
+}

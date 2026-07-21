@@ -1,0 +1,31 @@
+﻿{
+    "program":  "A03",
+    "mission":  "A03-023",
+    "checks":  [
+                   {
+                       "result":  "passed",
+                       "check":  "six_receptor_structures_initialized"
+                   },
+                   {
+                       "result":  "passed",
+                       "check":  "six_neurotransmitter_structures_initialized"
+                   },
+                   {
+                       "result":  "passed",
+                       "check":  "source_bindings_present"
+                   },
+                   {
+                       "result":  "passed",
+                       "check":  "no_quantitative_affinity"
+                   },
+                   {
+                       "result":  "passed",
+                       "check":  "runtime_consumption_disabled"
+                   }
+               ],
+    "schema":  "psychrx.a03.receptor_validation",
+    "status":  "passed",
+    "issues":  [
+
+               ]
+}

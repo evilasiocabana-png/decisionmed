@@ -1,0 +1,1 @@
+{"schema":"psychrx.knowledgebase.ssri.pd_normalized_draft","program":"A03","mission":"A03-049","drug_id":"SSRI_CITALOPRAM","pd_profile":{"pharmacodynamic_domain":"serotonergic_modulation","source_basis":"regulatory_label_12_2"},"normalization_status":"normalized_pending_editorial_review","publication_status":"not_published","runtime_consumption_allowed":false}

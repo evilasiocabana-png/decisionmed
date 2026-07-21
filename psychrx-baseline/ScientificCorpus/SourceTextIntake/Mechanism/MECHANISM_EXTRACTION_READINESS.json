@@ -1,0 +1,32 @@
+{
+  "schema": "psychrx.scientific_corpus.mechanism_extraction_readiness",
+  "program": "A03",
+  "mission": "A03-036A",
+  "created_at": "2026-07-01",
+  "status": "partial_ready",
+  "summary": {
+    "total_core_ssri_drugs": 6,
+    "anchors_ready": 4,
+    "anchors_ready_but_review_required": 1,
+    "anchors_not_ready": 1,
+    "source_text_stored": false,
+    "mechanism_content_extracted": false
+  },
+  "ready_for_a03_036": true,
+  "allowed_scope_for_a03_036": [
+    "Extract mechanism content only from anchors with extraction_allowed_next_mission=true.",
+    "Do not extract sertraline until editorial confirmation resolves setid replacement.",
+    "Do not extract citalopram until a valid Mechanism of Action source anchor is found."
+  ],
+  "blocked_items": [
+    {
+      "drug_id": "SSRI_SERTRALINE",
+      "reason": "Current DailyMed SPL candidate requires editorial confirmation before extraction."
+    },
+    {
+      "drug_id": "SSRI_CITALOPRAM",
+      "reason": "Mechanism of Action heading not found in checked SPL XML."
+    }
+  ],
+  "next_mission": "A03-036 - MECHANISM_CONTENT_EXTRACTION"
+}

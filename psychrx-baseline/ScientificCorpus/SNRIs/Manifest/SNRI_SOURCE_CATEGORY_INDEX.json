@@ -1,0 +1,20 @@
+{
+  "schema": "psychrx.scientific_corpus.snri.source_category_index.v1",
+  "program": "A04.0",
+  "mission": "A04.0-002 - SNRI_SOURCE_CATALOG",
+  "status": "completed",
+  "categories": [
+    { "category": "Books", "count": 3, "planned_directory": "ScientificCorpus/SNRIs/Books/" },
+    { "category": "Guidelines", "count": 5, "planned_directory": "ScientificCorpus/SNRIs/Guidelines/" },
+    { "category": "Regulatory", "count": 5, "planned_directory": "ScientificCorpus/SNRIs/Regulatory/" },
+    { "category": "Reviews", "count": 1, "planned_directory": "ScientificCorpus/SNRIs/Reviews/" },
+    { "category": "MetaAnalyses", "count": 0, "planned_directory": "ScientificCorpus/SNRIs/MetaAnalyses/" },
+    { "category": "RCT", "count": 1, "planned_directory": "ScientificCorpus/SNRIs/RCT/" },
+    { "category": "Safety", "count": 3, "planned_directory": "ScientificCorpus/SNRIs/Safety/" },
+    { "category": "Reference", "count": 1, "planned_directory": "ScientificCorpus/SNRIs/Reference/" }
+  ],
+  "notes": [
+    "MetaAnalyses directory is reserved for A04.0-003 intake even though no separate meta-analysis source has been cataloged yet.",
+    "PubMed/MEDLINE is cataloged as Reference because it is a bibliographic endpoint, not a single review or trial document."
+  ]
+}

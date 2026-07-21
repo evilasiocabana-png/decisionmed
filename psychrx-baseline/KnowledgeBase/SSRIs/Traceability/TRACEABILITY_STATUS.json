@@ -1,0 +1,17 @@
+﻿{
+    "schema":  "psychrx.a03.traceability_status",
+    "program":  "A03",
+    "mission":  "A03-017",
+    "status":  "initialized_metadata_only",
+    "registries_have_traceability":  true,
+    "sources_referenceable":  true,
+    "objects_without_structure":  0,
+    "invalid_sources":  0,
+    "object_count":  14,
+    "source_count":  26,
+    "scientific_content_populated":  false,
+    "clinical_content_interpreted":  false,
+    "runtime_consumption_allowed":  false,
+    "previous_status_artifact":  "A03-013 traceability status superseded by A03-017 global initialization",
+    "next_mission":  "A03-018 - EDITORIAL_STATUS_FRAMEWORK"
+}

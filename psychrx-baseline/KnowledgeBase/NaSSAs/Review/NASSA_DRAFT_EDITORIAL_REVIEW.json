@@ -1,0 +1,25 @@
+{
+  "mission": "A06-013",
+  "status": "accepted_with_unresolved_marker",
+  "review_scope": "mechanism_draft_only",
+  "checks": [
+    {
+      "check": "all_entries_have_source_text_records",
+      "result": "pass"
+    },
+    {
+      "check": "runtime_eligibility_absent",
+      "result": "pass"
+    },
+    {
+      "check": "prescription_or_recommendation_absent",
+      "result": "pass"
+    },
+    {
+      "check": "class_level_generalization",
+      "result": "unresolved_marker_present"
+    }
+  ],
+  "corrections_required": [],
+  "approved_for_internal_publication": true
+}

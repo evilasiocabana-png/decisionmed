@@ -1,0 +1,15 @@
+﻿{
+    "neurotransmitter_models_by_drug_id":  {
+                                               "SSRI_CITALOPRAM":  "A03_NEUROTRANSMITTER_SSRI_CITALOPRAM",
+                                               "SSRI_SERTRALINE":  "A03_NEUROTRANSMITTER_SSRI_SERTRALINE",
+                                               "SSRI_FLUVOXAMINE":  "A03_NEUROTRANSMITTER_SSRI_FLUVOXAMINE",
+                                               "SSRI_FLUOXETINE":  "A03_NEUROTRANSMITTER_SSRI_FLUOXETINE",
+                                               "SSRI_ESCITALOPRAM":  "A03_NEUROTRANSMITTER_SSRI_ESCITALOPRAM",
+                                               "SSRI_PAROXETINE":  "A03_NEUROTRANSMITTER_SSRI_PAROXETINE"
+                                           },
+    "program":  "A03",
+    "mission":  "A03-023",
+    "neurotransmitter_model_count":  6,
+    "schema":  "psychrx.a03.neurotransmitter_index",
+    "runtime_consumption_allowed":  false
+}

@@ -1,0 +1,32 @@
+{
+  "mission": "A07-004",
+  "status": "complete",
+  "corpus": "ScientificCorpus/TCAs",
+  "intake_mode": "metadata_and_locator_only_until_section_selection",
+  "sources": [
+    {
+      "source_id": "TCA-SRC-001",
+      "drug": "amitriptyline",
+      "title": "AMITRIPTYLINE HYDROCHLORIDE tablet, film coated",
+      "organization": "DailyMed / National Library of Medicine",
+      "document_type": "official_label",
+      "language": "en",
+      "access_status": "accessible",
+      "locator": "https://dailymed.nlm.nih.gov/dailymed/lookup.cfm?setid=e3afe026-7072-0a7d-e053-2995a90a52d4",
+      "checksum": "not_captured",
+      "corpus_status": "registered"
+    },
+    {
+      "source_id": "TCA-SRC-002",
+      "drug": "amitriptyline",
+      "title": "Amitriptyline hydrochloride prescribing information",
+      "organization": "U.S. Food and Drug Administration",
+      "document_type": "regulatory_label_pdf",
+      "language": "en",
+      "access_status": "accessible",
+      "locator": "https://www.accessdata.fda.gov/drugsatfda_docs/label/2014/085966s095%2C085969s084%2C085968s096%2C085971s075%2C085967s076%2C085970s072lbl.pdf",
+      "checksum": "not_captured",
+      "corpus_status": "registered"
+    }
+  ]
+}

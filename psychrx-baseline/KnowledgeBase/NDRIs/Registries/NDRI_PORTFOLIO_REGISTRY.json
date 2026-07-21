@@ -1,0 +1,26 @@
+{
+  "mission": "A05-002",
+  "portfolio_status": "approved_for_a05_scope",
+  "class": {
+    "id": "NDRI",
+    "label": "Norepinephrine-Dopamine Reuptake Inhibitors",
+    "runtime_eligible": false
+  },
+  "included_drugs": [
+    {
+      "id": "NDRI-BUPROPION",
+      "canonical_name": "bupropion",
+      "status": "included",
+      "rationale": "Initial expected portfolio defined by A05_PROGRAM_EXECUTION_PLAN.md.",
+      "runtime_eligible": false
+    }
+  ],
+  "excluded_or_unresolved_candidates": [
+    {
+      "name": "amfebutamone",
+      "status": "alias_review_required",
+      "rationale": "Administrative alias/name variant requires future nomenclature reconciliation before independent portfolio treatment."
+    }
+  ],
+  "declaration": "A05 portfolio is limited to bupropion until a future governance mission expands it."
+}

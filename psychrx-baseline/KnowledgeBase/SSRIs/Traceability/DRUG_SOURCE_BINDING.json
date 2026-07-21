@@ -1,0 +1,131 @@
+{
+  "schema": "psychrx.a03.drug_source_binding",
+  "program": "A03",
+  "mission": "A03-013",
+  "status": "metadata_only",
+  "binding_version": "0.1.0",
+  "binding_date": "2026-06-30",
+  "binding_author": "PsychRx Sprint Prompt Architect",
+  "source_registry": "ScientificCorpus/Metadata/NORMALIZED_SOURCE_REGISTRY.json",
+  "editorial_registry": "KnowledgeBase/SSRIs/Registries/DRUG_PORTFOLIO_EDITORIAL_REGISTRY.json",
+  "common_source_ids": [
+    "B001",
+    "B002",
+    "B003",
+    "G001",
+    "G002",
+    "G003",
+    "G004",
+    "G008",
+    "R001",
+    "R002",
+    "R003"
+  ],
+  "bindings": [
+    {
+      "binding_id": "A03_BIND_SSRI_FLUOXETINE_0_1_0",
+      "drug_id": "SSRI_FLUOXETINE",
+      "editorial_id": "A03_ED_SSRI_FLUOXETINE",
+      "scientific_corpus_source_ids": ["L001", "B001", "B002", "B003", "G001", "G002", "G003", "G004", "G008", "R001", "R002", "R003"],
+      "binding_version": "0.1.0",
+      "binding_status": "active_metadata_only",
+      "binding_date": "2026-06-30",
+      "binding_author": "PsychRx Sprint Prompt Architect",
+      "last_revision": "2026-06-30",
+      "validation_status": "structurally_validated",
+      "editorial_status": "draft",
+      "technical_notes": "Administrative source binding only. No source content interpreted."
+    },
+    {
+      "binding_id": "A03_BIND_SSRI_SERTRALINE_0_1_0",
+      "drug_id": "SSRI_SERTRALINE",
+      "editorial_id": "A03_ED_SSRI_SERTRALINE",
+      "scientific_corpus_source_ids": ["L002", "B001", "B002", "B003", "G001", "G002", "G003", "G004", "G008", "R001", "R002", "R003"],
+      "binding_version": "0.1.0",
+      "binding_status": "active_metadata_only",
+      "binding_date": "2026-06-30",
+      "binding_author": "PsychRx Sprint Prompt Architect",
+      "last_revision": "2026-06-30",
+      "validation_status": "structurally_validated",
+      "editorial_status": "draft",
+      "technical_notes": "Administrative source binding only. No source content interpreted."
+    },
+    {
+      "binding_id": "A03_BIND_SSRI_ESCITALOPRAM_0_1_0",
+      "drug_id": "SSRI_ESCITALOPRAM",
+      "editorial_id": "A03_ED_SSRI_ESCITALOPRAM",
+      "scientific_corpus_source_ids": ["L005", "B001", "B002", "B003", "G001", "G002", "G003", "G004", "G008", "R001", "R002", "R003"],
+      "binding_version": "0.1.0",
+      "binding_status": "active_metadata_only",
+      "binding_date": "2026-06-30",
+      "binding_author": "PsychRx Sprint Prompt Architect",
+      "last_revision": "2026-06-30",
+      "validation_status": "structurally_validated",
+      "editorial_status": "draft",
+      "technical_notes": "Administrative source binding only. No source content interpreted."
+    },
+    {
+      "binding_id": "A03_BIND_SSRI_CITALOPRAM_0_1_0",
+      "drug_id": "SSRI_CITALOPRAM",
+      "editorial_id": "A03_ED_SSRI_CITALOPRAM",
+      "scientific_corpus_source_ids": ["L004", "B001", "B002", "B003", "G001", "G002", "G003", "G004", "G008", "R001", "R002", "R003"],
+      "binding_version": "0.1.0",
+      "binding_status": "active_metadata_only",
+      "binding_date": "2026-06-30",
+      "binding_author": "PsychRx Sprint Prompt Architect",
+      "last_revision": "2026-06-30",
+      "validation_status": "structurally_validated",
+      "editorial_status": "draft",
+      "technical_notes": "Administrative source binding only. No source content interpreted."
+    },
+    {
+      "binding_id": "A03_BIND_SSRI_PAROXETINE_0_1_0",
+      "drug_id": "SSRI_PAROXETINE",
+      "editorial_id": "A03_ED_SSRI_PAROXETINE",
+      "scientific_corpus_source_ids": ["L003", "B001", "B002", "B003", "G001", "G002", "G003", "G004", "G008", "R001", "R002", "R003"],
+      "binding_version": "0.1.0",
+      "binding_status": "active_metadata_only",
+      "binding_date": "2026-06-30",
+      "binding_author": "PsychRx Sprint Prompt Architect",
+      "last_revision": "2026-06-30",
+      "validation_status": "structurally_validated",
+      "editorial_status": "draft",
+      "technical_notes": "Administrative source binding only. No source content interpreted."
+    },
+    {
+      "binding_id": "A03_BIND_SSRI_FLUVOXAMINE_0_1_0",
+      "drug_id": "SSRI_FLUVOXAMINE",
+      "editorial_id": "A03_ED_SSRI_FLUVOXAMINE",
+      "scientific_corpus_source_ids": ["L006", "B001", "B002", "B003", "G001", "G002", "G003", "G004", "G008", "R001", "R002", "R003"],
+      "binding_version": "0.1.0",
+      "binding_status": "active_metadata_only",
+      "binding_date": "2026-06-30",
+      "binding_author": "PsychRx Sprint Prompt Architect",
+      "last_revision": "2026-06-30",
+      "validation_status": "structurally_validated",
+      "editorial_status": "draft",
+      "technical_notes": "Administrative source binding only. No source content interpreted."
+    }
+  ],
+  "boundary_candidates": [
+    {
+      "editorial_id": "A03_BOUNDARY_VILAZODONE",
+      "candidate_name": "Vilazodone",
+      "source_ids": ["L007", "L008"],
+      "binding_status": "tracked_review_required_not_included",
+      "ontology_decision": "not_decided"
+    },
+    {
+      "editorial_id": "A03_BOUNDARY_VORTIOXETINE",
+      "candidate_name": "Vortioxetine",
+      "source_ids": ["L009"],
+      "binding_status": "tracked_review_required_not_included",
+      "ontology_decision": "not_decided"
+    }
+  ],
+  "clinical_content_interpreted": false,
+  "scientific_content_interpreted": false,
+  "evidence_classified": false,
+  "drug_profiles_populated": false,
+  "runtime_consumption_allowed": false
+}

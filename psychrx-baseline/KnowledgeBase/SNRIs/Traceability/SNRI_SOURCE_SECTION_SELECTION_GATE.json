@@ -1,0 +1,63 @@
+{
+  "schema": "psychrx.knowledge_base.snri.source_section_selection_gate.v1",
+  "program": "A04",
+  "mission": "A04-008G - SNRI_SOURCE_SECTION_SELECTION_EXECUTION",
+  "status": "completed",
+  "drug_class": "SNRIs",
+  "purpose": "Evaluate whether selected and reviewable source sections exist before A04-009.",
+  "gate_inputs": {
+    "source_text_acquisition_package": "ScientificCorpus/SourceTextIntake/SNRIs/SourceTextPackage/SNRI_SOURCE_TEXT_ACQUISITION_PACKAGE.json",
+    "source_section_locator_plan": "KnowledgeBase/SNRIs/Traceability/SNRI_SOURCE_SECTION_LOCATOR_PLAN.json",
+    "source_section_selection": "KnowledgeBase/SNRIs/Traceability/SNRI_SOURCE_SECTION_SELECTION.json"
+  },
+  "gate_checks": [
+    {
+      "gate_id": "A04-SECTION-GATE-001",
+      "name": "source text locators exist",
+      "status": "passed",
+      "evidence": "41 locators planned"
+    },
+    {
+      "gate_id": "A04-SECTION-GATE-002",
+      "name": "source sections selected",
+      "status": "passed",
+      "evidence": "10 selected sections for mechanism field"
+    },
+    {
+      "gate_id": "A04-SECTION-GATE-003",
+      "name": "selected sections reviewable",
+      "status": "passed",
+      "evidence": "10 selected source-section records include reviewable remote locator metadata"
+    },
+    {
+      "gate_id": "A04-SECTION-GATE-004",
+      "name": "runtime remains disabled",
+      "status": "passed",
+      "evidence": "not_eligible"
+    },
+    {
+      "gate_id": "A04-SECTION-GATE-005",
+      "name": "no scientific extraction performed",
+      "status": "passed",
+      "evidence": "selected sections only; field values not populated"
+    }
+  ],
+  "gate_decision": {
+    "a04_009_may_start": true,
+    "decision": "released_for_mechanism_draft_only",
+    "released_mission": "A04-009 - SNRI_MECHANISM_POPULATION_DRAFT",
+    "release_scope": "mechanism_field_only",
+    "remaining_restrictions": [
+      "pharmacokinetic extraction remains prohibited",
+      "pharmacodynamic extraction remains prohibited",
+      "safety extraction remains prohibited",
+      "therapeutic recommendation remains prohibited",
+      "prescription remains prohibited",
+      "clinical runtime remains prohibited"
+    ]
+  },
+  "scientific_interpretation_performed": false,
+  "knowledge_objects_created": 0,
+  "runtime_eligibility": "not_eligible",
+  "next_mission": "A04-009 - SNRI_MECHANISM_POPULATION_DRAFT"
+}

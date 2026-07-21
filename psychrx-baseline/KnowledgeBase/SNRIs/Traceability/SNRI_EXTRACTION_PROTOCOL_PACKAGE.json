@@ -1,0 +1,100 @@
+{
+  "schema": "psychrx.knowledge_base.snri.extraction_protocol_package.v1",
+  "program": "A04",
+  "mission": "A04-008B - SNRI_EXTRACTION_PROTOCOL_PACKAGE",
+  "status": "completed",
+  "drug_class": "SNRIs",
+  "purpose": "Define the controlled protocol required before SNRI scientific field extraction.",
+  "inputs_required_before_extraction": [
+    "validated source corpus",
+    "profile shells",
+    "source anchor plan",
+    "field traceability matrix",
+    "definitive source anchor IDs",
+    "source section selection",
+    "extraction protocol package"
+  ],
+  "current_inputs_available": {
+    "validated_source_corpus": true,
+    "profile_shells": true,
+    "source_anchor_plan": true,
+    "field_traceability_matrix": true,
+    "definitive_source_anchor_ids": true,
+    "source_section_selection": false,
+    "extraction_protocol_package": true
+  },
+  "allowed_extraction_states": [
+    "not_started",
+    "awaiting_source_section_selection",
+    "draft_extracted",
+    "awaiting_normalization",
+    "awaiting_scientific_review",
+    "awaiting_editorial_review",
+    "publication_candidate",
+    "published_internal",
+    "runtime_ineligible"
+  ],
+  "required_per_claim_fields": [
+    "drug_id",
+    "profile_field",
+    "source_id",
+    "source_anchor_id",
+    "source_section",
+    "verbatim_excerpt_reference",
+    "extraction_note",
+    "normalization_status",
+    "scientific_review_status",
+    "editorial_review_status",
+    "publication_status",
+    "runtime_eligibility"
+  ],
+  "hard_blocks": [
+    {
+      "block_id": "A04-EXTRACT-BLOCK-001",
+      "condition": "missing_source_section",
+      "effect": "block_extraction"
+    },
+    {
+      "block_id": "A04-EXTRACT-BLOCK-002",
+      "condition": "missing_source_anchor_id",
+      "effect": "block_extraction"
+    },
+    {
+      "block_id": "A04-EXTRACT-BLOCK-003",
+      "condition": "missing_source_id",
+      "effect": "block_extraction"
+    },
+    {
+      "block_id": "A04-EXTRACT-BLOCK-004",
+      "condition": "attempted_runtime_eligibility",
+      "effect": "block_publication"
+    },
+    {
+      "block_id": "A04-EXTRACT-BLOCK-005",
+      "condition": "therapeutic_recommendation_or_dose_guidance",
+      "effect": "reject_artifact"
+    }
+  ],
+  "field_extraction_order": [
+    "mechanism",
+    "pharmacokinetics",
+    "pharmacodynamics",
+    "safety",
+    "evidence"
+  ],
+  "excluded_from_current_extraction_wave": [
+    "posology",
+    "therapeutic_strategy",
+    "clinical_recommendation",
+    "runtime_decision"
+  ],
+  "gate_result": {
+    "a04_009_may_start": false,
+    "blocking_reason": "Source section selection is still missing for SNRI drug-field anchors.",
+    "required_next_action": "Create source section selection package or formally block until source texts are available."
+  },
+  "scientific_interpretation_performed": false,
+  "knowledge_objects_created": 0,
+  "runtime_eligibility": "not_eligible",
+  "next_mission": "A04-008C - SNRI_SOURCE_SECTION_SELECTION_OR_BLOCKER"
+}

@@ -1,0 +1,25 @@
+{
+  "mission": "A13-007",
+  "drug_id": "AH-DIAZEPAM",
+  "name": "Diazepam",
+  "class": "anxiolytic_hypnotic",
+  "fields": {
+    "mechanism": {
+      "status": "authorized_for_a13_population",
+      "content_ref": null
+    },
+    "pharmacokinetics": {
+      "status": "blocked"
+    },
+    "pharmacodynamics": {
+      "status": "blocked"
+    },
+    "safety": {
+      "status": "blocked"
+    },
+    "evidence": {
+      "status": "blocked"
+    }
+  },
+  "runtime_eligible": false
+}

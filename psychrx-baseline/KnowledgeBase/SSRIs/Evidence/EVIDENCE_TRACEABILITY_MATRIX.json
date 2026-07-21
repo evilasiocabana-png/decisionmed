@@ -1,0 +1,84 @@
+{
+  "schema": "psychrx.knowledgebase.ssri.evidence_traceability_matrix",
+  "program": "A03",
+  "phase": "Phase 7 - Evidence Integration",
+  "mission": "A03-053",
+  "status": "traceability_matrix_initialized",
+  "source_binding": "KnowledgeBase/SSRIs/Evidence/EVIDENCE_INTEGRATION_SOURCE_BINDING.json",
+  "matrix_scope": {
+    "drug_class": "SSRI",
+    "drug_ids": [
+      "SSRI_FLUOXETINE",
+      "SSRI_SERTRALINE",
+      "SSRI_PAROXETINE",
+      "SSRI_CITALOPRAM",
+      "SSRI_ESCITALOPRAM",
+      "SSRI_FLUVOXAMINE"
+    ],
+    "domains": [
+      "Mechanism",
+      "Pharmacokinetics",
+      "Pharmacodynamics"
+    ]
+  },
+  "traceability_rows": [
+    {
+      "row_id": "A03-EVIDENCE-TRACE-MECH-001",
+      "domain": "Mechanism",
+      "draft_baseline": "KnowledgeBase/SSRIs/Mechanism/MECHANISM_PARTIAL_BASELINE.json",
+      "source_anchor": "ScientificCorpus/SourceTextIntake/Mechanism/MECHANISM_SOURCE_ANCHORS.json",
+      "supporting_source_groups": [
+        "A03-EVIDENCE-SOURCE-REGULATORY",
+        "A03-EVIDENCE-SOURCE-GUIDELINES",
+        "A03-EVIDENCE-SOURCE-REVIEWS"
+      ],
+      "trace_status": "linked",
+      "editorial_status": "awaiting_evidence_review",
+      "evidence_quality_status": "not_evaluated",
+      "publication_status": "not_published",
+      "runtime_consumption_allowed": false
+    },
+    {
+      "row_id": "A03-EVIDENCE-TRACE-PK-001",
+      "domain": "Pharmacokinetics",
+      "draft_baseline": "KnowledgeBase/SSRIs/Pharmacokinetics/PK_BASELINE.json",
+      "source_anchor": "ScientificCorpus/SourceTextIntake/Pharmacokinetics/PK_SOURCE_ANCHORS.json",
+      "supporting_source_groups": [
+        "A03-EVIDENCE-SOURCE-REGULATORY",
+        "A03-EVIDENCE-SOURCE-GUIDELINES",
+        "A03-EVIDENCE-SOURCE-REVIEWS"
+      ],
+      "trace_status": "linked",
+      "editorial_status": "awaiting_evidence_review",
+      "evidence_quality_status": "not_evaluated",
+      "publication_status": "not_published",
+      "runtime_consumption_allowed": false
+    },
+    {
+      "row_id": "A03-EVIDENCE-TRACE-PD-001",
+      "domain": "Pharmacodynamics",
+      "draft_baseline": "KnowledgeBase/SSRIs/Pharmacodynamics/PD_BASELINE.json",
+      "source_anchor": "ScientificCorpus/SourceTextIntake/Pharmacodynamics/PD_SOURCE_ANCHORS.json",
+      "supporting_source_groups": [
+        "A03-EVIDENCE-SOURCE-REGULATORY",
+        "A03-EVIDENCE-SOURCE-GUIDELINES",
+        "A03-EVIDENCE-SOURCE-REVIEWS"
+      ],
+      "trace_status": "linked",
+      "editorial_status": "awaiting_evidence_review",
+      "evidence_quality_status": "not_evaluated",
+      "publication_status": "not_published",
+      "runtime_consumption_allowed": false
+    }
+  ],
+  "explicit_non_goals": [
+    "no evidence quality grading",
+    "no recommendation strength",
+    "no comparative conclusion",
+    "no therapeutic recommendation",
+    "no clinical decision",
+    "no publication",
+    "no runtime consumption"
+  ],
+  "next_mission": "A03-054 - EVIDENCE_REVIEW_QUEUE"
+}

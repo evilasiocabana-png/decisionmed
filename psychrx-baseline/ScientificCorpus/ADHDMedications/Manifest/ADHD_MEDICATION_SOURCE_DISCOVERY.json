@@ -1,0 +1,25 @@
+{
+  "mission": "A14-003",
+  "status": "complete",
+  "sources": [
+    {
+      "source_id": "ADHD-SRC-001",
+      "title": "DailyMed - Methylphenidate hydrochloride extended-release tablet label",
+      "organization": "National Library of Medicine / DailyMed",
+      "source_type": "official_label",
+      "url": "https://dailymed.nlm.nih.gov/dailymed/lookup.cfm?setid=f6581305-cd1e-4171-8c1b-e184c7bde033",
+      "access_status": "accessible",
+      "use_scope": "mechanism_source_text"
+    },
+    {
+      "source_id": "ADHD-SRC-002",
+      "title": "FDA - Ritalin label PDF",
+      "organization": "FDA",
+      "source_type": "official_label_pdf",
+      "url": "https://www.accessdata.fda.gov/drugsatfda_docs/label/2013/021284s020lbl.pdf",
+      "access_status": "accessible",
+      "use_scope": "mechanism_source_text_cross_check"
+    }
+  ],
+  "runtime_eligible": false
+}

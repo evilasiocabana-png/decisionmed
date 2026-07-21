@@ -1,0 +1,48 @@
+{
+  "schema": "psychrx.scientific_corpus.publication_manifest",
+  "program": "A02.5",
+  "mission": "A02.5-006",
+  "publication_id": "SSRI_SOURCE_CORPUS_PUBLICATION_0_1_0",
+  "corpus_id": "SSRI_SOURCE_CORPUS_0_1_0",
+  "corpus_name": "SSRI Scientific Source Corpus",
+  "edition": "0.1.0-controlled-corpus",
+  "publication_date": "2026-06-30",
+  "publication_status": "published_as_controlled_corpus_input",
+  "publication_scope": "administrative_source_corpus_only",
+  "source_manifest": "ScientificCorpus/Manifest/SOURCE_CORPUS_MANIFEST.json",
+  "editorial_manifest": "ScientificCorpus/Editorial/EDITORIAL_MANIFEST.json",
+  "editorial_registration": "ScientificCorpus/Editorial/EDITORIAL_REGISTRATION.json",
+  "normalized_source_registry": "ScientificCorpus/Metadata/NORMALIZED_SOURCE_REGISTRY.json",
+  "source_validation_report": "ScientificCorpus/Validation/SOURCE_VALIDATION_REPORT.md",
+  "corpus_integrity_report": "ScientificCorpus/Validation/CORPUS_INTEGRITY_REPORT.md",
+  "publication_index": "ScientificCorpus/Publication/PUBLICATION_INDEX.md",
+  "publication_readiness_report": "ScientificCorpus/Publication/PUBLICATION_READINESS_REPORT.md",
+  "source_counts": {
+    "normalized_sources": 26,
+    "duplicate_candidates": 5,
+    "review_required": 4,
+    "pending_file_hashes": 26
+  },
+  "allowed_use": [
+    "reference as a controlled source corpus",
+    "use as input for Program A03 planning after Program A02.5 completion report",
+    "support future field-level traceability mapping"
+  ],
+  "prohibited_use": [
+    "clinical content population",
+    "drug profile population",
+    "evidence classification",
+    "therapeutic recommendation",
+    "prescription",
+    "runtime consumption"
+  ],
+  "clinical_content_interpreted": false,
+  "evidence_classified": false,
+  "ontology_mapping_performed": false,
+  "medication_fields_populated": false,
+  "knowledge_layer_publication_allowed": false,
+  "evidence_runtime_consumption_allowed": false,
+  "program_a03_phase1_unblocked": true,
+  "program_a03_scientific_population_unblocked": false,
+  "next_mission": "A03-011 - Drug Portfolio Definition"
+}

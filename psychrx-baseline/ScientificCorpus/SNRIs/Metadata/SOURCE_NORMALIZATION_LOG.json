@@ -1,0 +1,25 @@
+{
+  "schema": "psychrx.scientific_corpus.snri.source_normalization_log.v1",
+  "program": "A04.0",
+  "mission": "A04.0-004 - SNRI_SOURCE_METADATA_NORMALIZATION",
+  "status": "completed",
+  "actions": [
+    "created source metadata schema",
+    "created editorial metadata schema",
+    "created document classification schema",
+    "created source metadata template",
+    "created editorial metadata template",
+    "normalized 19 administrative source records",
+    "created source metadata indexes"
+  ],
+  "non_actions": [
+    "no PDFs opened",
+    "no books interpreted",
+    "no guidelines interpreted",
+    "no articles summarized",
+    "no source anchors created",
+    "no scientific anchors created",
+    "no knowledge objects created",
+    "no runtime objects created"
+  ]
+}

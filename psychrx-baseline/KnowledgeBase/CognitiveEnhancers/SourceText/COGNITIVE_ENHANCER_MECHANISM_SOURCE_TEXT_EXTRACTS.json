@@ -1,0 +1,25 @@
+{
+  "mission": "A15-011",
+  "status": "complete",
+  "records": [
+    {
+      "record_id": "CE-TEXT-001",
+      "source_id": "CE-SRC-001",
+      "selection_id": "CE-SEL-001",
+      "drug_id": "CE-DONEPEZIL",
+      "field": "mechanism",
+      "exact_text": "Donepezil hydrochloride is a reversible inhibitor of the enzyme acetylcholinesterase",
+      "review_status": "reviewable"
+    },
+    {
+      "record_id": "CE-TEXT-002",
+      "source_id": "CE-SRC-002",
+      "selection_id": "CE-SEL-002",
+      "drug_id": "CE-DONEPEZIL",
+      "field": "mechanism",
+      "exact_text": "ARICEPT (donepezil hydrochloride) is a reversible inhibitor of the enzyme acetylcholinesterase",
+      "review_status": "reviewable"
+    }
+  ],
+  "runtime_eligible": false
+}

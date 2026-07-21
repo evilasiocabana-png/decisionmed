@@ -1,0 +1,18 @@
+services:
+  - type: web
+    name: psychrx
+    runtime: python
+    plan: free
+    buildCommand: python -m unittest discover -s tests -t .
+    startCommand: python -m interfaces.web.server
+    healthCheckPath: /health
+    autoDeployTrigger: commit
+    envVars:
+      - key: PSYCHRX_AUTH_REQUIRED
+        value: "true"
+      - key: PSYCHRX_ACCESS_PASSWORD
+        sync: false
+      - key: PSYCHRX_SESSION_SECRET
+        generateValue: true
+      - key: PSYCHRX_SESSION_TTL_SECONDS
+        value: "28800"

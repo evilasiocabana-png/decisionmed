@@ -1,0 +1,45 @@
+{
+  "mission": "A06-012",
+  "status": "draft_review_required",
+  "runtime_eligible": false,
+  "drug_entries": [
+    {
+      "drug_id": "NASSA-MIRTAZAPINE",
+      "field": "mechanism",
+      "claim_status": "source_text_bound_internal_draft",
+      "entries": [
+        {
+          "entry_id": "A06-MECH-001",
+          "controlled_statement": "The selected source text treats mirtazapine mechanism as unclear for major depressive disorder.",
+          "source_text_records": [
+            "A06-TXT-001"
+          ],
+          "runtime_eligible": false
+        },
+        {
+          "entry_id": "A06-MECH-002",
+          "controlled_statement": "Selected source text links mirtazapine to alpha2-adrenergic receptor antagonism and central noradrenergic/serotonergic activity.",
+          "source_text_records": [
+            "A06-TXT-002",
+            "A06-TXT-003"
+          ],
+          "runtime_eligible": false
+        }
+      ],
+      "unresolved": [
+        {
+          "field": "class_level_nassa_generalization",
+          "status": "UNRESOLVED",
+          "reason": "A06 selected source text supports mirtazapine-specific mechanism only."
+        }
+      ]
+    }
+  ],
+  "forbidden_use": [
+    "runtime",
+    "prescription",
+    "recommendation",
+    "dose_suggestion",
+    "patient_specific_decision"
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "schema": "psychrx.scientific_corpus.snri.source_discovery_status.v1",
+  "program": "A04.0",
+  "mission": "A04.0-003 - SNRI_SOURCE_CORPUS_INTAKE",
+  "source_discovery": "completed",
+  "source_catalog": "completed",
+  "source_corpus_intake": "completed",
+  "metadata_normalization": "pending",
+  "source_validation": "pending",
+  "editorial_registration": "pending",
+  "corpus_publication": "pending",
+  "runtime_consumption_allowed": false
+}

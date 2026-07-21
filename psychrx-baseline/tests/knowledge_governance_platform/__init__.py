@@ -1,0 +1,2 @@
+"""Knowledge Governance Platform tests."""
+

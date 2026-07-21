@@ -1,0 +1,14 @@
+﻿{
+    "schema":  "psychrx.a03.directory_template.traceability",
+    "program":  "A03",
+    "mission":  "A03-014",
+    "status":  "empty_template_metadata_only",
+    "drug_id":  "SSRI_FLUOXETINE",
+    "editorial_id":  "A03_ED_SSRI_FLUOXETINE",
+    "drug_folder":  "Fluoxetine",
+    "section":  "Posology",
+    "scientific_content_populated":  false,
+    "clinical_content_interpreted":  false,
+    "drug_profile_created":  false,
+    "runtime_consumption_allowed":  false
+}

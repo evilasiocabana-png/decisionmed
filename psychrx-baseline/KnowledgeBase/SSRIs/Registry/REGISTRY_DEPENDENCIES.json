@@ -1,0 +1,69 @@
+﻿{
+    "schema":  "psychrx.a03.registry_dependencies",
+    "program":  "A03",
+    "mission":  "A03-016",
+    "status":  "metadata_only",
+    "dependencies":  [
+                         {
+                             "registry_id":  "A03_REG_EDITORIAL",
+                             "depends_on":  "A03_REG_DRUG",
+                             "relationship_type":  "structural_dependency"
+                         },
+                         {
+                             "registry_id":  "A03_REG_DRUG_PORTFOLIO_EDITORIAL",
+                             "depends_on":  "A03_REG_DRUG",
+                             "relationship_type":  "structural_dependency"
+                         },
+                         {
+                             "registry_id":  "A03_REG_METADATA",
+                             "depends_on":  "A03_REG_DRUG",
+                             "relationship_type":  "structural_dependency"
+                         },
+                         {
+                             "registry_id":  "A03_REG_BINDING",
+                             "depends_on":  "A03_REG_DRUG_PORTFOLIO_EDITORIAL",
+                             "relationship_type":  "structural_dependency"
+                         },
+                         {
+                             "registry_id":  "A03_REG_BINDING",
+                             "depends_on":  "A03_REG_SOURCE",
+                             "relationship_type":  "structural_dependency"
+                         },
+                         {
+                             "registry_id":  "A03_REG_BINDING_INDEX",
+                             "depends_on":  "A03_REG_BINDING",
+                             "relationship_type":  "structural_dependency"
+                         },
+                         {
+                             "registry_id":  "A03_REG_BINDING_STATUS",
+                             "depends_on":  "A03_REG_BINDING",
+                             "relationship_type":  "structural_dependency"
+                         },
+                         {
+                             "registry_id":  "A03_REG_TEMPLATE_STATUS",
+                             "depends_on":  "A03_REG_TEMPLATE",
+                             "relationship_type":  "structural_dependency"
+                         },
+                         {
+                             "registry_id":  "A03_REG_DIRECTORY",
+                             "depends_on":  "A03_REG_DRUG",
+                             "relationship_type":  "structural_dependency"
+                         },
+                         {
+                             "registry_id":  "A03_REG_DIRECTORY_TREE",
+                             "depends_on":  "A03_REG_DIRECTORY",
+                             "relationship_type":  "structural_dependency"
+                         },
+                         {
+                             "registry_id":  "A03_REG_DIRECTORY_STATUS",
+                             "depends_on":  "A03_REG_DIRECTORY",
+                             "relationship_type":  "structural_dependency"
+                         },
+                         {
+                             "registry_id":  "A03_REG_SOURCE_REFERENCE_TEMPLATE",
+                             "depends_on":  "A03_REG_SOURCE",
+                             "relationship_type":  "structural_dependency"
+                         }
+                     ],
+    "scientific_content_populated":  false
+}

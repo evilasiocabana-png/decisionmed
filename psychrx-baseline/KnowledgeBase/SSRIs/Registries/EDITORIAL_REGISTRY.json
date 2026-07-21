@@ -1,0 +1,14 @@
+{
+  "schema": "psychrx.a03.editorial_registry",
+  "program": "A03",
+  "status": "metadata_only",
+  "items": [],
+  "linked_registries": [
+    "KnowledgeBase/SSRIs/Registries/DRUG_PORTFOLIO_EDITORIAL_REGISTRY.json"
+  ],
+  "drug_profiles_populated": false,
+  "clinical_content_interpreted": false,
+  "scientific_content_interpreted": false,
+  "therapeutic_recommendations_created": false,
+  "runtime_consumption_allowed": false
+}

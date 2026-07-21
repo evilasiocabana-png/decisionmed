@@ -1,0 +1,36 @@
+{
+  "schema": "psychrx.a03.safety_schema",
+  "program": "A03",
+  "mission": "A03-029",
+  "status": "structural_schema_only",
+  "schema_version": "0.1.0",
+  "runtime_consumption_allowed": false,
+  "required_fields": [
+    "safety_id",
+    "drug_id",
+    "profile_id",
+    "scientific_version",
+    "editorial_version",
+    "schema_version",
+    "validation_status",
+    "publication_status"
+  ],
+  "safety_fields": [
+    "warnings",
+    "serious_adverse_risks",
+    "special_populations",
+    "monitoring_relationships",
+    "interaction_relationships",
+    "contraindication_relationships",
+    "regulatory_safety_communications",
+    "source_binding"
+  ],
+  "prohibited_fields": [
+    "clinical_recommendation",
+    "prescription",
+    "runtime_rule",
+    "decision_engine_rule",
+    "safety_alert",
+    "monitoring_instruction"
+  ]
+}

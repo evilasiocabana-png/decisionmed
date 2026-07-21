@@ -1,0 +1,22 @@
+{
+  "schema": "psychrx.knowledgebase.ssri.pk_extraction",
+  "program": "A03",
+  "mission": "A03-042",
+  "drug_id": "SSRI_ESCITALOPRAM",
+  "source_anchor_id": "A03-PK-ANCHOR-ESCITALOPRAM-001",
+  "source_section": "12.3 Pharmacokinetics",
+  "extraction_claim": {
+    "dose_linearity": "linear_and_dose_proportional_over_10_to_30mg_per_day",
+    "steady_state": "approximately_one_week_with_once_daily_dosing",
+    "accumulation": "2_2_to_2_5_times_single_dose_plasma_concentrations_at_steady_state",
+    "peak_concentration_time": "about_5_hours_after_single_oral_dose",
+    "food_effect": "absorption_not_affected_by_food",
+    "protein_binding": "approximately_56_percent",
+    "terminal_half_life": "about_27_to_32_hours",
+    "metabolism": "mainly_hepatic_with_CYP3A4_and_CYP2C19_involved_in_N_demethylation"
+  },
+  "reviewer_status": "awaiting_review",
+  "normalization_status": "awaiting_normalization",
+  "publication_status": "not_published",
+  "runtime_consumption_allowed": false
+}

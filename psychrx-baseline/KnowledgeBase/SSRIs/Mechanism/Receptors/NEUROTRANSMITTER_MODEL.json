@@ -1,0 +1,209 @@
+﻿{
+    "program":  "A03",
+    "neurotransmitter_models":  [
+                                    {
+                                        "profile_id":  "A03_PROFILE_SSRI_FLUOXETINE",
+                                        "neurotransmitters":  {
+                                                                  "value_status":  "pending_field_extraction",
+                                                                  "values":  [
+
+                                                                             ],
+                                                                  "source_reference":  {
+                                                                                           "source_ids":  [
+                                                                                                              "L001",
+                                                                                                              "B001",
+                                                                                                              "B002",
+                                                                                                              "B003",
+                                                                                                              "G001",
+                                                                                                              "G002",
+                                                                                                              "G003",
+                                                                                                              "G004",
+                                                                                                              "G008",
+                                                                                                              "R001",
+                                                                                                              "R002",
+                                                                                                              "R003"
+                                                                                                          ],
+                                                                                           "source_status":  "administrative_binding_available_pending_field_extraction",
+                                                                                           "source_registry":  "ScientificCorpus/Metadata/NORMALIZED_SOURCE_REGISTRY.json",
+                                                                                           "binding_id":  "A03_BIND_SSRI_FLUOXETINE_0_1_0"
+                                                                                       }
+                                                              },
+                                        "drug_id":  "SSRI_FLUOXETINE",
+                                        "validation_status":  "structurally_validated",
+                                        "neurotransmitter_model_id":  "A03_NEUROTRANSMITTER_SSRI_FLUOXETINE",
+                                        "canonical_name":  "Fluoxetine",
+                                        "runtime_consumption_allowed":  false
+                                    },
+                                    {
+                                        "profile_id":  "A03_PROFILE_SSRI_SERTRALINE",
+                                        "neurotransmitters":  {
+                                                                  "value_status":  "pending_field_extraction",
+                                                                  "values":  [
+
+                                                                             ],
+                                                                  "source_reference":  {
+                                                                                           "source_ids":  [
+                                                                                                              "L002",
+                                                                                                              "B001",
+                                                                                                              "B002",
+                                                                                                              "B003",
+                                                                                                              "G001",
+                                                                                                              "G002",
+                                                                                                              "G003",
+                                                                                                              "G004",
+                                                                                                              "G008",
+                                                                                                              "R001",
+                                                                                                              "R002",
+                                                                                                              "R003"
+                                                                                                          ],
+                                                                                           "source_status":  "administrative_binding_available_pending_field_extraction",
+                                                                                           "source_registry":  "ScientificCorpus/Metadata/NORMALIZED_SOURCE_REGISTRY.json",
+                                                                                           "binding_id":  "A03_BIND_SSRI_SERTRALINE_0_1_0"
+                                                                                       }
+                                                              },
+                                        "drug_id":  "SSRI_SERTRALINE",
+                                        "validation_status":  "structurally_validated",
+                                        "neurotransmitter_model_id":  "A03_NEUROTRANSMITTER_SSRI_SERTRALINE",
+                                        "canonical_name":  "Sertraline",
+                                        "runtime_consumption_allowed":  false
+                                    },
+                                    {
+                                        "profile_id":  "A03_PROFILE_SSRI_ESCITALOPRAM",
+                                        "neurotransmitters":  {
+                                                                  "value_status":  "pending_field_extraction",
+                                                                  "values":  [
+
+                                                                             ],
+                                                                  "source_reference":  {
+                                                                                           "source_ids":  [
+                                                                                                              "L005",
+                                                                                                              "B001",
+                                                                                                              "B002",
+                                                                                                              "B003",
+                                                                                                              "G001",
+                                                                                                              "G002",
+                                                                                                              "G003",
+                                                                                                              "G004",
+                                                                                                              "G008",
+                                                                                                              "R001",
+                                                                                                              "R002",
+                                                                                                              "R003"
+                                                                                                          ],
+                                                                                           "source_status":  "administrative_binding_available_pending_field_extraction",
+                                                                                           "source_registry":  "ScientificCorpus/Metadata/NORMALIZED_SOURCE_REGISTRY.json",
+                                                                                           "binding_id":  "A03_BIND_SSRI_ESCITALOPRAM_0_1_0"
+                                                                                       }
+                                                              },
+                                        "drug_id":  "SSRI_ESCITALOPRAM",
+                                        "validation_status":  "structurally_validated",
+                                        "neurotransmitter_model_id":  "A03_NEUROTRANSMITTER_SSRI_ESCITALOPRAM",
+                                        "canonical_name":  "Escitalopram",
+                                        "runtime_consumption_allowed":  false
+                                    },
+                                    {
+                                        "profile_id":  "A03_PROFILE_SSRI_CITALOPRAM",
+                                        "neurotransmitters":  {
+                                                                  "value_status":  "pending_field_extraction",
+                                                                  "values":  [
+
+                                                                             ],
+                                                                  "source_reference":  {
+                                                                                           "source_ids":  [
+                                                                                                              "L004",
+                                                                                                              "B001",
+                                                                                                              "B002",
+                                                                                                              "B003",
+                                                                                                              "G001",
+                                                                                                              "G002",
+                                                                                                              "G003",
+                                                                                                              "G004",
+                                                                                                              "G008",
+                                                                                                              "R001",
+                                                                                                              "R002",
+                                                                                                              "R003"
+                                                                                                          ],
+                                                                                           "source_status":  "administrative_binding_available_pending_field_extraction",
+                                                                                           "source_registry":  "ScientificCorpus/Metadata/NORMALIZED_SOURCE_REGISTRY.json",
+                                                                                           "binding_id":  "A03_BIND_SSRI_CITALOPRAM_0_1_0"
+                                                                                       }
+                                                              },
+                                        "drug_id":  "SSRI_CITALOPRAM",
+                                        "validation_status":  "structurally_validated",
+                                        "neurotransmitter_model_id":  "A03_NEUROTRANSMITTER_SSRI_CITALOPRAM",
+                                        "canonical_name":  "Citalopram",
+                                        "runtime_consumption_allowed":  false
+                                    },
+                                    {
+                                        "profile_id":  "A03_PROFILE_SSRI_PAROXETINE",
+                                        "neurotransmitters":  {
+                                                                  "value_status":  "pending_field_extraction",
+                                                                  "values":  [
+
+                                                                             ],
+                                                                  "source_reference":  {
+                                                                                           "source_ids":  [
+                                                                                                              "L003",
+                                                                                                              "B001",
+                                                                                                              "B002",
+                                                                                                              "B003",
+                                                                                                              "G001",
+                                                                                                              "G002",
+                                                                                                              "G003",
+                                                                                                              "G004",
+                                                                                                              "G008",
+                                                                                                              "R001",
+                                                                                                              "R002",
+                                                                                                              "R003"
+                                                                                                          ],
+                                                                                           "source_status":  "administrative_binding_available_pending_field_extraction",
+                                                                                           "source_registry":  "ScientificCorpus/Metadata/NORMALIZED_SOURCE_REGISTRY.json",
+                                                                                           "binding_id":  "A03_BIND_SSRI_PAROXETINE_0_1_0"
+                                                                                       }
+                                                              },
+                                        "drug_id":  "SSRI_PAROXETINE",
+                                        "validation_status":  "structurally_validated",
+                                        "neurotransmitter_model_id":  "A03_NEUROTRANSMITTER_SSRI_PAROXETINE",
+                                        "canonical_name":  "Paroxetine",
+                                        "runtime_consumption_allowed":  false
+                                    },
+                                    {
+                                        "profile_id":  "A03_PROFILE_SSRI_FLUVOXAMINE",
+                                        "neurotransmitters":  {
+                                                                  "value_status":  "pending_field_extraction",
+                                                                  "values":  [
+
+                                                                             ],
+                                                                  "source_reference":  {
+                                                                                           "source_ids":  [
+                                                                                                              "L006",
+                                                                                                              "B001",
+                                                                                                              "B002",
+                                                                                                              "B003",
+                                                                                                              "G001",
+                                                                                                              "G002",
+                                                                                                              "G003",
+                                                                                                              "G004",
+                                                                                                              "G008",
+                                                                                                              "R001",
+                                                                                                              "R002",
+                                                                                                              "R003"
+                                                                                                          ],
+                                                                                           "source_status":  "administrative_binding_available_pending_field_extraction",
+                                                                                           "source_registry":  "ScientificCorpus/Metadata/NORMALIZED_SOURCE_REGISTRY.json",
+                                                                                           "binding_id":  "A03_BIND_SSRI_FLUVOXAMINE_0_1_0"
+                                                                                       }
+                                                              },
+                                        "drug_id":  "SSRI_FLUVOXAMINE",
+                                        "validation_status":  "structurally_validated",
+                                        "neurotransmitter_model_id":  "A03_NEUROTRANSMITTER_SSRI_FLUVOXAMINE",
+                                        "canonical_name":  "Fluvoxamine",
+                                        "runtime_consumption_allowed":  false
+                                    }
+                                ],
+    "model_count":  6,
+    "schema_version":  "0.1.0",
+    "schema":  "psychrx.a03.neurotransmitter_model",
+    "status":  "neurotransmitter_structures_initialized_pending_extraction",
+    "runtime_consumption_allowed":  false,
+    "mission":  "A03-023"
+}

@@ -1,0 +1,32 @@
+{
+  "mission": "A08-006",
+  "status": "complete",
+  "population_sequence": [
+    {
+      "order": 1,
+      "field": "mechanism",
+      "status": "authorized_after_source_section_selection",
+      "runtime_eligible": false
+    },
+    {
+      "order": 2,
+      "field": "pharmacokinetics",
+      "status": "blocked_future_scope",
+      "runtime_eligible": false
+    },
+    {
+      "order": 3,
+      "field": "safety",
+      "status": "blocked_future_scope",
+      "runtime_eligible": false
+    }
+  ],
+  "mandatory_chain": [
+    "specific_source",
+    "specific_section",
+    "specific_drug",
+    "psychopharmacological_field",
+    "reviewable_source_text",
+    "populated_or_unresolved_field"
+  ]
+}

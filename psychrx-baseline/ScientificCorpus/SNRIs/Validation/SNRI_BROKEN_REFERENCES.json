@@ -1,0 +1,8 @@
+{
+  "schema": "psychrx.scientific_corpus.snri.broken_references.v1",
+  "pipeline_execution_id": "PIPE-A04-0-SNRI-VALIDATION-001",
+  "historical_alias": "A04.0-005 - SNRI_SOURCE_VALIDATION",
+  "status": "completed",
+  "missing_storage_paths": [],
+  "missing_storage_path_count": 0
+}

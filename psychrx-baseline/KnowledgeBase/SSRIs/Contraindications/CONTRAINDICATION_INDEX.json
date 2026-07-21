@@ -1,0 +1,17 @@
+{
+  "schema": "psychrx.a03.contraindication_index",
+  "program": "A03",
+  "mission": "A03-028",
+  "status": "active",
+  "schema_version": "0.1.0",
+  "runtime_consumption_allowed": false,
+  "contraindication_model_count": 6,
+  "contraindication_models_by_drug_id": {
+    "SSRI_FLUOXETINE": "A03_CONTRAINDICATION_SSRI_FLUOXETINE",
+    "SSRI_SERTRALINE": "A03_CONTRAINDICATION_SSRI_SERTRALINE",
+    "SSRI_ESCITALOPRAM": "A03_CONTRAINDICATION_SSRI_ESCITALOPRAM",
+    "SSRI_CITALOPRAM": "A03_CONTRAINDICATION_SSRI_CITALOPRAM",
+    "SSRI_PAROXETINE": "A03_CONTRAINDICATION_SSRI_PAROXETINE",
+    "SSRI_FLUVOXAMINE": "A03_CONTRAINDICATION_SSRI_FLUVOXAMINE"
+  }
+}

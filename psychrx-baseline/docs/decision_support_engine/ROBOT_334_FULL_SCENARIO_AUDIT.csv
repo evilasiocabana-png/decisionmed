@@ -1,0 +1,664 @@
+case,kind,axis,condition,medication,candidate,quadro,faixa,range_kind,dose,leitura_da_dose,status
+1,prescription,humor/TEPT,Transtorno depressivo maior,Fluoxetina,yes,transtorno de estresse,20-60 (TM/T1),quadro,20.0,yes,ok
+2,prescription,humor/TEPT,Transtorno de ansiedade generalizada,Sertralina,yes,transtorno de estresse,50-200 (TM/T1),quadro,125.0,yes,ok
+2,prescription,ansiedade/resgate,Transtorno de ansiedade generalizada,Diazepam,yes,TAG,2-10 (TM/T1),quadro,10.0,yes,ok
+3,prescription,humor/TEPT,Transtorno de ansiedade generalizada,Desvenlafaxina,yes,transtorno de estresse,50-100 (TM/T1),quadro,100.0,yes,ok
+3,prescription,ansiedade/resgate,Transtorno de ansiedade generalizada,Lorazepam,yes,Ansiedade grave,"0,5-1 mg por tomada: ansiolitico. 1-2 mg por tomada: maior sedacao e controle de agitacao. Protocolos de catatonia exigem avaliacao e monitorizacao. (DM/ANVISA/Maudsley)",dose_efeito,0.5,yes,ok
+3,prescription,sono/sedacao,Insonia,Trazodona,yes,Insonia,25-100 mg a noite (DM/ST-E/GG),quadro,62.5,yes,ok
+4,prescription,humor/TEPT,Dor neuropatica ou sindromes dolorosas,Venlafaxina,yes,TAG,75-225 (TM/T1),quadro,75.0,yes,ok
+4,prescription,sono/sedacao,Insonia,Trazodona,yes,Insonia,25-100 mg a noite (DM/ST-E/GG),quadro,62.5,yes,ok
+4,prescription,ansiedade/resgate,Transtorno bipolar - manutencao,Clonazepam,yes,Transtorno do panico,"0,5-1 mg/dia (DM)",quadro,1.0,yes,ok
+4,prescription,substancias/craving,Transtorno por uso de alcool,Naltrexona,yes,vicios,25-50 (TM/T1),quadro,25.0,yes,ok
+5,prescription,humor/TEPT,Dor neuropatica ou sindromes dolorosas,Venlafaxina XR,yes,TAG,75-225 (TM/T1),quadro,150.0,yes,ok
+5,prescription,sono/sedacao,Insonia,Mirtazapina,yes,TAG,15-45 (TM/T1),quadro,45.0,yes,ok
+5,prescription,ansiedade/resgate,Transtorno de ansiedade generalizada,Bromazepam,yes,Ansiedade aguda,6-18 mg/dia (HC),quadro,6.0,yes,ok
+5,prescription,impulsividade/irritabilidade,Esquizofrenia e transtornos psicoticos,Risperidona,yes,Esquizofrenia e transtornos psicoticos,"0,25–1 mg/dia: baixa exposição e usos específicos. (DM/ST-PG/ST-E/GG/Maudsley)",dose_efeito,0.625,yes,ok
+5,prescription,substancias/craving,Dor neuropatica ou sindromes dolorosas,Buprenorfina,yes,Transtorno por uso de opioides,Inducao deve considerar tipo e momento do ultimo opioide. Manutencao comum 8-24 mg/dia sublingual; formulacoes injetaveis mensais possuem esquemas proprios. (DM/ANVISA),dose_efeito,24.0,yes,ok
+6,prescription,humor/TEPT,Dor neuropatica ou sindromes dolorosas,Duloxetina,yes,TAG,60-120 (TM/T1),quadro,120.0,yes,ok
+7,prescription,humor/TEPT,Transtorno depressivo maior,Fluoxetina,yes,transtorno de estresse,20-60 (TM/T1),quadro,20.0,yes,ok
+7,prescription,ansiedade/resgate,Transtorno de ansiedade generalizada,Diazepam,yes,TAG,2-10 (TM/T1),quadro,6.0,yes,ok
+8,prescription,humor/TEPT,Transtorno de ansiedade generalizada,Sertralina,yes,transtorno de estresse,50-200 (TM/T1),quadro,125.0,yes,ok
+8,prescription,ansiedade/resgate,Transtorno de ansiedade generalizada,Lorazepam,yes,Ansiedade grave,"0,5-1 mg por tomada: ansiolitico. 1-2 mg por tomada: maior sedacao e controle de agitacao. Protocolos de catatonia exigem avaliacao e monitorizacao. (DM/ANVISA/Maudsley)",dose_efeito,2.0,yes,ok
+8,prescription,sono/sedacao,Insonia,Mirtazapina,yes,TAG,15-45 (TM/T1),quadro,15.0,yes,ok
+9,prescription,humor/TEPT,Transtorno de ansiedade generalizada,Desvenlafaxina,yes,transtorno de estresse,50-100 (TM/T1),quadro,100.0,yes,ok
+9,prescription,sono/sedacao,Insonia,Mirtazapina,yes,TAG,15-45 (TM/T1),quadro,15.0,yes,ok
+9,prescription,ansiedade/resgate,Transtorno bipolar - manutencao,Clonazepam,yes,Transtorno do panico,"0,5-1 mg/dia (DM)",quadro,0.75,yes,ok
+9,prescription,substancias/craving,Dor neuropatica ou sindromes dolorosas,Buprenorfina,yes,Transtorno por uso de opioides,Inducao deve considerar tipo e momento do ultimo opioide. Manutencao comum 8-24 mg/dia sublingual; formulacoes injetaveis mensais possuem esquemas proprios. (DM/ANVISA),dose_efeito,24.0,yes,ok
+10,prescription,humor/TEPT,Dor neuropatica ou sindromes dolorosas,Venlafaxina,yes,TAG,75-225 (TM/T1),quadro,75.0,yes,ok
+10,prescription,sono/sedacao,Esquizofrenia e transtornos psicoticos,Quetiapina,yes,Esquizofrenia e transtornos psicoticos,150-750 mg/dia (DM),quadro,450.0,yes,ok
+10,prescription,ansiedade/resgate,Transtorno de ansiedade generalizada,Bromazepam,yes,Ansiedade aguda,6-18 mg/dia (HC),quadro,18.0,yes,ok
+10,prescription,impulsividade/irritabilidade,Transtorno bipolar - manutencao,Divalproato,yes,Transtorno bipolar - mania/hipomania,750 mg/dia ate resposta; alvo serico 50-125 mcg/mL (DM),quadro,750.0,yes,ok
+10,prescription,substancias/craving,Transtorno por uso de alcool,Acamprosato,yes,Transtorno por uso de alcool,Dose usual depende de peso e funcao renal. Esquema adulto frequente: 666 mg tres vezes/dia. Nao trata intoxicacao nem abstinencia aguda. (DM/ANVISA/APA/NICE/PENDENTE),dose_efeito,666.0,yes,ok
+11,prescription,humor/TEPT,Dor neuropatica ou sindromes dolorosas,Venlafaxina XR,yes,TAG,75-225 (TM/T1),quadro,150.0,yes,ok
+12,prescription,humor/TEPT,Dor neuropatica ou sindromes dolorosas,Duloxetina,yes,TAG,60-120 (TM/T1),quadro,120.0,yes,ok
+12,prescription,ansiedade/resgate,Transtorno de ansiedade generalizada,Diazepam,yes,TAG,2-10 (TM/T1),quadro,2.0,yes,ok
+13,prescription,humor/TEPT,Transtorno depressivo maior,Fluoxetina,yes,transtorno de estresse,20-60 (TM/T1),quadro,20.0,yes,ok
+13,prescription,ansiedade/resgate,Transtorno de ansiedade generalizada,Lorazepam,yes,Ansiedade grave,"0,5-1 mg por tomada: ansiolitico. 1-2 mg por tomada: maior sedacao e controle de agitacao. Protocolos de catatonia exigem avaliacao e monitorizacao. (DM/ANVISA/Maudsley)",dose_efeito,1.25,yes,ok
+13,prescription,sono/sedacao,Esquizofrenia e transtornos psicoticos,Quetiapina,yes,Esquizofrenia e transtornos psicoticos,150-750 mg/dia (DM),quadro,750.0,yes,ok
+14,prescription,humor/TEPT,Transtorno de ansiedade generalizada,Sertralina,yes,transtorno de estresse,50-200 (TM/T1),quadro,125.0,yes,ok
+14,prescription,sono/sedacao,Esquizofrenia e transtornos psicoticos,Quetiapina,yes,Esquizofrenia e transtornos psicoticos,150-750 mg/dia (DM),quadro,750.0,yes,ok
+14,prescription,ansiedade/resgate,Transtorno bipolar - manutencao,Clonazepam,yes,Transtorno do panico,"0,5-1 mg/dia (DM)",quadro,0.5,yes,ok
+14,prescription,substancias/craving,Transtorno por uso de alcool,Acamprosato,yes,Transtorno por uso de alcool,Dose usual depende de peso e funcao renal. Esquema adulto frequente: 666 mg tres vezes/dia. Nao trata intoxicacao nem abstinencia aguda. (DM/ANVISA/APA/NICE/PENDENTE),dose_efeito,666.0,yes,ok
+15,prescription,humor/TEPT,Transtorno de ansiedade generalizada,Desvenlafaxina,yes,transtorno de estresse,50-100 (TM/T1),quadro,100.0,yes,ok
+15,prescription,sono/sedacao,Insonia,Zolpidem,yes,Insonia,"5 mg a noite: menor exposicao. 5-10 mg a noite liberacao imediata: inducao do sono. Formulacao prolongada tem dose propria. Doses maiores aumentam amnesia, comportamentos complexos e prejuizo no dia seguinte. (DM/ANVISA)",dose_efeito,5.0,yes,ok
+15,prescription,ansiedade/resgate,Transtorno de ansiedade generalizada,Bromazepam,yes,Ansiedade aguda,6-18 mg/dia (HC),quadro,12.0,yes,ok
+15,prescription,impulsividade/irritabilidade,Transtorno bipolar - manutencao,Carbamazepina,yes,Transtorno bipolar - manutencao,200–400 mg/dia: início/titulação. (DM/GG/Maudsley/CANMAT/ISBD),dose_efeito,400.0,yes,ok
+15,prescription,substancias/craving,Transtorno por uso de alcool,Naltrexona,yes,vicios,25-50 (TM/T1),quadro,25.0,yes,ok
+16,prescription,humor/TEPT,Dor neuropatica ou sindromes dolorosas,Venlafaxina,yes,TAG,75-225 (TM/T1),quadro,75.0,yes,ok
+17,prescription,humor/TEPT,Dor neuropatica ou sindromes dolorosas,Venlafaxina XR,yes,TAG,75-225 (TM/T1),quadro,150.0,yes,ok
+17,prescription,ansiedade/resgate,Transtorno de ansiedade generalizada,Diazepam,yes,TAG,2-10 (TM/T1),quadro,10.0,yes,ok
+18,prescription,humor/TEPT,Dor neuropatica ou sindromes dolorosas,Duloxetina,yes,TAG,60-120 (TM/T1),quadro,120.0,yes,ok
+18,prescription,ansiedade/resgate,Transtorno de ansiedade generalizada,Lorazepam,yes,Ansiedade grave,"0,5-1 mg por tomada: ansiolitico. 1-2 mg por tomada: maior sedacao e controle de agitacao. Protocolos de catatonia exigem avaliacao e monitorizacao. (DM/ANVISA/Maudsley)",dose_efeito,0.5,yes,ok
+18,prescription,sono/sedacao,Insonia,Zolpidem,yes,Insonia,"5 mg a noite: menor exposicao. 5-10 mg a noite liberacao imediata: inducao do sono. Formulacao prolongada tem dose propria. Doses maiores aumentam amnesia, comportamentos complexos e prejuizo no dia seguinte. (DM/ANVISA)",dose_efeito,7.5,yes,ok
+19,prescription,humor/TEPT,Transtorno depressivo maior,Fluoxetina,yes,transtorno de estresse,20-60 (TM/T1),quadro,20.0,yes,ok
+19,prescription,sono/sedacao,Insonia,Zolpidem,yes,Insonia,"5 mg a noite: menor exposicao. 5-10 mg a noite liberacao imediata: inducao do sono. Formulacao prolongada tem dose propria. Doses maiores aumentam amnesia, comportamentos complexos e prejuizo no dia seguinte. (DM/ANVISA)",dose_efeito,7.5,yes,ok
+19,prescription,ansiedade/resgate,Transtorno bipolar - manutencao,Clonazepam,yes,Transtorno do panico,"0,5-1 mg/dia (DM)",quadro,1.0,yes,ok
+19,prescription,substancias/craving,Transtorno por uso de alcool,Naltrexona,yes,vicios,25-50 (TM/T1),quadro,25.0,yes,ok
+20,prescription,humor/TEPT,Transtorno de ansiedade generalizada,Sertralina,yes,transtorno de estresse,50-200 (TM/T1),quadro,125.0,yes,ok
+20,prescription,sono/sedacao,Insonia,Trazodona,yes,Insonia,25-100 mg a noite (DM/ST-E/GG),quadro,100.0,yes,ok
+20,prescription,ansiedade/resgate,Transtorno de ansiedade generalizada,Bromazepam,yes,Ansiedade aguda,6-18 mg/dia (HC),quadro,6.0,yes,ok
+20,prescription,impulsividade/irritabilidade,Esquizofrenia e transtornos psicoticos,Quetiapina,yes,Esquizofrenia e transtornos psicoticos,150-750 mg/dia (DM),quadro,450.0,yes,ok
+20,prescription,substancias/craving,Dor neuropatica ou sindromes dolorosas,Buprenorfina,yes,Transtorno por uso de opioides,Inducao deve considerar tipo e momento do ultimo opioide. Manutencao comum 8-24 mg/dia sublingual; formulacoes injetaveis mensais possuem esquemas proprios. (DM/ANVISA),dose_efeito,24.0,yes,ok
+21,prescription,humor/TEPT,Transtorno de ansiedade generalizada,Desvenlafaxina,yes,transtorno de estresse,50-100 (TM/T1),quadro,100.0,yes,ok
+22,prescription,humor/TEPT,Dor neuropatica ou sindromes dolorosas,Venlafaxina,yes,TAG,75-225 (TM/T1),quadro,75.0,yes,ok
+22,prescription,ansiedade/resgate,Transtorno de ansiedade generalizada,Diazepam,yes,TAG,2-10 (TM/T1),quadro,6.0,yes,ok
+23,prescription,humor/TEPT,Dor neuropatica ou sindromes dolorosas,Venlafaxina XR,yes,TAG,75-225 (TM/T1),quadro,150.0,yes,ok
+23,prescription,ansiedade/resgate,Transtorno de ansiedade generalizada,Lorazepam,yes,Ansiedade grave,"0,5-1 mg por tomada: ansiolitico. 1-2 mg por tomada: maior sedacao e controle de agitacao. Protocolos de catatonia exigem avaliacao e monitorizacao. (DM/ANVISA/Maudsley)",dose_efeito,2.0,yes,ok
+23,prescription,sono/sedacao,Insonia,Trazodona,yes,Insonia,25-100 mg a noite (DM/ST-E/GG),quadro,25.0,yes,ok
+24,prescription,humor/TEPT,Dor neuropatica ou sindromes dolorosas,Duloxetina,yes,TAG,60-120 (TM/T1),quadro,120.0,yes,ok
+24,prescription,sono/sedacao,Insonia,Trazodona,yes,Insonia,25-100 mg a noite (DM/ST-E/GG),quadro,25.0,yes,ok
+24,prescription,ansiedade/resgate,Transtorno bipolar - manutencao,Clonazepam,yes,Transtorno do panico,"0,5-1 mg/dia (DM)",quadro,0.75,yes,ok
+24,prescription,substancias/craving,Dor neuropatica ou sindromes dolorosas,Buprenorfina,yes,Transtorno por uso de opioides,Inducao deve considerar tipo e momento do ultimo opioide. Manutencao comum 8-24 mg/dia sublingual; formulacoes injetaveis mensais possuem esquemas proprios. (DM/ANVISA),dose_efeito,24.0,yes,ok
+25,prescription,humor/TEPT,Transtorno depressivo maior,Fluoxetina,yes,transtorno de estresse,20-60 (TM/T1),quadro,20.0,yes,ok
+25,prescription,sono/sedacao,Insonia,Mirtazapina,yes,TAG,15-45 (TM/T1),quadro,30.0,yes,ok
+25,prescription,ansiedade/resgate,Transtorno de ansiedade generalizada,Bromazepam,yes,Ansiedade aguda,6-18 mg/dia (HC),quadro,18.0,yes,ok
+25,prescription,impulsividade/irritabilidade,Esquizofrenia e transtornos psicoticos,Risperidona,yes,Esquizofrenia e transtornos psicoticos,"0,25–1 mg/dia: baixa exposição e usos específicos. (DM/ST-PG/ST-E/GG/Maudsley)",dose_efeito,0.25,yes,ok
+25,prescription,substancias/craving,Transtorno por uso de alcool,Acamprosato,yes,Transtorno por uso de alcool,Dose usual depende de peso e funcao renal. Esquema adulto frequente: 666 mg tres vezes/dia. Nao trata intoxicacao nem abstinencia aguda. (DM/ANVISA/APA/NICE/PENDENTE),dose_efeito,666.0,yes,ok
+26,prescription,humor/TEPT,Transtorno de ansiedade generalizada,Sertralina,yes,transtorno de estresse,50-200 (TM/T1),quadro,125.0,yes,ok
+27,prescription,humor/TEPT,Transtorno de ansiedade generalizada,Desvenlafaxina,yes,transtorno de estresse,50-100 (TM/T1),quadro,100.0,yes,ok
+27,prescription,ansiedade/resgate,Transtorno de ansiedade generalizada,Diazepam,yes,TAG,2-10 (TM/T1),quadro,2.0,yes,ok
+28,prescription,humor/TEPT,Dor neuropatica ou sindromes dolorosas,Venlafaxina,yes,TAG,75-225 (TM/T1),quadro,75.0,yes,ok
+28,prescription,ansiedade/resgate,Transtorno de ansiedade generalizada,Lorazepam,yes,Ansiedade grave,"0,5-1 mg por tomada: ansiolitico. 1-2 mg por tomada: maior sedacao e controle de agitacao. Protocolos de catatonia exigem avaliacao e monitorizacao. (DM/ANVISA/Maudsley)",dose_efeito,1.25,yes,ok
+28,prescription,sono/sedacao,Insonia,Mirtazapina,yes,TAG,15-45 (TM/T1),quadro,45.0,yes,ok
+29,prescription,humor/TEPT,Dor neuropatica ou sindromes dolorosas,Venlafaxina XR,yes,TAG,75-225 (TM/T1),quadro,150.0,yes,ok
+29,prescription,sono/sedacao,Insonia,Mirtazapina,yes,TAG,15-45 (TM/T1),quadro,45.0,yes,ok
+29,prescription,ansiedade/resgate,Transtorno bipolar - manutencao,Clonazepam,yes,Transtorno do panico,"0,5-1 mg/dia (DM)",quadro,0.5,yes,ok
+29,prescription,substancias/craving,Transtorno por uso de alcool,Acamprosato,yes,Transtorno por uso de alcool,Dose usual depende de peso e funcao renal. Esquema adulto frequente: 666 mg tres vezes/dia. Nao trata intoxicacao nem abstinencia aguda. (DM/ANVISA/APA/NICE/PENDENTE),dose_efeito,666.0,yes,ok
+30,prescription,humor/TEPT,Dor neuropatica ou sindromes dolorosas,Duloxetina,yes,TAG,60-120 (TM/T1),quadro,120.0,yes,ok
+30,prescription,sono/sedacao,Esquizofrenia e transtornos psicoticos,Quetiapina,yes,Esquizofrenia e transtornos psicoticos,150-750 mg/dia (DM),quadro,150.0,yes,ok
+30,prescription,ansiedade/resgate,Transtorno de ansiedade generalizada,Bromazepam,yes,Ansiedade aguda,6-18 mg/dia (HC),quadro,12.0,yes,ok
+30,prescription,impulsividade/irritabilidade,Transtorno bipolar - manutencao,Divalproato,yes,Transtorno bipolar - mania/hipomania,750 mg/dia ate resposta; alvo serico 50-125 mcg/mL (DM),quadro,2500.0,yes,ok
+30,prescription,substancias/craving,Transtorno por uso de alcool,Naltrexona,yes,vicios,25-50 (TM/T1),quadro,25.0,yes,ok
+31,prescription,humor/TEPT,Transtorno depressivo maior,Fluoxetina,yes,transtorno de estresse,20-60 (TM/T1),quadro,20.0,yes,ok
+32,prescription,humor/TEPT,Transtorno de ansiedade generalizada,Sertralina,yes,transtorno de estresse,50-200 (TM/T1),quadro,125.0,yes,ok
+32,prescription,ansiedade/resgate,Transtorno de ansiedade generalizada,Diazepam,yes,TAG,2-10 (TM/T1),quadro,10.0,yes,ok
+33,prescription,humor/TEPT,Transtorno de ansiedade generalizada,Desvenlafaxina,yes,transtorno de estresse,50-100 (TM/T1),quadro,100.0,yes,ok
+33,prescription,ansiedade/resgate,Transtorno de ansiedade generalizada,Lorazepam,yes,Ansiedade grave,"0,5-1 mg por tomada: ansiolitico. 1-2 mg por tomada: maior sedacao e controle de agitacao. Protocolos de catatonia exigem avaliacao e monitorizacao. (DM/ANVISA/Maudsley)",dose_efeito,0.5,yes,ok
+33,prescription,sono/sedacao,Esquizofrenia e transtornos psicoticos,Quetiapina,yes,Esquizofrenia e transtornos psicoticos,150-750 mg/dia (DM),quadro,450.0,yes,ok
+34,prescription,humor/TEPT,Dor neuropatica ou sindromes dolorosas,Venlafaxina,yes,TAG,75-225 (TM/T1),quadro,75.0,yes,ok
+34,prescription,sono/sedacao,Esquizofrenia e transtornos psicoticos,Quetiapina,yes,Esquizofrenia e transtornos psicoticos,150-750 mg/dia (DM),quadro,450.0,yes,ok
+34,prescription,ansiedade/resgate,Transtorno bipolar - manutencao,Clonazepam,yes,Transtorno do panico,"0,5-1 mg/dia (DM)",quadro,1.0,yes,ok
+34,prescription,substancias/craving,Transtorno por uso de alcool,Naltrexona,yes,vicios,25-50 (TM/T1),quadro,25.0,yes,ok
+35,prescription,humor/TEPT,Dor neuropatica ou sindromes dolorosas,Venlafaxina XR,yes,TAG,75-225 (TM/T1),quadro,150.0,yes,ok
+35,prescription,sono/sedacao,Insonia,Zolpidem,yes,Insonia,"5 mg a noite: menor exposicao. 5-10 mg a noite liberacao imediata: inducao do sono. Formulacao prolongada tem dose propria. Doses maiores aumentam amnesia, comportamentos complexos e prejuizo no dia seguinte. (DM/ANVISA)",dose_efeito,10.0,yes,ok
+35,prescription,ansiedade/resgate,Transtorno de ansiedade generalizada,Bromazepam,yes,Ansiedade aguda,6-18 mg/dia (HC),quadro,6.0,yes,ok
+35,prescription,impulsividade/irritabilidade,Transtorno bipolar - manutencao,Carbamazepina,yes,Transtorno bipolar - manutencao,200–400 mg/dia: início/titulação. (DM/GG/Maudsley/CANMAT/ISBD),dose_efeito,300.0,yes,ok
+35,prescription,substancias/craving,Dor neuropatica ou sindromes dolorosas,Buprenorfina,yes,Transtorno por uso de opioides,Inducao deve considerar tipo e momento do ultimo opioide. Manutencao comum 8-24 mg/dia sublingual; formulacoes injetaveis mensais possuem esquemas proprios. (DM/ANVISA),dose_efeito,24.0,yes,ok
+36,prescription,humor/TEPT,Dor neuropatica ou sindromes dolorosas,Duloxetina,yes,TAG,60-120 (TM/T1),quadro,120.0,yes,ok
+37,prescription,humor/TEPT,Transtorno depressivo maior,Fluoxetina,yes,transtorno de estresse,20-60 (TM/T1),quadro,20.0,yes,ok
+37,prescription,ansiedade/resgate,Transtorno de ansiedade generalizada,Diazepam,yes,TAG,2-10 (TM/T1),quadro,6.0,yes,ok
+38,prescription,humor/TEPT,Transtorno de ansiedade generalizada,Sertralina,yes,transtorno de estresse,50-200 (TM/T1),quadro,125.0,yes,ok
+38,prescription,ansiedade/resgate,Transtorno de ansiedade generalizada,Lorazepam,yes,Ansiedade grave,"0,5-1 mg por tomada: ansiolitico. 1-2 mg por tomada: maior sedacao e controle de agitacao. Protocolos de catatonia exigem avaliacao e monitorizacao. (DM/ANVISA/Maudsley)",dose_efeito,2.0,yes,ok
+38,prescription,sono/sedacao,Insonia,Zolpidem,yes,Insonia,"5 mg a noite: menor exposicao. 5-10 mg a noite liberacao imediata: inducao do sono. Formulacao prolongada tem dose propria. Doses maiores aumentam amnesia, comportamentos complexos e prejuizo no dia seguinte. (DM/ANVISA)",dose_efeito,5.0,yes,ok
+39,prescription,humor/TEPT,Transtorno de ansiedade generalizada,Desvenlafaxina,yes,transtorno de estresse,50-100 (TM/T1),quadro,100.0,yes,ok
+39,prescription,sono/sedacao,Insonia,Zolpidem,yes,Insonia,"5 mg a noite: menor exposicao. 5-10 mg a noite liberacao imediata: inducao do sono. Formulacao prolongada tem dose propria. Doses maiores aumentam amnesia, comportamentos complexos e prejuizo no dia seguinte. (DM/ANVISA)",dose_efeito,5.0,yes,ok
+39,prescription,ansiedade/resgate,Transtorno bipolar - manutencao,Clonazepam,yes,Transtorno do panico,"0,5-1 mg/dia (DM)",quadro,0.75,yes,ok
+39,prescription,substancias/craving,Dor neuropatica ou sindromes dolorosas,Buprenorfina,yes,Transtorno por uso de opioides,Inducao deve considerar tipo e momento do ultimo opioide. Manutencao comum 8-24 mg/dia sublingual; formulacoes injetaveis mensais possuem esquemas proprios. (DM/ANVISA),dose_efeito,24.0,yes,ok
+40,prescription,humor/TEPT,Dor neuropatica ou sindromes dolorosas,Venlafaxina,yes,TAG,75-225 (TM/T1),quadro,75.0,yes,ok
+40,prescription,sono/sedacao,Insonia,Trazodona,yes,Insonia,25-100 mg a noite (DM/ST-E/GG),quadro,62.5,yes,ok
+40,prescription,ansiedade/resgate,Transtorno de ansiedade generalizada,Bromazepam,yes,Ansiedade aguda,6-18 mg/dia (HC),quadro,18.0,yes,ok
+40,prescription,impulsividade/irritabilidade,Esquizofrenia e transtornos psicoticos,Quetiapina,yes,Esquizofrenia e transtornos psicoticos,150-750 mg/dia (DM),quadro,150.0,yes,ok
+40,prescription,substancias/craving,Transtorno por uso de alcool,Acamprosato,yes,Transtorno por uso de alcool,Dose usual depende de peso e funcao renal. Esquema adulto frequente: 666 mg tres vezes/dia. Nao trata intoxicacao nem abstinencia aguda. (DM/ANVISA/APA/NICE/PENDENTE),dose_efeito,666.0,yes,ok
+41,prescription,humor/TEPT,Dor neuropatica ou sindromes dolorosas,Venlafaxina XR,yes,TAG,75-225 (TM/T1),quadro,150.0,yes,ok
+42,prescription,humor/TEPT,Dor neuropatica ou sindromes dolorosas,Duloxetina,yes,TAG,60-120 (TM/T1),quadro,120.0,yes,ok
+42,prescription,ansiedade/resgate,Transtorno de ansiedade generalizada,Diazepam,yes,TAG,2-10 (TM/T1),quadro,2.0,yes,ok
+43,prescription,humor/TEPT,Transtorno depressivo maior,Fluoxetina,yes,transtorno de estresse,20-60 (TM/T1),quadro,20.0,yes,ok
+43,prescription,ansiedade/resgate,Transtorno de ansiedade generalizada,Lorazepam,yes,Ansiedade grave,"0,5-1 mg por tomada: ansiolitico. 1-2 mg por tomada: maior sedacao e controle de agitacao. Protocolos de catatonia exigem avaliacao e monitorizacao. (DM/ANVISA/Maudsley)",dose_efeito,1.25,yes,ok
+43,prescription,sono/sedacao,Insonia,Trazodona,yes,Insonia,25-100 mg a noite (DM/ST-E/GG),quadro,100.0,yes,ok
+44,prescription,humor/TEPT,Transtorno de ansiedade generalizada,Sertralina,yes,transtorno de estresse,50-200 (TM/T1),quadro,125.0,yes,ok
+44,prescription,sono/sedacao,Insonia,Trazodona,yes,Insonia,25-100 mg a noite (DM/ST-E/GG),quadro,100.0,yes,ok
+44,prescription,ansiedade/resgate,Transtorno bipolar - manutencao,Clonazepam,yes,Transtorno do panico,"0,5-1 mg/dia (DM)",quadro,0.5,yes,ok
+44,prescription,substancias/craving,Transtorno por uso de alcool,Acamprosato,yes,Transtorno por uso de alcool,Dose usual depende de peso e funcao renal. Esquema adulto frequente: 666 mg tres vezes/dia. Nao trata intoxicacao nem abstinencia aguda. (DM/ANVISA/APA/NICE/PENDENTE),dose_efeito,666.0,yes,ok
+45,prescription,humor/TEPT,Transtorno de ansiedade generalizada,Desvenlafaxina,yes,transtorno de estresse,50-100 (TM/T1),quadro,100.0,yes,ok
+45,prescription,sono/sedacao,Insonia,Mirtazapina,yes,TAG,15-45 (TM/T1),quadro,15.0,yes,ok
+45,prescription,ansiedade/resgate,Transtorno de ansiedade generalizada,Bromazepam,yes,Ansiedade aguda,6-18 mg/dia (HC),quadro,12.0,yes,ok
+45,prescription,impulsividade/irritabilidade,Esquizofrenia e transtornos psicoticos,Risperidona,yes,Esquizofrenia e transtornos psicoticos,"0,25–1 mg/dia: baixa exposição e usos específicos. (DM/ST-PG/ST-E/GG/Maudsley)",dose_efeito,1.0,yes,ok
+45,prescription,substancias/craving,Transtorno por uso de alcool,Naltrexona,yes,vicios,25-50 (TM/T1),quadro,25.0,yes,ok
+46,prescription,humor/TEPT,Dor neuropatica ou sindromes dolorosas,Venlafaxina,yes,TAG,75-225 (TM/T1),quadro,75.0,yes,ok
+47,prescription,humor/TEPT,Dor neuropatica ou sindromes dolorosas,Venlafaxina XR,yes,TAG,75-225 (TM/T1),quadro,150.0,yes,ok
+47,prescription,ansiedade/resgate,Transtorno de ansiedade generalizada,Diazepam,yes,TAG,2-10 (TM/T1),quadro,10.0,yes,ok
+48,prescription,humor/TEPT,Dor neuropatica ou sindromes dolorosas,Duloxetina,yes,TAG,60-120 (TM/T1),quadro,120.0,yes,ok
+48,prescription,ansiedade/resgate,Transtorno de ansiedade generalizada,Lorazepam,yes,Ansiedade grave,"0,5-1 mg por tomada: ansiolitico. 1-2 mg por tomada: maior sedacao e controle de agitacao. Protocolos de catatonia exigem avaliacao e monitorizacao. (DM/ANVISA/Maudsley)",dose_efeito,0.5,yes,ok
+48,prescription,sono/sedacao,Insonia,Mirtazapina,yes,TAG,15-45 (TM/T1),quadro,30.0,yes,ok
+49,prescription,humor/TEPT,Transtorno depressivo maior,Fluoxetina,yes,transtorno de estresse,20-60 (TM/T1),quadro,20.0,yes,ok
+49,prescription,sono/sedacao,Insonia,Mirtazapina,yes,TAG,15-45 (TM/T1),quadro,30.0,yes,ok
+49,prescription,ansiedade/resgate,Transtorno bipolar - manutencao,Clonazepam,yes,Transtorno do panico,"0,5-1 mg/dia (DM)",quadro,1.0,yes,ok
+49,prescription,substancias/craving,Transtorno por uso de alcool,Naltrexona,yes,vicios,25-50 (TM/T1),quadro,25.0,yes,ok
+50,prescription,humor/TEPT,Transtorno de ansiedade generalizada,Sertralina,yes,transtorno de estresse,50-200 (TM/T1),quadro,125.0,yes,ok
+50,prescription,sono/sedacao,Esquizofrenia e transtornos psicoticos,Quetiapina,yes,Esquizofrenia e transtornos psicoticos,150-750 mg/dia (DM),quadro,750.0,yes,ok
+50,prescription,ansiedade/resgate,Transtorno de ansiedade generalizada,Bromazepam,yes,Ansiedade aguda,6-18 mg/dia (HC),quadro,6.0,yes,ok
+50,prescription,impulsividade/irritabilidade,Transtorno bipolar - manutencao,Divalproato,yes,Transtorno bipolar - mania/hipomania,750 mg/dia ate resposta; alvo serico 50-125 mcg/mL (DM),quadro,1625.0,yes,ok
+50,prescription,substancias/craving,Dor neuropatica ou sindromes dolorosas,Buprenorfina,yes,Transtorno por uso de opioides,Inducao deve considerar tipo e momento do ultimo opioide. Manutencao comum 8-24 mg/dia sublingual; formulacoes injetaveis mensais possuem esquemas proprios. (DM/ANVISA),dose_efeito,24.0,yes,ok
+51,prescription,humor/TEPT,Transtorno de ansiedade generalizada,Desvenlafaxina,yes,transtorno de estresse,50-100 (TM/T1),quadro,100.0,yes,ok
+52,prescription,humor/TEPT,Dor neuropatica ou sindromes dolorosas,Venlafaxina,yes,TAG,75-225 (TM/T1),quadro,75.0,yes,ok
+52,prescription,ansiedade/resgate,Transtorno de ansiedade generalizada,Diazepam,yes,TAG,2-10 (TM/T1),quadro,6.0,yes,ok
+53,prescription,humor/TEPT,Dor neuropatica ou sindromes dolorosas,Venlafaxina XR,yes,TAG,75-225 (TM/T1),quadro,150.0,yes,ok
+53,prescription,ansiedade/resgate,Transtorno de ansiedade generalizada,Lorazepam,yes,Ansiedade grave,"0,5-1 mg por tomada: ansiolitico. 1-2 mg por tomada: maior sedacao e controle de agitacao. Protocolos de catatonia exigem avaliacao e monitorizacao. (DM/ANVISA/Maudsley)",dose_efeito,2.0,yes,ok
+53,prescription,sono/sedacao,Esquizofrenia e transtornos psicoticos,Quetiapina,yes,Esquizofrenia e transtornos psicoticos,150-750 mg/dia (DM),quadro,150.0,yes,ok
+54,prescription,humor/TEPT,Dor neuropatica ou sindromes dolorosas,Duloxetina,yes,TAG,60-120 (TM/T1),quadro,120.0,yes,ok
+54,prescription,sono/sedacao,Esquizofrenia e transtornos psicoticos,Quetiapina,yes,Esquizofrenia e transtornos psicoticos,150-750 mg/dia (DM),quadro,150.0,yes,ok
+54,prescription,ansiedade/resgate,Transtorno bipolar - manutencao,Clonazepam,yes,Transtorno do panico,"0,5-1 mg/dia (DM)",quadro,0.75,yes,ok
+54,prescription,substancias/craving,Dor neuropatica ou sindromes dolorosas,Buprenorfina,yes,Transtorno por uso de opioides,Inducao deve considerar tipo e momento do ultimo opioide. Manutencao comum 8-24 mg/dia sublingual; formulacoes injetaveis mensais possuem esquemas proprios. (DM/ANVISA),dose_efeito,24.0,yes,ok
+55,prescription,humor/TEPT,Transtorno depressivo maior,Fluoxetina,yes,transtorno de estresse,20-60 (TM/T1),quadro,20.0,yes,ok
+55,prescription,sono/sedacao,Insonia,Zolpidem,yes,Insonia,"5 mg a noite: menor exposicao. 5-10 mg a noite liberacao imediata: inducao do sono. Formulacao prolongada tem dose propria. Doses maiores aumentam amnesia, comportamentos complexos e prejuizo no dia seguinte. (DM/ANVISA)",dose_efeito,7.5,yes,ok
+55,prescription,ansiedade/resgate,Transtorno de ansiedade generalizada,Bromazepam,yes,Ansiedade aguda,6-18 mg/dia (HC),quadro,18.0,yes,ok
+55,prescription,impulsividade/irritabilidade,Transtorno bipolar - manutencao,Carbamazepina,yes,Transtorno bipolar - manutencao,200–400 mg/dia: início/titulação. (DM/GG/Maudsley/CANMAT/ISBD),dose_efeito,200.0,yes,ok
+55,prescription,substancias/craving,Transtorno por uso de alcool,Acamprosato,yes,Transtorno por uso de alcool,Dose usual depende de peso e funcao renal. Esquema adulto frequente: 666 mg tres vezes/dia. Nao trata intoxicacao nem abstinencia aguda. (DM/ANVISA/APA/NICE/PENDENTE),dose_efeito,666.0,yes,ok
+56,prescription,humor/TEPT,Transtorno de ansiedade generalizada,Sertralina,yes,transtorno de estresse,50-200 (TM/T1),quadro,125.0,yes,ok
+57,prescription,humor/TEPT,Transtorno de ansiedade generalizada,Desvenlafaxina,yes,transtorno de estresse,50-100 (TM/T1),quadro,100.0,yes,ok
+57,prescription,ansiedade/resgate,Transtorno de ansiedade generalizada,Diazepam,yes,TAG,2-10 (TM/T1),quadro,2.0,yes,ok
+58,prescription,humor/TEPT,Dor neuropatica ou sindromes dolorosas,Venlafaxina,yes,TAG,75-225 (TM/T1),quadro,75.0,yes,ok
+58,prescription,ansiedade/resgate,Transtorno de ansiedade generalizada,Lorazepam,yes,Ansiedade grave,"0,5-1 mg por tomada: ansiolitico. 1-2 mg por tomada: maior sedacao e controle de agitacao. Protocolos de catatonia exigem avaliacao e monitorizacao. (DM/ANVISA/Maudsley)",dose_efeito,1.25,yes,ok
+58,prescription,sono/sedacao,Insonia,Zolpidem,yes,Insonia,"5 mg a noite: menor exposicao. 5-10 mg a noite liberacao imediata: inducao do sono. Formulacao prolongada tem dose propria. Doses maiores aumentam amnesia, comportamentos complexos e prejuizo no dia seguinte. (DM/ANVISA)",dose_efeito,10.0,yes,ok
+59,prescription,humor/TEPT,Dor neuropatica ou sindromes dolorosas,Venlafaxina XR,yes,TAG,75-225 (TM/T1),quadro,150.0,yes,ok
+59,prescription,sono/sedacao,Insonia,Zolpidem,yes,Insonia,"5 mg a noite: menor exposicao. 5-10 mg a noite liberacao imediata: inducao do sono. Formulacao prolongada tem dose propria. Doses maiores aumentam amnesia, comportamentos complexos e prejuizo no dia seguinte. (DM/ANVISA)",dose_efeito,10.0,yes,ok
+59,prescription,ansiedade/resgate,Transtorno bipolar - manutencao,Clonazepam,yes,Transtorno do panico,"0,5-1 mg/dia (DM)",quadro,0.5,yes,ok
+59,prescription,substancias/craving,Transtorno por uso de alcool,Acamprosato,yes,Transtorno por uso de alcool,Dose usual depende de peso e funcao renal. Esquema adulto frequente: 666 mg tres vezes/dia. Nao trata intoxicacao nem abstinencia aguda. (DM/ANVISA/APA/NICE/PENDENTE),dose_efeito,666.0,yes,ok
+60,prescription,humor/TEPT,Dor neuropatica ou sindromes dolorosas,Duloxetina,yes,TAG,60-120 (TM/T1),quadro,120.0,yes,ok
+60,prescription,sono/sedacao,Insonia,Trazodona,yes,Insonia,25-100 mg a noite (DM/ST-E/GG),quadro,25.0,yes,ok
+60,prescription,ansiedade/resgate,Transtorno de ansiedade generalizada,Bromazepam,yes,Ansiedade aguda,6-18 mg/dia (HC),quadro,12.0,yes,ok
+60,prescription,impulsividade/irritabilidade,Esquizofrenia e transtornos psicoticos,Quetiapina,yes,Esquizofrenia e transtornos psicoticos,150-750 mg/dia (DM),quadro,750.0,yes,ok
+60,prescription,substancias/craving,Transtorno por uso de alcool,Naltrexona,yes,vicios,25-50 (TM/T1),quadro,25.0,yes,ok
+61,prescription,humor/TEPT,Transtorno depressivo maior,Fluoxetina,yes,transtorno de estresse,20-60 (TM/T1),quadro,20.0,yes,ok
+62,prescription,humor/TEPT,Transtorno de ansiedade generalizada,Sertralina,yes,transtorno de estresse,50-200 (TM/T1),quadro,125.0,yes,ok
+62,prescription,ansiedade/resgate,Transtorno de ansiedade generalizada,Diazepam,yes,TAG,2-10 (TM/T1),quadro,10.0,yes,ok
+63,prescription,humor/TEPT,Transtorno de ansiedade generalizada,Desvenlafaxina,yes,transtorno de estresse,50-100 (TM/T1),quadro,100.0,yes,ok
+63,prescription,ansiedade/resgate,Transtorno de ansiedade generalizada,Lorazepam,yes,Ansiedade grave,"0,5-1 mg por tomada: ansiolitico. 1-2 mg por tomada: maior sedacao e controle de agitacao. Protocolos de catatonia exigem avaliacao e monitorizacao. (DM/ANVISA/Maudsley)",dose_efeito,0.5,yes,ok
+63,prescription,sono/sedacao,Insonia,Trazodona,yes,Insonia,25-100 mg a noite (DM/ST-E/GG),quadro,62.5,yes,ok
+64,prescription,humor/TEPT,Dor neuropatica ou sindromes dolorosas,Venlafaxina,yes,TAG,75-225 (TM/T1),quadro,75.0,yes,ok
+64,prescription,sono/sedacao,Insonia,Trazodona,yes,Insonia,25-100 mg a noite (DM/ST-E/GG),quadro,62.5,yes,ok
+64,prescription,ansiedade/resgate,Transtorno bipolar - manutencao,Clonazepam,yes,Transtorno do panico,"0,5-1 mg/dia (DM)",quadro,1.0,yes,ok
+64,prescription,substancias/craving,Transtorno por uso de alcool,Naltrexona,yes,vicios,25-50 (TM/T1),quadro,25.0,yes,ok
+65,prescription,humor/TEPT,Dor neuropatica ou sindromes dolorosas,Venlafaxina XR,yes,TAG,75-225 (TM/T1),quadro,150.0,yes,ok
+65,prescription,sono/sedacao,Insonia,Mirtazapina,yes,TAG,15-45 (TM/T1),quadro,45.0,yes,ok
+65,prescription,ansiedade/resgate,Transtorno de ansiedade generalizada,Bromazepam,yes,Ansiedade aguda,6-18 mg/dia (HC),quadro,6.0,yes,ok
+65,prescription,impulsividade/irritabilidade,Esquizofrenia e transtornos psicoticos,Risperidona,yes,Esquizofrenia e transtornos psicoticos,"0,25–1 mg/dia: baixa exposição e usos específicos. (DM/ST-PG/ST-E/GG/Maudsley)",dose_efeito,0.625,yes,ok
+65,prescription,substancias/craving,Dor neuropatica ou sindromes dolorosas,Buprenorfina,yes,Transtorno por uso de opioides,Inducao deve considerar tipo e momento do ultimo opioide. Manutencao comum 8-24 mg/dia sublingual; formulacoes injetaveis mensais possuem esquemas proprios. (DM/ANVISA),dose_efeito,24.0,yes,ok
+66,prescription,humor/TEPT,Dor neuropatica ou sindromes dolorosas,Duloxetina,yes,TAG,60-120 (TM/T1),quadro,120.0,yes,ok
+67,prescription,humor/TEPT,Transtorno depressivo maior,Fluoxetina,yes,transtorno de estresse,20-60 (TM/T1),quadro,20.0,yes,ok
+67,prescription,ansiedade/resgate,Transtorno de ansiedade generalizada,Diazepam,yes,TAG,2-10 (TM/T1),quadro,6.0,yes,ok
+68,prescription,humor/TEPT,Transtorno de ansiedade generalizada,Sertralina,yes,transtorno de estresse,50-200 (TM/T1),quadro,125.0,yes,ok
+68,prescription,ansiedade/resgate,Transtorno de ansiedade generalizada,Lorazepam,yes,Ansiedade grave,"0,5-1 mg por tomada: ansiolitico. 1-2 mg por tomada: maior sedacao e controle de agitacao. Protocolos de catatonia exigem avaliacao e monitorizacao. (DM/ANVISA/Maudsley)",dose_efeito,2.0,yes,ok
+68,prescription,sono/sedacao,Insonia,Mirtazapina,yes,TAG,15-45 (TM/T1),quadro,15.0,yes,ok
+69,prescription,humor/TEPT,Transtorno de ansiedade generalizada,Desvenlafaxina,yes,transtorno de estresse,50-100 (TM/T1),quadro,100.0,yes,ok
+69,prescription,sono/sedacao,Insonia,Mirtazapina,yes,TAG,15-45 (TM/T1),quadro,15.0,yes,ok
+69,prescription,ansiedade/resgate,Transtorno bipolar - manutencao,Clonazepam,yes,Transtorno do panico,"0,5-1 mg/dia (DM)",quadro,0.75,yes,ok
+69,prescription,substancias/craving,Dor neuropatica ou sindromes dolorosas,Buprenorfina,yes,Transtorno por uso de opioides,Inducao deve considerar tipo e momento do ultimo opioide. Manutencao comum 8-24 mg/dia sublingual; formulacoes injetaveis mensais possuem esquemas proprios. (DM/ANVISA),dose_efeito,24.0,yes,ok
+70,prescription,humor/TEPT,Dor neuropatica ou sindromes dolorosas,Venlafaxina,yes,TAG,75-225 (TM/T1),quadro,75.0,yes,ok
+70,prescription,sono/sedacao,Esquizofrenia e transtornos psicoticos,Quetiapina,yes,Esquizofrenia e transtornos psicoticos,150-750 mg/dia (DM),quadro,450.0,yes,ok
+70,prescription,ansiedade/resgate,Transtorno de ansiedade generalizada,Bromazepam,yes,Ansiedade aguda,6-18 mg/dia (HC),quadro,18.0,yes,ok
+70,prescription,impulsividade/irritabilidade,Transtorno bipolar - manutencao,Divalproato,yes,Transtorno bipolar - mania/hipomania,750 mg/dia ate resposta; alvo serico 50-125 mcg/mL (DM),quadro,750.0,yes,ok
+70,prescription,substancias/craving,Transtorno por uso de alcool,Acamprosato,yes,Transtorno por uso de alcool,Dose usual depende de peso e funcao renal. Esquema adulto frequente: 666 mg tres vezes/dia. Nao trata intoxicacao nem abstinencia aguda. (DM/ANVISA/APA/NICE/PENDENTE),dose_efeito,666.0,yes,ok
+71,prescription,humor/TEPT,Dor neuropatica ou sindromes dolorosas,Venlafaxina XR,yes,TAG,75-225 (TM/T1),quadro,150.0,yes,ok
+72,prescription,humor/TEPT,Dor neuropatica ou sindromes dolorosas,Duloxetina,yes,TAG,60-120 (TM/T1),quadro,120.0,yes,ok
+72,prescription,ansiedade/resgate,Transtorno de ansiedade generalizada,Diazepam,yes,TAG,2-10 (TM/T1),quadro,2.0,yes,ok
+73,prescription,humor/TEPT,Transtorno depressivo maior,Fluoxetina,yes,transtorno de estresse,20-60 (TM/T1),quadro,20.0,yes,ok
+73,prescription,ansiedade/resgate,Transtorno de ansiedade generalizada,Lorazepam,yes,Ansiedade grave,"0,5-1 mg por tomada: ansiolitico. 1-2 mg por tomada: maior sedacao e controle de agitacao. Protocolos de catatonia exigem avaliacao e monitorizacao. (DM/ANVISA/Maudsley)",dose_efeito,1.25,yes,ok
+73,prescription,sono/sedacao,Esquizofrenia e transtornos psicoticos,Quetiapina,yes,Esquizofrenia e transtornos psicoticos,150-750 mg/dia (DM),quadro,750.0,yes,ok
+74,prescription,humor/TEPT,Transtorno de ansiedade generalizada,Sertralina,yes,transtorno de estresse,50-200 (TM/T1),quadro,125.0,yes,ok
+74,prescription,sono/sedacao,Esquizofrenia e transtornos psicoticos,Quetiapina,yes,Esquizofrenia e transtornos psicoticos,150-750 mg/dia (DM),quadro,750.0,yes,ok
+74,prescription,ansiedade/resgate,Transtorno bipolar - manutencao,Clonazepam,yes,Transtorno do panico,"0,5-1 mg/dia (DM)",quadro,0.5,yes,ok
+74,prescription,substancias/craving,Transtorno por uso de alcool,Acamprosato,yes,Transtorno por uso de alcool,Dose usual depende de peso e funcao renal. Esquema adulto frequente: 666 mg tres vezes/dia. Nao trata intoxicacao nem abstinencia aguda. (DM/ANVISA/APA/NICE/PENDENTE),dose_efeito,666.0,yes,ok
+75,prescription,humor/TEPT,Transtorno de ansiedade generalizada,Desvenlafaxina,yes,transtorno de estresse,50-100 (TM/T1),quadro,100.0,yes,ok
+75,prescription,sono/sedacao,Insonia,Zolpidem,yes,Insonia,"5 mg a noite: menor exposicao. 5-10 mg a noite liberacao imediata: inducao do sono. Formulacao prolongada tem dose propria. Doses maiores aumentam amnesia, comportamentos complexos e prejuizo no dia seguinte. (DM/ANVISA)",dose_efeito,5.0,yes,ok
+75,prescription,ansiedade/resgate,Transtorno de ansiedade generalizada,Bromazepam,yes,Ansiedade aguda,6-18 mg/dia (HC),quadro,12.0,yes,ok
+75,prescription,impulsividade/irritabilidade,Transtorno bipolar - manutencao,Carbamazepina,yes,Transtorno bipolar - manutencao,200–400 mg/dia: início/titulação. (DM/GG/Maudsley/CANMAT/ISBD),dose_efeito,400.0,yes,ok
+75,prescription,substancias/craving,Transtorno por uso de alcool,Naltrexona,yes,vicios,25-50 (TM/T1),quadro,25.0,yes,ok
+76,prescription,humor/TEPT,Dor neuropatica ou sindromes dolorosas,Venlafaxina,yes,TAG,75-225 (TM/T1),quadro,75.0,yes,ok
+77,prescription,humor/TEPT,Dor neuropatica ou sindromes dolorosas,Venlafaxina XR,yes,TAG,75-225 (TM/T1),quadro,150.0,yes,ok
+77,prescription,ansiedade/resgate,Transtorno de ansiedade generalizada,Diazepam,yes,TAG,2-10 (TM/T1),quadro,10.0,yes,ok
+78,prescription,humor/TEPT,Dor neuropatica ou sindromes dolorosas,Duloxetina,yes,TAG,60-120 (TM/T1),quadro,120.0,yes,ok
+78,prescription,ansiedade/resgate,Transtorno de ansiedade generalizada,Lorazepam,yes,Ansiedade grave,"0,5-1 mg por tomada: ansiolitico. 1-2 mg por tomada: maior sedacao e controle de agitacao. Protocolos de catatonia exigem avaliacao e monitorizacao. (DM/ANVISA/Maudsley)",dose_efeito,0.5,yes,ok
+78,prescription,sono/sedacao,Insonia,Zolpidem,yes,Insonia,"5 mg a noite: menor exposicao. 5-10 mg a noite liberacao imediata: inducao do sono. Formulacao prolongada tem dose propria. Doses maiores aumentam amnesia, comportamentos complexos e prejuizo no dia seguinte. (DM/ANVISA)",dose_efeito,7.5,yes,ok
+79,prescription,humor/TEPT,Transtorno depressivo maior,Fluoxetina,yes,transtorno de estresse,20-60 (TM/T1),quadro,20.0,yes,ok
+79,prescription,sono/sedacao,Insonia,Zolpidem,yes,Insonia,"5 mg a noite: menor exposicao. 5-10 mg a noite liberacao imediata: inducao do sono. Formulacao prolongada tem dose propria. Doses maiores aumentam amnesia, comportamentos complexos e prejuizo no dia seguinte. (DM/ANVISA)",dose_efeito,7.5,yes,ok
+79,prescription,ansiedade/resgate,Transtorno bipolar - manutencao,Clonazepam,yes,Transtorno do panico,"0,5-1 mg/dia (DM)",quadro,1.0,yes,ok
+79,prescription,substancias/craving,Transtorno por uso de alcool,Naltrexona,yes,vicios,25-50 (TM/T1),quadro,25.0,yes,ok
+80,prescription,humor/TEPT,Transtorno de ansiedade generalizada,Sertralina,yes,transtorno de estresse,50-200 (TM/T1),quadro,125.0,yes,ok
+80,prescription,sono/sedacao,Insonia,Trazodona,yes,Insonia,25-100 mg a noite (DM/ST-E/GG),quadro,100.0,yes,ok
+80,prescription,ansiedade/resgate,Transtorno de ansiedade generalizada,Bromazepam,yes,Ansiedade aguda,6-18 mg/dia (HC),quadro,6.0,yes,ok
+80,prescription,impulsividade/irritabilidade,Esquizofrenia e transtornos psicoticos,Quetiapina,yes,Esquizofrenia e transtornos psicoticos,150-750 mg/dia (DM),quadro,450.0,yes,ok
+80,prescription,substancias/craving,Dor neuropatica ou sindromes dolorosas,Buprenorfina,yes,Transtorno por uso de opioides,Inducao deve considerar tipo e momento do ultimo opioide. Manutencao comum 8-24 mg/dia sublingual; formulacoes injetaveis mensais possuem esquemas proprios. (DM/ANVISA),dose_efeito,24.0,yes,ok
+81,prescription,humor/TEPT,Transtorno de ansiedade generalizada,Desvenlafaxina,yes,transtorno de estresse,50-100 (TM/T1),quadro,100.0,yes,ok
+82,prescription,humor/TEPT,Dor neuropatica ou sindromes dolorosas,Venlafaxina,yes,TAG,75-225 (TM/T1),quadro,75.0,yes,ok
+82,prescription,ansiedade/resgate,Transtorno de ansiedade generalizada,Diazepam,yes,TAG,2-10 (TM/T1),quadro,6.0,yes,ok
+83,prescription,humor/TEPT,Dor neuropatica ou sindromes dolorosas,Venlafaxina XR,yes,TAG,75-225 (TM/T1),quadro,150.0,yes,ok
+83,prescription,ansiedade/resgate,Transtorno de ansiedade generalizada,Lorazepam,yes,Ansiedade grave,"0,5-1 mg por tomada: ansiolitico. 1-2 mg por tomada: maior sedacao e controle de agitacao. Protocolos de catatonia exigem avaliacao e monitorizacao. (DM/ANVISA/Maudsley)",dose_efeito,2.0,yes,ok
+83,prescription,sono/sedacao,Insonia,Trazodona,yes,Insonia,25-100 mg a noite (DM/ST-E/GG),quadro,25.0,yes,ok
+84,prescription,humor/TEPT,Dor neuropatica ou sindromes dolorosas,Duloxetina,yes,TAG,60-120 (TM/T1),quadro,120.0,yes,ok
+84,prescription,sono/sedacao,Insonia,Trazodona,yes,Insonia,25-100 mg a noite (DM/ST-E/GG),quadro,25.0,yes,ok
+84,prescription,ansiedade/resgate,Transtorno bipolar - manutencao,Clonazepam,yes,Transtorno do panico,"0,5-1 mg/dia (DM)",quadro,0.75,yes,ok
+84,prescription,substancias/craving,Dor neuropatica ou sindromes dolorosas,Buprenorfina,yes,Transtorno por uso de opioides,Inducao deve considerar tipo e momento do ultimo opioide. Manutencao comum 8-24 mg/dia sublingual; formulacoes injetaveis mensais possuem esquemas proprios. (DM/ANVISA),dose_efeito,24.0,yes,ok
+85,prescription,humor/TEPT,Transtorno depressivo maior,Fluoxetina,yes,transtorno de estresse,20-60 (TM/T1),quadro,20.0,yes,ok
+85,prescription,sono/sedacao,Insonia,Mirtazapina,yes,TAG,15-45 (TM/T1),quadro,30.0,yes,ok
+85,prescription,ansiedade/resgate,Transtorno de ansiedade generalizada,Bromazepam,yes,Ansiedade aguda,6-18 mg/dia (HC),quadro,18.0,yes,ok
+85,prescription,impulsividade/irritabilidade,Esquizofrenia e transtornos psicoticos,Risperidona,yes,Esquizofrenia e transtornos psicoticos,"0,25–1 mg/dia: baixa exposição e usos específicos. (DM/ST-PG/ST-E/GG/Maudsley)",dose_efeito,0.25,yes,ok
+85,prescription,substancias/craving,Transtorno por uso de alcool,Acamprosato,yes,Transtorno por uso de alcool,Dose usual depende de peso e funcao renal. Esquema adulto frequente: 666 mg tres vezes/dia. Nao trata intoxicacao nem abstinencia aguda. (DM/ANVISA/APA/NICE/PENDENTE),dose_efeito,666.0,yes,ok
+86,prescription,humor/TEPT,Transtorno de ansiedade generalizada,Sertralina,yes,transtorno de estresse,50-200 (TM/T1),quadro,125.0,yes,ok
+87,prescription,humor/TEPT,Transtorno de ansiedade generalizada,Desvenlafaxina,yes,transtorno de estresse,50-100 (TM/T1),quadro,100.0,yes,ok
+87,prescription,ansiedade/resgate,Transtorno de ansiedade generalizada,Diazepam,yes,TAG,2-10 (TM/T1),quadro,2.0,yes,ok
+88,prescription,humor/TEPT,Dor neuropatica ou sindromes dolorosas,Venlafaxina,yes,TAG,75-225 (TM/T1),quadro,75.0,yes,ok
+88,prescription,ansiedade/resgate,Transtorno de ansiedade generalizada,Lorazepam,yes,Ansiedade grave,"0,5-1 mg por tomada: ansiolitico. 1-2 mg por tomada: maior sedacao e controle de agitacao. Protocolos de catatonia exigem avaliacao e monitorizacao. (DM/ANVISA/Maudsley)",dose_efeito,1.25,yes,ok
+88,prescription,sono/sedacao,Insonia,Mirtazapina,yes,TAG,15-45 (TM/T1),quadro,45.0,yes,ok
+89,prescription,humor/TEPT,Dor neuropatica ou sindromes dolorosas,Venlafaxina XR,yes,TAG,75-225 (TM/T1),quadro,150.0,yes,ok
+89,prescription,sono/sedacao,Insonia,Mirtazapina,yes,TAG,15-45 (TM/T1),quadro,45.0,yes,ok
+89,prescription,ansiedade/resgate,Transtorno bipolar - manutencao,Clonazepam,yes,Transtorno do panico,"0,5-1 mg/dia (DM)",quadro,0.5,yes,ok
+89,prescription,substancias/craving,Transtorno por uso de alcool,Acamprosato,yes,Transtorno por uso de alcool,Dose usual depende de peso e funcao renal. Esquema adulto frequente: 666 mg tres vezes/dia. Nao trata intoxicacao nem abstinencia aguda. (DM/ANVISA/APA/NICE/PENDENTE),dose_efeito,666.0,yes,ok
+90,prescription,humor/TEPT,Dor neuropatica ou sindromes dolorosas,Duloxetina,yes,TAG,60-120 (TM/T1),quadro,120.0,yes,ok
+90,prescription,sono/sedacao,Esquizofrenia e transtornos psicoticos,Quetiapina,yes,Esquizofrenia e transtornos psicoticos,150-750 mg/dia (DM),quadro,150.0,yes,ok
+90,prescription,ansiedade/resgate,Transtorno de ansiedade generalizada,Bromazepam,yes,Ansiedade aguda,6-18 mg/dia (HC),quadro,12.0,yes,ok
+90,prescription,impulsividade/irritabilidade,Transtorno bipolar - manutencao,Divalproato,yes,Transtorno bipolar - mania/hipomania,750 mg/dia ate resposta; alvo serico 50-125 mcg/mL (DM),quadro,2500.0,yes,ok
+90,prescription,substancias/craving,Transtorno por uso de alcool,Naltrexona,yes,vicios,25-50 (TM/T1),quadro,25.0,yes,ok
+91,prescription,humor/TEPT,Transtorno depressivo maior,Fluoxetina,yes,transtorno de estresse,20-60 (TM/T1),quadro,20.0,yes,ok
+92,prescription,humor/TEPT,Transtorno de ansiedade generalizada,Sertralina,yes,transtorno de estresse,50-200 (TM/T1),quadro,125.0,yes,ok
+92,prescription,ansiedade/resgate,Transtorno de ansiedade generalizada,Diazepam,yes,TAG,2-10 (TM/T1),quadro,10.0,yes,ok
+93,prescription,humor/TEPT,Transtorno de ansiedade generalizada,Desvenlafaxina,yes,transtorno de estresse,50-100 (TM/T1),quadro,100.0,yes,ok
+93,prescription,ansiedade/resgate,Transtorno de ansiedade generalizada,Lorazepam,yes,Ansiedade grave,"0,5-1 mg por tomada: ansiolitico. 1-2 mg por tomada: maior sedacao e controle de agitacao. Protocolos de catatonia exigem avaliacao e monitorizacao. (DM/ANVISA/Maudsley)",dose_efeito,0.5,yes,ok
+93,prescription,sono/sedacao,Esquizofrenia e transtornos psicoticos,Quetiapina,yes,Esquizofrenia e transtornos psicoticos,150-750 mg/dia (DM),quadro,450.0,yes,ok
+94,prescription,humor/TEPT,Dor neuropatica ou sindromes dolorosas,Venlafaxina,yes,TAG,75-225 (TM/T1),quadro,75.0,yes,ok
+94,prescription,sono/sedacao,Esquizofrenia e transtornos psicoticos,Quetiapina,yes,Esquizofrenia e transtornos psicoticos,150-750 mg/dia (DM),quadro,450.0,yes,ok
+94,prescription,ansiedade/resgate,Transtorno bipolar - manutencao,Clonazepam,yes,Transtorno do panico,"0,5-1 mg/dia (DM)",quadro,1.0,yes,ok
+94,prescription,substancias/craving,Transtorno por uso de alcool,Naltrexona,yes,vicios,25-50 (TM/T1),quadro,25.0,yes,ok
+95,prescription,humor/TEPT,Dor neuropatica ou sindromes dolorosas,Venlafaxina XR,yes,TAG,75-225 (TM/T1),quadro,150.0,yes,ok
+95,prescription,sono/sedacao,Insonia,Zolpidem,yes,Insonia,"5 mg a noite: menor exposicao. 5-10 mg a noite liberacao imediata: inducao do sono. Formulacao prolongada tem dose propria. Doses maiores aumentam amnesia, comportamentos complexos e prejuizo no dia seguinte. (DM/ANVISA)",dose_efeito,10.0,yes,ok
+95,prescription,ansiedade/resgate,Transtorno de ansiedade generalizada,Bromazepam,yes,Ansiedade aguda,6-18 mg/dia (HC),quadro,6.0,yes,ok
+95,prescription,impulsividade/irritabilidade,Transtorno bipolar - manutencao,Carbamazepina,yes,Transtorno bipolar - manutencao,200–400 mg/dia: início/titulação. (DM/GG/Maudsley/CANMAT/ISBD),dose_efeito,300.0,yes,ok
+95,prescription,substancias/craving,Dor neuropatica ou sindromes dolorosas,Buprenorfina,yes,Transtorno por uso de opioides,Inducao deve considerar tipo e momento do ultimo opioide. Manutencao comum 8-24 mg/dia sublingual; formulacoes injetaveis mensais possuem esquemas proprios. (DM/ANVISA),dose_efeito,24.0,yes,ok
+96,prescription,humor/TEPT,Dor neuropatica ou sindromes dolorosas,Duloxetina,yes,TAG,60-120 (TM/T1),quadro,120.0,yes,ok
+97,prescription,humor/TEPT,Transtorno depressivo maior,Fluoxetina,yes,transtorno de estresse,20-60 (TM/T1),quadro,20.0,yes,ok
+97,prescription,ansiedade/resgate,Transtorno de ansiedade generalizada,Diazepam,yes,TAG,2-10 (TM/T1),quadro,6.0,yes,ok
+98,prescription,humor/TEPT,Transtorno de ansiedade generalizada,Sertralina,yes,transtorno de estresse,50-200 (TM/T1),quadro,125.0,yes,ok
+98,prescription,ansiedade/resgate,Transtorno de ansiedade generalizada,Lorazepam,yes,Ansiedade grave,"0,5-1 mg por tomada: ansiolitico. 1-2 mg por tomada: maior sedacao e controle de agitacao. Protocolos de catatonia exigem avaliacao e monitorizacao. (DM/ANVISA/Maudsley)",dose_efeito,2.0,yes,ok
+98,prescription,sono/sedacao,Insonia,Zolpidem,yes,Insonia,"5 mg a noite: menor exposicao. 5-10 mg a noite liberacao imediata: inducao do sono. Formulacao prolongada tem dose propria. Doses maiores aumentam amnesia, comportamentos complexos e prejuizo no dia seguinte. (DM/ANVISA)",dose_efeito,5.0,yes,ok
+99,prescription,humor/TEPT,Transtorno de ansiedade generalizada,Desvenlafaxina,yes,transtorno de estresse,50-100 (TM/T1),quadro,100.0,yes,ok
+99,prescription,sono/sedacao,Insonia,Zolpidem,yes,Insonia,"5 mg a noite: menor exposicao. 5-10 mg a noite liberacao imediata: inducao do sono. Formulacao prolongada tem dose propria. Doses maiores aumentam amnesia, comportamentos complexos e prejuizo no dia seguinte. (DM/ANVISA)",dose_efeito,5.0,yes,ok
+99,prescription,ansiedade/resgate,Transtorno bipolar - manutencao,Clonazepam,yes,Transtorno do panico,"0,5-1 mg/dia (DM)",quadro,0.75,yes,ok
+99,prescription,substancias/craving,Dor neuropatica ou sindromes dolorosas,Buprenorfina,yes,Transtorno por uso de opioides,Inducao deve considerar tipo e momento do ultimo opioide. Manutencao comum 8-24 mg/dia sublingual; formulacoes injetaveis mensais possuem esquemas proprios. (DM/ANVISA),dose_efeito,24.0,yes,ok
+100,prescription,humor/TEPT,Dor neuropatica ou sindromes dolorosas,Venlafaxina,yes,TAG,75-225 (TM/T1),quadro,75.0,yes,ok
+100,prescription,sono/sedacao,Insonia,Trazodona,yes,Insonia,25-100 mg a noite (DM/ST-E/GG),quadro,62.5,yes,ok
+100,prescription,ansiedade/resgate,Transtorno de ansiedade generalizada,Bromazepam,yes,Ansiedade aguda,6-18 mg/dia (HC),quadro,18.0,yes,ok
+100,prescription,impulsividade/irritabilidade,Esquizofrenia e transtornos psicoticos,Quetiapina,yes,Esquizofrenia e transtornos psicoticos,150-750 mg/dia (DM),quadro,150.0,yes,ok
+100,prescription,substancias/craving,Transtorno por uso de alcool,Acamprosato,yes,Transtorno por uso de alcool,Dose usual depende de peso e funcao renal. Esquema adulto frequente: 666 mg tres vezes/dia. Nao trata intoxicacao nem abstinencia aguda. (DM/ANVISA/APA/NICE/PENDENTE),dose_efeito,666.0,yes,ok
+101,prescription,humor/TEPT,Dor neuropatica ou sindromes dolorosas,Venlafaxina XR,yes,TAG,75-225 (TM/T1),quadro,150.0,yes,ok
+102,prescription,humor/TEPT,Dor neuropatica ou sindromes dolorosas,Duloxetina,yes,TAG,60-120 (TM/T1),quadro,120.0,yes,ok
+102,prescription,ansiedade/resgate,Transtorno de ansiedade generalizada,Diazepam,yes,TAG,2-10 (TM/T1),quadro,2.0,yes,ok
+103,prescription,humor/TEPT,Transtorno depressivo maior,Fluoxetina,yes,transtorno de estresse,20-60 (TM/T1),quadro,20.0,yes,ok
+103,prescription,ansiedade/resgate,Transtorno de ansiedade generalizada,Lorazepam,yes,Ansiedade grave,"0,5-1 mg por tomada: ansiolitico. 1-2 mg por tomada: maior sedacao e controle de agitacao. Protocolos de catatonia exigem avaliacao e monitorizacao. (DM/ANVISA/Maudsley)",dose_efeito,1.25,yes,ok
+103,prescription,sono/sedacao,Insonia,Trazodona,yes,Insonia,25-100 mg a noite (DM/ST-E/GG),quadro,100.0,yes,ok
+104,prescription,humor/TEPT,Transtorno de ansiedade generalizada,Sertralina,yes,transtorno de estresse,50-200 (TM/T1),quadro,125.0,yes,ok
+104,prescription,sono/sedacao,Insonia,Trazodona,yes,Insonia,25-100 mg a noite (DM/ST-E/GG),quadro,100.0,yes,ok
+104,prescription,ansiedade/resgate,Transtorno bipolar - manutencao,Clonazepam,yes,Transtorno do panico,"0,5-1 mg/dia (DM)",quadro,0.5,yes,ok
+104,prescription,substancias/craving,Transtorno por uso de alcool,Acamprosato,yes,Transtorno por uso de alcool,Dose usual depende de peso e funcao renal. Esquema adulto frequente: 666 mg tres vezes/dia. Nao trata intoxicacao nem abstinencia aguda. (DM/ANVISA/APA/NICE/PENDENTE),dose_efeito,666.0,yes,ok
+105,prescription,humor/TEPT,Transtorno de ansiedade generalizada,Desvenlafaxina,yes,transtorno de estresse,50-100 (TM/T1),quadro,100.0,yes,ok
+105,prescription,sono/sedacao,Insonia,Mirtazapina,yes,TAG,15-45 (TM/T1),quadro,15.0,yes,ok
+105,prescription,ansiedade/resgate,Transtorno de ansiedade generalizada,Bromazepam,yes,Ansiedade aguda,6-18 mg/dia (HC),quadro,12.0,yes,ok
+105,prescription,impulsividade/irritabilidade,Esquizofrenia e transtornos psicoticos,Risperidona,yes,Esquizofrenia e transtornos psicoticos,"0,25–1 mg/dia: baixa exposição e usos específicos. (DM/ST-PG/ST-E/GG/Maudsley)",dose_efeito,1.0,yes,ok
+105,prescription,substancias/craving,Transtorno por uso de alcool,Naltrexona,yes,vicios,25-50 (TM/T1),quadro,25.0,yes,ok
+106,prescription,humor/TEPT,Dor neuropatica ou sindromes dolorosas,Venlafaxina,yes,TAG,75-225 (TM/T1),quadro,75.0,yes,ok
+107,prescription,humor/TEPT,Dor neuropatica ou sindromes dolorosas,Venlafaxina XR,yes,TAG,75-225 (TM/T1),quadro,150.0,yes,ok
+107,prescription,ansiedade/resgate,Transtorno de ansiedade generalizada,Diazepam,yes,TAG,2-10 (TM/T1),quadro,10.0,yes,ok
+108,prescription,humor/TEPT,Dor neuropatica ou sindromes dolorosas,Duloxetina,yes,TAG,60-120 (TM/T1),quadro,120.0,yes,ok
+108,prescription,ansiedade/resgate,Transtorno de ansiedade generalizada,Lorazepam,yes,Ansiedade grave,"0,5-1 mg por tomada: ansiolitico. 1-2 mg por tomada: maior sedacao e controle de agitacao. Protocolos de catatonia exigem avaliacao e monitorizacao. (DM/ANVISA/Maudsley)",dose_efeito,0.5,yes,ok
+108,prescription,sono/sedacao,Insonia,Mirtazapina,yes,TAG,15-45 (TM/T1),quadro,30.0,yes,ok
+109,prescription,humor/TEPT,Transtorno depressivo maior,Fluoxetina,yes,transtorno de estresse,20-60 (TM/T1),quadro,20.0,yes,ok
+109,prescription,sono/sedacao,Insonia,Mirtazapina,yes,TAG,15-45 (TM/T1),quadro,30.0,yes,ok
+109,prescription,ansiedade/resgate,Transtorno bipolar - manutencao,Clonazepam,yes,Transtorno do panico,"0,5-1 mg/dia (DM)",quadro,1.0,yes,ok
+109,prescription,substancias/craving,Transtorno por uso de alcool,Naltrexona,yes,vicios,25-50 (TM/T1),quadro,25.0,yes,ok
+110,prescription,humor/TEPT,Transtorno de ansiedade generalizada,Sertralina,yes,transtorno de estresse,50-200 (TM/T1),quadro,125.0,yes,ok
+110,prescription,sono/sedacao,Esquizofrenia e transtornos psicoticos,Quetiapina,yes,Esquizofrenia e transtornos psicoticos,150-750 mg/dia (DM),quadro,750.0,yes,ok
+110,prescription,ansiedade/resgate,Transtorno de ansiedade generalizada,Bromazepam,yes,Ansiedade aguda,6-18 mg/dia (HC),quadro,6.0,yes,ok
+110,prescription,impulsividade/irritabilidade,Transtorno bipolar - manutencao,Divalproato,yes,Transtorno bipolar - mania/hipomania,750 mg/dia ate resposta; alvo serico 50-125 mcg/mL (DM),quadro,1625.0,yes,ok
+110,prescription,substancias/craving,Dor neuropatica ou sindromes dolorosas,Buprenorfina,yes,Transtorno por uso de opioides,Inducao deve considerar tipo e momento do ultimo opioide. Manutencao comum 8-24 mg/dia sublingual; formulacoes injetaveis mensais possuem esquemas proprios. (DM/ANVISA),dose_efeito,24.0,yes,ok
+111,prescription,humor/TEPT,Transtorno de ansiedade generalizada,Desvenlafaxina,yes,transtorno de estresse,50-100 (TM/T1),quadro,100.0,yes,ok
+112,prescription,humor/TEPT,Dor neuropatica ou sindromes dolorosas,Venlafaxina,yes,TAG,75-225 (TM/T1),quadro,75.0,yes,ok
+112,prescription,ansiedade/resgate,Transtorno de ansiedade generalizada,Diazepam,yes,TAG,2-10 (TM/T1),quadro,6.0,yes,ok
+113,prescription,humor/TEPT,Dor neuropatica ou sindromes dolorosas,Venlafaxina XR,yes,TAG,75-225 (TM/T1),quadro,150.0,yes,ok
+113,prescription,ansiedade/resgate,Transtorno de ansiedade generalizada,Lorazepam,yes,Ansiedade grave,"0,5-1 mg por tomada: ansiolitico. 1-2 mg por tomada: maior sedacao e controle de agitacao. Protocolos de catatonia exigem avaliacao e monitorizacao. (DM/ANVISA/Maudsley)",dose_efeito,2.0,yes,ok
+113,prescription,sono/sedacao,Esquizofrenia e transtornos psicoticos,Quetiapina,yes,Esquizofrenia e transtornos psicoticos,150-750 mg/dia (DM),quadro,150.0,yes,ok
+114,prescription,humor/TEPT,Dor neuropatica ou sindromes dolorosas,Duloxetina,yes,TAG,60-120 (TM/T1),quadro,120.0,yes,ok
+114,prescription,sono/sedacao,Esquizofrenia e transtornos psicoticos,Quetiapina,yes,Esquizofrenia e transtornos psicoticos,150-750 mg/dia (DM),quadro,150.0,yes,ok
+114,prescription,ansiedade/resgate,Transtorno bipolar - manutencao,Clonazepam,yes,Transtorno do panico,"0,5-1 mg/dia (DM)",quadro,0.75,yes,ok
+114,prescription,substancias/craving,Dor neuropatica ou sindromes dolorosas,Buprenorfina,yes,Transtorno por uso de opioides,Inducao deve considerar tipo e momento do ultimo opioide. Manutencao comum 8-24 mg/dia sublingual; formulacoes injetaveis mensais possuem esquemas proprios. (DM/ANVISA),dose_efeito,24.0,yes,ok
+115,prescription,humor/TEPT,Transtorno depressivo maior,Fluoxetina,yes,transtorno de estresse,20-60 (TM/T1),quadro,20.0,yes,ok
+115,prescription,sono/sedacao,Insonia,Zolpidem,yes,Insonia,"5 mg a noite: menor exposicao. 5-10 mg a noite liberacao imediata: inducao do sono. Formulacao prolongada tem dose propria. Doses maiores aumentam amnesia, comportamentos complexos e prejuizo no dia seguinte. (DM/ANVISA)",dose_efeito,7.5,yes,ok
+115,prescription,ansiedade/resgate,Transtorno de ansiedade generalizada,Bromazepam,yes,Ansiedade aguda,6-18 mg/dia (HC),quadro,18.0,yes,ok
+115,prescription,impulsividade/irritabilidade,Transtorno bipolar - manutencao,Carbamazepina,yes,Transtorno bipolar - manutencao,200–400 mg/dia: início/titulação. (DM/GG/Maudsley/CANMAT/ISBD),dose_efeito,200.0,yes,ok
+115,prescription,substancias/craving,Transtorno por uso de alcool,Acamprosato,yes,Transtorno por uso de alcool,Dose usual depende de peso e funcao renal. Esquema adulto frequente: 666 mg tres vezes/dia. Nao trata intoxicacao nem abstinencia aguda. (DM/ANVISA/APA/NICE/PENDENTE),dose_efeito,666.0,yes,ok
+116,prescription,humor/TEPT,Transtorno de ansiedade generalizada,Sertralina,yes,transtorno de estresse,50-200 (TM/T1),quadro,125.0,yes,ok
+117,prescription,humor/TEPT,Transtorno de ansiedade generalizada,Desvenlafaxina,yes,transtorno de estresse,50-100 (TM/T1),quadro,100.0,yes,ok
+117,prescription,ansiedade/resgate,Transtorno de ansiedade generalizada,Diazepam,yes,TAG,2-10 (TM/T1),quadro,2.0,yes,ok
+118,prescription,humor/TEPT,Dor neuropatica ou sindromes dolorosas,Venlafaxina,yes,TAG,75-225 (TM/T1),quadro,75.0,yes,ok
+118,prescription,ansiedade/resgate,Transtorno de ansiedade generalizada,Lorazepam,yes,Ansiedade grave,"0,5-1 mg por tomada: ansiolitico. 1-2 mg por tomada: maior sedacao e controle de agitacao. Protocolos de catatonia exigem avaliacao e monitorizacao. (DM/ANVISA/Maudsley)",dose_efeito,1.25,yes,ok
+118,prescription,sono/sedacao,Insonia,Zolpidem,yes,Insonia,"5 mg a noite: menor exposicao. 5-10 mg a noite liberacao imediata: inducao do sono. Formulacao prolongada tem dose propria. Doses maiores aumentam amnesia, comportamentos complexos e prejuizo no dia seguinte. (DM/ANVISA)",dose_efeito,10.0,yes,ok
+119,prescription,humor/TEPT,Dor neuropatica ou sindromes dolorosas,Venlafaxina XR,yes,TAG,75-225 (TM/T1),quadro,150.0,yes,ok
+119,prescription,sono/sedacao,Insonia,Zolpidem,yes,Insonia,"5 mg a noite: menor exposicao. 5-10 mg a noite liberacao imediata: inducao do sono. Formulacao prolongada tem dose propria. Doses maiores aumentam amnesia, comportamentos complexos e prejuizo no dia seguinte. (DM/ANVISA)",dose_efeito,10.0,yes,ok
+119,prescription,ansiedade/resgate,Transtorno bipolar - manutencao,Clonazepam,yes,Transtorno do panico,"0,5-1 mg/dia (DM)",quadro,0.5,yes,ok
+119,prescription,substancias/craving,Transtorno por uso de alcool,Acamprosato,yes,Transtorno por uso de alcool,Dose usual depende de peso e funcao renal. Esquema adulto frequente: 666 mg tres vezes/dia. Nao trata intoxicacao nem abstinencia aguda. (DM/ANVISA/APA/NICE/PENDENTE),dose_efeito,666.0,yes,ok
+120,prescription,humor/TEPT,Dor neuropatica ou sindromes dolorosas,Duloxetina,yes,TAG,60-120 (TM/T1),quadro,120.0,yes,ok
+120,prescription,sono/sedacao,Insonia,Trazodona,yes,Insonia,25-100 mg a noite (DM/ST-E/GG),quadro,25.0,yes,ok
+120,prescription,ansiedade/resgate,Transtorno de ansiedade generalizada,Bromazepam,yes,Ansiedade aguda,6-18 mg/dia (HC),quadro,12.0,yes,ok
+120,prescription,impulsividade/irritabilidade,Esquizofrenia e transtornos psicoticos,Quetiapina,yes,Esquizofrenia e transtornos psicoticos,150-750 mg/dia (DM),quadro,750.0,yes,ok
+120,prescription,substancias/craving,Transtorno por uso de alcool,Naltrexona,yes,vicios,25-50 (TM/T1),quadro,25.0,yes,ok
+121,prescription,humor/TEPT,Transtorno depressivo maior,Fluoxetina,yes,transtorno de estresse,20-60 (TM/T1),quadro,20.0,yes,ok
+122,prescription,humor/TEPT,Transtorno de ansiedade generalizada,Sertralina,yes,transtorno de estresse,50-200 (TM/T1),quadro,125.0,yes,ok
+122,prescription,ansiedade/resgate,Transtorno de ansiedade generalizada,Diazepam,yes,TAG,2-10 (TM/T1),quadro,10.0,yes,ok
+123,prescription,humor/TEPT,Transtorno de ansiedade generalizada,Desvenlafaxina,yes,transtorno de estresse,50-100 (TM/T1),quadro,100.0,yes,ok
+123,prescription,ansiedade/resgate,Transtorno de ansiedade generalizada,Lorazepam,yes,Ansiedade grave,"0,5-1 mg por tomada: ansiolitico. 1-2 mg por tomada: maior sedacao e controle de agitacao. Protocolos de catatonia exigem avaliacao e monitorizacao. (DM/ANVISA/Maudsley)",dose_efeito,0.5,yes,ok
+123,prescription,sono/sedacao,Insonia,Trazodona,yes,Insonia,25-100 mg a noite (DM/ST-E/GG),quadro,62.5,yes,ok
+124,prescription,humor/TEPT,Dor neuropatica ou sindromes dolorosas,Venlafaxina,yes,TAG,75-225 (TM/T1),quadro,75.0,yes,ok
+124,prescription,sono/sedacao,Insonia,Trazodona,yes,Insonia,25-100 mg a noite (DM/ST-E/GG),quadro,62.5,yes,ok
+124,prescription,ansiedade/resgate,Transtorno bipolar - manutencao,Clonazepam,yes,Transtorno do panico,"0,5-1 mg/dia (DM)",quadro,1.0,yes,ok
+124,prescription,substancias/craving,Transtorno por uso de alcool,Naltrexona,yes,vicios,25-50 (TM/T1),quadro,25.0,yes,ok
+125,prescription,humor/TEPT,Dor neuropatica ou sindromes dolorosas,Venlafaxina XR,yes,TAG,75-225 (TM/T1),quadro,150.0,yes,ok
+125,prescription,sono/sedacao,Insonia,Mirtazapina,yes,TAG,15-45 (TM/T1),quadro,45.0,yes,ok
+125,prescription,ansiedade/resgate,Transtorno de ansiedade generalizada,Bromazepam,yes,Ansiedade aguda,6-18 mg/dia (HC),quadro,6.0,yes,ok
+125,prescription,impulsividade/irritabilidade,Esquizofrenia e transtornos psicoticos,Risperidona,yes,Esquizofrenia e transtornos psicoticos,"0,25–1 mg/dia: baixa exposição e usos específicos. (DM/ST-PG/ST-E/GG/Maudsley)",dose_efeito,0.625,yes,ok
+125,prescription,substancias/craving,Dor neuropatica ou sindromes dolorosas,Buprenorfina,yes,Transtorno por uso de opioides,Inducao deve considerar tipo e momento do ultimo opioide. Manutencao comum 8-24 mg/dia sublingual; formulacoes injetaveis mensais possuem esquemas proprios. (DM/ANVISA),dose_efeito,24.0,yes,ok
+126,prescription,humor/TEPT,Dor neuropatica ou sindromes dolorosas,Duloxetina,yes,TAG,60-120 (TM/T1),quadro,120.0,yes,ok
+127,prescription,humor/TEPT,Transtorno depressivo maior,Fluoxetina,yes,transtorno de estresse,20-60 (TM/T1),quadro,20.0,yes,ok
+127,prescription,ansiedade/resgate,Transtorno de ansiedade generalizada,Diazepam,yes,TAG,2-10 (TM/T1),quadro,6.0,yes,ok
+128,prescription,humor/TEPT,Transtorno de ansiedade generalizada,Sertralina,yes,transtorno de estresse,50-200 (TM/T1),quadro,125.0,yes,ok
+128,prescription,ansiedade/resgate,Transtorno de ansiedade generalizada,Lorazepam,yes,Ansiedade grave,"0,5-1 mg por tomada: ansiolitico. 1-2 mg por tomada: maior sedacao e controle de agitacao. Protocolos de catatonia exigem avaliacao e monitorizacao. (DM/ANVISA/Maudsley)",dose_efeito,2.0,yes,ok
+128,prescription,sono/sedacao,Insonia,Mirtazapina,yes,TAG,15-45 (TM/T1),quadro,15.0,yes,ok
+129,prescription,humor/TEPT,Transtorno de ansiedade generalizada,Desvenlafaxina,yes,transtorno de estresse,50-100 (TM/T1),quadro,100.0,yes,ok
+129,prescription,sono/sedacao,Insonia,Mirtazapina,yes,TAG,15-45 (TM/T1),quadro,15.0,yes,ok
+129,prescription,ansiedade/resgate,Transtorno bipolar - manutencao,Clonazepam,yes,Transtorno do panico,"0,5-1 mg/dia (DM)",quadro,0.75,yes,ok
+129,prescription,substancias/craving,Dor neuropatica ou sindromes dolorosas,Buprenorfina,yes,Transtorno por uso de opioides,Inducao deve considerar tipo e momento do ultimo opioide. Manutencao comum 8-24 mg/dia sublingual; formulacoes injetaveis mensais possuem esquemas proprios. (DM/ANVISA),dose_efeito,24.0,yes,ok
+130,prescription,humor/TEPT,Dor neuropatica ou sindromes dolorosas,Venlafaxina,yes,TAG,75-225 (TM/T1),quadro,75.0,yes,ok
+130,prescription,sono/sedacao,Esquizofrenia e transtornos psicoticos,Quetiapina,yes,Esquizofrenia e transtornos psicoticos,150-750 mg/dia (DM),quadro,450.0,yes,ok
+130,prescription,ansiedade/resgate,Transtorno de ansiedade generalizada,Bromazepam,yes,Ansiedade aguda,6-18 mg/dia (HC),quadro,18.0,yes,ok
+130,prescription,impulsividade/irritabilidade,Transtorno bipolar - manutencao,Divalproato,yes,Transtorno bipolar - mania/hipomania,750 mg/dia ate resposta; alvo serico 50-125 mcg/mL (DM),quadro,750.0,yes,ok
+130,prescription,substancias/craving,Transtorno por uso de alcool,Acamprosato,yes,Transtorno por uso de alcool,Dose usual depende de peso e funcao renal. Esquema adulto frequente: 666 mg tres vezes/dia. Nao trata intoxicacao nem abstinencia aguda. (DM/ANVISA/APA/NICE/PENDENTE),dose_efeito,666.0,yes,ok
+131,prescription,humor/TEPT,Dor neuropatica ou sindromes dolorosas,Venlafaxina XR,yes,TAG,75-225 (TM/T1),quadro,150.0,yes,ok
+132,prescription,humor/TEPT,Dor neuropatica ou sindromes dolorosas,Duloxetina,yes,TAG,60-120 (TM/T1),quadro,120.0,yes,ok
+132,prescription,ansiedade/resgate,Transtorno de ansiedade generalizada,Diazepam,yes,TAG,2-10 (TM/T1),quadro,2.0,yes,ok
+133,prescription,humor/TEPT,Transtorno depressivo maior,Fluoxetina,yes,transtorno de estresse,20-60 (TM/T1),quadro,20.0,yes,ok
+133,prescription,ansiedade/resgate,Transtorno de ansiedade generalizada,Lorazepam,yes,Ansiedade grave,"0,5-1 mg por tomada: ansiolitico. 1-2 mg por tomada: maior sedacao e controle de agitacao. Protocolos de catatonia exigem avaliacao e monitorizacao. (DM/ANVISA/Maudsley)",dose_efeito,1.25,yes,ok
+133,prescription,sono/sedacao,Esquizofrenia e transtornos psicoticos,Quetiapina,yes,Esquizofrenia e transtornos psicoticos,150-750 mg/dia (DM),quadro,750.0,yes,ok
+134,prescription,humor/TEPT,Transtorno de ansiedade generalizada,Sertralina,yes,transtorno de estresse,50-200 (TM/T1),quadro,125.0,yes,ok
+134,prescription,sono/sedacao,Esquizofrenia e transtornos psicoticos,Quetiapina,yes,Esquizofrenia e transtornos psicoticos,150-750 mg/dia (DM),quadro,750.0,yes,ok
+134,prescription,ansiedade/resgate,Transtorno bipolar - manutencao,Clonazepam,yes,Transtorno do panico,"0,5-1 mg/dia (DM)",quadro,0.5,yes,ok
+134,prescription,substancias/craving,Transtorno por uso de alcool,Acamprosato,yes,Transtorno por uso de alcool,Dose usual depende de peso e funcao renal. Esquema adulto frequente: 666 mg tres vezes/dia. Nao trata intoxicacao nem abstinencia aguda. (DM/ANVISA/APA/NICE/PENDENTE),dose_efeito,666.0,yes,ok
+135,prescription,humor/TEPT,Transtorno de ansiedade generalizada,Desvenlafaxina,yes,transtorno de estresse,50-100 (TM/T1),quadro,100.0,yes,ok
+135,prescription,sono/sedacao,Insonia,Zolpidem,yes,Insonia,"5 mg a noite: menor exposicao. 5-10 mg a noite liberacao imediata: inducao do sono. Formulacao prolongada tem dose propria. Doses maiores aumentam amnesia, comportamentos complexos e prejuizo no dia seguinte. (DM/ANVISA)",dose_efeito,5.0,yes,ok
+135,prescription,ansiedade/resgate,Transtorno de ansiedade generalizada,Bromazepam,yes,Ansiedade aguda,6-18 mg/dia (HC),quadro,12.0,yes,ok
+135,prescription,impulsividade/irritabilidade,Transtorno bipolar - manutencao,Carbamazepina,yes,Transtorno bipolar - manutencao,200–400 mg/dia: início/titulação. (DM/GG/Maudsley/CANMAT/ISBD),dose_efeito,400.0,yes,ok
+135,prescription,substancias/craving,Transtorno por uso de alcool,Naltrexona,yes,vicios,25-50 (TM/T1),quadro,25.0,yes,ok
+136,prescription,humor/TEPT,Dor neuropatica ou sindromes dolorosas,Venlafaxina,yes,TAG,75-225 (TM/T1),quadro,75.0,yes,ok
+137,prescription,humor/TEPT,Dor neuropatica ou sindromes dolorosas,Venlafaxina XR,yes,TAG,75-225 (TM/T1),quadro,150.0,yes,ok
+137,prescription,ansiedade/resgate,Transtorno de ansiedade generalizada,Diazepam,yes,TAG,2-10 (TM/T1),quadro,10.0,yes,ok
+138,prescription,humor/TEPT,Dor neuropatica ou sindromes dolorosas,Duloxetina,yes,TAG,60-120 (TM/T1),quadro,120.0,yes,ok
+138,prescription,ansiedade/resgate,Transtorno de ansiedade generalizada,Lorazepam,yes,Ansiedade grave,"0,5-1 mg por tomada: ansiolitico. 1-2 mg por tomada: maior sedacao e controle de agitacao. Protocolos de catatonia exigem avaliacao e monitorizacao. (DM/ANVISA/Maudsley)",dose_efeito,0.5,yes,ok
+138,prescription,sono/sedacao,Insonia,Zolpidem,yes,Insonia,"5 mg a noite: menor exposicao. 5-10 mg a noite liberacao imediata: inducao do sono. Formulacao prolongada tem dose propria. Doses maiores aumentam amnesia, comportamentos complexos e prejuizo no dia seguinte. (DM/ANVISA)",dose_efeito,7.5,yes,ok
+139,prescription,humor/TEPT,Transtorno depressivo maior,Fluoxetina,yes,transtorno de estresse,20-60 (TM/T1),quadro,20.0,yes,ok
+139,prescription,sono/sedacao,Insonia,Zolpidem,yes,Insonia,"5 mg a noite: menor exposicao. 5-10 mg a noite liberacao imediata: inducao do sono. Formulacao prolongada tem dose propria. Doses maiores aumentam amnesia, comportamentos complexos e prejuizo no dia seguinte. (DM/ANVISA)",dose_efeito,7.5,yes,ok
+139,prescription,ansiedade/resgate,Transtorno bipolar - manutencao,Clonazepam,yes,Transtorno do panico,"0,5-1 mg/dia (DM)",quadro,1.0,yes,ok
+139,prescription,substancias/craving,Transtorno por uso de alcool,Naltrexona,yes,vicios,25-50 (TM/T1),quadro,25.0,yes,ok
+140,prescription,humor/TEPT,Transtorno de ansiedade generalizada,Sertralina,yes,transtorno de estresse,50-200 (TM/T1),quadro,125.0,yes,ok
+140,prescription,sono/sedacao,Insonia,Trazodona,yes,Insonia,25-100 mg a noite (DM/ST-E/GG),quadro,100.0,yes,ok
+140,prescription,ansiedade/resgate,Transtorno de ansiedade generalizada,Bromazepam,yes,Ansiedade aguda,6-18 mg/dia (HC),quadro,6.0,yes,ok
+140,prescription,impulsividade/irritabilidade,Esquizofrenia e transtornos psicoticos,Quetiapina,yes,Esquizofrenia e transtornos psicoticos,150-750 mg/dia (DM),quadro,450.0,yes,ok
+140,prescription,substancias/craving,Dor neuropatica ou sindromes dolorosas,Buprenorfina,yes,Transtorno por uso de opioides,Inducao deve considerar tipo e momento do ultimo opioide. Manutencao comum 8-24 mg/dia sublingual; formulacoes injetaveis mensais possuem esquemas proprios. (DM/ANVISA),dose_efeito,24.0,yes,ok
+141,prescription,humor/TEPT,Transtorno de ansiedade generalizada,Desvenlafaxina,yes,transtorno de estresse,50-100 (TM/T1),quadro,100.0,yes,ok
+142,prescription,humor/TEPT,Dor neuropatica ou sindromes dolorosas,Venlafaxina,yes,TAG,75-225 (TM/T1),quadro,75.0,yes,ok
+142,prescription,ansiedade/resgate,Transtorno de ansiedade generalizada,Diazepam,yes,TAG,2-10 (TM/T1),quadro,6.0,yes,ok
+143,prescription,humor/TEPT,Dor neuropatica ou sindromes dolorosas,Venlafaxina XR,yes,TAG,75-225 (TM/T1),quadro,150.0,yes,ok
+143,prescription,ansiedade/resgate,Transtorno de ansiedade generalizada,Lorazepam,yes,Ansiedade grave,"0,5-1 mg por tomada: ansiolitico. 1-2 mg por tomada: maior sedacao e controle de agitacao. Protocolos de catatonia exigem avaliacao e monitorizacao. (DM/ANVISA/Maudsley)",dose_efeito,2.0,yes,ok
+143,prescription,sono/sedacao,Insonia,Trazodona,yes,Insonia,25-100 mg a noite (DM/ST-E/GG),quadro,25.0,yes,ok
+144,prescription,humor/TEPT,Dor neuropatica ou sindromes dolorosas,Duloxetina,yes,TAG,60-120 (TM/T1),quadro,120.0,yes,ok
+144,prescription,sono/sedacao,Insonia,Trazodona,yes,Insonia,25-100 mg a noite (DM/ST-E/GG),quadro,25.0,yes,ok
+144,prescription,ansiedade/resgate,Transtorno bipolar - manutencao,Clonazepam,yes,Transtorno do panico,"0,5-1 mg/dia (DM)",quadro,0.75,yes,ok
+144,prescription,substancias/craving,Dor neuropatica ou sindromes dolorosas,Buprenorfina,yes,Transtorno por uso de opioides,Inducao deve considerar tipo e momento do ultimo opioide. Manutencao comum 8-24 mg/dia sublingual; formulacoes injetaveis mensais possuem esquemas proprios. (DM/ANVISA),dose_efeito,24.0,yes,ok
+145,prescription,humor/TEPT,Transtorno depressivo maior,Fluoxetina,yes,transtorno de estresse,20-60 (TM/T1),quadro,20.0,yes,ok
+145,prescription,sono/sedacao,Insonia,Mirtazapina,yes,TAG,15-45 (TM/T1),quadro,30.0,yes,ok
+145,prescription,ansiedade/resgate,Transtorno de ansiedade generalizada,Bromazepam,yes,Ansiedade aguda,6-18 mg/dia (HC),quadro,18.0,yes,ok
+145,prescription,impulsividade/irritabilidade,Esquizofrenia e transtornos psicoticos,Risperidona,yes,Esquizofrenia e transtornos psicoticos,"0,25–1 mg/dia: baixa exposição e usos específicos. (DM/ST-PG/ST-E/GG/Maudsley)",dose_efeito,0.25,yes,ok
+145,prescription,substancias/craving,Transtorno por uso de alcool,Acamprosato,yes,Transtorno por uso de alcool,Dose usual depende de peso e funcao renal. Esquema adulto frequente: 666 mg tres vezes/dia. Nao trata intoxicacao nem abstinencia aguda. (DM/ANVISA/APA/NICE/PENDENTE),dose_efeito,666.0,yes,ok
+146,prescription,humor/TEPT,Transtorno de ansiedade generalizada,Sertralina,yes,transtorno de estresse,50-200 (TM/T1),quadro,125.0,yes,ok
+147,prescription,humor/TEPT,Transtorno de ansiedade generalizada,Desvenlafaxina,yes,transtorno de estresse,50-100 (TM/T1),quadro,100.0,yes,ok
+147,prescription,ansiedade/resgate,Transtorno de ansiedade generalizada,Diazepam,yes,TAG,2-10 (TM/T1),quadro,2.0,yes,ok
+148,prescription,humor/TEPT,Dor neuropatica ou sindromes dolorosas,Venlafaxina,yes,TAG,75-225 (TM/T1),quadro,75.0,yes,ok
+148,prescription,ansiedade/resgate,Transtorno de ansiedade generalizada,Lorazepam,yes,Ansiedade grave,"0,5-1 mg por tomada: ansiolitico. 1-2 mg por tomada: maior sedacao e controle de agitacao. Protocolos de catatonia exigem avaliacao e monitorizacao. (DM/ANVISA/Maudsley)",dose_efeito,1.25,yes,ok
+148,prescription,sono/sedacao,Insonia,Mirtazapina,yes,TAG,15-45 (TM/T1),quadro,45.0,yes,ok
+149,prescription,humor/TEPT,Dor neuropatica ou sindromes dolorosas,Venlafaxina XR,yes,TAG,75-225 (TM/T1),quadro,150.0,yes,ok
+149,prescription,sono/sedacao,Insonia,Mirtazapina,yes,TAG,15-45 (TM/T1),quadro,45.0,yes,ok
+149,prescription,ansiedade/resgate,Transtorno bipolar - manutencao,Clonazepam,yes,Transtorno do panico,"0,5-1 mg/dia (DM)",quadro,0.5,yes,ok
+149,prescription,substancias/craving,Transtorno por uso de alcool,Acamprosato,yes,Transtorno por uso de alcool,Dose usual depende de peso e funcao renal. Esquema adulto frequente: 666 mg tres vezes/dia. Nao trata intoxicacao nem abstinencia aguda. (DM/ANVISA/APA/NICE/PENDENTE),dose_efeito,666.0,yes,ok
+150,prescription,humor/TEPT,Dor neuropatica ou sindromes dolorosas,Duloxetina,yes,TAG,60-120 (TM/T1),quadro,120.0,yes,ok
+150,prescription,sono/sedacao,Esquizofrenia e transtornos psicoticos,Quetiapina,yes,Esquizofrenia e transtornos psicoticos,150-750 mg/dia (DM),quadro,150.0,yes,ok
+150,prescription,ansiedade/resgate,Transtorno de ansiedade generalizada,Bromazepam,yes,Ansiedade aguda,6-18 mg/dia (HC),quadro,12.0,yes,ok
+150,prescription,impulsividade/irritabilidade,Transtorno bipolar - manutencao,Divalproato,yes,Transtorno bipolar - mania/hipomania,750 mg/dia ate resposta; alvo serico 50-125 mcg/mL (DM),quadro,2500.0,yes,ok
+150,prescription,substancias/craving,Transtorno por uso de alcool,Naltrexona,yes,vicios,25-50 (TM/T1),quadro,25.0,yes,ok
+151,prescription,humor/TEPT,Transtorno depressivo maior,Fluoxetina,yes,transtorno de estresse,20-60 (TM/T1),quadro,20.0,yes,ok
+152,prescription,humor/TEPT,Transtorno de ansiedade generalizada,Sertralina,yes,transtorno de estresse,50-200 (TM/T1),quadro,125.0,yes,ok
+152,prescription,ansiedade/resgate,Transtorno de ansiedade generalizada,Diazepam,yes,TAG,2-10 (TM/T1),quadro,10.0,yes,ok
+153,prescription,humor/TEPT,Transtorno de ansiedade generalizada,Desvenlafaxina,yes,transtorno de estresse,50-100 (TM/T1),quadro,100.0,yes,ok
+153,prescription,ansiedade/resgate,Transtorno de ansiedade generalizada,Lorazepam,yes,Ansiedade grave,"0,5-1 mg por tomada: ansiolitico. 1-2 mg por tomada: maior sedacao e controle de agitacao. Protocolos de catatonia exigem avaliacao e monitorizacao. (DM/ANVISA/Maudsley)",dose_efeito,0.5,yes,ok
+153,prescription,sono/sedacao,Esquizofrenia e transtornos psicoticos,Quetiapina,yes,Esquizofrenia e transtornos psicoticos,150-750 mg/dia (DM),quadro,450.0,yes,ok
+154,prescription,humor/TEPT,Dor neuropatica ou sindromes dolorosas,Venlafaxina,yes,TAG,75-225 (TM/T1),quadro,75.0,yes,ok
+154,prescription,sono/sedacao,Esquizofrenia e transtornos psicoticos,Quetiapina,yes,Esquizofrenia e transtornos psicoticos,150-750 mg/dia (DM),quadro,450.0,yes,ok
+154,prescription,ansiedade/resgate,Transtorno bipolar - manutencao,Clonazepam,yes,Transtorno do panico,"0,5-1 mg/dia (DM)",quadro,1.0,yes,ok
+154,prescription,substancias/craving,Transtorno por uso de alcool,Naltrexona,yes,vicios,25-50 (TM/T1),quadro,25.0,yes,ok
+155,prescription,humor/TEPT,Dor neuropatica ou sindromes dolorosas,Venlafaxina XR,yes,TAG,75-225 (TM/T1),quadro,150.0,yes,ok
+155,prescription,sono/sedacao,Insonia,Zolpidem,yes,Insonia,"5 mg a noite: menor exposicao. 5-10 mg a noite liberacao imediata: inducao do sono. Formulacao prolongada tem dose propria. Doses maiores aumentam amnesia, comportamentos complexos e prejuizo no dia seguinte. (DM/ANVISA)",dose_efeito,10.0,yes,ok
+155,prescription,ansiedade/resgate,Transtorno de ansiedade generalizada,Bromazepam,yes,Ansiedade aguda,6-18 mg/dia (HC),quadro,6.0,yes,ok
+155,prescription,impulsividade/irritabilidade,Transtorno bipolar - manutencao,Carbamazepina,yes,Transtorno bipolar - manutencao,200–400 mg/dia: início/titulação. (DM/GG/Maudsley/CANMAT/ISBD),dose_efeito,300.0,yes,ok
+155,prescription,substancias/craving,Dor neuropatica ou sindromes dolorosas,Buprenorfina,yes,Transtorno por uso de opioides,Inducao deve considerar tipo e momento do ultimo opioide. Manutencao comum 8-24 mg/dia sublingual; formulacoes injetaveis mensais possuem esquemas proprios. (DM/ANVISA),dose_efeito,24.0,yes,ok
+156,prescription,humor/TEPT,Dor neuropatica ou sindromes dolorosas,Duloxetina,yes,TAG,60-120 (TM/T1),quadro,120.0,yes,ok
+157,prescription,humor/TEPT,Transtorno depressivo maior,Fluoxetina,yes,transtorno de estresse,20-60 (TM/T1),quadro,20.0,yes,ok
+157,prescription,ansiedade/resgate,Transtorno de ansiedade generalizada,Diazepam,yes,TAG,2-10 (TM/T1),quadro,6.0,yes,ok
+158,prescription,humor/TEPT,Transtorno de ansiedade generalizada,Sertralina,yes,transtorno de estresse,50-200 (TM/T1),quadro,125.0,yes,ok
+158,prescription,ansiedade/resgate,Transtorno de ansiedade generalizada,Lorazepam,yes,Ansiedade grave,"0,5-1 mg por tomada: ansiolitico. 1-2 mg por tomada: maior sedacao e controle de agitacao. Protocolos de catatonia exigem avaliacao e monitorizacao. (DM/ANVISA/Maudsley)",dose_efeito,2.0,yes,ok
+158,prescription,sono/sedacao,Insonia,Zolpidem,yes,Insonia,"5 mg a noite: menor exposicao. 5-10 mg a noite liberacao imediata: inducao do sono. Formulacao prolongada tem dose propria. Doses maiores aumentam amnesia, comportamentos complexos e prejuizo no dia seguinte. (DM/ANVISA)",dose_efeito,5.0,yes,ok
+159,prescription,humor/TEPT,Transtorno de ansiedade generalizada,Desvenlafaxina,yes,transtorno de estresse,50-100 (TM/T1),quadro,100.0,yes,ok
+159,prescription,sono/sedacao,Insonia,Zolpidem,yes,Insonia,"5 mg a noite: menor exposicao. 5-10 mg a noite liberacao imediata: inducao do sono. Formulacao prolongada tem dose propria. Doses maiores aumentam amnesia, comportamentos complexos e prejuizo no dia seguinte. (DM/ANVISA)",dose_efeito,5.0,yes,ok
+159,prescription,ansiedade/resgate,Transtorno bipolar - manutencao,Clonazepam,yes,Transtorno do panico,"0,5-1 mg/dia (DM)",quadro,0.75,yes,ok
+159,prescription,substancias/craving,Dor neuropatica ou sindromes dolorosas,Buprenorfina,yes,Transtorno por uso de opioides,Inducao deve considerar tipo e momento do ultimo opioide. Manutencao comum 8-24 mg/dia sublingual; formulacoes injetaveis mensais possuem esquemas proprios. (DM/ANVISA),dose_efeito,24.0,yes,ok
+160,prescription,humor/TEPT,Dor neuropatica ou sindromes dolorosas,Venlafaxina,yes,TAG,75-225 (TM/T1),quadro,75.0,yes,ok
+160,prescription,sono/sedacao,Insonia,Trazodona,yes,Insonia,25-100 mg a noite (DM/ST-E/GG),quadro,62.5,yes,ok
+160,prescription,ansiedade/resgate,Transtorno de ansiedade generalizada,Bromazepam,yes,Ansiedade aguda,6-18 mg/dia (HC),quadro,18.0,yes,ok
+160,prescription,impulsividade/irritabilidade,Esquizofrenia e transtornos psicoticos,Quetiapina,yes,Esquizofrenia e transtornos psicoticos,150-750 mg/dia (DM),quadro,150.0,yes,ok
+160,prescription,substancias/craving,Transtorno por uso de alcool,Acamprosato,yes,Transtorno por uso de alcool,Dose usual depende de peso e funcao renal. Esquema adulto frequente: 666 mg tres vezes/dia. Nao trata intoxicacao nem abstinencia aguda. (DM/ANVISA/APA/NICE/PENDENTE),dose_efeito,666.0,yes,ok
+161,medication,substancias/craving,Transtorno por uso de alcool,Acamprosato,yes,Transtorno por uso de alcool,Dose usual depende de peso e funcao renal. Esquema adulto frequente: 666 mg tres vezes/dia. Nao trata intoxicacao nem abstinencia aguda. (DM/ANVISA/APA/NICE/PENDENTE),dose_efeito,666.0,yes,ok
+162,medication,sono/sedacao,Insonia,Agomelatina,yes,TAG,25-50 (TM/T1),quadro,37.5,yes,ok
+163,medication,sono/sedacao,Insonia,Agomelatina,yes,TAG,25-50 (TM/T1),quadro,50.0,yes,ok
+164,medication,sono/sedacao,Insonia,Agomelatina,yes,TAG,25-50 (TM/T1),quadro,25.0,yes,ok
+165,medication,ansiedade/resgate,Transtorno de ansiedade generalizada,Alprazolam,yes,Ansiedade aguda,"0,25-0,5 mg 2-3 vezes/dia: ansiolitico inicial. 1-4 mg/dia: faixa comum para ansiedade ou panico. Acima de 4 mg/dia: maior exposicao, risco crescente de sedacao, dependencia e retirada. (DM/ANVISA/ST-E/GG/Maudsley)",dose_efeito,4.0,yes,ok
+166,medication,psicose/organizacao do pensamento,Esquizofrenia e transtornos psicoticos,Amissulprida,yes,Esquizofrenia e transtornos psicoticos,"50-300 mg/dia: em algumas referencias, sintomas negativos/depressivos; sem fronteira rigida. 400-800 mg/dia: faixa antipsicotica comum. Ate 1200 mg/dia em contextos selecionados conforme bula. (DM/ANVISA/ST-E/Maudsley)",dose_efeito,50.0,yes,ok
+167,medication,dor/sintomas somaticos,Dor neuropatica ou sindromes dolorosas,Amitriptilina,yes,TAG,50-150 (TM/T1),quadro,100.0,yes,ok
+168,medication,dor/sintomas somaticos,Dor neuropatica ou sindromes dolorosas,Amitriptilina,yes,TAG,50-150 (TM/T1),quadro,150.0,yes,ok
+169,medication,dor/sintomas somaticos,Dor neuropatica ou sindromes dolorosas,Amitriptilina,yes,TAG,50-150 (TM/T1),quadro,50.0,yes,ok
+170,medication,estabilizacao do humor,Esquizofrenia e transtornos psicoticos,Aripiprazol,yes,Esquizofrenia e transtornos psicoticos,2–5 mg/dia: potencialização antidepressiva. (DM/ST-PG/ST-E/GG/Maudsley),dose_efeito,5.0,yes,ok
+171,medication,estabilizacao do humor,Esquizofrenia e transtornos psicoticos,Aripiprazol,yes,Esquizofrenia e transtornos psicoticos,2–5 mg/dia: potencialização antidepressiva. (DM/ST-PG/ST-E/GG/Maudsley),dose_efeito,2.0,yes,ok
+172,medication,estabilizacao do humor,Esquizofrenia e transtornos psicoticos,Aripiprazol,yes,Esquizofrenia e transtornos psicoticos,2–5 mg/dia: potencialização antidepressiva. (DM/ST-PG/ST-E/GG/Maudsley),dose_efeito,3.5,yes,ok
+173,medication,estabilizacao do humor,Esquizofrenia e transtornos psicoticos,Asenapina,yes,Esquizofrenia e transtornos psicoticos,5 mg sublingual duas vezes/dia: faixa inicial comum. 10 mg duas vezes/dia: maior exposicao; beneficio adicional varia. Exige tecnica sublingual correta. (DM/EMA/ST-E/CANMAT/ISBD),dose_efeito,5.0,yes,ok
+174,medication,energia/cognicao,Outro contexto ja conhecido / nao cadastrado,Atomoxetina,yes,TDAH,"Adultos frequentemente iniciam em 40 mg/dia, alvo comum 80 mg/dia, ate 100 mg/dia. Criancas/adolescentes: titulacao baseada em peso. (DM/ANVISA/GG/NICE)",dose_efeito,70.0,yes,ok
+175,medication,psicose/organizacao do pensamento,Esquizofrenia e transtornos psicoticos,Brexpiprazol,yes,Esquizofrenia e transtornos psicoticos,"0,5-1 mg/dia: inicio/titulacao. 1-3 mg/dia: potencializacao antidepressiva. 2-4 mg/dia: faixa antipsicotica comum. (DM/ST-E/Maudsley/APA)",dose_efeito,4.0,yes,ok
+176,medication,ansiedade/resgate,Transtorno de ansiedade generalizada,Bromazepam,yes,Ansiedade aguda,6-18 mg/dia (HC),quadro,6.0,yes,ok
+177,medication,dor/sintomas somaticos,Dor neuropatica ou sindromes dolorosas,Buprenorfina,yes,Dor,Inducao deve considerar tipo e momento do ultimo opioide. Manutencao comum 8-24 mg/dia sublingual; formulacoes injetaveis mensais possuem esquemas proprios. (DM/ANVISA),dose_efeito,16.0,yes,ok
+178,medication,humor/TEPT,Transtorno depressivo maior,Bupropiona,yes,transtorno de estresse,120-300 (TM/T1),quadro,300.0,yes,ok
+179,medication,humor/TEPT,Transtorno depressivo maior,Bupropiona,yes,transtorno de estresse,120-300 (TM/T1),quadro,120.0,yes,ok
+180,medication,humor/TEPT,Transtorno depressivo maior,Bupropiona,yes,transtorno de estresse,120-300 (TM/T1),quadro,210.0,yes,ok
+181,medication,humor/TEPT,Transtorno depressivo maior,Bupropiona XL,yes,transtorno de estresse,120-300 (TM/T1),quadro,120.0,yes,ok
+182,medication,humor/TEPT,Transtorno depressivo maior,Bupropiona XL,yes,transtorno de estresse,120-300 (TM/T1),quadro,210.0,yes,ok
+183,medication,humor/TEPT,Transtorno depressivo maior,Bupropiona XL,yes,transtorno de estresse,120-300 (TM/T1),quadro,300.0,yes,ok
+184,medication,ansiedade/resgate,Transtorno de ansiedade generalizada,Buspirona,yes,Ansiedade cronica,"5 mg 2-3 vezes/dia ou 7,5 mg duas vezes/dia: inicio. 20-30 mg/dia: faixa terapeutica comum. Ate 60 mg/dia: limite descrito em algumas bulas. (DM/ST-E/GG)",dose_efeito,31.0,yes,ok
+185,medication,dor/sintomas somaticos,Transtorno bipolar - manutencao,Carbamazepina,yes,Transtorno bipolar - manutencao,200–400 mg/dia: início/titulação. (DM/GG/Maudsley/CANMAT/ISBD),dose_efeito,400.0,yes,ok
+186,medication,dor/sintomas somaticos,Transtorno bipolar - manutencao,Carbamazepina,yes,Transtorno bipolar - manutencao,200–400 mg/dia: início/titulação. (DM/GG/Maudsley/CANMAT/ISBD),dose_efeito,200.0,yes,ok
+187,medication,estabilizacao do humor,Esquizofrenia e transtornos psicoticos,Cariprazina,yes,Esquizofrenia e transtornos psicoticos,"1,5 mg/dia: inicial e faixa usada em depressao bipolar/potencializacao conforme jurisdicao. 3-6 mg/dia: maior efeito antiman?aco/antipsicotico. (DM/ANVISA/ST-E/CANMAT/ISBD)",dose_efeito,1.5,yes,ok
+188,medication,humor/TEPT,Transtorno de ansiedade generalizada,Citalopram,yes,transtorno de estresse,20-40 (TM/T1),quadro,30.0,yes,ok
+189,medication,humor/TEPT,Transtorno de ansiedade generalizada,Citalopram,yes,transtorno de estresse,20-40 (TM/T1),quadro,40.0,yes,ok
+190,medication,humor/TEPT,Transtorno de ansiedade generalizada,Citalopram,yes,transtorno de estresse,20-40 (TM/T1),quadro,20.0,yes,ok
+191,medication,ansiedade/resgate,Transtorno bipolar - manutencao,Clobazam,yes,Ansiedade,5-10 mg/dia: inicio com efeito ansiolitico/sedativo. 10-30 mg/dia: maior efeito anticonvulsivante. Ate 40 mg/dia em adultos conforme indicacao/bula. (DM/ANVISA/GG),dose_efeito,40.0,yes,ok
+192,medication,dor/sintomas somaticos,Dor neuropatica ou sindromes dolorosas,Clomipramina,yes,dor,25-75 (TM/T1),quadro,25.0,yes,ok
+193,medication,dor/sintomas somaticos,Dor neuropatica ou sindromes dolorosas,Clomipramina,yes,dor,25-75 (TM/T1),quadro,50.0,yes,ok
+194,medication,dor/sintomas somaticos,Dor neuropatica ou sindromes dolorosas,Clomipramina,yes,dor,25-75 (TM/T1),quadro,75.0,yes,ok
+195,medication,ansiedade/resgate,Transtorno bipolar - manutencao,Clonazepam,yes,Transtorno do panico,"0,5-1 mg/dia (DM)",quadro,0.75,yes,ok
+196,medication,energia/cognicao,Outro contexto ja conhecido / nao cadastrado,Clonidina,yes,TDAH,"Para TDAH, registrar formulacao XR separadamente. Doses baixas reduzem hiperatividade/impulsividade e podem sedar. Maior dose aumenta hipotensao, bradicardia e sonolencia. (DM/GG/NICE)",dose_efeito_contextual,50,yes,ok
+197,medication,psicose/organizacao do pensamento,Esquizofrenia e transtornos psicoticos,Clorpromazina,yes,Esquizofrenia e transtornos psicoticos,"25–100 mg/dia: sedação, antagonismo H1, muscarínico e α1 muito aparentes. (DM/ST-E/GG/Maudsley)",dose_efeito,1.0,yes,ok
+198,medication,psicose/organizacao do pensamento,Esquizofrenia e transtornos psicoticos,Clorpromazina,yes,Esquizofrenia e transtornos psicoticos,"25–100 mg/dia: sedação, antagonismo H1, muscarínico e α1 muito aparentes. (DM/ST-E/GG/Maudsley)",dose_efeito,50.5,yes,ok
+199,medication,psicose/organizacao do pensamento,Esquizofrenia e transtornos psicoticos,Clorpromazina,yes,Esquizofrenia e transtornos psicoticos,"25–100 mg/dia: sedação, antagonismo H1, muscarínico e α1 muito aparentes. (DM/ST-E/GG/Maudsley)",dose_efeito,100.0,yes,ok
+200,medication,psicose/organizacao do pensamento,Esquizofrenia e transtornos psicoticos,Clozapina,yes,Esquizofrenia e transtornos psicoticos,"12,5–50 mg/dia: titulação inicial; predominam hipotensão, sedação e efeitos autonômicos. (DM/ST-E/GG/Maudsley)",dose_efeito,31.25,yes,ok
+201,medication,psicose/organizacao do pensamento,Esquizofrenia e transtornos psicoticos,Clozapina,yes,Esquizofrenia e transtornos psicoticos,"12,5–50 mg/dia: titulação inicial; predominam hipotensão, sedação e efeitos autonômicos. (DM/ST-E/GG/Maudsley)",dose_efeito,50.0,yes,ok
+202,medication,psicose/organizacao do pensamento,Esquizofrenia e transtornos psicoticos,Clozapina,yes,Esquizofrenia e transtornos psicoticos,"12,5–50 mg/dia: titulação inicial; predominam hipotensão, sedação e efeitos autonômicos. (DM/ST-E/GG/Maudsley)",dose_efeito,12.5,yes,ok
+203,medication,psicose/organizacao do pensamento,Esquizofrenia e transtornos psicoticos,Clozapina,yes,Esquizofrenia e transtornos psicoticos,"12,5–50 mg/dia: titulação inicial; predominam hipotensão, sedação e efeitos autonômicos. (DM/ST-E/GG/Maudsley)",dose_efeito,31.25,yes,ok
+204,medication,psicose/organizacao do pensamento,Esquizofrenia e transtornos psicoticos,Clozapina,yes,Esquizofrenia e transtornos psicoticos,"12,5–50 mg/dia: titulação inicial; predominam hipotensão, sedação e efeitos autonômicos. (DM/ST-E/GG/Maudsley)",dose_efeito,50.0,yes,ok
+205,medication,dor/sintomas somaticos,Dor neuropatica ou sindromes dolorosas,Desipramina,yes,Transtorno depressivo maior,25–50 mg/dia: titulação. (DM/ST-E/GG/Maudsley),dose_efeito,50.0,yes,ok
+206,medication,dor/sintomas somaticos,Dor neuropatica ou sindromes dolorosas,Desipramina,yes,Transtorno depressivo maior,25–50 mg/dia: titulação. (DM/ST-E/GG/Maudsley),dose_efeito,25.0,yes,ok
+207,medication,dor/sintomas somaticos,Dor neuropatica ou sindromes dolorosas,Desipramina,yes,Transtorno depressivo maior,25–50 mg/dia: titulação. (DM/ST-E/GG/Maudsley),dose_efeito,37.5,yes,ok
+208,medication,humor/TEPT,Transtorno de ansiedade generalizada,Desvenlafaxina,yes,transtorno de estresse,50-100 (TM/T1),quadro,50.0,yes,ok
+209,medication,humor/TEPT,Transtorno de ansiedade generalizada,Desvenlafaxina,yes,transtorno de estresse,50-100 (TM/T1),quadro,75.0,yes,ok
+210,medication,substancias/craving,Transtorno de ansiedade generalizada,Diazepam,yes,TAG,2-10 (TM/T1),quadro,6.0,yes,ok
+211,medication,substancias/craving,Transtorno por uso de alcool,Dissulfiram,yes,Transtorno por uso de alcool,250 mg/dia: dose de manutencao frequente. Faixa aproximada 125-500 mg/dia conforme protocolo. Inibe aldeido-desidrogenase; alcool provoca reacao potencialmente grave. (DM/ANVISA/APA/NICE),dose_efeito,500.0,yes,ok
+212,medication,dor/sintomas somaticos,Transtorno bipolar - manutencao,Divalproato,yes,Transtorno bipolar - mania/hipomania,750 mg/dia ate resposta; alvo serico 50-125 mcg/mL (DM),quadro,750.0,yes,ok
+213,medication,dor/sintomas somaticos,Dor neuropatica ou sindromes dolorosas,Donepezila,yes,Doenca de Alzheimer,5 mg/dia: inicio. 10 mg/dia: manutencao comum apos tolerabilidade. 23 mg/dia: formulacao/indicacao especifica para Alzheimer moderado-grave. (DM/ANVISA/NICE),dose_efeito,14.0,yes,ok
+214,medication,dor/sintomas somaticos,Dor neuropatica ou sindromes dolorosas,Dosulepina,yes,TAG,75-150 (TM/T1),quadro,150.0,yes,ok
+215,medication,dor/sintomas somaticos,Dor neuropatica ou sindromes dolorosas,Dosulepina,yes,TAG,75-150 (TM/T1),quadro,75.0,yes,ok
+216,medication,dor/sintomas somaticos,Dor neuropatica ou sindromes dolorosas,Dosulepina,yes,TAG,75-150 (TM/T1),quadro,112.5,yes,ok
+217,medication,dor/sintomas somaticos,Dor neuropatica ou sindromes dolorosas,Doxepina,yes,TAG,75-150 (TM/T1),quadro,75.0,yes,ok
+218,medication,dor/sintomas somaticos,Dor neuropatica ou sindromes dolorosas,Doxepina,yes,TAG,75-150 (TM/T1),quadro,112.5,yes,ok
+219,medication,dor/sintomas somaticos,Dor neuropatica ou sindromes dolorosas,Doxepina,yes,TAG,75-150 (TM/T1),quadro,150.0,yes,ok
+220,medication,dor/sintomas somaticos,Dor neuropatica ou sindromes dolorosas,Doxepina,yes,TAG,75-150 (TM/T1),quadro,75.0,yes,ok
+221,medication,psicose/organizacao do pensamento,Esquizofrenia e transtornos psicoticos,Droperidol,yes,Esquizofrenia manutencao,Dose depende da via e finalidade. Doses baixas: antiemetico/sedacao. Doses para agitacao: maior antagonismo D2 e sedacao com monitorizacao. (DM/GG),dose_efeito,2.0,yes,ok
+222,medication,dor/sintomas somaticos,Dor neuropatica ou sindromes dolorosas,Duloxetina,yes,dor,60-120 (TM/T1),quadro,120.0,yes,ok
+223,medication,dor/sintomas somaticos,Dor neuropatica ou sindromes dolorosas,Duloxetina,yes,dor,60-120 (TM/T1),quadro,60.0,yes,ok
+224,medication,dor/sintomas somaticos,Dor neuropatica ou sindromes dolorosas,Duloxetina,yes,dor,60-120 (TM/T1),quadro,90.0,yes,ok
+225,medication,humor/TEPT,Transtorno de ansiedade generalizada,Escitalopram,yes,transtorno de estresse,10-20 (TM/T1),quadro,10.0,yes,ok
+226,medication,humor/TEPT,Transtorno de ansiedade generalizada,Escitalopram,yes,transtorno de estresse,10-20 (TM/T1),quadro,15.0,yes,ok
+227,medication,humor/TEPT,Transtorno de ansiedade generalizada,Escitalopram,yes,transtorno de estresse,10-20 (TM/T1),quadro,20.0,yes,ok
+228,medication,sono/sedacao,Insonia,Eszopiclona,yes,Insonia,1 mg a noite: inducao do sono. 2-3 mg a noite: maior efeito em manutencao do sono com maior risco de prejuizo no dia seguinte. (DM/GG),dose_efeito,2.0,yes,ok
+229,medication,dor/sintomas somaticos,Transtorno bipolar - manutencao,Fenitoina,yes,Epilepsia,"A dose não deve ser dividida por mecanismo.
+Possui farmacocinética não linear: pequenos aumentos podem produzir elevação desproporcional da concentração.
+O manejo deve ser guiado por indicação neurológica, níveis séricos, albumina, interações e sinais de toxicidade.
+
+A fenitoína é potente indutora de enzimas hepáticas e apresenta numerosas interações. (DM/GG/Maudsley)",dose_efeito_contextual,50,yes,ok
+230,medication,dor/sintomas somaticos,Transtorno bipolar - manutencao,Fenobarbital,yes,Epilepsia,"Doses menores: sedação e efeito hipnótico tornam-se proeminentes.
+Faixa anticonvulsivante: deve ser definida por peso, resposta e, quando necessário, concentração sérica.
+Doses maiores aumentam depressão do sistema nervoso central, sem criar um novo mecanismo terapêutico.
+
+Para um motor psiquiátrico, provavelmente deveria ficar fora do ranking antidepressivo/antipsicótico comum. (DM/GG/Maudsley)",dose_efeito_contextual,50,yes,ok
+231,medication,humor/TEPT,Transtorno depressivo maior,Fluoxetina,yes,transtorno de estresse,20-60 (TM/T1),quadro,40.0,yes,ok
+232,medication,humor/TEPT,Transtorno depressivo maior,Fluoxetina,yes,transtorno de estresse,20-60 (TM/T1),quadro,60.0,yes,ok
+233,medication,humor/TEPT,Transtorno depressivo maior,Fluoxetina,yes,transtorno de estresse,20-60 (TM/T1),quadro,20.0,yes,ok
+234,medication,humor/TEPT,Transtorno de ansiedade generalizada,Fluvoxamina,yes,transtorno de estresse,100-200 (TM/T1),quadro,200.0,yes,ok
+235,medication,humor/TEPT,Transtorno de ansiedade generalizada,Fluvoxamina,yes,transtorno de estresse,100-200 (TM/T1),quadro,100.0,yes,ok
+236,medication,humor/TEPT,Transtorno de ansiedade generalizada,Fluvoxamina,yes,transtorno de estresse,100-200 (TM/T1),quadro,150.0,yes,ok
+237,medication,dor/sintomas somaticos,Dor neuropatica ou sindromes dolorosas,Galantamina,yes,Doenca de Alzheimer,8 mg/dia: inicio em formulacoes prolongadas. 16-24 mg/dia: manutencao. (DM/ANVISA/NICE),dose_efeito,8.0,yes,ok
+238,medication,energia/cognicao,Outro contexto ja conhecido / nao cadastrado,Guanfacina XR,yes,TDAH,1 mg/dia: inicio. 1-4 mg/dia: faixa comum em criancas/adolescentes; alguns rotulos permitem doses maiores conforme idade/peso. (DM/NICE),dose_efeito,2.5,yes,ok
+239,medication,psicose/organizacao do pensamento,Esquizofrenia e transtornos psicoticos,Haloperidol,yes,Esquizofrenia e transtornos psicoticos,"0,5–2 mg/dia: baixa exposição; ainda há bloqueio D2, com uso dependente do quadro. (DM/ST-E/GG/Maudsley)",dose_efeito,2.0,yes,ok
+240,medication,psicose/organizacao do pensamento,Esquizofrenia e transtornos psicoticos,Haloperidol,yes,Esquizofrenia e transtornos psicoticos,"0,5–2 mg/dia: baixa exposição; ainda há bloqueio D2, com uso dependente do quadro. (DM/ST-E/GG/Maudsley)",dose_efeito,0.5,yes,ok
+241,medication,psicose/organizacao do pensamento,Esquizofrenia e transtornos psicoticos,Haloperidol,yes,Esquizofrenia e transtornos psicoticos,"0,5–2 mg/dia: baixa exposição; ainda há bloqueio D2, com uso dependente do quadro. (DM/ST-E/GG/Maudsley)",dose_efeito,1.25,yes,ok
+242,medication,dor/sintomas somaticos,Dor neuropatica ou sindromes dolorosas,Imipramina,yes,TAG,75-150 (TM/T1),quadro,75.0,yes,ok
+243,medication,dor/sintomas somaticos,Dor neuropatica ou sindromes dolorosas,Imipramina,yes,TAG,75-150 (TM/T1),quadro,112.5,yes,ok
+244,medication,dor/sintomas somaticos,Dor neuropatica ou sindromes dolorosas,Imipramina,yes,TAG,75-150 (TM/T1),quadro,150.0,yes,ok
+245,medication,dor/sintomas somaticos,Transtorno bipolar - manutencao,Lamotrigina,yes,Transtorno bipolar - manutencao,"25 mg/dia: etapa inicial comum, não dose terapêutica final. (DM/ST-E/GG/Maudsley/CANMAT/ISBD)",dose_efeito,25.0,yes,ok
+246,medication,dor/sintomas somaticos,Transtorno bipolar - manutencao,Lamotrigina,yes,Transtorno bipolar - manutencao,"25 mg/dia: etapa inicial comum, não dose terapêutica final. (DM/ST-E/GG/Maudsley/CANMAT/ISBD)",dose_efeito,25.0,yes,ok
+247,medication,dor/sintomas somaticos,Transtorno bipolar - manutencao,Lamotrigina,yes,Transtorno bipolar - manutencao,"25 mg/dia: etapa inicial comum, não dose terapêutica final. (DM/ST-E/GG/Maudsley/CANMAT/ISBD)",dose_efeito,25.0,yes,ok
+248,medication,psicose/organizacao do pensamento,Esquizofrenia e transtornos psicoticos,Levomepromazina,yes,Esquizofrenia e transtornos psicoticos,"5–25 mg/dia: sedação intensa, antagonismo H1, α1 e muscarínico. (DM/ANVISA/ST-E/Maudsley/PENDENTE)",dose_efeito,25.0,yes,ok
+249,medication,psicose/organizacao do pensamento,Esquizofrenia e transtornos psicoticos,Levomepromazina,yes,Esquizofrenia e transtornos psicoticos,"5–25 mg/dia: sedação intensa, antagonismo H1, α1 e muscarínico. (DM/ANVISA/ST-E/Maudsley/PENDENTE)",dose_efeito,1.0,yes,ok
+250,medication,psicose/organizacao do pensamento,Esquizofrenia e transtornos psicoticos,Levomepromazina,yes,Esquizofrenia e transtornos psicoticos,"5–25 mg/dia: sedação intensa, antagonismo H1, α1 e muscarínico. (DM/ANVISA/ST-E/Maudsley/PENDENTE)",dose_efeito,13.0,yes,ok
+251,medication,energia/cognicao,Outro contexto ja conhecido / nao cadastrado,Lisdexanfetamina,yes,TDAH,30 mg pela manha: inicio comum. 50-70 mg/dia: maior efeito estimulante; 70 mg costuma ser limite diario em bulas. (DM/ANVISA/GG/NICE),dose_efeito,30.0,yes,ok
+252,medication,dor/sintomas somaticos,Transtorno bipolar - manutencao,Litio,yes,Transtorno bipolar - manutencao,"Manutenção: litemia frequentemente em torno de 0,6–1,0 mEq/L. (DM/ST-E/GG/Maudsley/CANMAT/ISBD)",dose_efeito,0.8,yes,ok
+253,medication,dor/sintomas somaticos,Transtorno bipolar - manutencao,Litio,yes,Transtorno bipolar - manutencao,"Manutenção: litemia frequentemente em torno de 0,6–1,0 mEq/L. (DM/ST-E/GG/Maudsley/CANMAT/ISBD)",dose_efeito,1.0,yes,ok
+254,medication,substancias/craving,Transtorno de ansiedade generalizada,Lorazepam,yes,Ansiedade grave,"0,5-1 mg por tomada: ansiolitico. 1-2 mg por tomada: maior sedacao e controle de agitacao. Protocolos de catatonia exigem avaliacao e monitorizacao. (DM/ANVISA/Maudsley)",dose_efeito,2.0,yes,ok
+255,medication,estabilizacao do humor,Esquizofrenia e transtornos psicoticos,Lurasidona,yes,Esquizofrenia e transtornos psicoticos,"20–120 mg/dia: depressão bipolar, conforme bula e população. (DM/ST-PG/ST-E/GG/Maudsley)",dose_efeito,20.0,yes,ok
+256,medication,estabilizacao do humor,Esquizofrenia e transtornos psicoticos,Lurasidona,yes,Esquizofrenia e transtornos psicoticos,"20–120 mg/dia: depressão bipolar, conforme bula e população. (DM/ST-PG/ST-E/GG/Maudsley)",dose_efeito,70.0,yes,ok
+257,medication,dor/sintomas somaticos,Dor neuropatica ou sindromes dolorosas,Maprotilina,yes,dor,25-75 (TM/T1),quadro,50.0,yes,ok
+258,medication,dor/sintomas somaticos,Dor neuropatica ou sindromes dolorosas,Maprotilina,yes,dor,25-75 (TM/T1),quadro,75.0,yes,ok
+259,medication,dor/sintomas somaticos,Dor neuropatica ou sindromes dolorosas,Maprotilina,yes,dor,25-75 (TM/T1),quadro,25.0,yes,ok
+260,medication,dor/sintomas somaticos,Dor neuropatica ou sindromes dolorosas,Maprotilina,yes,dor,25-75 (TM/T1),quadro,50.0,yes,ok
+261,medication,dor/sintomas somaticos,Dor neuropatica ou sindromes dolorosas,Memantina,yes,Associacao com inibidor acetilcolinesterase,5 mg/dia: inicio. Titulacao semanal. 20 mg/dia: alvo usual com funcao renal preservada. (DM/ANVISA/NICE),dose_efeito,20.0,yes,ok
+262,medication,dor/sintomas somaticos,Dor neuropatica ou sindromes dolorosas,Metadona,yes,Dor cronica,Inducao conservadora devido a meia-vida longa e acumulo. Dose de manutencao individualizada; nao existe faixa unica segura. (DM/ANVISA),dose_efeito_contextual,50,yes,ok
+263,medication,energia/cognicao,Outro contexto ja conhecido / nao cadastrado,Metilfenidato IR,yes,TDAH,5 mg uma ou duas vezes/dia: inicio frequente. 20-60 mg/dia: faixa comum dividida; limite depende da bula e idade. (DM/ANVISA/GG/NICE),dose_efeito,32.5,yes,ok
+264,medication,energia/cognicao,Outro contexto ja conhecido / nao cadastrado,Metilfenidato LP,yes,TDAH,18-72 mg uma vez ao dia pela manha (DM),quadro,72.0,yes,ok
+265,medication,sono/sedacao,Insonia,Mianserina,yes,TAG,30-90 (TM/T1),quadro,30.0,yes,ok
+266,medication,sono/sedacao,Insonia,Mianserina,yes,TAG,30-90 (TM/T1),quadro,60.0,yes,ok
+267,medication,sono/sedacao,Insonia,Mianserina,yes,TAG,30-90 (TM/T1),quadro,90.0,yes,ok
+268,medication,ansiedade/resgate,Transtorno depressivo maior,Midazolam,yes,Sedacao procedural,"Dose depende de via, peso, idade, condicao clinica e objetivo de sedacao. Doses menores: ansiolise/amnesia. Doses maiores ou repetidas: sedacao profunda, anticonvulsivante e risco respiratorio. (DM/ANVISA/GG)",dose_efeito_contextual,50,yes,ok
+269,medication,sono/sedacao,Insonia,Mirtazapina,yes,TAG,15-45 (TM/T1),quadro,45.0,yes,ok
+270,medication,sono/sedacao,Insonia,Mirtazapina,yes,TAG,15-45 (TM/T1),quadro,15.0,yes,ok
+271,medication,sono/sedacao,Insonia,Mirtazapina,yes,TAG,15-45 (TM/T1),quadro,30.0,yes,ok
+272,medication,sono/sedacao,Insonia,Mirtazapina,yes,TAG,15-45 (TM/T1),quadro,45.0,yes,ok
+273,medication,substancias/craving,Transtorno por uso de opioides,Naloxona,yes,Overdose por opioides,"Dose depende de via e resposta respiratoria; pode ser repetida. Objetivo e restaurar ventilacao, nao despertar completamente. (DM)",dose_efeito_contextual,50,yes,ok
+274,medication,compulsividade/TOC,Transtorno por uso de alcool,Naltrexona,yes,vicios,25-50 (TM/T1),quadro,37.5,yes,ok
+275,medication,compulsividade/TOC,Transtorno por uso de alcool,Naltrexona,yes,vicios,25-50 (TM/T1),quadro,50.0,yes,ok
+276,medication,compulsividade/TOC,Transtorno por uso de alcool,Naltrexona,yes,vicios,25-50 (TM/T1),quadro,25.0,yes,ok
+277,medication,dor/sintomas somaticos,Dor neuropatica ou sindromes dolorosas,Nortriptilina,yes,TAG,50-150 (TM/T1),quadro,150.0,yes,ok
+278,medication,dor/sintomas somaticos,Dor neuropatica ou sindromes dolorosas,Nortriptilina,yes,TAG,50-150 (TM/T1),quadro,50.0,yes,ok
+279,medication,dor/sintomas somaticos,Dor neuropatica ou sindromes dolorosas,Nortriptilina,yes,TAG,50-150 (TM/T1),quadro,100.0,yes,ok
+280,medication,sono/sedacao,Esquizofrenia e transtornos psicoticos,Olanzapina,yes,Esquizofrenia e transtornos psicoticos,"2,5–5 mg/dia: baixa exposição; sedação e aumento do apetite já podem ocorrer. (DM/ST-PG/ST-E/GG/Maudsley)",dose_efeito,2.5,yes,ok
+281,medication,sono/sedacao,Esquizofrenia e transtornos psicoticos,Olanzapina,yes,Esquizofrenia e transtornos psicoticos,"2,5–5 mg/dia: baixa exposição; sedação e aumento do apetite já podem ocorrer. (DM/ST-PG/ST-E/GG/Maudsley)",dose_efeito,3.75,yes,ok
+282,medication,sono/sedacao,Esquizofrenia e transtornos psicoticos,Olanzapina,yes,Esquizofrenia e transtornos psicoticos,"2,5–5 mg/dia: baixa exposição; sedação e aumento do apetite já podem ocorrer. (DM/ST-PG/ST-E/GG/Maudsley)",dose_efeito,5.0,yes,ok
+283,medication,substancias/craving,Transtorno de ansiedade generalizada,Oxazepam,yes,TAG,10-15 (TM/T1),quadro,12.5,yes,ok
+284,medication,dor/sintomas somaticos,Transtorno bipolar - manutencao,Oxcarbazepina,yes,Dor neuropatica ou sindromes dolorosas,300–600 mg/dia: início/titulação. (DM/GG/CANMAT/ISBD),dose_efeito,600.0,yes,ok
+285,medication,dor/sintomas somaticos,Transtorno bipolar - manutencao,Oxcarbazepina,yes,Dor neuropatica ou sindromes dolorosas,300–600 mg/dia: início/titulação. (DM/GG/CANMAT/ISBD),dose_efeito,300.0,yes,ok
+286,medication,dor/sintomas somaticos,Transtorno bipolar - manutencao,Oxcarbazepina,yes,Dor neuropatica ou sindromes dolorosas,300–600 mg/dia: início/titulação. (DM/GG/CANMAT/ISBD),dose_efeito,450.0,yes,ok
+287,medication,dor/sintomas somaticos,Transtorno bipolar - manutencao,Oxcarbazepina,yes,Dor neuropatica ou sindromes dolorosas,300–600 mg/dia: início/titulação. (DM/GG/CANMAT/ISBD),dose_efeito,600.0,yes,ok
+288,medication,estabilizacao do humor,Esquizofrenia e transtornos psicoticos,Paliperidona,yes,Esquizofrenia e transtornos psicoticos,"3 mg/dia: menor faixa oral. 6 mg/dia: dose terapeutica comum. 9-12 mg/dia: maior exposicao D2/5-HT2A, com mais prolactina e EPS. Injetaveis tem esquemas proprios. (DM/ANVISA/Maudsley/APA/NICE)",dose_efeito,2.0,yes,ok
+289,medication,humor/TEPT,Transtorno de ansiedade generalizada,Paroxetina,yes,transtorno de estresse,20-50 (TM/T1),quadro,35.0,yes,ok
+290,medication,humor/TEPT,Transtorno de ansiedade generalizada,Paroxetina,yes,transtorno de estresse,20-50 (TM/T1),quadro,50.0,yes,ok
+291,medication,humor/TEPT,Transtorno de ansiedade generalizada,Paroxetina,yes,transtorno de estresse,20-50 (TM/T1),quadro,20.0,yes,ok
+292,medication,compulsividade/TOC,Insonia,Prometazina,yes,Alergia/nausea/sedacao,"Dose depende da indicacao e via. Antagonismo H1 intenso causa sedacao; efeitos anticolinergicos e alfa-adrenergicos. Maior dose aumenta delirium, hipotensao e depressao do SNC. (DM/ANVISA/GG)",dose_efeito,1.0,yes,ok
+293,medication,sono/sedacao,Esquizofrenia e transtornos psicoticos,Quetiapina,yes,Esquizofrenia e transtornos psicoticos,150-750 mg/dia (DM),quadro,150.0,yes,ok
+294,medication,estabilizacao do humor,Esquizofrenia e transtornos psicoticos,Risperidona,yes,Esquizofrenia e transtornos psicoticos,"0,25–1 mg/dia: baixa exposição e usos específicos. (DM/ST-PG/ST-E/GG/Maudsley)",dose_efeito,0.625,yes,ok
+295,medication,estabilizacao do humor,Esquizofrenia e transtornos psicoticos,Risperidona,yes,Esquizofrenia e transtornos psicoticos,"0,25–1 mg/dia: baixa exposição e usos específicos. (DM/ST-PG/ST-E/GG/Maudsley)",dose_efeito,1.0,yes,ok
+296,medication,estabilizacao do humor,Esquizofrenia e transtornos psicoticos,Risperidona,yes,Esquizofrenia e transtornos psicoticos,"0,25–1 mg/dia: baixa exposição e usos específicos. (DM/ST-PG/ST-E/GG/Maudsley)",dose_efeito,0.25,yes,ok
+297,medication,estabilizacao do humor,Esquizofrenia e transtornos psicoticos,Risperidona,yes,Esquizofrenia e transtornos psicoticos,"0,25–1 mg/dia: baixa exposição e usos específicos. (DM/ST-PG/ST-E/GG/Maudsley)",dose_efeito,0.625,yes,ok
+298,medication,dor/sintomas somaticos,Dor neuropatica ou sindromes dolorosas,Rivastigmina,yes,Doenca de Alzheimer,"Oral: iniciar frequentemente 1,5 mg duas vezes/dia com titulacao gradual. Adesivo possui doses proprias. Maior dose aumenta efeitos colinergicos e perda de peso. (DM/ANVISA/NICE)",dose_efeito,1.5,yes,ok
+299,medication,compulsividade/TOC,Transtorno de ansiedade generalizada,Sertralina,yes,TOC,100-200 (TM/T1),quadro,100.0,yes,ok
+300,medication,compulsividade/TOC,Transtorno de ansiedade generalizada,Sertralina,yes,TOC,100-200 (TM/T1),quadro,150.0,yes,ok
+301,medication,dor/sintomas somaticos,Esquizofrenia e transtornos psicoticos,Sulpirida,yes,Esquizofrenia e transtornos psicoticos,Doses baixas usadas para sintomas negativos/somaticos/depressivos em alguns paises. 400-800 mg/dia ou mais: faixa antipsicotica conforme indicacao/bula. (DM/ANVISA/Maudsley/BNF),dose_efeito,600.0,yes,ok
+302,medication,sono/sedacao,Insonia,Temazepam,yes,Insonia,"7,5-15 mg a noite: hipnotico. 15-30 mg a noite: maior inducao/manutencao do sono e maior prejuizo residual. (DM/GG)",dose_efeito,30.0,yes,ok
+303,medication,psicose/organizacao do pensamento,Esquizofrenia e transtornos psicoticos,Tioridazina,yes,Esquizofrenia e transtornos psicoticos,25–100 mg/dia: sedação e efeitos anticolinérgicos/α1. (DM/ANVISA/ST-E/GG),dose_efeito,1.0,yes,ok
+304,medication,psicose/organizacao do pensamento,Esquizofrenia e transtornos psicoticos,Tioridazina,yes,Esquizofrenia e transtornos psicoticos,25–100 mg/dia: sedação e efeitos anticolinérgicos/α1. (DM/ANVISA/ST-E/GG),dose_efeito,50.5,yes,ok
+305,medication,psicose/organizacao do pensamento,Esquizofrenia e transtornos psicoticos,Tioridazina,yes,Esquizofrenia e transtornos psicoticos,25–100 mg/dia: sedação e efeitos anticolinérgicos/α1. (DM/ANVISA/ST-E/GG),dose_efeito,100.0,yes,ok
+306,medication,dor/sintomas somaticos,Transtorno bipolar - manutencao,Topiramato,yes,Dor neuropatica ou sindromes dolorosas,25–50 mg/dia: titulação; já podem surgir parestesias ou efeitos cognitivos. (DM/GG/CANMAT/ISBD),dose_efeito,37.5,yes,ok
+307,medication,dor/sintomas somaticos,Transtorno bipolar - manutencao,Topiramato,yes,Dor neuropatica ou sindromes dolorosas,25–50 mg/dia: titulação; já podem surgir parestesias ou efeitos cognitivos. (DM/GG/CANMAT/ISBD),dose_efeito,50.0,yes,ok
+308,medication,dor/sintomas somaticos,Transtorno bipolar - manutencao,Topiramato,yes,Dor neuropatica ou sindromes dolorosas,25–50 mg/dia: titulação; já podem surgir parestesias ou efeitos cognitivos. (DM/GG/CANMAT/ISBD),dose_efeito,25.0,yes,ok
+309,medication,sono/sedacao,Insonia,Trazodona,yes,Insonia,25-100 mg a noite (DM/ST-E/GG),quadro,100.0,yes,ok
+310,medication,sono/sedacao,Insonia,Trazodona,yes,Insonia,25-100 mg a noite (DM/ST-E/GG),quadro,25.0,yes,ok
+311,medication,sono/sedacao,Insonia,Trazodona,yes,Insonia,25-100 mg a noite (DM/ST-E/GG),quadro,62.5,yes,ok
+312,medication,sono/sedacao,Insonia,Trazodona,yes,Insonia,25-100 mg a noite (DM/ST-E/GG),quadro,100.0,yes,ok
+313,medication,dor/sintomas somaticos,Transtorno bipolar - manutencao,Valproato,yes,Transtorno bipolar - manutencao,"Dose guiada por peso, resposta, formulação e concentração sérica.
+Na mania, a valproatemia é mais útil que uma divisão rígida em mg. (DM/GG/Maudsley/CANMAT/ISBD)",dose_efeito_contextual,50,yes,ok
+314,medication,dor/sintomas somaticos,Dor neuropatica ou sindromes dolorosas,Venlafaxina,yes,dor,150-225 (TM/T1),quadro,187.5,yes,ok
+315,medication,dor/sintomas somaticos,Dor neuropatica ou sindromes dolorosas,Venlafaxina,yes,dor,150-225 (TM/T1),quadro,225.0,yes,ok
+316,medication,dor/sintomas somaticos,Dor neuropatica ou sindromes dolorosas,Venlafaxina,yes,dor,150-225 (TM/T1),quadro,150.0,yes,ok
+317,medication,dor/sintomas somaticos,Dor neuropatica ou sindromes dolorosas,Venlafaxina XR,yes,dor,150-225 (TM/T1),quadro,225.0,yes,ok
+318,medication,dor/sintomas somaticos,Dor neuropatica ou sindromes dolorosas,Venlafaxina XR,yes,dor,150-225 (TM/T1),quadro,150.0,yes,ok
+319,medication,dor/sintomas somaticos,Dor neuropatica ou sindromes dolorosas,Venlafaxina XR,yes,dor,150-225 (TM/T1),quadro,187.5,yes,ok
+320,medication,dor/sintomas somaticos,Dor neuropatica ou sindromes dolorosas,Venlafaxina XR,yes,dor,150-225 (TM/T1),quadro,225.0,yes,ok
+321,medication,humor/TEPT,Transtorno de ansiedade generalizada,Vilazodona,yes,transtorno de estresse,20-40 (TM/T1),quadro,20.0,yes,ok
+322,medication,humor/TEPT,Transtorno de ansiedade generalizada,Vilazodona,yes,transtorno de estresse,20-40 (TM/T1),quadro,30.0,yes,ok
+323,medication,humor/TEPT,Transtorno de ansiedade generalizada,Vilazodona,yes,transtorno de estresse,20-40 (TM/T1),quadro,40.0,yes,ok
+324,medication,humor/TEPT,Transtorno de ansiedade generalizada,Vilazodona,yes,transtorno de estresse,20-40 (TM/T1),quadro,20.0,yes,ok
+325,medication,humor/TEPT,Transtorno de ansiedade generalizada,Vortioxetina,yes,transtorno de estresse,10-20 (TM/T1),quadro,15.0,yes,ok
+326,medication,humor/TEPT,Transtorno de ansiedade generalizada,Vortioxetina,yes,transtorno de estresse,10-20 (TM/T1),quadro,20.0,yes,ok
+327,medication,humor/TEPT,Transtorno de ansiedade generalizada,Vortioxetina,yes,transtorno de estresse,10-20 (TM/T1),quadro,10.0,yes,ok
+328,medication,humor/TEPT,Transtorno de ansiedade generalizada,Vortioxetina,yes,transtorno de estresse,10-20 (TM/T1),quadro,15.0,yes,ok
+329,medication,humor/TEPT,Transtorno de ansiedade generalizada,Vortioxetina,yes,transtorno de estresse,10-20 (TM/T1),quadro,20.0,yes,ok
+330,medication,estabilizacao do humor,Esquizofrenia e transtornos psicoticos,Ziprasidona,yes,Esquizofrenia e transtornos psicoticos,20 mg duas vezes/dia: inicio frequente. 40-80 mg duas vezes/dia: faixa antipsicotica usual. Administrar com alimento para absorcao adequada. (DM/ANVISA/Maudsley/CANMAT/ISBD),dose_efeito,80.0,yes,ok
+331,medication,sono/sedacao,Insonia,Zolpidem,yes,Insonia,"5 mg a noite: menor exposicao. 5-10 mg a noite liberacao imediata: inducao do sono. Formulacao prolongada tem dose propria. Doses maiores aumentam amnesia, comportamentos complexos e prejuizo no dia seguinte. (DM/ANVISA)",dose_efeito,5.0,yes,ok
+332,medication,sono/sedacao,Insonia,Zopiclona,yes,Insonia,"3,75 mg a noite: menor dose/idosos. 7,5 mg a noite: dose adulta usual onde aprovada. Maior exposicao aumenta sedacao, gosto metalico, amnesia, quedas e dependencia. (DM/BNF/PENDENTE)",dose_efeito,5.625,yes,ok
+333,association,humor/TEPT,Transtorno depressivo maior,Bupropiona XL,yes,transtorno de estresse,120-300 (TM/T1),quadro,120.0,yes,ok
+334,association,sono/sedacao,Insonia,Mirtazapina,yes,TAG,15-45 (TM/T1),quadro,30.0,yes,ok

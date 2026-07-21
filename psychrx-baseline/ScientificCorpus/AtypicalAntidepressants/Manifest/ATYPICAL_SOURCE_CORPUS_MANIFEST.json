@@ -1,0 +1,32 @@
+{
+  "mission": "A09-004",
+  "status": "complete",
+  "corpus": "ScientificCorpus/AtypicalAntidepressants",
+  "intake_mode": "metadata_and_locator_only_until_section_selection",
+  "sources": [
+    {
+      "source_id": "ATYPICAL-SRC-001",
+      "drug": "trazodone",
+      "title": "TRAZODONE HYDROCHLORIDE tablet",
+      "organization": "DailyMed / National Library of Medicine",
+      "document_type": "official_label",
+      "language": "en",
+      "access_status": "accessible",
+      "locator": "https://dailymed.nlm.nih.gov/dailymed/lookup.cfm?setid=a382ac4d-9ab9-796a-e053-2a95a90a2c26",
+      "checksum": "not_captured",
+      "corpus_status": "registered"
+    },
+    {
+      "source_id": "ATYPICAL-SRC-002",
+      "drug": "trazodone",
+      "title": "TRAZODONE hydrochloride label",
+      "organization": "U.S. Food and Drug Administration",
+      "document_type": "regulatory_label_pdf",
+      "language": "en",
+      "access_status": "accessible",
+      "locator": "https://www.accessdata.fda.gov/drugsatfda_docs/label/2015/071196s062lbl.pdf",
+      "checksum": "not_captured",
+      "corpus_status": "registered"
+    }
+  ]
+}

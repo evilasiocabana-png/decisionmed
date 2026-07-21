@@ -1,0 +1,43 @@
+﻿{
+    "enzyme_vocabulary":  [
+                              "CYP2D6",
+                              "CYP2C19",
+                              "CYP3A4",
+                              "CYP1A2",
+                              "CYP2B6",
+                              "CYP2C9",
+                              "other_documented"
+                          ],
+    "schema_version":  "0.1.0",
+    "runtime_consumption_allowed":  false,
+    "mission":  "A03-024",
+    "pk_fields":  [
+                      "absorption",
+                      "bioavailability",
+                      "food_effect",
+                      "distribution",
+                      "protein_binding",
+                      "volume_of_distribution",
+                      "metabolism",
+                      "half_life",
+                      "time_to_steady_state",
+                      "elimination",
+                      "special_populations"
+                  ],
+    "prohibited_fields":  [
+                              "dose",
+                              "titration",
+                              "indication",
+                              "mechanism",
+                              "pharmacodynamics",
+                              "safety",
+                              "interaction",
+                              "monitoring",
+                              "recommendation",
+                              "prescription",
+                              "runtime_rule"
+                          ],
+    "schema":  "psychrx.a03.pk_schema",
+    "status":  "structural_schema_only",
+    "program":  "A03"
+}

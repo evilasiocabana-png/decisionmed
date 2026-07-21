@@ -1,0 +1,28 @@
+{
+  "schema": "psychrx.knowledgebase.ssri.mechanism_extraction",
+  "program": "A03",
+  "mission": "A03-036",
+  "extraction_id": "A03-MOA-EXT-ESCITALOPRAM-001",
+  "drug_id": "SSRI_ESCITALOPRAM",
+  "target_domain": "Mechanism",
+  "source": {
+    "anchor_id": "A03-MOA-ANCHOR-ESCITALOPRAM-001",
+    "corpus_source_id": "SC-SSRI-FDA-ESCITALOPRAM-001",
+    "registry_source_id": "L005",
+    "source_type": "regulatory_label",
+    "source_url": "https://dailymed.nlm.nih.gov/dailymed/lookup.cfm?setid=3019a647-9bcf-48cf-928c-0467f9b921a8",
+    "xml_url": "https://dailymed.nlm.nih.gov/dailymed/services/v2/spls/3019a647-9bcf-48cf-928c-0467f9b921a8.xml",
+    "section_path": ["12 CLINICAL PHARMACOLOGY", "12.1 Mechanism of Action"]
+  },
+  "extraction_claim": {
+    "mechanism_status": "presumed",
+    "primary_mechanistic_link": "serotonergic_activity_potentiation",
+    "mechanistic_route": "cns_neuronal_serotonin_reuptake_inhibition",
+    "drug_specific_note": "S-enantiomer of racemic citalopram",
+    "claim_summary": "The regulatory label links the presumed antidepressant mechanism to potentiation of serotonergic activity through inhibition of CNS neuronal serotonin reuptake."
+  },
+  "reviewer_status": "awaiting_review",
+  "normalization_status": "awaiting_normalization",
+  "publication_status": "not_published",
+  "runtime_consumption_allowed": false
+}

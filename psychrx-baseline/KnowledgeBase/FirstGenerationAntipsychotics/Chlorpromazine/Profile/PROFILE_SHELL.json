@@ -1,0 +1,25 @@
+{
+  "mission": "A10-007",
+  "drug_id": "FGA-CHLORPROMAZINE",
+  "name": "Chlorpromazine",
+  "class": "first_generation_antipsychotic",
+  "fields": {
+    "mechanism": {
+      "status": "authorized_for_a10_population",
+      "content_ref": null
+    },
+    "pharmacokinetics": {
+      "status": "blocked"
+    },
+    "pharmacodynamics": {
+      "status": "blocked"
+    },
+    "safety": {
+      "status": "blocked"
+    },
+    "evidence": {
+      "status": "blocked"
+    }
+  },
+  "runtime_eligible": false
+}

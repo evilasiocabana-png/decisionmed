@@ -1,0 +1,27 @@
+{
+  "mission": "A09-007",
+  "drug_id": "ATYPICAL-TRAZODONE",
+  "canonical_name": "trazodone",
+  "class_id": "ATYPICAL_ANTIDEPRESSANT",
+  "status": "internal_non_runtime_mechanism_package",
+  "runtime_eligible": false,
+  "fields": {
+    "mechanism": {
+      "status": "populated_internal_draft",
+      "traceability": [
+        "A09-MECH-001",
+        "A09-MECH-002",
+        "A09-MECH-003"
+      ],
+      "publication_package": "A09-ATYPICAL-MECHANISM-INTERNAL-001"
+    },
+    "pharmacokinetics": {
+      "status": "UNRESOLVED_BLOCKED_FUTURE_SCOPE",
+      "traceability": []
+    },
+    "safety": {
+      "status": "UNRESOLVED_BLOCKED_FUTURE_SCOPE",
+      "traceability": []
+    }
+  }
+}

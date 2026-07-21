@@ -1,0 +1,97 @@
+{
+  "schema": "psychrx.knowledge_base.snri.extraction_gates.v1",
+  "program": "A04",
+  "mission": "A04-008 - SNRI_EXTRACTION_GATES",
+  "status": "completed",
+  "drug_class": "SNRIs",
+  "purpose": "Evaluate whether SNRI scientific extraction may begin.",
+  "gate_inputs": {
+    "source_corpus_completion": "docs/PROGRAM_A04_0_COMPLETION_REPORT.md",
+    "profile_shell_registry": "KnowledgeBase/SNRIs/ProfileShells/SNRI_PROFILE_SHELL_REGISTRY.json",
+    "source_anchor_plan": "KnowledgeBase/SNRIs/Traceability/SNRI_SOURCE_ANCHOR_PLAN.json",
+    "field_traceability_matrix": "KnowledgeBase/SNRIs/Traceability/SNRI_FIELD_TRACEABILITY_MATRIX.json"
+  },
+  "gate_checks": [
+    {
+      "gate_id": "A04-GATE-001",
+      "name": "SNRI corpus exists",
+      "status": "passed",
+      "evidence": "Program A04.0 completion gate passed."
+    },
+    {
+      "gate_id": "A04-GATE-002",
+      "name": "SNRI profile shells exist",
+      "status": "passed",
+      "evidence": "A04-005 created five empty SNRI profile shells."
+    },
+    {
+      "gate_id": "A04-GATE-003",
+      "name": "Source anchor plan exists",
+      "status": "passed",
+      "evidence": "A04-006 created SNRI_SOURCE_ANCHOR_PLAN.json."
+    },
+    {
+      "gate_id": "A04-GATE-004",
+      "name": "Field traceability matrix exists",
+      "status": "passed",
+      "evidence": "A04-007 created SNRI_FIELD_TRACEABILITY_MATRIX.json."
+    },
+    {
+      "gate_id": "A04-GATE-005",
+      "name": "Definitive source anchors exist",
+      "status": "failed",
+      "evidence": "A04-006 intentionally created planned slots only; definitive anchors and source section selections do not exist yet."
+    },
+    {
+      "gate_id": "A04-GATE-006",
+      "name": "Drug-specific source section selection exists",
+      "status": "failed",
+      "evidence": "No drug-specific source sections have been selected for mechanism, PK, PD, safety or evidence extraction."
+    },
+    {
+      "gate_id": "A04-GATE-007",
+      "name": "Extraction protocol package exists for SNRIs",
+      "status": "failed",
+      "evidence": "No SNRI-specific extraction protocol package has been created after the field traceability matrix."
+    },
+    {
+      "gate_id": "A04-GATE-008",
+      "name": "Runtime remains disabled",
+      "status": "passed",
+      "evidence": "All A04 artifacts remain not runtime eligible."
+    }
+  ],
+  "gate_decision": {
+    "a04_009_may_start": false,
+    "decision": "blocked",
+    "blocked_mission": "A04-009 - SNRI_MECHANISM_POPULATION_DRAFT",
+    "blocking_reason": "Definitive source anchors, drug-specific source sections and SNRI extraction protocol package are missing.",
+    "required_next_action": "Create a pre-extraction anchor finalization mission before A04-009."
+  },
+  "recommended_inserted_mission": {
+    "mission_id": "A04-008A",
+    "mission_name": "SNRI_SOURCE_ANCHOR_FINALIZATION",
+    "purpose": "Create definitive drug-specific source anchors and section-selection placeholders required before extraction.",
+    "allowed_scope": [
+      "create definitive anchor IDs",
+      "map anchor IDs to source IDs",
+      "record source section selection status",
+      "keep extracted values empty",
+      "keep runtime disabled"
+    ],
+    "forbidden_scope": [
+      "scientific interpretation",
+      "mechanism extraction",
+      "pharmacokinetic extraction",
+      "pharmacodynamic extraction",
+      "safety extraction",
+      "evidence grading",
+      "therapeutic recommendation",
+      "prescription"
+    ]
+  },
+  "scientific_interpretation_performed": false,
+  "knowledge_objects_created": 0,
+  "runtime_eligibility": "not_eligible",
+  "next_mission": "A04-008A - SNRI_SOURCE_ANCHOR_FINALIZATION"
+}

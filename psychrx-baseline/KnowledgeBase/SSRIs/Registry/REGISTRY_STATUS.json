@@ -1,0 +1,15 @@
+﻿{
+    "schema":  "psychrx.a03.registry_status",
+    "program":  "A03",
+    "mission":  "A03-016",
+    "status":  "structurally_validated",
+    "all_registries_exist":  true,
+    "orphan_registries":  0,
+    "duplicate_relationships":  0,
+    "invalid_cycles":  0,
+    "all_json_valid":  true,
+    "scientific_content_populated":  false,
+    "clinical_content_interpreted":  false,
+    "runtime_consumption_allowed":  false,
+    "next_mission":  "A03-017 - PORTFOLIO_TRACEABILITY_INITIALIZATION"
+}

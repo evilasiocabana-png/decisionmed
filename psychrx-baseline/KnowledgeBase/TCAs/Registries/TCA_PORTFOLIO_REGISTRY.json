@@ -1,0 +1,30 @@
+{
+  "mission": "A07-002",
+  "portfolio_status": "approved_for_a07_scope",
+  "class": {
+    "id": "TCA",
+    "label": "Tricyclic Antidepressants",
+    "runtime_eligible": false
+  },
+  "included_drugs": [
+    {
+      "id": "TCA-AMITRIPTYLINE",
+      "canonical_name": "amitriptyline",
+      "status": "included",
+      "rationale": "Initial TCA portfolio for A07 mechanism-field package.",
+      "runtime_eligible": false
+    }
+  ],
+  "excluded_or_unresolved_candidates": [
+    {
+      "name": "nortriptyline",
+      "status": "review_required_future_scope",
+      "rationale": "Not included in this initial A07 package without a dedicated portfolio expansion mission."
+    },
+    {
+      "name": "imipramine",
+      "status": "review_required_future_scope",
+      "rationale": "Not included in this initial A07 package without a dedicated portfolio expansion mission."
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "schema": "psychrx.scientific_corpus.snri.source_organization_index.v1",
+  "program": "A04.0",
+  "mission": "A04.0-004 - SNRI_SOURCE_METADATA_NORMALIZATION",
+  "index": {
+    "ANVISA": ["A04.0-SD-R004", "A04.0-SD-R005", "A04.0-SD-S003"],
+    "American Psychiatric Association": ["A04.0-SD-G003"],
+    "Cambridge University Press": ["A04.0-SD-B001", "A04.0-SD-B002"],
+    "Canadian Network for Mood and Anxiety Treatments": ["A04.0-SD-G002"],
+    "Cochrane": ["A04.0-SD-E002"],
+    "European Medicines Agency": ["A04.0-SD-R003", "A04.0-SD-S002"],
+    "NICE": ["A04.0-SD-G001"],
+    "U.S. Department of Veterans Affairs and U.S. Department of Defense": ["A04.0-SD-G005"],
+    "U.S. Food and Drug Administration": ["A04.0-SD-R001", "A04.0-SD-S001"],
+    "U.S. National Library of Medicine": ["A04.0-SD-R002", "A04.0-SD-E001", "A04.0-SD-E003"],
+    "Wiley": ["A04.0-SD-B003"],
+    "World Federation of Societies of Biological Psychiatry": ["A04.0-SD-G004"]
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "schema": "psychrx.knowledgebase.ssri.pk_extraction",
+  "program": "A03",
+  "mission": "A03-042",
+  "drug_id": "SSRI_FLUOXETINE",
+  "source_anchor_id": "A03-PK-ANCHOR-FLUOXETINE-001",
+  "source_section": "12.3 Pharmacokinetics",
+  "extraction_claim": {
+    "peak_concentration_time": "6_to_8_hours_after_single_40mg_oral_dose",
+    "food_effect": "food_does_not_appear_to_affect_systemic_bioavailability_but_may_delay_absorption",
+    "protein_binding": "approximately_94_5_percent_in_vitro",
+    "metabolism": "extensive_hepatic_metabolism_to_norfluoxetine_and_other_metabolites",
+    "elimination_route": "hepatic_metabolism_to_inactive_metabolites_excreted_by_kidney",
+    "special_metabolism_note": "CYP2D6_poor_metabolizer_variability_described"
+  },
+  "reviewer_status": "awaiting_review",
+  "normalization_status": "awaiting_normalization",
+  "publication_status": "not_published",
+  "runtime_consumption_allowed": false
+}

@@ -1,0 +1,116 @@
+﻿{
+    "schema":  "psychrx.a03.registry_relationships",
+    "program":  "A03",
+    "mission":  "A03-016",
+    "status":  "metadata_only",
+    "relationships":  [
+                          {
+                              "from":  "A03_REG_MASTER",
+                              "to":  "A03_REG_DRUG",
+                              "relationship_type":  "parent_child"
+                          },
+                          {
+                              "from":  "A03_REG_MASTER",
+                              "to":  "A03_REG_EDITORIAL",
+                              "relationship_type":  "parent_child"
+                          },
+                          {
+                              "from":  "A03_REG_EDITORIAL",
+                              "to":  "A03_REG_DRUG_PORTFOLIO_EDITORIAL",
+                              "relationship_type":  "parent_child"
+                          },
+                          {
+                              "from":  "A03_REG_EDITORIAL",
+                              "to":  "A03_REG_DRUG_PORTFOLIO_EDITORIAL",
+                              "relationship_type":  "parent_child"
+                          },
+                          {
+                              "from":  "A03_REG_MASTER",
+                              "to":  "A03_REG_METADATA",
+                              "relationship_type":  "parent_child"
+                          },
+                          {
+                              "from":  "A03_REG_METADATA",
+                              "to":  "A03_REG_SOURCE_REFERENCE_TEMPLATE",
+                              "relationship_type":  "parent_child"
+                          },
+                          {
+                              "from":  "A03_REG_MASTER",
+                              "to":  "A03_REG_SOURCE",
+                              "relationship_type":  "parent_child"
+                          },
+                          {
+                              "from":  "A03_REG_MASTER",
+                              "to":  "A03_REG_BINDING",
+                              "relationship_type":  "parent_child"
+                          },
+                          {
+                              "from":  "A03_REG_BINDING",
+                              "to":  "A03_REG_BINDING_INDEX",
+                              "relationship_type":  "parent_child"
+                          },
+                          {
+                              "from":  "A03_REG_BINDING",
+                              "to":  "A03_REG_BINDING_STATUS",
+                              "relationship_type":  "parent_child"
+                          },
+                          {
+                              "from":  "A03_REG_BINDING",
+                              "to":  "A03_REG_BINDING_INDEX",
+                              "relationship_type":  "parent_child"
+                          },
+                          {
+                              "from":  "A03_REG_BINDING",
+                              "to":  "A03_REG_BINDING_STATUS",
+                              "relationship_type":  "parent_child"
+                          },
+                          {
+                              "from":  "A03_REG_MASTER",
+                              "to":  "A03_REG_TEMPLATE",
+                              "relationship_type":  "parent_child"
+                          },
+                          {
+                              "from":  "A03_REG_TEMPLATE",
+                              "to":  "A03_REG_TEMPLATE_STATUS",
+                              "relationship_type":  "parent_child"
+                          },
+                          {
+                              "from":  "A03_REG_TEMPLATE",
+                              "to":  "A03_REG_TEMPLATE_STATUS",
+                              "relationship_type":  "parent_child"
+                          },
+                          {
+                              "from":  "A03_REG_MASTER",
+                              "to":  "A03_REG_DIRECTORY",
+                              "relationship_type":  "parent_child"
+                          },
+                          {
+                              "from":  "A03_REG_DIRECTORY",
+                              "to":  "A03_REG_DIRECTORY_TREE",
+                              "relationship_type":  "parent_child"
+                          },
+                          {
+                              "from":  "A03_REG_DIRECTORY",
+                              "to":  "A03_REG_DIRECTORY_STATUS",
+                              "relationship_type":  "parent_child"
+                          },
+                          {
+                              "from":  "A03_REG_DIRECTORY",
+                              "to":  "A03_REG_DIRECTORY_TREE",
+                              "relationship_type":  "parent_child"
+                          },
+                          {
+                              "from":  "A03_REG_DIRECTORY",
+                              "to":  "A03_REG_DIRECTORY_STATUS",
+                              "relationship_type":  "parent_child"
+                          },
+                          {
+                              "from":  "A03_REG_METADATA",
+                              "to":  "A03_REG_SOURCE_REFERENCE_TEMPLATE",
+                              "relationship_type":  "parent_child"
+                          }
+                      ],
+    "invalid_cycles":  0,
+    "duplicate_relationships":  0,
+    "scientific_content_populated":  false
+}

@@ -1,0 +1,29 @@
+{
+  "mission": "A07-010",
+  "status": "complete",
+  "selected_sections": [
+    {
+      "selection_id": "A07-SEL-001",
+      "source_id": "TCA-SRC-001",
+      "drug_id": "TCA-AMITRIPTYLINE",
+      "field": "mechanism",
+      "section": "Clinical Pharmacology",
+      "locator": "https://dailymed.nlm.nih.gov/dailymed/lookup.cfm?setid=e3afe026-7072-0a7d-e053-2995a90a52d4",
+      "review_status": "reviewable"
+    },
+    {
+      "selection_id": "A07-SEL-002",
+      "source_id": "TCA-SRC-002",
+      "drug_id": "TCA-AMITRIPTYLINE",
+      "field": "mechanism",
+      "section": "Clinical Pharmacology",
+      "locator": "https://www.accessdata.fda.gov/drugsatfda_docs/label/2014/085966s095%2C085969s084%2C085968s096%2C085971s075%2C085967s076%2C085970s072lbl.pdf",
+      "review_status": "reviewable"
+    }
+  ],
+  "gate_result": {
+    "source_sections_selected": 2,
+    "selected_sections_reviewable": 2,
+    "a07_011_may_start": true
+  }
+}

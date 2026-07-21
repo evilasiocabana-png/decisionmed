@@ -1,0 +1,30 @@
+{
+  "mission": "A05-009",
+  "status": "complete",
+  "gates": [
+    {
+      "gate_id": "A05_MECHANISM_SOURCE_SECTION_SELECTION_REQUIRED",
+      "field": "mechanism",
+      "required_before_extraction": [
+        "validated_source",
+        "specific_section",
+        "field_mapping",
+        "reviewable_locator"
+      ],
+      "status": "passed_by_A05-010"
+    },
+    {
+      "gate_id": "A05_PK_PD_SAFETY_EXTRACTION_NOT_AUTHORIZED",
+      "fields": [
+        "pharmacokinetics",
+        "pharmacodynamics",
+        "safety"
+      ],
+      "status": "blocked"
+    }
+  ],
+  "runtime_gate": {
+    "status": "blocked",
+    "reason": "A05 artifacts are internal non-runtime scientific knowledge only."
+  }
+}

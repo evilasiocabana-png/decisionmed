@@ -1,0 +1,30 @@
+{
+  "schema": "psychrx.scientific_corpus.snri.editorial_registration.v1",
+  "program": "A04.0",
+  "mission": "A04.0-006 - SNRI_EDITORIAL_REGISTRATION",
+  "pipeline_context": {
+    "previous_pipeline_execution_id": "PIPE-A04-0-SNRI-VALIDATION-001",
+    "previous_historical_alias": "A04.0-005 - SNRI_SOURCE_VALIDATION"
+  },
+  "status": "completed",
+  "drug_class": "SNRIs",
+  "editorial_mode": "administrative_registration_only",
+  "source_records_registered": 19,
+  "validation_status": "structurally_validated_metadata_only",
+  "editorial_status": "registered_for_corpus_publication",
+  "publication_readiness": "ready_for_controlled_corpus_publication",
+  "runtime_eligibility": "not_eligible",
+  "non_actions": {
+    "scientific_interpretation_performed": false,
+    "knowledge_objects_created": 0,
+    "runtime_objects_created": 0,
+    "recommendations_created": 0,
+    "prescriptions_created": 0
+  },
+  "required_next_gate": "A04.0-007 - SNRI_CORPUS_PUBLICATION",
+  "notes": [
+    "Editorial registration confirms administrative readiness only.",
+    "Source documents remain uninterpreted.",
+    "The corpus remains runtime-ineligible."
+  ]
+}

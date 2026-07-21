@@ -1,0 +1,18 @@
+﻿{
+    "schema":  "psychrx.a03.traceability_manifest",
+    "program":  "A03",
+    "mission":  "A03-017",
+    "status":  "metadata_only",
+    "artifacts":  [
+                      "KnowledgeBase/SSRIs/Traceability/TRACEABILITY_REGISTRY.json",
+                      "KnowledgeBase/SSRIs/Traceability/TRACEABILITY_INDEX.json",
+                      "KnowledgeBase/SSRIs/Traceability/TRACEABILITY_STATUS.json",
+                      "KnowledgeBase/SSRIs/Traceability/TRACEABILITY_MANIFEST.json",
+                      "KnowledgeBase/SSRIs/Traceability/SOURCE_TO_OBJECT_MAP.json",
+                      "KnowledgeBase/SSRIs/Traceability/OBJECT_TO_SOURCE_MAP.json"
+                  ],
+    "scientific_content_populated":  false,
+    "clinical_content_interpreted":  false,
+    "runtime_consumption_allowed":  false,
+    "next_mission":  "A03-018 - EDITORIAL_STATUS_FRAMEWORK"
+}

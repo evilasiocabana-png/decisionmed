@@ -1,0 +1,27 @@
+{
+  "schema": "psychrx.knowledgebase.ssri.evidence_integration_baseline",
+  "program": "A03",
+  "phase": "Phase 7 - Evidence Integration",
+  "missions": ["A03-052", "A03-053", "A03-054", "A03-055"],
+  "status": "baseline_complete_metadata_only",
+  "included_artifacts": [
+    "KnowledgeBase/SSRIs/Evidence/EVIDENCE_INTEGRATION_SOURCE_BINDING.json",
+    "KnowledgeBase/SSRIs/Evidence/EVIDENCE_TRACEABILITY_MATRIX.json",
+    "KnowledgeBase/SSRIs/Evidence/EVIDENCE_REVIEW_QUEUE.json"
+  ],
+  "coverage": {
+    "domains": ["Mechanism", "Pharmacokinetics", "Pharmacodynamics"],
+    "drug_class": "SSRI",
+    "core_drug_count": 6
+  },
+  "quality_boundary": {
+    "evidence_quality_graded": false,
+    "recommendation_strength_assigned": false,
+    "comparative_conclusions_created": false,
+    "therapeutic_recommendations_created": false,
+    "clinical_runtime_enabled": false
+  },
+  "publication_status": "ready_for_knowledge_qa",
+  "runtime_consumption_allowed": false,
+  "next_mission": "A03-056 - KNOWLEDGE_QA_CHECKLIST"
+}

@@ -1,0 +1,300 @@
+﻿{
+    "schema":  "psychrx.a03.master_registry",
+    "program":  "A03",
+    "mission":  "A03-016",
+    "status":  "metadata_only",
+    "registry_id":  "A03_REG_MASTER",
+    "registry_name":  "Program A03 Master Registry",
+    "schema_version":  "0.1.0",
+    "document_version":  "0.1.0",
+    "registry_count":  14,
+    "registries":  [
+                       {
+                           "registry_id":  "A03_REG_DRUG",
+                           "registry_name":  "Drug Registry",
+                           "registry_type":  "domain_registry",
+                           "path":  "KnowledgeBase/SSRIs/Registries/DRUG_REGISTRY.json",
+                           "schema_version":  "0.1.0",
+                           "document_version":  "0.1.0",
+                           "dependencies":  [
+
+                                            ],
+                           "parent_registry":  "A03_REG_MASTER",
+                           "child_registries":  [
+
+                                                ],
+                           "editorial_status":  "draft",
+                           "validation_status":  "structurally_validated",
+                           "publication_status":  "not_published",
+                           "scientific_content_populated":  false,
+                           "runtime_consumption_allowed":  false
+                       },
+                       {
+                           "registry_id":  "A03_REG_EDITORIAL",
+                           "registry_name":  "Editorial Registry",
+                           "registry_type":  "editorial_registry",
+                           "path":  "KnowledgeBase/SSRIs/Registries/EDITORIAL_REGISTRY.json",
+                           "schema_version":  "0.1.0",
+                           "document_version":  "0.1.0",
+                           "dependencies":  [
+                                                "A03_REG_DRUG"
+                                            ],
+                           "parent_registry":  "A03_REG_MASTER",
+                           "child_registries":  [
+                                                    "A03_REG_DRUG_PORTFOLIO_EDITORIAL"
+                                                ],
+                           "editorial_status":  "draft",
+                           "validation_status":  "structurally_validated",
+                           "publication_status":  "not_published",
+                           "scientific_content_populated":  false,
+                           "runtime_consumption_allowed":  false
+                       },
+                       {
+                           "registry_id":  "A03_REG_DRUG_PORTFOLIO_EDITORIAL",
+                           "registry_name":  "Drug Portfolio Editorial Registry",
+                           "registry_type":  "portfolio_registry",
+                           "path":  "KnowledgeBase/SSRIs/Registries/DRUG_PORTFOLIO_EDITORIAL_REGISTRY.json",
+                           "schema_version":  "0.1.0",
+                           "document_version":  "0.1.0",
+                           "dependencies":  [
+                                                "A03_REG_DRUG"
+                                            ],
+                           "parent_registry":  "A03_REG_EDITORIAL",
+                           "child_registries":  [
+
+                                                ],
+                           "editorial_status":  "draft",
+                           "validation_status":  "structurally_validated",
+                           "publication_status":  "not_published",
+                           "scientific_content_populated":  false,
+                           "runtime_consumption_allowed":  false
+                       },
+                       {
+                           "registry_id":  "A03_REG_METADATA",
+                           "registry_name":  "Drug Portfolio Metadata Registry",
+                           "registry_type":  "metadata_registry",
+                           "path":  "KnowledgeBase/SSRIs/Metadata/DRUG_PORTFOLIO_DEFINITION.json",
+                           "schema_version":  "0.1.0",
+                           "document_version":  "0.1.0",
+                           "dependencies":  [
+                                                "A03_REG_DRUG"
+                                            ],
+                           "parent_registry":  "A03_REG_MASTER",
+                           "child_registries":  [
+                                                    "A03_REG_SOURCE_REFERENCE_TEMPLATE"
+                                                ],
+                           "editorial_status":  "draft",
+                           "validation_status":  "structurally_validated",
+                           "publication_status":  "not_published",
+                           "scientific_content_populated":  false,
+                           "runtime_consumption_allowed":  false
+                       },
+                       {
+                           "registry_id":  "A03_REG_SOURCE",
+                           "registry_name":  "Source Registry",
+                           "registry_type":  "source_registry",
+                           "path":  "ScientificCorpus/Metadata/NORMALIZED_SOURCE_REGISTRY.json",
+                           "schema_version":  "0.1.0",
+                           "document_version":  "0.1.0",
+                           "dependencies":  [
+
+                                            ],
+                           "parent_registry":  "A03_REG_MASTER",
+                           "child_registries":  [
+
+                                                ],
+                           "editorial_status":  "draft",
+                           "validation_status":  "structurally_validated",
+                           "publication_status":  "not_published",
+                           "scientific_content_populated":  false,
+                           "runtime_consumption_allowed":  false
+                       },
+                       {
+                           "registry_id":  "A03_REG_BINDING",
+                           "registry_name":  "Source Binding Registry",
+                           "registry_type":  "binding_registry",
+                           "path":  "KnowledgeBase/SSRIs/Traceability/DRUG_SOURCE_BINDING.json",
+                           "schema_version":  "0.1.0",
+                           "document_version":  "0.1.0",
+                           "dependencies":  [
+                                                "A03_REG_DRUG_PORTFOLIO_EDITORIAL",
+                                                "A03_REG_SOURCE"
+                                            ],
+                           "parent_registry":  "A03_REG_MASTER",
+                           "child_registries":  [
+                                                    "A03_REG_BINDING_INDEX",
+                                                    "A03_REG_BINDING_STATUS"
+                                                ],
+                           "editorial_status":  "draft",
+                           "validation_status":  "structurally_validated",
+                           "publication_status":  "not_published",
+                           "scientific_content_populated":  false,
+                           "runtime_consumption_allowed":  false
+                       },
+                       {
+                           "registry_id":  "A03_REG_BINDING_INDEX",
+                           "registry_name":  "Source Binding Index",
+                           "registry_type":  "index_registry",
+                           "path":  "KnowledgeBase/SSRIs/Traceability/DRUG_SOURCE_BINDING_INDEX.json",
+                           "schema_version":  "0.1.0",
+                           "document_version":  "0.1.0",
+                           "dependencies":  [
+                                                "A03_REG_BINDING"
+                                            ],
+                           "parent_registry":  "A03_REG_BINDING",
+                           "child_registries":  [
+
+                                                ],
+                           "editorial_status":  "draft",
+                           "validation_status":  "structurally_validated",
+                           "publication_status":  "not_published",
+                           "scientific_content_populated":  false,
+                           "runtime_consumption_allowed":  false
+                       },
+                       {
+                           "registry_id":  "A03_REG_BINDING_STATUS",
+                           "registry_name":  "Traceability Status",
+                           "registry_type":  "status_registry",
+                           "path":  "KnowledgeBase/SSRIs/Traceability/TRACEABILITY_STATUS.json",
+                           "schema_version":  "0.1.0",
+                           "document_version":  "0.1.0",
+                           "dependencies":  [
+                                                "A03_REG_BINDING"
+                                            ],
+                           "parent_registry":  "A03_REG_BINDING",
+                           "child_registries":  [
+
+                                                ],
+                           "editorial_status":  "draft",
+                           "validation_status":  "structurally_validated",
+                           "publication_status":  "not_published",
+                           "scientific_content_populated":  false,
+                           "runtime_consumption_allowed":  false
+                       },
+                       {
+                           "registry_id":  "A03_REG_TEMPLATE",
+                           "registry_name":  "Template Manifest",
+                           "registry_type":  "template_registry",
+                           "path":  "KnowledgeBase/SSRIs/Templates/TEMPLATE_MANIFEST.json",
+                           "schema_version":  "0.1.0",
+                           "document_version":  "0.1.0",
+                           "dependencies":  [
+
+                                            ],
+                           "parent_registry":  "A03_REG_MASTER",
+                           "child_registries":  [
+                                                    "A03_REG_TEMPLATE_STATUS"
+                                                ],
+                           "editorial_status":  "draft",
+                           "validation_status":  "structurally_validated",
+                           "publication_status":  "not_published",
+                           "scientific_content_populated":  false,
+                           "runtime_consumption_allowed":  false
+                       },
+                       {
+                           "registry_id":  "A03_REG_TEMPLATE_STATUS",
+                           "registry_name":  "Template Status",
+                           "registry_type":  "status_registry",
+                           "path":  "KnowledgeBase/SSRIs/Templates/TEMPLATE_STATUS.json",
+                           "schema_version":  "0.1.0",
+                           "document_version":  "0.1.0",
+                           "dependencies":  [
+                                                "A03_REG_TEMPLATE"
+                                            ],
+                           "parent_registry":  "A03_REG_TEMPLATE",
+                           "child_registries":  [
+
+                                                ],
+                           "editorial_status":  "draft",
+                           "validation_status":  "structurally_validated",
+                           "publication_status":  "not_published",
+                           "scientific_content_populated":  false,
+                           "runtime_consumption_allowed":  false
+                       },
+                       {
+                           "registry_id":  "A03_REG_DIRECTORY",
+                           "registry_name":  "Drug Directory Index",
+                           "registry_type":  "directory_registry",
+                           "path":  "KnowledgeBase/SSRIs/Indexes/DRUG_DIRECTORY_INDEX.json",
+                           "schema_version":  "0.1.0",
+                           "document_version":  "0.1.0",
+                           "dependencies":  [
+                                                "A03_REG_DRUG"
+                                            ],
+                           "parent_registry":  "A03_REG_MASTER",
+                           "child_registries":  [
+                                                    "A03_REG_DIRECTORY_TREE",
+                                                    "A03_REG_DIRECTORY_STATUS"
+                                                ],
+                           "editorial_status":  "draft",
+                           "validation_status":  "structurally_validated",
+                           "publication_status":  "not_published",
+                           "scientific_content_populated":  false,
+                           "runtime_consumption_allowed":  false
+                       },
+                       {
+                           "registry_id":  "A03_REG_DIRECTORY_TREE",
+                           "registry_name":  "Directory Tree",
+                           "registry_type":  "directory_registry",
+                           "path":  "KnowledgeBase/SSRIs/Indexes/DIRECTORY_TREE.json",
+                           "schema_version":  "0.1.0",
+                           "document_version":  "0.1.0",
+                           "dependencies":  [
+                                                "A03_REG_DIRECTORY"
+                                            ],
+                           "parent_registry":  "A03_REG_DIRECTORY",
+                           "child_registries":  [
+
+                                                ],
+                           "editorial_status":  "draft",
+                           "validation_status":  "structurally_validated",
+                           "publication_status":  "not_published",
+                           "scientific_content_populated":  false,
+                           "runtime_consumption_allowed":  false
+                       },
+                       {
+                           "registry_id":  "A03_REG_DIRECTORY_STATUS",
+                           "registry_name":  "Directory Status",
+                           "registry_type":  "status_registry",
+                           "path":  "KnowledgeBase/SSRIs/Indexes/DIRECTORY_STATUS.json",
+                           "schema_version":  "0.1.0",
+                           "document_version":  "0.1.0",
+                           "dependencies":  [
+                                                "A03_REG_DIRECTORY"
+                                            ],
+                           "parent_registry":  "A03_REG_DIRECTORY",
+                           "child_registries":  [
+
+                                                ],
+                           "editorial_status":  "draft",
+                           "validation_status":  "structurally_validated",
+                           "publication_status":  "not_published",
+                           "scientific_content_populated":  false,
+                           "runtime_consumption_allowed":  false
+                       },
+                       {
+                           "registry_id":  "A03_REG_SOURCE_REFERENCE_TEMPLATE",
+                           "registry_name":  "Source Reference Template",
+                           "registry_type":  "template_registry",
+                           "path":  "KnowledgeBase/SSRIs/Metadata/SOURCE_REFERENCE_TEMPLATE.json",
+                           "schema_version":  "0.1.0",
+                           "document_version":  "0.1.0",
+                           "dependencies":  [
+                                                "A03_REG_SOURCE"
+                                            ],
+                           "parent_registry":  "A03_REG_METADATA",
+                           "child_registries":  [
+
+                                                ],
+                           "editorial_status":  "draft",
+                           "validation_status":  "structurally_validated",
+                           "publication_status":  "not_published",
+                           "scientific_content_populated":  false,
+                           "runtime_consumption_allowed":  false
+                       }
+                   ],
+    "scientific_content_populated":  false,
+    "clinical_content_interpreted":  false,
+    "runtime_consumption_allowed":  false,
+    "next_mission":  "A03-017 - PORTFOLIO_TRACEABILITY_INITIALIZATION"
+}

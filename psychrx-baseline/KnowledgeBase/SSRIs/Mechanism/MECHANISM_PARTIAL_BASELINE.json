@@ -1,0 +1,32 @@
+{
+  "schema": "psychrx.knowledgebase.ssri.mechanism_partial_baseline",
+  "program": "A03",
+  "mission": "A03-039",
+  "status": "complete_draft_baseline_created_not_published",
+  "created_at": "2026-07-01",
+  "baseline_id": "A03_PHASE4_MECHANISM_DRAFT_BASELINE_0_2_0",
+  "source_files": [
+    "ScientificCorpus/SourceTextIntake/Mechanism/MECHANISM_SOURCE_ANCHORS.json",
+    "KnowledgeBase/SSRIs/Mechanism/Extractions/MECHANISM_EXTRACTION_REGISTRY.json",
+    "KnowledgeBase/SSRIs/Mechanism/Normalized/MECHANISM_NORMALIZATION_REGISTRY.json",
+    "KnowledgeBase/SSRIs/Mechanism/Normalized/MECHANISM_CONFLICT_AND_GAP_REVIEW.json"
+  ],
+  "included_records": [
+    "SSRI_FLUOXETINE",
+    "SSRI_PAROXETINE",
+    "SSRI_ESCITALOPRAM",
+    "SSRI_FLUVOXAMINE",
+    "SSRI_SERTRALINE",
+    "SSRI_CITALOPRAM"
+  ],
+  "excluded_records": [],
+  "baseline_limits": {
+    "partial": false,
+    "editorial_approval_completed": false,
+    "publication_allowed": false,
+    "runtime_consumption_allowed": false,
+    "clinical_recommendation_allowed": false,
+    "prescription_allowed": false
+  },
+  "next_mission": "A03-040 - MECHANISM_PHASE4_GATE"
+}

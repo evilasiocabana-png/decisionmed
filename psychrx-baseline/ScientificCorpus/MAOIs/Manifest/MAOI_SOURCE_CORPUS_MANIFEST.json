@@ -1,0 +1,32 @@
+{
+  "mission": "A08-004",
+  "status": "complete",
+  "corpus": "ScientificCorpus/MAOIs",
+  "intake_mode": "metadata_and_locator_only_until_section_selection",
+  "sources": [
+    {
+      "source_id": "MAOI-SRC-001",
+      "drug": "phenelzine",
+      "title": "PHENELZINE SULFATE tablet, film coated",
+      "organization": "DailyMed / National Library of Medicine",
+      "document_type": "official_label",
+      "language": "en",
+      "access_status": "accessible",
+      "locator": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=fa041652-fdde-4794-a8d2-279dd309e075",
+      "checksum": "not_captured",
+      "corpus_status": "registered"
+    },
+    {
+      "source_id": "MAOI-SRC-002",
+      "drug": "phenelzine",
+      "title": "NARDIL prescribing information",
+      "organization": "U.S. Food and Drug Administration",
+      "document_type": "regulatory_label_pdf",
+      "language": "en",
+      "access_status": "accessible",
+      "locator": "https://www.accessdata.fda.gov/drugsatfda_docs/label/2007/011909s038lbl.pdf",
+      "checksum": "not_captured",
+      "corpus_status": "registered"
+    }
+  ]
+}

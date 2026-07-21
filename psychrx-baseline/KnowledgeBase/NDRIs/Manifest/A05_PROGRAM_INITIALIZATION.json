@@ -1,0 +1,37 @@
+{
+  "program": "A05",
+  "title": "Scientific Content Population: NDRIs",
+  "status": "active",
+  "execution_scope": "internal_non_runtime_scientific_knowledge",
+  "initialized_at": "2026-07-05",
+  "missions": [
+    "A05-001",
+    "A05-002",
+    "A05-003",
+    "A05-004",
+    "A05-005",
+    "A05-006",
+    "A05-007",
+    "A05-008",
+    "A05-009",
+    "A05-010",
+    "A05-011",
+    "A05-012",
+    "A05-013",
+    "A05-014",
+    "A05-015",
+    "A05-016",
+    "A05-017"
+  ],
+  "permanent_restrictions": [
+    "no_prescription",
+    "no_therapeutic_recommendation",
+    "no_dose_suggestion",
+    "no_patient_specific_medication_selection",
+    "no_clinical_runtime_eligibility",
+    "no_runtime_consumption",
+    "no_unsourced_claims"
+  ],
+  "first_authorized_scientific_field": "mechanism",
+  "declaration": "Program A05 is initialized as a traceability-bound internal knowledge package for NDRIs."
+}

@@ -1,0 +1,23 @@
+{
+  "track": "B",
+  "title": "Clinical Runtime Evolution",
+  "status": "passed_for_governance_artifacts_only",
+  "programs_executed": [
+    "B01",
+    "B02",
+    "B03",
+    "B04",
+    "B05",
+    "B06",
+    "B07",
+    "B08"
+  ],
+  "clinical_runtime_enabled": false,
+  "prescription_enabled": false,
+  "therapeutic_recommendation_enabled": false,
+  "dose_suggestion_enabled": false,
+  "patient_specific_medication_selection_enabled": false,
+  "runtime_knowledge_consumption_enabled": false,
+  "next_state": "awaiting_next_governed_inbox_package"
+}
+

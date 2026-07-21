@@ -1,0 +1,26 @@
+﻿{
+    "program":  "A03",
+    "runtime_consumption_allowed":  false,
+    "schema_version":  "0.1.0",
+    "quantitative_affinity_allowed_in_this_mission":  false,
+    "schema":  "psychrx.a03.receptor_schema",
+    "status":  "structural_schema_only",
+    "allowed_vocabulary":  [
+                               "SERT",
+                               "NET",
+                               "DAT",
+                               "5HT1A",
+                               "5HT1B",
+                               "5HT2A",
+                               "5HT2C",
+                               "5HT3",
+                               "5HT7",
+                               "H1",
+                               "M1",
+                               "Alpha1",
+                               "Alpha2",
+                               "D2",
+                               "other_documented"
+                           ],
+    "mission":  "A03-023"
+}

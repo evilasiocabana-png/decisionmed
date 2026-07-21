@@ -1,0 +1,13 @@
+{
+  "mission": "A06-014",
+  "status": "published_internal_non_runtime",
+  "package_id": "A06-NASSA-MECHANISM-INTERNAL-001",
+  "published_artifacts": [
+    "KnowledgeBase/NaSSAs/ScientificContent/NASSA_MECHANISM_POPULATED_DRAFT.json",
+    "KnowledgeBase/NaSSAs/Review/NASSA_DRAFT_EDITORIAL_REVIEW.json",
+    "KnowledgeBase/NaSSAs/Traceability/NASSA_SOURCE_SECTION_SELECTION.json",
+    "KnowledgeBase/NaSSAs/SourceText/NASSA_MECHANISM_SOURCE_TEXT_EXTRACTS.json"
+  ],
+  "runtime_eligible": false,
+  "publication_scope": "internal_scientific_knowledge_only"
+}

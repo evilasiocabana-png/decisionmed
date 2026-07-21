@@ -1,0 +1,258 @@
+{
+  "library": "Program Execution Library",
+  "status": "created_as_plan_library_only",
+  "program_count": 41,
+  "programs": [
+    {
+      "id": "A07",
+      "title": "Scientific Content Population: TCAs",
+      "track": "Track A - Scientific Knowledge Expansion",
+      "plan": "governance/programs/A07_PROGRAM_EXECUTION_PLAN.md"
+    },
+    {
+      "id": "A08",
+      "title": "Scientific Content Population: MAOIs",
+      "track": "Track A - Scientific Knowledge Expansion",
+      "plan": "governance/programs/A08_PROGRAM_EXECUTION_PLAN.md"
+    },
+    {
+      "id": "A09",
+      "title": "Scientific Content Population: Atypical Antidepressants",
+      "track": "Track A - Scientific Knowledge Expansion",
+      "plan": "governance/programs/A09_PROGRAM_EXECUTION_PLAN.md"
+    },
+    {
+      "id": "A10",
+      "title": "Scientific Content Population: First-Generation Antipsychotics",
+      "track": "Track A - Scientific Knowledge Expansion",
+      "plan": "governance/programs/A10_PROGRAM_EXECUTION_PLAN.md"
+    },
+    {
+      "id": "A11",
+      "title": "Scientific Content Population: Second-Generation Antipsychotics",
+      "track": "Track A - Scientific Knowledge Expansion",
+      "plan": "governance/programs/A11_PROGRAM_EXECUTION_PLAN.md"
+    },
+    {
+      "id": "A12",
+      "title": "Scientific Content Population: Mood Stabilizers",
+      "track": "Track A - Scientific Knowledge Expansion",
+      "plan": "governance/programs/A12_PROGRAM_EXECUTION_PLAN.md"
+    },
+    {
+      "id": "A13",
+      "title": "Scientific Content Population: Anxiolytics and Hypnotics",
+      "track": "Track A - Scientific Knowledge Expansion",
+      "plan": "governance/programs/A13_PROGRAM_EXECUTION_PLAN.md"
+    },
+    {
+      "id": "A14",
+      "title": "Scientific Content Population: ADHD Medications",
+      "track": "Track A - Scientific Knowledge Expansion",
+      "plan": "governance/programs/A14_PROGRAM_EXECUTION_PLAN.md"
+    },
+    {
+      "id": "A15",
+      "title": "Scientific Content Population: Cognitive Enhancers and Dementia-Related Psychopharmacology",
+      "track": "Track A - Scientific Knowledge Expansion",
+      "plan": "governance/programs/A15_PROGRAM_EXECUTION_PLAN.md"
+    },
+    {
+      "id": "B01",
+      "title": "Runtime Activation Framework",
+      "track": "Track B - Clinical Runtime Evolution",
+      "plan": "governance/programs/B01_PROGRAM_EXECUTION_PLAN.md"
+    },
+    {
+      "id": "B02",
+      "title": "Clinical Decision Runtime",
+      "track": "Track B - Clinical Runtime Evolution",
+      "plan": "governance/programs/B02_PROGRAM_EXECUTION_PLAN.md"
+    },
+    {
+      "id": "B03",
+      "title": "Safety Runtime",
+      "track": "Track B - Clinical Runtime Evolution",
+      "plan": "governance/programs/B03_PROGRAM_EXECUTION_PLAN.md"
+    },
+    {
+      "id": "B04",
+      "title": "Evidence Runtime Integration",
+      "track": "Track B - Clinical Runtime Evolution",
+      "plan": "governance/programs/B04_PROGRAM_EXECUTION_PLAN.md"
+    },
+    {
+      "id": "B05",
+      "title": "Explanation Runtime",
+      "track": "Track B - Clinical Runtime Evolution",
+      "plan": "governance/programs/B05_PROGRAM_EXECUTION_PLAN.md"
+    },
+    {
+      "id": "B06",
+      "title": "Therapeutic Runtime",
+      "track": "Track B - Clinical Runtime Evolution",
+      "plan": "governance/programs/B06_PROGRAM_EXECUTION_PLAN.md"
+    },
+    {
+      "id": "B07",
+      "title": "Monitoring Runtime",
+      "track": "Track B - Clinical Runtime Evolution",
+      "plan": "governance/programs/B07_PROGRAM_EXECUTION_PLAN.md"
+    },
+    {
+      "id": "B08",
+      "title": "Runtime Certification",
+      "track": "Track B - Clinical Runtime Evolution",
+      "plan": "governance/programs/B08_PROGRAM_EXECUTION_PLAN.md"
+    },
+    {
+      "id": "C01",
+      "title": "Consultation Workflow",
+      "track": "Track C - Clinical Experience Productization",
+      "plan": "governance/programs/C01_PROGRAM_EXECUTION_PLAN.md"
+    },
+    {
+      "id": "C02",
+      "title": "Clinical Workspace UX",
+      "track": "Track C - Clinical Experience Productization",
+      "plan": "governance/programs/C02_PROGRAM_EXECUTION_PLAN.md"
+    },
+    {
+      "id": "C03",
+      "title": "Timeline UX",
+      "track": "Track C - Clinical Experience Productization",
+      "plan": "governance/programs/C03_PROGRAM_EXECUTION_PLAN.md"
+    },
+    {
+      "id": "C04",
+      "title": "Medication Workspace",
+      "track": "Track C - Clinical Experience Productization",
+      "plan": "governance/programs/C04_PROGRAM_EXECUTION_PLAN.md"
+    },
+    {
+      "id": "C05",
+      "title": "Follow-up Workflow",
+      "track": "Track C - Clinical Experience Productization",
+      "plan": "governance/programs/C05_PROGRAM_EXECUTION_PLAN.md"
+    },
+    {
+      "id": "C06",
+      "title": "Reporting",
+      "track": "Track C - Clinical Experience Productization",
+      "plan": "governance/programs/C06_PROGRAM_EXECUTION_PLAN.md"
+    },
+    {
+      "id": "C07",
+      "title": "Dashboards",
+      "track": "Track C - Clinical Experience Productization",
+      "plan": "governance/programs/C07_PROGRAM_EXECUTION_PLAN.md"
+    },
+    {
+      "id": "C08",
+      "title": "Mobile Experience",
+      "track": "Track C - Clinical Experience Productization",
+      "plan": "governance/programs/C08_PROGRAM_EXECUTION_PLAN.md"
+    },
+    {
+      "id": "D01",
+      "title": "Scientific Validation",
+      "track": "Track D - Validation and Certification",
+      "plan": "governance/programs/D01_PROGRAM_EXECUTION_PLAN.md"
+    },
+    {
+      "id": "D02",
+      "title": "Clinical Validation",
+      "track": "Track D - Validation and Certification",
+      "plan": "governance/programs/D02_PROGRAM_EXECUTION_PLAN.md"
+    },
+    {
+      "id": "D03",
+      "title": "Traceability Audit",
+      "track": "Track D - Validation and Certification",
+      "plan": "governance/programs/D03_PROGRAM_EXECUTION_PLAN.md"
+    },
+    {
+      "id": "D04",
+      "title": "Quality Assurance",
+      "track": "Track D - Validation and Certification",
+      "plan": "governance/programs/D04_PROGRAM_EXECUTION_PLAN.md"
+    },
+    {
+      "id": "D05",
+      "title": "Regulatory Readiness",
+      "track": "Track D - Validation and Certification",
+      "plan": "governance/programs/D05_PROGRAM_EXECUTION_PLAN.md"
+    },
+    {
+      "id": "D06",
+      "title": "Certification Readiness",
+      "track": "Track D - Validation and Certification",
+      "plan": "governance/programs/D06_PROGRAM_EXECUTION_PLAN.md"
+    },
+    {
+      "id": "D07",
+      "title": "External Review",
+      "track": "Track D - Validation and Certification",
+      "plan": "governance/programs/D07_PROGRAM_EXECUTION_PLAN.md"
+    },
+    {
+      "id": "D08",
+      "title": "Release Validation",
+      "track": "Track D - Validation and Certification",
+      "plan": "governance/programs/D08_PROGRAM_EXECUTION_PLAN.md"
+    },
+    {
+      "id": "E01",
+      "title": "Infrastructure Readiness",
+      "track": "Track E - Production Readiness",
+      "plan": "governance/programs/E01_PROGRAM_EXECUTION_PLAN.md"
+    },
+    {
+      "id": "E02",
+      "title": "Security and Identity",
+      "track": "Track E - Production Readiness",
+      "plan": "governance/programs/E02_PROGRAM_EXECUTION_PLAN.md"
+    },
+    {
+      "id": "E03",
+      "title": "Observability and Monitoring",
+      "track": "Track E - Production Readiness",
+      "plan": "governance/programs/E03_PROGRAM_EXECUTION_PLAN.md"
+    },
+    {
+      "id": "E04",
+      "title": "Deployment Pipeline",
+      "track": "Track E - Production Readiness",
+      "plan": "governance/programs/E04_PROGRAM_EXECUTION_PLAN.md"
+    },
+    {
+      "id": "E05",
+      "title": "Compliance and Privacy",
+      "track": "Track E - Production Readiness",
+      "plan": "governance/programs/E05_PROGRAM_EXECUTION_PLAN.md"
+    },
+    {
+      "id": "E06",
+      "title": "Backup and Disaster Recovery",
+      "track": "Track E - Production Readiness",
+      "plan": "governance/programs/E06_PROGRAM_EXECUTION_PLAN.md"
+    },
+    {
+      "id": "E07",
+      "title": "Operations and Support",
+      "track": "Track E - Production Readiness",
+      "plan": "governance/programs/E07_PROGRAM_EXECUTION_PLAN.md"
+    },
+    {
+      "id": "E08",
+      "title": "Production Release",
+      "track": "Track E - Production Readiness",
+      "plan": "governance/programs/E08_PROGRAM_EXECUTION_PLAN.md"
+    }
+  ],
+  "execution_performed": false,
+  "clinical_runtime_enabled": false,
+  "prescription_enabled": false,
+  "therapeutic_recommendation_enabled": false,
+  "production_release_authorized": false
+}

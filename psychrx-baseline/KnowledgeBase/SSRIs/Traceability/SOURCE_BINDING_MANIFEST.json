@@ -1,0 +1,24 @@
+{
+  "schema": "psychrx.a03.source_binding_manifest",
+  "program": "A03",
+  "mission": "A03-013",
+  "manifest_version": "0.1.0",
+  "status": "published_metadata_only",
+  "created_at": "2026-06-30",
+  "artifacts": [
+    "KnowledgeBase/SSRIs/Traceability/DRUG_SOURCE_BINDING.json",
+    "KnowledgeBase/SSRIs/Traceability/DRUG_SOURCE_BINDING_INDEX.json",
+    "KnowledgeBase/SSRIs/Traceability/SOURCE_BINDING_REGISTRY.json",
+    "KnowledgeBase/SSRIs/Traceability/TRACEABILITY_STATUS.json",
+    "KnowledgeBase/SSRIs/Metadata/SOURCE_REFERENCE_TEMPLATE.json"
+  ],
+  "drug_count": 6,
+  "source_count": 17,
+  "binding_count": 6,
+  "boundary_candidates_tracked": 2,
+  "clinical_content_interpreted": false,
+  "scientific_content_interpreted": false,
+  "drug_profiles_populated": false,
+  "runtime_consumption_allowed": false,
+  "next_mission": "A03-014 - PORTFOLIO_DIRECTORY_GENERATION"
+}

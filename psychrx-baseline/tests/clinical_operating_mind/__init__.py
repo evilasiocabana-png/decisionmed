@@ -1,0 +1,2 @@
+"""Clinical Operating Mind tests."""
+

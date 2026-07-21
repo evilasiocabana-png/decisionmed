@@ -1,0 +1,20 @@
+{
+  "schema": "psychrx.a03.contraindication_manifest",
+  "program": "A03",
+  "mission": "A03-028",
+  "status": "completed_structural_manifest",
+  "schema_version": "0.1.0",
+  "created_files": [
+    "CONTRAINDICATION_SCHEMA.json",
+    "CONTRAINDICATION_MODEL.json",
+    "CONTRAINDICATION_INDEX.json",
+    "CONTRAINDICATION_TRACEABILITY.json",
+    "CONTRAINDICATION_VALIDATION.json",
+    "CONTRAINDICATION_MANIFEST.json"
+  ],
+  "scientific_content_interpreted": false,
+  "contraindication_values_populated": false,
+  "runtime_consumption_allowed": false,
+  "publication_status": "not_published",
+  "next_mission": "A03-029 - SAFETY_MODELING"
+}

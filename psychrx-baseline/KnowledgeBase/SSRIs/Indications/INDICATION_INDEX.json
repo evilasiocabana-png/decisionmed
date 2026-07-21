@@ -1,0 +1,17 @@
+{
+  "schema": "psychrx.a03.indication_index",
+  "program": "A03",
+  "mission": "A03-026",
+  "status": "active",
+  "schema_version": "0.1.0",
+  "runtime_consumption_allowed": false,
+  "indication_model_count": 6,
+  "indication_models_by_drug_id": {
+    "SSRI_FLUOXETINE": "A03_INDICATION_SSRI_FLUOXETINE",
+    "SSRI_SERTRALINE": "A03_INDICATION_SSRI_SERTRALINE",
+    "SSRI_ESCITALOPRAM": "A03_INDICATION_SSRI_ESCITALOPRAM",
+    "SSRI_CITALOPRAM": "A03_INDICATION_SSRI_CITALOPRAM",
+    "SSRI_PAROXETINE": "A03_INDICATION_SSRI_PAROXETINE",
+    "SSRI_FLUVOXAMINE": "A03_INDICATION_SSRI_FLUVOXAMINE"
+  }
+}

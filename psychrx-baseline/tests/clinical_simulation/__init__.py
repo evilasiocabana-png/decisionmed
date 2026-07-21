@@ -1,0 +1,2 @@
+"""Clinical Simulation Platform tests."""
+

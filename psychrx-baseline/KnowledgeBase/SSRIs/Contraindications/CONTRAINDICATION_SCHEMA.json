@@ -1,0 +1,36 @@
+{
+  "schema": "psychrx.a03.contraindication_schema",
+  "program": "A03",
+  "mission": "A03-028",
+  "status": "structural_schema_only",
+  "schema_version": "0.1.0",
+  "runtime_consumption_allowed": false,
+  "required_fields": [
+    "contraindication_id",
+    "drug_id",
+    "profile_id",
+    "scientific_version",
+    "editorial_version",
+    "schema_version",
+    "validation_status",
+    "publication_status"
+  ],
+  "contraindication_fields": [
+    "absolute_contraindications",
+    "relative_contraindications",
+    "regulatory_contraindications",
+    "class_level_contraindications",
+    "patient_factor_contexts",
+    "mechanism_rationale",
+    "source_binding",
+    "safety_relationship"
+  ],
+  "prohibited_fields": [
+    "clinical_recommendation",
+    "prescription",
+    "runtime_rule",
+    "decision_engine_rule",
+    "safety_alert",
+    "therapeutic_strategy"
+  ]
+}

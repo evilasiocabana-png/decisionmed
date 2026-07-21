@@ -1,0 +1,26 @@
+{
+  "mission": "A06-007",
+  "drug_id": "NASSA-MIRTAZAPINE",
+  "canonical_name": "mirtazapine",
+  "class_id": "NaSSA",
+  "status": "internal_non_runtime_mechanism_package",
+  "runtime_eligible": false,
+  "fields": {
+    "mechanism": {
+      "status": "populated_internal_draft",
+      "traceability": [
+        "A06-MECH-001",
+        "A06-MECH-002"
+      ],
+      "publication_package": "A06-NASSA-MECHANISM-INTERNAL-001"
+    },
+    "pharmacokinetics": {
+      "status": "UNRESOLVED_BLOCKED_FUTURE_SCOPE",
+      "traceability": []
+    },
+    "safety": {
+      "status": "UNRESOLVED_BLOCKED_FUTURE_SCOPE",
+      "traceability": []
+    }
+  }
+}

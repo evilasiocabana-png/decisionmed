@@ -1,0 +1,26 @@
+{
+  "schema": "psychrx.knowledge_base.snri.mechanism_publication_manifest.v1",
+  "program": "A04",
+  "mission": "A04-013 - SNRI_MECHANISM_PUBLICATION",
+  "status": "published_internal_non_runtime",
+  "publication_scope": "mechanism_field_only",
+  "published_artifacts": [
+    "KnowledgeBase/SNRIs/ScientificContent/SNRI_MECHANISM_POPULATED_DRAFT.json",
+    "KnowledgeBase/SNRIs/ScientificContent/SNRI_MECHANISM_POPULATED_DRAFT.md",
+    "KnowledgeBase/SNRIs/Traceability/SNRI_MECHANISM_POPULATION_TRACEABILITY.json",
+    "KnowledgeBase/SNRIs/SourceText/SNRI_MECHANISM_SOURCE_TEXT_EXTRACTS.json",
+    "KnowledgeBase/SNRIs/Review/SNRI_MECHANISM_DRAFT_EDITORIAL_REVIEW.json"
+  ],
+  "publication_status": "internal_scientific_artifact",
+  "runtime_eligibility": "not_eligible",
+  "remaining_restrictions": [
+    "no pharmacokinetic extraction",
+    "no pharmacodynamic extraction",
+    "no safety extraction",
+    "no evidence grading",
+    "no therapeutic recommendation",
+    "no prescription",
+    "no clinical runtime"
+  ],
+  "next_mission": "A04-014 - SNRI_TRACEABILITY_AUDIT"
+}

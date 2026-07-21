@@ -1,0 +1,12 @@
+{
+  "schema": "psychrx.knowledgebase.ssri.mechanism_source_text_intake_status",
+  "program": "A03",
+  "mission": "A03-036A",
+  "status": "partial_ready_for_extraction",
+  "source_anchor_manifest": "ScientificCorpus/SourceTextIntake/Mechanism/MECHANISM_SOURCE_ANCHORS.json",
+  "source_text_stored": false,
+  "clinical_content_interpreted": false,
+  "mechanism_content_extracted": false,
+  "ready_for_next_mission": true,
+  "next_mission": "A03-036 - MECHANISM_CONTENT_EXTRACTION"
+}

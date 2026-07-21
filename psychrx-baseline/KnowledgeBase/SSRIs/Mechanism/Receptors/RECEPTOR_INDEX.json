@@ -1,0 +1,15 @@
+﻿{
+    "receptor_models_by_drug_id":  {
+                                       "SSRI_CITALOPRAM":  "A03_RECEPTOR_SSRI_CITALOPRAM",
+                                       "SSRI_SERTRALINE":  "A03_RECEPTOR_SSRI_SERTRALINE",
+                                       "SSRI_FLUVOXAMINE":  "A03_RECEPTOR_SSRI_FLUVOXAMINE",
+                                       "SSRI_FLUOXETINE":  "A03_RECEPTOR_SSRI_FLUOXETINE",
+                                       "SSRI_ESCITALOPRAM":  "A03_RECEPTOR_SSRI_ESCITALOPRAM",
+                                       "SSRI_PAROXETINE":  "A03_RECEPTOR_SSRI_PAROXETINE"
+                                   },
+    "program":  "A03",
+    "mission":  "A03-023",
+    "runtime_consumption_allowed":  false,
+    "schema":  "psychrx.a03.receptor_index",
+    "receptor_model_count":  6
+}

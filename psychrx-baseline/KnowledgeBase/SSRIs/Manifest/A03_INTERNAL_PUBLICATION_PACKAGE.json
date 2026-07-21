@@ -1,0 +1,26 @@
+{
+  "schema": "psychrx.knowledgebase.ssri.internal_publication_package",
+  "program": "A03",
+  "phase": "Phase 9 - Publication",
+  "mission": "A03-059",
+  "status": "internal_package_created",
+  "package_id": "A03-SSRI-INTERNAL-KNOWLEDGE-PACKAGE-0.1.0",
+  "included_domains": [
+    "Mechanism",
+    "Pharmacokinetics",
+    "Pharmacodynamics",
+    "EvidenceTraceability"
+  ],
+  "included_artifacts": [
+    "KnowledgeBase/SSRIs/Mechanism/MECHANISM_PARTIAL_BASELINE.json",
+    "KnowledgeBase/SSRIs/Pharmacokinetics/PK_BASELINE.json",
+    "KnowledgeBase/SSRIs/Pharmacodynamics/PD_BASELINE.json",
+    "KnowledgeBase/SSRIs/Evidence/EVIDENCE_INTEGRATION_BASELINE.json",
+    "KnowledgeBase/SSRIs/Evidence/KNOWLEDGE_QA_GATE.json"
+  ],
+  "publication_scope": "internal_draft_knowledge_package",
+  "runtime_consumption_allowed": false,
+  "clinical_recommendation_allowed": false,
+  "prescription_allowed": false,
+  "next_mission": "A03-060 - PROGRAM_A03_PUBLICATION_GATE"
+}

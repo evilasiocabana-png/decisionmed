@@ -1,0 +1,42 @@
+{
+  "mission": "A13-012",
+  "status": "draft_internal_non_runtime",
+  "drug_id": "AH-DIAZEPAM",
+  "field": "mechanism",
+  "claims": [
+    {
+      "claim_id": "AH-CLAIM-001",
+      "statement": "Diazepam is identified in the label as a benzodiazepine.",
+      "source_text_records": [
+        "AH-TEXT-001"
+      ],
+      "review_status": "draft_reviewed",
+      "runtime_eligible": false
+    },
+    {
+      "claim_id": "AH-CLAIM-002",
+      "statement": "The label describes anxiolytic, sedative, muscle-relaxant, anticonvulsant and amnestic effects.",
+      "source_text_records": [
+        "AH-TEXT-002"
+      ],
+      "review_status": "draft_reviewed",
+      "runtime_eligible": false
+    },
+    {
+      "claim_id": "AH-CLAIM-003",
+      "statement": "The label relates most of these effects to facilitation of GABA action.",
+      "source_text_records": [
+        "AH-TEXT-003"
+      ],
+      "review_status": "draft_reviewed",
+      "runtime_eligible": false
+    }
+  ],
+  "unresolved": [
+    {
+      "field": "class_level_mechanism_generalization",
+      "status": "UNRESOLVED",
+      "reason": "A13 scope only supports diazepam label-derived mechanism statements."
+    }
+  ]
+}

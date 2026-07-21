@@ -1,0 +1,20 @@
+{
+  "schema": "psychrx.scientific_corpus.snri.source_catalog_status.v1",
+  "program": "A04.0",
+  "mission": "A04.0-002 - SNRI_SOURCE_CATALOG",
+  "status": "completed",
+  "source_discovery_dependency": "A04.0-001 - completed",
+  "catalog_summary": {
+    "total_sources_cataloged": 19,
+    "catalog_ids_assigned": 19,
+    "planned_locations_assigned": 19,
+    "documents_downloaded": 0,
+    "scientific_interpretations_created": 0,
+    "knowledge_objects_created": 0
+  },
+  "program_a04_blocker_status": {
+    "a04_003_snri_source_corpus_intake": "still_blocked",
+    "reason": "Source catalog is complete, but physical/logical corpus intake, metadata normalization, source validation, editorial registration and corpus publication are still pending."
+  },
+  "next_mission": "A04.0-003 - SNRI_SOURCE_CORPUS_INTAKE"
+}

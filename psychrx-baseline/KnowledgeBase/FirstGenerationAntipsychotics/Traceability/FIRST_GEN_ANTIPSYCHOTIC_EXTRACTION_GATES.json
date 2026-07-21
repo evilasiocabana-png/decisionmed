@@ -1,0 +1,10 @@
+{
+  "mission": "A10-009",
+  "status": "passed_for_mechanism_only",
+  "gate": "FGA_MECHANISM_SOURCE_SECTION_REQUIRED",
+  "selected_sections": 2,
+  "may_extract_source_text": true,
+  "may_populate_mechanism": true,
+  "may_populate_other_fields": false,
+  "runtime_eligible": false
+}

@@ -1,0 +1,17 @@
+{
+  "schema": "psychrx.a03.posology_index",
+  "program": "A03",
+  "mission": "A03-027",
+  "status": "active",
+  "schema_version": "0.1.0",
+  "runtime_consumption_allowed": false,
+  "posology_model_count": 6,
+  "posology_models_by_drug_id": {
+    "SSRI_FLUOXETINE": "A03_POSOLOGY_SSRI_FLUOXETINE",
+    "SSRI_SERTRALINE": "A03_POSOLOGY_SSRI_SERTRALINE",
+    "SSRI_ESCITALOPRAM": "A03_POSOLOGY_SSRI_ESCITALOPRAM",
+    "SSRI_CITALOPRAM": "A03_POSOLOGY_SSRI_CITALOPRAM",
+    "SSRI_PAROXETINE": "A03_POSOLOGY_SSRI_PAROXETINE",
+    "SSRI_FLUVOXAMINE": "A03_POSOLOGY_SSRI_FLUVOXAMINE"
+  }
+}

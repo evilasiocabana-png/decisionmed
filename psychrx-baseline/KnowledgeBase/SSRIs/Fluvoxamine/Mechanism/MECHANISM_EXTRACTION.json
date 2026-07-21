@@ -1,0 +1,28 @@
+{
+  "schema": "psychrx.knowledgebase.ssri.mechanism_extraction",
+  "program": "A03",
+  "mission": "A03-036",
+  "extraction_id": "A03-MOA-EXT-FLUVOXAMINE-001",
+  "drug_id": "SSRI_FLUVOXAMINE",
+  "target_domain": "Mechanism",
+  "source": {
+    "anchor_id": "A03-MOA-ANCHOR-FLUVOXAMINE-001",
+    "corpus_source_id": "SC-SSRI-FDA-FLUVOXAMINE-001",
+    "registry_source_id": "L006",
+    "source_type": "regulatory_label",
+    "source_url": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=6eeb14df-6fcf-a737-5359-5744eb4accea",
+    "xml_url": "https://dailymed.nlm.nih.gov/dailymed/services/v2/spls/6eeb14df-6fcf-a737-5359-5744eb4accea.xml",
+    "section_path": ["12 CLINICAL PHARMACOLOGY", "12.1 Mechanism of Action"]
+  },
+  "extraction_claim": {
+    "mechanism_status": "presumed",
+    "primary_mechanistic_link": "serotonin_reuptake_inhibition",
+    "anatomical_context": "brain_neurons",
+    "supporting_context": "preclinical transporter inhibition evidence referenced by label",
+    "claim_summary": "The regulatory label links the presumed mechanism to serotonin reuptake inhibition in brain neurons and notes preclinical evidence of serotonin transporter inhibition."
+  },
+  "reviewer_status": "awaiting_review",
+  "normalization_status": "awaiting_normalization",
+  "publication_status": "not_published",
+  "runtime_consumption_allowed": false
+}

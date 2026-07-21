@@ -1,0 +1,19 @@
+code,source,use,status
+TM,Tabela Motor / tabelas locais do PsychRx,"classe, alvos, scores, cautelas e contexto ja transcritos das tabelas do fundador",local_curated
+T1-T8,Planilhas originais 1 a 8 do Motor Farmacologico,fonte local visual/auditada das informacoes transcritas,local_curated
+DM,FDA / DailyMed,"bula oficial, dose, indicacao, contraindicao, advertencia, evento adverso e monitorizacao regulatoria",official_regulatory
+ST-E,Stahl's Essential Psychopharmacology,"mecanismo, receptores, farmacodinamica e racional psicofarmacologico",official_reference_required
+ST-PG,Stahl's Prescriber's Guide,"uso clinico, faixa de dose, efeitos adversos, monitorizacao, troca e associacao",official_reference_required
+GG,Goodman & Gilman's The Pharmacological Basis of Therapeutics,"farmacologia de base, PK/PD, metabolismo e mecanismo",official_reference_required
+APA,American Psychiatric Association Guidelines,diretriz clinica por transtorno e contexto terapeutico,official_guideline
+NICE,National Institute for Health and Care Excellence Guidelines,"algoritmo terapeutico, sequencia de tratamento e evidencia aplicada",official_guideline
+EMA,European Medicines Agency,"documento regulatorio, seguranca, autorizacao e alertas europeus",official_regulatory
+ANVISA,ANVISA,"bula, regulacao e alertas aplicaveis ao Brasil",official_regulatory
+HC,Health Canada Product Monograph,monografia regulatoria canadense usada quando nao ha DailyMed/FDA para o farmaco,official_regulatory
+PENDENTE_PESQUISAR,Fonte ainda nao localizada ou trecho ainda nao revisado,manter campo fora do motor explicativo ate pesquisa especifica,blocked_for_runtime
+Maudsley,The Maudsley Prescribing Guidelines in Psychiatry,"uso clinico, dose, monitorizacao, troca e associacao",official_reference_required
+CANMAT/ISBD,CANMAT / ISBD Guidelines,diretriz para depressao e transtorno bipolar conforme aplicavel,official_guideline
+WFSBP,World Federation of Societies of Biological Psychiatry Guidelines,diretriz clinica por transtorno e contexto terapeutico,official_guideline
+BNF,British National Formulary,"referencia de dose, seguranca e informacao medicamentosa",official_reference_required
+Cochrane,Cochrane Library,revisoes sistematicas e evidencia sintetica,scientific_evidence
+PubMed,PubMed / MEDLINE,literatura cientifica indexada para revisao especifica,scientific_evidence

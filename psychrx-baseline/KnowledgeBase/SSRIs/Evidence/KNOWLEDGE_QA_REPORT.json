@@ -1,0 +1,23 @@
+{
+  "schema": "psychrx.knowledgebase.ssri.knowledge_qa_report",
+  "program": "A03",
+  "phase": "Phase 8 - Knowledge QA",
+  "missions": ["A03-056", "A03-057"],
+  "status": "qa_passed_for_internal_publication_package",
+  "checklist": "KnowledgeBase/SSRIs/Evidence/KNOWLEDGE_QA_CHECKLIST.json",
+  "summary": {
+    "required_checks": 5,
+    "passed_checks": 5,
+    "failed_checks": 0,
+    "runtime_consumption_allowed": false,
+    "recommendations_created": false,
+    "prescriptions_created": false
+  },
+  "remaining_limitations": [
+    "knowledge remains internal and draft",
+    "evidence quality is not graded",
+    "recommendation strength is not assigned",
+    "runtime clinical use is forbidden"
+  ],
+  "next_mission": "A03-058 - KNOWLEDGE_QA_GATE"
+}

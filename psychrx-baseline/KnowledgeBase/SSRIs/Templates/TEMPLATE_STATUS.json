@@ -1,0 +1,15 @@
+﻿{
+    "schema":  "psychrx.a03.template_status",
+    "program":  "A03",
+    "mission":  "A03-015",
+    "status":  "structurally_validated",
+    "templates_created":  19,
+    "all_json_valid":  true,
+    "all_have_schema_version":  true,
+    "all_have_document_version":  true,
+    "all_have_status":  true,
+    "scientific_content_present":  false,
+    "clinical_content_present":  false,
+    "duplicate_templates":  0,
+    "next_mission":  "A03-016 - PORTFOLIO_REGISTRY_LINKING"
+}

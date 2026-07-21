@@ -1,0 +1,22 @@
+{
+  "schema": "psychrx.program_a03.official_ssri_portfolio",
+  "program": "A03",
+  "mission": "A03-002",
+  "status": "editorial_metadata_only",
+  "core_portfolio": [
+    { "drug_id": "SSRI_FLUOXETINE", "name": "Fluoxetine", "status": "canonical_metadata_only" },
+    { "drug_id": "SSRI_SERTRALINE", "name": "Sertraline", "status": "canonical_metadata_only" },
+    { "drug_id": "SSRI_ESCITALOPRAM", "name": "Escitalopram", "status": "canonical_metadata_only" },
+    { "drug_id": "SSRI_CITALOPRAM", "name": "Citalopram", "status": "canonical_metadata_only" },
+    { "drug_id": "SSRI_PAROXETINE", "name": "Paroxetine", "status": "canonical_metadata_only" },
+    { "drug_id": "SSRI_FLUVOXAMINE", "name": "Fluvoxamine", "status": "canonical_metadata_only" }
+  ],
+  "boundary_candidates": [
+    { "name": "Vilazodone", "status": "boundary_review_required" },
+    { "name": "Vortioxetine", "status": "boundary_review_required" }
+  ],
+  "drug_profiles_populated": false,
+  "clinical_content_created": false,
+  "ontology_decision_for_boundary_candidates": false,
+  "detailed_definition": "KnowledgeBase/SSRIs/Metadata/DRUG_PORTFOLIO_DEFINITION.json"
+}

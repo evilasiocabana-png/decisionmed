@@ -1,0 +1,25 @@
+{
+  "mission": "A15-003",
+  "status": "complete",
+  "sources": [
+    {
+      "source_id": "CE-SRC-001",
+      "title": "DailyMed - Donepezil hydrochloride tablet label",
+      "organization": "National Library of Medicine / DailyMed",
+      "source_type": "official_label",
+      "url": "https://dailymed.nlm.nih.gov/dailymed/lookup.cfm?setid=1c845e89-e899-4094-bae6-c14602dbf288",
+      "access_status": "accessible",
+      "use_scope": "mechanism_source_text"
+    },
+    {
+      "source_id": "CE-SRC-002",
+      "title": "FDA - Aricept label PDF",
+      "organization": "FDA",
+      "source_type": "official_label_pdf",
+      "url": "https://www.accessdata.fda.gov/drugsatfda_docs/label/2018/020690s042%2C021720s014%2C022568s011lbl.pdf",
+      "access_status": "accessible",
+      "use_scope": "mechanism_source_text_cross_check"
+    }
+  ],
+  "runtime_eligible": false
+}

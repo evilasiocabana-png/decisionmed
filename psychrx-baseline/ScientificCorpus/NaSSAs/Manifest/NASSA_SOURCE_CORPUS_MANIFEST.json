@@ -1,0 +1,32 @@
+{
+  "mission": "A06-004",
+  "status": "complete",
+  "corpus": "ScientificCorpus/NaSSAs",
+  "intake_mode": "metadata_and_locator_only_until_section_selection",
+  "sources": [
+    {
+      "source_id": "NASSA-SRC-001",
+      "drug": "mirtazapine",
+      "title": "MIRTAZAPINE tablet, film coated",
+      "organization": "DailyMed / National Library of Medicine",
+      "document_type": "official_label",
+      "language": "en",
+      "access_status": "accessible",
+      "locator": "https://dailymed.nlm.nih.gov/dailymed/lookup.cfm?setid=dea8c09a-b759-1da7-e053-2a95a90a3346",
+      "checksum": "not_captured",
+      "corpus_status": "registered"
+    },
+    {
+      "source_id": "NASSA-SRC-002",
+      "drug": "mirtazapine",
+      "title": "REMERON / REMERONSolTab prescribing information",
+      "organization": "U.S. Food and Drug Administration",
+      "document_type": "regulatory_label_pdf",
+      "language": "en",
+      "access_status": "accessible",
+      "locator": "https://www.accessdata.fda.gov/drugsatfda_docs/label/2020/020415s029%2C%20021208s019lbl.pdf",
+      "checksum": "not_captured",
+      "corpus_status": "registered"
+    }
+  ]
+}

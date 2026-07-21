@@ -1,0 +1,36 @@
+{
+  "program": "A07",
+  "title": "Scientific Content Population: TCAs",
+  "status": "active",
+  "execution_scope": "internal_non_runtime_scientific_knowledge",
+  "initialized_at": "2026-07-05",
+  "missions": [
+    "A07-001",
+    "A07-002",
+    "A07-003",
+    "A07-004",
+    "A07-005",
+    "A07-006",
+    "A07-007",
+    "A07-008",
+    "A07-009",
+    "A07-010",
+    "A07-011",
+    "A07-012",
+    "A07-013",
+    "A07-014",
+    "A07-015",
+    "A07-016",
+    "A07-017"
+  ],
+  "permanent_restrictions": [
+    "no_prescription",
+    "no_therapeutic_recommendation",
+    "no_dose_suggestion",
+    "no_patient_specific_medication_selection",
+    "no_clinical_runtime_eligibility",
+    "no_runtime_consumption",
+    "no_unsourced_claims"
+  ],
+  "first_authorized_scientific_field": "mechanism"
+}

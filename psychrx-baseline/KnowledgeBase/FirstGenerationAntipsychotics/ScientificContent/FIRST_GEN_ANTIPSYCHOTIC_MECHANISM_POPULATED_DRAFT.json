@@ -1,0 +1,42 @@
+{
+  "mission": "A10-012",
+  "status": "draft_internal_non_runtime",
+  "drug_id": "FGA-CHLORPROMAZINE",
+  "field": "mechanism",
+  "claims": [
+    {
+      "claim_id": "FGA-CLAIM-001",
+      "statement": "The precise mechanism whereby chlorpromazine produces therapeutic effects is not known.",
+      "source_text_records": [
+        "FGA-TEXT-001"
+      ],
+      "review_status": "draft_reviewed",
+      "runtime_eligible": false
+    },
+    {
+      "claim_id": "FGA-CLAIM-002",
+      "statement": "The label describes chlorpromazine's principal pharmacological actions as psychotropic.",
+      "source_text_records": [
+        "FGA-TEXT-002"
+      ],
+      "review_status": "draft_reviewed",
+      "runtime_eligible": false
+    },
+    {
+      "claim_id": "FGA-CLAIM-003",
+      "statement": "The label states that chlorpromazine has actions at all levels of the central nervous system.",
+      "source_text_records": [
+        "FGA-TEXT-003"
+      ],
+      "review_status": "draft_reviewed",
+      "runtime_eligible": false
+    }
+  ],
+  "unresolved": [
+    {
+      "field": "class_level_mechanism_generalization",
+      "status": "UNRESOLVED",
+      "reason": "A10 scope only supports chlorpromazine label-derived mechanism statements."
+    }
+  ]
+}

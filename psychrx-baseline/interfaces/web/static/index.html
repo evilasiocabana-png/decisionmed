@@ -1,0 +1,580 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>PsychRx Clinical Flow</title>
+    <link rel="icon" href="data:," />
+    <link rel="stylesheet" href="/styles.css?v=mobile-ux-3" />
+    <link rel="stylesheet" href="/medication_decision.css?v=3" />
+  </head>
+  <body>
+    <main class="clinical-app" autocomplete="off">
+      <header class="topbar">
+        <div>
+          <p class="brand">PsychRx</p>
+          <h1>Raciocinio psicofarmacologico por apresentacao clinica</h1>
+          <p class="subhead">O app conduz a consulta como um colega experiente: uma decisao por vez, sem formularios longos.</p>
+        </div>
+        <aside class="session-card">
+          <span>SUPORTE A DECISAO</span>
+          <strong id="app-mode">Clinical Support</strong>
+          <small id="app-version">v1</small>
+          <form action="/logout" method="post">
+            <button class="logout-action" type="submit">Sair</button>
+          </form>
+        </aside>
+      </header>
+
+      <section class="patient-strip" aria-label="Identificacao do paciente">
+        <label>
+          Paciente
+          <input id="patient-name" placeholder="Nome do paciente" />
+        </label>
+        <label>
+          Nascimento
+          <input id="patient-birthdate" type="date" />
+        </label>
+      </section>
+
+      <nav class="progress-rail" aria-label="Fluxo progressivo">
+        <button class="active" type="button" data-jump="presentation">Apresentacao</button>
+        <button type="button" data-jump="population">Populacao</button>
+        <button type="button" data-jump="diagnosis">Condicao</button>
+        <button type="button" data-jump="phenotype">Fenotipo</button>
+        <button type="button" data-jump="symptoms">Sintomas</button>
+        <button type="button" data-jump="objective">Objetivo</button>
+        <button type="button" data-jump="medication">Receita atual</button>
+        <button type="button" data-jump="safety-review">Seguranca essencial</button>
+        <button type="button" data-jump="acute-safety">Seguranca aguda</button>
+        <button type="button" data-jump="profile">Perfil</button>
+        <button type="button" data-jump="restrictions">Restricoes</button>
+        <button type="button" data-jump="decision">Decisao</button>
+        <button type="button" data-jump="monitoring">Monitorizacao</button>
+      </nav>
+
+      <section class="workspace" aria-label="Workspace clinico">
+        <section class="card-column" aria-label="Cartoes progressivos">
+          <article class="flow-card active" data-card="presentation">
+            <header>
+              <span>01</span>
+              <div>
+                <h2>Qual e o contexto da consulta?</h2>
+                <p>Uma escolha principal organiza o restante do raciocinio.</p>
+              </div>
+            </header>
+            <div class="option-grid dense" data-single="presentation"></div>
+          </article>
+
+          <article class="flow-card" data-card="population">
+            <header>
+              <span>02</span>
+              <div>
+                <h2>Quais dados populacionais mudam a seguranca?</h2>
+                <p>A idade e calculada no motor pela data de nascimento. Gestacao, lactacao e pos-parto permanecem estados distintos.</p>
+              </div>
+            </header>
+            <div id="population-required-status" class="required-note pending">
+              Informe nascimento e avalie explicitamente os contextos populacionais obrigatorios.
+            </div>
+            <div class="form-grid compact">
+              <label>Idade calculada <output id="patient-age-display">Nao calculada</output></label>
+              <label>
+                Sexo registrado, quando farmacologicamente relevante
+                <select id="patient-sex-context">
+                  <option value="not_informed">Nao informado</option>
+                  <option value="female">Feminino</option>
+                  <option value="male">Masculino</option>
+                  <option value="intersex_or_other">Intersexo/outro contexto biologico</option>
+                </select>
+              </label>
+              <label>Peso em kg <input id="patient-weight-kg" type="number" min="1" max="400" step="0.1" placeholder="Opcional" /></label>
+              <label>Gestacao <select id="pregnancy-status" class="population-required-state"></select></label>
+              <label>Lactacao <select id="lactation-status" class="population-required-state"></select></label>
+              <label>Periodo pos-parto <select id="postpartum-status" class="population-required-state"></select></label>
+              <label>Funcao renal <select id="renal-status" class="population-required-state"></select></label>
+              <label>Funcao hepatica <select id="hepatic-status" class="population-required-state"></select></label>
+            </div>
+            <button class="secondary-action" id="continue-population" type="button">Continuar para condicao clinica</button>
+          </article>
+
+          <article class="flow-card" data-card="diagnosis">
+            <header>
+              <span>02</span>
+              <div>
+                <h2>Existe uma condicao ou diagnostico de referencia?</h2>
+                <p>Escolha uma condicao da base quando houver. Se nao houver diagnostico fechado, mantenha em investigacao.</p>
+              </div>
+            </header>
+            <label class="full-field">
+              Condicao / diagnostico / quadro de uso
+              <select id="diagnosis-context">
+                <option>Nao informado / em investigacao</option>
+                <option>Agitacao ou psicose aguda</option>
+                <option>Anorexia nervosa</option>
+                <option>Ansiedade social</option>
+                <option>Bulimia nervosa</option>
+                <option>Depressao com fadiga/hipersonia/baixa energia</option>
+                <option>Depressao com insonia/baixa ingestao/perda de peso</option>
+                <option>Depressao resistente</option>
+                <option>Dor neuropatica ou sindromes dolorosas</option>
+                <option>Enxaqueca - prevencao</option>
+                <option>Epilepsia</option>
+                <option>Esquizofrenia e transtornos psicoticos</option>
+                <option>Esquizofrenia resistente</option>
+                <option>Fibromialgia</option>
+                <option>Insonia</option>
+                <option>TOC resistente</option>
+                <option>Tabagismo</option>
+                <option>Transtorno bipolar - antidepressivo isolado</option>
+                <option>Transtorno bipolar - episodio depressivo</option>
+                <option>Transtorno bipolar - mania/hipomania</option>
+                <option>Transtorno bipolar - manutencao</option>
+                <option>Transtorno de ansiedade generalizada</option>
+                <option>Transtorno de compulsao alimentar</option>
+                <option>Transtorno de estresse pos-traumatico</option>
+                <option>Transtorno depressivo maior</option>
+                <option>Transtorno disforico pre-menstrual</option>
+                <option>Transtorno do panico</option>
+                <option>Transtorno obsessivo-compulsivo</option>
+                <option>Transtorno por uso de alcool</option>
+                <option>Transtorno por uso de opioides</option>
+                <option>Transtornos alimentares - comorbidades</option>
+                <option>Uso psiquiatrico de anticonvulsivantes</option>
+                <option>Outro contexto ja conhecido / nao cadastrado</option>
+              </select>
+            </label>
+            <button class="secondary-action" id="continue-diagnosis" type="button">Continuar para fenotipo</button>
+          </article>
+
+          <article class="flow-card" data-card="phenotype">
+            <header>
+              <span>03</span>
+              <div>
+                <h2>Como ele esta hoje?</h2>
+                <p>Marque os fenotipos presentes e a intensidade predominante de cada um.</p>
+              </div>
+            </header>
+            <div id="phenotype-intensity-list" class="intensity-list"></div>
+            <button class="secondary-action" id="continue-phenotype" type="button">Continuar com este vetor clinico</button>
+          </article>
+
+          <article class="flow-card" data-card="symptoms">
+            <header>
+              <span>04</span>
+              <div>
+                <h2>Quais sintomas predominam?</h2>
+                <p>Mostrar apenas sintomas relacionados ao fenotipo selecionado.</p>
+              </div>
+            </header>
+            <div class="option-grid" data-group="symptoms"></div>
+            <button class="secondary-action" id="continue-symptoms" type="button">Continuar com sintomas selecionados</button>
+          </article>
+
+          <article class="flow-card" data-card="objective">
+            <header>
+              <span>05</span>
+              <div>
+                <h2>O que queremos trabalhar no tratamento?</h2>
+                <p>Escolha os eixos clinicos que precisam ser cobertos antes de comparar com a receita.</p>
+              </div>
+            </header>
+            <div class="axis-picker">
+              <strong>O que queremos trabalhar no tratamento</strong>
+              <p>O app sugere os eixos a cobrir a partir dos sintomas/fenotipo. Ajuste antes de comparar com a receita.</p>
+              <div class="option-grid compact" data-group="clinical-axes"></div>
+            </div>
+            <h3 class="inline-heading">Objetivos de tolerabilidade e funcionamento</h3>
+            <div class="option-grid compact" data-group="secondary-objectives">
+              <button type="button">preservar libido</button>
+              <button type="button">evitar ganho de peso</button>
+              <button type="button">reduzir sedacao</button>
+              <button type="button">reduzir dor</button>
+              <button type="button">melhorar cognicao</button>
+              <button type="button">minimizar interacoes</button>
+            </div>
+            <button class="secondary-action" id="continue-objective" type="button">Continuar para receita atual</button>
+          </article>
+
+          <article class="flow-card" data-card="medication">
+            <header>
+              <span>06</span>
+              <div>
+                <h2>Receita atual</h2>
+                <p>Campos marcados com * sao obrigatorios para o resumo pratico do conselho do motor.</p>
+              </div>
+            </header>
+            <div class="required-note" id="medication-required-status">
+              Para o conselho funcionar, informe receita atual ou marque sem medicacao, resposta, tempo, adesao e tolerabilidade.
+            </div>
+            <div class="form-grid compact">
+              <label>
+                Status da receita *
+                <select id="current-medication-status">
+                  <option value="">Selecionar</option>
+                  <option value="has_current_medication">Usa medicacao atual</option>
+                  <option value="no_current_medication">Sem medicacao atual</option>
+                </select>
+              </label>
+              <label class="medication-search-field">
+                Medicamento atual *
+                <input id="current-medication-name" autocomplete="off" placeholder="Buscar ou deixar em branco" />
+                <div class="medication-suggestions" id="current-medication-suggestions" role="listbox" aria-label="Medicamentos disponiveis"></div>
+              </label>
+              <label>
+                Dose
+                <input id="current-medication-dose-number" type="number" min="0" step="0.5" placeholder="Ex.: 50" />
+              </label>
+              <label>
+                Unidade
+                <select id="current-medication-dose-unit">
+                  <option value="mg">mg</option>
+                  <option value="mcg">mcg</option>
+                  <option value="gotas">gotas</option>
+                  <option value="mL">mL</option>
+                </select>
+              </label>
+              <label>
+                Frequencia
+                <select id="current-medication-frequency">
+                  <option value="">Nao informado</option>
+                  <option value="1x/dia">1x/dia</option>
+                  <option value="2x/dia">2x/dia</option>
+                  <option value="3x/dia">3x/dia</option>
+                  <option value="noite">Noite</option>
+                  <option value="manha">Manha</option>
+                </select>
+              </label>
+              <label>
+                Tempo de uso *
+                <select id="current-medication-duration">
+                  <option value="">Nao informado</option>
+                  <option value="menos de 2 semanas">Menos de 2 semanas</option>
+                  <option value="2 semanas">2 semanas</option>
+                  <option value="4 semanas">4 semanas</option>
+                  <option value="8 semanas">8 semanas</option>
+                  <option value="mais de 8 semanas">Mais de 8 semanas</option>
+                </select>
+              </label>
+              <label>
+                Adesao *
+                <select id="current-medication-adherence">
+                  <option value="">Nao informado</option>
+                  <option value="Boa">Boa</option>
+                  <option value="Irregular">Irregular</option>
+                  <option value="Ruim">Ruim</option>
+                </select>
+              </label>
+              <label>
+                Resposta percebida *
+                <select id="current-medication-response">
+                  <option value="">Nao informado</option>
+                  <option value="Boa resposta">Boa resposta</option>
+                  <option value="Resposta parcial">Resposta parcial</option>
+                  <option value="Sem resposta">Sem resposta</option>
+                  <option value="Piora">Piora</option>
+                </select>
+              </label>
+              <label>
+                Tolerabilidade *
+                <select id="current-medication-tolerability">
+                  <option value="">Nao informado</option>
+                  <option value="Boa">Boa</option>
+                  <option value="Efeitos leves">Efeitos leves</option>
+                  <option value="Efeitos moderados">Efeitos moderados</option>
+                  <option value="Ruim / efeitos relevantes">Ruim / efeitos relevantes</option>
+                </select>
+              </label>
+            </div>
+            <div class="medication-list" id="current-medication-list">Nenhuma medicacao adicionada.</div>
+            <button class="secondary-action" id="add-current-medication" type="button">+ Adicionar medicamento</button>
+            <button class="secondary-action" id="continue-medication" type="button">Continuar</button>
+          </article>
+
+          <article class="flow-card" data-card="safety-review">
+            <header>
+              <span>07</span>
+              <div>
+                <h2>Os riscos essenciais foram avaliados?</h2>
+                <p>Registre o resultado da avaliacao. Campo sem resposta permanece nao avaliado; nunca e tratado como negado.</p>
+              </div>
+            </header>
+            <div id="essential-safety-status" class="required-note pending">
+              Todos os dominios abaixo precisam de uma resposta explicita antes do conselho.
+            </div>
+            <div id="essential-safety-list" class="intensity-list"></div>
+            <details id="suicide-detail-panel" class="generated-box">
+              <summary>Detalhamento do risco suicida, quando presente</summary>
+              <div id="suicide-safety-detail-list" class="intensity-list"></div>
+            </details>
+            <details class="generated-box">
+              <summary>Contextos clinicos adicionais, quando presentes</summary>
+              <p>Registre apenas contexto. Itens com fonte pendente nao geram tratamento automatico.</p>
+              <div data-group="clinical-contexts"></div>
+            </details>
+            <button class="secondary-action" id="continue-safety-review" type="button">Continuar para seguranca aguda</button>
+          </article>
+
+          <article class="flow-card" data-card="acute-safety">
+            <header>
+              <span>08</span>
+              <div>
+                <h2>Ha sinais de toxicidade ou intoxicacao aguda?</h2>
+                <p>Marque somente sinais observados agora. O app reconhece prioridade de urgencia; nao diagnostica toxindrome.</p>
+              </div>
+            </header>
+            <div class="required-note pending" id="acute-safety-status">
+              Selecione "Nenhum sinal agudo identificado" ou marque todos os sinais presentes.
+            </div>
+            <div class="option-grid compact acute-safety-options" data-group="acute-toxicity-signals"></div>
+            <div id="acute-toxidrome-details" class="generated-box toxidrome-detail-box">Selecione um sinal para ver definicao e medida especifica, quando houver.</div>
+            <div class="source-legend acute-safety-legend">
+              <b>Fontes:</b>
+              <span>HHS-CHEMM = Chemical Hazards Emergency Medical Management</span>
+              <span>CDC-OD = CDC Overdose Prevention</span>
+              <span>DM-SS = DailyMed, sindrome serotoninergica</span>
+              <span>DM-NMS = DailyMed, sindrome neuroleptica maligna</span>
+              <span>NIH-MEDLINEPLUS = MedlinePlus/NIH</span>
+            </div>
+            <p class="acute-safety-boundary">Antidotos e medidas especificas podem ser exibidos como referencia de urgencia; doses, via, descontaminacao e execucao ficam fora do PsychRx.</p>
+            <button class="secondary-action" id="continue-acute-safety" type="button">Continuar para perfil farmacologico</button>
+          </article>
+
+          <article class="flow-card generated" data-card="profile">
+            <header>
+              <span>08</span>
+              <div>
+                <h2>Perfil farmacologico desejado</h2>
+                <p>Construido automaticamente a partir de apresentacao, fenotipo, sintomas e objetivo.</p>
+              </div>
+            </header>
+            <div id="profile-output" class="generated-box">Aguardando objetivo terapeutico.</div>
+            <button class="secondary-action" id="continue-profile" type="button">Continuar para seguranca</button>
+          </article>
+
+          <article class="flow-card" data-card="restrictions">
+            <header>
+              <span>09</span>
+              <div>
+                <h2>Quais restricoes refinam a escolha?</h2>
+                <p>Seguranca e tolerabilidade filtram o perfil farmacologico.</p>
+              </div>
+            </header>
+            <div class="option-grid" data-group="restrictions">
+              <button type="button">Gestacao</button>
+              <button type="button">Lactacao</button>
+              <button type="button">Alergia ou reacao grave anterior</button>
+              <button type="button">Idoso</button>
+              <button type="button">Obesidade</button>
+              <button type="button">Diabetes</button>
+              <button type="button">Doenca renal</button>
+              <button type="button">Doenca hepatica</button>
+              <button type="button">Epilepsia</button>
+              <button type="button">Glaucoma</button>
+              <button type="button">Retencao urinaria</button>
+              <button type="button">QT prolongado</button>
+              <button type="button">Risco cardiovascular</button>
+              <button type="button">Parkinson</button>
+              <button type="button">Risco de quedas</button>
+              <button type="button">Alcool/drogas ou medicacao sem controle</button>
+              <button type="button">Fitoterapicos e suplementos</button>
+              <button type="button">Interacoes relevantes</button>
+              <button type="button">Disfuncao sexual relevante</button>
+            </div>
+            <button class="secondary-action" id="continue-restrictions" type="button">Gerar conselho do motor</button>
+          </article>
+
+          <article class="flow-card" data-card="decision">
+            <header>
+              <span>10</span>
+              <div>
+                <h2>Decisao do medico</h2>
+                <p>A decisao pertence ao medico. O app organiza os motivos.</p>
+              </div>
+            </header>
+            <label>
+              Conduta escolhida pelo medico
+              <select id="physician-strategy">
+                <option>Selecionar</option>
+                <option>Manter</option>
+                <option>Observar</option>
+                <option>Otimizar</option>
+                <option>Trocar</option>
+                <option>Associar</option>
+                <option>Retirar</option>
+                <option>Corrigir adesao</option>
+                <option>Reavaliar diagnostico</option>
+                <option>Encaminhar</option>
+              </select>
+            </label>
+            <label>
+              Medicamento, se o medico definir
+              <input id="physician-medication" list="medication-options" placeholder="Opcional: buscar medicacao" />
+              <datalist id="medication-options"></datalist>
+            </label>
+            <div class="dose-row">
+              <label>Dose<input id="physician-dose-number" inputmode="decimal" placeholder="Ex.: 50" /></label>
+              <label>Unidade<select id="physician-dose-unit"><option>mg</option><option>mcg</option><option>gotas</option><option>ml</option></select></label>
+              <label>Frequencia<select id="physician-frequency"><option>1x/dia</option><option>2x/dia</option><option>3x/dia</option><option>ao deitar</option><option>se necessario</option></select></label>
+            </div>
+            <div class="final-prescription-preview">
+              <strong>Resumo da decisao</strong>
+              <span id="physician-decision-preview">Aguardando decisao do medico.</span>
+            </div>
+          </article>
+
+          <article class="flow-card" data-card="monitoring">
+            <header>
+              <span>11</span>
+              <div>
+                <h2>Plano terapeutico e monitorizacao</h2>
+                <p>O proximo ciclo comeca pelo que foi observado apos a conduta.</p>
+              </div>
+            </header>
+            <div class="option-grid" data-group="monitoring">
+              <button type="button">Sintomas-alvo</button>
+              <button type="button">Adesao</button>
+              <button type="button">Efeitos adversos</button>
+              <button type="button">Sono</button>
+              <button type="button">Peso</button>
+              <button type="button">Funcao sexual</button>
+              <button type="button">Risco suicida</button>
+              <button type="button">Ativacao/mania</button>
+            </div>
+            <div class="option-grid compact" data-single="reassessment">
+              <button type="button">1 semana</button>
+              <button type="button">2 semanas</button>
+              <button type="button">4 semanas</button>
+              <button type="button">6 semanas</button>
+            </div>
+          </article>
+        </section>
+
+        <aside class="reasoning-panel" aria-label="Resumo do raciocinio">
+          <section class="summary-card">
+            <h2>Raciocinio atual</h2>
+            <dl>
+              <div><dt>Apresentacao</dt><dd id="summary-presentation">Nao definida</dd></div>
+              <div><dt>Populacao</dt><dd id="summary-population">Nao avaliada</dd></div>
+              <div><dt>Condicao</dt><dd id="summary-condition">Nao informada / em investigacao</dd></div>
+              <div><dt>Fenotipo</dt><dd id="summary-phenotype">Nao definido</dd></div>
+              <div><dt>Sintomas</dt><dd id="summary-symptoms">Nenhum</dd></div>
+              <div><dt>Eixos</dt><dd id="summary-clinical-axes">Nao definidos</dd></div>
+              <div><dt>Objetivo</dt><dd id="summary-objective">Nao definido</dd></div>
+              <div><dt>Seguranca aguda</dt><dd id="summary-acute-safety">Nao avaliada</dd></div>
+              <div><dt>Seguranca essencial</dt><dd id="summary-essential-safety">Nao avaliada</dd></div>
+              <div><dt>Restricoes</dt><dd id="summary-restrictions">Nenhuma</dd></div>
+            </dl>
+          </section>
+
+          <details class="summary-card coverage-audit-card">
+            <summary>Cobertura clinica auditada</summary>
+            <p id="coverage-audit-summary">Carregando matriz de cobertura.</p>
+            <small>Auditoria de escopo; nao e biblioteca de doencas nem recomendacao terapeutica.</small>
+          </details>
+
+          <section class="summary-card emphasis">
+            <h2>Perfil desejado</h2>
+            <p id="summary-profile">Aguardando selecoes.</p>
+          </section>
+
+          <section class="summary-card">
+            <h2>Conselho do motor</h2>
+            <div id="test-case-sequence-label" class="required-note ready">
+              Preparando sequencia orientada de casos demonstrativos.
+            </div>
+            <div class="motor-action-row">
+              <button id="fill-random-case" class="test-fill-action motor-fill-action" type="button">Gerar caso teste</button>
+              <button id="fill-prescription-example" class="test-fill-action motor-fill-action" type="button">Preencher caso receita real</button>
+              <button id="clear-clinical-form" class="test-fill-action clear-form-action" type="button">Limpar campos</button>
+              <button id="request-decision-support" class="support-action" type="button">Gerar conselho manualmente</button>
+            </div>
+            <div class="practical-advice" aria-label="Resumo farmacologico pratico">
+              <div>
+                <small>Decisao do motor</small>
+                <strong id="decision-support-practical-action">Aguardando</strong>
+              </div>
+              <div>
+                <small>Justificativa</small>
+                <strong id="decision-support-practical-current">Aguardando dados</strong>
+              </div>
+              <div>
+                <small>Medicacao / estrategia</small>
+                <strong id="decision-support-practical-target">Completar fluxo</strong>
+              </div>
+              <div>
+                <small>Faixa terapeutica</small>
+                <strong id="decision-support-practical-dose-range">Aguardando alvo</strong>
+              </div>
+              <div>
+                <small>Objetivo clinico</small>
+                <strong id="decision-support-practical-next">Aguardando objetivo</strong>
+              </div>
+            </div>
+            <div class="support-row">
+              <strong>Direcao sugerida</strong>
+              <span id="decision-support-advice">Preencha o fluxo progressivo.</span>
+            </div>
+            <div class="support-row">
+              <strong>Motivos clinicos</strong>
+              <span id="decision-support-rationale">Aguardando apresentacao, fenotipo, sintomas e objetivo.</span>
+            </div>
+            <div class="support-row clinical-theory-row">
+              <strong>Resumo do quadro</strong>
+              <span id="clinical-condition-theory">Selecione uma condicao para ver caracterizacao e diagnosticos diferenciais.</span>
+            </div>
+            <div class="support-row">
+              <strong>Faixa etaria e fonte oficial</strong>
+              <span id="decision-support-population-evidence">Aguardando cruzamento por idade e medicamento.</span>
+            </div>
+            <div class="support-row">
+              <strong>Adequacao da receita atual</strong>
+              <span id="decision-support-current-medication">Nenhuma receita atual informada.</span>
+            </div>
+            <div class="support-row">
+              <strong>Interacoes medicamentosas</strong>
+              <span id="decision-support-interactions">Aguardando receita para cruzar interacoes.</span>
+            </div>
+            <div class="support-row">
+              <strong>Ranking farmacologico</strong>
+              <span id="decision-support-substitution">Aguardando estrategia escolhida.</span>
+            </div>
+            <div class="support-row">
+              <strong id="decision-support-disease-use-label">Uso por doenca</strong>
+              <span id="decision-support-disease-use">Aguardando uso por doenca.</span>
+            </div>
+            <div class="support-row">
+              <strong>Restricoes aplicadas</strong>
+              <span id="decision-support-association">Nenhuma restricao selecionada.</span>
+            </div>
+            <div class="support-row">
+              <strong>Alvo farmacologico</strong>
+              <span id="decision-support-pharmacology">Aguardando perfil.</span>
+            </div>
+            <div class="support-row caution">
+              <strong>Limite</strong>
+              <span id="decision-support-caution">O app apoia a decisao; a conduta final e do medico.</span>
+            </div>
+            <div id="decision-support-source-legend"></div>
+            <span id="decision-support-status" class="support-status">Motor local pronto para organizar o caso.</span>
+          </section>
+
+          <span class="hidden-status" id="decision-support-target"></span>
+          <span class="hidden-status" id="decision-support-evidence"></span>
+          <span class="hidden-status" id="decision-support-evidence-map"></span>
+          <span class="hidden-status" id="level-1-strategy"></span>
+          <span class="hidden-status" id="level-1-reason"></span>
+          <span class="hidden-status" id="level-2-target"></span>
+          <span class="hidden-status" id="level-2-reason"></span>
+          <span class="hidden-status" id="level-3-status"></span>
+          <span class="hidden-status" id="level-3-reason"></span>
+        </aside>
+      </section>
+
+      <footer class="consult-footer">
+        <strong>Regra:</strong> o PsychRx organiza raciocinio, perfil farmacologico e conselho estruturado; a decisao terapeutica final pertence ao medico.
+      </footer>
+    </main>
+    <script src="/app.js?v=toxidrome-antidote-display-1"></script>
+  </body>
+</html>

@@ -1,0 +1,21 @@
+{
+  "schema": "psychrx.knowledgebase.ssri.pk_extraction",
+  "program": "A03",
+  "mission": "A03-042",
+  "drug_id": "SSRI_PAROXETINE",
+  "source_anchor_id": "A03-PK-ANCHOR-PAROXETINE-001",
+  "source_section": "12.3 Pharmacokinetics",
+  "extraction_claim": {
+    "dose_linearity": "nonlinear_pharmacokinetics_with_increasing_doses",
+    "absorption": "complete_absorption_after_oral_solution_dosing",
+    "steady_state": "approximately_10_days_for_most_subjects",
+    "peak_concentration_time": "mean_Tmax_5_2_hours_at_steady_state_in_label_study",
+    "terminal_half_life": "mean_21_hours_in_label_study",
+    "food_effect": "food_slightly_increased_AUC_and_increased_Cmax_in_label_study",
+    "protein_binding": "approximately_95_percent_at_100ng_per_mL_and_93_percent_at_400ng_per_mL"
+  },
+  "reviewer_status": "awaiting_review",
+  "normalization_status": "awaiting_normalization",
+  "publication_status": "not_published",
+  "runtime_consumption_allowed": false
+}

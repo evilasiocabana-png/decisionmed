@@ -1,0 +1,67 @@
+{
+  "schema": "psychrx.knowledge_base.snri.traceability_audit.v1",
+  "program": "A04",
+  "mission": "A04-014 - SNRI_TRACEABILITY_AUDIT",
+  "status": "passed",
+  "audit_scope": "mechanism_publication_package",
+  "chain_required": [
+    "selected source",
+    "selected section",
+    "source text record",
+    "mechanism field",
+    "published artifact"
+  ],
+  "audited_records": [
+    {
+      "drug_id": "SNRI-VENLAFAXINE",
+      "selected_sections": ["A04-008G-SEC-001", "A04-008G-SEC-002"],
+      "source_text_records": ["A04-010-TEXT-001", "A04-010-TEXT-002"],
+      "mechanism_field_status": "populated_non_runtime",
+      "published": true,
+      "gap": false
+    },
+    {
+      "drug_id": "SNRI-DESVENLAFAXINE",
+      "selected_sections": ["A04-008G-SEC-003", "A04-008G-SEC-004"],
+      "source_text_records": ["A04-010-TEXT-003", "A04-010-TEXT-004"],
+      "mechanism_field_status": "populated_non_runtime",
+      "published": true,
+      "gap": false
+    },
+    {
+      "drug_id": "SNRI-DULOXETINE",
+      "selected_sections": ["A04-008G-SEC-005", "A04-008G-SEC-006"],
+      "source_text_records": ["A04-010-TEXT-005", "A04-010-TEXT-006"],
+      "mechanism_field_status": "populated_non_runtime",
+      "published": true,
+      "gap": false
+    },
+    {
+      "drug_id": "SNRI-LEVOMILNACIPRAN",
+      "selected_sections": ["A04-008G-SEC-007", "A04-008G-SEC-008"],
+      "source_text_records": ["A04-010-TEXT-007", "A04-010-TEXT-008"],
+      "mechanism_field_status": "populated_non_runtime",
+      "published": true,
+      "gap": false
+    },
+    {
+      "drug_id": "SNRI-MILNACIPRAN",
+      "selected_sections": ["A04-008G-SEC-009", "A04-008G-SEC-010"],
+      "source_text_records": ["A04-010-TEXT-009", "A04-010-TEXT-010"],
+      "mechanism_field_status": "populated_non_runtime",
+      "published": true,
+      "gap": false
+    }
+  ],
+  "gaps": [],
+  "unresolved_items": [
+    {
+      "item_id": "A04-011-UNRESOLVED-CLASS-MECHANISM",
+      "status": "accepted_unresolved",
+      "gap": false
+    }
+  ],
+  "no_claims_without_source": true,
+  "runtime_eligibility": "not_eligible",
+  "next_mission": "A04-015 - SNRI_PROGRAM_COMPLETION_REPORT"
+}

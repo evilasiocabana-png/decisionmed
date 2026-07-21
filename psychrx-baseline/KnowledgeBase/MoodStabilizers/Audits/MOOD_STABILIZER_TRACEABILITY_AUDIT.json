@@ -1,0 +1,23 @@
+{
+  "mission": "A12-015",
+  "status": "passed",
+  "traceability_chain": [
+    "MS-SRC-001",
+    "MS-SEL-001",
+    "MS-TEXT-001",
+    "MS-CLAIM-001",
+    "MOOD_STABILIZER_INTERNAL_PUBLICATION_MANIFEST"
+  ],
+  "gaps": [
+    {
+      "item": "class_level_mechanism_generalization",
+      "status": "UNRESOLVED"
+    },
+    {
+      "item": "specific_biochemical_mechanism",
+      "status": "UNRESOLVED"
+    }
+  ],
+  "claims_without_source": 0,
+  "runtime_eligible": false
+}

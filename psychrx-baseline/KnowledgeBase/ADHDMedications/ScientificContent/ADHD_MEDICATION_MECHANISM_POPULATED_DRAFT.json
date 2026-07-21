@@ -1,0 +1,38 @@
+{
+  "mission": "A14-012",
+  "status": "draft_internal_non_runtime",
+  "drug_id": "ADHD-METHYLPHENIDATE",
+  "field": "mechanism",
+  "claims": [
+    {
+      "claim_id": "ADHD-CLAIM-001",
+      "statement": "Methylphenidate HCl is described in the label as a CNS stimulant.",
+      "source_text_records": [
+        "ADHD-TEXT-001"
+      ],
+      "runtime_eligible": false
+    },
+    {
+      "claim_id": "ADHD-CLAIM-002",
+      "statement": "The mode of therapeutic action in ADHD is not known.",
+      "source_text_records": [
+        "ADHD-TEXT-002"
+      ],
+      "runtime_eligible": false
+    },
+    {
+      "claim_id": "ADHD-CLAIM-003",
+      "statement": "The label states that methylphenidate blocks norepinephrine and dopamine reuptake into the presynaptic neuron.",
+      "source_text_records": [
+        "ADHD-TEXT-003"
+      ],
+      "runtime_eligible": false
+    }
+  ],
+  "unresolved": [
+    {
+      "field": "class_level_mechanism_generalization",
+      "status": "UNRESOLVED"
+    }
+  ]
+}

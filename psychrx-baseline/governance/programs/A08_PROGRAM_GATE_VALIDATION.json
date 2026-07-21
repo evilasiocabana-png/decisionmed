@@ -1,0 +1,30 @@
+{
+  "mission": "A08-017",
+  "status": "passed",
+  "program": "A08",
+  "validated_at": "2026-07-05",
+  "checks": [
+    {
+      "check": "A08-001 through A08-016 completed",
+      "result": "pass"
+    },
+    {
+      "check": "source traceability preserved",
+      "result": "pass"
+    },
+    {
+      "check": "json files valid",
+      "result": "pass"
+    },
+    {
+      "check": "runtime remains prohibited",
+      "result": "pass"
+    },
+    {
+      "check": "prescription and recommendation absent",
+      "result": "pass"
+    }
+  ],
+  "final_status": "program_complete",
+  "next_program_blocked_by_missing_inbox_package": "A09_EXECUTE_FULL_PROGRAM.md"
+}

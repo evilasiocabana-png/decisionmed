@@ -1,0 +1,79 @@
+{
+  "track": "C",
+  "title": "Clinical Experience Productization",
+  "status": "completed_as_product_ux_governance_with_read_only_ux_implementation_package",
+  "runtime_enabled": false,
+  "implementation_enabled": true,
+  "implementation_scope": "read_only_presentation_layer_only",
+  "completion_scope": "C01 through C08 executed as product and UX governance artifacts; Track C UX Implementation Package created for read-only presentation-layer implementation; no clinical runtime implementation was enabled.",
+  "programs": [
+    {
+      "id": "C01",
+      "name": "Consultation Workflow",
+      "status": "executed_as_product_ux_artifact"
+    },
+    {
+      "id": "C02",
+      "name": "Clinical Workspace UX",
+      "status": "executed_as_product_ux_artifact"
+    },
+    {
+      "id": "C03",
+      "name": "Timeline UX",
+      "status": "executed_as_product_ux_artifact"
+    },
+    {
+      "id": "C04",
+      "name": "Medication Workspace",
+      "status": "executed_as_product_ux_artifact"
+    },
+    {
+      "id": "C05",
+      "name": "Follow-up Workflow",
+      "status": "executed_as_product_ux_artifact"
+    },
+    {
+      "id": "C06",
+      "name": "Reporting",
+      "status": "executed_as_product_ux_artifact"
+    },
+    {
+      "id": "C07",
+      "name": "Dashboards",
+      "status": "executed_as_product_ux_artifact"
+    },
+    {
+      "id": "C08",
+      "name": "Mobile Experience",
+      "status": "executed_as_product_ux_artifact"
+    }
+  ],
+  "final_gate": {
+    "id": "C08_TRACK_C_GATE",
+    "status": "passed_for_product_ux_governance_only",
+    "clinical_runtime_status": "not_enabled"
+  },
+  "implementation_package": {
+    "id": "TRACK_C_UX_IMPLEMENTATION_PACKAGE",
+    "status": "created_and_initial_consultation_surface_refactor_executed",
+    "scope": "read_only_clinical_workspace_presentation",
+    "runtime_status": "not_enabled",
+    "files": [
+      "TRACK_C_UX_IMPLEMENTATION_PACKAGE.md",
+      "TRACK_C_UX_SCREEN_ARCHITECTURE.md",
+      "TRACK_C_UX_READ_ONLY_COMPONENTS.md",
+      "TRACK_C_UX_ACCEPTANCE_TEST_PLAN.md",
+      "TRACK_C_UX_IMPLEMENTATION_REPORT.md"
+    ]
+  },
+  "prohibitions": [
+    "clinical_runtime_activation",
+    "prescription",
+    "therapeutic_recommendation",
+    "dose_suggestion",
+    "autonomous_diagnosis",
+    "patient_specific_medication_selection",
+    "patient_facing_clinical_guidance"
+  ]
+}
+

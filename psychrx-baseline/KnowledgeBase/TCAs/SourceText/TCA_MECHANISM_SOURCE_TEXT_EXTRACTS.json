@@ -1,0 +1,45 @@
+{
+  "mission": "A07-011",
+  "status": "complete",
+  "extraction_mode": "exact_short_source_text_only",
+  "records": [
+    {
+      "record_id": "A07-TXT-001",
+      "selection_id": "A07-SEL-001",
+      "source_id": "TCA-SRC-001",
+      "drug_id": "TCA-AMITRIPTYLINE",
+      "field": "mechanism",
+      "section": "Clinical Pharmacology",
+      "exact_text": "Its mechanism of action in man is not known",
+      "use_scope": "uncertainty_marker_only"
+    },
+    {
+      "record_id": "A07-TXT-002",
+      "selection_id": "A07-SEL-001",
+      "source_id": "TCA-SRC-001",
+      "drug_id": "TCA-AMITRIPTYLINE",
+      "field": "mechanism",
+      "section": "Clinical Pharmacology",
+      "exact_text": "inhibits the membrane pump mechanism responsible for uptake of norepinephrine and serotonin",
+      "use_scope": "mechanism_fragment"
+    },
+    {
+      "record_id": "A07-TXT-003",
+      "selection_id": "A07-SEL-001",
+      "source_id": "TCA-SRC-001",
+      "drug_id": "TCA-AMITRIPTYLINE",
+      "field": "mechanism",
+      "section": "Clinical Pharmacology",
+      "exact_text": "not a monoamine oxidase inhibitor",
+      "use_scope": "mechanism_boundary_fragment"
+    }
+  ],
+  "forbidden_transforms": [
+    "summary",
+    "paraphrase",
+    "inference",
+    "recommendation",
+    "prescription",
+    "runtime_use"
+  ]
+}

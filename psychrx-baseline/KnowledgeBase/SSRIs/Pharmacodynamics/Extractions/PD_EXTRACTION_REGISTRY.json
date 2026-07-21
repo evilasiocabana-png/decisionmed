@@ -1,0 +1,21 @@
+{
+  "schema": "psychrx.knowledgebase.ssri.pd_extraction_registry",
+  "program": "A03",
+  "mission": "A03-048",
+  "status": "complete_extraction_awaiting_review",
+  "created_at": "2026-07-01",
+  "source_anchor_manifest": "ScientificCorpus/SourceTextIntake/Pharmacodynamics/PD_SOURCE_ANCHORS.json",
+  "clinical_content_interpreted": false,
+  "recommendation_created": false,
+  "prescription_created": false,
+  "runtime_consumption_allowed": false,
+  "extractions": [
+    {"drug_id":"SSRI_FLUOXETINE","path":"KnowledgeBase/SSRIs/Fluoxetine/Pharmacodynamics/PD_EXTRACTION.json"},
+    {"drug_id":"SSRI_SERTRALINE","path":"KnowledgeBase/SSRIs/Sertraline/Pharmacodynamics/PD_EXTRACTION.json"},
+    {"drug_id":"SSRI_PAROXETINE","path":"KnowledgeBase/SSRIs/Paroxetine/Pharmacodynamics/PD_EXTRACTION.json"},
+    {"drug_id":"SSRI_CITALOPRAM","path":"KnowledgeBase/SSRIs/Citalopram/Pharmacodynamics/PD_EXTRACTION.json"},
+    {"drug_id":"SSRI_ESCITALOPRAM","path":"KnowledgeBase/SSRIs/Escitalopram/Pharmacodynamics/PD_EXTRACTION.json"},
+    {"drug_id":"SSRI_FLUVOXAMINE","path":"KnowledgeBase/SSRIs/Fluvoxamine/Pharmacodynamics/PD_EXTRACTION.json"}
+  ],
+  "next_mission": "A03-049 - PHARMACODYNAMIC_REVIEW_AND_NORMALIZATION"
+}

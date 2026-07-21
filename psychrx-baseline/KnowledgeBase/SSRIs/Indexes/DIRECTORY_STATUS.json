@@ -1,0 +1,50 @@
+﻿{
+    "schema":  "psychrx.a03.directory_status",
+    "program":  "A03",
+    "mission":  "A03-014",
+    "status":  "structurally_created",
+    "expected_drugs":  [
+                           "Fluoxetine",
+                           "Sertraline",
+                           "Paroxetine",
+                           "Citalopram",
+                           "Escitalopram",
+                           "Fluvoxamine"
+                       ],
+    "expected_sections":  [
+                              "Identification",
+                              "Mechanism",
+                              "Pharmacokinetics",
+                              "Pharmacodynamics",
+                              "Indications",
+                              "Posology",
+                              "Safety",
+                              "Contraindications",
+                              "Precautions",
+                              "Interactions",
+                              "AdverseEffects",
+                              "Monitoring",
+                              "Evidence",
+                              "Guidelines",
+                              "Editorial",
+                              "Metadata",
+                              "Traceability",
+                              "Manifest"
+                          ],
+    "expected_template_files":  [
+                                    "README.md",
+                                    "MANIFEST.json",
+                                    "STATUS.json",
+                                    "EDITORIAL_STATUS.json",
+                                    "TRACEABILITY.json",
+                                    "METADATA.json"
+                                ],
+    "drug_count":  6,
+    "section_count_per_drug":  18,
+    "file_count_per_section":  6,
+    "scientific_content_populated":  false,
+    "clinical_content_interpreted":  false,
+    "drug_profiles_created":  false,
+    "runtime_consumption_allowed":  false,
+    "next_mission":  "A03-015 - DRUG_TEMPLATE_GENERATION"
+}

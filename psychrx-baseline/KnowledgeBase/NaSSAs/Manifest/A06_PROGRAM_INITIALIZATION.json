@@ -1,0 +1,36 @@
+{
+  "program": "A06",
+  "title": "Scientific Content Population: NaSSAs",
+  "status": "active",
+  "execution_scope": "internal_non_runtime_scientific_knowledge",
+  "initialized_at": "2026-07-05",
+  "missions": [
+    "A06-001",
+    "A06-002",
+    "A06-003",
+    "A06-004",
+    "A06-005",
+    "A06-006",
+    "A06-007",
+    "A06-008",
+    "A06-009",
+    "A06-010",
+    "A06-011",
+    "A06-012",
+    "A06-013",
+    "A06-014",
+    "A06-015",
+    "A06-016",
+    "A06-017"
+  ],
+  "permanent_restrictions": [
+    "no_prescription",
+    "no_therapeutic_recommendation",
+    "no_dose_suggestion",
+    "no_patient_specific_medication_selection",
+    "no_clinical_runtime_eligibility",
+    "no_runtime_consumption",
+    "no_unsourced_claims"
+  ],
+  "first_authorized_scientific_field": "mechanism"
+}

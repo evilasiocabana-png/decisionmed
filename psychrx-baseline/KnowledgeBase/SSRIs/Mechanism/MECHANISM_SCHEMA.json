@@ -1,0 +1,30 @@
+﻿{
+    "program":  "A03",
+    "runtime_consumption_allowed":  false,
+    "schema_version":  "0.1.0",
+    "required_fields":  [
+                            "mechanism_id",
+                            "drug_id",
+                            "profile_id",
+                            "canonical_name",
+                            "primary_mechanism",
+                            "target_transporters",
+                            "mechanism_version",
+                            "editorial_status",
+                            "scientific_status",
+                            "validation_status"
+                        ],
+    "schema":  "psychrx.a03.mechanism_schema",
+    "status":  "structural_schema_only",
+    "prohibited_fields":  [
+                              "dose",
+                              "indication",
+                              "contraindication",
+                              "safety",
+                              "interaction",
+                              "recommendation",
+                              "prescription",
+                              "runtime_rule"
+                          ],
+    "mission":  "A03-022"
+}

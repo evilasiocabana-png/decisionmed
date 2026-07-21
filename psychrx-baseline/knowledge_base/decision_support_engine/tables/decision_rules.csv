@@ -1,0 +1,8 @@
+rule_id,priority,safety_state,stability,has_current_medication,response_state,tolerability,impairment_required,output_action,output_summary,required_fields,blocked_if_missing
+RULE-SAFETY-BLOCK,1,blocked,any,any,any,any,false,investigate_before_change,Resolver seguranca antes de estrategia,"suicide|mania_or_hypomania|substances|adherence|adverse_effects",true
+RULE-MAINTAIN,20,clear,Estavel,true,good,acceptable,false,maintain,Manter tratamento atual e monitorar,"stability|current_medication|safety",true
+RULE-PARTIAL-OPTIMIZE,30,clear,Parcial,true,partial,acceptable,true,increase_dose,Avaliar otimizacao do tratamento atual,"stability|current_medication|dose|duration|adherence|response|tolerability|symptoms|impairment_domains",true
+RULE-PARTIAL-NO-MED,31,clear,Parcial,false,partial,acceptable,true,insufficient_information,Completar receita e historia antes de estrategia,"current_medication|symptoms|impairment_domains|stability",true
+RULE-NO-RESPONSE-SUBSTITUTE,40,clear,Sem resposta,true,none,acceptable,true,substitute,Avaliar substituicao por falta de resposta suficiente,"stability|current_medication|dose|duration|adherence|response|tolerability|symptoms|impairment_domains",true
+RULE-UNSTABLE-INVESTIGATE,50,clear,Instavel,true,worse,any,true,investigate_before_change,Investigar contexto antes de alterar medicacao,"stability|safety|adherence|tolerability|symptoms|impairment_domains",true
+RULE-INSUFFICIENT,99,clear,unknown,any,unknown,unknown,false,insufficient_information,Completar dados para calcular conselho,"symptoms|impairment_domains|stability|safety",true

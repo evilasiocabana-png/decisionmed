@@ -1,0 +1,45 @@
+{
+  "mission": "A08-011",
+  "status": "complete",
+  "extraction_mode": "exact_short_source_text_only",
+  "records": [
+    {
+      "record_id": "A08-TXT-001",
+      "selection_id": "A08-SEL-001",
+      "source_id": "MAOI-SRC-001",
+      "drug_id": "MAOI-PHENELZINE",
+      "field": "mechanism",
+      "section": "Description",
+      "exact_text": "potent inhibitor of monoamine oxidase (MAO)",
+      "use_scope": "mechanism_fragment"
+    },
+    {
+      "record_id": "A08-TXT-002",
+      "selection_id": "A08-SEL-001",
+      "source_id": "MAOI-SRC-001",
+      "drug_id": "MAOI-PHENELZINE",
+      "field": "mechanism",
+      "section": "Description",
+      "exact_text": "Monoamine oxidase is a complex enzyme system",
+      "use_scope": "mechanism_context_fragment"
+    },
+    {
+      "record_id": "A08-TXT-003",
+      "selection_id": "A08-SEL-001",
+      "source_id": "MAOI-SRC-001",
+      "drug_id": "MAOI-PHENELZINE",
+      "field": "mechanism",
+      "section": "Description",
+      "exact_text": "it is unknown whether MAO inhibition per se",
+      "use_scope": "uncertainty_marker_only"
+    }
+  ],
+  "forbidden_transforms": [
+    "summary",
+    "paraphrase",
+    "inference",
+    "recommendation",
+    "prescription",
+    "runtime_use"
+  ]
+}

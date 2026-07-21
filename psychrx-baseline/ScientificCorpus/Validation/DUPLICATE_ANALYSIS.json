@@ -1,0 +1,57 @@
+{
+    "duplicate_candidate_count":  5,
+    "exact_title_duplicate_count":  2,
+    "duplicate_candidates":  [
+                                 {
+                                     "source_id":  "G005",
+                                     "title":  "Canadian Network for Mood and Anxiety Treatments 2023 Update on Clinical Guidelines for Management of Major Depressive Disorder in Adults",
+                                     "administrative_note":  "duplicate_candidate_of_G002",
+                                     "action":  "preserved_not_removed"
+                                 },
+                                 {
+                                     "source_id":  "G006",
+                                     "title":  "Canadian Network for Mood and Anxiety Treatments 2023 Update on Clinical Guidelines for Management of Major Depressive Disorder in Adults",
+                                     "administrative_note":  "duplicate_candidate_or_resource_page_for_G002",
+                                     "action":  "preserved_not_removed"
+                                 },
+                                 {
+                                     "source_id":  "G007",
+                                     "title":  "Depression in adults: treatment and management",
+                                     "administrative_note":  "duplicate_candidate_pdf_for_G003",
+                                     "action":  "preserved_not_removed"
+                                 },
+                                 {
+                                     "source_id":  "R004",
+                                     "title":  "Guideline on clinical investigation of medicinal products in the treatment of depression - Revision 3",
+                                     "administrative_note":  "duplicate_candidate_pdf_for_R002",
+                                     "action":  "preserved_not_removed"
+                                 },
+                                 {
+                                     "source_id":  "L008",
+                                     "title":  "VIIBRYD vilazodone hydrochloride tablet label",
+                                     "administrative_note":  "duplicate_candidate_or_brand_label_for_L007",
+                                     "action":  "preserved_not_removed"
+                                 }
+                             ],
+    "exact_title_duplicates":  [
+                                   {
+                                       "title":  "Canadian Network for Mood and Anxiety Treatments 2023 Update on Clinical Guidelines for Management of Major Depressive Disorder in Adults",
+                                       "source_ids":  [
+                                                          "G002",
+                                                          "G005",
+                                                          "G006"
+                                                      ],
+                                       "count":  3,
+                                       "action":  "review_duplicate_candidate"
+                                   },
+                                   {
+                                       "title":  "Depression in adults: treatment and management",
+                                       "source_ids":  [
+                                                          "G003",
+                                                          "G007"
+                                                      ],
+                                       "count":  2,
+                                       "action":  "review_duplicate_candidate"
+                                   }
+                               ]
+}

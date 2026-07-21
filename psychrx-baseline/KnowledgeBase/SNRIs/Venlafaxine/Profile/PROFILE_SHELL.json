@@ -1,0 +1,42 @@
+{
+  "schema": "psychrx.knowledge_base.snri.profile_shell.v1",
+  "program": "A04",
+  "mission": "A04-005 - SNRI_PROFILE_SHELLS",
+  "drug_id": "SNRI-VENLAFAXINE",
+  "name": "Venlafaxine",
+  "drug_class": "SNRIs",
+  "profile_status": "shell_created",
+  "fields": {
+    "identification": { "status": "unpopulated", "source_anchor": null },
+    "mechanism": {
+      "status": "populated_non_runtime",
+      "mission": "A04-011 - SNRI_MECHANISM_POPULATION",
+      "source_anchor": "A04-SNRI-VENLAFAXINE-MECHANISM-ANCHOR-001",
+      "source_text_records": [
+        "A04-010-TEXT-001",
+        "A04-010-TEXT-002"
+      ],
+      "controlled_fragments": [
+        {
+          "record_id": "A04-010-TEXT-001",
+          "exact_source_text": "potentiation of serotonin and norepinephrine"
+        },
+        {
+          "record_id": "A04-010-TEXT-002",
+          "exact_source_text": "potent inhibitors of neuronal serotonin and norepinephrine reuptake"
+        }
+      ],
+      "review_status": "editorial_review_passed_non_runtime",
+      "runtime_eligibility": "not_eligible"
+    },
+    "pharmacokinetics": { "status": "unpopulated", "source_anchor": null },
+    "pharmacodynamics": { "status": "unpopulated", "source_anchor": null },
+    "indications": { "status": "unpopulated", "source_anchor": null },
+    "posology": { "status": "unpopulated", "source_anchor": null },
+    "contraindications": { "status": "unpopulated", "source_anchor": null },
+    "safety": { "status": "unpopulated", "source_anchor": null },
+    "evidence": { "status": "unpopulated", "source_anchor": null }
+  },
+  "runtime_eligibility": "not_eligible",
+  "scientific_interpretation_performed": false
+}

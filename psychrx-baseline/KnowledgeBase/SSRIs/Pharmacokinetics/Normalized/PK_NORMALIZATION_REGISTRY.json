@@ -1,0 +1,21 @@
+{
+  "schema": "psychrx.knowledgebase.ssri.pk_normalization_registry",
+  "program": "A03",
+  "mission": "A03-043",
+  "status": "normalized_pending_editorial_review",
+  "created_at": "2026-07-01",
+  "source_extraction_registry": "KnowledgeBase/SSRIs/Pharmacokinetics/Extractions/PK_EXTRACTION_REGISTRY.json",
+  "clinical_content_interpreted": false,
+  "recommendation_created": false,
+  "prescription_created": false,
+  "runtime_consumption_allowed": false,
+  "normalized_records": [
+    {"drug_id": "SSRI_FLUOXETINE", "normalized_path": "KnowledgeBase/SSRIs/Fluoxetine/Pharmacokinetics/PK_NORMALIZED_DRAFT.json"},
+    {"drug_id": "SSRI_SERTRALINE", "normalized_path": "KnowledgeBase/SSRIs/Sertraline/Pharmacokinetics/PK_NORMALIZED_DRAFT.json"},
+    {"drug_id": "SSRI_PAROXETINE", "normalized_path": "KnowledgeBase/SSRIs/Paroxetine/Pharmacokinetics/PK_NORMALIZED_DRAFT.json"},
+    {"drug_id": "SSRI_CITALOPRAM", "normalized_path": "KnowledgeBase/SSRIs/Citalopram/Pharmacokinetics/PK_NORMALIZED_DRAFT.json"},
+    {"drug_id": "SSRI_ESCITALOPRAM", "normalized_path": "KnowledgeBase/SSRIs/Escitalopram/Pharmacokinetics/PK_NORMALIZED_DRAFT.json"},
+    {"drug_id": "SSRI_FLUVOXAMINE", "normalized_path": "KnowledgeBase/SSRIs/Fluvoxamine/Pharmacokinetics/PK_NORMALIZED_DRAFT.json"}
+  ],
+  "next_mission": "A03-044 - PHARMACOKINETIC_CONFLICT_AND_GAP_REVIEW"
+}

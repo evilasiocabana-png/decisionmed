@@ -1,0 +1,18 @@
+{
+    "schema":  "psychrx.scientific_corpus.normalized_source_manifest",
+    "program":  "A02.5",
+    "mission":  "A02.5-003",
+    "status":  "editorial_registered_admin_only",
+    "normalized_registry":  "ScientificCorpus/Metadata/NORMALIZED_SOURCE_REGISTRY.json",
+    "source_inventory":  "data/scientific_corpus/ssri/source_inventory_rc2.json",
+    "total_sources":  26,
+    "unique_source_ids":  26,
+    "duplicate_candidates":  5,
+    "review_required":  4,
+    "clinical_content_interpreted":  false,
+    "evidence_classified":  false,
+    "ontology_mapped":  false,
+    "editorial_registration":  "ScientificCorpus/Editorial/EDITORIAL_REGISTRATION.json",
+    "publication_manifest":  "ScientificCorpus/Publication/PUBLICATION_MANIFEST.json",
+    "next_mission":  "A02.5-007 - Program Completion Report"
+}

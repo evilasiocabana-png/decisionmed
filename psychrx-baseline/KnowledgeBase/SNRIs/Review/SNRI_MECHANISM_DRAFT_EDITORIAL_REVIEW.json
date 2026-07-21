@@ -1,0 +1,47 @@
+{
+  "schema": "psychrx.knowledge_base.snri.mechanism_editorial_review.v1",
+  "program": "A04",
+  "mission": "A04-012 - SNRI_MECHANISM_DRAFT_EDITORIAL_REVIEW",
+  "status": "passed_with_unresolved_class_level_marker",
+  "reviewed_artifacts": [
+    "KnowledgeBase/SNRIs/ScientificContent/SNRI_MECHANISM_POPULATED_DRAFT.json",
+    "KnowledgeBase/SNRIs/Traceability/SNRI_MECHANISM_POPULATION_TRACEABILITY.json",
+    "KnowledgeBase/SNRIs/SourceText/SNRI_MECHANISM_SOURCE_TEXT_EXTRACTS.json"
+  ],
+  "checks": [
+    {
+      "check": "Every populated drug mechanism field has source-text records",
+      "status": "passed"
+    },
+    {
+      "check": "Every source-text record maps to an A04-008G selected section",
+      "status": "passed"
+    },
+    {
+      "check": "Class-level mechanism is not inferred from drug-specific labels",
+      "status": "passed",
+      "marker": "UNRESOLVED"
+    },
+    {
+      "check": "No PK, PD, safety or evidence field was populated",
+      "status": "passed"
+    },
+    {
+      "check": "No recommendation, prescription or runtime eligibility was created",
+      "status": "passed"
+    }
+  ],
+  "corrections_applied": [
+    "Profile mechanism review statuses updated to editorial_review_passed_non_runtime."
+  ],
+  "unresolved_items": [
+    {
+      "item_id": "A04-011-UNRESOLVED-CLASS-MECHANISM",
+      "status": "accepted_unresolved",
+      "reason": "No class-level source section was selected in A04-008G."
+    }
+  ],
+  "publication_may_start": true,
+  "runtime_eligibility": "not_eligible",
+  "next_mission": "A04-013 - SNRI_MECHANISM_PUBLICATION"
+}

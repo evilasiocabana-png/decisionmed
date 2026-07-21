@@ -1,0 +1,10 @@
+safety_field,question_text,safe_values,blocking_values,engine_behavior_if_blocked,priority
+suicide,Ideacao suicida foi investigada?,"negado|sem evidencia atual","presente|nao avaliado",block_strategy_and_prompt_safety_review,1
+mania_or_hypomania,Sintomas maniformes/hipomaniformes foram investigados?,"negado|sem evidencia atual","presente|nao avaliado",block_strategy_and_prompt_bipolar_review,2
+substances,Uso de substancias foi investigado?,"negado|sem uso relevante","presente|nao avaliado",block_strategy_and_prompt_substance_review,3
+adherence,A adesao ao tratamento foi verificada?,"boa","irregular|ruim|nao avaliado",block_or_downgrade_strategy_until_adherence_review,4
+adverse_effects,Efeitos adversos foram verificados?,"ausentes|leves","relevantes|nao avaliado",block_or_prioritize_tolerability_strategy,5
+interactions,Interacoes medicamentosas foram revisadas?,"sem interacao identificada","interacao relevante|nao avaliado",block_strategy_until_interaction_review,6
+qt_risk,Risco de QT foi considerado quando aplicavel?,"baixo|nao se aplica","alto|nao avaliado",block_qt_sensitive_options,7
+pregnancy_or_lactation,Gestacao ou lactacao foram consideradas?,"nao se aplica|negado","presente|nao avaliado",block_until_pregnancy_lactation_review,8
+metabolic_risk,Risco metabolico foi considerado?,"baixo|moderado","alto|nao avaliado",flag_metabolic_cautions,9

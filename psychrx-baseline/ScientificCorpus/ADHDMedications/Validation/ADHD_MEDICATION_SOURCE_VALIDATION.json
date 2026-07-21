@@ -1,0 +1,18 @@
+{
+  "mission": "A14-005",
+  "status": "passed",
+  "checks": [
+    {
+      "check": "official_source_present",
+      "result": "pass"
+    },
+    {
+      "check": "source_locator_present",
+      "result": "pass"
+    },
+    {
+      "check": "mechanism_section_available",
+      "result": "pass"
+    }
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "mission": "A13-011",
+  "status": "complete",
+  "records": [
+    {
+      "record_id": "AH-TEXT-001",
+      "source_id": "AH-SRC-001",
+      "selection_id": "AH-SEL-001",
+      "drug_id": "AH-DIAZEPAM",
+      "field": "mechanism",
+      "exact_text": "Diazepam is a benzodiazepine",
+      "review_status": "reviewable"
+    },
+    {
+      "record_id": "AH-TEXT-002",
+      "source_id": "AH-SRC-001",
+      "selection_id": "AH-SEL-001",
+      "drug_id": "AH-DIAZEPAM",
+      "field": "mechanism",
+      "exact_text": "exerts anxiolytic, sedative, muscle-relaxant, anticonvulsant and amnestic effects",
+      "review_status": "reviewable"
+    },
+    {
+      "record_id": "AH-TEXT-003",
+      "source_id": "AH-SRC-001",
+      "selection_id": "AH-SEL-001",
+      "drug_id": "AH-DIAZEPAM",
+      "field": "mechanism",
+      "exact_text": "facilitation of the action of gamma aminobutyric acid (GABA)",
+      "review_status": "reviewable"
+    }
+  ],
+  "runtime_eligible": false
+}

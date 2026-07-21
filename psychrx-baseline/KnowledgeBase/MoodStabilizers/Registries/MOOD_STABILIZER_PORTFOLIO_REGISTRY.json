@@ -1,0 +1,20 @@
+{
+  "mission": "A12-002",
+  "status": "complete",
+  "portfolio": [
+    {
+      "drug_id": "MS-LITHIUM",
+      "name": "Lithium",
+      "class_scope": "mood_stabilizer",
+      "profile_status": "shell_created",
+      "mechanism_scope": "authorized_for_internal_non_runtime_population",
+      "runtime_eligible": false
+    }
+  ],
+  "future_candidates": [
+    "valproate",
+    "carbamazepine",
+    "lamotrigine"
+  ],
+  "note": "Future candidates are listed only as portfolio expansion candidates and were not populated in A12."
+}

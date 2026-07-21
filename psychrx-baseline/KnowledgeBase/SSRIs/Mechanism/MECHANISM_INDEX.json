@@ -1,0 +1,17 @@
+﻿{
+    "program":  "A03",
+    "runtime_consumption_allowed":  false,
+    "schema_version":  "0.1.0",
+    "schema":  "psychrx.a03.mechanism_index",
+    "mission":  "A03-022",
+    "status":  "active",
+    "mechanism_count":  6,
+    "mechanisms_by_drug_id":  {
+                                  "SSRI_FLUOXETINE":  "A03_MOA_SSRI_FLUOXETINE",
+                                  "SSRI_SERTRALINE":  "A03_MOA_SSRI_SERTRALINE",
+                                  "SSRI_ESCITALOPRAM":  "A03_MOA_SSRI_ESCITALOPRAM",
+                                  "SSRI_CITALOPRAM":  "A03_MOA_SSRI_CITALOPRAM",
+                                  "SSRI_PAROXETINE":  "A03_MOA_SSRI_PAROXETINE",
+                                  "SSRI_FLUVOXAMINE":  "A03_MOA_SSRI_FLUVOXAMINE"
+                              }
+}

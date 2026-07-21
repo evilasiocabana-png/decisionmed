@@ -1,0 +1,214 @@
+{
+  "schema": "psychrx.knowledge_base.snri.source_anchor_plan.v1",
+  "program": "A04",
+  "mission": "A04-006 - SNRI_SOURCE_ANCHOR_PLAN",
+  "status": "completed",
+  "drug_class": "SNRIs",
+  "purpose": "Plan future source anchors before any SNRI scientific field population.",
+  "plan_policy": {
+    "allowed_content": [
+      "planned slot ids",
+      "profile fields",
+      "candidate source ids",
+      "administrative anchor status",
+      "runtime eligibility status"
+    ],
+    "forbidden_content": [
+      "scientific interpretation",
+      "source text extraction",
+      "field value population",
+      "evidence grading",
+      "therapeutic recommendation",
+      "prescription",
+      "dose guidance",
+      "runtime clinical consumption"
+    ]
+  },
+  "source_registry_basis": {
+    "source_catalog": "ScientificCorpus/SNRIs/Manifest/SNRI_SOURCE_CATALOG.json",
+    "master_index": "ScientificCorpus/SNRIs/Indexes/MASTER_CORPUS_INDEX.json",
+    "profile_shell_registry": "KnowledgeBase/SNRIs/ProfileShells/SNRI_PROFILE_SHELL_REGISTRY.json"
+  },
+  "drug_scope": [
+    {
+      "drug_id": "SNRI-VENLAFAXINE",
+      "name": "Venlafaxine",
+      "profile_shell": "KnowledgeBase/SNRIs/Venlafaxine/Profile/PROFILE_SHELL.json"
+    },
+    {
+      "drug_id": "SNRI-DESVENLAFAXINE",
+      "name": "Desvenlafaxine",
+      "profile_shell": "KnowledgeBase/SNRIs/Desvenlafaxine/Profile/PROFILE_SHELL.json"
+    },
+    {
+      "drug_id": "SNRI-DULOXETINE",
+      "name": "Duloxetine",
+      "profile_shell": "KnowledgeBase/SNRIs/Duloxetine/Profile/PROFILE_SHELL.json"
+    },
+    {
+      "drug_id": "SNRI-LEVOMILNACIPRAN",
+      "name": "Levomilnacipran",
+      "profile_shell": "KnowledgeBase/SNRIs/Levomilnacipran/Profile/PROFILE_SHELL.json"
+    },
+    {
+      "drug_id": "SNRI-MILNACIPRAN",
+      "name": "Milnacipran",
+      "profile_shell": "KnowledgeBase/SNRIs/Milnacipran/Profile/PROFILE_SHELL.json"
+    }
+  ],
+  "planned_anchor_slots": [
+    {
+      "planned_slot_id": "A04-SNRI-SLOT-IDENTIFICATION",
+      "profile_field": "identification",
+      "candidate_source_ids": [
+        "A04.0-SD-R001",
+        "A04.0-SD-R002",
+        "A04.0-SD-R003",
+        "A04.0-SD-R004",
+        "A04.0-SD-R005",
+        "A04.0-SD-B002"
+      ],
+      "anchor_status": "planned_pending_source_section_selection"
+    },
+    {
+      "planned_slot_id": "A04-SNRI-SLOT-MECHANISM",
+      "profile_field": "mechanism",
+      "candidate_source_ids": [
+        "A04.0-SD-B001",
+        "A04.0-SD-B002",
+        "A04.0-SD-B003",
+        "A04.0-SD-R001",
+        "A04.0-SD-R002",
+        "A04.0-SD-R003",
+        "A04.0-SD-R004",
+        "A04.0-SD-R005",
+        "A04.0-SD-E001",
+        "A04.0-SD-E002"
+      ],
+      "anchor_status": "planned_pending_source_section_selection"
+    },
+    {
+      "planned_slot_id": "A04-SNRI-SLOT-PHARMACOKINETICS",
+      "profile_field": "pharmacokinetics",
+      "candidate_source_ids": [
+        "A04.0-SD-B002",
+        "A04.0-SD-B003",
+        "A04.0-SD-R001",
+        "A04.0-SD-R002",
+        "A04.0-SD-R003",
+        "A04.0-SD-R004",
+        "A04.0-SD-R005",
+        "A04.0-SD-E001"
+      ],
+      "anchor_status": "planned_pending_source_section_selection"
+    },
+    {
+      "planned_slot_id": "A04-SNRI-SLOT-PHARMACODYNAMICS",
+      "profile_field": "pharmacodynamics",
+      "candidate_source_ids": [
+        "A04.0-SD-B001",
+        "A04.0-SD-B002",
+        "A04.0-SD-R001",
+        "A04.0-SD-R002",
+        "A04.0-SD-R003",
+        "A04.0-SD-R004",
+        "A04.0-SD-R005",
+        "A04.0-SD-E001",
+        "A04.0-SD-E002"
+      ],
+      "anchor_status": "planned_pending_source_section_selection"
+    },
+    {
+      "planned_slot_id": "A04-SNRI-SLOT-INDICATIONS",
+      "profile_field": "indications",
+      "candidate_source_ids": [
+        "A04.0-SD-G001",
+        "A04.0-SD-G002",
+        "A04.0-SD-G003",
+        "A04.0-SD-G004",
+        "A04.0-SD-G005",
+        "A04.0-SD-R001",
+        "A04.0-SD-R002",
+        "A04.0-SD-R003",
+        "A04.0-SD-R004",
+        "A04.0-SD-R005"
+      ],
+      "anchor_status": "planned_pending_source_section_selection"
+    },
+    {
+      "planned_slot_id": "A04-SNRI-SLOT-POSOLOGY",
+      "profile_field": "posology",
+      "candidate_source_ids": [
+        "A04.0-SD-B002",
+        "A04.0-SD-B003",
+        "A04.0-SD-R001",
+        "A04.0-SD-R002",
+        "A04.0-SD-R003",
+        "A04.0-SD-R004",
+        "A04.0-SD-R005"
+      ],
+      "anchor_status": "planned_pending_source_section_selection"
+    },
+    {
+      "planned_slot_id": "A04-SNRI-SLOT-CONTRAINDICATIONS",
+      "profile_field": "contraindications",
+      "candidate_source_ids": [
+        "A04.0-SD-B002",
+        "A04.0-SD-B003",
+        "A04.0-SD-R001",
+        "A04.0-SD-R002",
+        "A04.0-SD-R003",
+        "A04.0-SD-R004",
+        "A04.0-SD-R005",
+        "A04.0-SD-S001",
+        "A04.0-SD-S002",
+        "A04.0-SD-S003"
+      ],
+      "anchor_status": "planned_pending_source_section_selection"
+    },
+    {
+      "planned_slot_id": "A04-SNRI-SLOT-SAFETY",
+      "profile_field": "safety",
+      "candidate_source_ids": [
+        "A04.0-SD-B002",
+        "A04.0-SD-B003",
+        "A04.0-SD-R001",
+        "A04.0-SD-R002",
+        "A04.0-SD-R003",
+        "A04.0-SD-R004",
+        "A04.0-SD-R005",
+        "A04.0-SD-S001",
+        "A04.0-SD-S002",
+        "A04.0-SD-S003"
+      ],
+      "anchor_status": "planned_pending_source_section_selection"
+    },
+    {
+      "planned_slot_id": "A04-SNRI-SLOT-EVIDENCE",
+      "profile_field": "evidence",
+      "candidate_source_ids": [
+        "A04.0-SD-G001",
+        "A04.0-SD-G002",
+        "A04.0-SD-G003",
+        "A04.0-SD-G004",
+        "A04.0-SD-G005",
+        "A04.0-SD-E001",
+        "A04.0-SD-E002",
+        "A04.0-SD-E003"
+      ],
+      "anchor_status": "planned_pending_source_section_selection"
+    }
+  ],
+  "per_drug_application_policy": {
+    "applies_to_all_drugs": true,
+    "drug_specific_anchor_selection_required_later": true,
+    "anchor_creation_mission": "A04-007 - SNRI_FIELD_TRACEABILITY_MATRIX",
+    "current_mission_creates_definitive_anchors": false
+  },
+  "field_population_status": "not_started",
+  "source_text_extraction_status": "not_started",
+  "runtime_eligibility": "not_eligible",
+  "scientific_interpretation_performed": false,
+  "knowledge_objects_created": 0,
+  "next_mission": "A04-007 - SNRI_FIELD_TRACEABILITY_MATRIX"
+}

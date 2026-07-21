@@ -1,0 +1,42 @@
+{
+  "mission": "A08-015",
+  "status": "passed",
+  "audit_scope": "A08 mechanism package",
+  "traceability_paths": [
+    {
+      "entry_id": "A08-MECH-001",
+      "path": [
+        "MAOI-SRC-001",
+        "A08-SEL-001",
+        "A08-TXT-001",
+        "A08-MECH-001",
+        "A08-MAOI-MECHANISM-INTERNAL-001"
+      ],
+      "result": "pass"
+    },
+    {
+      "entry_id": "A08-MECH-002",
+      "path": [
+        "MAOI-SRC-001",
+        "A08-SEL-001",
+        "A08-TXT-002",
+        "A08-MECH-002",
+        "A08-MAOI-MECHANISM-INTERNAL-001"
+      ],
+      "result": "pass"
+    },
+    {
+      "entry_id": "A08-MECH-003",
+      "path": [
+        "MAOI-SRC-001",
+        "A08-SEL-001",
+        "A08-TXT-003",
+        "A08-MECH-003",
+        "A08-MAOI-MECHANISM-INTERNAL-001"
+      ],
+      "result": "pass"
+    }
+  ],
+  "gaps": [],
+  "runtime_status": "blocked"
+}

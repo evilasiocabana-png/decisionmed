@@ -1,0 +1,95 @@
+{
+  "schema": "psychrx.knowledge_base.snri.mechanism_draft_traceability.v1",
+  "program": "A04",
+  "mission": "A04-009 - SNRI_MECHANISM_POPULATION_DRAFT",
+  "status": "draft_non_runtime",
+  "artifact": "KnowledgeBase/SNRIs/ScientificContent/SNRI_MECHANISM_OF_ACTION_DRAFT.md",
+  "runtime_eligibility": "not_eligible",
+  "scope": "mechanism_field_only",
+  "scientific_claims_populated": false,
+  "claim_policy": "All mechanism claim slots remain unresolved until controlled mechanism population is completed from A04-010 source-text records.",
+  "source_text_extraction_status": "completed_by_a04_010",
+  "source_text_artifact": "KnowledgeBase/SNRIs/SourceText/SNRI_MECHANISM_SOURCE_TEXT_EXTRACTS.json",
+  "entries": [
+    {
+      "drug_id": "SNRI-VENLAFAXINE",
+      "drug_name": "Venlafaxine",
+      "anchor_id": "A04-SNRI-VENLAFAXINE-MECHANISM-ANCHOR-001",
+      "claim_status": "unresolved_pending_mechanism_population",
+      "source_text_records": [
+        "A04-010-TEXT-001",
+        "A04-010-TEXT-002"
+      ],
+      "selected_sections": [
+        "A04-008G-SEC-001",
+        "A04-008G-SEC-002"
+      ]
+    },
+    {
+      "drug_id": "SNRI-DESVENLAFAXINE",
+      "drug_name": "Desvenlafaxine",
+      "anchor_id": "A04-SNRI-DESVENLAFAXINE-MECHANISM-ANCHOR-001",
+      "claim_status": "unresolved_pending_mechanism_population",
+      "source_text_records": [
+        "A04-010-TEXT-003",
+        "A04-010-TEXT-004"
+      ],
+      "selected_sections": [
+        "A04-008G-SEC-003",
+        "A04-008G-SEC-004"
+      ]
+    },
+    {
+      "drug_id": "SNRI-DULOXETINE",
+      "drug_name": "Duloxetine",
+      "anchor_id": "A04-SNRI-DULOXETINE-MECHANISM-ANCHOR-001",
+      "claim_status": "unresolved_pending_mechanism_population",
+      "source_text_records": [
+        "A04-010-TEXT-005",
+        "A04-010-TEXT-006"
+      ],
+      "selected_sections": [
+        "A04-008G-SEC-005",
+        "A04-008G-SEC-006"
+      ]
+    },
+    {
+      "drug_id": "SNRI-LEVOMILNACIPRAN",
+      "drug_name": "Levomilnacipran",
+      "anchor_id": "A04-SNRI-LEVOMILNACIPRAN-MECHANISM-ANCHOR-001",
+      "claim_status": "unresolved_pending_mechanism_population",
+      "source_text_records": [
+        "A04-010-TEXT-007",
+        "A04-010-TEXT-008"
+      ],
+      "selected_sections": [
+        "A04-008G-SEC-007",
+        "A04-008G-SEC-008"
+      ]
+    },
+    {
+      "drug_id": "SNRI-MILNACIPRAN",
+      "drug_name": "Milnacipran",
+      "anchor_id": "A04-SNRI-MILNACIPRAN-MECHANISM-ANCHOR-001",
+      "claim_status": "unresolved_pending_mechanism_population",
+      "source_text_records": [
+        "A04-010-TEXT-009",
+        "A04-010-TEXT-010"
+      ],
+      "selected_sections": [
+        "A04-008G-SEC-009",
+        "A04-008G-SEC-010"
+      ]
+    }
+  ],
+  "remaining_restrictions": [
+    "no pharmacokinetic extraction",
+    "no pharmacodynamic extraction",
+    "no safety extraction",
+    "no evidence grading",
+    "no therapeutic recommendation",
+    "no prescription",
+    "no clinical runtime"
+  ],
+  "recommended_next_mission": "A04-011 - SNRI_MECHANISM_POPULATION"
+}

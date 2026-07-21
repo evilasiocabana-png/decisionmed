@@ -1,0 +1,40 @@
+﻿{
+    "schema":  "psychrx.a03.editorial_permissions",
+    "program":  "A03",
+    "mission":  "A03-018",
+    "status":  "metadata_only",
+    "permissions":  {
+                        "initialized":  [
+                                            "edit_metadata"
+                                        ],
+                        "draft":  [
+                                      "edit_metadata"
+                                  ],
+                        "published":  [
+                                          "archive_or_deprecate"
+                                      ],
+                        "source_bound":  [
+                                             "request_editorial_review"
+                                         ],
+                        "archived":  [
+
+                                     ],
+                        "validated":  [
+                                          "future_publish"
+                                      ],
+                        "deprecated":  [
+                                           "archive"
+                                       ],
+                        "scientific_review":  [
+                                                  "future_scientific_review"
+                                              ],
+                        "metadata_complete":  [
+                                                  "edit_metadata",
+                                                  "bind_sources"
+                                              ],
+                        "editorial_review":  [
+                                                 "editorial_review"
+                                             ]
+                    },
+    "scientific_content_populated":  false
+}

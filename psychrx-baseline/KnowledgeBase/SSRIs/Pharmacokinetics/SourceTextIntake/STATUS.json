@@ -1,0 +1,11 @@
+{
+  "schema": "psychrx.knowledgebase.ssri.pk_source_text_intake_status",
+  "program": "A03",
+  "mission": "A03-041",
+  "status": "ready_for_extraction_full_core_ssri_scope",
+  "source_anchor_manifest": "ScientificCorpus/SourceTextIntake/Pharmacokinetics/PK_SOURCE_ANCHORS.json",
+  "source_text_stored": false,
+  "pharmacokinetic_content_extracted": false,
+  "ready_for_next_mission": true,
+  "next_mission": "A03-042 - PHARMACOKINETIC_CONTENT_EXTRACTION"
+}

@@ -1,0 +1,31 @@
+﻿{
+    "program":  "A03",
+    "mission":  "A03-024",
+    "checks":  [
+                   {
+                       "result":  "passed",
+                       "check":  "six_pk_structures_initialized"
+                   },
+                   {
+                       "result":  "passed",
+                       "check":  "pk_ids_unique"
+                   },
+                   {
+                       "result":  "passed",
+                       "check":  "source_bindings_present"
+                   },
+                   {
+                       "result":  "passed",
+                       "check":  "no_dose_or_titration"
+                   },
+                   {
+                       "result":  "passed",
+                       "check":  "runtime_consumption_disabled"
+                   }
+               ],
+    "schema":  "psychrx.a03.pk_validation",
+    "status":  "passed",
+    "issues":  [
+
+               ]
+}

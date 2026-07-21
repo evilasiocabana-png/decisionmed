@@ -1,0 +1,19 @@
+{
+  "schema": "psychrx.a03.indication_traceability",
+  "program": "A03",
+  "mission": "A03-026",
+  "status": "structural_traceability_initialized",
+  "schema_version": "0.1.0",
+  "source_registry": "ScientificCorpus/Metadata/NORMALIZED_SOURCE_REGISTRY.json",
+  "drug_source_binding": "KnowledgeBase/SSRIs/Traceability/DRUG_SOURCE_BINDING.json",
+  "runtime_consumption_allowed": false,
+  "field_level_traceability_required_before_population": true,
+  "traceability_entries": [
+    {"drug_id": "SSRI_FLUOXETINE", "indication_id": "A03_INDICATION_SSRI_FLUOXETINE", "binding_id": "A03_BIND_SSRI_FLUOXETINE_0_1_0", "status": "pending_field_extraction"},
+    {"drug_id": "SSRI_SERTRALINE", "indication_id": "A03_INDICATION_SSRI_SERTRALINE", "binding_id": "A03_BIND_SSRI_SERTRALINE_0_1_0", "status": "pending_field_extraction"},
+    {"drug_id": "SSRI_ESCITALOPRAM", "indication_id": "A03_INDICATION_SSRI_ESCITALOPRAM", "binding_id": "A03_BIND_SSRI_ESCITALOPRAM_0_1_0", "status": "pending_field_extraction"},
+    {"drug_id": "SSRI_CITALOPRAM", "indication_id": "A03_INDICATION_SSRI_CITALOPRAM", "binding_id": "A03_BIND_SSRI_CITALOPRAM_0_1_0", "status": "pending_field_extraction"},
+    {"drug_id": "SSRI_PAROXETINE", "indication_id": "A03_INDICATION_SSRI_PAROXETINE", "binding_id": "A03_BIND_SSRI_PAROXETINE_0_1_0", "status": "pending_field_extraction"},
+    {"drug_id": "SSRI_FLUVOXAMINE", "indication_id": "A03_INDICATION_SSRI_FLUVOXAMINE", "binding_id": "A03_BIND_SSRI_FLUVOXAMINE_0_1_0", "status": "pending_field_extraction"}
+  ]
+}

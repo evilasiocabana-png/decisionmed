@@ -1,0 +1,34 @@
+{
+  "schema": "psychrx.a03.source_reference_template",
+  "program": "A03",
+  "mission": "A03-013",
+  "status": "template_metadata_only",
+  "template_fields": [
+    "source_id",
+    "organization",
+    "category",
+    "document_type",
+    "version",
+    "publication_year",
+    "editorial_status",
+    "validation_status",
+    "availability_status",
+    "storage_location"
+  ],
+  "prohibited_fields": [
+    "clinical_claim",
+    "dose",
+    "indication",
+    "mechanism",
+    "pharmacokinetics",
+    "pharmacodynamics",
+    "safety_statement",
+    "interaction",
+    "contraindication",
+    "adverse_effect",
+    "recommendation",
+    "evidence_grade"
+  ],
+  "clinical_content_interpreted": false,
+  "scientific_content_interpreted": false
+}

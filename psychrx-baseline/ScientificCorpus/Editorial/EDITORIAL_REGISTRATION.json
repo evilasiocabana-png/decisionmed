@@ -1,0 +1,46 @@
+{
+  "schema": "psychrx.scientific_corpus.editorial_registration",
+  "program": "A02.5",
+  "mission": "A02.5-005",
+  "corpus_id": "SSRI_SOURCE_CORPUS_0_1_0",
+  "corpus_name": "SSRI Scientific Source Corpus",
+  "editorial_edition": "0.1.0-editorial-registered",
+  "registration_date": "2026-06-30",
+  "registration_status": "registered_not_scientifically_approved",
+  "source_manifest": "ScientificCorpus/Manifest/SOURCE_CORPUS_MANIFEST.json",
+  "normalized_source_manifest": "ScientificCorpus/Metadata/NORMALIZED_SOURCE_MANIFEST.json",
+  "source_validation_report": "ScientificCorpus/Validation/SOURCE_VALIDATION_REPORT.md",
+  "corpus_integrity_report": "ScientificCorpus/Validation/CORPUS_INTEGRITY_REPORT.md",
+  "editorial_responsibility": {
+    "responsible_program": "Program A02.5 - SSRI Source Corpus Intake",
+    "responsible_role": "PsychRx Scientific Editorial Reviewer",
+    "named_reviewer": "pending_designation",
+    "cto_governance": "PsychRx CTO governance gate",
+    "approval_status": "not_approved",
+    "approval_scope": "administrative editorial registration only"
+  },
+  "scope": {
+    "clinical_content_interpreted": false,
+    "evidence_classified": false,
+    "ontology_mapping_performed": false,
+    "medication_fields_populated": false,
+    "knowledge_layer_publication_allowed": false,
+    "evidence_runtime_consumption_allowed": false,
+    "program_a03_phase1_unblocked": true,
+    "program_a03_scientific_population_unblocked": false
+  },
+  "source_counts": {
+    "normalized_sources": 26,
+    "duplicate_candidates": 5,
+    "review_required": 4,
+    "pending_file_hashes": 26
+  },
+  "known_limitations": [
+    "original source files have not been stored in the corpus",
+    "file hashes remain pending",
+    "some source metadata remain pending identification",
+    "duplicate candidates remain preserved for future editorial review",
+    "sources requiring review remain unresolved"
+  ],
+  "next_mission": "A03-011 - Drug Portfolio Definition"
+}

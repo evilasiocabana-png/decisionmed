@@ -1,0 +1,29 @@
+{
+  "mission": "A09-010",
+  "status": "complete",
+  "selected_sections": [
+    {
+      "selection_id": "A09-SEL-001",
+      "source_id": "ATYPICAL-SRC-001",
+      "drug_id": "ATYPICAL-TRAZODONE",
+      "field": "mechanism",
+      "section": "12.1 Mechanism of Action",
+      "locator": "https://dailymed.nlm.nih.gov/dailymed/lookup.cfm?setid=a382ac4d-9ab9-796a-e053-2a95a90a2c26",
+      "review_status": "reviewable"
+    },
+    {
+      "selection_id": "A09-SEL-002",
+      "source_id": "ATYPICAL-SRC-002",
+      "drug_id": "ATYPICAL-TRAZODONE",
+      "field": "mechanism",
+      "section": "12.1 Mechanism of Action",
+      "locator": "https://www.accessdata.fda.gov/drugsatfda_docs/label/2015/071196s062lbl.pdf",
+      "review_status": "reviewable"
+    }
+  ],
+  "gate_result": {
+    "source_sections_selected": 2,
+    "selected_sections_reviewable": 2,
+    "a09_011_may_start": true
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "mission": "A15-002",
+  "status": "complete",
+  "portfolio": [
+    {
+      "drug_id": "CE-DONEPEZIL",
+      "name": "Donepezil",
+      "class_scope": "cognitive_enhancer",
+      "profile_status": "shell_created",
+      "mechanism_scope": "authorized_for_internal_non_runtime_population",
+      "runtime_eligible": false
+    }
+  ],
+  "future_candidates": [
+    "rivastigmine",
+    "galantamine",
+    "memantine"
+  ]
+}

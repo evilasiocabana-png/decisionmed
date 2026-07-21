@@ -1,0 +1,27 @@
+{
+  "mission": "A08-007",
+  "drug_id": "MAOI-PHENELZINE",
+  "canonical_name": "phenelzine",
+  "class_id": "MAOI",
+  "status": "internal_non_runtime_mechanism_package",
+  "runtime_eligible": false,
+  "fields": {
+    "mechanism": {
+      "status": "populated_internal_draft",
+      "traceability": [
+        "A08-MECH-001",
+        "A08-MECH-002",
+        "A08-MECH-003"
+      ],
+      "publication_package": "A08-MAOI-MECHANISM-INTERNAL-001"
+    },
+    "pharmacokinetics": {
+      "status": "UNRESOLVED_BLOCKED_FUTURE_SCOPE",
+      "traceability": []
+    },
+    "safety": {
+      "status": "UNRESOLVED_BLOCKED_FUTURE_SCOPE",
+      "traceability": []
+    }
+  }
+}

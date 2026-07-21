@@ -1,0 +1,52 @@
+{
+  "mission": "A08-012",
+  "status": "draft_review_required",
+  "runtime_eligible": false,
+  "drug_entries": [
+    {
+      "drug_id": "MAOI-PHENELZINE",
+      "field": "mechanism",
+      "claim_status": "source_text_bound_internal_draft",
+      "entries": [
+        {
+          "entry_id": "A08-MECH-001",
+          "controlled_statement": "Selected source text identifies phenelzine as an inhibitor of monoamine oxidase.",
+          "source_text_records": [
+            "A08-TXT-001"
+          ],
+          "runtime_eligible": false
+        },
+        {
+          "entry_id": "A08-MECH-002",
+          "controlled_statement": "Selected source text describes monoamine oxidase as a complex enzyme system.",
+          "source_text_records": [
+            "A08-TXT-002"
+          ],
+          "runtime_eligible": false
+        },
+        {
+          "entry_id": "A08-MECH-003",
+          "controlled_statement": "Selected source text leaves the clinical contribution of MAO inhibition unresolved.",
+          "source_text_records": [
+            "A08-TXT-003"
+          ],
+          "runtime_eligible": false
+        }
+      ],
+      "unresolved": [
+        {
+          "field": "class_level_maoi_generalization",
+          "status": "UNRESOLVED",
+          "reason": "A08 selected source text supports phenelzine-specific mechanism only."
+        }
+      ]
+    }
+  ],
+  "forbidden_use": [
+    "runtime",
+    "prescription",
+    "recommendation",
+    "dose_suggestion",
+    "patient_specific_decision"
+  ]
+}

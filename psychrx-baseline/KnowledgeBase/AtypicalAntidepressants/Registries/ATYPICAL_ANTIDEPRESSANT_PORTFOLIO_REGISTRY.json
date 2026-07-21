@@ -1,0 +1,25 @@
+{
+  "mission": "A09-002",
+  "portfolio_status": "approved_for_a09_scope",
+  "class": {
+    "id": "ATYPICAL_ANTIDEPRESSANT",
+    "label": "Atypical Antidepressants",
+    "runtime_eligible": false
+  },
+  "included_drugs": [
+    {
+      "id": "ATYPICAL-TRAZODONE",
+      "canonical_name": "trazodone",
+      "status": "included",
+      "rationale": "Initial atypical antidepressant portfolio for A09 mechanism-field package.",
+      "runtime_eligible": false
+    }
+  ],
+  "excluded_or_unresolved_candidates": [
+    {
+      "name": "nefazodone",
+      "status": "review_required_future_scope",
+      "rationale": "Not included in this initial A09 package without a dedicated portfolio expansion mission."
+    }
+  ]
+}

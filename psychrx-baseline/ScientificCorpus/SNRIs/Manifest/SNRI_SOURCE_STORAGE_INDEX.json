@@ -1,0 +1,29 @@
+{
+  "schema": "psychrx.scientific_corpus.snri.source_storage_index.v1",
+  "program": "A04.0",
+  "mission": "A04.0-003 - SNRI_SOURCE_CORPUS_INTAKE",
+  "status": "completed",
+  "storage_policy": "Administrative placeholder directories only. No source documents have been downloaded or copied.",
+  "storage_records": [
+    { "source_id": "A04.0-SD-B001", "storage_location": "ScientificCorpus/SNRIs/Books/A04.0-SD-B001/", "acquisition_status": "not_acquired" },
+    { "source_id": "A04.0-SD-B002", "storage_location": "ScientificCorpus/SNRIs/Books/A04.0-SD-B002/", "acquisition_status": "not_acquired" },
+    { "source_id": "A04.0-SD-B003", "storage_location": "ScientificCorpus/SNRIs/Books/A04.0-SD-B003/", "acquisition_status": "not_acquired" },
+    { "source_id": "A04.0-SD-G001", "storage_location": "ScientificCorpus/SNRIs/Guidelines/A04.0-SD-G001/", "acquisition_status": "not_acquired" },
+    { "source_id": "A04.0-SD-G002", "storage_location": "ScientificCorpus/SNRIs/Guidelines/A04.0-SD-G002/", "acquisition_status": "not_acquired" },
+    { "source_id": "A04.0-SD-G003", "storage_location": "ScientificCorpus/SNRIs/Guidelines/A04.0-SD-G003/", "acquisition_status": "not_acquired" },
+    { "source_id": "A04.0-SD-G004", "storage_location": "ScientificCorpus/SNRIs/Guidelines/A04.0-SD-G004/", "acquisition_status": "not_acquired" },
+    { "source_id": "A04.0-SD-G005", "storage_location": "ScientificCorpus/SNRIs/Guidelines/A04.0-SD-G005/", "acquisition_status": "not_acquired" },
+    { "source_id": "A04.0-SD-R001", "storage_location": "ScientificCorpus/SNRIs/Regulatory/A04.0-SD-R001/", "acquisition_status": "not_acquired" },
+    { "source_id": "A04.0-SD-R002", "storage_location": "ScientificCorpus/SNRIs/Regulatory/A04.0-SD-R002/", "acquisition_status": "not_acquired" },
+    { "source_id": "A04.0-SD-R003", "storage_location": "ScientificCorpus/SNRIs/Regulatory/A04.0-SD-R003/", "acquisition_status": "not_acquired" },
+    { "source_id": "A04.0-SD-R004", "storage_location": "ScientificCorpus/SNRIs/Regulatory/A04.0-SD-R004/", "acquisition_status": "not_acquired" },
+    { "source_id": "A04.0-SD-R005", "storage_location": "ScientificCorpus/SNRIs/Regulatory/A04.0-SD-R005/", "acquisition_status": "not_acquired" },
+    { "source_id": "A04.0-SD-E001", "storage_location": "ScientificCorpus/SNRIs/Reference/A04.0-SD-E001/", "acquisition_status": "not_acquired" },
+    { "source_id": "A04.0-SD-E002", "storage_location": "ScientificCorpus/SNRIs/Reviews/A04.0-SD-E002/", "acquisition_status": "not_acquired" },
+    { "source_id": "A04.0-SD-E003", "storage_location": "ScientificCorpus/SNRIs/RCT/A04.0-SD-E003/", "acquisition_status": "not_acquired" },
+    { "source_id": "A04.0-SD-S001", "storage_location": "ScientificCorpus/SNRIs/Safety/A04.0-SD-S001/", "acquisition_status": "not_acquired" },
+    { "source_id": "A04.0-SD-S002", "storage_location": "ScientificCorpus/SNRIs/Safety/A04.0-SD-S002/", "acquisition_status": "not_acquired" },
+    { "source_id": "A04.0-SD-S003", "storage_location": "ScientificCorpus/SNRIs/Safety/A04.0-SD-S003/", "acquisition_status": "not_acquired" }
+  ],
+  "next_mission": "A04.0-004 - SNRI_SOURCE_METADATA_NORMALIZATION"
+}

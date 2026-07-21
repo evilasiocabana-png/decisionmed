@@ -1,0 +1,25 @@
+{
+  "mission": "A11-003",
+  "status": "complete",
+  "sources": [
+    {
+      "source_id": "SGA-SRC-001",
+      "title": "DailyMed - Risperidone tablet label",
+      "organization": "National Library of Medicine / DailyMed",
+      "source_type": "official_label",
+      "url": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=e90c886c-132a-4df6-8604-cfe5ffa49d5b",
+      "access_status": "accessible",
+      "use_scope": "mechanism_source_text"
+    },
+    {
+      "source_id": "SGA-SRC-002",
+      "title": "FDA - Risperidone label PDF",
+      "organization": "FDA",
+      "source_type": "official_label_pdf",
+      "url": "https://www.accessdata.fda.gov/drugsatfda_docs/label/2020/020272s085%2C020588s072%2C021444s058lbl.pdf",
+      "access_status": "accessible",
+      "use_scope": "mechanism_source_text_cross_check"
+    }
+  ],
+  "runtime_eligible": false
+}

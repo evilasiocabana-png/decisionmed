@@ -1,0 +1,24 @@
+{
+  "schema": "psychrx.a03.indication_validation",
+  "program": "A03",
+  "mission": "A03-026",
+  "status": "structurally_validated",
+  "schema_version": "0.1.0",
+  "validated_files": [
+    "KnowledgeBase/SSRIs/Indications/INDICATION_SCHEMA.json",
+    "KnowledgeBase/SSRIs/Indications/INDICATION_MODEL.json",
+    "KnowledgeBase/SSRIs/Indications/INDICATION_INDEX.json",
+    "KnowledgeBase/SSRIs/Indications/INDICATION_TRACEABILITY.json",
+    "KnowledgeBase/SSRIs/Indications/INDICATION_MANIFEST.json"
+  ],
+  "validation_checks": {
+    "six_core_ssris_present": true,
+    "value_fields_pending_extraction": true,
+    "runtime_consumption_allowed": false,
+    "clinical_recommendations_created": false,
+    "prescription_created": false,
+    "dose_fields_created": false,
+    "titration_fields_created": false,
+    "therapeutic_strategy_fields_created": false
+  }
+}

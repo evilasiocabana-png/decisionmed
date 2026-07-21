@@ -1,0 +1,11 @@
+{
+  "mission": "A15-014",
+  "status": "published_internal_non_runtime",
+  "package": "COGNITIVE_ENHANCER_MECHANISM_PACKAGE",
+  "included_artifacts": [
+    "COGNITIVE_ENHANCER_MECHANISM_SOURCE_TEXT_EXTRACTS.json",
+    "COGNITIVE_ENHANCER_MECHANISM_POPULATED_DRAFT.json",
+    "COGNITIVE_ENHANCER_DRAFT_EDITORIAL_REVIEW.json"
+  ],
+  "runtime_eligible": false
+}

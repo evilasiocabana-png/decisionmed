@@ -1,0 +1,34 @@
+{
+  "mission": "A11-011",
+  "status": "complete",
+  "records": [
+    {
+      "record_id": "SGA-TEXT-001",
+      "source_id": "SGA-SRC-001",
+      "selection_id": "SGA-SEL-001",
+      "drug_id": "SGA-RISPERIDONE",
+      "field": "mechanism",
+      "exact_text": "The mechanism of action of risperidone in schizophrenia is unclear.",
+      "review_status": "reviewable"
+    },
+    {
+      "record_id": "SGA-TEXT-002",
+      "source_id": "SGA-SRC-001",
+      "selection_id": "SGA-SEL-001",
+      "drug_id": "SGA-RISPERIDONE",
+      "field": "mechanism",
+      "exact_text": "mediated through a combination of dopamine Type 2 (D2) and serotonin Type 2 (5HT2) receptor antagonism",
+      "review_status": "reviewable"
+    },
+    {
+      "record_id": "SGA-TEXT-003",
+      "source_id": "SGA-SRC-001",
+      "selection_id": "SGA-SEL-001",
+      "drug_id": "SGA-RISPERIDONE",
+      "field": "mechanism",
+      "exact_text": "combined concentrations of risperidone and its major metabolite, 9-hydroxyrisperidone",
+      "review_status": "reviewable"
+    }
+  ],
+  "runtime_eligible": false
+}

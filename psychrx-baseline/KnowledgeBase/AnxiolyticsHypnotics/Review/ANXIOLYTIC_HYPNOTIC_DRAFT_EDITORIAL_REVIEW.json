@@ -1,0 +1,23 @@
+{
+  "mission": "A13-013",
+  "status": "passed",
+  "review_scope": "mechanism_draft_only",
+  "checks": [
+    {
+      "check": "all_claims_have_source_text_records",
+      "result": "pass"
+    },
+    {
+      "check": "no_prescriptive_language",
+      "result": "pass"
+    },
+    {
+      "check": "runtime_eligible_false",
+      "result": "pass"
+    },
+    {
+      "check": "unresolved_items_preserved",
+      "result": "pass"
+    }
+  ]
+}

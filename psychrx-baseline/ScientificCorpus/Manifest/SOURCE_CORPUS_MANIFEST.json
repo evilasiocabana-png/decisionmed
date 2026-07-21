@@ -1,0 +1,42 @@
+{
+  "schema": "psychrx.scientific_corpus.manifest",
+  "program": "A02.5",
+  "mission": "A02.5-002",
+  "corpus_id": "SSRI_SOURCE_CORPUS_0_1_0",
+  "name": "SSRI Scientific Source Corpus",
+  "version": "0.1.0-controlled-corpus",
+  "status": "published_as_controlled_corpus_input",
+  "created_at": "2026-06-30",
+  "source_registry": "ScientificCorpus/Metadata/SOURCE_REGISTRY.json",
+  "initial_inventory_rc1": "ScientificCorpus/Manifest/INITIAL_CORPUS_INVENTORY_RC1.json",
+  "source_index": "ScientificCorpus/Manifest/SOURCE_INDEX.md",
+  "source_counts": {
+    "total_sources": 18,
+    "candidate_registered": 9,
+    "pending_acquisition": 8,
+    "pending_selection": 1
+  },
+  "folders": [
+    "ScientificCorpus/Books",
+    "ScientificCorpus/Guidelines",
+    "ScientificCorpus/Regulatory",
+    "ScientificCorpus/Reviews",
+    "ScientificCorpus/MetaAnalyses",
+    "ScientificCorpus/RCT",
+    "ScientificCorpus/Safety",
+    "ScientificCorpus/Labels",
+    "ScientificCorpus/Metadata",
+    "ScientificCorpus/Manifest"
+  ],
+  "clinical_content_extracted": false,
+  "medication_fields_populated": false,
+  "ontology_mapping_performed": false,
+  "evidence_runtime_consumption_allowed": false,
+  "ready_for_knowledge_population": false,
+  "editorial_registration": "ScientificCorpus/Editorial/EDITORIAL_REGISTRATION.json",
+  "editorial_manifest": "ScientificCorpus/Editorial/EDITORIAL_MANIFEST.json",
+  "publication_manifest": "ScientificCorpus/Publication/PUBLICATION_MANIFEST.json",
+  "program_a03_phase1_unblocked": true,
+  "program_a03_scientific_population_unblocked": false,
+  "next_mission": "A03-011 - Drug Portfolio Definition"
+}

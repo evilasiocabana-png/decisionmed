@@ -1,0 +1,96 @@
+{
+  "schema": "psychrx.a03.drug_portfolio_editorial_registry",
+  "program": "A03",
+  "mission": "A03-012",
+  "status": "metadata_only",
+  "source_definition": "KnowledgeBase/SSRIs/Metadata/DRUG_PORTFOLIO_DEFINITION.json",
+  "editorial_version": "0.1.0",
+  "core_entries": [
+    {
+      "editorial_id": "A03_ED_SSRI_FLUOXETINE",
+      "drug_id": "SSRI_FLUOXETINE",
+      "canonical_name": "Fluoxetine",
+      "portfolio_status": "core",
+      "registry_status": "registered_metadata_only",
+      "drug_profile_status": "not_created",
+      "scientific_content_status": "not_populated",
+      "editorial_status": "draft"
+    },
+    {
+      "editorial_id": "A03_ED_SSRI_SERTRALINE",
+      "drug_id": "SSRI_SERTRALINE",
+      "canonical_name": "Sertraline",
+      "portfolio_status": "core",
+      "registry_status": "registered_metadata_only",
+      "drug_profile_status": "not_created",
+      "scientific_content_status": "not_populated",
+      "editorial_status": "draft"
+    },
+    {
+      "editorial_id": "A03_ED_SSRI_ESCITALOPRAM",
+      "drug_id": "SSRI_ESCITALOPRAM",
+      "canonical_name": "Escitalopram",
+      "portfolio_status": "core",
+      "registry_status": "registered_metadata_only",
+      "drug_profile_status": "not_created",
+      "scientific_content_status": "not_populated",
+      "editorial_status": "draft"
+    },
+    {
+      "editorial_id": "A03_ED_SSRI_CITALOPRAM",
+      "drug_id": "SSRI_CITALOPRAM",
+      "canonical_name": "Citalopram",
+      "portfolio_status": "core",
+      "registry_status": "registered_metadata_only",
+      "drug_profile_status": "not_created",
+      "scientific_content_status": "not_populated",
+      "editorial_status": "draft"
+    },
+    {
+      "editorial_id": "A03_ED_SSRI_PAROXETINE",
+      "drug_id": "SSRI_PAROXETINE",
+      "canonical_name": "Paroxetine",
+      "portfolio_status": "core",
+      "registry_status": "registered_metadata_only",
+      "drug_profile_status": "not_created",
+      "scientific_content_status": "not_populated",
+      "editorial_status": "draft"
+    },
+    {
+      "editorial_id": "A03_ED_SSRI_FLUVOXAMINE",
+      "drug_id": "SSRI_FLUVOXAMINE",
+      "canonical_name": "Fluvoxamine",
+      "portfolio_status": "core",
+      "registry_status": "registered_metadata_only",
+      "drug_profile_status": "not_created",
+      "scientific_content_status": "not_populated",
+      "editorial_status": "draft"
+    }
+  ],
+  "boundary_entries": [
+    {
+      "editorial_id": "A03_BOUNDARY_VILAZODONE",
+      "candidate_name": "Vilazodone",
+      "boundary_status": "review_required",
+      "ontology_decision": "not_decided",
+      "registry_status": "tracked_not_included"
+    },
+    {
+      "editorial_id": "A03_BOUNDARY_VORTIOXETINE",
+      "candidate_name": "Vortioxetine",
+      "boundary_status": "review_required",
+      "ontology_decision": "not_decided",
+      "registry_status": "tracked_not_included"
+    }
+  ],
+  "drug_profiles_populated": false,
+  "clinical_content_interpreted": false,
+  "scientific_content_interpreted": false,
+  "source_documents_modified": false,
+  "extraction_performed": false,
+  "ontology_mapping_performed": false,
+  "clinical_assertions_created": false,
+  "therapeutic_recommendations_created": false,
+  "runtime_consumption_allowed": false,
+  "next_mission": "A03-013 - Drug Portfolio Source Binding"
+}

@@ -1,0 +1,13 @@
+{
+  "schema": "psychrx.scientific_corpus.snri.editorial_status.v1",
+  "program": "A04.0",
+  "mission": "A04.0-006 - SNRI_EDITORIAL_REGISTRATION",
+  "status": "completed",
+  "source_validation_report": "ScientificCorpus/SourceTextIntake/SNRIs/SNRI_SOURCE_VALIDATION_REPORT.md",
+  "editorial_registration": "ScientificCorpus/SourceTextIntake/SNRIs/SNRI_EDITORIAL_REGISTRATION.json",
+  "source_records": 19,
+  "editorial_gate": "passed_for_controlled_publication",
+  "publication_gate": "pending",
+  "completion_gate": "pending",
+  "runtime_eligibility": "not_eligible"
+}

@@ -1,0 +1,16 @@
+{
+  "mission": "A12-011",
+  "status": "complete",
+  "records": [
+    {
+      "record_id": "MS-TEXT-001",
+      "source_id": "MS-SRC-001",
+      "selection_id": "MS-SEL-001",
+      "drug_id": "MS-LITHIUM",
+      "field": "mechanism",
+      "exact_text": "The mechanism of action of lithium as a mood stabilizing agent is unknown.",
+      "review_status": "reviewable"
+    }
+  ],
+  "runtime_eligible": false
+}

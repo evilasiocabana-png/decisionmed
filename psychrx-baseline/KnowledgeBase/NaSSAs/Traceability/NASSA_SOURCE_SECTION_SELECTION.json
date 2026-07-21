@@ -1,0 +1,29 @@
+{
+  "mission": "A06-010",
+  "status": "complete",
+  "selected_sections": [
+    {
+      "selection_id": "A06-SEL-001",
+      "source_id": "NASSA-SRC-001",
+      "drug_id": "NASSA-MIRTAZAPINE",
+      "field": "mechanism",
+      "section": "12.1 Mechanism of Action",
+      "locator": "https://dailymed.nlm.nih.gov/dailymed/lookup.cfm?setid=dea8c09a-b759-1da7-e053-2a95a90a3346",
+      "review_status": "reviewable"
+    },
+    {
+      "selection_id": "A06-SEL-002",
+      "source_id": "NASSA-SRC-002",
+      "drug_id": "NASSA-MIRTAZAPINE",
+      "field": "mechanism",
+      "section": "12.1 Mechanism of Action",
+      "locator": "https://www.accessdata.fda.gov/drugsatfda_docs/label/2020/020415s029%2C%20021208s019lbl.pdf",
+      "review_status": "reviewable"
+    }
+  ],
+  "gate_result": {
+    "source_sections_selected": 2,
+    "selected_sections_reviewable": 2,
+    "a06_011_may_start": true
+  }
+}

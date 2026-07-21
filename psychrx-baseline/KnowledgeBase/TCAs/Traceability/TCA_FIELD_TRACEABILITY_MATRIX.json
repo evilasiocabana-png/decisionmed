@@ -1,0 +1,22 @@
+{
+  "mission": "A07-008",
+  "status": "complete",
+  "matrix": [
+    {
+      "drug_id": "TCA-AMITRIPTYLINE",
+      "field": "mechanism",
+      "required_chain": [
+        "source_id",
+        "section_id",
+        "section_locator",
+        "source_text_record_id",
+        "field_entry_id"
+      ],
+      "candidate_sources": [
+        "TCA-SRC-001",
+        "TCA-SRC-002"
+      ],
+      "status": "ready_for_gate"
+    }
+  ]
+}

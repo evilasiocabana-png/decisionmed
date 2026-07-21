@@ -1,0 +1,69 @@
+{
+  "track": "D",
+  "title": "Validation and Certification",
+  "status": "completed_as_validation_certification_governance",
+  "runtime_enabled": false,
+  "certification_granted": false,
+  "regulatory_compliance_claimed": false,
+  "completion_scope": "D01 through D08 executed as validation and certification governance artifacts only.",
+  "programs": [
+    {
+      "id": "D01",
+      "name": "Scientific Validation",
+      "status": "executed_as_validation_governance_artifact"
+    },
+    {
+      "id": "D02",
+      "name": "Clinical Validation",
+      "status": "executed_as_validation_governance_artifact"
+    },
+    {
+      "id": "D03",
+      "name": "Traceability Audit",
+      "status": "executed_as_validation_governance_artifact"
+    },
+    {
+      "id": "D04",
+      "name": "Quality Assurance",
+      "status": "executed_as_validation_governance_artifact"
+    },
+    {
+      "id": "D05",
+      "name": "Regulatory Readiness",
+      "status": "executed_as_validation_governance_artifact"
+    },
+    {
+      "id": "D06",
+      "name": "Certification Readiness",
+      "status": "executed_as_validation_governance_artifact"
+    },
+    {
+      "id": "D07",
+      "name": "External Review",
+      "status": "executed_as_validation_governance_artifact"
+    },
+    {
+      "id": "D08",
+      "name": "Release Validation",
+      "status": "executed_as_validation_governance_artifact"
+    }
+  ],
+  "final_gate": {
+    "id": "D08_TRACK_D_GATE",
+    "status": "passed_for_validation_governance_only",
+    "clinical_runtime_status": "not_enabled",
+    "certification_status": "not_granted"
+  },
+  "prohibitions": [
+    "clinical_runtime_activation",
+    "prescription",
+    "therapeutic_recommendation",
+    "dose_suggestion",
+    "autonomous_diagnosis",
+    "patient_specific_medication_selection",
+    "patient_facing_clinical_guidance",
+    "regulatory_compliance_claim",
+    "release_certification_claim"
+  ]
+}
+

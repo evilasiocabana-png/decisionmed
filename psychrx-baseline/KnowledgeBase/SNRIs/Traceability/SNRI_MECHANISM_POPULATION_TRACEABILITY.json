@@ -1,0 +1,55 @@
+{
+  "schema": "psychrx.knowledge_base.snri.mechanism_population_traceability.v1",
+  "program": "A04",
+  "mission": "A04-011 - SNRI_MECHANISM_POPULATION",
+  "status": "completed_pending_editorial_review",
+  "source_text_artifact": "KnowledgeBase/SNRIs/SourceText/SNRI_MECHANISM_SOURCE_TEXT_EXTRACTS.json",
+  "populated_artifact": "KnowledgeBase/SNRIs/ScientificContent/SNRI_MECHANISM_POPULATED_DRAFT.json",
+  "traceability_complete": true,
+  "records": [
+    {
+      "drug_id": "SNRI-VENLAFAXINE",
+      "profile": "KnowledgeBase/SNRIs/Venlafaxine/Profile/PROFILE_SHELL.json",
+      "field": "mechanism",
+      "status": "populated_non_runtime",
+      "selected_sections": ["A04-008G-SEC-001", "A04-008G-SEC-002"],
+      "source_text_records": ["A04-010-TEXT-001", "A04-010-TEXT-002"]
+    },
+    {
+      "drug_id": "SNRI-DESVENLAFAXINE",
+      "profile": "KnowledgeBase/SNRIs/Desvenlafaxine/Profile/PROFILE_SHELL.json",
+      "field": "mechanism",
+      "status": "populated_non_runtime",
+      "selected_sections": ["A04-008G-SEC-003", "A04-008G-SEC-004"],
+      "source_text_records": ["A04-010-TEXT-003", "A04-010-TEXT-004"]
+    },
+    {
+      "drug_id": "SNRI-DULOXETINE",
+      "profile": "KnowledgeBase/SNRIs/Duloxetine/Profile/PROFILE_SHELL.json",
+      "field": "mechanism",
+      "status": "populated_non_runtime",
+      "selected_sections": ["A04-008G-SEC-005", "A04-008G-SEC-006"],
+      "source_text_records": ["A04-010-TEXT-005", "A04-010-TEXT-006"]
+    },
+    {
+      "drug_id": "SNRI-LEVOMILNACIPRAN",
+      "profile": "KnowledgeBase/SNRIs/Levomilnacipran/Profile/PROFILE_SHELL.json",
+      "field": "mechanism",
+      "status": "populated_non_runtime",
+      "selected_sections": ["A04-008G-SEC-007", "A04-008G-SEC-008"],
+      "source_text_records": ["A04-010-TEXT-007", "A04-010-TEXT-008"]
+    },
+    {
+      "drug_id": "SNRI-MILNACIPRAN",
+      "profile": "KnowledgeBase/SNRIs/Milnacipran/Profile/PROFILE_SHELL.json",
+      "field": "mechanism",
+      "status": "populated_non_runtime",
+      "selected_sections": ["A04-008G-SEC-009", "A04-008G-SEC-010"],
+      "source_text_records": ["A04-010-TEXT-009", "A04-010-TEXT-010"]
+    }
+  ],
+  "unresolved_items": [
+    "A04-011-UNRESOLVED-CLASS-MECHANISM"
+  ],
+  "next_mission": "A04-012 - SNRI_MECHANISM_DRAFT_EDITORIAL_REVIEW"
+}

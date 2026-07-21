@@ -1,0 +1,11 @@
+{
+  "schema": "psychrx.scientific_corpus.snri.corpus_publication_status.v1",
+  "program": "A04.0",
+  "mission": "A04.0-007 - SNRI_CORPUS_PUBLICATION",
+  "status": "published_controlled_corpus",
+  "publication_manifest": "ScientificCorpus/SourceTextIntake/SNRIs/SNRI_CORPUS_PUBLICATION_MANIFEST.json",
+  "publication_version": "0.1.0",
+  "completion_gate": "pending",
+  "program_a04_unlock_status": "pending_completion_gate",
+  "runtime_eligibility": "not_eligible"
+}

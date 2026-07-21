@@ -1,0 +1,11 @@
+{
+  "mission": "A14-014",
+  "status": "published_internal_non_runtime",
+  "package": "ADHD_MEDICATION_MECHANISM_PACKAGE",
+  "included_artifacts": [
+    "ADHD_MEDICATION_MECHANISM_SOURCE_TEXT_EXTRACTS.json",
+    "ADHD_MEDICATION_MECHANISM_POPULATED_DRAFT.json",
+    "ADHD_MEDICATION_DRAFT_EDITORIAL_REVIEW.json"
+  ],
+  "runtime_eligible": false
+}

@@ -1,0 +1,39 @@
+{
+  "schema": "psychrx.scientific_corpus.mechanism_source_anchor_resolution",
+  "program": "A03",
+  "mission": "A03-041R",
+  "status": "resolved",
+  "created_at": "2026-07-01",
+  "source_text_stored": false,
+  "clinical_content_interpreted": false,
+  "resolutions": [
+    {
+      "drug_id": "SSRI_SERTRALINE",
+      "previous_gap": "Source anchor required editorial confirmation.",
+      "resolved_anchor_id": "A03-MOA-ANCHOR-SERTRALINE-002",
+      "source_type": "regulatory_label",
+      "source_family": "DailyMed / FDA SPL",
+      "label_basis": "ZOLOFT brand SPL",
+      "setid": "fda754f6-d0f3-4dce-a17a-927d64f912f7",
+      "source_url": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=fda754f6-d0f3-4dce-a17a-927d64f912f7",
+      "xml_url": "https://dailymed.nlm.nih.gov/dailymed/services/v2/spls/fda754f6-d0f3-4dce-a17a-927d64f912f7.xml",
+      "section_path": ["12 CLINICAL PHARMACOLOGY", "12.1 Mechanism of Action"],
+      "anchor_status": "anchor_ready",
+      "extraction_allowed": true
+    },
+    {
+      "drug_id": "SSRI_CITALOPRAM",
+      "previous_gap": "Mechanism section anchor unresolved.",
+      "resolved_anchor_id": "A03-MOA-ANCHOR-CITALOPRAM-002",
+      "source_type": "regulatory_label",
+      "source_family": "DailyMed / FDA SPL",
+      "label_basis": "CELEXA brand SPL",
+      "setid": "4259d9b1-de34-43a4-85a8-41dd214e9177",
+      "source_url": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=4259d9b1-de34-43a4-85a8-41dd214e9177",
+      "xml_url": "https://dailymed.nlm.nih.gov/dailymed/services/v2/spls/4259d9b1-de34-43a4-85a8-41dd214e9177.xml",
+      "section_path": ["12 CLINICAL PHARMACOLOGY", "12.1 Mechanism of Action"],
+      "anchor_status": "anchor_ready",
+      "extraction_allowed": true
+    }
+  ]
+}

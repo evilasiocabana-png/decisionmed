@@ -1,0 +1,25 @@
+{
+  "mission": "A14-007",
+  "drug_id": "ADHD-METHYLPHENIDATE",
+  "name": "Methylphenidate",
+  "class": "adhd_medication",
+  "fields": {
+    "mechanism": {
+      "status": "authorized_for_a14_population",
+      "content_ref": null
+    },
+    "pharmacokinetics": {
+      "status": "blocked"
+    },
+    "pharmacodynamics": {
+      "status": "blocked"
+    },
+    "safety": {
+      "status": "blocked"
+    },
+    "evidence": {
+      "status": "blocked"
+    }
+  },
+  "runtime_eligible": false
+}

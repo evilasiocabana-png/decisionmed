@@ -1,0 +1,69 @@
+﻿{
+    "schema":  "psychrx.a03.phase2_baseline",
+    "program":  "A03",
+    "mission":  "A03-020",
+    "phase":  "Phase 2 - Drug Portfolio Definition",
+    "status":  "published_metadata_only_baseline",
+    "baseline_version":  "0.1.0",
+    "baseline_date":  "2026-06-30",
+    "registry_count":  14,
+    "template_count":  19,
+    "json_files_checked":  609,
+    "critical_issues":  0,
+    "gates":  [
+                  {
+                      "status":  "approved",
+                      "evidence":  "KnowledgeBase/SSRIs/Registries/DRUG_REGISTRY.json",
+                      "name":  "Drug Registry complete",
+                      "id":  "gate_01"
+                  },
+                  {
+                      "status":  "approved",
+                      "evidence":  "KnowledgeBase/SSRIs/Registries/EDITORIAL_REGISTRY.json",
+                      "name":  "Editorial Registry complete",
+                      "id":  "gate_02"
+                  },
+                  {
+                      "status":  "approved",
+                      "evidence":  "KnowledgeBase/SSRIs/Metadata/DRUG_PORTFOLIO_DEFINITION.json",
+                      "name":  "Metadata Registry complete",
+                      "id":  "gate_03"
+                  },
+                  {
+                      "status":  "approved",
+                      "evidence":  "KnowledgeBase/SSRIs/Traceability/DRUG_SOURCE_BINDING.json",
+                      "name":  "Binding Registry complete",
+                      "id":  "gate_04"
+                  },
+                  {
+                      "status":  "approved",
+                      "evidence":  "KnowledgeBase/SSRIs/Traceability/TRACEABILITY_REGISTRY.json",
+                      "name":  "Traceability Framework complete",
+                      "id":  "gate_05"
+                  },
+                  {
+                      "status":  "approved",
+                      "evidence":  "KnowledgeBase/SSRIs/Editorial/EDITORIAL_STATUS_FRAMEWORK.json",
+                      "name":  "Editorial Framework complete",
+                      "id":  "gate_06"
+                  },
+                  {
+                      "status":  "approved",
+                      "evidence":  "docs/QA_RESULTS.json",
+                      "name":  "QA approved",
+                      "id":  "gate_07"
+                  },
+                  {
+                      "status":  "approved",
+                      "evidence":  "KnowledgeBase/SSRIs/Manifest/PHASE2_BASELINE.json",
+                      "name":  "Baseline published",
+                      "id":  "gate_08"
+                  }
+              ],
+    "phase3_gate_recommendation":  "eligible_for_next_mission_only",
+    "next_mission":  "A03-021 - DRUG_IDENTIFICATION",
+    "scientific_content_created":  false,
+    "clinical_content_interpreted":  false,
+    "drug_profiles_created":  false,
+    "runtime_consumption_allowed":  false
+}

@@ -1,0 +1,29 @@
+{
+  "schema": "psychrx.knowledgebase.snri.program_initialization",
+  "program": "A04",
+  "program_name": "Scientific Content Population: SNRIs",
+  "mission": "A04-001",
+  "status": "initialized",
+  "dependency_status": {
+    "program_a03": "complete_internal_draft_package",
+    "program_21_scientific_validation": "complete",
+    "program_22_knowledge_governance": "complete"
+  },
+  "scope_boundary": {
+    "allowed": [
+      "metadata-only program initialization",
+      "portfolio skeleton",
+      "directory structure",
+      "source corpus readiness check"
+    ],
+    "forbidden": [
+      "clinical recommendation",
+      "prescription",
+      "runtime consumption",
+      "therapeutic ranking",
+      "evidence grading without corpus",
+      "scientific field population without source anchors"
+    ]
+  },
+  "next_mission": "A04-002 - SNRI_OFFICIAL_PORTFOLIO"
+}

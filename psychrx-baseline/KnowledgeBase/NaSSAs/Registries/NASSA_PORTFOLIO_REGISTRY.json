@@ -1,0 +1,25 @@
+{
+  "mission": "A06-002",
+  "portfolio_status": "approved_for_a06_scope",
+  "class": {
+    "id": "NaSSA",
+    "label": "Noradrenergic and Specific Serotonergic Antidepressants",
+    "runtime_eligible": false
+  },
+  "included_drugs": [
+    {
+      "id": "NASSA-MIRTAZAPINE",
+      "canonical_name": "mirtazapine",
+      "status": "included",
+      "rationale": "Initial NaSSA portfolio for A06 mechanism-field package.",
+      "runtime_eligible": false
+    }
+  ],
+  "excluded_or_unresolved_candidates": [
+    {
+      "name": "mianserin",
+      "status": "review_required_future_scope",
+      "rationale": "Not included in this initial A06 package without a dedicated portfolio expansion mission."
+    }
+  ]
+}

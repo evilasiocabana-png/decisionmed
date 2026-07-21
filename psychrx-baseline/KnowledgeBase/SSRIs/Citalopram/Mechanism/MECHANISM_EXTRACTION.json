@@ -1,0 +1,26 @@
+{
+  "schema": "psychrx.knowledgebase.ssri.mechanism_extraction",
+  "program": "A03",
+  "mission": "A03-041R",
+  "extraction_id": "A03-MOA-EXT-CITALOPRAM-001",
+  "drug_id": "SSRI_CITALOPRAM",
+  "target_domain": "Mechanism",
+  "source": {
+    "anchor_id": "A03-MOA-ANCHOR-CITALOPRAM-002",
+    "source_type": "regulatory_label",
+    "source_url": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=4259d9b1-de34-43a4-85a8-41dd214e9177",
+    "xml_url": "https://dailymed.nlm.nih.gov/dailymed/services/v2/spls/4259d9b1-de34-43a4-85a8-41dd214e9177.xml",
+    "section_path": ["12 CLINICAL PHARMACOLOGY", "12.1 Mechanism of Action"]
+  },
+  "extraction_claim": {
+    "mechanism_status": "not_fully_established",
+    "mechanism_family": "serotonergic_modulation",
+    "mechanism_route": "serotonin_reuptake_inhibition",
+    "anatomical_context": "central_nervous_system",
+    "claim_summary": "The regulatory label describes the mechanism as unclear and links the presumed effect to potentiation of serotonergic activity through inhibition of CNS neuronal serotonin reuptake."
+  },
+  "reviewer_status": "awaiting_review",
+  "normalization_status": "awaiting_normalization",
+  "publication_status": "not_published",
+  "runtime_consumption_allowed": false
+}

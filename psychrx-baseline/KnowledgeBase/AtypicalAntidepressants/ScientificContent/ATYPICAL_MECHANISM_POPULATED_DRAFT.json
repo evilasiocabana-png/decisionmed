@@ -1,0 +1,52 @@
+{
+  "mission": "A09-012",
+  "status": "draft_review_required",
+  "runtime_eligible": false,
+  "drug_entries": [
+    {
+      "drug_id": "ATYPICAL-TRAZODONE",
+      "field": "mechanism",
+      "claim_status": "source_text_bound_internal_draft",
+      "entries": [
+        {
+          "entry_id": "A09-MECH-001",
+          "controlled_statement": "The selected source text states that trazodone antidepressant mechanism is not fully understood.",
+          "source_text_records": [
+            "A09-TXT-001"
+          ],
+          "runtime_eligible": false
+        },
+        {
+          "entry_id": "A09-MECH-002",
+          "controlled_statement": "Selected source text links trazodone to enhancement of serotonergic activity in the CNS.",
+          "source_text_records": [
+            "A09-TXT-002"
+          ],
+          "runtime_eligible": false
+        },
+        {
+          "entry_id": "A09-MECH-003",
+          "controlled_statement": "Selected source text describes trazodone as a serotonin reuptake inhibitor and 5HT2 receptor antagonist.",
+          "source_text_records": [
+            "A09-TXT-003"
+          ],
+          "runtime_eligible": false
+        }
+      ],
+      "unresolved": [
+        {
+          "field": "class_level_atypical_antidepressant_generalization",
+          "status": "UNRESOLVED",
+          "reason": "A09 selected source text supports trazodone-specific mechanism only."
+        }
+      ]
+    }
+  ],
+  "forbidden_use": [
+    "runtime",
+    "prescription",
+    "recommendation",
+    "dose_suggestion",
+    "patient_specific_decision"
+  ]
+}

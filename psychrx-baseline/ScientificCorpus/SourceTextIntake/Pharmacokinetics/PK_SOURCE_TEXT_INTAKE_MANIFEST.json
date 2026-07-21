@@ -1,0 +1,12 @@
+{
+  "schema": "psychrx.scientific_corpus.pk_source_text_intake_manifest",
+  "program": "A03",
+  "mission": "A03-041",
+  "status": "completed_full_core_ssri_scope",
+  "created_at": "2026-07-01",
+  "anchor_registry": "ScientificCorpus/SourceTextIntake/Pharmacokinetics/PK_SOURCE_ANCHORS.json",
+  "source_text_stored": false,
+  "pharmacokinetic_content_extracted": false,
+  "runtime_consumption_allowed": false,
+  "next_mission": "A03-042 - PHARMACOKINETIC_CONTENT_EXTRACTION"
+}

@@ -1,0 +1,23 @@
+{
+  "mission": "A15-012",
+  "status": "draft_internal_non_runtime",
+  "drug_id": "CE-DONEPEZIL",
+  "field": "mechanism",
+  "claims": [
+    {
+      "claim_id": "CE-CLAIM-001",
+      "statement": "Donepezil hydrochloride is described in the label as a reversible inhibitor of acetylcholinesterase.",
+      "source_text_records": [
+        "CE-TEXT-001",
+        "CE-TEXT-002"
+      ],
+      "runtime_eligible": false
+    }
+  ],
+  "unresolved": [
+    {
+      "field": "class_level_mechanism_generalization",
+      "status": "UNRESOLVED"
+    }
+  ]
+}

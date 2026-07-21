@@ -1,0 +1,40 @@
+{
+  "mission": "A05-003",
+  "status": "complete",
+  "drug_class": "NDRIs",
+  "portfolio_drugs": [
+    "bupropion"
+  ],
+  "candidate_sources": [
+    {
+      "source_id": "NDRI-SRC-001",
+      "title": "BUPROPION HYDROCHLORIDE tablet, film coated",
+      "organization": "DailyMed / National Library of Medicine",
+      "type": "official_label",
+      "url": "https://dailymed.nlm.nih.gov/dailymed/lookup.cfm?setid=b127d3fc-be5e-4c12-8026-205766bf8e7f",
+      "status": "candidate_primary"
+    },
+    {
+      "source_id": "NDRI-SRC-002",
+      "title": "BUPROPION HYDROCHLORIDE tablet, extended release",
+      "organization": "DailyMed / National Library of Medicine",
+      "type": "official_label",
+      "url": "https://dailymed.nlm.nih.gov/dailymed/lookup.cfm?setid=004d8121-59d4-46c4-acb8-b2dd097bf556",
+      "status": "candidate_supporting"
+    },
+    {
+      "source_id": "NDRI-SRC-003",
+      "title": "WELLBUTRIN XL prescribing information",
+      "organization": "U.S. Food and Drug Administration",
+      "type": "regulatory_label_pdf",
+      "url": "https://www.accessdata.fda.gov/drugsatfda_docs/label/2022/021515s044lbl.pdf",
+      "status": "candidate_supporting"
+    }
+  ],
+  "forbidden_use": [
+    "runtime",
+    "prescription",
+    "therapeutic_recommendation",
+    "dose_suggestion"
+  ]
+}

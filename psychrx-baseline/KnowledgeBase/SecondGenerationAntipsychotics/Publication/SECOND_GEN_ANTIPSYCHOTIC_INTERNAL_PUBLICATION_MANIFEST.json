@@ -1,0 +1,11 @@
+{
+  "mission": "A11-014",
+  "status": "published_internal_non_runtime",
+  "package": "SECOND_GEN_ANTIPSYCHOTIC_MECHANISM_PACKAGE",
+  "included_artifacts": [
+    "SECOND_GEN_ANTIPSYCHOTIC_MECHANISM_SOURCE_TEXT_EXTRACTS.json",
+    "SECOND_GEN_ANTIPSYCHOTIC_MECHANISM_POPULATED_DRAFT.json",
+    "SECOND_GEN_ANTIPSYCHOTIC_DRAFT_EDITORIAL_REVIEW.json"
+  ],
+  "runtime_eligible": false
+}

@@ -1,0 +1,543 @@
+﻿{
+    "schema_version":  "0.1.0",
+    "runtime_consumption_allowed":  false,
+    "next_mission":  "A03-023 - RECEPTOR_AND_NEUROTRANSMITTER_MODELING",
+    "scientific_content_interpreted":  false,
+    "mission":  "A03-022",
+    "mechanism_count":  6,
+    "mechanisms":  [
+                       {
+                           "mechanism_summary":  {
+                                                     "value_status":  "pending_field_extraction",
+                                                     "source_reference":  {
+                                                                              "source_ids":  [
+                                                                                                 "L001",
+                                                                                                 "B001",
+                                                                                                 "B002",
+                                                                                                 "B003",
+                                                                                                 "G001",
+                                                                                                 "G002",
+                                                                                                 "G003",
+                                                                                                 "G004",
+                                                                                                 "G008",
+                                                                                                 "R001",
+                                                                                                 "R002",
+                                                                                                 "R003"
+                                                                                             ],
+                                                                              "source_status":  "administrative_binding_available_pending_field_extraction",
+                                                                              "source_registry":  "ScientificCorpus/Metadata/NORMALIZED_SOURCE_REGISTRY.json",
+                                                                              "binding_id":  "A03_BIND_SSRI_FLUOXETINE_0_1_0"
+                                                                          },
+                                                     "value":  null
+                                                 },
+                           "primary_mechanism":  {
+                                                     "value_status":  "pending_field_extraction",
+                                                     "source_reference":  {
+                                                                              "source_ids":  [
+                                                                                                 "L001",
+                                                                                                 "B001",
+                                                                                                 "B002",
+                                                                                                 "B003",
+                                                                                                 "G001",
+                                                                                                 "G002",
+                                                                                                 "G003",
+                                                                                                 "G004",
+                                                                                                 "G008",
+                                                                                                 "R001",
+                                                                                                 "R002",
+                                                                                                 "R003"
+                                                                                             ],
+                                                                              "source_status":  "administrative_binding_available_pending_field_extraction",
+                                                                              "source_registry":  "ScientificCorpus/Metadata/NORMALIZED_SOURCE_REGISTRY.json",
+                                                                              "binding_id":  "A03_BIND_SSRI_FLUOXETINE_0_1_0"
+                                                                          },
+                                                     "value":  null
+                                                 },
+                           "mechanism_id":  "A03_MOA_SSRI_FLUOXETINE",
+                           "scientific_status":  "not_populated",
+                           "mechanism_version":  "0.1.0",
+                           "secondary_mechanisms":  [
+
+                                                    ],
+                           "editorial_status":  "draft",
+                           "prescription_created":  false,
+                           "drug_id":  "SSRI_FLUOXETINE",
+                           "profile_id":  "A03_PROFILE_SSRI_FLUOXETINE",
+                           "mechanism_status":  "structure_initialized_pending_extraction",
+                           "target_transporters":  {
+                                                       "value_status":  "pending_field_extraction",
+                                                       "values":  [
+
+                                                                  ],
+                                                       "source_reference":  {
+                                                                                "source_ids":  [
+                                                                                                   "L001",
+                                                                                                   "B001",
+                                                                                                   "B002",
+                                                                                                   "B003",
+                                                                                                   "G001",
+                                                                                                   "G002",
+                                                                                                   "G003",
+                                                                                                   "G004",
+                                                                                                   "G008",
+                                                                                                   "R001",
+                                                                                                   "R002",
+                                                                                                   "R003"
+                                                                                               ],
+                                                                                "source_status":  "administrative_binding_available_pending_field_extraction",
+                                                                                "source_registry":  "ScientificCorpus/Metadata/NORMALIZED_SOURCE_REGISTRY.json",
+                                                                                "binding_id":  "A03_BIND_SSRI_FLUOXETINE_0_1_0"
+                                                                            }
+                                                   },
+                           "recommendation_created":  false,
+                           "runtime_consumption_allowed":  false,
+                           "validation_status":  "structurally_validated",
+                           "canonical_name":  "Fluoxetine"
+                       },
+                       {
+                           "mechanism_summary":  {
+                                                     "value_status":  "pending_field_extraction",
+                                                     "source_reference":  {
+                                                                              "source_ids":  [
+                                                                                                 "L002",
+                                                                                                 "B001",
+                                                                                                 "B002",
+                                                                                                 "B003",
+                                                                                                 "G001",
+                                                                                                 "G002",
+                                                                                                 "G003",
+                                                                                                 "G004",
+                                                                                                 "G008",
+                                                                                                 "R001",
+                                                                                                 "R002",
+                                                                                                 "R003"
+                                                                                             ],
+                                                                              "source_status":  "administrative_binding_available_pending_field_extraction",
+                                                                              "source_registry":  "ScientificCorpus/Metadata/NORMALIZED_SOURCE_REGISTRY.json",
+                                                                              "binding_id":  "A03_BIND_SSRI_SERTRALINE_0_1_0"
+                                                                          },
+                                                     "value":  null
+                                                 },
+                           "primary_mechanism":  {
+                                                     "value_status":  "pending_field_extraction",
+                                                     "source_reference":  {
+                                                                              "source_ids":  [
+                                                                                                 "L002",
+                                                                                                 "B001",
+                                                                                                 "B002",
+                                                                                                 "B003",
+                                                                                                 "G001",
+                                                                                                 "G002",
+                                                                                                 "G003",
+                                                                                                 "G004",
+                                                                                                 "G008",
+                                                                                                 "R001",
+                                                                                                 "R002",
+                                                                                                 "R003"
+                                                                                             ],
+                                                                              "source_status":  "administrative_binding_available_pending_field_extraction",
+                                                                              "source_registry":  "ScientificCorpus/Metadata/NORMALIZED_SOURCE_REGISTRY.json",
+                                                                              "binding_id":  "A03_BIND_SSRI_SERTRALINE_0_1_0"
+                                                                          },
+                                                     "value":  null
+                                                 },
+                           "mechanism_id":  "A03_MOA_SSRI_SERTRALINE",
+                           "scientific_status":  "not_populated",
+                           "mechanism_version":  "0.1.0",
+                           "secondary_mechanisms":  [
+
+                                                    ],
+                           "editorial_status":  "draft",
+                           "prescription_created":  false,
+                           "drug_id":  "SSRI_SERTRALINE",
+                           "profile_id":  "A03_PROFILE_SSRI_SERTRALINE",
+                           "mechanism_status":  "structure_initialized_pending_extraction",
+                           "target_transporters":  {
+                                                       "value_status":  "pending_field_extraction",
+                                                       "values":  [
+
+                                                                  ],
+                                                       "source_reference":  {
+                                                                                "source_ids":  [
+                                                                                                   "L002",
+                                                                                                   "B001",
+                                                                                                   "B002",
+                                                                                                   "B003",
+                                                                                                   "G001",
+                                                                                                   "G002",
+                                                                                                   "G003",
+                                                                                                   "G004",
+                                                                                                   "G008",
+                                                                                                   "R001",
+                                                                                                   "R002",
+                                                                                                   "R003"
+                                                                                               ],
+                                                                                "source_status":  "administrative_binding_available_pending_field_extraction",
+                                                                                "source_registry":  "ScientificCorpus/Metadata/NORMALIZED_SOURCE_REGISTRY.json",
+                                                                                "binding_id":  "A03_BIND_SSRI_SERTRALINE_0_1_0"
+                                                                            }
+                                                   },
+                           "recommendation_created":  false,
+                           "runtime_consumption_allowed":  false,
+                           "validation_status":  "structurally_validated",
+                           "canonical_name":  "Sertraline"
+                       },
+                       {
+                           "mechanism_summary":  {
+                                                     "value_status":  "pending_field_extraction",
+                                                     "source_reference":  {
+                                                                              "source_ids":  [
+                                                                                                 "L005",
+                                                                                                 "B001",
+                                                                                                 "B002",
+                                                                                                 "B003",
+                                                                                                 "G001",
+                                                                                                 "G002",
+                                                                                                 "G003",
+                                                                                                 "G004",
+                                                                                                 "G008",
+                                                                                                 "R001",
+                                                                                                 "R002",
+                                                                                                 "R003"
+                                                                                             ],
+                                                                              "source_status":  "administrative_binding_available_pending_field_extraction",
+                                                                              "source_registry":  "ScientificCorpus/Metadata/NORMALIZED_SOURCE_REGISTRY.json",
+                                                                              "binding_id":  "A03_BIND_SSRI_ESCITALOPRAM_0_1_0"
+                                                                          },
+                                                     "value":  null
+                                                 },
+                           "primary_mechanism":  {
+                                                     "value_status":  "pending_field_extraction",
+                                                     "source_reference":  {
+                                                                              "source_ids":  [
+                                                                                                 "L005",
+                                                                                                 "B001",
+                                                                                                 "B002",
+                                                                                                 "B003",
+                                                                                                 "G001",
+                                                                                                 "G002",
+                                                                                                 "G003",
+                                                                                                 "G004",
+                                                                                                 "G008",
+                                                                                                 "R001",
+                                                                                                 "R002",
+                                                                                                 "R003"
+                                                                                             ],
+                                                                              "source_status":  "administrative_binding_available_pending_field_extraction",
+                                                                              "source_registry":  "ScientificCorpus/Metadata/NORMALIZED_SOURCE_REGISTRY.json",
+                                                                              "binding_id":  "A03_BIND_SSRI_ESCITALOPRAM_0_1_0"
+                                                                          },
+                                                     "value":  null
+                                                 },
+                           "mechanism_id":  "A03_MOA_SSRI_ESCITALOPRAM",
+                           "scientific_status":  "not_populated",
+                           "mechanism_version":  "0.1.0",
+                           "secondary_mechanisms":  [
+
+                                                    ],
+                           "editorial_status":  "draft",
+                           "prescription_created":  false,
+                           "drug_id":  "SSRI_ESCITALOPRAM",
+                           "profile_id":  "A03_PROFILE_SSRI_ESCITALOPRAM",
+                           "mechanism_status":  "structure_initialized_pending_extraction",
+                           "target_transporters":  {
+                                                       "value_status":  "pending_field_extraction",
+                                                       "values":  [
+
+                                                                  ],
+                                                       "source_reference":  {
+                                                                                "source_ids":  [
+                                                                                                   "L005",
+                                                                                                   "B001",
+                                                                                                   "B002",
+                                                                                                   "B003",
+                                                                                                   "G001",
+                                                                                                   "G002",
+                                                                                                   "G003",
+                                                                                                   "G004",
+                                                                                                   "G008",
+                                                                                                   "R001",
+                                                                                                   "R002",
+                                                                                                   "R003"
+                                                                                               ],
+                                                                                "source_status":  "administrative_binding_available_pending_field_extraction",
+                                                                                "source_registry":  "ScientificCorpus/Metadata/NORMALIZED_SOURCE_REGISTRY.json",
+                                                                                "binding_id":  "A03_BIND_SSRI_ESCITALOPRAM_0_1_0"
+                                                                            }
+                                                   },
+                           "recommendation_created":  false,
+                           "runtime_consumption_allowed":  false,
+                           "validation_status":  "structurally_validated",
+                           "canonical_name":  "Escitalopram"
+                       },
+                       {
+                           "mechanism_summary":  {
+                                                     "value_status":  "pending_field_extraction",
+                                                     "source_reference":  {
+                                                                              "source_ids":  [
+                                                                                                 "L004",
+                                                                                                 "B001",
+                                                                                                 "B002",
+                                                                                                 "B003",
+                                                                                                 "G001",
+                                                                                                 "G002",
+                                                                                                 "G003",
+                                                                                                 "G004",
+                                                                                                 "G008",
+                                                                                                 "R001",
+                                                                                                 "R002",
+                                                                                                 "R003"
+                                                                                             ],
+                                                                              "source_status":  "administrative_binding_available_pending_field_extraction",
+                                                                              "source_registry":  "ScientificCorpus/Metadata/NORMALIZED_SOURCE_REGISTRY.json",
+                                                                              "binding_id":  "A03_BIND_SSRI_CITALOPRAM_0_1_0"
+                                                                          },
+                                                     "value":  null
+                                                 },
+                           "primary_mechanism":  {
+                                                     "value_status":  "pending_field_extraction",
+                                                     "source_reference":  {
+                                                                              "source_ids":  [
+                                                                                                 "L004",
+                                                                                                 "B001",
+                                                                                                 "B002",
+                                                                                                 "B003",
+                                                                                                 "G001",
+                                                                                                 "G002",
+                                                                                                 "G003",
+                                                                                                 "G004",
+                                                                                                 "G008",
+                                                                                                 "R001",
+                                                                                                 "R002",
+                                                                                                 "R003"
+                                                                                             ],
+                                                                              "source_status":  "administrative_binding_available_pending_field_extraction",
+                                                                              "source_registry":  "ScientificCorpus/Metadata/NORMALIZED_SOURCE_REGISTRY.json",
+                                                                              "binding_id":  "A03_BIND_SSRI_CITALOPRAM_0_1_0"
+                                                                          },
+                                                     "value":  null
+                                                 },
+                           "mechanism_id":  "A03_MOA_SSRI_CITALOPRAM",
+                           "scientific_status":  "not_populated",
+                           "mechanism_version":  "0.1.0",
+                           "secondary_mechanisms":  [
+
+                                                    ],
+                           "editorial_status":  "draft",
+                           "prescription_created":  false,
+                           "drug_id":  "SSRI_CITALOPRAM",
+                           "profile_id":  "A03_PROFILE_SSRI_CITALOPRAM",
+                           "mechanism_status":  "structure_initialized_pending_extraction",
+                           "target_transporters":  {
+                                                       "value_status":  "pending_field_extraction",
+                                                       "values":  [
+
+                                                                  ],
+                                                       "source_reference":  {
+                                                                                "source_ids":  [
+                                                                                                   "L004",
+                                                                                                   "B001",
+                                                                                                   "B002",
+                                                                                                   "B003",
+                                                                                                   "G001",
+                                                                                                   "G002",
+                                                                                                   "G003",
+                                                                                                   "G004",
+                                                                                                   "G008",
+                                                                                                   "R001",
+                                                                                                   "R002",
+                                                                                                   "R003"
+                                                                                               ],
+                                                                                "source_status":  "administrative_binding_available_pending_field_extraction",
+                                                                                "source_registry":  "ScientificCorpus/Metadata/NORMALIZED_SOURCE_REGISTRY.json",
+                                                                                "binding_id":  "A03_BIND_SSRI_CITALOPRAM_0_1_0"
+                                                                            }
+                                                   },
+                           "recommendation_created":  false,
+                           "runtime_consumption_allowed":  false,
+                           "validation_status":  "structurally_validated",
+                           "canonical_name":  "Citalopram"
+                       },
+                       {
+                           "mechanism_summary":  {
+                                                     "value_status":  "pending_field_extraction",
+                                                     "source_reference":  {
+                                                                              "source_ids":  [
+                                                                                                 "L003",
+                                                                                                 "B001",
+                                                                                                 "B002",
+                                                                                                 "B003",
+                                                                                                 "G001",
+                                                                                                 "G002",
+                                                                                                 "G003",
+                                                                                                 "G004",
+                                                                                                 "G008",
+                                                                                                 "R001",
+                                                                                                 "R002",
+                                                                                                 "R003"
+                                                                                             ],
+                                                                              "source_status":  "administrative_binding_available_pending_field_extraction",
+                                                                              "source_registry":  "ScientificCorpus/Metadata/NORMALIZED_SOURCE_REGISTRY.json",
+                                                                              "binding_id":  "A03_BIND_SSRI_PAROXETINE_0_1_0"
+                                                                          },
+                                                     "value":  null
+                                                 },
+                           "primary_mechanism":  {
+                                                     "value_status":  "pending_field_extraction",
+                                                     "source_reference":  {
+                                                                              "source_ids":  [
+                                                                                                 "L003",
+                                                                                                 "B001",
+                                                                                                 "B002",
+                                                                                                 "B003",
+                                                                                                 "G001",
+                                                                                                 "G002",
+                                                                                                 "G003",
+                                                                                                 "G004",
+                                                                                                 "G008",
+                                                                                                 "R001",
+                                                                                                 "R002",
+                                                                                                 "R003"
+                                                                                             ],
+                                                                              "source_status":  "administrative_binding_available_pending_field_extraction",
+                                                                              "source_registry":  "ScientificCorpus/Metadata/NORMALIZED_SOURCE_REGISTRY.json",
+                                                                              "binding_id":  "A03_BIND_SSRI_PAROXETINE_0_1_0"
+                                                                          },
+                                                     "value":  null
+                                                 },
+                           "mechanism_id":  "A03_MOA_SSRI_PAROXETINE",
+                           "scientific_status":  "not_populated",
+                           "mechanism_version":  "0.1.0",
+                           "secondary_mechanisms":  [
+
+                                                    ],
+                           "editorial_status":  "draft",
+                           "prescription_created":  false,
+                           "drug_id":  "SSRI_PAROXETINE",
+                           "profile_id":  "A03_PROFILE_SSRI_PAROXETINE",
+                           "mechanism_status":  "structure_initialized_pending_extraction",
+                           "target_transporters":  {
+                                                       "value_status":  "pending_field_extraction",
+                                                       "values":  [
+
+                                                                  ],
+                                                       "source_reference":  {
+                                                                                "source_ids":  [
+                                                                                                   "L003",
+                                                                                                   "B001",
+                                                                                                   "B002",
+                                                                                                   "B003",
+                                                                                                   "G001",
+                                                                                                   "G002",
+                                                                                                   "G003",
+                                                                                                   "G004",
+                                                                                                   "G008",
+                                                                                                   "R001",
+                                                                                                   "R002",
+                                                                                                   "R003"
+                                                                                               ],
+                                                                                "source_status":  "administrative_binding_available_pending_field_extraction",
+                                                                                "source_registry":  "ScientificCorpus/Metadata/NORMALIZED_SOURCE_REGISTRY.json",
+                                                                                "binding_id":  "A03_BIND_SSRI_PAROXETINE_0_1_0"
+                                                                            }
+                                                   },
+                           "recommendation_created":  false,
+                           "runtime_consumption_allowed":  false,
+                           "validation_status":  "structurally_validated",
+                           "canonical_name":  "Paroxetine"
+                       },
+                       {
+                           "mechanism_summary":  {
+                                                     "value_status":  "pending_field_extraction",
+                                                     "source_reference":  {
+                                                                              "source_ids":  [
+                                                                                                 "L006",
+                                                                                                 "B001",
+                                                                                                 "B002",
+                                                                                                 "B003",
+                                                                                                 "G001",
+                                                                                                 "G002",
+                                                                                                 "G003",
+                                                                                                 "G004",
+                                                                                                 "G008",
+                                                                                                 "R001",
+                                                                                                 "R002",
+                                                                                                 "R003"
+                                                                                             ],
+                                                                              "source_status":  "administrative_binding_available_pending_field_extraction",
+                                                                              "source_registry":  "ScientificCorpus/Metadata/NORMALIZED_SOURCE_REGISTRY.json",
+                                                                              "binding_id":  "A03_BIND_SSRI_FLUVOXAMINE_0_1_0"
+                                                                          },
+                                                     "value":  null
+                                                 },
+                           "primary_mechanism":  {
+                                                     "value_status":  "pending_field_extraction",
+                                                     "source_reference":  {
+                                                                              "source_ids":  [
+                                                                                                 "L006",
+                                                                                                 "B001",
+                                                                                                 "B002",
+                                                                                                 "B003",
+                                                                                                 "G001",
+                                                                                                 "G002",
+                                                                                                 "G003",
+                                                                                                 "G004",
+                                                                                                 "G008",
+                                                                                                 "R001",
+                                                                                                 "R002",
+                                                                                                 "R003"
+                                                                                             ],
+                                                                              "source_status":  "administrative_binding_available_pending_field_extraction",
+                                                                              "source_registry":  "ScientificCorpus/Metadata/NORMALIZED_SOURCE_REGISTRY.json",
+                                                                              "binding_id":  "A03_BIND_SSRI_FLUVOXAMINE_0_1_0"
+                                                                          },
+                                                     "value":  null
+                                                 },
+                           "mechanism_id":  "A03_MOA_SSRI_FLUVOXAMINE",
+                           "scientific_status":  "not_populated",
+                           "mechanism_version":  "0.1.0",
+                           "secondary_mechanisms":  [
+
+                                                    ],
+                           "editorial_status":  "draft",
+                           "prescription_created":  false,
+                           "drug_id":  "SSRI_FLUVOXAMINE",
+                           "profile_id":  "A03_PROFILE_SSRI_FLUVOXAMINE",
+                           "mechanism_status":  "structure_initialized_pending_extraction",
+                           "target_transporters":  {
+                                                       "value_status":  "pending_field_extraction",
+                                                       "values":  [
+
+                                                                  ],
+                                                       "source_reference":  {
+                                                                                "source_ids":  [
+                                                                                                   "L006",
+                                                                                                   "B001",
+                                                                                                   "B002",
+                                                                                                   "B003",
+                                                                                                   "G001",
+                                                                                                   "G002",
+                                                                                                   "G003",
+                                                                                                   "G004",
+                                                                                                   "G008",
+                                                                                                   "R001",
+                                                                                                   "R002",
+                                                                                                   "R003"
+                                                                                               ],
+                                                                                "source_status":  "administrative_binding_available_pending_field_extraction",
+                                                                                "source_registry":  "ScientificCorpus/Metadata/NORMALIZED_SOURCE_REGISTRY.json",
+                                                                                "binding_id":  "A03_BIND_SSRI_FLUVOXAMINE_0_1_0"
+                                                                            }
+                                                   },
+                           "recommendation_created":  false,
+                           "runtime_consumption_allowed":  false,
+                           "validation_status":  "structurally_validated",
+                           "canonical_name":  "Fluvoxamine"
+                       }
+                   ],
+    "clinical_recommendations_created":  false,
+    "schema":  "psychrx.a03.mechanism_model",
+    "status":  "mechanism_structures_initialized_pending_extraction",
+    "prescription_created":  false,
+    "program":  "A03"
+}

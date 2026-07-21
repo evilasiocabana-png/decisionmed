@@ -1,0 +1,17 @@
+{
+  "mission": "A10-006",
+  "status": "complete",
+  "authorized_field": "mechanism",
+  "authorized_drug": "FGA-CHLORPROMAZINE",
+  "forbidden_fields": [
+    "pharmacokinetics",
+    "pharmacodynamics",
+    "safety",
+    "adverse_effects",
+    "interactions",
+    "indications",
+    "posology",
+    "evidence_grading"
+  ],
+  "runtime_eligible": false
+}

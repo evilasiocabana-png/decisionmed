@@ -1,0 +1,31 @@
+{
+  "mission": "A06-015",
+  "status": "passed",
+  "audit_scope": "A06 mechanism package",
+  "traceability_paths": [
+    {
+      "entry_id": "A06-MECH-001",
+      "path": [
+        "NASSA-SRC-001",
+        "A06-SEL-001",
+        "A06-TXT-001",
+        "A06-MECH-001",
+        "A06-NASSA-MECHANISM-INTERNAL-001"
+      ],
+      "result": "pass"
+    },
+    {
+      "entry_id": "A06-MECH-002",
+      "path": [
+        "NASSA-SRC-001",
+        "A06-SEL-001",
+        "A06-TXT-002/A06-TXT-003",
+        "A06-MECH-002",
+        "A06-NASSA-MECHANISM-INTERNAL-001"
+      ],
+      "result": "pass"
+    }
+  ],
+  "gaps": [],
+  "runtime_status": "blocked"
+}

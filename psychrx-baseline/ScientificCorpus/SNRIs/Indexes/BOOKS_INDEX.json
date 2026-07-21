@@ -1,0 +1,4 @@
+{
+  "schema": "psychrx.scientific_corpus.snri.books_index.v1",
+  "sources": ["A04.0-SD-B001", "A04.0-SD-B002", "A04.0-SD-B003"]
+}

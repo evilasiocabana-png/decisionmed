@@ -1,0 +1,38 @@
+{
+  "mission": "A05-010",
+  "status": "complete",
+  "selected_sections": [
+    {
+      "selection_id": "A05-SEL-001",
+      "source_id": "NDRI-SRC-001",
+      "drug_id": "NDRI-BUPROPION",
+      "field": "mechanism",
+      "section": "12.1 Mechanism of Action",
+      "locator": "https://dailymed.nlm.nih.gov/dailymed/lookup.cfm?setid=b127d3fc-be5e-4c12-8026-205766bf8e7f",
+      "review_status": "reviewable"
+    },
+    {
+      "selection_id": "A05-SEL-002",
+      "source_id": "NDRI-SRC-002",
+      "drug_id": "NDRI-BUPROPION",
+      "field": "mechanism",
+      "section": "12.1 Mechanism of Action",
+      "locator": "https://dailymed.nlm.nih.gov/dailymed/lookup.cfm?setid=004d8121-59d4-46c4-acb8-b2dd097bf556",
+      "review_status": "reviewable"
+    },
+    {
+      "selection_id": "A05-SEL-003",
+      "source_id": "NDRI-SRC-003",
+      "drug_id": "NDRI-BUPROPION",
+      "field": "mechanism",
+      "section": "12.1 Mechanism of Action",
+      "locator": "https://www.accessdata.fda.gov/drugsatfda_docs/label/2022/021515s044lbl.pdf",
+      "review_status": "reviewable"
+    }
+  ],
+  "gate_result": {
+    "source_sections_selected": 3,
+    "selected_sections_reviewable": 3,
+    "a05_011_may_start": true
+  }
+}

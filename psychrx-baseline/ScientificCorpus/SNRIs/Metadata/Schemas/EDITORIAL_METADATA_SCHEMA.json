@@ -1,0 +1,22 @@
+{
+  "schema": "psychrx.scientific_corpus.snri.editorial_metadata_schema.v1",
+  "program": "A04.0",
+  "mission": "A04.0-004 - SNRI_SOURCE_METADATA_NORMALIZATION",
+  "required_fields": [
+    "source_id",
+    "editorial_status",
+    "validation_status",
+    "review_required",
+    "duplicate_candidate",
+    "availability_status",
+    "runtime_eligible"
+  ],
+  "allowed_editorial_status": [
+    "intake_registered",
+    "metadata_normalized",
+    "validation_pending",
+    "editorial_review_pending",
+    "publication_pending"
+  ],
+  "runtime_eligible_default": false
+}

@@ -1,0 +1,40 @@
+﻿{
+    "program":  "A03",
+    "mission":  "A03-025",
+    "checks":  [
+                   {
+                       "result":  "passed",
+                       "check":  "six_pd_structures_initialized"
+                   },
+                   {
+                       "result":  "passed",
+                       "check":  "pd_ids_unique"
+                   },
+                   {
+                       "result":  "passed",
+                       "check":  "source_bindings_present"
+                   },
+                   {
+                       "result":  "passed",
+                       "check":  "mechanism_relationships_present"
+                   },
+                   {
+                       "result":  "passed",
+                       "check":  "pk_relationships_present"
+                   },
+                   {
+                       "result":  "passed",
+                       "check":  "no_dose_indication_safety_or_recommendation"
+                   },
+                   {
+                       "result":  "passed",
+                       "check":  "runtime_consumption_disabled"
+                   }
+               ],
+    "schema":  "psychrx.a03.pd_validation",
+    "issues":  [
+
+               ],
+    "status":  "passed",
+    "schema_version":  "0.1.0"
+}

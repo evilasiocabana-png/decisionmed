@@ -1,0 +1,17 @@
+{
+  "mission": "A11-006",
+  "status": "complete",
+  "authorized_field": "mechanism",
+  "authorized_drug": "SGA-RISPERIDONE",
+  "forbidden_fields": [
+    "pharmacokinetics",
+    "pharmacodynamics",
+    "safety",
+    "adverse_effects",
+    "interactions",
+    "indications",
+    "posology",
+    "evidence_grading"
+  ],
+  "runtime_eligible": false
+}

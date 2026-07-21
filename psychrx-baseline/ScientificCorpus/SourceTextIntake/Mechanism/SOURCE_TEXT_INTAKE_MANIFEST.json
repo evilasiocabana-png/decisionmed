@@ -1,0 +1,26 @@
+{
+  "schema": "psychrx.scientific_corpus.source_text_intake_manifest",
+  "program": "A03",
+  "mission": "A03-036A",
+  "phase": "Phase 4 - Mechanisms",
+  "status": "completed_for_initial_mechanism_anchor_intake",
+  "created_at": "2026-07-01",
+  "scope": "Administrative source-text anchor intake for SSRI mechanism extraction.",
+  "content_policy": {
+    "source_text_stored": false,
+    "clinical_content_interpreted": false,
+    "mechanism_extracted": false,
+    "recommendation_created": false,
+    "prescription_created": false,
+    "runtime_consumption_allowed": false
+  },
+  "anchor_registry": "ScientificCorpus/SourceTextIntake/Mechanism/MECHANISM_SOURCE_ANCHORS.json",
+  "readiness_status": "ScientificCorpus/SourceTextIntake/Mechanism/MECHANISM_EXTRACTION_READINESS.json",
+  "source_family": "DailyMed / FDA SPL regulatory labels",
+  "notes": [
+    "This mission registers source locations and section anchors only.",
+    "No mechanism statement is extracted in A03-036A.",
+    "A03-036 may use anchor_ready entries for controlled extraction.",
+    "review_required entries must not be extracted until resolved."
+  ]
+}

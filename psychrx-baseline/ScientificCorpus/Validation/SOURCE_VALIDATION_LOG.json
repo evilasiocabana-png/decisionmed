@@ -1,0 +1,32 @@
+{
+    "program":  "A02.5",
+    "mission":  "A02.5-004",
+    "status":  "source_validation_completed_structural_only",
+    "generated_at":  "2026-06-30",
+    "source_ids_total":  26,
+    "source_ids_unique":  26,
+    "source_id_duplicate_count":  0,
+    "source_id_format_issue_count":  0,
+    "missing_metadata_count":  216,
+    "broken_or_missing_reference_count":  13,
+    "duplicate_candidate_count":  5,
+    "exact_title_duplicate_count":  2,
+    "version_conflict_count":  1,
+    "manifest_consistency":  {
+                                 "normalized_manifest_total_sources":  26,
+                                 "normalized_registry_total_sources":  26,
+                                 "normalized_manifest_unique_source_ids":  26,
+                                 "normalized_registry_unique_source_ids":  26,
+                                 "source_registry_sources":  18,
+                                 "rc2_sources":  26,
+                                 "corpus_manifest_status":  "raw_intake_completed",
+                                 "rc1_documents":  15,
+                                 "rc1_missing_locations":  0,
+                                 "consistent":  true
+                             },
+    "clinical_content_interpreted":  false,
+    "evidence_classified":  false,
+    "ontology_mapped":  false,
+    "clinical_rules_created":  false,
+    "recommendations_created":  false
+}

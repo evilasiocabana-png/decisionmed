@@ -1,0 +1,27 @@
+{
+  "schema": "psychrx.scientific_corpus.snri.source_metadata_index.v1",
+  "program": "A04.0",
+  "mission": "A04.0-004 - SNRI_SOURCE_METADATA_NORMALIZATION",
+  "source_count": 19,
+  "source_ids": [
+    "A04.0-SD-B001",
+    "A04.0-SD-B002",
+    "A04.0-SD-B003",
+    "A04.0-SD-G001",
+    "A04.0-SD-G002",
+    "A04.0-SD-G003",
+    "A04.0-SD-G004",
+    "A04.0-SD-G005",
+    "A04.0-SD-R001",
+    "A04.0-SD-R002",
+    "A04.0-SD-R003",
+    "A04.0-SD-R004",
+    "A04.0-SD-R005",
+    "A04.0-SD-E001",
+    "A04.0-SD-E002",
+    "A04.0-SD-E003",
+    "A04.0-SD-S001",
+    "A04.0-SD-S002",
+    "A04.0-SD-S003"
+  ]
+}

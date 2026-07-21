@@ -1,0 +1,45 @@
+{
+  "schema": "psychrx.knowledgebase.ssri.evidence_review_queue",
+  "program": "A03",
+  "phase": "Phase 7 - Evidence Integration",
+  "missions": ["A03-054"],
+  "status": "review_queue_initialized",
+  "source_traceability_matrix": "KnowledgeBase/SSRIs/Evidence/EVIDENCE_TRACEABILITY_MATRIX.json",
+  "queue_items": [
+    {
+      "queue_id": "A03-EVIDENCE-REVIEW-MECH-001",
+      "domain": "Mechanism",
+      "priority": "standard",
+      "review_type": "traceability_and_source_consistency",
+      "input": "KnowledgeBase/SSRIs/Mechanism/MECHANISM_PARTIAL_BASELINE.json",
+      "status": "queued",
+      "allowed_next_action": "editorial_source_consistency_review",
+      "forbidden_actions": ["clinical_interpretation", "recommendation", "prescription", "runtime_consumption"]
+    },
+    {
+      "queue_id": "A03-EVIDENCE-REVIEW-PK-001",
+      "domain": "Pharmacokinetics",
+      "priority": "standard",
+      "review_type": "traceability_and_source_consistency",
+      "input": "KnowledgeBase/SSRIs/Pharmacokinetics/PK_BASELINE.json",
+      "status": "queued",
+      "allowed_next_action": "editorial_source_consistency_review",
+      "forbidden_actions": ["clinical_interpretation", "recommendation", "prescription", "runtime_consumption"]
+    },
+    {
+      "queue_id": "A03-EVIDENCE-REVIEW-PD-001",
+      "domain": "Pharmacodynamics",
+      "priority": "standard",
+      "review_type": "traceability_and_source_consistency",
+      "input": "KnowledgeBase/SSRIs/Pharmacodynamics/PD_BASELINE.json",
+      "status": "queued",
+      "allowed_next_action": "editorial_source_consistency_review",
+      "forbidden_actions": ["clinical_interpretation", "recommendation", "prescription", "runtime_consumption"]
+    }
+  ],
+  "evidence_quality_status": "not_graded",
+  "recommendation_strength_status": "not_assigned",
+  "publication_status": "not_published",
+  "runtime_consumption_allowed": false,
+  "next_mission": "A03-055 - EVIDENCE_INTEGRATION_BASELINE"
+}

@@ -1,0 +1,17 @@
+{
+  "schema": "psychrx.a03.safety_index",
+  "program": "A03",
+  "mission": "A03-029",
+  "status": "active",
+  "schema_version": "0.1.0",
+  "runtime_consumption_allowed": false,
+  "safety_model_count": 6,
+  "safety_models_by_drug_id": {
+    "SSRI_FLUOXETINE": "A03_SAFETY_SSRI_FLUOXETINE",
+    "SSRI_SERTRALINE": "A03_SAFETY_SSRI_SERTRALINE",
+    "SSRI_ESCITALOPRAM": "A03_SAFETY_SSRI_ESCITALOPRAM",
+    "SSRI_CITALOPRAM": "A03_SAFETY_SSRI_CITALOPRAM",
+    "SSRI_PAROXETINE": "A03_SAFETY_SSRI_PAROXETINE",
+    "SSRI_FLUVOXAMINE": "A03_SAFETY_SSRI_FLUVOXAMINE"
+  }
+}

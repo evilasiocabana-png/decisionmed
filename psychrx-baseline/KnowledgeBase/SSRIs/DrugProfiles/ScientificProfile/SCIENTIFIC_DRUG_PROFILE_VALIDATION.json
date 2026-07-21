@@ -1,0 +1,35 @@
+{
+  "schema": "psychrx.a03.scientific_drug_profile_validation",
+  "program": "A03",
+  "mission": "A03-021",
+  "status": "passed",
+  "schema_version": "0.1.0",
+  "checks": [
+    {
+      "check": "six_core_ssri_profiles_initialized",
+      "result": "passed"
+    },
+    {
+      "check": "profile_ids_unique",
+      "result": "passed"
+    },
+    {
+      "check": "boundary_candidates_not_included",
+      "result": "passed"
+    },
+    {
+      "check": "no_scientific_values_populated",
+      "result": "passed"
+    },
+    {
+      "check": "runtime_consumption_disabled",
+      "result": "passed"
+    },
+    {
+      "check": "no_recommendation_or_prescription_created",
+      "result": "passed"
+    }
+  ],
+  "profile_count": 6,
+  "issues": []
+}

@@ -1,0 +1,26 @@
+{
+  "track": "D",
+  "title": "Validation and Certification",
+  "status": "passed_for_validation_governance_only",
+  "programs_executed": [
+    "D01",
+    "D02",
+    "D03",
+    "D04",
+    "D05",
+    "D06",
+    "D07",
+    "D08"
+  ],
+  "clinical_runtime_enabled": false,
+  "prescription_enabled": false,
+  "therapeutic_recommendation_enabled": false,
+  "dose_suggestion_enabled": false,
+  "autonomous_diagnosis_enabled": false,
+  "patient_specific_medication_selection_enabled": false,
+  "regulatory_compliance_claimed": false,
+  "certification_granted": false,
+  "release_authorized": false,
+  "next_state": "awaiting_next_governed_inbox_package"
+}
+

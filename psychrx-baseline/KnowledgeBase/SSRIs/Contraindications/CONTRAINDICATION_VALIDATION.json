@@ -1,0 +1,16 @@
+{
+  "schema": "psychrx.a03.contraindication_validation",
+  "program": "A03",
+  "mission": "A03-028",
+  "status": "structurally_validated",
+  "schema_version": "0.1.0",
+  "validation_checks": {
+    "six_core_ssris_present": true,
+    "value_fields_pending_extraction": true,
+    "runtime_consumption_allowed": false,
+    "clinical_recommendations_created": false,
+    "prescription_created": false,
+    "safety_alerts_created": false,
+    "runtime_rules_created": false
+  }
+}

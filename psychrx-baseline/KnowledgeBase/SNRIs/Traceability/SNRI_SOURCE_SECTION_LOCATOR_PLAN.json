@@ -1,0 +1,583 @@
+{
+  "schema": "psychrx.knowledge_base.snri.source_section_locator_plan.v1",
+  "program": "A04",
+  "mission": "A04-008E - SNRI_SOURCE_SECTION_LOCATOR_PLAN",
+  "status": "completed",
+  "drug_class": "SNRIs",
+  "purpose": "Plan source section locators before source section selection and extraction.",
+  "basis": {
+    "source_text_acquisition_package": "ScientificCorpus/SourceTextIntake/SNRIs/SourceTextPackage/SNRI_SOURCE_TEXT_ACQUISITION_PACKAGE.json",
+    "field_traceability_matrix": "KnowledgeBase/SNRIs/Traceability/SNRI_FIELD_TRACEABILITY_MATRIX.json",
+    "source_anchor_finalization": "KnowledgeBase/SNRIs/Traceability/SNRI_SOURCE_ANCHOR_FINALIZATION.json"
+  },
+  "locator_count": 41,
+  "locators": [
+    {
+      "profile_field": "identification",
+      "source_id": "A04.0-SD-R001",
+      "source_url": "https://www.accessdata.fda.gov/scripts/cder/daf/",
+      "source_text_access_mode": "remote_source_locator",
+      "section_label_hints": [
+        "source_identity",
+        "official_product_record",
+        "label_identity"
+      ],
+      "section_locator_status": "planned_not_selected",
+      "source_text_interpreted": false,
+      "field_value_populated": false
+    },
+    {
+      "profile_field": "identification",
+      "source_id": "A04.0-SD-R002",
+      "source_url": "https://dailymed.nlm.nih.gov/dailymed/",
+      "source_text_access_mode": "remote_source_locator",
+      "section_label_hints": [
+        "source_identity",
+        "official_product_record",
+        "label_identity"
+      ],
+      "section_locator_status": "planned_not_selected",
+      "source_text_interpreted": false,
+      "field_value_populated": false
+    },
+    {
+      "profile_field": "identification",
+      "source_id": "A04.0-SD-R003",
+      "source_url": "https://www.ema.europa.eu/en/medicines",
+      "source_text_access_mode": "remote_source_locator",
+      "section_label_hints": [
+        "source_identity",
+        "official_product_record",
+        "label_identity"
+      ],
+      "section_locator_status": "planned_not_selected",
+      "source_text_interpreted": false,
+      "field_value_populated": false
+    },
+    {
+      "profile_field": "identification",
+      "source_id": "A04.0-SD-R004",
+      "source_url": "https://consultas.anvisa.gov.br/#/medicamentos/",
+      "source_text_access_mode": "remote_source_locator",
+      "section_label_hints": [
+        "source_identity",
+        "official_product_record",
+        "label_identity"
+      ],
+      "section_locator_status": "planned_not_selected",
+      "source_text_interpreted": false,
+      "field_value_populated": false
+    },
+    {
+      "profile_field": "identification",
+      "source_id": "A04.0-SD-R005",
+      "source_url": "https://consultas.anvisa.gov.br/#/bulario/",
+      "source_text_access_mode": "remote_source_locator",
+      "section_label_hints": [
+        "source_identity",
+        "official_product_record",
+        "label_identity"
+      ],
+      "section_locator_status": "planned_not_selected",
+      "source_text_interpreted": false,
+      "field_value_populated": false
+    },
+    {
+      "profile_field": "mechanism",
+      "source_id": "A04.0-SD-R002",
+      "source_url": "https://dailymed.nlm.nih.gov/dailymed/",
+      "source_text_access_mode": "remote_source_locator",
+      "section_label_hints": [
+        "clinical_pharmacology",
+        "mechanism_or_pharmacology",
+        "abstract_or_index_terms"
+      ],
+      "section_locator_status": "planned_not_selected",
+      "source_text_interpreted": false,
+      "field_value_populated": false
+    },
+    {
+      "profile_field": "mechanism",
+      "source_id": "A04.0-SD-R001",
+      "source_url": "https://www.accessdata.fda.gov/scripts/cder/daf/",
+      "source_text_access_mode": "remote_source_locator",
+      "section_label_hints": [
+        "clinical_pharmacology",
+        "mechanism_or_pharmacology",
+        "abstract_or_index_terms"
+      ],
+      "section_locator_status": "planned_not_selected",
+      "source_text_interpreted": false,
+      "field_value_populated": false
+    },
+    {
+      "profile_field": "mechanism",
+      "source_id": "A04.0-SD-E001",
+      "source_url": "https://pubmed.ncbi.nlm.nih.gov/",
+      "source_text_access_mode": "remote_source_locator",
+      "section_label_hints": [
+        "clinical_pharmacology",
+        "mechanism_or_pharmacology",
+        "abstract_or_index_terms"
+      ],
+      "section_locator_status": "planned_not_selected",
+      "source_text_interpreted": false,
+      "field_value_populated": false
+    },
+    {
+      "profile_field": "mechanism",
+      "source_id": "A04.0-SD-E002",
+      "source_url": "https://www.cochranelibrary.com/",
+      "source_text_access_mode": "remote_source_locator",
+      "section_label_hints": [
+        "clinical_pharmacology",
+        "mechanism_or_pharmacology",
+        "abstract_or_index_terms"
+      ],
+      "section_locator_status": "planned_not_selected",
+      "source_text_interpreted": false,
+      "field_value_populated": false
+    },
+    {
+      "profile_field": "pharmacokinetics",
+      "source_id": "A04.0-SD-R002",
+      "source_url": "https://dailymed.nlm.nih.gov/dailymed/",
+      "source_text_access_mode": "remote_source_locator",
+      "section_label_hints": [
+        "clinical_pharmacology",
+        "pharmacokinetics"
+      ],
+      "section_locator_status": "planned_not_selected",
+      "source_text_interpreted": false,
+      "field_value_populated": false
+    },
+    {
+      "profile_field": "pharmacokinetics",
+      "source_id": "A04.0-SD-R001",
+      "source_url": "https://www.accessdata.fda.gov/scripts/cder/daf/",
+      "source_text_access_mode": "remote_source_locator",
+      "section_label_hints": [
+        "clinical_pharmacology",
+        "pharmacokinetics"
+      ],
+      "section_locator_status": "planned_not_selected",
+      "source_text_interpreted": false,
+      "field_value_populated": false
+    },
+    {
+      "profile_field": "pharmacokinetics",
+      "source_id": "A04.0-SD-R003",
+      "source_url": "https://www.ema.europa.eu/en/medicines",
+      "source_text_access_mode": "remote_source_locator",
+      "section_label_hints": [
+        "clinical_pharmacology",
+        "pharmacokinetics"
+      ],
+      "section_locator_status": "planned_not_selected",
+      "source_text_interpreted": false,
+      "field_value_populated": false
+    },
+    {
+      "profile_field": "pharmacokinetics",
+      "source_id": "A04.0-SD-R005",
+      "source_url": "https://consultas.anvisa.gov.br/#/bulario/",
+      "source_text_access_mode": "remote_source_locator",
+      "section_label_hints": [
+        "clinical_pharmacology",
+        "pharmacokinetics"
+      ],
+      "section_locator_status": "planned_not_selected",
+      "source_text_interpreted": false,
+      "field_value_populated": false
+    },
+    {
+      "profile_field": "pharmacodynamics",
+      "source_id": "A04.0-SD-R002",
+      "source_url": "https://dailymed.nlm.nih.gov/dailymed/",
+      "source_text_access_mode": "remote_source_locator",
+      "section_label_hints": [
+        "clinical_pharmacology",
+        "pharmacodynamics"
+      ],
+      "section_locator_status": "planned_not_selected",
+      "source_text_interpreted": false,
+      "field_value_populated": false
+    },
+    {
+      "profile_field": "pharmacodynamics",
+      "source_id": "A04.0-SD-R001",
+      "source_url": "https://www.accessdata.fda.gov/scripts/cder/daf/",
+      "source_text_access_mode": "remote_source_locator",
+      "section_label_hints": [
+        "clinical_pharmacology",
+        "pharmacodynamics"
+      ],
+      "section_locator_status": "planned_not_selected",
+      "source_text_interpreted": false,
+      "field_value_populated": false
+    },
+    {
+      "profile_field": "pharmacodynamics",
+      "source_id": "A04.0-SD-E001",
+      "source_url": "https://pubmed.ncbi.nlm.nih.gov/",
+      "source_text_access_mode": "remote_source_locator",
+      "section_label_hints": [
+        "clinical_pharmacology",
+        "pharmacodynamics"
+      ],
+      "section_locator_status": "planned_not_selected",
+      "source_text_interpreted": false,
+      "field_value_populated": false
+    },
+    {
+      "profile_field": "pharmacodynamics",
+      "source_id": "A04.0-SD-E002",
+      "source_url": "https://www.cochranelibrary.com/",
+      "source_text_access_mode": "remote_source_locator",
+      "section_label_hints": [
+        "clinical_pharmacology",
+        "pharmacodynamics"
+      ],
+      "section_locator_status": "planned_not_selected",
+      "source_text_interpreted": false,
+      "field_value_populated": false
+    },
+    {
+      "profile_field": "indications",
+      "source_id": "A04.0-SD-G001",
+      "source_url": "https://www.nice.org.uk/guidance/ng222",
+      "source_text_access_mode": "remote_source_locator",
+      "section_label_hints": [
+        "indications_and_usage",
+        "recommendation_or_scope_section"
+      ],
+      "section_locator_status": "planned_not_selected",
+      "source_text_interpreted": false,
+      "field_value_populated": false
+    },
+    {
+      "profile_field": "indications",
+      "source_id": "A04.0-SD-G002",
+      "source_url": "https://www.canmat.org/resources/",
+      "source_text_access_mode": "remote_source_locator",
+      "section_label_hints": [
+        "indications_and_usage",
+        "recommendation_or_scope_section"
+      ],
+      "section_locator_status": "planned_not_selected",
+      "source_text_interpreted": false,
+      "field_value_populated": false
+    },
+    {
+      "profile_field": "indications",
+      "source_id": "A04.0-SD-G003",
+      "source_url": "https://psychiatryonline.org/guidelines",
+      "source_text_access_mode": "remote_source_locator",
+      "section_label_hints": [
+        "indications_and_usage",
+        "recommendation_or_scope_section"
+      ],
+      "section_locator_status": "planned_not_selected",
+      "source_text_interpreted": false,
+      "field_value_populated": false
+    },
+    {
+      "profile_field": "indications",
+      "source_id": "A04.0-SD-G004",
+      "source_url": "https://wfsbp.org/education/guidelines/",
+      "source_text_access_mode": "remote_source_locator",
+      "section_label_hints": [
+        "indications_and_usage",
+        "recommendation_or_scope_section"
+      ],
+      "section_locator_status": "planned_not_selected",
+      "source_text_interpreted": false,
+      "field_value_populated": false
+    },
+    {
+      "profile_field": "indications",
+      "source_id": "A04.0-SD-G005",
+      "source_url": "https://www.healthquality.va.gov/guidelines/MH/mdd/",
+      "source_text_access_mode": "remote_source_locator",
+      "section_label_hints": [
+        "indications_and_usage",
+        "recommendation_or_scope_section"
+      ],
+      "section_locator_status": "planned_not_selected",
+      "source_text_interpreted": false,
+      "field_value_populated": false
+    },
+    {
+      "profile_field": "indications",
+      "source_id": "A04.0-SD-R002",
+      "source_url": "https://dailymed.nlm.nih.gov/dailymed/",
+      "source_text_access_mode": "remote_source_locator",
+      "section_label_hints": [
+        "indications_and_usage",
+        "recommendation_or_scope_section"
+      ],
+      "section_locator_status": "planned_not_selected",
+      "source_text_interpreted": false,
+      "field_value_populated": false
+    },
+    {
+      "profile_field": "posology",
+      "source_id": "A04.0-SD-R002",
+      "source_url": "https://dailymed.nlm.nih.gov/dailymed/",
+      "source_text_access_mode": "remote_source_locator",
+      "section_label_hints": [
+        "dosage_and_administration",
+        "posology_section"
+      ],
+      "section_locator_status": "planned_not_selected",
+      "source_text_interpreted": false,
+      "field_value_populated": false
+    },
+    {
+      "profile_field": "posology",
+      "source_id": "A04.0-SD-R001",
+      "source_url": "https://www.accessdata.fda.gov/scripts/cder/daf/",
+      "source_text_access_mode": "remote_source_locator",
+      "section_label_hints": [
+        "dosage_and_administration",
+        "posology_section"
+      ],
+      "section_locator_status": "planned_not_selected",
+      "source_text_interpreted": false,
+      "field_value_populated": false
+    },
+    {
+      "profile_field": "posology",
+      "source_id": "A04.0-SD-R005",
+      "source_url": "https://consultas.anvisa.gov.br/#/bulario/",
+      "source_text_access_mode": "remote_source_locator",
+      "section_label_hints": [
+        "dosage_and_administration",
+        "posology_section"
+      ],
+      "section_locator_status": "planned_not_selected",
+      "source_text_interpreted": false,
+      "field_value_populated": false
+    },
+    {
+      "profile_field": "contraindications",
+      "source_id": "A04.0-SD-R002",
+      "source_url": "https://dailymed.nlm.nih.gov/dailymed/",
+      "source_text_access_mode": "remote_source_locator",
+      "section_label_hints": [
+        "contraindications",
+        "warnings_and_precautions"
+      ],
+      "section_locator_status": "planned_not_selected",
+      "source_text_interpreted": false,
+      "field_value_populated": false
+    },
+    {
+      "profile_field": "contraindications",
+      "source_id": "A04.0-SD-R001",
+      "source_url": "https://www.accessdata.fda.gov/scripts/cder/daf/",
+      "source_text_access_mode": "remote_source_locator",
+      "section_label_hints": [
+        "contraindications",
+        "warnings_and_precautions"
+      ],
+      "section_locator_status": "planned_not_selected",
+      "source_text_interpreted": false,
+      "field_value_populated": false
+    },
+    {
+      "profile_field": "contraindications",
+      "source_id": "A04.0-SD-R005",
+      "source_url": "https://consultas.anvisa.gov.br/#/bulario/",
+      "source_text_access_mode": "remote_source_locator",
+      "section_label_hints": [
+        "contraindications",
+        "warnings_and_precautions"
+      ],
+      "section_locator_status": "planned_not_selected",
+      "source_text_interpreted": false,
+      "field_value_populated": false
+    },
+    {
+      "profile_field": "contraindications",
+      "source_id": "A04.0-SD-S001",
+      "source_url": "https://www.fda.gov/drugs/drug-safety-and-availability/drug-safety-communications",
+      "source_text_access_mode": "remote_source_locator",
+      "section_label_hints": [
+        "contraindications",
+        "warnings_and_precautions"
+      ],
+      "section_locator_status": "planned_not_selected",
+      "source_text_interpreted": false,
+      "field_value_populated": false
+    },
+    {
+      "profile_field": "safety",
+      "source_id": "A04.0-SD-R002",
+      "source_url": "https://dailymed.nlm.nih.gov/dailymed/",
+      "source_text_access_mode": "remote_source_locator",
+      "section_label_hints": [
+        "warnings_and_precautions",
+        "adverse_reactions",
+        "safety_communication"
+      ],
+      "section_locator_status": "planned_not_selected",
+      "source_text_interpreted": false,
+      "field_value_populated": false
+    },
+    {
+      "profile_field": "safety",
+      "source_id": "A04.0-SD-S001",
+      "source_url": "https://www.fda.gov/drugs/drug-safety-and-availability/drug-safety-communications",
+      "source_text_access_mode": "remote_source_locator",
+      "section_label_hints": [
+        "warnings_and_precautions",
+        "adverse_reactions",
+        "safety_communication"
+      ],
+      "section_locator_status": "planned_not_selected",
+      "source_text_interpreted": false,
+      "field_value_populated": false
+    },
+    {
+      "profile_field": "safety",
+      "source_id": "A04.0-SD-S002",
+      "source_url": "https://www.ema.europa.eu/en/human-regulatory-overview/post-authorisation/pharmacovigilance-post-authorisation/pharmacovigilance-risk-assessment-committee-prac",
+      "source_text_access_mode": "remote_source_locator",
+      "section_label_hints": [
+        "warnings_and_precautions",
+        "adverse_reactions",
+        "safety_communication"
+      ],
+      "section_locator_status": "planned_not_selected",
+      "source_text_interpreted": false,
+      "field_value_populated": false
+    },
+    {
+      "profile_field": "safety",
+      "source_id": "A04.0-SD-S003",
+      "source_url": "https://www.gov.br/anvisa/pt-br/assuntos/fiscalizacao-e-monitoramento/farmacovigilancia",
+      "source_text_access_mode": "remote_source_locator",
+      "section_label_hints": [
+        "warnings_and_precautions",
+        "adverse_reactions",
+        "safety_communication"
+      ],
+      "section_locator_status": "planned_not_selected",
+      "source_text_interpreted": false,
+      "field_value_populated": false
+    },
+    {
+      "profile_field": "evidence",
+      "source_id": "A04.0-SD-G001",
+      "source_url": "https://www.nice.org.uk/guidance/ng222",
+      "source_text_access_mode": "remote_source_locator",
+      "section_label_hints": [
+        "recommendation",
+        "evidence_summary",
+        "trial_record",
+        "review_record"
+      ],
+      "section_locator_status": "planned_not_selected",
+      "source_text_interpreted": false,
+      "field_value_populated": false
+    },
+    {
+      "profile_field": "evidence",
+      "source_id": "A04.0-SD-G002",
+      "source_url": "https://www.canmat.org/resources/",
+      "source_text_access_mode": "remote_source_locator",
+      "section_label_hints": [
+        "recommendation",
+        "evidence_summary",
+        "trial_record",
+        "review_record"
+      ],
+      "section_locator_status": "planned_not_selected",
+      "source_text_interpreted": false,
+      "field_value_populated": false
+    },
+    {
+      "profile_field": "evidence",
+      "source_id": "A04.0-SD-G003",
+      "source_url": "https://psychiatryonline.org/guidelines",
+      "source_text_access_mode": "remote_source_locator",
+      "section_label_hints": [
+        "recommendation",
+        "evidence_summary",
+        "trial_record",
+        "review_record"
+      ],
+      "section_locator_status": "planned_not_selected",
+      "source_text_interpreted": false,
+      "field_value_populated": false
+    },
+    {
+      "profile_field": "evidence",
+      "source_id": "A04.0-SD-G004",
+      "source_url": "https://wfsbp.org/education/guidelines/",
+      "source_text_access_mode": "remote_source_locator",
+      "section_label_hints": [
+        "recommendation",
+        "evidence_summary",
+        "trial_record",
+        "review_record"
+      ],
+      "section_locator_status": "planned_not_selected",
+      "source_text_interpreted": false,
+      "field_value_populated": false
+    },
+    {
+      "profile_field": "evidence",
+      "source_id": "A04.0-SD-G005",
+      "source_url": "https://www.healthquality.va.gov/guidelines/MH/mdd/",
+      "source_text_access_mode": "remote_source_locator",
+      "section_label_hints": [
+        "recommendation",
+        "evidence_summary",
+        "trial_record",
+        "review_record"
+      ],
+      "section_locator_status": "planned_not_selected",
+      "source_text_interpreted": false,
+      "field_value_populated": false
+    },
+    {
+      "profile_field": "evidence",
+      "source_id": "A04.0-SD-E001",
+      "source_url": "https://pubmed.ncbi.nlm.nih.gov/",
+      "source_text_access_mode": "remote_source_locator",
+      "section_label_hints": [
+        "recommendation",
+        "evidence_summary",
+        "trial_record",
+        "review_record"
+      ],
+      "section_locator_status": "planned_not_selected",
+      "source_text_interpreted": false,
+      "field_value_populated": false
+    },
+    {
+      "profile_field": "evidence",
+      "source_id": "A04.0-SD-E002",
+      "source_url": "https://www.cochranelibrary.com/",
+      "source_text_access_mode": "remote_source_locator",
+      "section_label_hints": [
+        "recommendation",
+        "evidence_summary",
+        "trial_record",
+        "review_record"
+      ],
+      "section_locator_status": "planned_not_selected",
+      "source_text_interpreted": false,
+      "field_value_populated": false
+    }
+  ],
+  "selection_status": "not_selected",
+  "a04_009_may_start": false,
+  "blocking_reason": "Section locators are planned, but source sections have not been selected or reviewed.",
+  "scientific_interpretation_performed": false,
+  "knowledge_objects_created": 0,
+  "runtime_eligibility": "not_eligible",
+  "next_mission": "A04-008F - SNRI_SOURCE_SECTION_SELECTION_GATE"
+}

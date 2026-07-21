@@ -1,0 +1,15 @@
+{
+  "program": "A12",
+  "title": "Scientific Content Population: Mood Stabilizers",
+  "status": "initialized",
+  "runtime_eligible": false,
+  "mission": "A12-001",
+  "scope": "internal_non_runtime_mechanism_package",
+  "prohibitions": [
+    "prescription",
+    "therapeutic_recommendation",
+    "dose_suggestion",
+    "patient_specific_medication_selection",
+    "clinical_runtime_enablement"
+  ]
+}

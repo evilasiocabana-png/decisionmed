@@ -1,0 +1,29 @@
+{
+  "mission": "A08-010",
+  "status": "complete",
+  "selected_sections": [
+    {
+      "selection_id": "A08-SEL-001",
+      "source_id": "MAOI-SRC-001",
+      "drug_id": "MAOI-PHENELZINE",
+      "field": "mechanism",
+      "section": "Description",
+      "locator": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=fa041652-fdde-4794-a8d2-279dd309e075",
+      "review_status": "reviewable"
+    },
+    {
+      "selection_id": "A08-SEL-002",
+      "source_id": "MAOI-SRC-002",
+      "drug_id": "MAOI-PHENELZINE",
+      "field": "mechanism",
+      "section": "Description",
+      "locator": "https://www.accessdata.fda.gov/drugsatfda_docs/label/2007/011909s038lbl.pdf",
+      "review_status": "reviewable"
+    }
+  ],
+  "gate_result": {
+    "source_sections_selected": 2,
+    "selected_sections_reviewable": 2,
+    "a08_011_may_start": true
+  }
+}

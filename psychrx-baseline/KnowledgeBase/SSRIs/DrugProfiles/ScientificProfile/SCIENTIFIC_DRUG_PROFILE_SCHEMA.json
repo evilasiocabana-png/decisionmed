@@ -1,0 +1,48 @@
+{
+  "schema": "psychrx.a03.scientific_drug_profile_schema",
+  "program": "A03",
+  "mission": "A03-021",
+  "schema_version": "0.1.0",
+  "status": "structural_schema_only",
+  "required_fields": [
+    "profile_id",
+    "drug_id",
+    "canonical_name",
+    "portfolio_status",
+    "profile_status",
+    "editorial_status",
+    "scientific_status",
+    "validation_status",
+    "traceability_status",
+    "domains",
+    "runtime_consumption_allowed"
+  ],
+  "domains": [
+    "identity",
+    "mechanism_of_action",
+    "receptor_and_neurotransmitter",
+    "pharmacokinetics",
+    "pharmacodynamics",
+    "indications",
+    "posology",
+    "contraindications",
+    "safety",
+    "interactions",
+    "adverse_effects",
+    "monitoring",
+    "evidence"
+  ],
+  "prohibited_in_this_mission": [
+    "mechanism_value_population",
+    "pk_value_population",
+    "pd_value_population",
+    "dose_population",
+    "indication_population",
+    "safety_population",
+    "interaction_population",
+    "recommendation",
+    "prescription",
+    "runtime_object"
+  ],
+  "runtime_consumption_allowed": false
+}

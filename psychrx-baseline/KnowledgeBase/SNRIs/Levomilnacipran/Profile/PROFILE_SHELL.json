@@ -1,0 +1,42 @@
+{
+  "schema": "psychrx.knowledge_base.snri.profile_shell.v1",
+  "program": "A04",
+  "mission": "A04-005 - SNRI_PROFILE_SHELLS",
+  "drug_id": "SNRI-LEVOMILNACIPRAN",
+  "name": "Levomilnacipran",
+  "drug_class": "SNRIs",
+  "profile_status": "shell_created",
+  "fields": {
+    "identification": { "status": "unpopulated", "source_anchor": null },
+    "mechanism": {
+      "status": "populated_non_runtime",
+      "mission": "A04-011 - SNRI_MECHANISM_POPULATION",
+      "source_anchor": "A04-SNRI-LEVOMILNACIPRAN-MECHANISM-ANCHOR-001",
+      "source_text_records": [
+        "A04-010-TEXT-007",
+        "A04-010-TEXT-008"
+      ],
+      "controlled_fragments": [
+        {
+          "record_id": "A04-010-TEXT-007",
+          "exact_source_text": "inhibition of reuptake at serotonin and norepinephrine transporters"
+        },
+        {
+          "record_id": "A04-010-TEXT-008",
+          "exact_source_text": "potent and selective serotonin and norepinephrine reuptake inhibitor"
+        }
+      ],
+      "review_status": "editorial_review_passed_non_runtime",
+      "runtime_eligibility": "not_eligible"
+    },
+    "pharmacokinetics": { "status": "unpopulated", "source_anchor": null },
+    "pharmacodynamics": { "status": "unpopulated", "source_anchor": null },
+    "indications": { "status": "unpopulated", "source_anchor": null },
+    "posology": { "status": "unpopulated", "source_anchor": null },
+    "contraindications": { "status": "unpopulated", "source_anchor": null },
+    "safety": { "status": "unpopulated", "source_anchor": null },
+    "evidence": { "status": "unpopulated", "source_anchor": null }
+  },
+  "runtime_eligibility": "not_eligible",
+  "scientific_interpretation_performed": false
+}

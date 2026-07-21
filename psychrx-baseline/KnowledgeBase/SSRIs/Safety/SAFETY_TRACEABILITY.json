@@ -1,0 +1,11 @@
+{
+  "schema": "psychrx.a03.safety_traceability",
+  "program": "A03",
+  "mission": "A03-029",
+  "status": "structural_traceability_initialized",
+  "schema_version": "0.1.0",
+  "source_registry": "ScientificCorpus/Metadata/NORMALIZED_SOURCE_REGISTRY.json",
+  "drug_source_binding": "KnowledgeBase/SSRIs/Traceability/DRUG_SOURCE_BINDING.json",
+  "runtime_consumption_allowed": false,
+  "field_level_traceability_required_before_population": true
+}

@@ -1,0 +1,91 @@
+{
+  "schema": "psychrx.knowledgebase.ssri.evidence_integration_source_binding",
+  "program": "A03",
+  "phase": "Phase 7 - Evidence Integration",
+  "mission": "A03-052",
+  "status": "source_bound_not_evaluated",
+  "scope": {
+    "drug_class": "SSRI",
+    "drug_ids": [
+      "SSRI_FLUOXETINE",
+      "SSRI_SERTRALINE",
+      "SSRI_PAROXETINE",
+      "SSRI_CITALOPRAM",
+      "SSRI_ESCITALOPRAM",
+      "SSRI_FLUVOXAMINE"
+    ],
+    "knowledge_domains": [
+      "Mechanism",
+      "Pharmacokinetics",
+      "Pharmacodynamics"
+    ]
+  },
+  "source_groups": [
+    {
+      "group_id": "A03-EVIDENCE-SOURCE-GUIDELINES",
+      "source_registry_paths": [
+        "ScientificCorpus/Guidelines/G001/.gitkeep",
+        "ScientificCorpus/Guidelines/G002/.gitkeep",
+        "ScientificCorpus/Guidelines/G003/.gitkeep",
+        "ScientificCorpus/Guidelines/G004/.gitkeep"
+      ],
+      "binding_status": "available_for_future_evidence_review",
+      "evaluation_status": "not_evaluated"
+    },
+    {
+      "group_id": "A03-EVIDENCE-SOURCE-REVIEWS",
+      "source_registry_paths": [
+        "ScientificCorpus/Reviews/E001/.gitkeep",
+        "ScientificCorpus/Reviews/E002/.gitkeep"
+      ],
+      "binding_status": "available_for_future_evidence_review",
+      "evaluation_status": "not_evaluated"
+    },
+    {
+      "group_id": "A03-EVIDENCE-SOURCE-REGULATORY",
+      "source_registry_paths": [
+        "ScientificCorpus/Regulatory/R001/.gitkeep",
+        "ScientificCorpus/Regulatory/R002/.gitkeep",
+        "ScientificCorpus/Regulatory/R003/.gitkeep",
+        "ScientificCorpus/SourceTextIntake/Mechanism/MECHANISM_SOURCE_ANCHORS.json",
+        "ScientificCorpus/SourceTextIntake/Pharmacokinetics/PK_SOURCE_ANCHORS.json",
+        "ScientificCorpus/SourceTextIntake/Pharmacodynamics/PD_SOURCE_ANCHORS.json"
+      ],
+      "binding_status": "available_for_future_evidence_review",
+      "evaluation_status": "not_evaluated"
+    }
+  ],
+  "linked_draft_baselines": [
+    {
+      "domain": "Mechanism",
+      "baseline_path": "KnowledgeBase/SSRIs/Mechanism/MECHANISM_PARTIAL_BASELINE.json",
+      "gate_path": "KnowledgeBase/SSRIs/Mechanism/PHASE4_GATE_STATUS.json",
+      "publication_status": "not_published",
+      "runtime_consumption_allowed": false
+    },
+    {
+      "domain": "Pharmacokinetics",
+      "baseline_path": "KnowledgeBase/SSRIs/Pharmacokinetics/PK_BASELINE.json",
+      "gate_path": "KnowledgeBase/SSRIs/Pharmacokinetics/PHASE5_GATE_STATUS.json",
+      "publication_status": "not_published",
+      "runtime_consumption_allowed": false
+    },
+    {
+      "domain": "Pharmacodynamics",
+      "baseline_path": "KnowledgeBase/SSRIs/Pharmacodynamics/PD_BASELINE.json",
+      "gate_path": "KnowledgeBase/SSRIs/Pharmacodynamics/PHASE6_GATE_STATUS.json",
+      "publication_status": "not_published",
+      "runtime_consumption_allowed": false
+    }
+  ],
+  "explicit_non_goals": [
+    "no evidence quality grading",
+    "no recommendation strength",
+    "no comparative efficacy conclusion",
+    "no therapeutic recommendation",
+    "no clinical decision",
+    "no publication",
+    "no runtime consumption"
+  ],
+  "next_mission": "A03-053 - EVIDENCE_TRACEABILITY_MATRIX"
+}

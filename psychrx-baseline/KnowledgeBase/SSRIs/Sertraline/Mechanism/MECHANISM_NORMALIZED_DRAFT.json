@@ -1,0 +1,14 @@
+{
+  "schema": "psychrx.knowledgebase.ssri.mechanism_normalized_draft",
+  "program": "A03",
+  "mission": "A03-041R",
+  "drug_id": "SSRI_SERTRALINE",
+  "source_extraction_id": "A03-MOA-EXT-SERTRALINE-001",
+  "mechanism_family": "serotonergic_modulation",
+  "mechanism_route": "serotonin_reuptake_inhibition",
+  "mechanism_certainty": "label_described",
+  "source_certainty_language": "label links effect to serotonergic potentiation through serotonin reuptake inhibition",
+  "normalization_status": "normalized_pending_editorial_review",
+  "publication_status": "not_published",
+  "runtime_consumption_allowed": false
+}

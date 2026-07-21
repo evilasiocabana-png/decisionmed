@@ -1,0 +1,12 @@
+{
+  "mission": "A15-004",
+  "status": "complete",
+  "corpus": "ScientificCorpus/CognitiveEnhancers",
+  "included_sources": [
+    "CE-SRC-001",
+    "CE-SRC-002"
+  ],
+  "document_access": "remote_locator_only",
+  "interpretation_performed": false,
+  "runtime_eligible": false
+}

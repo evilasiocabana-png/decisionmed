@@ -1,0 +1,20 @@
+{
+  "schema": "psychrx.a03.safety_manifest",
+  "program": "A03",
+  "mission": "A03-029",
+  "status": "completed_structural_manifest",
+  "schema_version": "0.1.0",
+  "created_files": [
+    "SAFETY_SCHEMA.json",
+    "SAFETY_MODEL.json",
+    "SAFETY_INDEX.json",
+    "SAFETY_TRACEABILITY.json",
+    "SAFETY_VALIDATION.json",
+    "SAFETY_MANIFEST.json"
+  ],
+  "scientific_content_interpreted": false,
+  "safety_values_populated": false,
+  "runtime_consumption_allowed": false,
+  "publication_status": "not_published",
+  "next_mission": "A03-030 - PHASE_3_SPRINT_1_BASELINE"
+}

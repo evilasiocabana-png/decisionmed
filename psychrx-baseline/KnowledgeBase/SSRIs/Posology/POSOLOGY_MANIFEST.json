@@ -1,0 +1,21 @@
+{
+  "schema": "psychrx.a03.posology_manifest",
+  "program": "A03",
+  "mission": "A03-027",
+  "status": "completed_structural_manifest",
+  "schema_version": "0.1.0",
+  "created_files": [
+    "POSOLOGY_SCHEMA.json",
+    "POSOLOGY_MODEL.json",
+    "POSOLOGY_INDEX.json",
+    "POSOLOGY_TRACEABILITY.json",
+    "POSOLOGY_VALIDATION.json",
+    "POSOLOGY_MANIFEST.json"
+  ],
+  "scientific_content_interpreted": false,
+  "dose_values_populated": false,
+  "titration_values_populated": false,
+  "runtime_consumption_allowed": false,
+  "publication_status": "not_published",
+  "next_mission": "A03-028 - CONTRAINDICATION_MODELING"
+}

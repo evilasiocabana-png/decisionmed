@@ -1,0 +1,25 @@
+{
+  "mission": "A11-007",
+  "drug_id": "SGA-RISPERIDONE",
+  "name": "Risperidone",
+  "class": "second_generation_antipsychotic",
+  "fields": {
+    "mechanism": {
+      "status": "authorized_for_a11_population",
+      "content_ref": null
+    },
+    "pharmacokinetics": {
+      "status": "blocked"
+    },
+    "pharmacodynamics": {
+      "status": "blocked"
+    },
+    "safety": {
+      "status": "blocked"
+    },
+    "evidence": {
+      "status": "blocked"
+    }
+  },
+  "runtime_eligible": false
+}

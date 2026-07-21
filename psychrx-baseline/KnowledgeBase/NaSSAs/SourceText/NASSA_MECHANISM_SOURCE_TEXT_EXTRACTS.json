@@ -1,0 +1,45 @@
+{
+  "mission": "A06-011",
+  "status": "complete",
+  "extraction_mode": "exact_short_source_text_only",
+  "records": [
+    {
+      "record_id": "A06-TXT-001",
+      "selection_id": "A06-SEL-001",
+      "source_id": "NASSA-SRC-001",
+      "drug_id": "NASSA-MIRTAZAPINE",
+      "field": "mechanism",
+      "section": "12.1 Mechanism of Action",
+      "exact_text": "mechanism of action of mirtazapine for the treatment of major depressive disorder, is unclear",
+      "use_scope": "uncertainty_marker_only"
+    },
+    {
+      "record_id": "A06-TXT-002",
+      "selection_id": "A06-SEL-001",
+      "source_id": "NASSA-SRC-001",
+      "drug_id": "NASSA-MIRTAZAPINE",
+      "field": "mechanism",
+      "section": "12.1 Mechanism of Action",
+      "exact_text": "antagonist at central presynaptic alpha2-adrenergic inhibitory autoreceptors and heteroreceptors",
+      "use_scope": "mechanism_fragment"
+    },
+    {
+      "record_id": "A06-TXT-003",
+      "selection_id": "A06-SEL-001",
+      "source_id": "NASSA-SRC-001",
+      "drug_id": "NASSA-MIRTAZAPINE",
+      "field": "mechanism",
+      "section": "12.1 Mechanism of Action",
+      "exact_text": "enhancing central noradrenergic and serotonergic activity",
+      "use_scope": "mechanism_fragment"
+    }
+  ],
+  "forbidden_transforms": [
+    "summary",
+    "paraphrase",
+    "inference",
+    "recommendation",
+    "prescription",
+    "runtime_use"
+  ]
+}

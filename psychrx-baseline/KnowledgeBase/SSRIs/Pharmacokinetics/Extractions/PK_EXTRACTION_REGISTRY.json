@@ -1,0 +1,21 @@
+{
+  "schema": "psychrx.knowledgebase.ssri.pk_extraction_registry",
+  "program": "A03",
+  "mission": "A03-042",
+  "status": "complete_extraction_awaiting_review",
+  "created_at": "2026-07-01",
+  "source_anchor_manifest": "ScientificCorpus/SourceTextIntake/Pharmacokinetics/PK_SOURCE_ANCHORS.json",
+  "clinical_content_interpreted": false,
+  "recommendation_created": false,
+  "prescription_created": false,
+  "runtime_consumption_allowed": false,
+  "extractions": [
+    {"drug_id": "SSRI_FLUOXETINE", "path": "KnowledgeBase/SSRIs/Fluoxetine/Pharmacokinetics/PK_EXTRACTION.json", "status": "awaiting_review"},
+    {"drug_id": "SSRI_SERTRALINE", "path": "KnowledgeBase/SSRIs/Sertraline/Pharmacokinetics/PK_EXTRACTION.json", "status": "awaiting_review"},
+    {"drug_id": "SSRI_PAROXETINE", "path": "KnowledgeBase/SSRIs/Paroxetine/Pharmacokinetics/PK_EXTRACTION.json", "status": "awaiting_review"},
+    {"drug_id": "SSRI_CITALOPRAM", "path": "KnowledgeBase/SSRIs/Citalopram/Pharmacokinetics/PK_EXTRACTION.json", "status": "awaiting_review"},
+    {"drug_id": "SSRI_ESCITALOPRAM", "path": "KnowledgeBase/SSRIs/Escitalopram/Pharmacokinetics/PK_EXTRACTION.json", "status": "awaiting_review"},
+    {"drug_id": "SSRI_FLUVOXAMINE", "path": "KnowledgeBase/SSRIs/Fluvoxamine/Pharmacokinetics/PK_EXTRACTION.json", "status": "awaiting_review"}
+  ],
+  "next_mission": "A03-043 - PHARMACOKINETIC_REVIEW_AND_NORMALIZATION"
+}
