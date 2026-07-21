@@ -33,6 +33,7 @@ class DecisionMedAppServiceTest(unittest.TestCase):
         )
         self.assertEqual(6, len(state["specialties"]))
         self.assertEqual("reference_only", psychiatry["load_status"])
+        self.assertEqual("psychrx.clinical-decision.v1", psychiatry["workflow_contract"])
         self.assertEqual(7, len(psychiatry["available_capabilities"]))
         self.assertIn("PsychRx", psychiatry["intended_scope"])
         self.assertIn("Execução clínica.", psychiatry["excluded_uses"])
