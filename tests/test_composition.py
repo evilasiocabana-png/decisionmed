@@ -52,6 +52,30 @@ class SpecialtyPackResolverTest(unittest.TestCase):
             "decisionmed.psychiatry:psychiatry:0.1.0", result.trace_id
         )
 
+    def test_catalog_schema_binds_only_its_structural_evidence_capability(self) -> None:
+        result = build_reference_resolver(("cardiology",)).load(
+            build_default_specialty_registry(), "cardiology"
+        )
+
+        self.assertEqual(SpecialtyLoadStatus.BLOCKED, result.status)
+        self.assertEqual(
+            ("cardiology.evidence",),
+            tuple(binding.capability for binding in result.bindings),
+        )
+        self.assertNotIn("cardiology.evidence", result.missing_capabilities)
+        self.assertEqual(6, len(result.missing_capabilities))
+        self.assertFalse(result.clinical_execution_allowed)
+
+    def test_catalog_binding_keys_are_validated_and_deduplicated(self) -> None:
+        resolver = build_reference_resolver(("cardiology", "cardiology"))
+        result = resolver.load(build_default_specialty_registry(), "cardiology")
+        self.assertEqual(1, len(result.bindings))
+
+        with self.assertRaises(ValueError):
+            build_reference_resolver(("Cardiology",))
+        with self.assertRaises(TypeError):
+            build_reference_resolver("cardiology")  # type: ignore[arg-type]
+
     def test_missing_capability_blocks_resolution_explicitly(self) -> None:
         resolver = SpecialtyPackResolver(
             (CapabilityBinding("safety", "test.safety", "1.0.0"),)
