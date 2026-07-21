@@ -124,6 +124,7 @@ class GovernedCatalogLoaderTest(unittest.TestCase):
                 "reviewed_on": "2026-07-21",
                 "known_conflicts": "No conflicts assessed; synthetic fixture.",
                 "clinical_applicability": "Contract tests only.",
+                "review_due_on": None,
             }]
         )
         knowledge = cls._envelope(
@@ -161,7 +162,7 @@ class GovernedCatalogLoaderTest(unittest.TestCase):
 
     @staticmethod
     def _envelope(items: list[dict[str, object]]) -> dict[str, object]:
-        return {"schema_version": "4.0.0", "items": items}
+        return {"schema_version": "5.0.0", "items": items}
 
     @staticmethod
     def _write(path: Path, payload: dict[str, object]) -> None:
@@ -174,7 +175,7 @@ class GovernedCatalogLoaderTest(unittest.TestCase):
             for name in ("evidence.json", "knowledge.json", "form-schemas.json")
         }
         manifest = {
-            "schema_version": "4.0.0",
+            "schema_version": "5.0.0",
             "catalog_id": "decisionmed.knowledge",
             "release_version": "0.1.0",
             "status": "draft",

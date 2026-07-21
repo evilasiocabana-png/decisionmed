@@ -1,5 +1,5 @@
 from dataclasses import FrozenInstanceError, replace
-from datetime import date
+from datetime import date, timedelta
 import unittest
 
 from decisionmed.domain import ClinicalSnapshotSection
@@ -205,6 +205,11 @@ class SpecialtyFormSchemaTest(unittest.TestCase):
             reviewed_on=date(2026, 7, 21),
             known_conflicts="No conflicts assessed; synthetic fixture.",
             clinical_applicability="Contract tests only.",
+            review_due_on=(
+                date.today() + timedelta(days=30)
+                if status is EvidenceStatus.VALIDATED
+                else None
+            ),
         )
 
     @staticmethod
