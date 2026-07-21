@@ -17,6 +17,8 @@ def make_pack(**overrides: object) -> SpecialtyPack:
     values: dict[str, object] = {
         "key": "test-specialty",
         "display_name": "Especialidade de teste",
+        "intended_scope": "Structural reference workflow for tests.",
+        "excluded_uses": ("Clinical use.",),
         "version": "1.0.0",
         "workflow_contract": "test.workflow.v1",
         "safety_contract": "test.safety.v1",
@@ -39,6 +41,8 @@ class SpecialtyPackContractTest(unittest.TestCase):
             {
                 "key",
                 "display_name",
+                "intended_scope",
+                "excluded_uses",
                 "version",
                 "workflow_contract",
                 "safety_contract",
@@ -79,6 +83,12 @@ class SpecialtyPackContractTest(unittest.TestCase):
                     CapabilityRequirement("safety", "2.0.0"),
                 )
             )
+
+    def test_pack_requires_explicit_unique_exclusions(self) -> None:
+        with self.assertRaisesRegex(ValueError, "excluded_uses cannot be empty"):
+            make_pack(excluded_uses=())
+        with self.assertRaisesRegex(ValueError, "cannot contain duplicates"):
+            make_pack(excluded_uses=("Clinical use.", "Clinical use."))
 
     def test_pack_requires_explicit_lifecycle_status(self) -> None:
         with self.assertRaisesRegex(TypeError, "SpecialtyPackStatus"):

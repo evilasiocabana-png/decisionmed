@@ -66,6 +66,8 @@ class SpecialtyPack:
 
     key: str
     display_name: str
+    intended_scope: str
+    excluded_uses: tuple[str, ...]
     version: str
     workflow_contract: str
     safety_contract: str
@@ -78,6 +80,18 @@ class SpecialtyPack:
     def __post_init__(self) -> None:
         self._validate_identifier("key", self.key)
         self._validate_text("display_name", self.display_name)
+        self._validate_text("intended_scope", self.intended_scope)
+
+        if isinstance(self.excluded_uses, (str, bytes)):
+            raise TypeError("excluded_uses must be an iterable of text values")
+        excluded_uses = tuple(self.excluded_uses)
+        if not excluded_uses:
+            raise ValueError("excluded_uses cannot be empty")
+        for excluded_use in excluded_uses:
+            self._validate_text("excluded_use", excluded_use)
+        if len(set(excluded_uses)) != len(excluded_uses):
+            raise ValueError("excluded_uses cannot contain duplicates")
+        object.__setattr__(self, "excluded_uses", excluded_uses)
 
         if not isinstance(self.version, str) or not _SEMANTIC_VERSION_PATTERN.fullmatch(
             self.version
@@ -167,6 +181,15 @@ class SpecialtyPackRegistry:
 PSYCHIATRY_PACK = SpecialtyPack(
     key="psychiatry",
     display_name="Psiquiatria",
+    intended_scope=(
+        "Implementação PsychRx preservada somente como referência "
+        "arquitetural e visual."
+    ),
+    excluded_uses=(
+        "Diagnóstico ou classificação de risco.",
+        "Recomendação de tratamento ou conduta.",
+        "Execução clínica.",
+    ),
     version="0.1.0",
     workflow_contract="psychrx.clinical-decision.v1",
     safety_contract="psychrx.safety-first.v1",
@@ -194,6 +217,12 @@ def _planned_specialty_pack(key: str, display_name: str) -> SpecialtyPack:
     return SpecialtyPack(
         key=key,
         display_name=display_name,
+        intended_scope=f"Fluxo estrutural de referência para {display_name}.",
+        excluded_uses=(
+            "Diagnóstico ou classificação de risco.",
+            "Recomendação de tratamento ou conduta.",
+            "Execução clínica.",
+        ),
         version="0.1.0",
         workflow_contract=f"decisionmed.{key}.workflow.v1",
         safety_contract=f"decisionmed.{key}.safety.v1",
