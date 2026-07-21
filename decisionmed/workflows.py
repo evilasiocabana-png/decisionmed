@@ -124,6 +124,8 @@ def workflow_from_mapping(payload: dict[str, Any], pack: SpecialtyPack) -> Speci
 
     if workflow.specialty_key != pack.key:
         raise WorkflowDefinitionError("workflow specialty does not match its pack")
+    if workflow.workflow_id != pack.workflow_contract:
+        raise WorkflowDefinitionError("workflow contract does not match its pack")
     unknown_capabilities = {
         step.capability for step in workflow.steps
     } - set(pack.required_capabilities)
