@@ -49,6 +49,22 @@ class EvidenceStatus(str, Enum):
     CONFLICTING_EVIDENCE = "conflicting_evidence"
 
 
+class EvidenceQuality(str, Enum):
+    HIGH = "high"
+    MODERATE = "moderate"
+    LOW = "low"
+    VERY_LOW = "very_low"
+    INSUFFICIENT = "insufficient"
+
+
+class RecommendationStrength(str, Enum):
+    STRONG = "strong"
+    MODERATE = "moderate"
+    WEAK = "weak"
+    CONDITIONAL = "conditional"
+    INSUFFICIENT_FOR_RECOMMENDATION = "insufficient_for_recommendation"
+
+
 @dataclass(frozen=True, slots=True)
 class EvidenceSource:
     """Versioned catalog record for one scientific or regulatory source."""
@@ -57,11 +73,15 @@ class EvidenceSource:
     title: str
     publication_year: int
     evidence_type: EvidenceType
+    evidence_quality: EvidenceQuality
+    recommendation_strength: RecommendationStrength
     locator: str
     version: str
     status: EvidenceStatus
     specialties: tuple[str, ...]
-    reviewed_on: date | None = None
+    reviewed_on: date
+    known_conflicts: str
+    clinical_applicability: str
 
     def __post_init__(self) -> None:
         if not isinstance(self.source_id, str) or not _IDENTIFIER.fullmatch(
@@ -80,6 +100,12 @@ class EvidenceSource:
             self._fail("publication_year", "publication year is invalid")
         if not isinstance(self.evidence_type, EvidenceType):
             raise TypeError("evidence_type must be an EvidenceType")
+        if not isinstance(self.evidence_quality, EvidenceQuality):
+            raise TypeError("evidence_quality must be an EvidenceQuality")
+        if not isinstance(self.recommendation_strength, RecommendationStrength):
+            raise TypeError(
+                "recommendation_strength must be a RecommendationStrength"
+            )
         if not isinstance(self.locator, str) or not self.locator.strip():
             self._fail("locator", "source locator cannot be empty")
         if len(self.locator) > 1000:
@@ -101,14 +127,24 @@ class EvidenceSource:
             self._fail("specialties", "specialty keys must be unique")
         object.__setattr__(self, "specialties", specialties)
 
-        if self.reviewed_on is not None and not isinstance(self.reviewed_on, date):
-            raise TypeError("reviewed_on must be a date or None")
-        if self.status is EvidenceStatus.VALIDATED and self.reviewed_on is None:
-            self._fail("reviewed_on", "validated metadata requires a review date")
+        if not isinstance(self.reviewed_on, date):
+            raise TypeError("reviewed_on must be a date")
+        if self.reviewed_on > date.today():
+            self._fail("reviewed_on", "review date cannot be in the future")
+        self._text("known_conflicts", self.known_conflicts, 4000)
+        self._text("clinical_applicability", self.clinical_applicability, 4000)
 
     @staticmethod
     def _fail(field_name: str, message: str) -> None:
         raise EvidenceContractError(f"evidence_source.{field_name}", message)
+
+    @classmethod
+    def _text(cls, field_name: str, value: object, maximum: int) -> None:
+        if not isinstance(value, str) or not value.strip() or len(value) > maximum:
+            cls._fail(
+                field_name,
+                f"{field_name} must contain 1 to {maximum} characters",
+            )
 
     @property
     def runtime_eligible(self) -> bool:

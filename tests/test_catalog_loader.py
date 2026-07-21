@@ -61,7 +61,7 @@ class GovernedCatalogLoaderTest(unittest.TestCase):
             with self.assertRaises(CatalogLoadError):
                 load_governed_catalogs(root)
             payloads = self._write_catalog(root)
-            payloads["evidence"]["schema_version"] = "2.0.0"
+            payloads["evidence"]["schema_version"] = "1.0.0"
             self._write(root / "evidence.json", payloads["evidence"])
             self._write_manifest(root)
             with self.assertRaises(CatalogLoadError) as context:
@@ -98,8 +98,13 @@ class GovernedCatalogLoaderTest(unittest.TestCase):
             [{
                 "source_id": "evidence.sample", "title": "Structural source",
                 "publication_year": 2025, "evidence_type": "guideline",
+                "evidence_quality": "insufficient",
+                "recommendation_strength": "insufficient_for_recommendation",
                 "locator": "external-catalog", "version": "1.0.0",
-                "status": "draft", "specialties": ["cardiology"], "reviewed_on": None,
+                "status": "draft", "specialties": ["cardiology"],
+                "reviewed_on": "2026-07-21",
+                "known_conflicts": "No conflicts assessed; synthetic fixture.",
+                "clinical_applicability": "Contract tests only.",
             }]
         )
         knowledge = cls._envelope(
@@ -132,7 +137,7 @@ class GovernedCatalogLoaderTest(unittest.TestCase):
 
     @staticmethod
     def _envelope(items: list[dict[str, object]]) -> dict[str, object]:
-        return {"schema_version": "1.0.0", "items": items}
+        return {"schema_version": "2.0.0", "items": items}
 
     @staticmethod
     def _write(path: Path, payload: dict[str, object]) -> None:
@@ -145,7 +150,7 @@ class GovernedCatalogLoaderTest(unittest.TestCase):
             for name in ("evidence.json", "knowledge.json", "form-schemas.json")
         }
         manifest = {
-            "schema_version": "1.0.0",
+            "schema_version": "2.0.0",
             "catalog_id": "decisionmed.knowledge",
             "release_version": "0.1.0",
             "status": "draft",

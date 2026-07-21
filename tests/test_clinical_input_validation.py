@@ -7,9 +7,11 @@ from decisionmed.application import ClinicalInputStructureValidator
 from decisionmed.domain import ClinicalSnapshotSection
 from decisionmed.evidence import (
     EvidenceRegistry,
+    EvidenceQuality,
     EvidenceSource,
     EvidenceStatus,
     EvidenceType,
+    RecommendationStrength,
 )
 from decisionmed.knowledge import (
     ClinicalFieldDefinition,
@@ -124,10 +126,15 @@ class ClinicalInputStructureValidatorTest(unittest.TestCase):
                     title="Structural test source",
                     publication_year=2025,
                     evidence_type=EvidenceType.GUIDELINE,
+                    evidence_quality=EvidenceQuality.INSUFFICIENT,
+                    recommendation_strength=RecommendationStrength.INSUFFICIENT_FOR_RECOMMENDATION,
                     locator="test-only",
                     version="1.0.0",
                     status=EvidenceStatus.DRAFT,
                     specialties=("cardiology",),
+                    reviewed_on=date(2026, 7, 21),
+                    known_conflicts="No conflicts assessed; synthetic fixture.",
+                    clinical_applicability="Contract tests only.",
                 ),
             )
         )
