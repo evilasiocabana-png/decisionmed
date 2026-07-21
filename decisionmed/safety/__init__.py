@@ -12,6 +12,11 @@ from .models import (
     SafetySeverity,
 )
 from .registry import SafetyCheckRegistry
+from .providers import (
+    SafetyCheckProviderBinding,
+    SafetyCheckProviderRegistry,
+    SafetyImplementationCoverage,
+)
 
 __all__ = [
     "SafetyAssessment",
@@ -20,9 +25,12 @@ __all__ = [
     "SafetyCheckRegistry",
     "SafetyCheckSpecification",
     "SafetyCheckStatus",
+    "SafetyCheckProviderBinding",
+    "SafetyCheckProviderRegistry",
     "SafetyCoordinator",
     "SafetyError",
     "SafetyFinding",
     "SafetyGateStatus",
     "SafetySeverity",
+    "SafetyImplementationCoverage",
 ]
