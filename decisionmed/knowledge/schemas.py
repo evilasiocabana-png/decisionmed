@@ -70,6 +70,8 @@ class SpecialtyFormSchema:
 
     schema_id: str
     specialty_key: str
+    workflow_id: str
+    step_key: str
     version: str
     fields: tuple[ClinicalFieldDefinition, ...]
     status: KnowledgeStatus = KnowledgeStatus.DRAFT
@@ -79,6 +81,8 @@ class SpecialtyFormSchema:
     def __post_init__(self) -> None:
         _identifier("schema_id", self.schema_id)
         _identifier("specialty_key", self.specialty_key)
+        _identifier("workflow_id", self.workflow_id)
+        _identifier("step_key", self.step_key)
         if not isinstance(self.version, str) or not _VERSION.fullmatch(self.version):
             _fail("version", "version must use semantic versioning")
         if not isinstance(self.status, KnowledgeStatus):

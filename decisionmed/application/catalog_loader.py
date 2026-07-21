@@ -32,7 +32,7 @@ from decisionmed.knowledge import (
 )
 
 
-CATALOG_SCHEMA_VERSION = "2.0.0"
+CATALOG_SCHEMA_VERSION = "3.0.0"
 MAX_CATALOG_BYTES = 1_048_576
 MAX_CATALOG_ITEMS = 10_000
 _IDENTIFIER = re.compile(r"^[a-z][a-z0-9]*(?:[._-][a-z0-9]+)*$")
@@ -256,6 +256,8 @@ def _form_schema(item: dict[str, Any]) -> SpecialtyFormSchema:
     return SpecialtyFormSchema(
         schema_id=item["schema_id"],
         specialty_key=item["specialty_key"],
+        workflow_id=item["workflow_id"],
+        step_key=item["step_key"],
         version=item["version"],
         fields=tuple(
             ClinicalFieldDefinition(
@@ -302,7 +304,10 @@ _KNOWLEDGE_KEYS = frozenset(
     {"object_id", "official_name", "object_type", "description", "evidence_source_ids", "applicability", "limits", "version", "status", "reviewed_on", "validated_by"}
 )
 _SCHEMA_KEYS = frozenset(
-    {"schema_id", "specialty_key", "version", "status", "reviewed_on", "validated_by", "fields"}
+    {
+        "schema_id", "specialty_key", "workflow_id", "step_key", "version",
+        "status", "reviewed_on", "validated_by", "fields",
+    }
 )
 _FIELD_KEYS = frozenset(
     {"field_key", "label", "section", "value_type", "knowledge_object_id", "required", "allowed_values"}

@@ -26,6 +26,8 @@ class ClinicalInputIssue:
 @dataclass(frozen=True, slots=True)
 class ClinicalInputValidation:
     schema_id: str
+    workflow_id: str
+    step_key: str
     schema_version: str
     schema_status: str
     accepted_field_count: int
@@ -49,11 +51,15 @@ class ClinicalInputStructureValidator:
         self._schemas = schemas
 
     def validate(
-        self, specialty_key: str, values: Mapping[str, object]
+        self,
+        specialty_key: str,
+        workflow_id: str,
+        step_key: str,
+        values: Mapping[str, object],
     ) -> ClinicalInputValidation:
         if not isinstance(values, Mapping):
             raise TypeError("values must be a mapping")
-        schema = self._schemas.require(specialty_key)
+        schema = self._schemas.require(specialty_key, workflow_id, step_key)
         payload = dict(values)
         fields = {field.field_key: field for field in schema.fields}
         issues: list[ClinicalInputIssue] = []
@@ -78,6 +84,8 @@ class ClinicalInputStructureValidator:
 
         return ClinicalInputValidation(
             schema_id=schema.schema_id,
+            workflow_id=schema.workflow_id,
+            step_key=schema.step_key,
             schema_version=schema.version,
             schema_status=schema.status.value,
             accepted_field_count=accepted,
