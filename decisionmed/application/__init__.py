@@ -23,6 +23,10 @@ from .safety_review import (
     SafetyReviewApplicationError,
     SafetyReviewApplicationService,
 )
+from .reviewer_authority_replay import (
+    InMemorySafetyReviewerAuthorityReplayGuard,
+    SafetyReviewerAuthorityReplayGuard,
+)
 from .question_preparation import QuestionEnginePreparationApplicationService
 from .question_invocation_authority import (
     QUESTION_ENGINE_INVOCATION_ACTION,
@@ -56,6 +60,8 @@ __all__ = [
     "SafetyReviewerAuthorityStatus",
     "SafetyReviewApplicationError",
     "SafetyReviewApplicationService",
+    "InMemorySafetyReviewerAuthorityReplayGuard",
+    "SafetyReviewerAuthorityReplayGuard",
     "QuestionEnginePreparationApplicationService",
     "QUESTION_ENGINE_INVOCATION_ACTION",
     "QuestionEngineInvocationAuthority",

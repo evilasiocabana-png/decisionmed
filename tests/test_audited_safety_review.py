@@ -140,6 +140,34 @@ class SafetyReviewApplicationServiceTest(unittest.TestCase):
         self.assertEqual("safety.review_record_rejected", audit_record.event_name)
         self.assertNotIn("sensitive invalid rationale", str(audit_record))
 
+    def test_expired_authority_is_audited_before_review_recording(self) -> None:
+        ledger = AuditLedger()
+        service = SafetyReviewApplicationService(
+            SyntheticAuthority(self._decision()),
+            ledger,
+            max_authority_age=timedelta(seconds=30),
+            now=lambda: self.reviewed_at + timedelta(seconds=31),
+        )
+
+        with self.assertRaises(SafetyReviewApplicationError) as expired:
+            self._record(service)
+
+        self.assertEqual("safety_review.authority_expired", expired.exception.code)
+        self.assertEqual("safety.review_authority_expired", ledger.records()[-1].event_name)
+        self.assertTrue(ledger.verify())
+
+    def test_replayed_authority_is_audited_before_second_review(self) -> None:
+        ledger = AuditLedger()
+        service = self._service(self._decision(), ledger)
+
+        self._record(service)
+        with self.assertRaises(SafetyReviewApplicationError) as replayed:
+            self._record(service)
+
+        self.assertEqual("safety_review.authority_replayed", replayed.exception.code)
+        self.assertEqual("safety.review_authority_replayed", ledger.records()[-1].event_name)
+        self.assertTrue(ledger.verify())
+
     def test_audit_failure_prevents_returning_a_review(self) -> None:
         service = self._service(self._decision(), FailingAuditLedger())
 
