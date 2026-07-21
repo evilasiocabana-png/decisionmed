@@ -8,6 +8,7 @@ from typing import Any, Iterable
 from .evidence import EvidenceRegistry
 from .knowledge import KnowledgeRegistry, SpecialtyFormSchemaRegistry
 from .safety import (
+    SafetyCheckEvaluatorRegistry,
     SafetyCheckProviderRegistry,
     SafetyCheckRegistry,
     SafetyCheckStatus,
@@ -34,6 +35,7 @@ class PlatformReadinessService:
         form_schemas: SpecialtyFormSchemaRegistry | None = None,
         safety_checks: SafetyCheckRegistry | None = None,
         safety_providers: SafetyCheckProviderRegistry | None = None,
+        safety_evaluators: SafetyCheckEvaluatorRegistry | None = None,
     ) -> None:
         self._evidence = evidence or EvidenceRegistry()
         self._knowledge = knowledge or KnowledgeRegistry(self._evidence)
@@ -41,9 +43,19 @@ class PlatformReadinessService:
             self._knowledge
         )
         self._safety_checks = safety_checks or SafetyCheckRegistry(self._evidence)
+        if safety_providers is None and safety_evaluators is not None:
+            safety_providers = safety_evaluators.providers
         self._safety_providers = safety_providers or SafetyCheckProviderRegistry(
             self._safety_checks
         )
+        if (
+            safety_evaluators is not None
+            and safety_evaluators.providers is not self._safety_providers
+        ):
+            raise ValueError(
+                "safety evaluators must use the configured provider registry"
+            )
+        self._safety_evaluators = safety_evaluators
 
     def report(self, specialty_statuses: Iterable[str]) -> dict[str, Any]:
         statuses = tuple(specialty_statuses)
@@ -88,6 +100,20 @@ class PlatformReadinessService:
         missing_safety_provider_count = len(safety_coverage.missing_check_ids)
         incompatible_safety_provider_count = len(
             safety_coverage.incompatible_check_ids
+        )
+        safety_evaluator_count = (
+            len(self._safety_evaluators.all())
+            if self._safety_evaluators is not None
+            else 0
+        )
+        missing_safety_evaluator_count = (
+            len(self._safety_evaluators.missing_check_ids)
+            if self._safety_evaluators is not None
+            else safety_provider_count
+        )
+        safety_evaluator_coverage_complete = (
+            self._safety_evaluators is not None
+            and self._safety_evaluators.complete
         )
         specialty_ready = bool(statuses) and all(
             status == "ready_for_validation" for status in statuses
@@ -146,6 +172,7 @@ class PlatformReadinessService:
                 and not overdue_safety_count
                 and not unscheduled_safety_count
                 and safety_coverage.complete
+                and safety_evaluator_coverage_complete
                 else "blocked",
                 "no_safety_specifications"
                 if not safety_count
@@ -161,6 +188,10 @@ class PlatformReadinessService:
                 if incompatible_safety_provider_count
                 else "incomplete_safety_provider_coverage"
                 if missing_safety_provider_count
+                else "no_safety_evaluators"
+                if not safety_evaluator_count
+                else "incomplete_safety_evaluator_coverage"
+                if not safety_evaluator_coverage_complete
                 else "safety_configuration_complete",
             ),
             ReadinessGate(
@@ -205,6 +236,8 @@ class PlatformReadinessService:
                 "incompatible_safety_providers": (
                     incompatible_safety_provider_count
                 ),
+                "safety_evaluator_registrations": safety_evaluator_count,
+                "missing_safety_evaluators": missing_safety_evaluator_count,
             },
             "blocked_gate_count": blocked_count,
             "gates": [gate.to_dict() for gate in gates],

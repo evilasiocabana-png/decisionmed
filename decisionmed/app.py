@@ -10,7 +10,7 @@ from .application import GovernedCatalogs
 from .composition import SpecialtyPackResolver, build_reference_resolver
 from .knowledge import KnowledgeError
 from .readiness import PlatformReadinessService
-from .safety import SafetyCheckProviderRegistry
+from .safety import SafetyCheckEvaluatorRegistry, SafetyCheckProviderRegistry
 from .sessions import WorkflowSessionService
 from .specialties import SpecialtyPackRegistry, build_default_specialty_registry
 from .workflows import (
@@ -66,6 +66,7 @@ class DecisionMedAppService:
         sessions: WorkflowSessionService | None = None,
         catalogs: GovernedCatalogs | None = None,
         safety_providers: SafetyCheckProviderRegistry | None = None,
+        safety_evaluators: SafetyCheckEvaluatorRegistry | None = None,
     ) -> None:
         self._registry = registry or build_default_specialty_registry()
         if resolver is None:
@@ -91,6 +92,7 @@ class DecisionMedAppService:
             form_schemas=catalogs.form_schemas if catalogs is not None else None,
             safety_checks=catalogs.safety_checks if catalogs is not None else None,
             safety_providers=safety_providers,
+            safety_evaluators=safety_evaluators,
         )
         self._sessions = sessions or WorkflowSessionService(
             self._registry, self._workflows

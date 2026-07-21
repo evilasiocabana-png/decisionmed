@@ -61,6 +61,10 @@ class SafetyCheckEvaluatorRegistry:
         return tuple(self._evaluators[key] for key in sorted(self._evaluators))
 
     @property
+    def providers(self) -> SafetyCheckProviderRegistry:
+        return self._providers
+
+    @property
     def missing_check_ids(self) -> tuple[str, ...]:
         return tuple(
             binding.check_id
