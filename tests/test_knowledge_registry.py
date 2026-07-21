@@ -1,0 +1,110 @@
+from dataclasses import replace
+from datetime import date
+import unittest
+
+from decisionmed.evidence import (
+    EvidenceRegistry,
+    EvidenceSource,
+    EvidenceStatus,
+    EvidenceType,
+)
+from decisionmed.knowledge import (
+    KnowledgeError,
+    KnowledgeObject,
+    KnowledgeObjectType,
+    KnowledgeRegistry,
+    KnowledgeStatus,
+)
+
+
+def evidence(status: EvidenceStatus = EvidenceStatus.DRAFT) -> EvidenceSource:
+    return EvidenceSource(
+        source_id="source.synthetic",
+        title="Synthetic metadata used only for contract testing",
+        publication_year=2025,
+        evidence_type=EvidenceType.OTHER,
+        locator="test-only:synthetic",
+        version="0.1.0",
+        status=status,
+        specialties=("cardiology",),
+        reviewed_on=date(2026, 7, 21)
+        if status is EvidenceStatus.VALIDATED
+        else None,
+    )
+
+
+def knowledge(status: KnowledgeStatus = KnowledgeStatus.DRAFT) -> KnowledgeObject:
+    return KnowledgeObject(
+        object_id="knowledge.synthetic",
+        official_name="Synthetic knowledge contract fixture",
+        object_type=KnowledgeObjectType.OTHER,
+        description="Non-clinical fixture content.",
+        evidence_source_ids=("source.synthetic",),
+        applicability="Contract tests only.",
+        limits="Not clinical knowledge and never runtime eligible.",
+        version="0.1.0",
+        status=status,
+        reviewed_on=date(2026, 7, 21)
+        if status is KnowledgeStatus.VALIDATED
+        else None,
+        validated_by="reviewer.synthetic"
+        if status is KnowledgeStatus.VALIDATED
+        else None,
+    )
+
+
+class KnowledgeContractTest(unittest.TestCase):
+    def test_object_is_immutable_and_runtime_blocked(self) -> None:
+        item = knowledge()
+
+        self.assertFalse(item.runtime_eligible)
+        with self.assertRaises(AttributeError):
+            item.status = KnowledgeStatus.VALIDATED  # type: ignore[misc]
+
+    def test_validated_object_requires_human_review_metadata(self) -> None:
+        with self.assertRaises(KnowledgeError):
+            replace(knowledge(), status=KnowledgeStatus.VALIDATED)
+
+    def test_registry_rejects_unknown_evidence(self) -> None:
+        with self.assertRaises(KnowledgeError) as error:
+            KnowledgeRegistry(EvidenceRegistry()).register(knowledge())
+
+        self.assertEqual("knowledge_registry.unknown_evidence", error.exception.code)
+
+    def test_validated_object_requires_validated_evidence_metadata(self) -> None:
+        registry = KnowledgeRegistry(EvidenceRegistry((evidence(),)))
+
+        with self.assertRaises(KnowledgeError) as error:
+            registry.register(knowledge(KnowledgeStatus.VALIDATED))
+
+        self.assertEqual(
+            "knowledge_registry.unvalidated_evidence", error.exception.code
+        )
+
+    def test_validated_metadata_still_does_not_clear_runtime_gate(self) -> None:
+        registry = KnowledgeRegistry(
+            EvidenceRegistry((evidence(EvidenceStatus.VALIDATED),))
+        )
+        item = registry.register(knowledge(KnowledgeStatus.VALIDATED))
+
+        self.assertFalse(item.runtime_eligible)
+        self.assertIs(item, registry.require(item.object_id))
+
+    def test_registry_rejects_duplicate_and_sorts_objects(self) -> None:
+        registry = KnowledgeRegistry(EvidenceRegistry((evidence(),)))
+        alpha = knowledge()
+        beta = replace(alpha, object_id="knowledge.beta")
+        registry.register(beta)
+        registry.register(alpha)
+
+        self.assertEqual(
+            ("knowledge.beta", "knowledge.synthetic"),
+            tuple(item.object_id for item in registry.all()),
+        )
+        with self.assertRaises(KnowledgeError) as duplicate:
+            registry.register(alpha)
+        self.assertEqual("knowledge_registry.duplicate", duplicate.exception.code)
+
+
+if __name__ == "__main__":
+    unittest.main()
