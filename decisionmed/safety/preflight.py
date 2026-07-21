@@ -6,6 +6,7 @@ from decisionmed.domain import ClinicalSnapshot
 from decisionmed.evidence import EvidenceRegistry
 
 from .coordinator import SafetyCoordinator
+from .definitions import SafetyCheckStatus
 from .evaluator import SafetyCheckEvaluator
 from .evaluator_registry import SafetyCheckEvaluatorRegistry
 from .models import (
@@ -47,7 +48,22 @@ class SafetyPreflight:
             == snapshot.specialty_key
             for evaluator in evaluators
         )
-        if not snapshot.structurally_complete:
+        specifications_current = all(
+            specification.status is SafetyCheckStatus.VALIDATED
+            and specification.review_due_on is not None
+            and not specification.review_overdue
+            for specification in self._evaluators.providers.specifications.all()
+        )
+        if not specifications_current:
+            results = tuple(
+                self._not_evaluated(
+                    evaluator,
+                    snapshot.trace_id,
+                    "Governed safety specification review is not current; evaluator was not invoked.",
+                )
+                for evaluator in evaluators
+            )
+        elif not snapshot.structurally_complete:
             results = tuple(
                 self._not_evaluated(
                     evaluator,
