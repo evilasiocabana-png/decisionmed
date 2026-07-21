@@ -13,6 +13,8 @@ from typing import Any
 from urllib.parse import urlparse
 
 from .app import DecisionMedAppService
+from .specialties import UnknownSpecialtyPackError
+from .workflows import UnknownWorkflowError
 
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
@@ -31,6 +33,15 @@ class DecisionMedRequestHandler(SimpleHTTPRequestHandler):
             return
         if parsed.path == "/api/app-state":
             self._send_json(self._app_service.get_app_state())
+            return
+        if parsed.path.startswith("/api/workflows/"):
+            specialty_key = parsed.path.removeprefix("/api/workflows/")
+            try:
+                workflow = self._app_service.workflow(specialty_key)
+            except (UnknownSpecialtyPackError, UnknownWorkflowError):
+                self._send_json({"error": "workflow_not_found"}, status=404)
+                return
+            self._send_json(workflow.to_dict())
             return
         if parsed.path == "/psychiatry":
             self._redirect(self._psychiatry_url)

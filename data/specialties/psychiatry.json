@@ -1,0 +1,21 @@
+{
+  "specialty_key": "psychiatry",
+  "workflow_id": "psychrx.clinical-decision.v1",
+  "version": "0.1.0",
+  "mode": "reference_only",
+  "steps": [
+    {"key": "context", "title": "Contexto clínico", "capability": "clinical-snapshot"},
+    {"key": "population", "title": "População", "capability": "clinical-snapshot"},
+    {"key": "diagnosis", "title": "Contexto diagnóstico", "capability": "clinical-snapshot"},
+    {"key": "phenotype", "title": "Fenótipo", "capability": "reasoning"},
+    {"key": "symptoms", "title": "Sintomas", "capability": "clinical-snapshot"},
+    {"key": "objective", "title": "Objetivo terapêutico", "capability": "reasoning"},
+    {"key": "medications", "title": "Tratamento atual", "capability": "clinical-snapshot"},
+    {"key": "safety", "title": "Segurança", "capability": "safety"},
+    {"key": "acute-safety", "title": "Segurança aguda", "capability": "safety"},
+    {"key": "profile", "title": "Perfil farmacológico", "capability": "reasoning"},
+    {"key": "restrictions", "title": "Restrições", "capability": "safety"},
+    {"key": "decision", "title": "Apoio à decisão", "capability": "explanation"},
+    {"key": "monitoring", "title": "Monitorização", "capability": "monitoring"}
+  ]
+}
