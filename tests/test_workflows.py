@@ -65,6 +65,15 @@ class WorkflowContractTest(unittest.TestCase):
         with self.assertRaises(WorkflowDefinitionError):
             workflow_from_mapping(payload, PSYCHIATRY_PACK)
 
+    def test_rejects_workflow_contract_not_declared_by_pack(self) -> None:
+        payload = copy.deepcopy(self.payload)
+        payload["workflow_id"] = "psychrx.other-workflow.v1"
+
+        with self.assertRaisesRegex(
+            WorkflowDefinitionError, "workflow contract does not match its pack"
+        ):
+            workflow_from_mapping(payload, PSYCHIATRY_PACK)
+
     def test_rejects_clinical_execution_mode(self) -> None:
         payload = copy.deepcopy(self.payload)
         payload["mode"] = "active"
