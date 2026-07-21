@@ -7,6 +7,7 @@ from .gate import (
     ReasoningGateStatus,
 )
 from .input import ReasoningInputEnvelope
+from .knowledge_binding import ReasoningKnowledgeBinding
 
 __all__ = [
     "ReasoningError",
@@ -14,4 +15,5 @@ __all__ = [
     "ReasoningGateResult",
     "ReasoningGateStatus",
     "ReasoningInputEnvelope",
+    "ReasoningKnowledgeBinding",
 ]
