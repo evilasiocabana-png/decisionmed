@@ -19,7 +19,9 @@ class GovernedCatalogLoaderTest(unittest.TestCase):
         self.assertEqual("decisionmed.knowledge", catalogs.manifest.catalog_id)
         self.assertFalse(catalogs.manifest.clinical_execution_allowed)
         self.assertEqual(1, len(catalogs.knowledge.all()))
-        schema = catalogs.form_schemas.require("cardiology")
+        schema = catalogs.form_schemas.require(
+            "cardiology", "decisionmed.cardiology.workflow.v1", "context"
+        )
         self.assertEqual("symptoms.present", schema.fields[0].field_key)
         self.assertFalse(schema.clinical_execution_allowed)
 
@@ -119,6 +121,7 @@ class GovernedCatalogLoaderTest(unittest.TestCase):
         schemas = cls._envelope(
             [{
                 "schema_id": "schema.cardiology.sample", "specialty_key": "cardiology",
+                "workflow_id": "decisionmed.cardiology.workflow.v1", "step_key": "context",
                 "version": "0.1.0", "status": "draft", "reviewed_on": None,
                 "validated_by": None, "fields": [{
                     "field_key": "symptoms.present", "label": "Structural sample",
@@ -137,7 +140,7 @@ class GovernedCatalogLoaderTest(unittest.TestCase):
 
     @staticmethod
     def _envelope(items: list[dict[str, object]]) -> dict[str, object]:
-        return {"schema_version": "2.0.0", "items": items}
+        return {"schema_version": "3.0.0", "items": items}
 
     @staticmethod
     def _write(path: Path, payload: dict[str, object]) -> None:
@@ -150,7 +153,7 @@ class GovernedCatalogLoaderTest(unittest.TestCase):
             for name in ("evidence.json", "knowledge.json", "form-schemas.json")
         }
         manifest = {
-            "schema_version": "2.0.0",
+            "schema_version": "3.0.0",
             "catalog_id": "decisionmed.knowledge",
             "release_version": "0.1.0",
             "status": "draft",

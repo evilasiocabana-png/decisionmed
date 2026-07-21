@@ -1,4 +1,4 @@
-from dataclasses import FrozenInstanceError
+from dataclasses import FrozenInstanceError, replace
 from datetime import date
 import unittest
 
@@ -100,12 +100,57 @@ class SpecialtyFormSchemaTest(unittest.TestCase):
         )
         registry = SpecialtyFormSchemaRegistry(knowledge, (schema,))
 
-        self.assertIs(schema, registry.require("cardiology"))
+        self.assertIs(
+            schema,
+            registry.require(
+                "cardiology", "decisionmed.cardiology.workflow.v1", "context"
+            ),
+        )
         self.assertEqual((schema,), registry.all())
         self.assertFalse(schema.runtime_eligible)
         self.assertFalse(schema.clinical_execution_allowed)
         with self.assertRaises(KnowledgeError):
             registry.register(schema)
+
+    def test_registry_allows_distinct_steps_but_rejects_duplicate_binding(self) -> None:
+        evidence = EvidenceRegistry((self._evidence(EvidenceStatus.DRAFT),))
+        knowledge = KnowledgeRegistry(
+            evidence,
+            (self._knowledge(KnowledgeStatus.DRAFT),),
+        )
+        context_schema = self._schema((self._field(),))
+        risk_schema = replace(
+            context_schema,
+            schema_id="schema.cardiology.risk",
+            step_key="risk",
+        )
+        registry = SpecialtyFormSchemaRegistry(
+            knowledge, (context_schema, risk_schema)
+        )
+
+        self.assertEqual(
+            (context_schema, risk_schema),
+            registry.for_workflow(
+                "cardiology", "decisionmed.cardiology.workflow.v1"
+            ),
+        )
+        self.assertIs(
+            risk_schema,
+            registry.require(
+                "cardiology", "decisionmed.cardiology.workflow.v1", "risk"
+            ),
+        )
+        with self.assertRaises(KnowledgeError) as context:
+            registry.register(
+                replace(
+                    context_schema,
+                    schema_id="schema.cardiology.duplicate-context",
+                )
+            )
+        self.assertEqual(
+            "specialty_form_schema_registry.duplicate_binding",
+            context.exception.code,
+        )
 
     @staticmethod
     def _field(
@@ -134,6 +179,8 @@ class SpecialtyFormSchemaTest(unittest.TestCase):
         return SpecialtyFormSchema(
             schema_id="schema.cardiology.intake",
             specialty_key="cardiology",
+            workflow_id="decisionmed.cardiology.workflow.v1",
+            step_key="context",
             version="0.1.0",
             fields=fields,
             status=status,

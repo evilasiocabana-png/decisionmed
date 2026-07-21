@@ -30,8 +30,7 @@ class ClinicalInputStructureValidatorTest(unittest.TestCase):
         self.validator = ClinicalInputStructureValidator(self._schemas())
 
     def test_valid_payload_is_structural_only_and_never_clinically_active(self) -> None:
-        result = self.validator.validate(
-            "cardiology",
+        result = self._validate(
             {
                 "symptoms.present": True,
                 "symptoms.count": 2,
@@ -44,11 +43,13 @@ class ClinicalInputStructureValidatorTest(unittest.TestCase):
         self.assertTrue(result.structurally_valid)
         self.assertEqual(5, result.accepted_field_count)
         self.assertEqual("draft", result.schema_status)
+        self.assertEqual("decisionmed.cardiology.workflow.v1", result.workflow_id)
+        self.assertEqual("context", result.step_key)
         self.assertFalse(result.clinical_execution_allowed)
 
     def test_required_and_unknown_fields_are_reported_without_values(self) -> None:
         secret = "patient-secret-value"
-        result = self.validator.validate("cardiology", {"unexpected": secret})
+        result = self._validate({"unexpected": secret})
 
         self.assertFalse(result.structurally_valid)
         self.assertEqual(
@@ -70,24 +71,22 @@ class ClinicalInputStructureValidatorTest(unittest.TestCase):
             "symptoms.state": "not-allowed",
         }
 
-        result = self.validator.validate("cardiology", invalid)
+        result = self._validate(invalid)
 
         self.assertEqual(0, result.accepted_field_count)
         self.assertEqual(5, len(result.issues))
         self.assertTrue(all(issue.code == "invalid_value" for issue in result.issues))
 
     def test_optional_fields_may_be_omitted(self) -> None:
-        result = self.validator.validate(
-            "cardiology",
-            {"symptoms.present": False, "symptoms.state": "absent"},
+        result = self._validate(
+            {"symptoms.present": False, "symptoms.state": "absent"}
         )
 
         self.assertTrue(result.structurally_valid)
         self.assertEqual(2, result.accepted_field_count)
 
     def test_large_integer_decimal_does_not_raise_or_lose_structure(self) -> None:
-        result = self.validator.validate(
-            "cardiology",
+        result = self._validate(
             {
                 "symptoms.present": False,
                 "symptoms.score": 10**1000,
@@ -99,14 +98,15 @@ class ClinicalInputStructureValidatorTest(unittest.TestCase):
         self.assertEqual(3, result.accepted_field_count)
 
     def test_result_is_immutable_and_contains_no_input_values(self) -> None:
-        result = self.validator.validate(
-            "cardiology",
-            {"symptoms.present": False, "symptoms.state": "absent"},
+        result = self._validate(
+            {"symptoms.present": False, "symptoms.state": "absent"}
         )
 
         self.assertEqual(
             {
                 "schema_id",
+                "workflow_id",
+                "step_key",
                 "schema_version",
                 "schema_status",
                 "accepted_field_count",
@@ -116,6 +116,14 @@ class ClinicalInputStructureValidatorTest(unittest.TestCase):
         )
         with self.assertRaises(FrozenInstanceError):
             result.schema_status = "validated"  # type: ignore[misc]
+
+    def _validate(self, values: dict[str, object]):
+        return self.validator.validate(
+            "cardiology",
+            "decisionmed.cardiology.workflow.v1",
+            "context",
+            values,
+        )
 
     @staticmethod
     def _schemas() -> SpecialtyFormSchemaRegistry:
@@ -170,6 +178,8 @@ class ClinicalInputStructureValidatorTest(unittest.TestCase):
         schema = SpecialtyFormSchema(
             schema_id="schema.cardiology.structural",
             specialty_key="cardiology",
+            workflow_id="decisionmed.cardiology.workflow.v1",
+            step_key="context",
             version="0.1.0",
             fields=tuple(
                 ClinicalFieldDefinition(
