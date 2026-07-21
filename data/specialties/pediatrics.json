@@ -1,0 +1,9 @@
+{"specialty_key":"pediatrics","workflow_id":"decisionmed.pediatrics.workflow.v1","version":"0.1.0","mode":"reference_only","steps":[
+  {"key":"context","title":"Contexto clínico","capability":"pediatrics.clinical-snapshot"},
+  {"key":"population","title":"Faixa etária e contexto","capability":"pediatrics.clinical-snapshot"},
+  {"key":"development","title":"Crescimento e desenvolvimento","capability":"pediatrics.reasoning"},
+  {"key":"safety","title":"Segurança","capability":"pediatrics.safety"},
+  {"key":"evidence","title":"Evidências","capability":"pediatrics.evidence"},
+  {"key":"decision","title":"Apoio à decisão","capability":"pediatrics.explanation"},
+  {"key":"monitoring","title":"Acompanhamento","capability":"pediatrics.monitoring"}
+]}

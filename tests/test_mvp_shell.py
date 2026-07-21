@@ -14,9 +14,12 @@ class DecisionMedAppServiceTest(unittest.TestCase):
         self.assertEqual("DecisionMEd", state["product"])
         self.assertEqual("read-only", state["mode"])
         self.assertFalse(state["clinical_execution_allowed"])
-        self.assertEqual("psychiatry", state["specialties"][0]["key"])
-        self.assertEqual("reference_only", state["specialties"][0]["load_status"])
-        self.assertFalse(state["specialties"][0]["execution_allowed"])
+        psychiatry = next(
+            item for item in state["specialties"] if item["key"] == "psychiatry"
+        )
+        self.assertEqual(6, len(state["specialties"]))
+        self.assertEqual("reference_only", psychiatry["load_status"])
+        self.assertFalse(psychiatry["execution_allowed"])
 
 
 class DecisionMedWebTest(unittest.TestCase):
@@ -64,13 +67,19 @@ class DecisionMedWebTest(unittest.TestCase):
 
     def test_workflow_endpoint_and_unknown_specialty(self) -> None:
         status, _, body = self.request("/api/workflows/psychiatry")
-        missing_status, _, missing_body = self.request("/api/workflows/cardiology")
+        missing_status, _, missing_body = self.request("/api/workflows/dermatology")
 
         self.assertEqual(200, status)
         self.assertEqual(13, len(json.loads(body)["steps"]))
         self.assertFalse(json.loads(body)["clinical_execution_allowed"])
         self.assertEqual(404, missing_status)
         self.assertEqual("workflow_not_found", json.loads(missing_body)["error"])
+
+    def test_generic_workflow_page_is_served(self) -> None:
+        status, _, body = self.request("/workflow.html?specialty=cardiology")
+
+        self.assertEqual(200, status)
+        self.assertIn(b"api/workflows", body)
 
     def test_psychrx_baseline_server_can_be_created(self) -> None:
         server = create_psychiatry_server(port=0)

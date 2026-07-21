@@ -74,6 +74,7 @@ class SpecialtyPackRegistryTest(unittest.TestCase):
         registry = build_default_specialty_registry()
 
         self.assertIs(PSYCHIATRY_PACK, registry.require("psychiatry"))
+        self.assertEqual(6, len(registry.all()))
         self.assertEqual(SpecialtyPackStatus.REFERENCE_ONLY, PSYCHIATRY_PACK.status)
         self.assertFalse(PSYCHIATRY_PACK.is_clinically_active)
         self.assertIn("safety", PSYCHIATRY_PACK.required_capabilities)

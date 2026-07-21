@@ -1,0 +1,9 @@
+{"specialty_key":"neurology","workflow_id":"decisionmed.neurology.workflow.v1","version":"0.1.0","mode":"reference_only","steps":[
+  {"key":"context","title":"Contexto clínico","capability":"neurology.clinical-snapshot"},
+  {"key":"presentation","title":"Apresentação clínica","capability":"neurology.clinical-snapshot"},
+  {"key":"assessment","title":"Avaliação estruturada","capability":"neurology.reasoning"},
+  {"key":"safety","title":"Segurança","capability":"neurology.safety"},
+  {"key":"evidence","title":"Evidências","capability":"neurology.evidence"},
+  {"key":"decision","title":"Apoio à decisão","capability":"neurology.explanation"},
+  {"key":"monitoring","title":"Acompanhamento","capability":"neurology.monitoring"}
+]}

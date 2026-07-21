@@ -1,0 +1,9 @@
+{"specialty_key":"internal-medicine","workflow_id":"decisionmed.internal-medicine.workflow.v1","version":"0.1.0","mode":"reference_only","steps":[
+  {"key":"context","title":"Contexto clínico","capability":"internal-medicine.clinical-snapshot"},
+  {"key":"problems","title":"Problemas ativos","capability":"internal-medicine.clinical-snapshot"},
+  {"key":"medications","title":"Tratamento atual","capability":"internal-medicine.clinical-snapshot"},
+  {"key":"safety","title":"Segurança","capability":"internal-medicine.safety"},
+  {"key":"evidence","title":"Evidências","capability":"internal-medicine.evidence"},
+  {"key":"decision","title":"Apoio à decisão","capability":"internal-medicine.explanation"},
+  {"key":"monitoring","title":"Acompanhamento","capability":"internal-medicine.monitoring"}
+]}

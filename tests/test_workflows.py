@@ -29,6 +29,7 @@ class WorkflowContractTest(unittest.TestCase):
         self.assertEqual("monitoring", workflow.steps[-1].key)
         self.assertEqual(1, rendered["steps"][0]["position"])
         self.assertFalse(rendered["clinical_execution_allowed"])
+        self.assertEqual(7, len(registry.require("cardiology").steps))
 
     def test_rejects_duplicate_steps(self) -> None:
         payload = copy.deepcopy(self.payload)

@@ -1,0 +1,9 @@
+{"specialty_key":"cardiology","workflow_id":"decisionmed.cardiology.workflow.v1","version":"0.1.0","mode":"reference_only","steps":[
+  {"key":"context","title":"Contexto clínico","capability":"cardiology.clinical-snapshot"},
+  {"key":"risk","title":"Avaliação de risco","capability":"cardiology.reasoning"},
+  {"key":"findings","title":"Sintomas e achados","capability":"cardiology.clinical-snapshot"},
+  {"key":"safety","title":"Segurança","capability":"cardiology.safety"},
+  {"key":"evidence","title":"Evidências","capability":"cardiology.evidence"},
+  {"key":"decision","title":"Apoio à decisão","capability":"cardiology.explanation"},
+  {"key":"monitoring","title":"Acompanhamento","capability":"cardiology.monitoring"}
+]}
