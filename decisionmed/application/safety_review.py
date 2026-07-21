@@ -2,7 +2,8 @@
 
 from __future__ import annotations
 
-from datetime import datetime
+from datetime import datetime, timedelta, timezone
+from typing import Callable
 
 from decisionmed.audit import AuditLedger
 from decisionmed.domain import DomainError, DomainEvent
@@ -17,6 +18,10 @@ from .reviewer_authority import (
     SafetyReviewerAuthority,
     SafetyReviewerAuthorityDecision,
 )
+from .reviewer_authority_replay import (
+    InMemorySafetyReviewerAuthorityReplayGuard,
+    SafetyReviewerAuthorityReplayGuard,
+)
 
 
 class SafetyReviewApplicationError(DomainError):
@@ -27,14 +32,33 @@ class SafetyReviewApplicationService:
     """Return a review record only after exact authority and audit checks."""
 
     def __init__(
-        self, authority: SafetyReviewerAuthority, audit: AuditLedger
+        self,
+        authority: SafetyReviewerAuthority,
+        audit: AuditLedger,
+        max_authority_age: timedelta = timedelta(minutes=5),
+        now: Callable[[], datetime] | None = None,
+        replay_guard: SafetyReviewerAuthorityReplayGuard | None = None,
     ) -> None:
         if not isinstance(authority, SafetyReviewerAuthority):
             raise TypeError("authority must implement SafetyReviewerAuthority")
         if not isinstance(audit, AuditLedger):
             raise TypeError("audit must be an AuditLedger")
+        if (
+            not isinstance(max_authority_age, timedelta)
+            or max_authority_age <= timedelta(0)
+        ):
+            raise ValueError("max_authority_age must be positive")
+        if replay_guard is not None and not isinstance(
+            replay_guard, SafetyReviewerAuthorityReplayGuard
+        ):
+            raise TypeError(
+                "replay_guard must satisfy SafetyReviewerAuthorityReplayGuard"
+            )
         self._authority = authority
         self._audit = audit
+        self._max_authority_age = max_authority_age
+        self._now = now or (lambda: datetime.now(timezone.utc))
+        self._replay_guard = replay_guard or InMemorySafetyReviewerAuthorityReplayGuard()
 
     def record(
         self,
@@ -119,6 +143,38 @@ class SafetyReviewApplicationService:
                 "safety_review.authority_denied",
                 "authority denied safety-review recording",
             )
+        if self._authority_expired(decision):
+            self._append(
+                assessment,
+                "safety.review_authority_expired",
+                request_metadata
+                + (
+                    ("authority_provider", decision.authority_provider),
+                    ("decision_reference", decision.decision_reference),
+                    ("verified_at", decision.verified_at.isoformat()),
+                ),
+            )
+            raise SafetyReviewApplicationError(
+                "safety_review.authority_expired",
+                "authority decision is no longer current",
+            )
+        if not self._replay_guard.reserve(
+            authority_provider=decision.authority_provider,
+            decision_reference=decision.decision_reference,
+        ):
+            self._append(
+                assessment,
+                "safety.review_authority_replayed",
+                request_metadata
+                + (
+                    ("authority_provider", decision.authority_provider),
+                    ("decision_reference", decision.decision_reference),
+                ),
+            )
+            raise SafetyReviewApplicationError(
+                "safety_review.authority_replayed",
+                "authority decision was already reserved",
+            )
 
         try:
             record = SafetyReviewRecord.create(
@@ -162,6 +218,16 @@ class SafetyReviewApplicationService:
     @property
     def clinical_execution_allowed(self) -> bool:
         return False
+
+    def _authority_expired(self, decision: SafetyReviewerAuthorityDecision) -> bool:
+        current_time = self._now()
+        if (
+            not isinstance(current_time, datetime)
+            or current_time.tzinfo is None
+            or current_time.utcoffset() is None
+        ):
+            raise TypeError("now must return a timezone-aware datetime")
+        return current_time - decision.verified_at > self._max_authority_age
 
     def _append(
         self,
