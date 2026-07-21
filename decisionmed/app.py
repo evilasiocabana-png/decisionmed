@@ -27,6 +27,7 @@ class SpecialtyView:
     intended_scope: str
     excluded_uses: tuple[str, ...]
     version: str
+    workflow_contract: str
     pack_status: str
     load_status: str
     execution_allowed: bool
@@ -43,6 +44,7 @@ class SpecialtyView:
             "intended_scope": self.intended_scope,
             "excluded_uses": list(self.excluded_uses),
             "version": self.version,
+            "workflow_contract": self.workflow_contract,
             "pack_status": self.pack_status,
             "load_status": self.load_status,
             "execution_allowed": self.execution_allowed,
@@ -106,6 +108,7 @@ class DecisionMedAppService:
         views: list[SpecialtyView] = []
         for pack in self._registry.all():
             result = self._resolver.resolve(pack)
+            workflow = self._workflows.require(pack.key)
             views.append(
                 SpecialtyView(
                     key=pack.key,
@@ -113,6 +116,7 @@ class DecisionMedAppService:
                     intended_scope=pack.intended_scope,
                     excluded_uses=pack.excluded_uses,
                     version=pack.version,
+                    workflow_contract=workflow.workflow_id,
                     pack_status=pack.status.value,
                     load_status=result.status.value,
                     execution_allowed=result.clinical_execution_allowed,
