@@ -20,6 +20,7 @@ from .question_validation import (
     QuestionEngineOutputValidator,
     QuestionEngineValidationReceipt,
 )
+from .question_registry import QuestionEngineBinding, QuestionEngineRegistry
 
 __all__ = [
     "ReasoningError",
@@ -36,4 +37,6 @@ __all__ = [
     "QuestionRequirement",
     "QuestionEngineOutputValidator",
     "QuestionEngineValidationReceipt",
+    "QuestionEngineBinding",
+    "QuestionEngineRegistry",
 ]
