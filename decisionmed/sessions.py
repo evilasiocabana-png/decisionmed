@@ -4,6 +4,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass, replace
 from enum import Enum
+from threading import RLock
 from uuid import uuid4
 
 from .audit import AuditLedger, AuditRecord
@@ -121,94 +122,100 @@ class WorkflowSessionService:
         self._audit = audit or AuditLedger()
         self._max_sessions = max_sessions
         self._sessions: dict[str, WorkflowSession] = {}
+        self._lock = RLock()
 
     def start(self, specialty_key: str) -> WorkflowSession:
-        if len(self._sessions) >= self._max_sessions:
-            raise WorkflowSessionError(
-                "workflow_session.capacity", "in-memory session capacity reached"
-            )
-        try:
-            self._specialties.require(specialty_key)
-            workflow = self._workflows.require(specialty_key)
-        except (UnknownSpecialtyPackError, UnknownWorkflowError) as exc:
-            raise WorkflowSessionError(
-                "workflow_session.unknown_specialty",
-                f"workflow not available: {specialty_key}",
-            ) from exc
+        with self._lock:
+            if len(self._sessions) >= self._max_sessions:
+                raise WorkflowSessionError(
+                    "workflow_session.capacity", "in-memory session capacity reached"
+                )
+            try:
+                self._specialties.require(specialty_key)
+                workflow = self._workflows.require(specialty_key)
+            except (UnknownSpecialtyPackError, UnknownWorkflowError) as exc:
+                raise WorkflowSessionError(
+                    "workflow_session.unknown_specialty",
+                    f"workflow not available: {specialty_key}",
+                ) from exc
 
-        session_id = str(uuid4())
-        trace_id = f"workflow-session:{session_id}"
-        session = WorkflowSession(
-            session_id=session_id,
-            trace_id=trace_id,
-            specialty_key=specialty_key,
-            workflow_id=workflow.workflow_id,
-            step_keys=tuple(step.key for step in workflow.steps),
-        )
-        self._sessions[session_id] = session
-        self._record(
-            session,
-            "workflow.session-started",
-            (("specialty", specialty_key), ("workflow", workflow.workflow_id)),
-        )
-        return session
+            session_id = str(uuid4())
+            trace_id = f"workflow-session:{session_id}"
+            session = WorkflowSession(
+                session_id=session_id,
+                trace_id=trace_id,
+                specialty_key=specialty_key,
+                workflow_id=workflow.workflow_id,
+                step_keys=tuple(step.key for step in workflow.steps),
+            )
+            self._sessions[session_id] = session
+            self._record(
+                session,
+                "workflow.session-started",
+                (("specialty", specialty_key), ("workflow", workflow.workflow_id)),
+            )
+            return session
 
     def get(self, session_id: str) -> WorkflowSession:
-        session = self._sessions.get(session_id)
-        if session is None:
-            raise WorkflowSessionError(
-                "workflow_session.unknown", f"session not found: {session_id}"
-            )
-        return session
+        with self._lock:
+            session = self._sessions.get(session_id)
+            if session is None:
+                raise WorkflowSessionError(
+                    "workflow_session.unknown", f"session not found: {session_id}"
+                )
+            return session
 
     def advance(self, session_id: str, step_key: str) -> WorkflowSession:
-        session = self.get(session_id)
-        if session.status is WorkflowSessionStatus.COMPLETED:
-            raise WorkflowSessionError(
-                "workflow_session.completed", "completed session cannot advance"
-            )
-        if step_key != session.current_step_key:
-            raise WorkflowSessionError(
-                "workflow_session.out_of_order",
-                f"expected step: {session.current_step_key}",
-            )
+        with self._lock:
+            session = self.get(session_id)
+            if session.status is WorkflowSessionStatus.COMPLETED:
+                raise WorkflowSessionError(
+                    "workflow_session.completed", "completed session cannot advance"
+                )
+            if step_key != session.current_step_key:
+                raise WorkflowSessionError(
+                    "workflow_session.out_of_order",
+                    f"expected step: {session.current_step_key}",
+                )
 
-        next_position = session.current_position + 1
-        next_status = (
-            WorkflowSessionStatus.COMPLETED
-            if next_position == len(session.step_keys)
-            else WorkflowSessionStatus.ACTIVE
-        )
-        updated = replace(
-            session,
-            current_position=next_position,
-            completed_step_keys=session.step_keys[:next_position],
-            status=next_status,
-        )
-        self._sessions[session_id] = updated
-        event_name = (
-            "workflow.session-completed"
-            if next_status is WorkflowSessionStatus.COMPLETED
-            else "workflow.step-completed"
-        )
-        self._record(
-            updated,
-            event_name,
-            (("step", step_key), ("position", str(next_position))),
-        )
-        return updated
+            next_position = session.current_position + 1
+            next_status = (
+                WorkflowSessionStatus.COMPLETED
+                if next_position == len(session.step_keys)
+                else WorkflowSessionStatus.ACTIVE
+            )
+            updated = replace(
+                session,
+                current_position=next_position,
+                completed_step_keys=session.step_keys[:next_position],
+                status=next_status,
+            )
+            self._sessions[session_id] = updated
+            event_name = (
+                "workflow.session-completed"
+                if next_status is WorkflowSessionStatus.COMPLETED
+                else "workflow.step-completed"
+            )
+            self._record(
+                updated,
+                event_name,
+                (("step", step_key), ("position", str(next_position))),
+            )
+            return updated
 
     def audit_records(self, session_id: str) -> tuple[AuditRecord, ...]:
-        self.get(session_id)
-        return tuple(
-            record
-            for record in self._audit.records()
-            if record.aggregate_id == session_id
-        )
+        with self._lock:
+            self.get(session_id)
+            return tuple(
+                record
+                for record in self._audit.records()
+                if record.aggregate_id == session_id
+            )
 
     @property
     def audit_integrity_valid(self) -> bool:
-        return self._audit.verify()
+        with self._lock:
+            return self._audit.verify()
 
     def _record(
         self,

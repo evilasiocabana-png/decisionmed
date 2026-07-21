@@ -7,6 +7,7 @@ from typing import Any
 
 from .composition import SpecialtyPackResolver, build_reference_resolver
 from .readiness import PlatformReadinessService
+from .sessions import WorkflowSessionService
 from .specialties import SpecialtyPackRegistry, build_default_specialty_registry
 from .workflows import (
     SpecialtyWorkflow,
@@ -50,11 +51,15 @@ class DecisionMedAppService:
         resolver: SpecialtyPackResolver | None = None,
         workflows: WorkflowRegistry | None = None,
         readiness: PlatformReadinessService | None = None,
+        sessions: WorkflowSessionService | None = None,
     ) -> None:
         self._registry = registry or build_default_specialty_registry()
         self._resolver = resolver or build_reference_resolver()
         self._workflows = workflows or build_default_workflow_registry(self._registry)
         self._readiness = readiness or PlatformReadinessService()
+        self._sessions = sessions or WorkflowSessionService(
+            self._registry, self._workflows
+        )
 
     def workflow(self, specialty_key: str) -> SpecialtyWorkflow:
         self._registry.require(specialty_key)
@@ -94,3 +99,9 @@ class DecisionMedAppService:
     def get_readiness(self) -> dict[str, Any]:
         specialties = self.specialties()
         return self._readiness.report(item.load_status for item in specialties)
+
+    def start_session(self, specialty_key: str) -> dict[str, object]:
+        return self._sessions.start(specialty_key).to_dict()
+
+    def advance_session(self, session_id: str, step_key: str) -> dict[str, object]:
+        return self._sessions.advance(session_id, step_key).to_dict()

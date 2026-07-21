@@ -1,4 +1,5 @@
 import inspect
+from concurrent.futures import ThreadPoolExecutor
 import unittest
 
 from decisionmed.sessions import (
@@ -86,6 +87,14 @@ class WorkflowSessionServiceTest(unittest.TestCase):
         with self.assertRaises(WorkflowSessionError) as capacity:
             sessions.start("neurology")
         self.assertEqual("workflow_session.capacity", capacity.exception.code)
+
+    def test_concurrent_starts_keep_unique_sessions_and_valid_audit(self) -> None:
+        sessions = service()
+        with ThreadPoolExecutor(max_workers=8) as executor:
+            created = tuple(executor.map(sessions.start, ("cardiology",) * 20))
+
+        self.assertEqual(20, len({item.session_id for item in created}))
+        self.assertTrue(sessions.audit_integrity_valid)
 
     def test_mutation_api_accepts_no_patient_or_free_text_content(self) -> None:
         parameters = set(inspect.signature(WorkflowSessionService.advance).parameters)
