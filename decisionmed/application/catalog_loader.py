@@ -4,8 +4,11 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 from datetime import date
+from hashlib import sha256
+import hmac
 import json
 from pathlib import Path
+import re
 from typing import Any
 
 from decisionmed.domain import ClinicalSnapshotSection
@@ -30,6 +33,10 @@ from decisionmed.knowledge import (
 CATALOG_SCHEMA_VERSION = "1.0.0"
 MAX_CATALOG_BYTES = 1_048_576
 MAX_CATALOG_ITEMS = 10_000
+_IDENTIFIER = re.compile(r"^[a-z][a-z0-9]*(?:[._-][a-z0-9]+)*$")
+_VERSION = re.compile(r"^(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)$")
+_HASH = re.compile(r"^[0-9a-f]{64}$")
+_CATALOG_FILES = ("evidence.json", "knowledge.json", "form-schemas.json")
 
 
 class CatalogLoadError(ValueError):
@@ -41,9 +48,53 @@ class CatalogLoadError(ValueError):
 
 @dataclass(frozen=True, slots=True)
 class GovernedCatalogs:
+    manifest: CatalogReleaseManifest
     evidence: EvidenceRegistry
     knowledge: KnowledgeRegistry
     form_schemas: SpecialtyFormSchemaRegistry
+
+
+@dataclass(frozen=True, slots=True)
+class CatalogReleaseManifest:
+    catalog_id: str
+    release_version: str
+    status: KnowledgeStatus
+    released_on: date | None
+    validated_by: str | None
+    file_hashes: tuple[tuple[str, str], ...]
+
+    def __post_init__(self) -> None:
+        if not isinstance(self.catalog_id, str) or not _IDENTIFIER.fullmatch(self.catalog_id):
+            raise CatalogLoadError("catalog.manifest_id", "catalog id must be canonical")
+        if not isinstance(self.release_version, str) or not _VERSION.fullmatch(self.release_version):
+            raise CatalogLoadError("catalog.manifest_version", "release version is invalid")
+        if not isinstance(self.status, KnowledgeStatus):
+            raise TypeError("status must be a KnowledgeStatus")
+        hashes = tuple(self.file_hashes)
+        if tuple(name for name, _ in hashes) != _CATALOG_FILES or any(
+            not isinstance(value, str) or not _HASH.fullmatch(value)
+            for _, value in hashes
+        ):
+            raise CatalogLoadError("catalog.manifest_hashes", "manifest hashes are invalid")
+        object.__setattr__(self, "file_hashes", hashes)
+        if self.released_on is not None and not isinstance(self.released_on, date):
+            raise TypeError("released_on must be a date or None")
+        if self.validated_by is not None and (
+            not isinstance(self.validated_by, str)
+            or not _IDENTIFIER.fullmatch(self.validated_by)
+        ):
+            raise CatalogLoadError("catalog.manifest_validator", "validator is invalid")
+        if self.status is KnowledgeStatus.VALIDATED and (
+            self.released_on is None or self.validated_by is None
+        ):
+            raise CatalogLoadError(
+                "catalog.manifest_validation",
+                "validated release requires review metadata",
+            )
+
+    @property
+    def clinical_execution_allowed(self) -> bool:
+        return False
 
 
 def load_governed_catalogs(root: Path) -> GovernedCatalogs:
@@ -53,9 +104,13 @@ def load_governed_catalogs(root: Path) -> GovernedCatalogs:
     if not root.is_dir():
         raise CatalogLoadError("catalog.root", "catalog root is not a directory")
     try:
-        evidence_payload = _load_file(root / "evidence.json")
-        knowledge_payload = _load_file(root / "knowledge.json")
-        schema_payload = _load_file(root / "form-schemas.json")
+        manifest = _load_manifest(root / "catalog-manifest.json")
+        hashes = dict(manifest.file_hashes)
+        evidence_payload = _load_file(root / "evidence.json", hashes["evidence.json"])
+        knowledge_payload = _load_file(root / "knowledge.json", hashes["knowledge.json"])
+        schema_payload = _load_file(
+            root / "form-schemas.json", hashes["form-schemas.json"]
+        )
 
         evidence = EvidenceRegistry(
             EvidenceSource(
@@ -107,23 +162,61 @@ def load_governed_catalogs(root: Path) -> GovernedCatalogs:
         raise CatalogLoadError(
             "catalog.invalid_content", "catalog content violates its contracts"
         ) from exc
-    return GovernedCatalogs(evidence, knowledge, schemas)
+    return GovernedCatalogs(manifest, evidence, knowledge, schemas)
 
 
-def _load_file(path: Path) -> dict[str, Any]:
-    if path.is_symlink() or not path.is_file():
-        raise CatalogLoadError("catalog.file", f"required catalog file unavailable: {path.name}")
-    if path.stat().st_size > MAX_CATALOG_BYTES:
-        raise CatalogLoadError("catalog.size", f"catalog file too large: {path.name}")
-    try:
-        payload = json.loads(path.read_text(encoding="utf-8"), object_pairs_hook=_object)
-    except (OSError, UnicodeError, json.JSONDecodeError) as exc:
-        raise CatalogLoadError("catalog.json", f"invalid catalog JSON: {path.name}") from exc
+def _load_manifest(path: Path) -> CatalogReleaseManifest:
+    payload = _decode_json(_read_file(path), path.name)
+    expected = {
+        "schema_version", "catalog_id", "release_version", "status",
+        "released_on", "validated_by", "files",
+    }
+    if not isinstance(payload, dict) or set(payload) != expected:
+        raise CatalogLoadError("catalog.manifest", "invalid catalog manifest")
+    if payload["schema_version"] != CATALOG_SCHEMA_VERSION:
+        raise CatalogLoadError("catalog.version", "unsupported manifest version")
+    files = payload["files"]
+    if not isinstance(files, dict) or set(files) != set(_CATALOG_FILES):
+        raise CatalogLoadError("catalog.manifest_hashes", "manifest hashes are invalid")
+    return CatalogReleaseManifest(
+        catalog_id=payload["catalog_id"],
+        release_version=payload["release_version"],
+        status=KnowledgeStatus(payload["status"]),
+        released_on=_date_or_none(payload["released_on"]),
+        validated_by=payload["validated_by"],
+        file_hashes=tuple((name, files[name]) for name in _CATALOG_FILES),
+    )
+
+
+def _load_file(path: Path, expected_hash: str) -> dict[str, Any]:
+    data = _read_file(path)
+    actual_hash = sha256(data).hexdigest()
+    if not hmac.compare_digest(actual_hash, expected_hash):
+        raise CatalogLoadError("catalog.integrity", f"catalog hash mismatch: {path.name}")
+    payload = _decode_json(data, path.name)
     if not isinstance(payload, dict) or set(payload) != {"schema_version", "items"}:
         raise CatalogLoadError("catalog.envelope", f"invalid catalog envelope: {path.name}")
     if payload["schema_version"] != CATALOG_SCHEMA_VERSION:
         raise CatalogLoadError("catalog.version", f"unsupported catalog version: {path.name}")
     return payload
+
+
+def _read_file(path: Path) -> bytes:
+    if path.is_symlink() or not path.is_file():
+        raise CatalogLoadError("catalog.file", f"required catalog file unavailable: {path.name}")
+    if path.stat().st_size > MAX_CATALOG_BYTES:
+        raise CatalogLoadError("catalog.size", f"catalog file too large: {path.name}")
+    try:
+        return path.read_bytes()
+    except OSError as exc:
+        raise CatalogLoadError("catalog.file", f"catalog file unreadable: {path.name}") from exc
+
+
+def _decode_json(data: bytes, filename: str) -> Any:
+    try:
+        return json.loads(data.decode("utf-8"), object_pairs_hook=_object)
+    except (UnicodeError, json.JSONDecodeError) as exc:
+        raise CatalogLoadError("catalog.json", f"invalid catalog JSON: {filename}") from exc
 
 
 def _object(pairs: list[tuple[str, Any]]) -> dict[str, Any]:

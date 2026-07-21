@@ -7,6 +7,7 @@ from .clinical_input import (
 )
 from .catalog_loader import (
     CATALOG_SCHEMA_VERSION,
+    CatalogReleaseManifest,
     CatalogLoadError,
     GovernedCatalogs,
     load_governed_catalogs,
@@ -18,6 +19,7 @@ __all__ = [
     "ClinicalInputValidation",
     "CATALOG_SCHEMA_VERSION",
     "CatalogLoadError",
+    "CatalogReleaseManifest",
     "GovernedCatalogs",
     "load_governed_catalogs",
 ]
