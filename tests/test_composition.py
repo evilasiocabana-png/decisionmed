@@ -10,6 +10,7 @@ from decisionmed.composition import (
     build_reference_resolver,
 )
 from decisionmed.specialties import (
+    CapabilityRequirement,
     PSYCHIATRY_PACK,
     SpecialtyPackRegistry,
     SpecialtyPackStatus,
@@ -44,6 +45,7 @@ class SpecialtyPackResolverTest(unittest.TestCase):
             tuple(binding.capability for binding in result.bindings),
         )
         self.assertEqual((), result.missing_capabilities)
+        self.assertEqual((), result.incompatible_capabilities)
         self.assertEqual(("pack_status:reference_only",), result.blocking_reasons)
         self.assertFalse(result.clinical_execution_allowed)
         self.assertEqual(
@@ -57,7 +59,10 @@ class SpecialtyPackResolverTest(unittest.TestCase):
         pack = replace(
             PSYCHIATRY_PACK,
             key="test-pack",
-            required_capabilities=("safety", "evidence"),
+            capability_requirements=(
+                CapabilityRequirement("safety", "1.0.0"),
+                CapabilityRequirement("evidence", "1.0.0"),
+            ),
         )
 
         result = resolver.resolve(pack)
@@ -66,6 +71,28 @@ class SpecialtyPackResolverTest(unittest.TestCase):
         self.assertEqual(("evidence",), result.missing_capabilities)
         self.assertEqual(("missing_capability:evidence",), result.blocking_reasons)
         self.assertFalse(result.clinical_execution_allowed)
+
+    def test_incompatible_provider_version_blocks_resolution(self) -> None:
+        resolver = SpecialtyPackResolver(
+            (CapabilityBinding("safety", "test.safety", "2.0.0"),)
+        )
+        pack = replace(
+            PSYCHIATRY_PACK,
+            capability_requirements=(
+                CapabilityRequirement("safety", "1.0.0"),
+            ),
+        )
+
+        result = resolver.resolve(pack)
+
+        self.assertEqual(SpecialtyLoadStatus.BLOCKED, result.status)
+        self.assertEqual((), result.missing_capabilities)
+        self.assertEqual(("safety",), result.incompatible_capabilities)
+        self.assertEqual((), result.bindings)
+        self.assertEqual(
+            ("incompatible_capability:safety:required=1.0.0:found=2.0.0",),
+            result.blocking_reasons,
+        )
 
     def test_active_manifest_still_requires_future_clinical_gate(self) -> None:
         pack = replace(PSYCHIATRY_PACK, status=SpecialtyPackStatus.ACTIVE)
@@ -103,6 +130,7 @@ class SpecialtyPackResolverTest(unittest.TestCase):
                 "status",
                 "bindings",
                 "missing_capabilities",
+                "incompatible_capabilities",
                 "blocking_reasons",
                 "trace_id",
             },
@@ -116,6 +144,7 @@ class SpecialtyPackResolverTest(unittest.TestCase):
                 status=SpecialtyLoadStatus.REFERENCE_ONLY,
                 bindings=(),
                 missing_capabilities=("safety",),
+                incompatible_capabilities=(),
                 blocking_reasons=("pack_status:reference_only",),
                 trace_id="test:psychiatry:0.1.0",
             )

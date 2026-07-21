@@ -26,6 +26,7 @@ class DecisionMedAppServiceTest(unittest.TestCase):
         )
         self.assertEqual(6, len(state["specialties"]))
         self.assertEqual("reference_only", psychiatry["load_status"])
+        self.assertEqual([], psychiatry["incompatible_capabilities"])
         self.assertFalse(psychiatry["execution_allowed"])
 
 

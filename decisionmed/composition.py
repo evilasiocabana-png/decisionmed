@@ -66,6 +66,7 @@ class SpecialtyLoadResult:
     status: SpecialtyLoadStatus
     bindings: tuple[CapabilityBinding, ...]
     missing_capabilities: tuple[str, ...]
+    incompatible_capabilities: tuple[str, ...]
     blocking_reasons: tuple[str, ...]
     trace_id: str
 
@@ -77,22 +78,27 @@ class SpecialtyLoadResult:
 
         bindings = tuple(self.bindings)
         missing = tuple(self.missing_capabilities)
+        incompatible = tuple(self.incompatible_capabilities)
         reasons = tuple(self.blocking_reasons)
         if not all(isinstance(binding, CapabilityBinding) for binding in bindings):
             raise TypeError("bindings must contain only CapabilityBinding values")
         if len({binding.capability for binding in bindings}) != len(bindings):
             raise ValueError("bindings cannot contain duplicate capabilities")
-        for capability in missing:
+        for capability in missing + incompatible:
             if not isinstance(capability, str) or not _IDENTIFIER_PATTERN.fullmatch(
                 capability
             ):
                 raise ValueError(
-                    "missing_capabilities must contain canonical identifiers"
+                    "capability failures must contain canonical identifiers"
                 )
-        if {binding.capability for binding in bindings}.intersection(missing):
-            raise ValueError("a capability cannot be both bound and missing")
-        if missing and self.status is not SpecialtyLoadStatus.BLOCKED:
-            raise ValueError("missing capabilities require blocked status")
+        if set(missing).intersection(incompatible):
+            raise ValueError("a capability cannot be both missing and incompatible")
+        if {binding.capability for binding in bindings}.intersection(
+            set(missing) | set(incompatible)
+        ):
+            raise ValueError("a failed capability cannot be bound")
+        if (missing or incompatible) and self.status is not SpecialtyLoadStatus.BLOCKED:
+            raise ValueError("capability failures require blocked status")
         if self.status is SpecialtyLoadStatus.BLOCKED and not reasons:
             raise ValueError("blocked status requires at least one reason")
         if not all(isinstance(reason, str) and reason for reason in reasons):
@@ -102,6 +108,7 @@ class SpecialtyLoadResult:
 
         object.__setattr__(self, "bindings", bindings)
         object.__setattr__(self, "missing_capabilities", missing)
+        object.__setattr__(self, "incompatible_capabilities", incompatible)
         object.__setattr__(self, "blocking_reasons", reasons)
 
     @property
@@ -141,20 +148,37 @@ class SpecialtyPackResolver:
             raise TypeError("pack must be a SpecialtyPack")
 
         missing = tuple(
-            capability
-            for capability in pack.required_capabilities
-            if capability not in self._bindings
+            requirement.capability
+            for requirement in pack.capability_requirements
+            if requirement.capability not in self._bindings
+        )
+        incompatible = tuple(
+            requirement.capability
+            for requirement in pack.capability_requirements
+            if requirement.capability in self._bindings
+            and self._bindings[requirement.capability].version
+            != requirement.required_version
         )
         bindings = tuple(
-            self._bindings[capability]
-            for capability in pack.required_capabilities
-            if capability in self._bindings
+            self._bindings[requirement.capability]
+            for requirement in pack.capability_requirements
+            if requirement.capability in self._bindings
+            and self._bindings[requirement.capability].version
+            == requirement.required_version
         )
         trace_id = f"{pack.audit_namespace}:{pack.key}:{pack.version}"
 
-        if missing:
+        if missing or incompatible:
             status = SpecialtyLoadStatus.BLOCKED
-            reasons = tuple(f"missing_capability:{item}" for item in missing)
+            missing_reasons = tuple(f"missing_capability:{item}" for item in missing)
+            incompatible_reasons = tuple(
+                "incompatible_capability:"
+                f"{requirement.capability}:required={requirement.required_version}:"
+                f"found={self._bindings[requirement.capability].version}"
+                for requirement in pack.capability_requirements
+                if requirement.capability in incompatible
+            )
+            reasons = missing_reasons + incompatible_reasons
         elif pack.status is SpecialtyPackStatus.RETIRED:
             status = SpecialtyLoadStatus.BLOCKED
             reasons = ("pack_status:retired",)
@@ -170,6 +194,7 @@ class SpecialtyPackResolver:
             status=status,
             bindings=bindings,
             missing_capabilities=missing,
+            incompatible_capabilities=incompatible,
             blocking_reasons=reasons,
             trace_id=trace_id,
         )
