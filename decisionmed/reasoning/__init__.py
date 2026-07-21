@@ -8,6 +8,7 @@ from .gate import (
 )
 from .input import ReasoningInputEnvelope
 from .knowledge_binding import ReasoningKnowledgeBinding
+from .governed_input import GovernedReasoningInput
 
 __all__ = [
     "ReasoningError",
@@ -16,4 +17,5 @@ __all__ = [
     "ReasoningGateStatus",
     "ReasoningInputEnvelope",
     "ReasoningKnowledgeBinding",
+    "GovernedReasoningInput",
 ]
