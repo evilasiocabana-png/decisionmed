@@ -40,6 +40,7 @@ class SafetyPreflightApplicationServiceTest(unittest.TestCase):
                     check_id="check.synthetic-audit",
                     outcome=SafetyCheckOutcome.NOT_EVALUATED,
                     trace_id=self.snapshot.trace_id,
+                    explanation="Synthetic incomplete result for audit tests.",
                 ),
             ),
             missing_check_ids=(),

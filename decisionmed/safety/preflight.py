@@ -47,9 +47,22 @@ class SafetyPreflight:
             == snapshot.specialty_key
             for evaluator in evaluators
         )
-        if not snapshot.structurally_complete or not specialties_match:
+        if not snapshot.structurally_complete:
             results = tuple(
-                self._not_evaluated(evaluator, snapshot.trace_id)
+                self._not_evaluated(
+                    evaluator,
+                    snapshot.trace_id,
+                    "Snapshot is structurally incomplete; evaluator was not invoked.",
+                )
+                for evaluator in evaluators
+            )
+        elif not specialties_match:
+            results = tuple(
+                self._not_evaluated(
+                    evaluator,
+                    snapshot.trace_id,
+                    "Snapshot specialty does not match the governed safety specification.",
+                )
                 for evaluator in evaluators
             )
         else:
@@ -69,21 +82,30 @@ class SafetyPreflight:
         try:
             result = evaluator.evaluate(snapshot, trace_id=snapshot.trace_id)
         except Exception:
-            return SafetyPreflight._not_evaluated(evaluator, snapshot.trace_id)
+            return SafetyPreflight._not_evaluated(
+                evaluator,
+                snapshot.trace_id,
+                "Evaluator did not produce a valid governed result.",
+            )
         if (
             not isinstance(result, SafetyCheckResult)
             or result.check_id != evaluator.check_id
             or result.trace_id != snapshot.trace_id
         ):
-            return SafetyPreflight._not_evaluated(evaluator, snapshot.trace_id)
+            return SafetyPreflight._not_evaluated(
+                evaluator,
+                snapshot.trace_id,
+                "Evaluator did not produce a valid governed result.",
+            )
         return result
 
     @staticmethod
     def _not_evaluated(
-        evaluator: SafetyCheckEvaluator, trace_id: str
+        evaluator: SafetyCheckEvaluator, trace_id: str, explanation: str
     ) -> SafetyCheckResult:
         return SafetyCheckResult(
             check_id=evaluator.check_id,
             outcome=SafetyCheckOutcome.NOT_EVALUATED,
             trace_id=trace_id,
+            explanation=explanation,
         )
