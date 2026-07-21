@@ -2,7 +2,11 @@ from pathlib import Path
 from tempfile import TemporaryDirectory
 import unittest
 
-from decisionmed.architecture import BoundaryViolation, scan_architecture
+from decisionmed.architecture import (
+    PROTECTED_LAYERS,
+    BoundaryViolation,
+    scan_architecture,
+)
 
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
@@ -33,7 +37,9 @@ class ArchitectureBoundaryTest(unittest.TestCase):
             self._write(package_root / "knowledge" / "models.py", "VALUE = 1\n")
             self._write(
                 package_root / "knowledge" / "registry.py",
-                "from .models import VALUE\nfrom decisionmed.evidence import EvidenceSource\n",
+                "from .models import VALUE\n"
+                "from decisionmed.domain import EntityId\n"
+                "from decisionmed.evidence import EvidenceSource\n",
             )
             self._write(package_root / "audit" / "models.py", "from ..domain import DomainEvent\n")
 
@@ -41,10 +47,37 @@ class ArchitectureBoundaryTest(unittest.TestCase):
 
         self.assertEqual((), violations)
 
+    def test_future_reasoning_application_and_interface_layers_are_enforced(self) -> None:
+        with TemporaryDirectory() as temporary_directory:
+            package_root = self._package_root(Path(temporary_directory))
+            self._write(
+                package_root / "reasoning" / "engine.py",
+                "from decisionmed.safety import SafetyAssessment\n",
+            )
+            self._write(
+                package_root / "application" / "service.py",
+                "from decisionmed.reasoning import ReasoningResult\n"
+                "from decisionmed.audit import AuditLedger\n",
+            )
+            self._write(
+                package_root / "interface" / "view.py",
+                "from decisionmed.application import AppService\n",
+            )
+            self._write(
+                package_root / "interface" / "bad.py",
+                "from decisionmed.domain import ClinicalSnapshot\n",
+            )
+
+            violations = scan_architecture(package_root)
+
+        self.assertEqual(1, len(violations))
+        self.assertEqual("interface", violations[0].source_layer)
+        self.assertEqual("domain", violations[0].target_layer)
+
     @staticmethod
     def _package_root(temporary_root: Path) -> Path:
         package_root = temporary_root / "decisionmed"
-        for layer in ("domain", "evidence", "knowledge", "safety", "audit"):
+        for layer in PROTECTED_LAYERS:
             (package_root / layer).mkdir(parents=True)
         return package_root
 
