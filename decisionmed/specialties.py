@@ -161,7 +161,47 @@ PSYCHIATRY_PACK = SpecialtyPack(
     status=SpecialtyPackStatus.REFERENCE_ONLY,
 )
 
-DEFAULT_SPECIALTY_PACKS = (PSYCHIATRY_PACK,)
+def _planned_specialty_pack(key: str, display_name: str) -> SpecialtyPack:
+    """Create a structural placeholder with no bound clinical providers."""
+
+    return SpecialtyPack(
+        key=key,
+        display_name=display_name,
+        version="0.1.0",
+        workflow_contract=f"decisionmed.{key}.workflow.v1",
+        safety_contract=f"decisionmed.{key}.safety.v1",
+        evidence_policy="decisionmed.evidence-traceability.v1",
+        knowledge_namespace=f"decisionmed.{key}",
+        audit_namespace=f"decisionmed.{key}",
+        required_capabilities=(
+            f"{key}.clinical-snapshot",
+            f"{key}.safety",
+            f"{key}.evidence",
+            f"{key}.reasoning",
+            f"{key}.explanation",
+            f"{key}.monitoring",
+            f"{key}.audit",
+        ),
+        status=SpecialtyPackStatus.REFERENCE_ONLY,
+    )
+
+
+INTERNAL_MEDICINE_PACK = _planned_specialty_pack(
+    "internal-medicine", "Clínica Médica"
+)
+CARDIOLOGY_PACK = _planned_specialty_pack("cardiology", "Cardiologia")
+PEDIATRICS_PACK = _planned_specialty_pack("pediatrics", "Pediatria")
+NEUROLOGY_PACK = _planned_specialty_pack("neurology", "Neurologia")
+EMERGENCY_PACK = _planned_specialty_pack("emergency", "Emergência")
+
+DEFAULT_SPECIALTY_PACKS = (
+    PSYCHIATRY_PACK,
+    INTERNAL_MEDICINE_PACK,
+    CARDIOLOGY_PACK,
+    PEDIATRICS_PACK,
+    NEUROLOGY_PACK,
+    EMERGENCY_PACK,
+)
 
 
 def build_default_specialty_registry() -> SpecialtyPackRegistry:

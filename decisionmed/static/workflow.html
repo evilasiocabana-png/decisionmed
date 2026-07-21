@@ -1,0 +1,16 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Fluxo | DecisionMEd</title>
+  <style>
+    :root{font-family:Inter,system-ui,sans-serif;background:#f5f7fb;color:#172033}body{margin:0}main{max-width:880px;margin:auto;padding:32px 24px 56px}a{color:#176b84}.notice{background:#fff7df;border:1px solid #ead28a;border-radius:12px;padding:14px 18px}ol{list-style:none;padding:0;display:grid;gap:12px;counter-reset:flow}li{counter-increment:flow;background:#fff;border:1px solid #dfe5ef;border-radius:14px;padding:16px 18px}li::before{content:counter(flow);display:inline-grid;place-items:center;width:28px;height:28px;margin-right:12px;border-radius:50%;background:#176b84;color:#fff;font-weight:700}small{display:block;color:#697386;margin:7px 0 0 42px}
+  </style>
+</head>
+<body>
+  <main><a href="/">← Voltar ao catálogo</a><h1 id="title">Fluxo da especialidade</h1><p class="notice"><strong>Estrutura de referência.</strong> As capacidades clínicas permanecem bloqueadas até validação científica e regulatória.</p><ol id="steps"></ol></main>
+  <script>
+    const key=new URLSearchParams(location.search).get('specialty')||'';
+    Promise.all([fetch('/api/app-state').then(r=>r.json()),fetch(`/api/workflows/${encodeURIComponent(key)}`).then(r=>{if(!r.ok)throw new Error();return r.json()})]).then(([state,workflow])=>{const specialty=state.specialties.find(item=>item.key===key);document.getElementById('title').textContent=specialty?`Fluxo — ${specialty.display_name}`:'Fluxo da especialidade';const list=document.getElementById('steps');workflow.steps.forEach(step=>{const item=document.createElement('li');item.innerHTML=`${step.title}<small>Capacidade: ${step.capability}</small>`;list.appendChild(item)})}).catch(()=>document.getElementById('steps').innerHTML='<li>Fluxo não encontrado.</li>');
+  </script>
+</body>
+</html>

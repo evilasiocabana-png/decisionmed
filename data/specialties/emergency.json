@@ -1,0 +1,9 @@
+{"specialty_key":"emergency","workflow_id":"decisionmed.emergency.workflow.v1","version":"0.1.0","mode":"reference_only","steps":[
+  {"key":"context","title":"Contexto agudo","capability":"emergency.clinical-snapshot"},
+  {"key":"triage","title":"Triagem estrutural","capability":"emergency.reasoning"},
+  {"key":"findings","title":"Sintomas e achados","capability":"emergency.clinical-snapshot"},
+  {"key":"safety","title":"Segurança imediata","capability":"emergency.safety"},
+  {"key":"evidence","title":"Evidências","capability":"emergency.evidence"},
+  {"key":"decision","title":"Apoio à decisão","capability":"emergency.explanation"},
+  {"key":"monitoring","title":"Destino e acompanhamento","capability":"emergency.monitoring"}
+]}
