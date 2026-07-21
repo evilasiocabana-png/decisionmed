@@ -1,14 +1,16 @@
 from dataclasses import replace
-from datetime import date
+from datetime import date, timedelta
 import unittest
 
 from decisionmed.evidence import (
     EvidenceContractError,
     EvidenceRegistry,
     EvidenceRegistryError,
+    EvidenceQuality,
     EvidenceSource,
     EvidenceStatus,
     EvidenceType,
+    RecommendationStrength,
 )
 
 
@@ -18,10 +20,15 @@ def source(source_id: str = "source.alpha") -> EvidenceSource:
         title="Synthetic source metadata for contract testing",
         publication_year=2025,
         evidence_type=EvidenceType.GUIDELINE,
+        evidence_quality=EvidenceQuality.INSUFFICIENT,
+        recommendation_strength=RecommendationStrength.INSUFFICIENT_FOR_RECOMMENDATION,
         locator="test-only:source-alpha",
         version="0.1.0",
         status=EvidenceStatus.DRAFT,
         specialties=("cardiology",),
+        reviewed_on=date(2026, 7, 21),
+        known_conflicts="No conflicts assessed; synthetic fixture.",
+        clinical_applicability="Contract tests only.",
     )
 
 
@@ -33,20 +40,24 @@ class EvidenceSourceTest(unittest.TestCase):
         with self.assertRaises(AttributeError):
             item.title = "changed"  # type: ignore[misc]
 
-    def test_validated_metadata_requires_review_date_but_stays_blocked(self) -> None:
+    def test_every_status_requires_review_date_and_stays_blocked(self) -> None:
         with self.assertRaises(EvidenceContractError):
-            replace(source(), status=EvidenceStatus.VALIDATED)
+            replace(source(), reviewed_on=date.today() + timedelta(days=1))
 
         validated = EvidenceSource(
             source_id="source.validated",
             title="Synthetic validated metadata",
             publication_year=2025,
             evidence_type=EvidenceType.SYSTEMATIC_REVIEW,
+            evidence_quality=EvidenceQuality.MODERATE,
+            recommendation_strength=RecommendationStrength.CONDITIONAL,
             locator="test-only:source-validated",
             version="1.0.0",
             status=EvidenceStatus.VALIDATED,
             specialties=("psychiatry",),
             reviewed_on=date(2026, 7, 21),
+            known_conflicts="No known conflicts in this synthetic fixture.",
+            clinical_applicability="Contract tests only.",
         )
         self.assertFalse(validated.runtime_eligible)
 
@@ -56,15 +67,22 @@ class EvidenceSourceTest(unittest.TestCase):
             "title": "Synthetic source",
             "publication_year": 2025,
             "evidence_type": EvidenceType.OTHER,
+            "evidence_quality": EvidenceQuality.INSUFFICIENT,
+            "recommendation_strength": RecommendationStrength.INSUFFICIENT_FOR_RECOMMENDATION,
             "locator": "test-only:invalid",
             "version": "1.0.0",
             "status": EvidenceStatus.DRAFT,
             "specialties": ("neurology",),
+            "reviewed_on": date(2026, 7, 21),
+            "known_conflicts": "No conflicts assessed; synthetic fixture.",
+            "clinical_applicability": "Contract tests only.",
         }
         for replacement in (
             {"publication_year": 1499},
             {"version": "v1"},
             {"specialties": ("neurology", "neurology")},
+            {"known_conflicts": ""},
+            {"clinical_applicability": ""},
         ):
             with self.subTest(replacement=replacement):
                 with self.assertRaises(EvidenceContractError):

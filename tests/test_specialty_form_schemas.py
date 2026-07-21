@@ -5,9 +5,11 @@ import unittest
 from decisionmed.domain import ClinicalSnapshotSection
 from decisionmed.evidence import (
     EvidenceRegistry,
+    EvidenceQuality,
     EvidenceSource,
     EvidenceStatus,
     EvidenceType,
+    RecommendationStrength,
 )
 from decisionmed.knowledge import (
     ClinicalFieldDefinition,
@@ -146,13 +148,15 @@ class SpecialtyFormSchemaTest(unittest.TestCase):
             title="Structural test source",
             publication_year=2025,
             evidence_type=EvidenceType.GUIDELINE,
+            evidence_quality=EvidenceQuality.INSUFFICIENT,
+            recommendation_strength=RecommendationStrength.INSUFFICIENT_FOR_RECOMMENDATION,
             locator="test-only",
             version="1.0.0",
             status=status,
             specialties=("cardiology",),
-            reviewed_on=date(2026, 7, 21)
-            if status is EvidenceStatus.VALIDATED
-            else None,
+            reviewed_on=date(2026, 7, 21),
+            known_conflicts="No conflicts assessed; synthetic fixture.",
+            clinical_applicability="Contract tests only.",
         )
 
     @staticmethod

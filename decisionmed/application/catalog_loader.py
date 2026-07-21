@@ -17,6 +17,8 @@ from decisionmed.evidence import (
     EvidenceSource,
     EvidenceStatus,
     EvidenceType,
+    EvidenceQuality,
+    RecommendationStrength,
 )
 from decisionmed.knowledge import (
     ClinicalFieldDefinition,
@@ -30,7 +32,7 @@ from decisionmed.knowledge import (
 )
 
 
-CATALOG_SCHEMA_VERSION = "1.0.0"
+CATALOG_SCHEMA_VERSION = "2.0.0"
 MAX_CATALOG_BYTES = 1_048_576
 MAX_CATALOG_ITEMS = 10_000
 _IDENTIFIER = re.compile(r"^[a-z][a-z0-9]*(?:[._-][a-z0-9]+)*$")
@@ -118,11 +120,17 @@ def load_governed_catalogs(root: Path) -> GovernedCatalogs:
                 title=item["title"],
                 publication_year=item["publication_year"],
                 evidence_type=EvidenceType(item["evidence_type"]),
+                evidence_quality=EvidenceQuality(item["evidence_quality"]),
+                recommendation_strength=RecommendationStrength(
+                    item["recommendation_strength"]
+                ),
                 locator=item["locator"],
                 version=item["version"],
                 status=EvidenceStatus(item["status"]),
                 specialties=_list(item, "specialties"),
                 reviewed_on=_date_or_none(item["reviewed_on"]),
+                known_conflicts=item["known_conflicts"],
+                clinical_applicability=item["clinical_applicability"],
             )
             for item in _items(evidence_payload, "evidence.json", _EVIDENCE_KEYS)
         )
@@ -283,7 +291,12 @@ def _list(item: dict[str, Any], key: str) -> tuple[Any, ...]:
 
 
 _EVIDENCE_KEYS = frozenset(
-    {"source_id", "title", "publication_year", "evidence_type", "locator", "version", "status", "specialties", "reviewed_on"}
+    {
+        "source_id", "title", "publication_year", "evidence_type",
+        "evidence_quality", "recommendation_strength", "locator", "version",
+        "status", "specialties", "reviewed_on", "known_conflicts",
+        "clinical_applicability",
+    }
 )
 _KNOWLEDGE_KEYS = frozenset(
     {"object_id", "official_name", "object_type", "description", "evidence_source_ids", "applicability", "limits", "version", "status", "reviewed_on", "validated_by"}
