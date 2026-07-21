@@ -12,6 +12,7 @@ from .catalog_loader import (
     GovernedCatalogs,
     load_governed_catalogs,
 )
+from .safety_preflight import SafetyPreflightApplicationService
 
 __all__ = [
     "ClinicalInputIssue",
@@ -22,4 +23,5 @@ __all__ = [
     "CatalogReleaseManifest",
     "GovernedCatalogs",
     "load_governed_catalogs",
+    "SafetyPreflightApplicationService",
 ]
