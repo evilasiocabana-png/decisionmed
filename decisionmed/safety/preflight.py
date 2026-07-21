@@ -3,7 +3,7 @@
 from __future__ import annotations
 
 from decisionmed.domain import ClinicalSnapshot
-from decisionmed.evidence import EvidenceRegistry
+from decisionmed.evidence import EvidenceRegistry, EvidenceStatus
 
 from .coordinator import SafetyCoordinator
 from .definitions import SafetyCheckStatus
@@ -34,7 +34,13 @@ class SafetyPreflight:
             )
         if not isinstance(evidence, EvidenceRegistry):
             raise TypeError("evidence must be an EvidenceRegistry")
+        if evaluators.providers.specifications.evidence is not evidence:
+            raise SafetyError(
+                "safety_preflight.evidence_registry",
+                "preflight must use the specification evidence registry",
+            )
         self._evaluators = evaluators
+        self._evidence = evidence
         self._coordinator = SafetyCoordinator(evaluators.providers, evidence)
 
     def run(self, snapshot: ClinicalSnapshot) -> SafetyAssessment:
@@ -54,12 +60,29 @@ class SafetyPreflight:
             and not specification.review_overdue
             for specification in self._evaluators.providers.specifications.all()
         )
+        evidence_current = all(
+            (source := self._evidence.get(source_id)) is not None
+            and source.status is EvidenceStatus.VALIDATED
+            and source.review_due_on is not None
+            and not source.review_overdue
+            for specification in self._evaluators.providers.specifications.all()
+            for source_id in specification.evidence_source_ids
+        )
         if not specifications_current:
             results = tuple(
                 self._not_evaluated(
                     evaluator,
                     snapshot.trace_id,
                     "Governed safety specification review is not current; evaluator was not invoked.",
+                )
+                for evaluator in evaluators
+            )
+        elif not evidence_current:
+            results = tuple(
+                self._not_evaluated(
+                    evaluator,
+                    snapshot.trace_id,
+                    "Governed evidence review is not current; evaluator was not invoked.",
                 )
                 for evaluator in evaluators
             )

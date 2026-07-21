@@ -88,6 +88,10 @@ class SafetyCheckRegistry:
             for check_id in sorted(self._specifications)
         )
 
+    @property
+    def evidence(self) -> EvidenceRegistry:
+        return self._evidence
+
     def for_specialty(
         self, specialty_key: str
     ) -> tuple[SafetyCheckSpecification, ...]:
