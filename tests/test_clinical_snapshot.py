@@ -1,4 +1,4 @@
-from dataclasses import FrozenInstanceError
+from dataclasses import FrozenInstanceError, replace
 from datetime import datetime, timedelta, timezone
 import math
 import unittest
@@ -13,6 +13,7 @@ from decisionmed.domain import (
     DomainInvariantError,
     EntityId,
     SubjectReference,
+    clinical_snapshot_fingerprint,
 )
 
 
@@ -95,6 +96,73 @@ class ClinicalSnapshotContractTest(unittest.TestCase):
                 with self.assertRaises(DomainInvariantError):
                     SubjectReference(direct_identifier)
 
+    def test_fingerprint_is_deterministic_and_covers_clinical_content(self) -> None:
+        observation = self._observation(ClinicalSnapshotSection.SYMPTOMS)
+        snapshot = self._snapshot(observations=(observation,))
+        changed = self._snapshot(
+            observations=(replace(observation, value=True),)
+        )
+
+        self.assertRegex(snapshot.content_fingerprint, r"^[0-9a-f]{64}$")
+        self.assertEqual(
+            clinical_snapshot_fingerprint(snapshot),
+            snapshot.content_fingerprint,
+        )
+        self.assertNotEqual(
+            snapshot.content_fingerprint,
+            changed.content_fingerprint,
+        )
+
+    def test_fingerprint_normalizes_observation_order(self) -> None:
+        first = self._observation(ClinicalSnapshotSection.SYMPTOMS, 1)
+        second = self._observation(ClinicalSnapshotSection.FUNCTIONING, 2)
+
+        ordered = self._snapshot(observations=(first, second))
+        reversed_order = self._snapshot(observations=(second, first))
+
+        self.assertEqual(
+            ordered.content_fingerprint,
+            reversed_order.content_fingerprint,
+        )
+
+    def test_fingerprint_preserves_primitive_value_types(self) -> None:
+        observation = self._observation(ClinicalSnapshotSection.SYMPTOMS)
+        boolean_snapshot = self._snapshot(
+            observations=(replace(observation, value=True),)
+        )
+        integer_snapshot = self._snapshot(
+            observations=(replace(observation, value=1),)
+        )
+
+        self.assertNotEqual(
+            boolean_snapshot.content_fingerprint,
+            integer_snapshot.content_fingerprint,
+        )
+
+    def test_fingerprint_normalizes_equivalent_timezone_offsets(self) -> None:
+        observation = self._observation(ClinicalSnapshotSection.SYMPTOMS)
+        snapshot = self._snapshot(observations=(observation,))
+        offset = timezone(timedelta(hours=-3))
+        equivalent = replace(
+            snapshot,
+            captured_at=snapshot.captured_at.astimezone(offset),
+            observations=(
+                replace(
+                    observation,
+                    observed_at=observation.observed_at.astimezone(offset),
+                ),
+            ),
+        )
+
+        self.assertEqual(
+            snapshot.content_fingerprint,
+            equivalent.content_fingerprint,
+        )
+
+    def test_fingerprint_rejects_non_snapshot_values(self) -> None:
+        with self.assertRaises(TypeError):
+            clinical_snapshot_fingerprint(object())  # type: ignore[arg-type]
+
     def _snapshot(
         self, observations: tuple[ClinicalObservation, ...]
     ) -> ClinicalSnapshot:
@@ -106,6 +174,7 @@ class ClinicalSnapshotContractTest(unittest.TestCase):
             specialty_key="cardiology",
             captured_at=self.now,
             observations=observations,
+            trace_id="trace.snapshot-1",
         )
 
     def _observation(

@@ -8,6 +8,7 @@ from .clinical_snapshot import (
     ClinicalSnapshotSection,
     ClinicalSnapshotStatus,
     SubjectReference,
+    clinical_snapshot_fingerprint,
 )
 from .errors import DomainError, DomainInvariantError, ResultAccessError
 from .primitives import BaseEntity, DomainEvent, DomainResult, EntityId, ValueObject
@@ -20,6 +21,7 @@ __all__ = [
     "ClinicalSnapshot",
     "ClinicalSnapshotSection",
     "ClinicalSnapshotStatus",
+    "clinical_snapshot_fingerprint",
     "DomainError",
     "DomainEvent",
     "DomainInvariantError",
