@@ -34,6 +34,9 @@ class DecisionMedRequestHandler(SimpleHTTPRequestHandler):
         if parsed.path == "/api/app-state":
             self._send_json(self._app_service.get_app_state())
             return
+        if parsed.path == "/api/readiness":
+            self._send_json(self._app_service.get_readiness())
+            return
         if parsed.path.startswith("/api/workflows/"):
             specialty_key = parsed.path.removeprefix("/api/workflows/")
             try:
