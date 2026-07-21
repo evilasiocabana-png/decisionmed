@@ -28,6 +28,7 @@ class SpecialtyView:
     load_status: str
     execution_allowed: bool
     missing_capabilities: tuple[str, ...]
+    incompatible_capabilities: tuple[str, ...]
     blocking_reasons: tuple[str, ...]
     trace_id: str
 
@@ -40,6 +41,7 @@ class SpecialtyView:
             "load_status": self.load_status,
             "execution_allowed": self.execution_allowed,
             "missing_capabilities": list(self.missing_capabilities),
+            "incompatible_capabilities": list(self.incompatible_capabilities),
             "blocking_reasons": list(self.blocking_reasons),
             "trace_id": self.trace_id,
         }
@@ -83,6 +85,7 @@ class DecisionMedAppService:
                     load_status=result.status.value,
                     execution_allowed=result.clinical_execution_allowed,
                     missing_capabilities=result.missing_capabilities,
+                    incompatible_capabilities=result.incompatible_capabilities,
                     blocking_reasons=result.blocking_reasons,
                     trace_id=result.trace_id,
                 )

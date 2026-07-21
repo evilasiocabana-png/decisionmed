@@ -5,6 +5,7 @@ knowledge and executable clinical reasoning remain outside this package.
 """
 
 from .specialties import (
+    CapabilityRequirement,
     DEFAULT_SPECIALTY_PACKS,
     PSYCHIATRY_PACK,
     DuplicateSpecialtyPackError,
@@ -25,6 +26,7 @@ from .composition import (
 )
 
 __all__ = [
+    "CapabilityRequirement",
     "DEFAULT_SPECIALTY_PACKS",
     "PSYCHIATRY_PACK",
     "DuplicateSpecialtyPackError",

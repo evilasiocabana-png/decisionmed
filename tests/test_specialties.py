@@ -2,6 +2,7 @@ import unittest
 from dataclasses import FrozenInstanceError, fields
 
 from decisionmed.specialties import (
+    CapabilityRequirement,
     PSYCHIATRY_PACK,
     DuplicateSpecialtyPackError,
     SpecialtyPack,
@@ -22,7 +23,10 @@ def make_pack(**overrides: object) -> SpecialtyPack:
         "evidence_policy": "test.evidence.v1",
         "knowledge_namespace": "test-knowledge",
         "audit_namespace": "test-audit",
-        "required_capabilities": ("safety", "evidence", "audit"),
+        "capability_requirements": tuple(
+            CapabilityRequirement(capability, "1.0.0")
+            for capability in ("safety", "evidence", "audit")
+        ),
         "status": SpecialtyPackStatus.REFERENCE_ONLY,
     }
     values.update(overrides)
@@ -41,14 +45,19 @@ class SpecialtyPackContractTest(unittest.TestCase):
                 "evidence_policy",
                 "knowledge_namespace",
                 "audit_namespace",
-                "required_capabilities",
+                "capability_requirements",
                 "status",
             },
             {field.name for field in fields(SpecialtyPack)},
         )
 
     def test_pack_is_immutable_and_normalizes_capabilities(self) -> None:
-        pack = make_pack(required_capabilities=["safety", "evidence"])
+        pack = make_pack(
+            capability_requirements=[
+                CapabilityRequirement("safety", "1.0.0"),
+                CapabilityRequirement("evidence", "1.0.0"),
+            ]
+        )
 
         self.assertEqual(("safety", "evidence"), pack.required_capabilities)
         with self.assertRaises(FrozenInstanceError):
@@ -59,10 +68,17 @@ class SpecialtyPackContractTest(unittest.TestCase):
             make_pack(key="Cardiology")
         with self.assertRaisesRegex(ValueError, "semantic versioning"):
             make_pack(version="v1")
+        with self.assertRaisesRegex(ValueError, "semantic versioning"):
+            CapabilityRequirement("safety", "v1")
 
     def test_pack_requires_unique_capabilities(self) -> None:
         with self.assertRaisesRegex(ValueError, "cannot contain duplicates"):
-            make_pack(required_capabilities=("safety", "safety"))
+            make_pack(
+                capability_requirements=(
+                    CapabilityRequirement("safety", "1.0.0"),
+                    CapabilityRequirement("safety", "2.0.0"),
+                )
+            )
 
     def test_pack_requires_explicit_lifecycle_status(self) -> None:
         with self.assertRaisesRegex(TypeError, "SpecialtyPackStatus"):

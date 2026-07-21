@@ -40,6 +40,22 @@ class UnknownSpecialtyPackError(SpecialtyPackRegistryError):
 
 
 @dataclass(frozen=True, slots=True)
+class CapabilityRequirement:
+    """Exact provider contract version required by a specialty pack."""
+
+    capability: str
+    required_version: str
+
+    def __post_init__(self) -> None:
+        SpecialtyPack._validate_identifier("capability", self.capability)
+        if (
+            not isinstance(self.required_version, str)
+            or not _SEMANTIC_VERSION_PATTERN.fullmatch(self.required_version)
+        ):
+            raise ValueError("required_version must use semantic versioning")
+
+
+@dataclass(frozen=True, slots=True)
 class SpecialtyPack:
     """Immutable composition manifest for one medical specialty.
 
@@ -56,7 +72,7 @@ class SpecialtyPack:
     evidence_policy: str
     knowledge_namespace: str
     audit_namespace: str
-    required_capabilities: tuple[str, ...]
+    capability_requirements: tuple[CapabilityRequirement, ...]
     status: SpecialtyPackStatus = SpecialtyPackStatus.REFERENCE_ONLY
 
     def __post_init__(self) -> None:
@@ -77,17 +93,21 @@ class SpecialtyPack:
         ):
             self._validate_identifier(field_name, getattr(self, field_name))
 
-        if isinstance(self.required_capabilities, (str, bytes)):
-            raise TypeError("required_capabilities must be an iterable of identifiers")
-
-        capabilities = tuple(self.required_capabilities)
-        if not capabilities:
-            raise ValueError("required_capabilities cannot be empty")
-        for capability in capabilities:
-            self._validate_identifier("required_capability", capability)
+        if isinstance(self.capability_requirements, (str, bytes)):
+            raise TypeError(
+                "capability_requirements must be an iterable of requirements"
+            )
+        requirements = tuple(self.capability_requirements)
+        if not requirements:
+            raise ValueError("capability_requirements cannot be empty")
+        if any(not isinstance(item, CapabilityRequirement) for item in requirements):
+            raise TypeError(
+                "capability_requirements must contain CapabilityRequirement values"
+            )
+        capabilities = tuple(item.capability for item in requirements)
         if len(set(capabilities)) != len(capabilities):
-            raise ValueError("required_capabilities cannot contain duplicates")
-        object.__setattr__(self, "required_capabilities", capabilities)
+            raise ValueError("capability_requirements cannot contain duplicates")
+        object.__setattr__(self, "capability_requirements", requirements)
 
         if not isinstance(self.status, SpecialtyPackStatus):
             raise TypeError("status must be a SpecialtyPackStatus")
@@ -107,6 +127,10 @@ class SpecialtyPack:
         """Return whether this manifest is cleared for application composition."""
 
         return self.status is SpecialtyPackStatus.ACTIVE
+
+    @property
+    def required_capabilities(self) -> tuple[str, ...]:
+        return tuple(item.capability for item in self.capability_requirements)
 
 
 class SpecialtyPackRegistry:
@@ -149,14 +173,17 @@ PSYCHIATRY_PACK = SpecialtyPack(
     evidence_policy="psychrx.evidence-traceability.v1",
     knowledge_namespace="psychrx",
     audit_namespace="decisionmed.psychiatry",
-    required_capabilities=(
-        "clinical-snapshot",
-        "safety",
-        "evidence",
-        "reasoning",
-        "explanation",
-        "monitoring",
-        "audit",
+    capability_requirements=tuple(
+        CapabilityRequirement(capability, "0.1.0")
+        for capability in (
+            "clinical-snapshot",
+            "safety",
+            "evidence",
+            "reasoning",
+            "explanation",
+            "monitoring",
+            "audit",
+        )
     ),
     status=SpecialtyPackStatus.REFERENCE_ONLY,
 )
@@ -173,14 +200,17 @@ def _planned_specialty_pack(key: str, display_name: str) -> SpecialtyPack:
         evidence_policy="decisionmed.evidence-traceability.v1",
         knowledge_namespace=f"decisionmed.{key}",
         audit_namespace=f"decisionmed.{key}",
-        required_capabilities=(
-            f"{key}.clinical-snapshot",
-            f"{key}.safety",
-            f"{key}.evidence",
-            f"{key}.reasoning",
-            f"{key}.explanation",
-            f"{key}.monitoring",
-            f"{key}.audit",
+        capability_requirements=tuple(
+            CapabilityRequirement(capability, "0.1.0")
+            for capability in (
+                f"{key}.clinical-snapshot",
+                f"{key}.safety",
+                f"{key}.evidence",
+                f"{key}.reasoning",
+                f"{key}.explanation",
+                f"{key}.monitoring",
+                f"{key}.audit",
+            )
         ),
         status=SpecialtyPackStatus.REFERENCE_ONLY,
     )
