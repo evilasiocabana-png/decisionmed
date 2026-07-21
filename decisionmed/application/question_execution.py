@@ -3,6 +3,8 @@
 from __future__ import annotations
 
 from dataclasses import dataclass, field
+from datetime import datetime, timedelta, timezone
+from typing import Callable
 
 from decisionmed.audit import AuditLedger
 from decisionmed.domain import DomainError, DomainEvent
@@ -57,6 +59,8 @@ class QuestionEngineExecutionApplicationService:
         authority: QuestionEngineInvocationAuthority,
         validator: QuestionEngineOutputValidator,
         audit: AuditLedger,
+        max_authority_age: timedelta = timedelta(minutes=5),
+        now: Callable[[], datetime] | None = None,
     ) -> None:
         if not isinstance(readiness, QuestionEngineReadiness):
             raise TypeError("readiness must be a QuestionEngineReadiness")
@@ -68,11 +72,18 @@ class QuestionEngineExecutionApplicationService:
             raise TypeError("validator must be a QuestionEngineOutputValidator")
         if not isinstance(audit, AuditLedger):
             raise TypeError("audit must be an AuditLedger")
+        if (
+            not isinstance(max_authority_age, timedelta)
+            or max_authority_age <= timedelta(0)
+        ):
+            raise ValueError("max_authority_age must be positive")
         self._readiness = readiness
         self._registry = registry
         self._authority = authority
         self._validator = validator
         self._audit = audit
+        self._max_authority_age = max_authority_age
+        self._now = now or (lambda: datetime.now(timezone.utc))
 
     def generate(
         self,
@@ -173,6 +184,21 @@ class QuestionEngineExecutionApplicationService:
                 "question_engine_execution.authority_denied",
                 "authority denied Question Engine invocation",
             )
+        if self._authority_expired(decision):
+            self._append(
+                input_value,
+                "reasoning.question-engine-authority-expired",
+                request_metadata
+                + (
+                    ("authority_provider", decision.authority_provider),
+                    ("decision_reference", decision.decision_reference),
+                    ("verified_at", decision.verified_at.isoformat()),
+                ),
+            )
+            raise QuestionEngineExecutionError(
+                "question_engine_execution.authority_expired",
+                "authority decision is no longer current",
+            )
         self._append(
             input_value,
             "reasoning.question-engine-invocation-authorized",
@@ -255,6 +281,18 @@ class QuestionEngineExecutionApplicationService:
             ("reasoning_execution_allowed", "false"),
             ("clinical_execution_allowed", "false"),
         )
+
+    def _authority_expired(
+        self, decision: QuestionEngineInvocationAuthorityDecision
+    ) -> bool:
+        current_time = self._now()
+        if (
+            not isinstance(current_time, datetime)
+            or current_time.tzinfo is None
+            or current_time.utcoffset() is None
+        ):
+            raise TypeError("now must return a timezone-aware datetime")
+        return current_time - decision.verified_at > self._max_authority_age
 
     def _append(
         self,
