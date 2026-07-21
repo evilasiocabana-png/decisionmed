@@ -19,6 +19,7 @@ from .providers import (
     SafetyCheckProviderRegistry,
     SafetyImplementationCoverage,
 )
+from .preflight import SafetyPreflight
 
 __all__ = [
     "SafetyAssessment",
@@ -37,4 +38,5 @@ __all__ = [
     "SafetyGateStatus",
     "SafetySeverity",
     "SafetyImplementationCoverage",
+    "SafetyPreflight",
 ]
