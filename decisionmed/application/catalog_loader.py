@@ -31,15 +31,25 @@ from decisionmed.knowledge import (
     SpecialtyFormSchema,
     SpecialtyFormSchemaRegistry,
 )
+from decisionmed.safety import (
+    SafetyCheckRegistry,
+    SafetyCheckSpecification,
+    SafetyCheckStatus,
+)
 
 
-CATALOG_SCHEMA_VERSION = "6.0.0"
+CATALOG_SCHEMA_VERSION = "7.0.0"
 MAX_CATALOG_BYTES = 1_048_576
 MAX_CATALOG_ITEMS = 10_000
 _IDENTIFIER = re.compile(r"^[a-z][a-z0-9]*(?:[._-][a-z0-9]+)*$")
 _VERSION = re.compile(r"^(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)$")
 _HASH = re.compile(r"^[0-9a-f]{64}$")
-_CATALOG_FILES = ("evidence.json", "knowledge.json", "form-schemas.json")
+_CATALOG_FILES = (
+    "evidence.json",
+    "knowledge.json",
+    "form-schemas.json",
+    "safety-checks.json",
+)
 
 
 class CatalogLoadError(ValueError):
@@ -55,6 +65,7 @@ class GovernedCatalogs:
     evidence: EvidenceRegistry
     knowledge: KnowledgeRegistry
     form_schemas: SpecialtyFormSchemaRegistry
+    safety_checks: SafetyCheckRegistry
 
 
 @dataclass(frozen=True, slots=True)
@@ -101,7 +112,7 @@ class CatalogReleaseManifest:
 
 
 def load_governed_catalogs(root: Path) -> GovernedCatalogs:
-    """Load three fixed files from an external catalog directory, fail closed."""
+    """Load four fixed files from an external catalog directory, fail closed."""
 
     root = root.resolve()
     if not root.is_dir():
@@ -113,6 +124,9 @@ def load_governed_catalogs(root: Path) -> GovernedCatalogs:
         knowledge_payload = _load_file(root / "knowledge.json", hashes["knowledge.json"])
         schema_payload = _load_file(
             root / "form-schemas.json", hashes["form-schemas.json"]
+        )
+        safety_payload = _load_file(
+            root / "safety-checks.json", hashes["safety-checks.json"]
         )
 
         evidence = EvidenceRegistry(
@@ -167,13 +181,33 @@ def load_governed_catalogs(root: Path) -> GovernedCatalogs:
                 )
             ),
         )
+        safety_checks = SafetyCheckRegistry(
+            evidence,
+            (
+                SafetyCheckSpecification(
+                    check_id=item["check_id"],
+                    specialty_key=item["specialty_key"],
+                    purpose=item["purpose"],
+                    limits=item["limits"],
+                    evidence_source_ids=_list(item, "evidence_source_ids"),
+                    version=item["version"],
+                    status=SafetyCheckStatus(item["status"]),
+                    reviewed_on=_date_or_none(item["reviewed_on"]),
+                    validated_by=item["validated_by"],
+                    review_due_on=_date_or_none(item["review_due_on"]),
+                )
+                for item in _items(
+                    safety_payload, "safety-checks.json", _SAFETY_CHECK_KEYS
+                )
+            ),
+        )
     except CatalogLoadError:
         raise
     except (KeyError, TypeError, ValueError) as exc:
         raise CatalogLoadError(
             "catalog.invalid_content", "catalog content violates its contracts"
         ) from exc
-    return GovernedCatalogs(manifest, evidence, knowledge, schemas)
+    return GovernedCatalogs(manifest, evidence, knowledge, schemas, safety_checks)
 
 
 def _load_manifest(path: Path) -> CatalogReleaseManifest:
@@ -340,4 +374,11 @@ _SCHEMA_KEYS = frozenset(
 )
 _FIELD_KEYS = frozenset(
     {"field_key", "label", "section", "value_type", "knowledge_object_id", "required", "allowed_values"}
+)
+_SAFETY_CHECK_KEYS = frozenset(
+    {
+        "check_id", "specialty_key", "purpose", "limits",
+        "evidence_source_ids", "version", "status", "reviewed_on",
+        "validated_by", "review_due_on",
+    }
 )
