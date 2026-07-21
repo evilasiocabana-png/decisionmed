@@ -9,7 +9,11 @@ import json
 import re
 
 from decisionmed.evidence import EvidenceSource, EvidenceStatus
-from decisionmed.knowledge import KnowledgeObject, KnowledgeStatus
+from decisionmed.knowledge import (
+    KnowledgeObject,
+    KnowledgeStatus,
+    SpecialtyFormSchema,
+)
 
 from .gate import ReasoningError
 
@@ -31,6 +35,7 @@ class ReasoningKnowledgeBinding:
     bound_at: datetime
     knowledge_objects: tuple[KnowledgeObject, ...] = field(repr=False)
     evidence_sources: tuple[EvidenceSource, ...] = field(repr=False)
+    form_schemas: tuple[SpecialtyFormSchema, ...] = field(repr=False)
     content_fingerprint: str = field(init=False)
 
     def __post_init__(self) -> None:
@@ -64,16 +69,29 @@ class ReasoningKnowledgeBinding:
 
         objects = tuple(self.knowledge_objects)
         sources = tuple(self.evidence_sources)
+        schemas = tuple(self.form_schemas)
         if not objects or not all(isinstance(item, KnowledgeObject) for item in objects):
             _fail("knowledge_objects", "validated knowledge objects are required")
         if not sources or not all(isinstance(item, EvidenceSource) for item in sources):
             _fail("evidence_sources", "validated evidence sources are required")
+        if not schemas or not all(
+            isinstance(item, SpecialtyFormSchema) for item in schemas
+        ):
+            _fail("form_schemas", "validated specialty form schemas are required")
         objects = tuple(sorted(objects, key=lambda item: item.object_id))
         sources = tuple(sorted(sources, key=lambda item: item.source_id))
+        schemas = tuple(sorted(schemas, key=lambda item: item.schema_id))
         if len({item.object_id for item in objects}) != len(objects):
             _fail("knowledge_objects", "knowledge object ids must be unique")
         if len({item.source_id for item in sources}) != len(sources):
             _fail("evidence_sources", "evidence source ids must be unique")
+        if len({item.schema_id for item in schemas}) != len(schemas):
+            _fail("form_schemas", "form schema ids must be unique")
+        schema_bindings = tuple(
+            (item.workflow_id, item.step_key) for item in schemas
+        )
+        if len(set(schema_bindings)) != len(schema_bindings):
+            _fail("form_schemas", "workflow step bindings must be unique")
         if any(
             item.status is not KnowledgeStatus.VALIDATED
             or item.review_due_on is None
@@ -93,6 +111,18 @@ class ReasoningKnowledgeBinding:
                 "evidence_specialty",
                 "every evidence source must apply to the binding specialty",
             )
+        if any(
+            item.status is not KnowledgeStatus.VALIDATED
+            or item.review_due_on is None
+            or item.review_due_on <= _today()
+            for item in schemas
+        ):
+            _fail("schema_status", "schema review must be validated and current")
+        if any(item.specialty_key != self.specialty_key for item in schemas):
+            _fail(
+                "schema_specialty",
+                "every form schema must match the binding specialty",
+            )
 
         referenced_source_ids = {
             source_id
@@ -105,9 +135,31 @@ class ReasoningKnowledgeBinding:
                 "evidence_binding",
                 "evidence sources must exactly match knowledge references",
             )
+        supplied_object_ids = {item.object_id for item in objects}
+        field_object_ids = {
+            field_value.knowledge_object_id
+            for schema in schemas
+            for field_value in schema.fields
+        }
+        if not field_object_ids.issubset(supplied_object_ids):
+            _fail(
+                "schema_knowledge_binding",
+                "every form field must reference bound knowledge",
+            )
+        fields_by_key = {}
+        for schema in schemas:
+            for field_value in schema.fields:
+                existing = fields_by_key.get(field_value.field_key)
+                if existing is not None and existing != field_value:
+                    _fail(
+                        "field_conflict",
+                        "repeated field keys must have identical definitions",
+                    )
+                fields_by_key[field_value.field_key] = field_value
 
         object.__setattr__(self, "knowledge_objects", objects)
         object.__setattr__(self, "evidence_sources", sources)
+        object.__setattr__(self, "form_schemas", schemas)
         object.__setattr__(self, "content_fingerprint", self._fingerprint())
 
     @property
@@ -117,6 +169,20 @@ class ReasoningKnowledgeBinding:
     @property
     def evidence_source_ids(self) -> tuple[str, ...]:
         return tuple(item.source_id for item in self.evidence_sources)
+
+    @property
+    def form_schema_ids(self) -> tuple[str, ...]:
+        return tuple(item.schema_id for item in self.form_schemas)
+
+    @property
+    def field_keys(self) -> tuple[str, ...]:
+        return tuple(
+            dict.fromkeys(
+                field_value.field_key
+                for schema in self.form_schemas
+                for field_value in schema.fields
+            )
+        )
 
     @property
     def knowledge_binding_complete(self) -> bool:
@@ -137,6 +203,12 @@ class ReasoningKnowledgeBinding:
                 and item.review_due_on is not None
                 and item.review_due_on > _today()
                 for item in self.evidence_sources
+            )
+            and all(
+                item.status is KnowledgeStatus.VALIDATED
+                and item.review_due_on is not None
+                and item.review_due_on > _today()
+                for item in self.form_schemas
             )
         )
 
@@ -209,6 +281,34 @@ class ReasoningKnowledgeBinding:
                     "review_due_on": item.review_due_on.isoformat(),
                 }
                 for item in self.evidence_sources
+            ],
+            "form_schemas": [
+                {
+                    "schema_id": item.schema_id,
+                    "specialty_key": item.specialty_key,
+                    "workflow_id": item.workflow_id,
+                    "step_key": item.step_key,
+                    "version": item.version,
+                    "status": item.status.value,
+                    "reviewed_on": item.reviewed_on.isoformat(),
+                    "validated_by": item.validated_by,
+                    "review_due_on": item.review_due_on.isoformat(),
+                    "fields": [
+                        {
+                            "field_key": field_value.field_key,
+                            "label": field_value.label,
+                            "section": field_value.section.value,
+                            "value_type": field_value.value_type.value,
+                            "knowledge_object_id": (
+                                field_value.knowledge_object_id
+                            ),
+                            "required": field_value.required,
+                            "allowed_values": field_value.allowed_values,
+                        }
+                        for field_value in item.fields
+                    ],
+                }
+                for item in self.form_schemas
             ],
         }
         canonical = json.dumps(

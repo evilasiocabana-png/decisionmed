@@ -19,10 +19,13 @@ from decisionmed.evidence import (
     RecommendationStrength,
 )
 from decisionmed.knowledge import (
+    ClinicalFieldDefinition,
+    ClinicalFieldValueType,
     EvidenceAnchor,
     KnowledgeObject,
     KnowledgeObjectType,
     KnowledgeStatus,
+    SpecialtyFormSchema,
 )
 from decisionmed.reasoning import (
     GovernedReasoningInput,
@@ -76,10 +79,15 @@ class GovernedReasoningInputTest(unittest.TestCase):
 
     def test_specialty_mismatch_is_rejected(self) -> None:
         source = replace(self.binding.evidence_sources[0], specialties=("psychiatry",))
+        schema = replace(
+            self.binding.form_schemas[0],
+            specialty_key="psychiatry",
+        )
         mismatched_binding = replace(
             self.binding,
             specialty_key="psychiatry",
             evidence_sources=(source,),
+            form_schemas=(schema,),
         )
 
         with self.assertRaises(ReasoningError) as mismatch:
@@ -248,6 +256,27 @@ class GovernedReasoningInputTest(unittest.TestCase):
             validated_by="reviewer.synthetic",
             review_due_on=date.today() + timedelta(days=30),
         )
+        schema = SpecialtyFormSchema(
+            schema_id="schema.cardiology.synthetic-governed-input",
+            specialty_key="cardiology",
+            workflow_id="decisionmed.cardiology.workflow.v1",
+            step_key="context",
+            version="1.0.0",
+            fields=(
+                ClinicalFieldDefinition(
+                    field_key="symptoms.synthetic",
+                    label="Synthetic governed input field",
+                    section=ClinicalSnapshotSection.SYMPTOMS,
+                    value_type=ClinicalFieldValueType.TEXT,
+                    knowledge_object_id=knowledge.object_id,
+                    required=True,
+                ),
+            ),
+            status=KnowledgeStatus.VALIDATED,
+            reviewed_on=date.today(),
+            validated_by="reviewer.synthetic",
+            review_due_on=date.today() + timedelta(days=30),
+        )
         return ReasoningKnowledgeBinding(
             catalog_id="decisionmed.knowledge",
             catalog_version="1.0.0",
@@ -258,6 +287,7 @@ class GovernedReasoningInputTest(unittest.TestCase):
             bound_at=self.bound_at,
             knowledge_objects=(knowledge,),
             evidence_sources=(source,),
+            form_schemas=(schema,),
         )
 
 
