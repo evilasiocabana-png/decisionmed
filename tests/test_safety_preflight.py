@@ -134,6 +134,24 @@ class SafetyPreflightTest(unittest.TestCase):
         self.assertIn("review is not current", assessment.results[0].explanation)
         self.assertEqual(0, evaluator.call_count)
 
+    def test_evidence_that_expires_after_registration_is_not_run(self) -> None:
+        evaluator = SyntheticEvaluator()
+        preflight = self._preflight(evaluator)
+
+        class FutureDate(date):
+            @classmethod
+            def today(cls) -> date:
+                return date.today() + timedelta(days=60)
+
+        with patch("decisionmed.evidence.models.date", FutureDate):
+            assessment = preflight.run(self._snapshot(complete=True))
+
+        self.assertEqual(SafetyGateStatus.INCOMPLETE, assessment.status)
+        self.assertIn(
+            "evidence review is not current", assessment.results[0].explanation
+        )
+        self.assertEqual(0, evaluator.call_count)
+
     def test_incomplete_evaluator_registry_cannot_start_preflight(self) -> None:
         incomplete = SafetyCheckEvaluatorRegistry(self.providers)
 
@@ -142,6 +160,18 @@ class SafetyPreflightTest(unittest.TestCase):
 
         self.assertEqual(
             "safety_preflight.evaluator_coverage", coverage.exception.code
+        )
+
+    def test_preflight_rejects_a_different_evidence_registry(self) -> None:
+        evaluators = SafetyCheckEvaluatorRegistry(
+            self.providers, (SyntheticEvaluator(),)
+        )
+
+        with self.assertRaises(SafetyError) as mismatch:
+            SafetyPreflight(evaluators, EvidenceRegistry())
+
+        self.assertEqual(
+            "safety_preflight.evidence_registry", mismatch.exception.code
         )
 
     def _preflight(self, evaluator: SyntheticEvaluator) -> SafetyPreflight:
