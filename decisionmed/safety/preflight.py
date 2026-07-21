@@ -46,6 +46,7 @@ class SafetyPreflight:
     def run(self, snapshot: ClinicalSnapshot) -> SafetyAssessment:
         if not isinstance(snapshot, ClinicalSnapshot):
             raise TypeError("snapshot must be a ClinicalSnapshot")
+        snapshot_fingerprint = snapshot.content_fingerprint
         evaluators = self._evaluators.all()
         specialties_match = all(
             self._evaluators.providers.specifications.require(
@@ -73,6 +74,7 @@ class SafetyPreflight:
                 self._not_evaluated(
                     evaluator,
                     snapshot.trace_id,
+                    snapshot_fingerprint,
                     "Governed safety specification review is not current; evaluator was not invoked.",
                 )
                 for evaluator in evaluators
@@ -82,6 +84,7 @@ class SafetyPreflight:
                 self._not_evaluated(
                     evaluator,
                     snapshot.trace_id,
+                    snapshot_fingerprint,
                     "Governed evidence review is not current; evaluator was not invoked.",
                 )
                 for evaluator in evaluators
@@ -91,6 +94,7 @@ class SafetyPreflight:
                 self._not_evaluated(
                     evaluator,
                     snapshot.trace_id,
+                    snapshot_fingerprint,
                     "Snapshot is structurally incomplete; evaluator was not invoked.",
                 )
                 for evaluator in evaluators
@@ -100,6 +104,7 @@ class SafetyPreflight:
                 self._not_evaluated(
                     evaluator,
                     snapshot.trace_id,
+                    snapshot_fingerprint,
                     "Snapshot specialty does not match the governed safety specification.",
                 )
                 for evaluator in evaluators
@@ -108,7 +113,11 @@ class SafetyPreflight:
             results = tuple(
                 self._evaluate(evaluator, snapshot) for evaluator in evaluators
             )
-        return self._coordinator.assess(results, snapshot.trace_id)
+        return self._coordinator.assess(
+            results,
+            snapshot.trace_id,
+            snapshot_fingerprint,
+        )
 
     @property
     def clinical_execution_allowed(self) -> bool:
@@ -124,27 +133,34 @@ class SafetyPreflight:
             return SafetyPreflight._not_evaluated(
                 evaluator,
                 snapshot.trace_id,
+                snapshot.content_fingerprint,
                 "Evaluator did not produce a valid governed result.",
             )
         if (
             not isinstance(result, SafetyCheckResult)
             or result.check_id != evaluator.check_id
             or result.trace_id != snapshot.trace_id
+            or result.snapshot_fingerprint != snapshot.content_fingerprint
         ):
             return SafetyPreflight._not_evaluated(
                 evaluator,
                 snapshot.trace_id,
+                snapshot.content_fingerprint,
                 "Evaluator did not produce a valid governed result.",
             )
         return result
 
     @staticmethod
     def _not_evaluated(
-        evaluator: SafetyCheckEvaluator, trace_id: str, explanation: str
+        evaluator: SafetyCheckEvaluator,
+        trace_id: str,
+        snapshot_fingerprint: str,
+        explanation: str,
     ) -> SafetyCheckResult:
         return SafetyCheckResult(
             check_id=evaluator.check_id,
             outcome=SafetyCheckOutcome.NOT_EVALUATED,
             trace_id=trace_id,
+            snapshot_fingerprint=snapshot_fingerprint,
             explanation=explanation,
         )

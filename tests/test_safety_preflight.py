@@ -56,6 +56,11 @@ class SyntheticEvaluator:
             check_id="check.other" if self.mode == "wrong_check" else self.check_id,
             outcome=SafetyCheckOutcome.PASSED,
             trace_id=trace_id,
+            snapshot_fingerprint=(
+                "b" * 64
+                if self.mode == "wrong_snapshot"
+                else snapshot.content_fingerprint
+            ),
             explanation="Synthetic evaluated result for structural tests.",
             evidence_source_ids=("source.synthetic-preflight",),
         )
@@ -70,8 +75,9 @@ class SafetyPreflightTest(unittest.TestCase):
     def test_complete_snapshot_reaches_human_review_only(self) -> None:
         evaluator = SyntheticEvaluator()
         preflight = self._preflight(evaluator)
+        snapshot = self._snapshot(complete=True)
 
-        assessment = preflight.run(self._snapshot(complete=True))
+        assessment = preflight.run(snapshot)
 
         self.assertEqual(SafetyGateStatus.READY_FOR_HUMAN_REVIEW, assessment.status)
         self.assertEqual(1, evaluator.call_count)
@@ -81,6 +87,10 @@ class SafetyPreflightTest(unittest.TestCase):
         )
         self.assertFalse(assessment.clinical_execution_allowed)
         self.assertFalse(preflight.clinical_execution_allowed)
+        self.assertEqual(
+            snapshot.content_fingerprint,
+            assessment.snapshot_fingerprint,
+        )
 
     def test_incomplete_or_wrong_specialty_snapshot_is_not_evaluated(self) -> None:
         for snapshot, explanation_fragment in (
@@ -102,7 +112,13 @@ class SafetyPreflightTest(unittest.TestCase):
             self.assertEqual(0, evaluator.call_count)
 
     def test_evaluator_failure_or_invalid_result_fails_closed(self) -> None:
-        for mode in ("raise", "wrong_type", "wrong_check", "wrong_trace"):
+        for mode in (
+            "raise",
+            "wrong_type",
+            "wrong_check",
+            "wrong_trace",
+            "wrong_snapshot",
+        ):
             evaluator = SyntheticEvaluator(mode)
             assessment = self._preflight(evaluator).run(
                 self._snapshot(complete=True)

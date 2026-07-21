@@ -54,6 +54,7 @@ class SafetyReviewRecordTest(unittest.TestCase):
             missing_check_ids=("check.synthetic-review",),
             blocking_reasons=("missing_check:check.synthetic-review",),
             trace_id="trace.synthetic-review",
+            snapshot_fingerprint="a" * 64,
         )
 
         with self.assertRaises(SafetyError) as invalid:
@@ -69,6 +70,7 @@ class SafetyReviewRecordTest(unittest.TestCase):
             missing_check_ids=(),
             blocking_reasons=("critical_finding:finding.synthetic",),
             trace_id="trace.synthetic-review",
+            snapshot_fingerprint="a" * 64,
         )
         record = self._record(
             blocked,
@@ -134,6 +136,7 @@ class SafetyReviewRecordTest(unittest.TestCase):
                     check_id="check.synthetic-review",
                     outcome=SafetyCheckOutcome.PASSED,
                     trace_id="trace.synthetic-review",
+                    snapshot_fingerprint="a" * 64,
                     explanation="Synthetic evaluated safety result.",
                     evidence_source_ids=("source.synthetic-review",),
                 ),
@@ -141,6 +144,7 @@ class SafetyReviewRecordTest(unittest.TestCase):
             missing_check_ids=(),
             blocking_reasons=(),
             trace_id="trace.synthetic-review",
+            snapshot_fingerprint="a" * 64,
         )
 
 

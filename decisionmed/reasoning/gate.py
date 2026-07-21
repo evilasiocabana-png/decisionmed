@@ -111,6 +111,11 @@ class ReasoningGate:
                 "reasoning.trace_mismatch",
                 "snapshot and safety assessment must share a trace",
             )
+        if snapshot.content_fingerprint != safety.snapshot_fingerprint:
+            raise ReasoningError(
+                "reasoning.snapshot_mismatch",
+                "safety assessment must match the exact clinical snapshot",
+            )
 
         if not snapshot.structurally_complete:
             status = ReasoningGateStatus.SNAPSHOT_INCOMPLETE
