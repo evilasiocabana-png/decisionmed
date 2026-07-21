@@ -16,6 +16,10 @@ from .question_engine import (
     QuestionEngineState,
     QuestionRequirement,
 )
+from .question_validation import (
+    QuestionEngineOutputValidator,
+    QuestionEngineValidationReceipt,
+)
 
 __all__ = [
     "ReasoningError",
@@ -30,4 +34,6 @@ __all__ = [
     "QuestionEngineResult",
     "QuestionEngineState",
     "QuestionRequirement",
+    "QuestionEngineOutputValidator",
+    "QuestionEngineValidationReceipt",
 ]
