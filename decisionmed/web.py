@@ -66,6 +66,21 @@ class DecisionMedRequestHandler(SimpleHTTPRequestHandler):
             self.path = "/index.html"
         super().do_GET()
 
+    def end_headers(self) -> None:
+        """Apply browser protections to every local hub response."""
+
+        self.send_header("X-Content-Type-Options", "nosniff")
+        self.send_header("X-Frame-Options", "DENY")
+        self.send_header("Referrer-Policy", "no-referrer")
+        self.send_header("Permissions-Policy", "camera=(), microphone=(), geolocation=()")
+        self.send_header(
+            "Content-Security-Policy",
+            "default-src 'self'; base-uri 'none'; form-action 'none'; "
+            "frame-ancestors 'none'; connect-src 'self'; img-src 'self' data:; "
+            "style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline'",
+        )
+        super().end_headers()
+
     def do_POST(self) -> None:
         parsed = urlparse(self.path)
         try:

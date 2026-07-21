@@ -332,7 +332,7 @@ class DecisionMedWebTest(unittest.TestCase):
             )
 
     def test_home_page_and_psychiatry_redirect(self) -> None:
-        home_status, _, home_body = self.request("/")
+        home_status, home_headers, home_body = self.request("/")
         redirect_status, redirect_headers, _ = self.request("/psychiatry")
 
         self.assertEqual(200, home_status)
@@ -342,8 +342,14 @@ class DecisionMedWebTest(unittest.TestCase):
         self.assertIn(b"catalog-status", home_body)
         self.assertIn(b"item.intended_scope", home_body)
         self.assertNotIn(b"innerHTML", home_body)
+        self.assertEqual("nosniff", home_headers["x-content-type-options"])
+        self.assertEqual("DENY", home_headers["x-frame-options"])
+        self.assertEqual("no-referrer", home_headers["referrer-policy"])
+        self.assertIn("default-src 'self'", home_headers["content-security-policy"])
+        self.assertIn("form-action 'none'", home_headers["content-security-policy"])
         self.assertEqual(303, redirect_status)
         self.assertEqual("http://127.0.0.1:9876/", redirect_headers["location"])
+        self.assertEqual("DENY", redirect_headers["x-frame-options"])
 
     def test_workflow_endpoint_and_unknown_specialty(self) -> None:
         status, _, body = self.request("/api/workflows/psychiatry")
