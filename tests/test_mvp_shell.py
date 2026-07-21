@@ -418,6 +418,7 @@ class DecisionMedWebTest(unittest.TestCase):
         self.assertIn(b"Fluxo governado", body)
         self.assertIn(b"data-workspace=\"governed-reference\"", body)
         self.assertNotIn(b"<textarea", body.lower())
+        self.assertNotIn(b"innerHTML", body)
 
     def test_structural_session_can_start_and_advance(self) -> None:
         start_status, start_headers, start_body = self.request(
