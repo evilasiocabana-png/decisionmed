@@ -6,6 +6,7 @@ from dataclasses import dataclass
 from typing import Any
 
 from .composition import SpecialtyPackResolver, build_reference_resolver
+from .readiness import PlatformReadinessService
 from .specialties import SpecialtyPackRegistry, build_default_specialty_registry
 from .workflows import (
     SpecialtyWorkflow,
@@ -48,10 +49,12 @@ class DecisionMedAppService:
         registry: SpecialtyPackRegistry | None = None,
         resolver: SpecialtyPackResolver | None = None,
         workflows: WorkflowRegistry | None = None,
+        readiness: PlatformReadinessService | None = None,
     ) -> None:
         self._registry = registry or build_default_specialty_registry()
         self._resolver = resolver or build_reference_resolver()
         self._workflows = workflows or build_default_workflow_registry(self._registry)
+        self._readiness = readiness or PlatformReadinessService()
 
     def workflow(self, specialty_key: str) -> SpecialtyWorkflow:
         self._registry.require(specialty_key)
@@ -78,10 +81,16 @@ class DecisionMedAppService:
 
     def get_app_state(self) -> dict[str, Any]:
         specialties = self.specialties()
+        readiness = self._readiness.report(item.load_status for item in specialties)
         return {
             "product": "DecisionMEd",
             "mode": "read-only",
             "clinical_execution_allowed": False,
             "specialties": [item.to_dict() for item in specialties],
             "workflow_specialties": [item.key for item in specialties],
+            "readiness": readiness,
         }
+
+    def get_readiness(self) -> dict[str, Any]:
+        specialties = self.specialties()
+        return self._readiness.report(item.load_status for item in specialties)

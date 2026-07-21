@@ -14,6 +14,8 @@ class DecisionMedAppServiceTest(unittest.TestCase):
         self.assertEqual("DecisionMEd", state["product"])
         self.assertEqual("read-only", state["mode"])
         self.assertFalse(state["clinical_execution_allowed"])
+        self.assertFalse(state["readiness"]["clinical_execution_allowed"])
+        self.assertEqual(5, state["readiness"]["blocked_gate_count"])
         psychiatry = next(
             item for item in state["specialties"] if item["key"] == "psychiatry"
         )
@@ -50,11 +52,14 @@ class DecisionMedWebTest(unittest.TestCase):
     def test_health_and_app_state_endpoints(self) -> None:
         health_status, _, health_body = self.request("/health")
         state_status, _, state_body = self.request("/api/app-state")
+        readiness_status, _, readiness_body = self.request("/api/readiness")
 
         self.assertEqual(200, health_status)
         self.assertEqual("ok", json.loads(health_body)["status"])
         self.assertEqual(200, state_status)
         self.assertEqual("DecisionMEd", json.loads(state_body)["product"])
+        self.assertEqual(200, readiness_status)
+        self.assertFalse(json.loads(readiness_body)["clinical_execution_allowed"])
 
     def test_home_page_and_psychiatry_redirect(self) -> None:
         home_status, _, home_body = self.request("/")
