@@ -77,6 +77,7 @@ class SpecialtyFormSchema:
     status: KnowledgeStatus = KnowledgeStatus.DRAFT
     reviewed_on: date | None = None
     validated_by: str | None = None
+    review_due_on: date | None = None
 
     def __post_init__(self) -> None:
         _identifier("schema_id", self.schema_id)
@@ -100,12 +101,25 @@ class SpecialtyFormSchema:
 
         if self.reviewed_on is not None and not isinstance(self.reviewed_on, date):
             raise TypeError("reviewed_on must be a date or None")
+        if self.reviewed_on is not None and self.reviewed_on > date.today():
+            _fail("reviewed_on", "review date cannot be in the future")
         if self.validated_by is not None:
             _identifier("validated_by", self.validated_by)
+        if self.review_due_on is not None:
+            if not isinstance(self.review_due_on, date):
+                raise TypeError("review_due_on must be a date or None")
+            if self.reviewed_on is None or self.review_due_on <= self.reviewed_on:
+                _fail("review_due_on", "review due date must follow the review date")
         if self.status is KnowledgeStatus.VALIDATED and (
-            self.reviewed_on is None or self.validated_by is None
+            self.reviewed_on is None
+            or self.validated_by is None
+            or self.review_due_on is None
+            or self.review_due_on <= date.today()
         ):
-            _fail("validation", "validated schema requires review metadata")
+            _fail(
+                "validation",
+                "validated schema requires review metadata and a future due date",
+            )
 
     @property
     def runtime_eligible(self) -> bool:
@@ -114,6 +128,20 @@ class SpecialtyFormSchema:
     @property
     def clinical_execution_allowed(self) -> bool:
         return False
+
+    @property
+    def review_state(self) -> str:
+        if self.review_due_on is None:
+            return "unscheduled"
+        if self.review_due_on < date.today():
+            return "overdue"
+        if self.review_due_on == date.today():
+            return "due_today"
+        return "current"
+
+    @property
+    def review_overdue(self) -> bool:
+        return self.review_state == "overdue"
 
 
 def _identifier(field_name: str, value: object) -> None:

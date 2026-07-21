@@ -56,6 +56,25 @@ class SpecialtyFormSchemaTest(unittest.TestCase):
         with self.assertRaises(KnowledgeError):
             self._schema((field,), status=KnowledgeStatus.VALIDATED)
 
+    def test_schema_review_lifecycle_fails_closed(self) -> None:
+        schema = self._schema((self._field(),))
+        self.assertEqual("unscheduled", schema.review_state)
+        self.assertFalse(schema.review_overdue)
+
+        with self.assertRaises(KnowledgeError) as no_review:
+            replace(schema, review_due_on=date.today() + timedelta(days=1))
+        self.assertEqual(
+            "specialty_form_schema.review_due_on", no_review.exception.code
+        )
+
+        overdue = replace(
+            schema,
+            reviewed_on=date.today() - timedelta(days=2),
+            review_due_on=date.today() - timedelta(days=1),
+        )
+        self.assertEqual("overdue", overdue.review_state)
+        self.assertTrue(overdue.review_overdue)
+
     def test_registry_requires_every_linked_knowledge_object(self) -> None:
         registry = SpecialtyFormSchemaRegistry(KnowledgeRegistry(EvidenceRegistry()))
 
@@ -79,6 +98,7 @@ class SpecialtyFormSchemaTest(unittest.TestCase):
                     status=KnowledgeStatus.VALIDATED,
                     reviewed_on=date(2026, 7, 21),
                     validated_by="reviewer-1",
+                    review_due_on=date.today() + timedelta(days=30),
                 )
             )
 
@@ -98,6 +118,7 @@ class SpecialtyFormSchemaTest(unittest.TestCase):
             status=KnowledgeStatus.VALIDATED,
             reviewed_on=date(2026, 7, 21),
             validated_by="reviewer-1",
+            review_due_on=date.today() + timedelta(days=30),
         )
         registry = SpecialtyFormSchemaRegistry(knowledge, (schema,))
 
@@ -110,6 +131,8 @@ class SpecialtyFormSchemaTest(unittest.TestCase):
         self.assertEqual((schema,), registry.all())
         self.assertFalse(schema.runtime_eligible)
         self.assertFalse(schema.clinical_execution_allowed)
+        self.assertEqual("current", schema.review_state)
+        self.assertFalse(schema.review_overdue)
         with self.assertRaises(KnowledgeError):
             registry.register(schema)
 
@@ -176,6 +199,7 @@ class SpecialtyFormSchemaTest(unittest.TestCase):
         status: KnowledgeStatus = KnowledgeStatus.DRAFT,
         reviewed_on: date | None = None,
         validated_by: str | None = None,
+        review_due_on: date | None = None,
     ) -> SpecialtyFormSchema:
         return SpecialtyFormSchema(
             schema_id="schema.cardiology.intake",
@@ -187,6 +211,7 @@ class SpecialtyFormSchemaTest(unittest.TestCase):
             status=status,
             reviewed_on=reviewed_on,
             validated_by=validated_by,
+            review_due_on=review_due_on,
         )
 
     @staticmethod
@@ -236,6 +261,11 @@ class SpecialtyFormSchemaTest(unittest.TestCase):
             validated_by="reviewer-1"
             if status is KnowledgeStatus.VALIDATED
             else None,
+            review_due_on=(
+                date.today() + timedelta(days=30)
+                if status is KnowledgeStatus.VALIDATED
+                else None
+            ),
         )
 
 

@@ -86,6 +86,7 @@ class KnowledgeObject:
     status: KnowledgeStatus = KnowledgeStatus.DRAFT
     reviewed_on: date | None = None
     validated_by: str | None = None
+    review_due_on: date | None = None
 
     def __post_init__(self) -> None:
         self._identifier("object_id", self.object_id)
@@ -111,14 +112,26 @@ class KnowledgeObject:
 
         if self.reviewed_on is not None and not isinstance(self.reviewed_on, date):
             raise TypeError("reviewed_on must be a date or None")
+        if self.reviewed_on is not None and self.reviewed_on > date.today():
+            self._fail("reviewed_on", "review date cannot be in the future")
         if self.validated_by is not None:
             self._identifier("validated_by", self.validated_by)
+        if self.review_due_on is not None:
+            if not isinstance(self.review_due_on, date):
+                raise TypeError("review_due_on must be a date or None")
+            if self.reviewed_on is None or self.review_due_on <= self.reviewed_on:
+                self._fail(
+                    "review_due_on", "review due date must follow the review date"
+                )
         if self.status is KnowledgeStatus.VALIDATED and (
-            self.reviewed_on is None or self.validated_by is None
+            self.reviewed_on is None
+            or self.validated_by is None
+            or self.review_due_on is None
+            or self.review_due_on <= date.today()
         ):
             self._fail(
                 "validation",
-                "validated knowledge requires review date and validator",
+                "validated knowledge requires review metadata and a future due date",
             )
 
     @classmethod
@@ -142,6 +155,20 @@ class KnowledgeObject:
         """Foundation contracts never authorize clinical runtime use."""
 
         return False
+
+    @property
+    def review_state(self) -> str:
+        if self.review_due_on is None:
+            return "unscheduled"
+        if self.review_due_on < date.today():
+            return "overdue"
+        if self.review_due_on == date.today():
+            return "due_today"
+        return "current"
+
+    @property
+    def review_overdue(self) -> bool:
+        return self.review_state == "overdue"
 
     @property
     def evidence_source_ids(self) -> tuple[str, ...]:

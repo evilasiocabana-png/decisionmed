@@ -33,7 +33,7 @@ from decisionmed.knowledge import (
 )
 
 
-CATALOG_SCHEMA_VERSION = "5.0.0"
+CATALOG_SCHEMA_VERSION = "6.0.0"
 MAX_CATALOG_BYTES = 1_048_576
 MAX_CATALOG_ITEMS = 10_000
 _IDENTIFIER = re.compile(r"^[a-z][a-z0-9]*(?:[._-][a-z0-9]+)*$")
@@ -151,6 +151,7 @@ def load_governed_catalogs(root: Path) -> GovernedCatalogs:
                     status=KnowledgeStatus(item["status"]),
                     reviewed_on=_date_or_none(item["reviewed_on"]),
                     validated_by=item["validated_by"],
+                    review_due_on=_date_or_none(item["review_due_on"]),
                 )
                 for item in _items(
                     knowledge_payload, "knowledge.json", _KNOWLEDGE_KEYS
@@ -276,6 +277,7 @@ def _form_schema(item: dict[str, Any]) -> SpecialtyFormSchema:
         status=KnowledgeStatus(item["status"]),
         reviewed_on=_date_or_none(item["reviewed_on"]),
         validated_by=item["validated_by"],
+        review_due_on=_date_or_none(item["review_due_on"]),
     )
 
 
@@ -324,12 +326,16 @@ _EVIDENCE_KEYS = frozenset(
     }
 )
 _KNOWLEDGE_KEYS = frozenset(
-    {"object_id", "official_name", "object_type", "description", "evidence_anchors", "applicability", "limits", "version", "status", "reviewed_on", "validated_by"}
+    {
+        "object_id", "official_name", "object_type", "description",
+        "evidence_anchors", "applicability", "limits", "version", "status",
+        "reviewed_on", "validated_by", "review_due_on",
+    }
 )
 _SCHEMA_KEYS = frozenset(
     {
         "schema_id", "specialty_key", "workflow_id", "step_key", "version",
-        "status", "reviewed_on", "validated_by", "fields",
+        "status", "reviewed_on", "validated_by", "review_due_on", "fields",
     }
 )
 _FIELD_KEYS = frozenset(
