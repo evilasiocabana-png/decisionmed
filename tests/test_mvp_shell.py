@@ -79,7 +79,10 @@ class DecisionMedWebTest(unittest.TestCase):
         self.assertTrue(state["knowledge_catalog"]["loaded"])
         self.assertEqual(1, state["knowledge_catalog"]["form_schema_count"])
         self.assertEqual(200, readiness_status)
-        self.assertFalse(json.loads(readiness_body)["clinical_execution_allowed"])
+        readiness = json.loads(readiness_body)
+        self.assertEqual(1, readiness["counts"]["evidence_sources"])
+        self.assertEqual(1, readiness["counts"]["knowledge_objects"])
+        self.assertFalse(readiness["clinical_execution_allowed"])
 
     def test_home_page_and_psychiatry_redirect(self) -> None:
         home_status, _, home_body = self.request("/")
@@ -277,8 +280,10 @@ class DecisionMedWebTest(unittest.TestCase):
         form_schemas.all.return_value = (schema,)
         knowledge_registry = Mock()
         knowledge_registry.require.return_value = knowledge
+        knowledge_registry.all.return_value = (knowledge,)
         evidence_registry = Mock()
         evidence_registry.require.return_value = source
+        evidence_registry.all.return_value = (source,)
         return SimpleNamespace(
             manifest=SimpleNamespace(
                 catalog_id="decisionmed.knowledge",

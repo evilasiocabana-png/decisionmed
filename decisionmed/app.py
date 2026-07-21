@@ -62,11 +62,14 @@ class DecisionMedAppService:
         self._registry = registry or build_default_specialty_registry()
         self._resolver = resolver or build_reference_resolver()
         self._workflows = workflows or build_default_workflow_registry(self._registry)
-        self._readiness = readiness or PlatformReadinessService()
+        self._catalogs = catalogs
+        self._readiness = readiness or PlatformReadinessService(
+            evidence=catalogs.evidence if catalogs is not None else None,
+            knowledge=catalogs.knowledge if catalogs is not None else None,
+        )
         self._sessions = sessions or WorkflowSessionService(
             self._registry, self._workflows
         )
-        self._catalogs = catalogs
 
     def workflow(self, specialty_key: str) -> SpecialtyWorkflow:
         self._registry.require(specialty_key)
