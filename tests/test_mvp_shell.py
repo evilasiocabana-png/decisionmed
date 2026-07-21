@@ -34,6 +34,9 @@ class DecisionMedAppServiceTest(unittest.TestCase):
         self.assertEqual(6, len(state["specialties"]))
         self.assertEqual("reference_only", psychiatry["load_status"])
         self.assertEqual("psychrx.clinical-decision.v1", psychiatry["workflow_contract"])
+        self.assertEqual(13, psychiatry["workflow_step_count"])
+        self.assertEqual([], psychiatry["reference_schema_step_keys"])
+        self.assertEqual(13, len(psychiatry["missing_reference_schema_step_keys"]))
         self.assertEqual(7, len(psychiatry["available_capabilities"]))
         self.assertIn("PsychRx", psychiatry["intended_scope"])
         self.assertIn("Execução clínica.", psychiatry["excluded_uses"])
@@ -111,6 +114,12 @@ class DecisionMedWebTest(unittest.TestCase):
         self.assertNotIn("cardiology.evidence", cardiology["missing_capabilities"])
         self.assertEqual(4, len(cardiology["missing_capabilities"]))
         self.assertEqual("blocked", cardiology["load_status"])
+        self.assertEqual(7, cardiology["workflow_step_count"])
+        self.assertEqual(["findings"], cardiology["reference_schema_step_keys"])
+        self.assertEqual(
+            ["context", "risk", "safety", "evidence", "decision", "monitoring"],
+            cardiology["missing_reference_schema_step_keys"],
+        )
         self.assertEqual(1, state["knowledge_catalog"]["form_schema_count"])
         self.assertEqual(200, readiness_status)
         readiness = json.loads(readiness_body)
@@ -152,6 +161,20 @@ class DecisionMedWebTest(unittest.TestCase):
             "unvalidated_safety_specifications", safety_gate["reason"]
         )
         self.assertFalse(readiness["clinical_execution_allowed"])
+
+    def test_rejects_schema_bound_to_an_unknown_workflow_step(self) -> None:
+        catalogs = self._catalogs()
+        catalogs.form_schemas.all.return_value[0].step_key = "unknown-step"
+
+        with self.assertRaisesRegex(ValueError, "unknown workflow step"):
+            DecisionMedAppService(catalogs=catalogs)
+
+    def test_rejects_schema_bound_to_another_workflow_contract(self) -> None:
+        catalogs = self._catalogs()
+        catalogs.form_schemas.all.return_value[0].workflow_id = "other.workflow.v1"
+
+        with self.assertRaisesRegex(ValueError, "workflow contract does not match"):
+            DecisionMedAppService(catalogs=catalogs)
 
     def test_validated_safety_metadata_without_provider_stays_blocked(self) -> None:
         catalogs = self._catalogs()

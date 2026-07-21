@@ -28,6 +28,9 @@ class SpecialtyView:
     excluded_uses: tuple[str, ...]
     version: str
     workflow_contract: str
+    workflow_step_count: int
+    reference_schema_step_keys: tuple[str, ...]
+    missing_reference_schema_step_keys: tuple[str, ...]
     pack_status: str
     load_status: str
     execution_allowed: bool
@@ -45,6 +48,11 @@ class SpecialtyView:
             "excluded_uses": list(self.excluded_uses),
             "version": self.version,
             "workflow_contract": self.workflow_contract,
+            "workflow_step_count": self.workflow_step_count,
+            "reference_schema_step_keys": list(self.reference_schema_step_keys),
+            "missing_reference_schema_step_keys": list(
+                self.missing_reference_schema_step_keys
+            ),
             "pack_status": self.pack_status,
             "load_status": self.load_status,
             "execution_allowed": self.execution_allowed,
@@ -88,6 +96,7 @@ class DecisionMedAppService:
         self._resolver = resolver
         self._workflows = workflows or build_default_workflow_registry(self._registry)
         self._catalogs = catalogs
+        self._validate_catalog_workflow_bindings()
         self._readiness = readiness or PlatformReadinessService(
             evidence=catalogs.evidence if catalogs is not None else None,
             knowledge=catalogs.knowledge if catalogs is not None else None,
@@ -109,6 +118,8 @@ class DecisionMedAppService:
         for pack in self._registry.all():
             result = self._resolver.resolve(pack)
             workflow = self._workflows.require(pack.key)
+            workflow_step_keys = tuple(step.key for step in workflow.steps)
+            schema_step_keys = self._reference_schema_step_keys(workflow)
             views.append(
                 SpecialtyView(
                     key=pack.key,
@@ -117,6 +128,13 @@ class DecisionMedAppService:
                     excluded_uses=pack.excluded_uses,
                     version=pack.version,
                     workflow_contract=workflow.workflow_id,
+                    workflow_step_count=len(workflow_step_keys),
+                    reference_schema_step_keys=schema_step_keys,
+                    missing_reference_schema_step_keys=tuple(
+                        step_key
+                        for step_key in workflow_step_keys
+                        if step_key not in schema_step_keys
+                    ),
                     pack_status=pack.status.value,
                     load_status=result.status.value,
                     execution_allowed=result.clinical_execution_allowed,
@@ -130,6 +148,44 @@ class DecisionMedAppService:
                 )
             )
         return tuple(views)
+
+    def _reference_schema_step_keys(
+        self, workflow: SpecialtyWorkflow
+    ) -> tuple[str, ...]:
+        if self._catalogs is None:
+            return ()
+        return tuple(
+            schema.step_key
+            for schema in self._catalogs.form_schemas.all()
+            if (
+                schema.specialty_key == workflow.specialty_key
+                and schema.workflow_id == workflow.workflow_id
+            )
+        )
+
+    def _validate_catalog_workflow_bindings(self) -> None:
+        """Reject reference schemas that do not map to a declared workflow step."""
+
+        if self._catalogs is None:
+            return
+        for schema in self._catalogs.form_schemas.all():
+            try:
+                workflow = self._workflows.require(schema.specialty_key)
+            except KeyError as exc:
+                raise ValueError(
+                    "catalog form schema references an unknown specialty workflow: "
+                    f"{schema.specialty_key}"
+                ) from exc
+            if schema.workflow_id != workflow.workflow_id:
+                raise ValueError(
+                    "catalog form schema workflow contract does not match specialty "
+                    f"workflow: {schema.schema_id}"
+                )
+            if schema.step_key not in {step.key for step in workflow.steps}:
+                raise ValueError(
+                    "catalog form schema references an unknown workflow step: "
+                    f"{schema.schema_id}"
+                )
 
     def form_schema(self, specialty_key: str, step_key: str) -> dict[str, Any]:
         """Expose governed metadata without accepting or interpreting values."""
