@@ -11,7 +11,12 @@ from decisionmed.evidence import (
 )
 from decisionmed.safety import (
     SafetyCheckOutcome,
+    SafetyCheckProviderBinding,
+    SafetyCheckProviderRegistry,
+    SafetyCheckRegistry,
     SafetyCheckResult,
+    SafetyCheckSpecification,
+    SafetyCheckStatus,
     SafetyCoordinator,
     SafetyError,
     SafetyFinding,
@@ -47,24 +52,68 @@ def result(
     check_id: str,
     outcome: SafetyCheckOutcome = SafetyCheckOutcome.PASSED,
     findings: tuple[SafetyFinding, ...] = (),
+    evidence_source_ids: tuple[str, ...] | None = None,
 ) -> SafetyCheckResult:
     return SafetyCheckResult(
         check_id=check_id,
         outcome=outcome,
         trace_id=f"trace.{check_id}",
-        evidence_source_ids=("source.safety-fixture",)
-        if outcome is not SafetyCheckOutcome.NOT_EVALUATED
-        else (),
+        evidence_source_ids=(
+            evidence_source_ids
+            if evidence_source_ids is not None
+            else ("source.safety-fixture",)
+            if outcome is not SafetyCheckOutcome.NOT_EVALUATED
+            else ()
+        ),
         findings=findings,
     )
 
 
 class SafetyCoordinatorTest(unittest.TestCase):
-    def coordinator(
-        self, status: EvidenceStatus = EvidenceStatus.VALIDATED
-    ) -> SafetyCoordinator:
-        return SafetyCoordinator(
-            ("check.alpha", "check.beta"), EvidenceRegistry((evidence(status),))
+    def configuration(
+        self,
+    ) -> tuple[SafetyCheckProviderRegistry, EvidenceRegistry]:
+        evidence_registry = EvidenceRegistry((evidence(),))
+        specifications = SafetyCheckRegistry(
+            evidence_registry,
+            tuple(
+                self.specification(check_id, EvidenceStatus.VALIDATED)
+                for check_id in ("check.alpha", "check.beta")
+            ),
+        )
+        providers = SafetyCheckProviderRegistry(
+            specifications,
+            tuple(
+                SafetyCheckProviderBinding(
+                    check_id,
+                    f"decisionmed.safety.{check_id.removeprefix('check.')}",
+                    "0.1.0",
+                )
+                for check_id in ("check.alpha", "check.beta")
+            ),
+        )
+        return providers, evidence_registry
+
+    def coordinator(self) -> SafetyCoordinator:
+        providers, evidence_registry = self.configuration()
+        return SafetyCoordinator(providers, evidence_registry)
+
+    @staticmethod
+    def specification(
+        check_id: str, evidence_status: EvidenceStatus
+    ) -> SafetyCheckSpecification:
+        validated = evidence_status is EvidenceStatus.VALIDATED
+        return SafetyCheckSpecification(
+            check_id=check_id,
+            specialty_key="cardiology",
+            purpose="Synthetic aggregation contract without a clinical rule.",
+            limits="Structural test only; does not authorize clinical execution.",
+            evidence_source_ids=("source.safety-fixture",),
+            version="0.1.0",
+            status=SafetyCheckStatus.VALIDATED if validated else SafetyCheckStatus.DRAFT,
+            reviewed_on=date.today() if validated else None,
+            validated_by="reviewer.synthetic" if validated else None,
+            review_due_on=date.today() + timedelta(days=30) if validated else None,
         )
 
     def test_missing_or_not_evaluated_checks_fail_closed(self) -> None:
@@ -83,12 +132,98 @@ class SafetyCoordinatorTest(unittest.TestCase):
         self.assertFalse(missing.clinical_execution_allowed)
 
     def test_unvalidated_evidence_keeps_assessment_incomplete(self) -> None:
-        assessment = self.coordinator(EvidenceStatus.DRAFT).assess(
+        providers, _ = self.configuration()
+        evidence_registry = EvidenceRegistry((evidence(EvidenceStatus.DRAFT),))
+        assessment = SafetyCoordinator(providers, evidence_registry).assess(
             (result("check.alpha"), result("check.beta")), "trace.run"
         )
 
         self.assertEqual(SafetyGateStatus.INCOMPLETE, assessment.status)
         self.assertIn("unvalidated_evidence:check.alpha", assessment.blocking_reasons)
+
+    def test_incomplete_provider_coverage_rejects_coordinator(self) -> None:
+        _, evidence_registry = self.configuration()
+        specifications = SafetyCheckRegistry(
+            evidence_registry,
+            (self.specification("check.alpha", EvidenceStatus.VALIDATED),),
+        )
+        with self.assertRaises(SafetyError) as incomplete:
+            SafetyCoordinator(
+                SafetyCheckProviderRegistry(specifications), evidence_registry
+            )
+
+        self.assertEqual("safety.provider_coverage", incomplete.exception.code)
+
+        incompatible = SafetyCheckProviderRegistry(
+            specifications,
+            (
+                SafetyCheckProviderBinding(
+                    "check.alpha", "decisionmed.safety.alpha", "0.2.0"
+                ),
+            ),
+        )
+        with self.assertRaises(SafetyError) as version_mismatch:
+            SafetyCoordinator(incompatible, evidence_registry)
+        self.assertEqual(
+            "safety.provider_coverage", version_mismatch.exception.code
+        )
+
+    def test_undeclared_evidence_keeps_assessment_incomplete(self) -> None:
+        registry = EvidenceRegistry(
+            (
+                evidence(),
+                EvidenceSource(
+                    source_id="source.other-fixture",
+                    title="Other validated synthetic evidence",
+                    publication_year=2025,
+                    evidence_type=EvidenceType.OTHER,
+                    evidence_quality=EvidenceQuality.INSUFFICIENT,
+                    recommendation_strength=(
+                        RecommendationStrength.INSUFFICIENT_FOR_RECOMMENDATION
+                    ),
+                    locator="test-only:other-safety-fixture",
+                    version="0.1.0",
+                    status=EvidenceStatus.VALIDATED,
+                    specialties=("cardiology",),
+                    reviewed_on=date.today(),
+                    known_conflicts="Synthetic fixture.",
+                    clinical_applicability="Contract tests only.",
+                    review_due_on=date.today() + timedelta(days=30),
+                ),
+            )
+        )
+        specifications = SafetyCheckRegistry(
+            registry,
+            tuple(
+                self.specification(check_id, EvidenceStatus.VALIDATED)
+                for check_id in ("check.alpha", "check.beta")
+            ),
+        )
+        providers = SafetyCheckProviderRegistry(
+            specifications,
+            tuple(
+                SafetyCheckProviderBinding(
+                    check_id,
+                    f"decisionmed.safety.{check_id.removeprefix('check.')}",
+                    "0.1.0",
+                )
+                for check_id in ("check.alpha", "check.beta")
+            ),
+        )
+
+        assessment = SafetyCoordinator(providers, registry).assess(
+            (
+                result(
+                    "check.alpha",
+                    evidence_source_ids=("source.other-fixture",),
+                ),
+                result("check.beta"),
+            ),
+            "trace.run",
+        )
+
+        self.assertEqual(SafetyGateStatus.INCOMPLETE, assessment.status)
+        self.assertIn("undeclared_evidence:check.alpha", assessment.blocking_reasons)
 
     def test_critical_finding_blocks_but_does_not_decide_clinically(self) -> None:
         finding = SafetyFinding(

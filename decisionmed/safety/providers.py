@@ -129,6 +129,12 @@ class SafetyCheckProviderRegistry:
     def all(self) -> tuple[SafetyCheckProviderBinding, ...]:
         return tuple(self._bindings[key] for key in sorted(self._bindings))
 
+    @property
+    def specifications(self) -> SafetyCheckRegistry:
+        """Return the governed specifications behind these descriptors."""
+
+        return self._specifications
+
     def coverage(self) -> SafetyImplementationCoverage:
         specifications = self._specifications.all()
         compatible: list[str] = []
