@@ -98,6 +98,9 @@ class WorkflowRegistry:
         except KeyError as exc:
             raise UnknownWorkflowError(specialty_key) from exc
 
+    def all(self) -> tuple[SpecialtyWorkflow, ...]:
+        return tuple(self._workflows[key] for key in sorted(self._workflows))
+
 
 def workflow_from_mapping(payload: dict[str, Any], pack: SpecialtyPack) -> SpecialtyWorkflow:
     try:
@@ -141,4 +144,12 @@ def build_default_workflow_registry(
         except (json.JSONDecodeError, KeyError, ValueError) as exc:
             raise WorkflowDefinitionError(f"invalid workflow file: {path.name}") from exc
         workflows.append(workflow_from_mapping(payload, pack))
-    return WorkflowRegistry(workflows)
+    registry = WorkflowRegistry(workflows)
+    pack_keys = {pack.key for pack in packs.all()}
+    workflow_keys = {workflow.specialty_key for workflow in registry.all()}
+    missing = sorted(pack_keys - workflow_keys)
+    if missing:
+        raise WorkflowDefinitionError(
+            "missing workflow manifests for specialty packs: " + ", ".join(missing)
+        )
+    return registry

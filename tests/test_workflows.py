@@ -1,6 +1,7 @@
 import copy
 import json
 from pathlib import Path
+from tempfile import TemporaryDirectory
 import unittest
 
 from decisionmed.specialties import PSYCHIATRY_PACK, build_default_specialty_registry
@@ -30,6 +31,25 @@ class WorkflowContractTest(unittest.TestCase):
         self.assertEqual(1, rendered["steps"][0]["position"])
         self.assertFalse(rendered["clinical_execution_allowed"])
         self.assertEqual(7, len(registry.require("cardiology").steps))
+        self.assertEqual(
+            tuple(pack.key for pack in build_default_specialty_registry().all()),
+            tuple(workflow.specialty_key for workflow in registry.all()),
+        )
+
+    def test_rejects_missing_workflow_manifest_for_registered_pack(self) -> None:
+        with TemporaryDirectory() as directory:
+            root = Path(directory)
+            (root / "psychiatry.json").write_text(
+                json.dumps(self.payload), encoding="utf-8"
+            )
+
+            with self.assertRaisesRegex(
+                WorkflowDefinitionError,
+                "missing workflow manifests for specialty packs: cardiology",
+            ):
+                build_default_workflow_registry(
+                    build_default_specialty_registry(), root
+                )
 
     def test_rejects_duplicate_steps(self) -> None:
         payload = copy.deepcopy(self.payload)
