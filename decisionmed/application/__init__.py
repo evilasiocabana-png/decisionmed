@@ -35,6 +35,10 @@ from .question_execution import (
     QuestionEngineExecutionError,
     QuestionEngineInvocationResult,
 )
+from .question_invocation_replay import (
+    InMemoryQuestionEngineInvocationReplayGuard,
+    QuestionEngineInvocationReplayGuard,
+)
 
 __all__ = [
     "ClinicalInputIssue",
@@ -60,4 +64,6 @@ __all__ = [
     "QuestionEngineExecutionApplicationService",
     "QuestionEngineExecutionError",
     "QuestionEngineInvocationResult",
+    "InMemoryQuestionEngineInvocationReplayGuard",
+    "QuestionEngineInvocationReplayGuard",
 ]

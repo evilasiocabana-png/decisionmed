@@ -408,6 +408,36 @@ class QuestionEngineOutputValidatorTest(unittest.TestCase):
         self.assertEqual(0, self.engine.call_count)
         self.assertTrue(ledger.verify())
 
+    def test_replayed_authority_is_audited_before_second_engine_call(self) -> None:
+        self.engine.output = self._result()
+        ledger = AuditLedger()
+        service = self._execution_service(
+            SyntheticInvocationAuthority(self._decision()), ledger
+        )
+
+        service.generate(
+            self.input_value,
+            engine_id=self.engine.engine_id,
+            reviewer_id="reviewer.synthetic",
+            authority_reference="authority.synthetic-workflow",
+        )
+        with self.assertRaises(QuestionEngineExecutionError) as replayed:
+            service.generate(
+                self.input_value,
+                engine_id=self.engine.engine_id,
+                reviewer_id="reviewer.synthetic",
+                authority_reference="authority.synthetic-workflow",
+            )
+
+        self.assertEqual(
+            "question_engine_execution.authority_replayed", replayed.exception.code
+        )
+        self.assertEqual(
+            "reasoning.question-engine-authority-replayed", ledger.records()[-1].event_name
+        )
+        self.assertEqual(1, self.engine.call_count)
+        self.assertTrue(ledger.verify())
+
     def test_execution_rejects_non_positive_authority_age(self) -> None:
         with self.assertRaises(ValueError):
             QuestionEngineExecutionApplicationService(
