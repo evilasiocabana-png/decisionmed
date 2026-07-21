@@ -51,6 +51,7 @@ class ReasoningKnowledgeBindingTest(unittest.TestCase):
                     self._binding(**values)
 
     def test_review_expiration_fails_closed_at_binding_time(self) -> None:
+        binding = self._binding()
         future = date.today() + timedelta(days=60)
         with patch(
             "decisionmed.reasoning.knowledge_binding._today",
@@ -58,6 +59,8 @@ class ReasoningKnowledgeBindingTest(unittest.TestCase):
         ):
             with self.assertRaises(ReasoningError) as expired:
                 self._binding()
+            self.assertFalse(binding.review_current)
+            self.assertFalse(binding.knowledge_binding_complete)
 
         self.assertIn(
             expired.exception.code,

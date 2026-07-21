@@ -120,7 +120,25 @@ class ReasoningKnowledgeBinding:
 
     @property
     def knowledge_binding_complete(self) -> bool:
-        return True
+        return self.review_current
+
+    @property
+    def review_current(self) -> bool:
+        return (
+            self.catalog_status is KnowledgeStatus.VALIDATED
+            and all(
+                item.status is KnowledgeStatus.VALIDATED
+                and item.review_due_on is not None
+                and item.review_due_on > _today()
+                for item in self.knowledge_objects
+            )
+            and all(
+                item.status is EvidenceStatus.VALIDATED
+                and item.review_due_on is not None
+                and item.review_due_on > _today()
+                for item in self.evidence_sources
+            )
+        )
 
     @property
     def engine_invocation_allowed(self) -> bool:
