@@ -8,6 +8,7 @@ import re
 
 
 _IDENTIFIER = re.compile(r"^[a-z][a-z0-9]*(?:[._-][a-z0-9]+)*$")
+_FINGERPRINT = re.compile(r"^[0-9a-f]{64}$")
 
 
 class SafetyError(ValueError):
@@ -60,6 +61,7 @@ class SafetyCheckResult:
     check_id: str
     outcome: SafetyCheckOutcome
     trace_id: str
+    snapshot_fingerprint: str
     explanation: str
     evidence_source_ids: tuple[str, ...] = ()
     findings: tuple[SafetyFinding, ...] = ()
@@ -69,6 +71,7 @@ class SafetyCheckResult:
         if not isinstance(self.outcome, SafetyCheckOutcome):
             raise TypeError("outcome must be a SafetyCheckOutcome")
         _text("trace_id", self.trace_id)
+        _fingerprint("snapshot_fingerprint", self.snapshot_fingerprint)
         _text("explanation", self.explanation)
         if len(self.explanation) > 4000:
             _fail("explanation", "explanation cannot exceed 4000 characters")
@@ -96,6 +99,7 @@ class SafetyAssessment:
     missing_check_ids: tuple[str, ...]
     blocking_reasons: tuple[str, ...]
     trace_id: str
+    snapshot_fingerprint: str
 
     def __post_init__(self) -> None:
         if not isinstance(self.status, SafetyGateStatus):
@@ -119,6 +123,15 @@ class SafetyAssessment:
         if self.status is not SafetyGateStatus.READY_FOR_HUMAN_REVIEW and not reasons:
             _fail("blocking_reasons", "non-ready state requires a reason")
         _text("trace_id", self.trace_id)
+        _fingerprint("snapshot_fingerprint", self.snapshot_fingerprint)
+        if any(
+            result.snapshot_fingerprint != self.snapshot_fingerprint
+            for result in results
+        ):
+            _fail(
+                "snapshot_fingerprint",
+                "all results must match the assessment snapshot fingerprint",
+            )
         object.__setattr__(self, "expected_check_ids", expected)
         object.__setattr__(self, "results", results)
         object.__setattr__(self, "missing_check_ids", missing)
@@ -152,6 +165,11 @@ def _identifiers(field_name: str, values: object) -> tuple[str, ...]:
 def _text(field_name: str, value: object) -> None:
     if not isinstance(value, str) or not value.strip():
         _fail(field_name, f"{field_name} cannot be empty")
+
+
+def _fingerprint(field_name: str, value: object) -> None:
+    if not isinstance(value, str) or not _FINGERPRINT.fullmatch(value):
+        _fail(field_name, f"{field_name} must be SHA-256")
 
 
 def _fail(field_name: str, message: str) -> None:

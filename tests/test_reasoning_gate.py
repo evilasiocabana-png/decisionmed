@@ -1,3 +1,4 @@
+from dataclasses import replace
 from datetime import datetime, timedelta, timezone
 import unittest
 
@@ -112,6 +113,7 @@ class ReasoningGateTest(unittest.TestCase):
             missing_check_ids=(),
             blocking_reasons=(),
             trace_id=snapshot.trace_id,
+            snapshot_fingerprint=snapshot.content_fingerprint,
         )
 
         with self.assertRaises(ReasoningError) as mismatch:
@@ -147,6 +149,23 @@ class ReasoningGateTest(unittest.TestCase):
             ReasoningGate().assess(snapshot, safety)
 
         self.assertEqual("reasoning.trace_mismatch", mismatch.exception.code)
+
+    def test_changed_snapshot_with_same_trace_is_rejected(self) -> None:
+        snapshot = self._snapshot(complete=True)
+        safety = self._safety(
+            snapshot,
+            SafetyGateStatus.READY_FOR_HUMAN_REVIEW,
+        )
+        changed_observation = replace(snapshot.observations[0], value=True)
+        changed_snapshot = replace(
+            snapshot,
+            observations=(changed_observation, *snapshot.observations[1:]),
+        )
+
+        with self.assertRaises(ReasoningError) as mismatch:
+            ReasoningGate().assess(changed_snapshot, safety)
+
+        self.assertEqual("reasoning.snapshot_mismatch", mismatch.exception.code)
 
     def _snapshot(self, *, complete: bool) -> ClinicalSnapshot:
         sections = tuple(ClinicalSnapshotSection) if complete else ()
@@ -212,6 +231,7 @@ class ReasoningGateTest(unittest.TestCase):
             if ready
             else ("synthetic_safety_gate_reason",),
             trace_id=trace_id or snapshot.trace_id,
+            snapshot_fingerprint=snapshot.content_fingerprint,
         )
 
 

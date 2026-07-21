@@ -40,12 +40,14 @@ class SafetyPreflightApplicationServiceTest(unittest.TestCase):
                     check_id="check.synthetic-audit",
                     outcome=SafetyCheckOutcome.NOT_EVALUATED,
                     trace_id=self.snapshot.trace_id,
+                    snapshot_fingerprint=self.snapshot.content_fingerprint,
                     explanation="Synthetic incomplete result for audit tests.",
                 ),
             ),
             missing_check_ids=(),
             blocking_reasons=("not_evaluated:check.synthetic-audit",),
             trace_id=self.snapshot.trace_id,
+            snapshot_fingerprint=self.snapshot.content_fingerprint,
         )
 
     def test_completed_preflight_appends_minimal_verifiable_metadata(self) -> None:
@@ -63,6 +65,10 @@ class SafetyPreflightApplicationServiceTest(unittest.TestCase):
         self.assertEqual("incomplete", payload["status"])
         self.assertEqual("1", payload["expected_check_count"])
         self.assertEqual("false", payload["clinical_execution_allowed"])
+        self.assertEqual(
+            self.snapshot.content_fingerprint,
+            payload["snapshot_fingerprint"],
+        )
         self.assertEqual(self.snapshot.trace_id, record.trace_id)
         self.assertTrue(ledger.verify())
         self.assertFalse(service.clinical_execution_allowed)

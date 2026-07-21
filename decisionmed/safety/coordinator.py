@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 from collections.abc import Iterable
+import re
 
 from decisionmed.evidence import EvidenceRegistry, EvidenceStatus
 
@@ -40,11 +41,22 @@ class SafetyCoordinator:
         self._evidence = evidence
 
     def assess(
-        self, results: Iterable[SafetyCheckResult], trace_id: str
+        self,
+        results: Iterable[SafetyCheckResult],
+        trace_id: str,
+        snapshot_fingerprint: str,
     ) -> SafetyAssessment:
         items = tuple(results)
         if not isinstance(trace_id, str) or not trace_id.strip():
             raise SafetyError("safety.trace_id", "trace id cannot be empty")
+        if (
+            not isinstance(snapshot_fingerprint, str)
+            or not re.fullmatch(r"[0-9a-f]{64}", snapshot_fingerprint)
+        ):
+            raise SafetyError(
+                "safety.snapshot_fingerprint",
+                "snapshot fingerprint must be SHA-256",
+            )
         if not all(isinstance(item, SafetyCheckResult) for item in items):
             raise TypeError("results must contain only SafetyCheckResult values")
         mismatched_traces = tuple(
@@ -54,6 +66,16 @@ class SafetyCoordinator:
             raise SafetyError(
                 "safety.trace_mismatch",
                 "check results must belong to the assessment trace",
+            )
+        mismatched_snapshots = tuple(
+            item.check_id
+            for item in items
+            if item.snapshot_fingerprint != snapshot_fingerprint
+        )
+        if mismatched_snapshots:
+            raise SafetyError(
+                "safety.snapshot_mismatch",
+                "check results must belong to the exact assessment snapshot",
             )
         ids = tuple(item.check_id for item in items)
         if len(set(ids)) != len(ids):
@@ -134,6 +156,7 @@ class SafetyCoordinator:
             missing_check_ids=missing,
             blocking_reasons=reasons,
             trace_id=trace_id,
+            snapshot_fingerprint=snapshot_fingerprint,
         )
 
     def _has_validated_evidence(self, result: SafetyCheckResult) -> bool:

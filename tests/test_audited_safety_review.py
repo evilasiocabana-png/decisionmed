@@ -51,6 +51,7 @@ class SafetyReviewApplicationServiceTest(unittest.TestCase):
                     check_id="check.synthetic-review",
                     outcome=SafetyCheckOutcome.PASSED,
                     trace_id="trace.synthetic-review",
+                    snapshot_fingerprint="a" * 64,
                     explanation="Sensitive synthetic clinical explanation.",
                     evidence_source_ids=("source.synthetic-review",),
                 ),
@@ -58,6 +59,7 @@ class SafetyReviewApplicationServiceTest(unittest.TestCase):
             missing_check_ids=(),
             blocking_reasons=(),
             trace_id="trace.synthetic-review",
+            snapshot_fingerprint="a" * 64,
         )
         self.reviewed_at = datetime.now(timezone.utc) - timedelta(seconds=1)
 

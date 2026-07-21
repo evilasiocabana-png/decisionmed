@@ -117,12 +117,14 @@ def safety_assessment_fingerprint(assessment: SafetyAssessment) -> str:
         raise TypeError("assessment must be a SafetyAssessment")
     payload = {
         "status": assessment.status.value,
+        "snapshot_fingerprint": assessment.snapshot_fingerprint,
         "expected_check_ids": assessment.expected_check_ids,
         "results": [
             {
                 "check_id": result.check_id,
                 "outcome": result.outcome.value,
                 "trace_id": result.trace_id,
+                "snapshot_fingerprint": result.snapshot_fingerprint,
                 "explanation": result.explanation,
                 "evidence_source_ids": result.evidence_source_ids,
                 "findings": [

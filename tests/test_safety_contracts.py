@@ -11,6 +11,7 @@ from decisionmed.evidence import (
     RecommendationStrength,
 )
 from decisionmed.safety import (
+    SafetyAssessment,
     SafetyCheckOutcome,
     SafetyCheckProviderBinding,
     SafetyCheckProviderRegistry,
@@ -24,6 +25,9 @@ from decisionmed.safety import (
     SafetyGateStatus,
     SafetySeverity,
 )
+
+
+SNAPSHOT_FINGERPRINT = "a" * 64
 
 
 def evidence(status: EvidenceStatus = EvidenceStatus.VALIDATED) -> EvidenceSource:
@@ -55,11 +59,13 @@ def result(
     findings: tuple[SafetyFinding, ...] = (),
     evidence_source_ids: tuple[str, ...] | None = None,
     trace_id: str = "trace.run",
+    snapshot_fingerprint: str = SNAPSHOT_FINGERPRINT,
 ) -> SafetyCheckResult:
     return SafetyCheckResult(
         check_id=check_id,
         outcome=outcome,
         trace_id=trace_id,
+        snapshot_fingerprint=snapshot_fingerprint,
         explanation="Synthetic structural result for contract tests.",
         evidence_source_ids=(
             evidence_source_ids
@@ -120,13 +126,16 @@ class SafetyCoordinatorTest(unittest.TestCase):
         )
 
     def test_missing_or_not_evaluated_checks_fail_closed(self) -> None:
-        missing = self.coordinator().assess((result("check.alpha"),), "trace.run")
+        missing = self.coordinator().assess(
+            (result("check.alpha"),), "trace.run", SNAPSHOT_FINGERPRINT
+        )
         not_evaluated = self.coordinator().assess(
             (
                 result("check.alpha"),
                 result("check.beta", SafetyCheckOutcome.NOT_EVALUATED),
             ),
             "trace.run",
+            SNAPSHOT_FINGERPRINT,
         )
 
         self.assertEqual(SafetyGateStatus.INCOMPLETE, missing.status)
@@ -138,7 +147,9 @@ class SafetyCoordinatorTest(unittest.TestCase):
         providers, _ = self.configuration()
         evidence_registry = EvidenceRegistry((evidence(EvidenceStatus.DRAFT),))
         assessment = SafetyCoordinator(providers, evidence_registry).assess(
-            (result("check.alpha"), result("check.beta")), "trace.run"
+            (result("check.alpha"), result("check.beta")),
+            "trace.run",
+            SNAPSHOT_FINGERPRINT,
         )
 
         self.assertEqual(SafetyGateStatus.INCOMPLETE, assessment.status)
@@ -154,7 +165,9 @@ class SafetyCoordinatorTest(unittest.TestCase):
 
         with patch("decisionmed.evidence.models.date", FutureDate):
             assessment = SafetyCoordinator(providers, evidence_registry).assess(
-                (result("check.alpha"), result("check.beta")), "trace.run"
+                (result("check.alpha"), result("check.beta")),
+                "trace.run",
+                SNAPSHOT_FINGERPRINT,
             )
 
         self.assertEqual(SafetyGateStatus.INCOMPLETE, assessment.status)
@@ -239,6 +252,7 @@ class SafetyCoordinatorTest(unittest.TestCase):
                 result("check.beta"),
             ),
             "trace.run",
+            SNAPSHOT_FINGERPRINT,
         )
 
         self.assertEqual(SafetyGateStatus.INCOMPLETE, assessment.status)
@@ -257,6 +271,7 @@ class SafetyCoordinatorTest(unittest.TestCase):
                 result("check.beta"),
             ),
             "trace.run",
+            SNAPSHOT_FINGERPRINT,
         )
 
         self.assertEqual(SafetyGateStatus.BLOCKED, assessment.status)
@@ -278,6 +293,7 @@ class SafetyCoordinatorTest(unittest.TestCase):
                 result("check.beta"),
             ),
             "trace.run",
+            SNAPSHOT_FINGERPRINT,
         )
 
         self.assertEqual(SafetyGateStatus.HUMAN_REVIEW_REQUIRED, assessment.status)
@@ -288,7 +304,9 @@ class SafetyCoordinatorTest(unittest.TestCase):
 
     def test_all_structural_checks_only_reach_human_review(self) -> None:
         assessment = self.coordinator().assess(
-            (result("check.alpha"), result("check.beta")), "trace.run"
+            (result("check.alpha"), result("check.beta")),
+            "trace.run",
+            SNAPSHOT_FINGERPRINT,
         )
 
         self.assertEqual(SafetyGateStatus.READY_FOR_HUMAN_REVIEW, assessment.status)
@@ -297,10 +315,16 @@ class SafetyCoordinatorTest(unittest.TestCase):
     def test_duplicate_or_unknown_results_are_rejected(self) -> None:
         with self.assertRaises(SafetyError):
             self.coordinator().assess(
-                (result("check.alpha"), result("check.alpha")), "trace.run"
+                (result("check.alpha"), result("check.alpha")),
+                "trace.run",
+                SNAPSHOT_FINGERPRINT,
             )
         with self.assertRaises(SafetyError):
-            self.coordinator().assess((result("check.unknown"),), "trace.run")
+            self.coordinator().assess(
+                (result("check.unknown"),),
+                "trace.run",
+                SNAPSHOT_FINGERPRINT,
+            )
 
     def test_result_requires_an_explanation(self) -> None:
         for invalid in ("", "x" * 4001):
@@ -310,6 +334,7 @@ class SafetyCoordinatorTest(unittest.TestCase):
                         check_id="check.alpha",
                         outcome=SafetyCheckOutcome.NOT_EVALUATED,
                         trace_id="trace.run",
+                        snapshot_fingerprint=SNAPSHOT_FINGERPRINT,
                         explanation=invalid,
                     )
 
@@ -323,9 +348,39 @@ class SafetyCoordinatorTest(unittest.TestCase):
                     result("check.beta"),
                 ),
                 "trace.run",
+                SNAPSHOT_FINGERPRINT,
             )
 
         self.assertEqual("safety.trace_mismatch", mismatch.exception.code)
+
+    def test_result_from_another_snapshot_is_rejected(self) -> None:
+        with self.assertRaises(SafetyError) as mismatch:
+            self.coordinator().assess(
+                (
+                    result("check.alpha", snapshot_fingerprint="b" * 64),
+                    result("check.beta"),
+                ),
+                "trace.run",
+                SNAPSHOT_FINGERPRINT,
+            )
+
+        self.assertEqual("safety.snapshot_mismatch", mismatch.exception.code)
+
+    def test_assessment_rejects_results_from_another_snapshot(self) -> None:
+        with self.assertRaises(SafetyError) as mismatch:
+            SafetyAssessment(
+                status=SafetyGateStatus.READY_FOR_HUMAN_REVIEW,
+                expected_check_ids=("check.alpha",),
+                results=(
+                    result("check.alpha", snapshot_fingerprint="b" * 64),
+                ),
+                missing_check_ids=(),
+                blocking_reasons=(),
+                trace_id="trace.run",
+                snapshot_fingerprint=SNAPSHOT_FINGERPRINT,
+            )
+
+        self.assertEqual("safety.snapshot_fingerprint", mismatch.exception.code)
 
 
 if __name__ == "__main__":
