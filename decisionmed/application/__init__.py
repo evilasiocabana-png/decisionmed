@@ -19,6 +19,10 @@ from .reviewer_authority import (
     SafetyReviewerAuthorityDecision,
     SafetyReviewerAuthorityStatus,
 )
+from .safety_review import (
+    SafetyReviewApplicationError,
+    SafetyReviewApplicationService,
+)
 
 __all__ = [
     "ClinicalInputIssue",
@@ -34,4 +38,6 @@ __all__ = [
     "SafetyReviewerAuthority",
     "SafetyReviewerAuthorityDecision",
     "SafetyReviewerAuthorityStatus",
+    "SafetyReviewApplicationError",
+    "SafetyReviewApplicationService",
 ]
