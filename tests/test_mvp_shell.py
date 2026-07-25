@@ -371,6 +371,7 @@ class DecisionMedWebTest(unittest.TestCase):
         self.assertIn(b"gate-list", home_body)
         self.assertIn(b"catalog-status", home_body)
         self.assertIn(b"item.intended_scope", home_body)
+        self.assertIn(b"/intake.html", home_body)
         self.assertNotIn(b"innerHTML", home_body)
         self.assertEqual("nosniff", home_headers["x-content-type-options"])
         self.assertEqual("DENY", home_headers["x-frame-options"])
@@ -380,6 +381,21 @@ class DecisionMedWebTest(unittest.TestCase):
         self.assertEqual(303, redirect_status)
         self.assertEqual("http://127.0.0.1:9876/", redirect_headers["location"])
         self.assertEqual("DENY", redirect_headers["x-frame-options"])
+
+    def test_guided_intake_page_is_local_and_does_not_inject_html(self) -> None:
+        status, headers, body = self.request("/intake.html")
+
+        self.assertEqual(200, status)
+        self.assertIn("text/html", headers["content-type"])
+        self.assertIn("Anamnese geral primeiro".encode(), body)
+        self.assertIn("Nenhum upload foi feito".encode(), body)
+        self.assertIn("Preparar reavaliação".encode(), body)
+        self.assertIn("interpretação, a conduta".encode(), body)
+        self.assertIn("Conferir gate de conduta".encode(), body)
+        self.assertIn(b"/api/readiness", body)
+        self.assertIn(b"cardiology", body)
+        self.assertNotIn(b"innerHTML", body)
+        self.assertEqual("DENY", headers["x-frame-options"])
 
     def test_workflow_endpoint_and_unknown_specialty(self) -> None:
         status, _, body = self.request("/api/workflows/psychiatry")
