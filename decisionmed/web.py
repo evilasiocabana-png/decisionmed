@@ -10,7 +10,7 @@ from pathlib import Path
 import sys
 from threading import Thread
 from typing import Any
-from urllib.parse import urlparse
+from urllib.parse import parse_qs, urlparse
 
 from .app import DecisionMedAppService
 from .application import load_governed_catalogs
@@ -40,6 +40,43 @@ class DecisionMedRequestHandler(SimpleHTTPRequestHandler):
             return
         if parsed.path == "/api/readiness":
             self._send_json(self._app_service.get_readiness())
+            return
+        if parsed.path == "/api/clinical-modules":
+            self._send_json(self._app_service.clinical_module_catalog())
+            return
+        if parsed.path == "/api/clinical-rules":
+            self._send_json(self._app_service.clinical_rule_catalog())
+            return
+        if parsed.path == "/api/clinical-content":
+            self._send_json(self._app_service.clinical_content_catalog())
+            return
+        if parsed.path == "/api/clinical-cases":
+            query = parse_qs(parsed.query, keep_blank_values=False)
+            try:
+                module_id = query.get("module_id", [None])[0]
+                offset = int(query.get("offset", ["0"])[0])
+                limit = int(query.get("limit", ["50"])[0])
+                self._send_json(
+                    self._app_service.clinical_case_catalog(
+                        module_id,
+                        offset=offset,
+                        limit=limit,
+                    )
+                )
+            except (KnowledgeError, TypeError, ValueError):
+                self._send_json(
+                    {"error": "invalid_clinical_case_query"},
+                    status=400,
+                )
+            return
+        if parsed.path.startswith("/api/clinical-modules/"):
+            module_id = parsed.path.removeprefix("/api/clinical-modules/")
+            try:
+                module = self._app_service.clinical_module(module_id)
+            except KnowledgeError:
+                self._send_json({"error": "clinical_module_not_found"}, status=404)
+                return
+            self._send_json(module)
             return
         if parsed.path.startswith("/api/workflows/"):
             specialty_key = parsed.path.removeprefix("/api/workflows/")
