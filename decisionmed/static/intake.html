@@ -237,6 +237,28 @@
       psychiatry:['Você anda ansioso ou preocupado?','Seu humor mudou?','Tem dormido bem?','Tem pensamentos repetitivos ou estranhos?','Já ouviu ou viu coisas?','Tem dificuldade de memória ou atenção?'],
       generalmedicine:['O sintoma interfere nas atividades habituais?','Houve piora importante nas últimas horas ou dias?','Consegue se alimentar e ingerir líquidos?','Percebeu febre, perda de peso ou cansaço importante?','Teve contato com pessoa doente, viagem ou exposição recente?','Começou algum medicamento ou produto novo?','Há outro sintoma que ainda não foi registrado?']
     };
+    // A resposta afirmativa não deve terminar em um campo livre genérico. Os
+    // atalhos abaixo transformam "Sim" em fatos clínicos selecionáveis; texto
+    // livre fica reservado para "Outro / diferente".
+    const affirmativeAlternatives={
+      'Percebeu alguma alteração no coração?':['Coração acelerado','Batimento irregular','Dor ou pressão no peito','Falta de ar','Inchaço nas pernas','Desmaio ou quase desmaio','Outro / diferente'],
+      'Falta de ar, principalmente ao esforço ou ao deitar?':['Ao esforço','Ao deitar','Acorda sem ar','Em repouso','Piora rápida','Outro / diferente'],
+      'Dor no peito que piora com esforço ou irradia?':['Aperto ou peso','Queimação','Irradia para braço ou mandíbula','Piora ao esforço','Melhora com repouso','Outro / diferente'],
+      'Inchaço nas pernas?':['Nos dois tornozelos ou pernas','Em uma perna só','Piora ao final do dia','Associado a ganho de peso','Outro / diferente'],
+      'Coração acelerado ou irregular?':['Acelerado regular','Falhando ou irregular','Em crises','Persistente','Com tontura ou mal-estar','Outro / diferente'],
+      'Teve desmaio ou quase desmaio?':['Desmaiou','Quase desmaiou','Ao levantar','Durante esforço','Com palpitação ou dor','Outro / diferente'],
+      'Você sentiu dor ou ardência ao urinar?':['Ardência ao urinar','Dor no baixo ventre','Dor no final da micção','Dor na região lombar','Outro / diferente'],
+      'Percebeu alguma alteração na pele?':['Mancha ou mudança de cor','Caroço ou nódulo','Bolha ou ferida','Descamação','Coceira ou dor','Outro / diferente'],
+      'Percebeu alteração na visão?':['Visão embaçada','Perda de visão','Flashes ou moscas volantes','Mancha ou sombra','Visão dupla','Outro / diferente'],
+      'Você notou alguma alteração ginecológica?':['Sangramento fora do período','Dor pélvica','Corrimento ou coceira','Mudança menstrual','Alteração nas mamas','Outro / diferente'],
+      'Teve alguma mudança desde a gestação?':['Sangramento','Perda de líquido','Dor abdominal ou pélvica','Inchaço importante','Dor de cabeça ou alteração visual','Outro / diferente'],
+      'Você tem dor nos ossos ou articulações?':['Uma articulação','Várias articulações','Coluna','Após trauma','Com inchaço ou calor','Outro / diferente'],
+      'Você sentiu alguma dor abdominal?':['Parte superior','Parte inferior','Lado direito','Lado esquerdo','Difusa','Outro / diferente'],
+      'Você está com falta de ar?':['Ao esforço','Em repouso','Ao deitar','Com chiado','Com tosse','Outro / diferente'],
+      'Perdeu força?':['Um lado do corpo','Braço ou mão','Perna ou pé','Rosto','Progressiva','Outro / diferente'],
+      'Você anda ansioso ou preocupado?':['Preocupação constante','Crises súbitas','Sintomas físicos','Evita situações','Pensamentos difíceis de controlar','Outro / diferente']
+    };
+    const genericAffirmativeAlternatives=['Leve','Moderada','Intensa','Piora rápida','Outro / diferente'];
     const names={cardiology:'Cardiológico',pulmonology:'Pneumológico',urology:'Urológico',abdominal:'Abdominal',neurology:'Neurológico',dermatology:'Dermatológico',psychiatry:'Psiquiátrico',orthopedics:'Ortopédico',ophthalmology:'Oftalmológico',gynecology:'Ginecológico',obstetrics:'Obstétrico',rheumatology:'Reumatológico / vasculites',coloproctology:'Coloproctológico',endocrinology:'Endocrinológico',generalmedicine:'Clínica geral / revisão ampliada'};
     const $=id=>document.getElementById(id);
     const SEPARATOR=' · ';
@@ -491,7 +513,18 @@
       if(item.detailOnValues)return item.detailOnValues.includes(value);
       return !['Não','Nunca','Nenhum','Nada percebido','Não sabe informar','Não se aplica','Não foi medida'].includes(value)&&!value.startsWith('Não ')&&!value.startsWith('Nenhum');
     }
-    function needsDetail(item,values){return values.some(value=>value.includes('Outro'))||(item.detailOnPositive&&values.some(value=>isPositive(item,value)))||(item.detailOnValues&&values.some(value=>item.detailOnValues.includes(value)))}
+    function affirmativeOptionsFor(item){
+      if(item.affirmativeOptions)return item.affirmativeOptions;
+      const isSimpleAffirmative=(item.options||[]).join('|')==='Sim|Não|Não sabe informar|Não se aplica';
+      return item.section==='module'&&isSimpleAffirmative?genericAffirmativeAlternatives:[]
+    }
+    function primaryValues(item,values){return values.filter(value=>(item.options||[]).includes(value))}
+    function affirmativeValues(item,values){const options=affirmativeOptionsFor(item);return values.filter(value=>options.includes(value))}
+    function needsAffirmativeSelection(item,values){return primaryValues(item,values).includes('Sim')&&affirmativeOptionsFor(item).length>0}
+    function needsDetail(item,values){
+      const otherRequiresText=values.some(value=>value.includes('Outro'))&&!affirmativeOptionsFor(item).length;
+      return otherRequiresText||(item.detailOnPositive&&values.some(value=>isPositive(item,value)))||(item.detailOnValues&&values.some(value=>item.detailOnValues.includes(value)))
+    }
     function appendSurgeryHelper(host,area){
       const helper=document.createElement('div'),hint=document.createElement('p'),choices=document.createElement('div');
       helper.className='helper';hint.className='hint';choices.className='choices';
@@ -503,17 +536,31 @@
       const host=$('answer');host.replaceChildren();
       const options=item.options||['Sim','Não','Não sabe informar','Não se aplica'];
       const values=answerValues(),priorDetail=answerDetail(),choices=document.createElement('div');choices.className='choices';
-      options.forEach(option=>{const button=document.createElement('button');button.type='button';button.className=`choice${item.scale?' scale':''}${values.includes(option)?' selected':''}`;button.textContent=option;button.onclick=()=>{
-        let selected=answerValues(),detail=answerDetail();
+      options.forEach(option=>{const button=document.createElement('button');button.type='button';button.className=`choice${item.scale?' scale':''}${primaryValues(item,values).includes(option)?' selected':''}`;button.textContent=option;button.onclick=()=>{
+        const affirmative=affirmativeValues(item,answerValues());let selected=primaryValues(item,answerValues()),detail=answerDetail();
         if(item.multiple){
           if(selected.includes(option))selected=selected.filter(value=>value!==option);
           else if((item.exclusiveOptions||[]).includes(option))selected=[option];
           else selected=[...selected.filter(value=>!(item.exclusiveOptions||[]).includes(value)),option];
         }else selected=selected[0]===option?[]:[option];
+        if(!selected.includes('Sim'))affirmative.length=0;
+        selected=[...selected,...affirmative];
         if(!needsDetail(item,selected))detail='';
         writeAnswer(selected,detail);createAnswer(item)
       };choices.append(button)});
       host.append(choices);
+      const affirmativeOptions=affirmativeOptionsFor(item);
+      if(needsAffirmativeSelection(item,values)){
+        const followup=document.createElement('div'),label=document.createElement('p'),followupChoices=document.createElement('div');
+        followup.className='helper';label.className='hint';label.textContent='O que você percebeu? Selecione todas as opções que se aplicam.';followupChoices.className='choices';
+        affirmativeOptions.forEach(option=>{const button=document.createElement('button');button.type='button';button.className=`choice${affirmativeValues(item,values).includes(option)?' selected':''}`;button.textContent=option;button.onclick=()=>{
+          let selected=answerValues(),detail=answerDetail();
+          selected=selected.includes(option)?selected.filter(value=>value!==option):[...selected,option];
+          if(!needsDetail(item,selected))detail='';
+          writeAnswer(selected,detail);createAnswer(item)
+        };followupChoices.append(button)});
+        followup.append(label,followupChoices);host.append(followup)
+      }
       if(needsDetail(item,values)){
         const detail=document.createElement('label'),area=document.createElement('textarea');
         detail.className='detail';detail.textContent=item.detailLabel||'Qual? Descreva:';
@@ -524,12 +571,12 @@
       }
       updateQuestionValidation(item)
     }
-    function detailIsRequired(item,values){return item.detailRequired||values.some(value=>value.includes('Outro'))}
-    function questionIsComplete(item){const values=answerValues();if(!values.length)return false;return !(detailIsRequired(item,values)&&needsDetail(item,values)&&!answerDetail().trim())}
+    function detailIsRequired(item,values){return item.detailRequired||(!affirmativeOptionsFor(item).length&&values.some(value=>value.includes('Outro')))}
+    function questionIsComplete(item){const values=answerValues();if(!values.length)return false;if(needsAffirmativeSelection(item,values)&&!affirmativeValues(item,values).length)return false;return !(detailIsRequired(item,values)&&needsDetail(item,values)&&!answerDetail().trim())}
     function updateQuestionValidation(item){
-      const values=answerValues(),detailMissing=detailIsRequired(item,values)&&values.length&&needsDetail(item,values)&&!answerDetail().trim();
+      const values=answerValues(),affirmativeMissing=needsAffirmativeSelection(item,values)&&!affirmativeValues(item,values).length,detailMissing=detailIsRequired(item,values)&&values.length&&needsDetail(item,values)&&!answerDetail().trim();
       $('next').disabled=!questionIsComplete(item);
-      $('answer-error').textContent=!values.length?'Selecione uma resposta para continuar.':detailMissing?'Informe o detalhe solicitado para continuar.':''
+      $('answer-error').textContent=!values.length?'Selecione uma resposta para continuar.':affirmativeMissing?'Selecione ao menos uma alternativa para a resposta afirmativa.':detailMissing?'Informe o detalhe solicitado para continuar.':''
     }
     function rationaleFor(item){
       if(item.section==='safety')return 'Para reconhecer instabilidade e sinais de alarme antes de continuar o raciocínio.';
@@ -564,7 +611,7 @@
     }
     function showRouting(){routingShown=true;routeModules();recordRouting();$('question-panel').classList.add('hidden');$('route-panel').classList.remove('hidden')}
     function moduleQuestion(key,text,index){
-      const base={id:`module.${key}.${index+1}`,module:key,section:'module',text,options:['Sim','Não','Não sabe informar','Não se aplica'],detailOnPositive:true,detailRequired:true};
+      const base={id:`module.${key}.${index+1}`,module:key,section:'module',text,options:['Sim','Não','Não sabe informar','Não se aplica'],affirmativeOptions:affirmativeAlternatives[text]||genericAffirmativeAlternatives,detailOnPositive:false,detailRequired:false};
       if(text==='O jato está normal?')return {...base,options:['Normal','Fraco','Interrompido','Gotejamento','Precisa fazer força','Não sabe informar'],detailOnPositive:false};
       if(text==='Tem dormido bem?')return {...base,options:['Sim','Dificuldade para iniciar','Acorda durante a noite','Acorda muito cedo','Sono excessivo','Não sabe informar'],detailOnPositive:false};
       if(text==='Em que situação piora?')return {...base,options:['Ao esforço','Em repouso','Ao deitar','Durante a noite','Com exposição / ambiente','Outro'],multiple:true,detailOnPositive:false};
@@ -613,8 +660,13 @@
     function generatedAnswer(item,scenario){
       const raw=scenario.answers[item.id]??defaultGeneratedAnswer(item);
       const values=Array.isArray(raw)?raw:raw&&typeof raw==='object'?[...raw.values]:[raw];
-      const valid=values.filter(value=>(item.options||[]).includes(value));
+      const affirmativeOptions=affirmativeOptionsFor(item);
+      const valid=values.filter(value=>(item.options||[]).includes(value)||affirmativeOptions.includes(value));
       const selected=valid.length?valid:[defaultGeneratedAnswer(item)].flat().filter(value=>(item.options||[]).includes(value));
+      if(selected.includes('Sim')&&!selected.some(value=>affirmativeOptions.includes(value))){
+        const defaultAffirmative=affirmativeOptions.find(value=>!value.includes('Outro'));
+        if(defaultAffirmative)selected.push(defaultAffirmative)
+      }
       const suppliedDetail=raw&&typeof raw==='object'&&!Array.isArray(raw)?raw.detail||'':'';
       const detail=suppliedDetail||(needsDetail(item,selected)?`Detalhe sintético para ${scenario.label}.`:'');
       return {values:selected,detail}

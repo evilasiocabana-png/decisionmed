@@ -425,6 +425,8 @@ class DecisionMedWebTest(unittest.TestCase):
         self.assertIn("Falta de ar".encode(), body)
         self.assertIn(b".choice.selected", body)
         self.assertIn(b"detailOnPositive", body)
+        self.assertIn("O que você percebeu? Selecione todas as opções que se aplicam.".encode(), body)
+        self.assertIn("Batimento irregular".encode(), body)
         self.assertIn("Qual medicamento, dose e frequência?".encode(), body)
         self.assertIn("Não precisa saber o nome técnico.".encode(), body)
         self.assertIn("Colecistectomia".encode(), body)
