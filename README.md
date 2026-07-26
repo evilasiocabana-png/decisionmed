@@ -23,6 +23,16 @@ Se as portas estiverem ocupadas: `python -m decisionmed.web --port 8775 --psychi
 
 O hub está em modo `read-only`. Psiquiatria reutiliza o app local do baseline sem alterar o PsychRx original.
 
+## Portas de entrada do formulário
+
+- **Assistido:** conduz da queixa ao reconhecimento sindrômico e à diferenciação.
+- **Direto:** começa pela síndrome clínica ou apresentação escolhida e confirma seus critérios.
+- **Investigação:** compara de duas a três hipóteses por achados, perguntas e exames discriminadores.
+
+As três portas usam o mesmo motor local e mantêm triagem de segurança, auditoria
+e validação profissional. A expansão do catálogo para 50, 150 e 300 módulos está
+definida em [DM-081](docs/DM-081_CLINICAL_REASONING_MODULE_ONTOLOGY.md).
+
 ## Catálogo científico separado
 
 O conhecimento científico é versionado no repositório privado
@@ -30,7 +40,17 @@ O conhecimento científico é versionado no repositório privado
 conforme a separação exigida pela ADR-0002 do PsychRx.
 
 A plataforma carrega e valida releases externas protegidas por manifesto e
-hashes SHA-256. O catálogo atual possui sete campos cardiológicos em status
-`draft`, exibidos apenas como referência; nenhum conteúdo está liberado para
-execução clínica. Quando o repositório `DecisionMEd-Knowledge` está ao lado da
-plataforma, o comando padrão o descobre automaticamente.
+hashes SHA-256. O catálogo atual possui sete campos cardiológicos e um registro
+mestre com 300 módulos candidatos em status `draft`, exibidos apenas como
+estrutura, 50 regras declarativas (30 de rota, oito de suporte diferencial e
+12 de segurança) e 300 contratos estruturais de conteúdo em `partial`, todos
+em `draft`; nenhum conteúdo está liberado para
+execução clínica. Os 14 conteúdos anteriores foram preservados na migração. O
+pacote inclui ainda 4.500 casos sintéticos determinísticos, 15 por módulo, para
+cobertura técnica e auditoria. Quando o
+repositório `DecisionMEd-Knowledge` está ao lado da plataforma, o comando padrão
+o descobre automaticamente.
+
+O primeiro lote de 50 módulos também possui uma fonte oficial candidata ligada
+a cada pergunta e exame; isso é uma trilha de curadoria, não validação clínica.
+O gate e suas limitações estão em [DM-307](docs/DM-307_ESSENTIAL_50_CURATION_GATE.md).

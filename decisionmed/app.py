@@ -393,20 +393,413 @@ class DecisionMedAppService:
                 "loaded": False,
                 "clinical_execution_allowed": False,
                 "form_schema_count": 0,
+                "clinical_module_count": 0,
+                "clinical_module_counts_by_specialty": {},
+                "clinical_module_counts_by_entity_type": {},
+                "clinical_module_counts_by_status": {},
+                "clinical_rule_count": 0,
+                "clinical_rule_counts_by_status": {},
+                "clinical_content_count": 0,
+                "clinical_content_counts_by_status": {},
+                "clinical_case_count": 0,
             }
+        clinical_modules = getattr(self._catalogs, "clinical_modules", None)
+        clinical_rules = getattr(self._catalogs, "clinical_rules", None)
+        clinical_content = getattr(self._catalogs, "clinical_content", None)
+        clinical_cases = getattr(self._catalogs, "clinical_cases", None)
         return {
             "loaded": True,
+            "schema_version": getattr(
+                self._catalogs.manifest, "schema_version", "7.0.0"
+            ),
             "catalog_id": self._catalogs.manifest.catalog_id,
             "release_version": self._catalogs.manifest.release_version,
             "status": self._catalogs.manifest.status.value,
             "clinical_execution_allowed": False,
             "form_schema_count": len(self._catalogs.form_schemas.all()),
             "safety_check_count": len(self._catalogs.safety_checks.all()),
+            "clinical_module_count": (
+                len(clinical_modules.all()) if clinical_modules is not None else 0
+            ),
+            "clinical_module_counts_by_specialty": (
+                clinical_modules.counts_by_specialty()
+                if clinical_modules is not None
+                else {}
+            ),
+            "clinical_module_counts_by_entity_type": (
+                clinical_modules.counts_by_entity_type()
+                if clinical_modules is not None
+                else {}
+            ),
+            "clinical_module_counts_by_status": (
+                clinical_modules.counts_by_status()
+                if clinical_modules is not None
+                else {}
+            ),
+            "clinical_rule_count": (
+                len(clinical_rules.all()) if clinical_rules is not None else 0
+            ),
+            "clinical_rule_counts_by_status": (
+                clinical_rules.counts_by_status()
+                if clinical_rules is not None
+                else {}
+            ),
+            "clinical_content_count": (
+                len(clinical_content.all())
+                if clinical_content is not None
+                else 0
+            ),
+            "clinical_content_counts_by_status": (
+                clinical_content.counts_by_content_status()
+                if clinical_content is not None
+                else {}
+            ),
+            "clinical_case_count": (
+                len(clinical_cases.all())
+                if clinical_cases is not None
+                else 0
+            ),
         }
 
     def get_readiness(self) -> dict[str, Any]:
         specialties = self.specialties()
         return self._readiness.report(item.load_status for item in specialties)
+
+    def clinical_module_catalog(self) -> dict[str, Any]:
+        if self._catalogs is None:
+            return {
+                "loaded": False,
+                "schema_version": None,
+                "release_version": None,
+                "count": 0,
+                "items": [],
+            }
+        clinical_modules = getattr(self._catalogs, "clinical_modules", None)
+        modules = clinical_modules.all() if clinical_modules is not None else ()
+        return {
+            "loaded": True,
+            "schema_version": getattr(
+                self._catalogs.manifest, "schema_version", "7.0.0"
+            ),
+            "release_version": getattr(
+                self._catalogs.manifest, "release_version", None
+            ),
+            "count": len(modules),
+            "clinical_execution_allowed": False,
+            "items": [
+                self._clinical_module_to_dict(module)
+                for module in modules
+            ],
+        }
+
+    def clinical_module(self, module_id_or_legacy_key: str) -> dict[str, Any]:
+        clinical_modules = (
+            getattr(self._catalogs, "clinical_modules", None)
+            if self._catalogs is not None
+            else None
+        )
+        if clinical_modules is None:
+            raise KnowledgeError(
+                "clinical_module_catalog.not_loaded",
+                "clinical module catalog is not loaded",
+            )
+        module = clinical_modules.require(module_id_or_legacy_key)
+        return self._clinical_module_to_dict(module)
+
+    def clinical_rule_catalog(self) -> dict[str, Any]:
+        if self._catalogs is None:
+            return {
+                "loaded": False,
+                "schema_version": None,
+                "release_version": None,
+                "count": 0,
+                "items": [],
+            }
+        clinical_rules = getattr(self._catalogs, "clinical_rules", None)
+        rules = clinical_rules.all() if clinical_rules is not None else ()
+        return {
+            "loaded": True,
+            "schema_version": getattr(
+                self._catalogs.manifest, "schema_version", "7.0.0"
+            ),
+            "release_version": getattr(
+                self._catalogs.manifest, "release_version", None
+            ),
+            "count": len(rules),
+            "clinical_execution_allowed": False,
+            "items": [self._clinical_rule_to_dict(rule) for rule in rules],
+        }
+
+    def _clinical_rule_to_dict(self, rule: Any) -> dict[str, Any]:
+        return {
+            "rule_id": rule.rule_id,
+            "module_id": rule.module_id,
+            "version": rule.version,
+            "effect": rule.effect.value,
+            "strength": rule.strength.value,
+            "rationale": rule.rationale,
+            "when": _clinical_rule_condition_to_dict(rule.when),
+            "output_key": rule.output_key,
+            "output_value": rule.output_value,
+            "priority": rule.priority,
+            "source_ids": list(rule.source_ids),
+            "status": rule.status.value,
+            "reviewed_on": (
+                rule.reviewed_on.isoformat()
+                if rule.reviewed_on is not None
+                else None
+            ),
+            "reviewed_by": rule.reviewed_by,
+            "review_due_on": (
+                rule.review_due_on.isoformat()
+                if rule.review_due_on is not None
+                else None
+            ),
+            "clinical_execution_allowed": False,
+        }
+
+    def clinical_content_catalog(self) -> dict[str, Any]:
+        if self._catalogs is None:
+            return {
+                "loaded": False,
+                "schema_version": None,
+                "release_version": None,
+                "count": 0,
+                "items": [],
+            }
+        registry = getattr(self._catalogs, "clinical_content", None)
+        contents = registry.all() if registry is not None else ()
+        return {
+            "loaded": True,
+            "schema_version": getattr(
+                self._catalogs.manifest, "schema_version", "7.0.0"
+            ),
+            "release_version": getattr(
+                self._catalogs.manifest, "release_version", None
+            ),
+            "count": len(contents),
+            "clinical_execution_allowed": False,
+            "items": [
+                self._clinical_content_to_dict(content)
+                for content in contents
+            ],
+        }
+
+    def _clinical_content_to_dict(self, content: Any) -> dict[str, Any]:
+        return {
+            "module_id": content.module_id,
+            "version": content.version,
+            "definition": content.definition,
+            "boundaries": content.boundaries,
+            "anchor_values": list(content.anchor_values),
+            "required_manifestations": list(
+                content.required_manifestations
+            ),
+            "frequent_manifestations": list(
+                content.frequent_manifestations
+            ),
+            "atypical_manifestations": list(
+                content.atypical_manifestations
+            ),
+            "contrary_findings": list(content.contrary_findings),
+            "risk_factors": list(content.risk_factors),
+            "red_flags": list(content.red_flags),
+            "stop_conditions": list(content.stop_conditions),
+            "likely_hypotheses": list(content.likely_hypotheses),
+            "cannot_miss_hypotheses": list(
+                content.cannot_miss_hypotheses
+            ),
+            "mimics": list(content.mimics),
+            "discriminators": [
+                {
+                    "question_id": item.question_id,
+                    "text": item.text,
+                    "options": list(item.options),
+                    "rationale": item.rationale,
+                    "detail_on_positive": item.detail_on_positive,
+                    "detail_required": item.detail_required,
+                    "source_ids": list(item.source_ids),
+                }
+                for item in content.discriminators
+            ],
+            "physical_examination": list(content.physical_examination),
+            "complementary_exams": [
+                {
+                    "exam_id": item.exam_id,
+                    "name": item.name,
+                    "clinical_question": item.clinical_question,
+                    "when": item.when,
+                    "limitations": item.limitations,
+                    "source_ids": list(item.source_ids),
+                }
+                for item in content.complementary_exams
+            ],
+            "diagnostic_criteria": list(content.diagnostic_criteria),
+            "post_exam_reassessment": list(
+                content.post_exam_reassessment
+            ),
+            "safety_conduct": list(content.safety_conduct),
+            "initial_treatment": list(content.initial_treatment),
+            "definitive_treatment": list(content.definitive_treatment),
+            "destination_return_followup": list(
+                content.destination_return_followup
+            ),
+            "source_ids": list(content.source_ids),
+            "content_status": content.content_status.value,
+            "status": content.status.value,
+            "reviewed_on": (
+                content.reviewed_on.isoformat()
+                if content.reviewed_on is not None
+                else None
+            ),
+            "reviewed_by": content.reviewed_by,
+            "review_due_on": (
+                content.review_due_on.isoformat()
+                if content.review_due_on is not None
+                else None
+            ),
+            "clinical_execution_allowed": False,
+        }
+
+    def clinical_case_catalog(
+        self,
+        module_id: str | None = None,
+        *,
+        offset: int = 0,
+        limit: int = 50,
+    ) -> dict[str, Any]:
+        if not isinstance(offset, int) or offset < 0:
+            raise ValueError("offset must be a non-negative integer")
+        if not isinstance(limit, int) or not 1 <= limit <= 100:
+            raise ValueError("limit must be between 1 and 100")
+        if self._catalogs is None:
+            return {
+                "loaded": False,
+                "schema_version": None,
+                "release_version": None,
+                "count": 0,
+                "filtered_count": 0,
+                "offset": offset,
+                "limit": limit,
+                "items": [],
+            }
+        registry = getattr(self._catalogs, "clinical_cases", None)
+        if registry is None:
+            cases = ()
+        elif module_id:
+            cases = registry.for_module(module_id)
+        else:
+            cases = registry.all()
+        page = cases[offset : offset + limit]
+        return {
+            "loaded": True,
+            "schema_version": getattr(
+                self._catalogs.manifest, "schema_version", "7.0.0"
+            ),
+            "release_version": getattr(
+                self._catalogs.manifest, "release_version", None
+            ),
+            "count": (
+                len(registry.all()) if registry is not None else 0
+            ),
+            "filtered_count": len(cases),
+            "offset": offset,
+            "limit": limit,
+            "clinical_execution_allowed": False,
+            "items": [
+                self._clinical_case_to_dict(case) for case in page
+            ],
+        }
+
+    @staticmethod
+    def _clinical_case_to_dict(case: Any) -> dict[str, Any]:
+        return {
+            "case_id": case.case_id,
+            "module_id": case.module_id,
+            "ordinal": case.ordinal,
+            "category": case.category.value,
+            "narrative": case.narrative,
+            "selected_answers": [
+                {
+                    "fact_id": answer.fact_id,
+                    "values": list(answer.values),
+                    "detail": answer.detail,
+                }
+                for answer in case.selected_answers
+            ],
+            "positive_details": list(case.positive_details),
+            "expected_route_module_ids": list(
+                case.expected_route_module_ids
+            ),
+            "obtained_route_module_ids": list(
+                case.obtained_route_module_ids
+            ),
+            "opened_question_ids": list(case.opened_question_ids),
+            "initial_classification": case.initial_classification,
+            "differentials": list(case.differentials),
+            "physical_examination": list(case.physical_examination),
+            "complementary_exams": list(case.complementary_exams),
+            "post_exam_result": case.post_exam_result,
+            "expected_impression": case.expected_impression,
+            "audit_events": [
+                {
+                    "sequence": event.sequence,
+                    "event_type": event.event_type,
+                    "payload": event.payload,
+                }
+                for event in case.audit_events
+            ],
+            "audit_hash": case.audit_hash,
+            "clinical_execution_allowed": False,
+        }
+
+    def _clinical_module_to_dict(self, module: Any) -> dict[str, Any]:
+        sources = []
+        if self._catalogs is not None:
+            for source_id in module.source_ids:
+                source = self._catalogs.evidence.require(source_id)
+                sources.append(
+                    {
+                        "source_id": source.source_id,
+                        "title": source.title,
+                        "publication_year": source.publication_year,
+                        "version": source.version,
+                        "status": source.status.value,
+                        "locator": _public_locator(source.locator),
+                    }
+                )
+        return {
+            "module_id": module.module_id,
+            "version": module.version,
+            "official_name": module.official_name,
+            "display_name": module.display_name,
+            "entity_type": module.entity_type.value,
+            "primary_specialty": module.primary_specialty,
+            "related_specialties": list(module.related_specialties),
+            "synonyms": list(module.synonyms),
+            "abbreviations": list(module.abbreviations),
+            "parent_module_id": module.parent_module_id,
+            "related_module_ids": list(module.related_module_ids),
+            "populations": list(module.populations),
+            "care_settings": list(module.care_settings),
+            "legacy_keys": list(module.legacy_keys),
+            "terminology_status": module.terminology_status.value,
+            "content_status": module.content_status.value,
+            "status": module.status.value,
+            "reviewed_on": (
+                module.reviewed_on.isoformat()
+                if module.reviewed_on is not None
+                else None
+            ),
+            "reviewed_by": module.reviewed_by,
+            "review_due_on": (
+                module.review_due_on.isoformat()
+                if module.review_due_on is not None
+                else None
+            ),
+            "sources": sources,
+            "clinical_execution_allowed": False,
+        }
 
     def start_session(self, specialty_key: str) -> dict[str, object]:
         return self._sessions.start(specialty_key).to_dict()
@@ -414,6 +807,39 @@ class DecisionMedAppService:
     def advance_session(self, session_id: str, step_key: str) -> dict[str, object]:
         return self._sessions.advance(session_id, step_key).to_dict()
 
+
+def _clinical_rule_condition_to_dict(condition: Any) -> dict[str, Any]:
+    if condition.all_of or condition.any_of or condition.none_of:
+        payload: dict[str, Any] = {}
+        if condition.all_of:
+            payload["all"] = [
+                _clinical_rule_condition_to_dict(item)
+                for item in condition.all_of
+            ]
+        if condition.any_of:
+            payload["any"] = [
+                _clinical_rule_condition_to_dict(item)
+                for item in condition.any_of
+            ]
+        if condition.none_of:
+            payload["none"] = [
+                _clinical_rule_condition_to_dict(item)
+                for item in condition.none_of
+            ]
+        return payload
+    payload = {
+        "fact": condition.fact,
+        "operator": condition.operator.value,
+    }
+    if condition.value is not None:
+        payload["value"] = condition.value
+    if condition.values:
+        payload["values"] = list(condition.values)
+    if condition.threshold is not None:
+        payload["threshold"] = condition.threshold
+    if condition.pattern is not None:
+        payload["pattern"] = condition.pattern
+    return payload
 
 def _public_locator(locator: str) -> str | None:
     parsed = urlsplit(locator)

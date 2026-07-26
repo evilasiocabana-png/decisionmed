@@ -1,0 +1,163 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://decisionmed.local/schemas/clinical-module-registry.schema.json",
+  "title": "DecisionMEd Clinical Module Registry",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "items"],
+  "properties": {
+    "schema_version": { "enum": ["8.0.0", "9.0.0", "10.0.0", "11.0.0"] },
+    "items": {
+      "type": "array",
+      "maxItems": 10000,
+      "items": { "$ref": "#/$defs/module" }
+    }
+  },
+  "$defs": {
+    "identifier": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9]*(?:[._-][a-z0-9]+)*$"
+    },
+    "identifierArray": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/identifier" },
+      "uniqueItems": true
+    },
+    "textArray": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1, "maxLength": 500 },
+      "uniqueItems": true
+    },
+    "terminologyCode": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["system", "code", "display", "version"],
+      "properties": {
+        "system": { "type": "string", "minLength": 1, "maxLength": 100 },
+        "code": { "type": "string", "minLength": 1, "maxLength": 200 },
+        "display": { "type": "string", "minLength": 1, "maxLength": 500 },
+        "version": {
+          "type": ["string", "null"],
+          "minLength": 1,
+          "maxLength": 100
+        }
+      }
+    },
+    "module": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "module_id",
+        "version",
+        "official_name",
+        "display_name",
+        "entity_type",
+        "primary_specialty",
+        "synonyms",
+        "abbreviations",
+        "related_specialties",
+        "parent_module_id",
+        "related_module_ids",
+        "terminology_codes",
+        "populations",
+        "care_settings",
+        "source_ids",
+        "legacy_keys",
+        "terminology_status",
+        "content_status",
+        "status",
+        "reviewed_on",
+        "reviewed_by",
+        "review_due_on"
+      ],
+      "properties": {
+        "module_id": { "$ref": "#/$defs/identifier" },
+        "version": {
+          "type": "string",
+          "pattern": "^(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)$"
+        },
+        "official_name": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 500
+        },
+        "display_name": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 500
+        },
+        "entity_type": {
+          "enum": [
+            "manifestation",
+            "clinical_presentation",
+            "initial_syndrome",
+            "standardized_syndrome",
+            "diagnosis",
+            "risk_condition",
+            "clinical_context"
+          ]
+        },
+        "primary_specialty": { "$ref": "#/$defs/identifier" },
+        "synonyms": { "$ref": "#/$defs/textArray" },
+        "abbreviations": { "$ref": "#/$defs/textArray" },
+        "related_specialties": { "$ref": "#/$defs/identifierArray" },
+        "parent_module_id": {
+          "oneOf": [
+            { "$ref": "#/$defs/identifier" },
+            { "type": "null" }
+          ]
+        },
+        "related_module_ids": { "$ref": "#/$defs/identifierArray" },
+        "terminology_codes": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/terminologyCode" }
+        },
+        "populations": { "$ref": "#/$defs/textArray" },
+        "care_settings": { "$ref": "#/$defs/textArray" },
+        "source_ids": { "$ref": "#/$defs/identifierArray" },
+        "legacy_keys": { "$ref": "#/$defs/identifierArray" },
+        "terminology_status": {
+          "enum": ["candidate", "reviewed", "official"]
+        },
+        "content_status": {
+          "enum": ["skeleton", "partial", "complete"]
+        },
+        "status": {
+          "enum": ["draft", "in_review", "validated", "retired"]
+        },
+        "reviewed_on": {
+          "type": ["string", "null"],
+          "format": "date"
+        },
+        "reviewed_by": {
+          "oneOf": [
+            { "$ref": "#/$defs/identifier" },
+            { "type": "null" }
+          ]
+        },
+        "review_due_on": {
+          "type": ["string", "null"],
+          "format": "date"
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": { "status": { "const": "validated" } },
+            "required": ["status"]
+          },
+          "then": {
+            "properties": {
+              "terminology_status": { "const": "official" },
+              "content_status": { "const": "complete" },
+              "source_ids": { "minItems": 1 },
+              "reviewed_on": { "type": "string", "format": "date" },
+              "reviewed_by": { "$ref": "#/$defs/identifier" },
+              "review_due_on": { "type": "string", "format": "date" }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

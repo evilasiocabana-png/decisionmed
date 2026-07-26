@@ -1,0 +1,74 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://decisionmed.local/schemas/catalog-manifest-v8.schema.json",
+  "title": "DecisionMEd Catalog Manifest v8",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "catalog_id",
+    "release_version",
+    "status",
+    "released_on",
+    "validated_by",
+    "clinical_module_count",
+    "files"
+  ],
+  "properties": {
+    "schema_version": { "const": "8.0.0" },
+    "catalog_id": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9]*(?:[._-][a-z0-9]+)*$"
+    },
+    "release_version": {
+      "type": "string",
+      "pattern": "^(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)$"
+    },
+    "status": {
+      "enum": [
+        "draft",
+        "awaiting_validation",
+        "validated",
+        "conflicting_evidence",
+        "deprecated",
+        "archived"
+      ]
+    },
+    "released_on": {
+      "type": ["string", "null"],
+      "format": "date"
+    },
+    "validated_by": {
+      "type": ["string", "null"]
+    },
+    "clinical_module_count": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 10000
+    },
+    "files": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "evidence.json",
+        "knowledge.json",
+        "form-schemas.json",
+        "safety-checks.json",
+        "clinical-modules.json"
+      ],
+      "properties": {
+        "evidence.json": { "$ref": "#/$defs/hash" },
+        "knowledge.json": { "$ref": "#/$defs/hash" },
+        "form-schemas.json": { "$ref": "#/$defs/hash" },
+        "safety-checks.json": { "$ref": "#/$defs/hash" },
+        "clinical-modules.json": { "$ref": "#/$defs/hash" }
+      }
+    }
+  },
+  "$defs": {
+    "hash": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    }
+  }
+}

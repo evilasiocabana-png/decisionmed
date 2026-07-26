@@ -1,0 +1,181 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://decisionmed.local/schemas/clinical-content-registry.schema.json",
+  "title": "DecisionMEd Clinical Content Registry",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "items"],
+  "properties": {
+    "schema_version": { "enum": ["10.0.0", "11.0.0"] },
+    "items": {
+      "type": "array",
+      "maxItems": 10000,
+      "items": { "$ref": "#/$defs/content" }
+    }
+  },
+  "$defs": {
+    "identifier": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9]*(?:[._-][a-z0-9]+)*$"
+    },
+    "identifierArray": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": { "$ref": "#/$defs/identifier" }
+    },
+    "textArray": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": { "type": "string", "minLength": 1, "maxLength": 4000 }
+    },
+    "discriminator": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "question_id",
+        "text",
+        "options",
+        "rationale",
+        "detail_on_positive",
+        "detail_required",
+        "source_ids"
+      ],
+      "properties": {
+        "question_id": { "$ref": "#/$defs/identifier" },
+        "text": { "type": "string", "minLength": 1, "maxLength": 1000 },
+        "options": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": { "type": "string", "minLength": 1, "maxLength": 500 }
+        },
+        "rationale": {
+          "type": ["string", "null"],
+          "minLength": 1,
+          "maxLength": 1000
+        },
+        "detail_on_positive": { "type": "boolean" },
+        "detail_required": { "type": "boolean" },
+        "source_ids": { "$ref": "#/$defs/identifierArray" }
+      }
+    },
+    "exam": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "exam_id",
+        "name",
+        "clinical_question",
+        "when",
+        "limitations",
+        "source_ids"
+      ],
+      "properties": {
+        "exam_id": { "$ref": "#/$defs/identifier" },
+        "name": { "type": "string", "minLength": 1, "maxLength": 500 },
+        "clinical_question": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 2000
+        },
+        "when": { "type": "string", "minLength": 1, "maxLength": 2000 },
+        "limitations": {
+          "type": ["string", "null"],
+          "minLength": 1,
+          "maxLength": 2000
+        },
+        "source_ids": { "$ref": "#/$defs/identifierArray" }
+      }
+    },
+    "content": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "module_id",
+        "version",
+        "definition",
+        "boundaries",
+        "anchor_values",
+        "required_manifestations",
+        "frequent_manifestations",
+        "atypical_manifestations",
+        "contrary_findings",
+        "risk_factors",
+        "red_flags",
+        "stop_conditions",
+        "likely_hypotheses",
+        "cannot_miss_hypotheses",
+        "mimics",
+        "discriminators",
+        "physical_examination",
+        "complementary_exams",
+        "diagnostic_criteria",
+        "post_exam_reassessment",
+        "safety_conduct",
+        "initial_treatment",
+        "definitive_treatment",
+        "destination_return_followup",
+        "source_ids",
+        "content_status",
+        "status",
+        "reviewed_on",
+        "reviewed_by",
+        "review_due_on"
+      ],
+      "properties": {
+        "module_id": { "$ref": "#/$defs/identifier" },
+        "version": {
+          "type": "string",
+          "pattern": "^(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)$"
+        },
+        "definition": {
+          "type": ["string", "null"],
+          "minLength": 1,
+          "maxLength": 4000
+        },
+        "boundaries": {
+          "type": ["string", "null"],
+          "minLength": 1,
+          "maxLength": 4000
+        },
+        "anchor_values": { "$ref": "#/$defs/textArray" },
+        "required_manifestations": { "$ref": "#/$defs/textArray" },
+        "frequent_manifestations": { "$ref": "#/$defs/textArray" },
+        "atypical_manifestations": { "$ref": "#/$defs/textArray" },
+        "contrary_findings": { "$ref": "#/$defs/textArray" },
+        "risk_factors": { "$ref": "#/$defs/textArray" },
+        "red_flags": { "$ref": "#/$defs/textArray" },
+        "stop_conditions": { "$ref": "#/$defs/textArray" },
+        "likely_hypotheses": { "$ref": "#/$defs/textArray" },
+        "cannot_miss_hypotheses": { "$ref": "#/$defs/textArray" },
+        "mimics": { "$ref": "#/$defs/textArray" },
+        "discriminators": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/discriminator" }
+        },
+        "physical_examination": { "$ref": "#/$defs/textArray" },
+        "complementary_exams": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/exam" }
+        },
+        "diagnostic_criteria": { "$ref": "#/$defs/textArray" },
+        "post_exam_reassessment": { "$ref": "#/$defs/textArray" },
+        "safety_conduct": { "$ref": "#/$defs/textArray" },
+        "initial_treatment": { "$ref": "#/$defs/textArray" },
+        "definitive_treatment": { "$ref": "#/$defs/textArray" },
+        "destination_return_followup": { "$ref": "#/$defs/textArray" },
+        "source_ids": { "$ref": "#/$defs/identifierArray" },
+        "content_status": { "enum": ["skeleton", "partial", "complete"] },
+        "status": { "enum": ["draft", "in_review", "validated", "retired"] },
+        "reviewed_on": { "type": ["string", "null"], "format": "date" },
+        "reviewed_by": {
+          "oneOf": [
+            { "$ref": "#/$defs/identifier" },
+            { "type": "null" }
+          ]
+        },
+        "review_due_on": { "type": ["string", "null"], "format": "date" }
+      }
+    }
+  }
+}

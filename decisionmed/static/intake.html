@@ -5,7 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Novo caso | DecisionMEd</title>
   <style>
-    :root{font-family:Inter,ui-sans-serif,system-ui,sans-serif;color:#192a40;background:#f4f7fb}*{box-sizing:border-box}body{margin:0;line-height:1.5}main{max-width:900px;margin:auto;padding:28px 20px 64px}.top{display:flex;justify-content:space-between;gap:16px;align-items:center}.top a{color:#08717d;text-decoration:none;font-weight:800}.tag{padding:6px 10px;border-radius:999px;background:#e3f4f3;color:#24616a;font-size:.76rem;font-weight:800;text-transform:uppercase;letter-spacing:.05em}.eyebrow{margin:34px 0 7px;color:#08717d;font-weight:850;text-transform:uppercase;letter-spacing:.1em;font-size:.78rem}h1{font-size:clamp(2rem,5vw,3.2rem);letter-spacing:-.05em;line-height:1.03;margin:0}p{color:#607287}.notice{background:#fff7df;border:1px solid #ecd489;border-left:4px solid #c98b16;border-radius:14px;padding:14px 17px;margin:22px 0;color:#624c13}.panel{background:#fff;border:1px solid #dce5ed;border-radius:20px;padding:clamp(20px,4vw,32px);box-shadow:0 18px 44px #1e365110;margin-top:20px}.panel h2{margin-top:0}.field{display:grid;gap:8px;margin:18px 0}.field label,.question{font-weight:780;color:#26394f}.field input,.field textarea,.field select{font:inherit;width:100%;border:1px solid #ccd9e4;border-radius:11px;padding:11px 12px;background:white}.field textarea{min-height:100px;resize:vertical}.hint{font-size:.85rem;margin:0}.module-list{display:grid;gap:10px;margin:18px 0}.module{border:1px solid #d7e2ea;border-radius:13px;padding:13px;background:#fbfdff;display:flex;gap:11px;align-items:flex-start}.module input{margin-top:4px}.progress{display:flex;gap:6px;margin-bottom:23px}.progress i{height:7px;flex:1;background:#dce7ed;border-radius:99px}.progress i.active{background:#08717d}.answer{margin-top:18px;border:1px solid #d7e2ea;border-radius:13px;padding:14px;background:#fbfdff}.answer textarea,.answer select{font:inherit;width:100%;border:1px solid #ccd9e4;border-radius:9px;padding:9px;margin-top:8px}.actions{display:flex;justify-content:space-between;gap:12px;margin-top:25px}.button{border:0;border-radius:11px;background:#08717d;color:white;padding:11px 16px;font:inherit;font-weight:800;cursor:pointer;text-decoration:none}.button.secondary{background:#e7eef3;color:#2b435b}.button:disabled{opacity:.45;cursor:not-allowed}.hidden{display:none}.summary{display:grid;gap:11px}.summary article{border:1px solid #d7e2ea;border-radius:12px;padding:13px}.summary h3{margin:0 0 6px;font-size:.94rem}.summary p{margin:0;font-size:.9rem}.file{font-size:.86rem;color:#35616d}@media(max-width:560px){main{padding:20px 16px}.actions{flex-direction:column-reverse}.button{width:100%}}
+    :root{font-family:Inter,ui-sans-serif,system-ui,sans-serif;color:#192a40;background:#f4f7fb}*{box-sizing:border-box}body{margin:0;line-height:1.5}main{max-width:900px;margin:auto;padding:28px 20px 64px}.top{display:flex;justify-content:space-between;gap:16px;align-items:center}.top a{color:#08717d;text-decoration:none;font-weight:800}.tag{padding:6px 10px;border-radius:999px;background:#e3f4f3;color:#24616a;font-size:.76rem;font-weight:800;text-transform:uppercase;letter-spacing:.05em}.eyebrow{margin:34px 0 7px;color:#08717d;font-weight:850;text-transform:uppercase;letter-spacing:.1em;font-size:.78rem}h1{font-size:clamp(2rem,5vw,3.2rem);letter-spacing:-.05em;line-height:1.03;margin:0}p{color:#607287}.notice{background:#fff7df;border:1px solid #ecd489;border-left:4px solid #c98b16;border-radius:14px;padding:14px 17px;margin:22px 0;color:#624c13}.panel{background:#fff;border:1px solid #dce5ed;border-radius:20px;padding:clamp(20px,4vw,32px);box-shadow:0 18px 44px #1e365110;margin-top:20px}.panel h2{margin-top:0}.field{display:grid;gap:8px;margin:18px 0}.field label,.question{font-weight:780;color:#26394f}.field input,.field textarea,.field select{font:inherit;width:100%;border:1px solid #ccd9e4;border-radius:11px;padding:11px 12px;background:white}.field textarea{min-height:100px;resize:vertical}.hint{font-size:.85rem;margin:0}.validation{min-height:1.35rem;margin:10px 0 0;color:#9a4e13;font-size:.86rem}.module-list{display:grid;gap:10px;margin:18px 0}.module{border:1px solid #d7e2ea;border-radius:13px;padding:13px;background:#fbfdff;display:flex;gap:11px;align-items:flex-start}.module.priority{border-color:#d28a2e;background:#fff8e8;box-shadow:inset 4px 0 #d28a2e}.module input{margin-top:4px}.module small{color:#607287}.progress{display:flex;gap:6px;margin-bottom:23px}.progress i{height:7px;flex:1;background:#dce7ed;border-radius:99px}.progress i.active{background:#08717d}.answer{margin-top:18px;border:1px solid #d7e2ea;border-radius:13px;padding:14px;background:#fbfdff}.answer textarea,.answer select{font:inherit;width:100%;border:1px solid #ccd9e4;border-radius:9px;padding:9px;margin-top:8px}.choices{display:flex;flex-wrap:wrap;gap:8px}.choice{border:1px solid #b9cbd8;border-radius:999px;padding:9px 12px;background:white;color:#26394f;font:inherit;cursor:pointer}.choice.selected{background:#08717d;border-color:#08717d;color:white}.choice.scale{min-width:40px;padding:8px}.detail{display:grid;gap:6px;margin-top:14px}.helper{border-top:1px solid #d7e2ea;margin-top:13px;padding-top:13px}.helper .choice{border-radius:10px;text-align:left}.actions{display:flex;justify-content:space-between;gap:12px;margin-top:25px}.button{border:0;border-radius:11px;background:#08717d;color:white;padding:11px 16px;font:inherit;font-weight:800;cursor:pointer;text-decoration:none}.button.secondary{background:#e7eef3;color:#2b435b}.button:disabled{opacity:.45;cursor:not-allowed}.hidden{display:none}.summary{display:grid;gap:11px}.summary article{border:1px solid #d7e2ea;border-radius:12px;padding:13px}.summary h3{margin:0 0 6px;font-size:.94rem}.summary p{margin:0;font-size:.9rem}.file{font-size:.86rem;color:#35616d}.case-generator{border-top:1px solid #d7e2ea;margin-top:24px;padding-top:18px}.case-controls{display:grid;grid-template-columns:minmax(160px,1fr) minmax(130px,180px) minmax(190px,1fr);gap:12px;align-items:end}.case-controls .field{margin:0}.audit{border:1px solid #c8d9e4;border-radius:14px;padding:13px 16px;margin:20px 0;background:#f8fbfd}.audit summary{cursor:pointer;font-weight:800;color:#26394f}.audit textarea{min-height:360px;font-family:ui-monospace,SFMono-Regular,Consolas,monospace;font-size:.8rem}.fingerprint{overflow-wrap:anywhere;color:#35616d}.reasoning-status{border:1px solid #c8d9e4;border-left:5px solid #08717d;border-radius:13px;padding:13px 15px;margin:14px 0;background:#f7fbfc}.reasoning-status.priority{border-left-color:#c98b16;background:#fff9e8}.reasoning-status.immediate{border-left-color:#b42318;background:#fff1f0}.reasoning-status strong{display:block}.syndrome-list,.reasoning-output{display:grid;gap:13px}.syndrome-card{border:1px solid #d7e2ea;border-radius:14px;padding:15px;background:#fbfdff}.syndrome-card>label{display:flex;gap:10px;align-items:flex-start}.syndrome-card h3{margin:0;font-size:1rem}.syndrome-card p{margin:6px 0}.reasoning-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}.reasoning-grid section{border:1px solid #e0e8ef;border-radius:10px;padding:10px}.reasoning-grid h4{margin:0 0 6px;font-size:.85rem}.compact-list{margin:6px 0;padding-left:19px;color:#52667b;font-size:.86rem}.compact-list li+li{margin-top:4px}.reasoning-section{border-top:1px solid #d7e2ea;margin-top:22px;padding-top:18px}@media(max-width:700px){.reasoning-grid{grid-template-columns:1fr}}@media(max-width:650px){main{padding:20px 16px}.actions{flex-direction:column-reverse}.button{width:100%}.case-controls{grid-template-columns:1fr}}
+    .attachment-actions{display:flex;flex-wrap:wrap;gap:10px;margin:10px 0}.attachment-actions .button{display:inline-block}.exam-card-head{display:flex;align-items:center;justify-content:space-between;gap:14px;margin-bottom:6px}.exam-card-head h3{margin:0}.exam-card-head .button{flex:0 0 auto;padding:8px 12px}.exam-attached{color:#08717d;font-weight:750}.exam-preview{display:block;max-width:100%;max-height:320px;object-fit:contain;border:1px solid #d7e2ea;border-radius:12px;margin-top:10px}.conduct-plan{display:grid;gap:10px}.conduct-plan article{border-left:4px solid #08717d}.conduct-plan article.immediate{border-left-color:#b42318;background:#fff1f0}.conduct-plan article.priority{border-left-color:#c98b16;background:#fff9e8}@media(max-width:560px){.exam-card-head{align-items:flex-start;flex-direction:column}.exam-card-head .button{width:100%}}
   </style>
 </head>
 <body>
@@ -13,49 +14,924 @@
     <div class="top"><a href="/">← DecisionMEd</a><span class="tag">local · sem IA</span></div>
     <p class="eyebrow">Novo caso</p>
     <h1>Comece pela queixa.</h1>
-    <p>Anamnese geral primeiro. Depois, escolha e confirme os módulos de anamnese que fazem sentido para este caso.</p>
+    <p>Primeiro, faça a triagem de segurança. Depois, percorra o decálogo do sintoma por cliques e confirme os módulos adequados ao caso.</p>
     <div class="notice"><strong>Protótipo de referência.</strong> Não diagnostica, não prescreve, não transmite nem salva dados. Não informe identificadores de paciente.</div>
 
     <section class="panel" id="start-panel">
-      <h2>1. Queixa e contexto</h2>
-      <div class="field"><label for="complaint">Qual é a queixa principal?</label><input id="complaint" placeholder="Ex.: dor no peito, tosse, ardência ao urinar"></div>
-      <div class="field"><label for="note">Observação inicial opcional</label><textarea id="note" placeholder="Texto livre sem informação identificável."></textarea></div>
-      <p class="hint">A sugestão abaixo usa somente palavras-chave locais. O profissional confirma, remove ou acrescenta módulos.</p>
-      <div class="module-list" id="modules"></div>
-      <div class="actions"><span></span><button class="button" id="begin">Iniciar anamnese geral</button></div>
+      <h2>1. Escolha o caminho</h2>
+      <div class="choices" id="mode-choices">
+        <button class="choice" id="mode-assisted" type="button">Assistido</button>
+        <button class="choice" id="mode-direct" type="button">Direto</button>
+        <button class="choice" id="mode-investigation" type="button">Investigação</button>
+      </div>
+      <p class="hint" id="mode-description">Assistido: o sistema conduz. Direto: o médico conduz. Investigação: o motor compara hipóteses concorrentes.</p>
+      <p class="hint" id="runtime-catalog-status" role="status">Carregando identidades clínicas governadas…</p>
+      <div class="hidden" id="assisted-fields">
+        <div class="field"><label>Qual é a queixa principal?</label><div class="choices" id="complaint-choices"></div><input id="complaint" type="hidden"></div>
+        <div class="field" id="note-field"><label for="note">Descreva a queixa em suas palavras (opcional)</label><textarea id="note" placeholder="Não precisa usar termos técnicos. Não inclua informação identificável."></textarea></div>
+        <p class="hint">Após o decálogo e o histórico essencial, o motor local sugere os módulos adequados. O profissional sempre confirma a seleção.</p>
+        <div class="actions"><span></span><button class="button" id="begin" disabled>Iniciar caminho assistido</button></div>
+      </div>
+      <div class="hidden" id="direct-fields">
+        <div class="field"><label for="direct-search">Qual síndrome clínica ou apresentação deseja confirmar?</label><input id="direct-search" type="search" placeholder="Busque por nome, tipo ou especialidade"><div class="choices" id="direct-syndrome-choices"></div><p class="hint" id="direct-search-status"></p><input id="direct-syndrome" type="hidden"></div>
+        <p class="hint">O caminho direto não presume diagnóstico confirmado: ele verifica segurança, critérios presentes, critérios ausentes e inconsistências. O tipo de cada entrada é mostrado junto ao nome.</p>
+        <div class="actions"><span></span><button class="button" id="begin-direct" disabled>Confirmar critérios clínicos</button></div>
+      </div>
+      <div class="hidden" id="investigation-fields">
+        <div class="field">
+          <label for="investigation-search">Quais síndromes, apresentações ou hipóteses deseja comparar?</label>
+          <input id="investigation-search" type="search" placeholder="Busque por nome, tipo ou especialidade">
+          <div class="choices" id="investigation-syndrome-choices"></div>
+          <p class="hint" id="investigation-search-status"></p>
+          <p class="hint" id="investigation-selection-status">Selecione de 2 a 3 hipóteses concorrentes.</p>
+        </div>
+        <p class="hint">O motor reunirá as perguntas discriminadoras, o exame físico e os exames complementares que ajudam a aumentar ou reduzir a compatibilidade de cada hipótese.</p>
+        <div class="actions"><span></span><button class="button" id="begin-investigation" disabled>Comparar hipóteses</button></div>
+      </div>
+      <section class="case-generator" aria-labelledby="case-generator-title">
+        <h3 id="case-generator-title">Gerador local de casos para testar o motor</h3>
+        <p class="hint">Segue o padrão sequencial do PsychRx. Os casos são sintéticos, determinísticos e não usam IA.</p>
+        <div class="case-controls">
+          <div class="field"><label for="case-mode">Bateria</label><select id="case-mode"><option value="all">Todos os modos</option><option value="assisted">Assistido</option><option value="direct">Direto</option><option value="investigation">Investigação</option></select></div>
+          <div class="field"><label for="case-count">Quantidade por modo</label><input id="case-count" type="number" min="1" max="100" value="15"></div>
+          <button class="button secondary" id="generate-case" type="button">Gerar bateria 1/45</button>
+        </div>
+        <p class="hint" id="case-sequence-label">Pronto para percorrer 45 casos: 15 Assistidos, 15 Diretos e 15 de Investigação.</p>
+      </section>
     </section>
 
     <section class="panel hidden" id="question-panel">
       <div class="progress" id="progress"></div>
       <p class="eyebrow" id="stage"></p><h2 class="question" id="question"></h2><p class="hint" id="counter"></p>
+      <div class="reasoning-status"><strong>Por que estou perguntando?</strong><span id="question-rationale"></span><span id="question-sources" class="hint"></span></div>
       <div class="answer" id="answer"></div>
+      <p class="validation" id="answer-error" role="status"></p>
       <div class="actions"><button class="button secondary" id="previous">Anterior</button><button class="button" id="next">Próxima</button></div>
+    </section>
+
+    <section class="panel hidden" id="safety-panel">
+      <p class="eyebrow">Etapa 1</p>
+      <h2>Resultado da triagem de segurança</h2>
+      <div id="safety-checkpoint"></div>
+      <p class="hint">A triagem é uma barreira inicial. Ela não exclui risco que apareça depois e será recalculada durante todo o fluxo.</p>
+      <div class="actions"><button class="button secondary" id="back-to-safety">Revisar triagem</button><button class="button" id="continue-after-safety">Continuar coleta clínica</button></div>
+    </section>
+
+    <section class="panel hidden" id="route-panel">
+      <p class="eyebrow">Próxima etapa</p>
+      <h2>Módulos sugeridos para este caso</h2>
+      <p>As sugestões são regras locais baseadas apenas nos cliques deste formulário. Confirme, remova ou acrescente módulos antes de continuar.</p>
+      <div class="module-list" id="route-modules"></div>
+      <div class="field"><label for="manual-module">Adicionar módulo manualmente (se necessário)</label><select id="manual-module"><option value="">Nenhum módulo adicional</option></select></div>
+      <div class="actions"><button class="button secondary" id="back-to-history">Voltar</button><button class="button" id="continue-modules">Continuar com módulos</button></div>
+    </section>
+
+    <section class="panel hidden" id="reasoning-panel">
+      <p class="eyebrow">Raciocínio clínico estruturado</p>
+      <h2>Classificação clínica provisória</h2>
+      <p>O motor reuniu apenas os fatos selecionados. Confira a síndrome inicial ou a apresentação clínica antes de abrir as perguntas que diferenciam as hipóteses.</p>
+      <div id="reasoning-safety-preview"></div>
+      <div class="field"><label>Representação do problema</label><p id="problem-representation-preview"></p></div>
+      <div class="syndrome-list" id="syndrome-options"></div>
+      <p class="validation" id="syndrome-error" role="status"></p>
+      <div class="actions"><button class="button secondary" id="back-to-modules">Voltar</button><button class="button" id="continue-reasoning">Continuar diferenciação</button></div>
     </section>
 
     <section class="panel hidden" id="review-panel">
       <h2>Resumo para conferência</h2><p>Confira e complete a informação antes de registrar em um prontuário ou solicitar uma análise posterior.</p>
+      <div class="field"><label for="structured-summary">Resumo estruturado das respostas</label><textarea id="structured-summary" readonly></textarea><p class="hint">Gerado somente com as respostas informadas. Não substitui validação profissional.</p></div>
       <div class="summary" id="summary"></div>
-      <section class="field" aria-labelledby="exam-title"><h3 id="exam-title">Exame complementar para conferência</h3><p class="hint">Selecione o tipo e o arquivo somente para organizar a próxima etapa. O navegador não envia nem analisa este arquivo.</p><label for="exam-kind">Tipo de exame</label><select id="exam-kind"><option value="">Selecione</option><option>Exame laboratorial</option><option>Imagem</option><option>Eletrocardiograma / traçado</option><option>Laudo ou relatório</option><option>Outro exame complementar</option></select><label for="exam">Arquivo local</label><input id="exam" type="file" accept="image/*,application/pdf"><span class="file" id="file">Nenhum arquivo selecionado. Nenhum upload foi feito.</span><label for="exam-note">Contexto para a conferência (opcional)</label><textarea id="exam-note" placeholder="Ex.: resultado recebido, data relativa ou ponto a confirmar. Não inclua identificadores."></textarea><button class="button secondary" id="prepare" type="button">Preparar reavaliação</button><p class="hint hidden" id="exam-status" role="status"></p></section>
-      <section class="field" aria-labelledby="conduct-title"><h3 id="conduct-title">Conduta assistida</h3><p class="hint">A conduta só poderá ser exibida quando a base de evidências, os checks de segurança e a validação humana estiverem aprovados.</p><button class="button secondary" id="check-conduct" type="button">Conferir gate de conduta</button><p class="hint" id="conduct-status" role="status">Nenhuma conduta foi gerada.</p></section>
-      <div class="actions"><button class="button secondary" id="restart">Novo caso</button><a class="button" href="/">Voltar ao hub</a></div>
+      <section class="reasoning-section" aria-labelledby="reasoning-title">
+        <h3 id="reasoning-title">Da classificação clínica aos diagnósticos diferenciais</h3>
+        <p class="hint" id="reasoning-description">As hipóteses abaixo organizam o raciocínio. Não confirmam doença e exigem exame físico, interpretação de exames e validação profissional.</p>
+        <div class="reasoning-output" id="reasoning-output"></div>
+      </section>
+      <section class="field" aria-labelledby="exam-title">
+        <h3 id="exam-title">Exames complementares sugeridos e anexos</h3>
+        <p class="hint">Os exames ficam visíveis com a pergunta clínica que cada um deve responder. Nesta versão, o navegador não envia nem interpreta automaticamente o anexo; a indicação final e a interpretação são profissionais.</p>
+        <div class="summary" id="suggested-exams"></div>
+        <label for="exam-kind">Tipo de exame</label>
+        <select id="exam-kind"><option value="">Selecione</option><option>Exame laboratorial</option><option>Imagem</option><option>Eletrocardiograma / traçado</option><option>Laudo ou relatório</option><option>Outro exame complementar</option></select>
+        <div class="attachment-actions">
+          <label class="button secondary" id="generic-photo-action" for="exam-photo">Tirar ou anexar foto de outro exame</label>
+          <input class="hidden" id="exam-photo" type="file" accept="image/*" capture="environment">
+          <label class="button secondary" id="generic-file-action" for="exam">Anexar outro arquivo ou PDF</label>
+          <input class="hidden" id="exam" type="file" accept="image/*,application/pdf">
+        </div>
+        <span class="file" id="file">Nenhum arquivo selecionado. Nenhum upload foi feito.</span>
+        <img class="exam-preview hidden" id="exam-preview" alt="Pré-visualização local do exame anexado">
+        <label for="exam-note">Achado ou contexto registrado pelo profissional (opcional)</label>
+        <textarea id="exam-note" placeholder="Ex.: resultado relevante, incompatibilidade encontrada ou exame ainda pendente. Não inclua identificadores."></textarea>
+        <button class="button secondary" id="prepare" type="button">Usar anexo na reavaliação</button>
+        <p class="hint hidden" id="exam-status" role="status"></p>
+        <div class="reasoning-section">
+          <h4>Reavaliação pós-exame</h4>
+          <label for="reassessment-hypothesis">Síndrome ou hipótese afetada</label>
+          <select id="reassessment-hypothesis"><option value="">Selecione após preparar o exame</option></select>
+          <label for="reassessment-impact">Efeito do resultado</label>
+          <select id="reassessment-impact"><option value="">Selecione</option><option>Mantém hipótese</option><option>Aumenta compatibilidade</option><option>Diminui compatibilidade</option><option>Afasta ou elimina hipótese</option><option>Resultado inconclusivo</option><option>Resultado pendente</option><option>Exige reformular a classificação clínica</option></select>
+          <button class="button secondary" id="add-reassessment" type="button" disabled>Registrar efeito do exame</button>
+          <p class="validation" id="reassessment-error" role="status"></p>
+          <div class="summary" id="reassessment-list"></div>
+        </div>
+      </section>
+      <section class="field" aria-labelledby="conduct-title">
+        <h3 id="conduct-title">Impressão diagnóstica e conduta</h3>
+        <p class="hint">A conduta estrutural aparece imediatamente. Tratamento e prescrição específicos dependem do catálogo validado e da confirmação profissional.</p>
+        <div class="conduct-plan" id="conduct-plan"></div>
+        <label for="impression-hypothesis">Hipótese selecionada pelo profissional</label>
+        <select id="impression-hypothesis"><option value="">Selecione</option></select>
+        <label for="impression-status">Estado da impressão diagnóstica</label>
+        <select id="impression-status"><option value="">Selecione</option><option>Diagnóstico ainda indeterminado</option><option>Diagnóstico provável</option><option>Diagnóstico confirmado pelo profissional</option><option>Hipótese afastada</option></select>
+        <label for="impression-note">Justificativa profissional (opcional)</label>
+        <textarea id="impression-note" placeholder="Registre a síntese que sustenta esta impressão."></textarea>
+        <button class="button secondary" id="save-impression" type="button">Registrar impressão profissional</button>
+        <p class="validation" id="impression-error" role="status"></p>
+        <h4>Conduta definida pelo profissional</h4>
+        <label for="conduct-destination">Destino ou nível de cuidado</label>
+        <select id="conduct-destination"><option value="">Selecione</option><option>Atendimento imediato / emergência</option><option>Observação e reavaliação</option><option>Acompanhamento ambulatorial prioritário</option><option>Acompanhamento ambulatorial programado</option><option>Encaminhamento para especialista</option><option>Ainda indeterminado</option></select>
+        <div class="module-list" id="conduct-actions">
+          <label class="module"><input type="checkbox" value="Medidas imediatas de segurança"><span>Medidas imediatas de segurança</span></label>
+          <label class="module"><input type="checkbox" value="Exame físico dirigido"><span>Realizar exame físico dirigido</span></label>
+          <label class="module"><input type="checkbox" value="Solicitar exames complementares selecionados"><span>Solicitar exames complementares selecionados</span></label>
+          <label class="module"><input type="checkbox" value="Tratamento não farmacológico"><span>Tratamento não farmacológico</span></label>
+          <label class="module"><input type="checkbox" value="Prescrição farmacológica registrada pelo profissional"><span>Prescrição farmacológica registrada pelo profissional</span></label>
+          <label class="module"><input type="checkbox" value="Encaminhamento"><span>Encaminhamento</span></label>
+          <label class="module"><input type="checkbox" value="Acompanhamento e retorno"><span>Acompanhamento e retorno</span></label>
+          <label class="module"><input type="checkbox" value="Orientar sinais de alarme"><span>Orientar sinais de alarme</span></label>
+        </div>
+        <label for="conduct-note">Plano, tratamento, encaminhamento e prazo de retorno</label>
+        <textarea id="conduct-note" placeholder="Registre a conduta confirmada, incluindo dose apenas se prescrita pelo profissional, destino, acompanhamento e sinais de retorno."></textarea>
+        <button class="button secondary" id="save-conduct" type="button">Registrar conduta profissional</button>
+        <p class="validation" id="conduct-error" role="status"></p>
+        <button class="button secondary" id="check-conduct" type="button">Conferir gate de conduta</button>
+        <p class="hint" id="conduct-status" role="status">Conduta estrutural disponível. Prescrição automática ainda não foi liberada.</p>
+      </section>
+      <details class="audit" open>
+        <summary>Trilha de auditoria — como este resumo foi gerado</summary>
+        <div class="field"><label for="audit-trail">Passos anteriores e seleções, na ordem</label><textarea id="audit-trail" readonly></textarea><p class="hint fingerprint" id="audit-fingerprint"></p></div>
+      </details>
+      <div class="actions"><button class="button secondary" id="restart">Novo caso</button><button class="button secondary hidden" id="next-test-case" type="button">Próximo caso teste</button><a class="button" href="/">Voltar ao hub</a></div>
     </section>
   </main>
+  <script src="/intake-sequences.js"></script>
+  <script src="/intake-rule-engine.js?v=0.2.0"></script>
+  <script src="/intake-routing-rules.js?v=0.1.0"></script>
+  <script src="/intake-routing.js"></script>
+  <script src="/intake-cases.js"></script>
+  <script src="/intake-reasoning.js?v=0.6.0"></script>
   <script>
-    const general=['Qual sintoma principal?','Quando começou? Foi de repente ou aos poucos? Já tem quanto tempo?','Você percebeu se algo desencadeou?','Onde exatamente é? Como você descreve?','De 0 a 10, quanto dói?','Isso irradia?','Tem algo que melhora ou piora? É contínuo ou vai e volta?','Você sentiu mais alguma coisa junto, como febre, náusea ou falta de ar?','Já teve isso antes? E agora, está melhor ou pior?','Além disso, percebeu alteração na urina, intestino ou respiração?','Teve febre, perda de peso, cansaço ou algo diferente do habitual?'];
-    const moduleQuestions={cardiology:['Falta de ar, principalmente ao esforço ou ao deitar?','Dor no peito que piora com esforço ou irradia?','Inchaço nas pernas?','Coração acelerado ou irregular?','Teve desmaio ou quase desmaio?'],pulmonology:['Você está com falta de ar?','Em que situação piora?','Tem tosse? Sai catarro? Qual aspecto?','Sai sangue?','Tem dor no peito, chiado ou esforço para respirar?'],urology:['Você sentiu dor ou ardência ao urinar?','Tem ido mais vezes ao banheiro ou acorda à noite para urinar?','Mudou o volume da urina ou notou sangue?','O jato está normal? Já perdeu urina?','Tem dor nas costas ou febre?'],abdominal:['Você sentiu dor abdominal? Onde dói exatamente?','Teve náuseas ou vômitos?','Seu intestino mudou ou a barriga está inchada?','Notou pele amarelada?','Teve sangue nas fezes ou vômitos?'],neurology:['Perdeu força? Foi súbito?','Teve convulsão ou febre?','Está esquecendo coisas?','Teve dor de cabeça forte?'],dermatology:['Percebeu alteração na pele?','Mudou a cor, apareceu mancha ou caroço?','Tem bolha, ferida ou descamação?','Coça, dói ou tem secreção?','Essa lesão está crescendo ou mudando?'],psychiatry:['Você anda ansioso ou preocupado?','Seu humor mudou?','Tem dormido bem?','Tem pensamentos repetitivos ou estranhos?','Já ouviu ou viu coisas?','Tem dificuldade de memória ou atenção?'],orthopedics:['Você tem dor nos ossos ou articulações?','Essa dor piora ao mexer ou melhora com repouso?','Teve alguma queda ou trauma?','Percebeu inchaço ou calor no local?','Tem dificuldade para movimentar, formigamento ou perda de força?'],ophthalmology:['Percebeu alteração na visão?','Dor nos olhos ou luz incomoda?','Está vendo duplicado ou percebe manchas?','Tem coceira, sensação de areia ou dificuldade para enxergar?'],gynecology:['Mudança na menstruação ou sangramento fora do período?','Dor pélvica ou durante a relação?','Corrimento ou coceira?','Está tentando engravidar?','Teve sintomas de menopausa, nódulo ou secreção nas mamas?'],obstetrics:['Teve alguma mudança desde a gestação?','Enjoo ou vômitos intensos? Sangramento vaginal?','Fraqueza, tontura, inchaço nas pernas, câimbras ou dor lombar?','Está urinando mais ou com dor? Alteração no sono?'],rheumatology:['Teve febre ou perda de peso?','Apareceram manchas na pele?','Tem falta de ar ou sinusite?','Notou alteração na urina, aftas frequentes ou dor de cabeça recente?','Você fuma?'],coloproctology:['Tem dor? Onde?','Mudou o hábito intestinal?','Tem sangue?','Perdeu peso ou tem febre?','Evacua quantas vezes?'],endocrinology:['Perdeu ou ganhou peso?','Tem cansaço?','Alterou menstruação ou libido?','Tem queda ou aumento de pelos?','Urina muito, tem muita sede, palpitação ou tremor?']};
-    const names={cardiology:'Cardiológico',pulmonology:'Pneumológico',urology:'Urológico',abdominal:'Abdominal',neurology:'Neurológico',dermatology:'Dermatológico',psychiatry:'Psiquiátrico',orthopedics:'Ortopédico',ophthalmology:'Oftalmológico',gynecology:'Ginecológico',obstetrics:'Obstétrico',rheumatology:'Reumatológico / vasculites',coloproctology:'Coloproctológico',endocrinology:'Endocrinológico'};
-    const keywords={cardiology:['peito','card','palpita','edema','desmaio'],pulmonology:['tosse','respira','falta de ar','chiado'],urology:['urina','urin','ardência'],abdominal:['abdominal','barriga','vômito','intestino'],neurology:['força','convuls','cabeça','memória'],dermatology:['pele','mancha','lesão','coça'],psychiatry:['ansiedade','humor','sono','triste'],orthopedics:['osso','articula','trauma','queda'],ophthalmology:['visão','olho'],gynecology:['menstrua','pélvica','corrimento'],obstetrics:['gesta','grávida'],rheumatology:['vasculite','afta'],coloproctology:['fezes','evacua'],endocrinology:['sede','peso','tremor']};
-    const $=id=>document.getElementById(id);let script=[],answers=[],position=0;
-    function renderModules(){const text=$('complaint').value.toLowerCase(),host=$('modules');host.replaceChildren();Object.entries(names).forEach(([key,name])=>{const label=document.createElement('label');label.className='module';const box=document.createElement('input');box.type='checkbox';box.value=key;box.checked=(keywords[key]||[]).some(word=>text.includes(word));const copy=document.createElement('span'),title=document.createElement('strong'),detail=document.createElement('small');title.textContent=name;detail.textContent=box.checked?'Sugerido pela queixa; confirme ou altere.':'Adicionar se fizer sentido para o caso.';copy.append(title,document.createElement('br'),detail);label.append(box,copy);host.append(label)})}
-    $('complaint').addEventListener('input',renderModules);renderModules();
-    function createAnswer(question){const host=$('answer');host.replaceChildren();if(question.includes('0 a 10')){const select=document.createElement('select'),empty=document.createElement('option');select.id='response';empty.value='';empty.textContent='Selecione';select.append(empty);Array.from({length:11},(_,n)=>{const option=document.createElement('option');option.value=String(n);option.textContent=String(n);select.append(option)});host.append(select)}else{const area=document.createElement('textarea');area.id='response';area.placeholder='Resposta livre (opcional)';host.append(area)}$('response').value=answers[position]||''}
-    function renderQuestion(){const current=script[position];$('stage').textContent=current.module==='general'?'Anamnese geral':`Módulo ${names[current.module]}`;$('question').textContent=current.text;$('counter').textContent=`Pergunta ${position+1} de ${script.length}`;$('progress').replaceChildren(...script.map((_,n)=>{const bar=document.createElement('i');if(n<=position)bar.className='active';return bar}));createAnswer(current.text);$('previous').disabled=position===0;$('next').textContent=position===script.length-1?'Revisar resumo':'Próxima'}
-    $('begin').onclick=()=>{const selected=[...document.querySelectorAll('.module input:checked')].map(input=>input.value);script=[...general.map(text=>({module:'general',text})),...selected.flatMap(key=>moduleQuestions[key].map(text=>({module:key,text})))];answers=Array(script.length).fill('');position=0;$('start-panel').classList.add('hidden');$('question-panel').classList.remove('hidden');renderQuestion()};
-    $('previous').onclick=()=>{answers[position]=$('response').value;position--;renderQuestion()};$('next').onclick=()=>{answers[position]=$('response').value;if(position<script.length-1){position++;renderQuestion();return}review()};
-    function review(){const host=$('summary');host.replaceChildren();const add=(title,text)=>{const card=document.createElement('article'),heading=document.createElement('h3'),body=document.createElement('p');heading.textContent=title;body.textContent=text||'Não informado';card.append(heading,body);host.append(card)};add('Queixa principal',$('complaint').value);add('Observação inicial',$('note').value);script.forEach((item,n)=>{if(answers[n])add(item.text,answers[n])});$('question-panel').classList.add('hidden');$('review-panel').classList.remove('hidden')}
-    $('exam').onchange=event=>{$('file').textContent=event.target.files[0]?'Arquivo selecionado apenas neste navegador. Nenhum upload foi feito.':'Nenhum arquivo selecionado. Nenhum upload foi feito.'};
-    $('prepare').onclick=()=>{const kind=$('exam-kind').value,hasFile=$('exam').files.length>0,status=$('exam-status');if(!kind||!hasFile){status.textContent='Para preparar a reavaliação, informe o tipo de exame e selecione um arquivo local.';status.classList.remove('hidden');return}status.textContent=`Exame ${kind.toLowerCase()} associado localmente para conferência profissional. A interpretação, a conduta e qualquer chamada de IA permanecem bloqueadas nesta etapa.`;status.classList.remove('hidden')};
-    $('check-conduct').onclick=async()=>{const status=$('conduct-status');status.textContent='Conferindo gates técnicos…';try{const response=await fetch('/api/readiness');if(!response.ok)throw new Error('readiness_unavailable');const readiness=await response.json();const gate=readiness.gates.find(item=>item.key==='clinical_validation');status.textContent=readiness.clinical_execution_allowed?'Disponibilidade clínica declarada pelo serviço. A confirmação profissional continua obrigatória.':`Conduta bloqueada: ${gate?.reason||'validação clínica humana obrigatória'}. Nenhum dado deste caso foi enviado.`}catch{status.textContent='Não foi possível conferir os gates. Nenhuma conduta foi gerada.'}};
+    function buildSymptomQuestions(complaint){return DecisionMedSequences.buildSymptomQuestions(complaint)}
+    const safetyQuestions=[
+      {id:'safety.vitals',text:'Como estão os sinais vitais aferidos neste momento?',options:['Não foram aferidos','Dentro do esperado','Pressão muito baixa','Pressão muito alta','Pulso muito lento ou rápido','Respiração acelerada','Saturação baixa','Febre'],multiple:true,exclusiveOptions:['Não foram aferidos','Dentro do esperado'],detailOnValues:['Pressão muito baixa','Pressão muito alta','Pulso muito lento ou rápido','Respiração acelerada','Saturação baixa','Febre'],detailLabel:'Se disponíveis, registre os valores aferidos.'},
+      {id:'safety.consciousness',text:'Como está o nível de consciência e o estado geral?',options:['Alerta e conversando normalmente','Confusão nova','Sonolência incomum','Difícil de despertar','Não responde','Não sabe informar']},
+      {id:'safety.breathing',text:'Existe dificuldade importante para respirar agora?',options:['Não','Falta de ar, mas fala frases completas','Precisa pausar para falar','Não consegue falar frases completas','Lábios ou extremidades arroxeados','Não sabe informar']},
+      {id:'safety.circulation',text:'Existe desconforto atual preocupante, desmaio ou sinal de má circulação?',options:['Não','Desconforto persistente no peito','Desconforto atual com suor frio ou náusea','Desmaio ou quase desmaio','Palidez intensa e pele fria','Não sabe informar']},
+      {id:'safety.neurologic',text:'Existe algum sinal neurológico novo neste momento?',options:['Não','Fraqueza de um lado','Assimetria da face','Dificuldade para falar','Convulsão recente','Mais de um sinal','Não sabe informar']},
+      {id:'safety.bleeding',text:'Existe sangramento ativo ou perda importante de líquido?',options:['Não','Pequena quantidade','Quantidade moderada','Grande quantidade','Perda de líquido na gestação','Não sabe informar']}
+    ];
+    const clinicalHistory=[
+      {id:'history.surgery',text:'Já realizou alguma cirurgia?',options:['Não','Sim, uma vez','Sim, mais de uma vez','Não sabe informar'],detailOnPositive:true,detailRequired:true,detailLabel:'Conte o que foi feito e quando. Não precisa saber o nome técnico.',helper:'surgery'},
+      {id:'history.admission',text:'Já precisou de internação?',options:['Nunca','Sim, uma vez','Sim, mais de uma vez','Não sabe informar'],detailOnPositive:true,detailRequired:true,detailLabel:'Por qual motivo e quando?'},
+      {id:'history.allergy',text:'Tem alergia conhecida?',options:['Não conhece alergia','Medicamento','Alimento','Látex / produto','Outra','Não sabe informar'],multiple:true,exclusiveOptions:['Não conhece alergia','Não sabe informar'],detailOnPositive:true,detailRequired:true,detailLabel:'Qual substância e qual reação aconteceu?'},
+      {id:'history.chronic',text:'Tem alguma doença crônica?',options:['Não','Hipertensão','Diabetes','Doença cardíaca','Doença pulmonar','Doença renal','Doença psiquiátrica','Outra'],multiple:true,exclusiveOptions:['Não'],detailOnPositive:true,detailRequired:true,detailLabel:'Qual doença e como está o acompanhamento?'},
+      {id:'history.medication',text:'Usa medicamento de forma contínua?',options:['Não','Sim, um medicamento','Sim, mais de um','Não sabe informar'],detailOnPositive:true,detailRequired:true,detailLabel:'Qual medicamento, dose e frequência?'},
+      {id:'history.family',text:'Há antecedentes familiares relevantes?',options:['Nenhum conhecido','Não sabe informar','Doença cardíaca','Diabetes','Câncer','AVC','Doença psiquiátrica','Outro'],multiple:true,exclusiveOptions:['Nenhum conhecido','Não sabe informar'],detailOnPositive:true,detailRequired:true,detailLabel:'Qual antecedente, em qual familiar e com que idade ocorreu?'},
+      {id:'history.habits',text:'Sobre hábitos de vida, o que se aplica?',options:['Não fuma','Fuma atualmente','Já fumou','Não usa álcool','Álcool','Outras substâncias','Sedentarismo','Atividade física regular'],multiple:true,detailOnValues:['Fuma atualmente','Já fumou','Álcool','Outras substâncias'],detailRequired:true,detailLabel:'Informe quantidade, frequência e há quanto tempo.'}
+    ];
+    const generalInvestigations=[
+      {id:'review.other',text:'Além do sintoma principal, percebeu outra alteração no corpo?',options:['Não','Pele','Visão','Neurológica','Urinária','Intestinal','Respiratória','Ginecológica','Outro'],multiple:true,exclusiveOptions:['Não']},
+      {id:'review.systems',text:'Notou alteração na urina, no intestino ou na respiração?',options:['Nenhuma','Urina','Intestino','Respiração','Mais de uma'],multiple:true,exclusiveOptions:['Nenhuma']},
+      {id:'review.general',text:'Teve algum sinal geral diferente do habitual?',options:['Nenhum','Febre','Perda de peso','Cansaço importante','Suor noturno','Outro'],multiple:true,exclusiveOptions:['Nenhum']}
+    ];
+    const commonSurgeries=[
+      ['Retirou o apêndice','Apendicectomia'],
+      ['Retirou a vesícula','Colecistectomia'],
+      ['Operou hérnia','Hernioplastia'],
+      ['Fez cirurgia bariátrica','Cirurgia bariátrica / gastroplastia'],
+      ['Fez cesárea','Cesariana'],
+      ['Retirou o útero','Histerectomia'],
+      ['Fez laqueadura','Laqueadura tubária'],
+      ['Operou catarata','Facectomia com implante de lente'],
+      ['Colocou prótese em articulação','Artroplastia'],
+      ['Operou fratura','Osteossíntese de fratura'],
+      ['Colocou stent no coração','Angioplastia coronariana com stent'],
+      ['Fez ponte de safena','Revascularização do miocárdio'],
+      ['Operou a próstata','Procedimento prostático — especificar'],
+      ['Retirou amígdalas / adenoide','Tonsilectomia / adenoidectomia']
+    ];
+    const moduleQuestions={
+      urology:['Você sentiu dor ou ardência ao urinar?','Tem ido mais vezes ao banheiro?','A vontade vem de repente?','Acorda à noite para urinar?','Mudou o volume da urina?','Notou sangue?','O jato está normal?','Já perdeu urina?','Tem dor nas costas ou febre?'],
+      dermatology:['Percebeu alguma alteração na pele?','Mudou a cor, apareceu mancha ou caroço?','Tem bolha, ferida ou descamação?','Coça, dói ou tem secreção?','Piora com sol ou com algum produto?','Essa lesão está crescendo ou mudando?'],
+      cardiology:['Percebeu alguma alteração no coração?','Falta de ar, principalmente ao esforço ou ao deitar?','Dor no peito que piora com esforço ou irradia?','Inchaço nas pernas?','Coração acelerado ou irregular?','Teve desmaio ou quase desmaio?'],
+      ophthalmology:['Percebeu alteração na visão?','Dor nos olhos?','Luz incomoda?','Está vendo duplicado?','Percebe manchas na visão?','Tem coceira ou sensação de areia?','Dificuldade para enxergar de perto ou de longe?'],
+      gynecology:['Você notou alguma alteração ginecológica?','Mudança na menstruação ou sangramento fora do período?','Dor pélvica ou durante a relação?','Corrimento ou coceira?','Está tentando engravidar?','Teve ondas de calor ou sintomas de menopausa?','Percebeu nódulo ou secreção nas mamas?'],
+      obstetrics:['Teve alguma mudança desde a gestação?','Enjoo ou vômitos intensos?','Sangramento vaginal?','Azia ou intestino preso?','Dor ou sangramento ao evacuar?','Vontade de comer coisas diferentes?','Fraqueza ou tontura?','Inchaço nas pernas?','Cãibras?','Dor lombar?','Está urinando mais ou com dor?','Alteração no sono?'],
+      orthopedics:['Você tem dor nos ossos ou articulações?','Essa dor piora ao mexer ou melhora com repouso?','Teve alguma queda ou trauma?','Percebeu inchaço ou calor no local?','Tem dificuldade para movimentar?','Sente formigamento ou perda de força?'],
+      abdominal:['Você sentiu alguma dor abdominal?','Onde dói exatamente?','Teve náuseas ou vômitos?','Seu intestino mudou?','A barriga está inchada?','Notou pele amarelada?','Teve sangue nas fezes ou vômitos?'],
+      rheumatology:['Teve febre ou perda de peso?','Apareceram manchas na pele?','Tem falta de ar ou sinusite?','Notou alteração na urina?','Tem aftas frequentes?','Você fuma?','Teve dor de cabeça recente?'],
+      pulmonology:['Você está com falta de ar?','Em que situação piora?','Tem tosse? Sai catarro? Qual aspecto?','Sai sangue?','Tem dor no peito?','Escuta chiado?','Sente esforço para respirar?'],
+      neurology:['Perdeu força?','Foi súbito?','Teve convulsão?','Teve febre?','Está esquecendo coisas?','Teve dor de cabeça forte?'],
+      coloproctology:['Tem dor? Onde?','Mudou o hábito intestinal?','Tem sangue?','Perdeu peso?','Tem febre?','Evacua quantas vezes?'],
+      endocrinology:['Perdeu ou ganhou peso?','Tem cansaço?','Alterou menstruação ou libido?','Tem queda ou aumento de pelos?','Urina muito ou tem muita sede?','Tem palpitação ou tremor?'],
+      psychiatry:['Você anda ansioso ou preocupado?','Seu humor mudou?','Tem dormido bem?','Tem pensamentos repetitivos ou estranhos?','Já ouviu ou viu coisas?','Tem dificuldade de memória ou atenção?'],
+      generalmedicine:['O sintoma interfere nas atividades habituais?','Houve piora importante nas últimas horas ou dias?','Consegue se alimentar e ingerir líquidos?','Percebeu febre, perda de peso ou cansaço importante?','Teve contato com pessoa doente, viagem ou exposição recente?','Começou algum medicamento ou produto novo?','Há outro sintoma que ainda não foi registrado?']
+    };
+    const names={cardiology:'Cardiológico',pulmonology:'Pneumológico',urology:'Urológico',abdominal:'Abdominal',neurology:'Neurológico',dermatology:'Dermatológico',psychiatry:'Psiquiátrico',orthopedics:'Ortopédico',ophthalmology:'Oftalmológico',gynecology:'Ginecológico',obstetrics:'Obstétrico',rheumatology:'Reumatológico / vasculites',coloproctology:'Coloproctológico',endocrinology:'Endocrinológico',generalmedicine:'Clínica geral / revisão ampliada'};
+    const $=id=>document.getElementById(id);
+    const SEPARATOR=' · ';
+    let script=[],answers=[],position=0,routingShown=false,routeDecision=[],activeModules=[];
+    let auditEvents=[],traceId='',moduleConfirmation={selected:[],declined:[],manual:''};
+    let caseQueue=[],nextCaseIndex=0,activeGeneratedCase=null;
+    let reasoningDecision=null,activeSyndromes=[],reasoningConfirmed=false;
+    let safetyCheckpointPassed=false,initialSafetyAssessment=null;
+    let reassessments=[],diagnosticImpression=null,professionalConduct=null;
+    let selectedExamInput='',examPreviewUrl='',selectedSuggestedExam=null,resultAttachments=new Map();
+    let flowMode='',directSyndrome='',investigationSyndromes=[];
+    const complaintChoices=['Dor','Falta de ar','Tosse','Febre','Náusea / vômito','Alteração urinária','Alteração intestinal','Pele','Visão','Neurológica','Ginecológica','Gestação / pós-parto','Ossos / articulações','Humor / sono','Outro sintoma'];
+    const flowNames={assisted:'Assistido',direct:'Direto',investigation:'Investigação'};
+    const nowIso=()=>new Date().toISOString();
+    function createTraceId(){return globalThis.crypto?.randomUUID?.()||`decisionmed-${Date.now()}-${Math.random().toString(16).slice(2)}`}
+    function recordAudit(type,data={}){auditEvents.push({order:auditEvents.length+1,timestamp:nowIso(),type,...data})}
+    function recordCurrentAnswer(source='manual'){
+      const item=script[position],revision=auditEvents.filter(event=>event.type==='answer_confirmed'&&event.question_id===item.id).length+1;
+      recordAudit('answer_confirmed',{source,revision,question_order:position+1,question_id:item.id,section:item.section,module:item.module,question:item.text,selected:answerValues(),detail:answerDetail()})
+    }
+    function resetCaseState(caseMeta=null){
+      answers=Array(script.length).fill('');position=0;routingShown=false;routeDecision=[];activeModules=[];moduleConfirmation={selected:[],declined:[],manual:''};reasoningDecision=null;activeSyndromes=[];reasoningConfirmed=false;safetyCheckpointPassed=false;initialSafetyAssessment=null;reassessments=[];diagnosticImpression=null;professionalConduct=null;selectedExamInput='';selectedSuggestedExam=null;resultAttachments=new Map();
+      if(examPreviewUrl)URL.revokeObjectURL(examPreviewUrl);examPreviewUrl='';
+      if($('exam'))$('exam').value='';if($('exam-photo'))$('exam-photo').value='';if($('exam-preview')){$('exam-preview').removeAttribute('src');$('exam-preview').classList.add('hidden')}
+      if($('conduct-destination'))$('conduct-destination').value='';if($('conduct-note'))$('conduct-note').value='';document.querySelectorAll('#conduct-actions input').forEach(input=>{input.checked=false});
+      traceId=createTraceId();auditEvents=[];activeGeneratedCase=caseMeta;
+    }
+    function initializeCase(complaint,source='manual',caseMeta=null){
+      script=[...safetyQuestions.map(item=>({module:'safety',section:'safety',...item})),...buildSymptomQuestions(complaint),...clinicalHistory.map(item=>({module:'general',section:'history',...item})),...generalInvestigations.map(item=>({module:'general',section:'investigation',...item}))];
+      resetCaseState(caseMeta);
+      recordAudit('case_started',{source,flow_mode:flowMode||'assisted',trace_id:traceId,case_id:caseMeta?.id||null,case_label:caseMeta?.label||null,complaint,note:$('note').value.trim()});
+      recordAudit('sequence_generated',{engine:'DecisionMedSequences',engine_version:DecisionMedSequences.version,questions:script.map((item,index)=>({order:index+1,id:item.id,section:item.section,module:item.module,text:item.text}))})
+    }
+    function answerParts(index=position){return (answers[index]||'').split(SEPARATOR).filter(Boolean)}
+    function answerValues(index=position){return answerParts(index).filter(value=>!value.startsWith('Detalhe: '))}
+    function answerDetail(index=position){return answerParts(index).find(value=>value.startsWith('Detalhe: '))?.slice(9)||''}
+    function writeAnswer(values,detail='',index=position){answers[index]=[...values,detail?`Detalhe: ${detail}`:''].filter(Boolean).join(SEPARATOR)}
+    function suggestedModules(){
+      return DecisionMedRouting.suggestModules({
+        complaint:$('complaint').value,
+        values:answers.flatMap((_,index)=>answerValues(index)),
+        note:$('note').value
+      });
+    }
+    function routeModules(){
+      const suggested=suggestedModules(),host=$('route-modules'),manual=$('manual-module');
+      routeDecision=suggested;
+      host.replaceChildren();manual.replaceChildren();
+      const empty=document.createElement('option');empty.value='';empty.textContent='Nenhum módulo adicional';manual.append(empty);
+      Object.entries(names).forEach(([key,name])=>{const option=document.createElement('option');option.value=key;option.textContent=name;manual.append(option)});
+      if(!suggested.length){const text=document.createElement('p');text.className='hint';text.textContent='Nenhum módulo específico foi sugerido pelas combinações atuais. Você pode concluir ou acrescentar um módulo manualmente.';host.append(text);return}
+      suggested.forEach(({key,reasons,priority})=>{const label=document.createElement('label');label.className=`module${priority?' priority':''}`;const box=document.createElement('input');box.type='checkbox';box.value=key;box.checked=true;const copy=document.createElement('span'),title=document.createElement('strong'),detail=document.createElement('small');title.textContent=`${names[key]}${priority?' · revisão prioritária':''}`;detail.textContent=reasons.join(' ');copy.append(title,document.createElement('br'),detail);label.append(box,copy);host.append(label)})
+    }
+    function recordRouting(source='manual'){
+      recordAudit('routing_generated',{source,engine:'DecisionMedRouting',engine_version:DecisionMedRouting.version,rule_engine_version:DecisionMedRouting.ruleEngineVersion,rule_catalog_version:DecisionMedRouting.ruleCatalogVersion,rule_catalog_source:DecisionMedRouting.ruleCatalogSource,input:{complaint:$('complaint').value,note:$('note').value.trim(),selected_values:answers.flatMap((_,index)=>answerValues(index))},suggestions:routeDecision.map(item=>({module:item.key,module_ids:[...item.moduleIds],name:names[item.key],priority:item.priority,reasons:[...item.reasons],rule_ids:[...item.ruleIds],rule_versions:[...item.ruleVersions],rule_statuses:[...item.ruleStatuses],source_ids:[...item.sourceIds],clinical_execution_allowed:false}))})
+    }
+    function reasoningAnswers(){
+      return script.map((item,index)=>({id:item.id,section:item.section,module:item.module,question:item.text,values:answerValues(index),detail:answerDetail(index)})).filter(answer=>answer.values.length)
+    }
+    function analyzeReasoning(){
+      return DecisionMedReasoning.analyze({complaint:$('complaint').value,note:$('note').value.trim(),answers:reasoningAnswers(),selectedModules:[...activeModules],selectedSyndromeKeys:[...activeSyndromes]})
+    }
+    function showSafetyCheckpoint(source='manual'){
+      initialSafetyAssessment=analyzeReasoning().safety;renderSafetyStatus($('safety-checkpoint'),initialSafetyAssessment);
+      $('continue-after-safety').textContent=initialSafetyAssessment.level==='immediate'?'Continuar somente para documentar':initialSafetyAssessment.level==='priority'?'Continuar coleta prioritária':'Continuar coleta clínica';
+      recordAudit('safety_checkpoint',{source,engine_version:DecisionMedReasoning.version,level:initialSafetyAssessment.level,label:initialSafetyAssessment.label,reasons:[...initialSafetyAssessment.reasons],rule_ids:[...(initialSafetyAssessment.ruleIds||[])],rules:[...(initialSafetyAssessment.rules||[])]});
+      $('question-panel').classList.add('hidden');$('safety-panel').classList.remove('hidden')
+    }
+    function appendCompactList(parent,title,items){
+      const section=document.createElement('section'),heading=document.createElement('h4'),list=document.createElement('ul');
+      heading.textContent=title;list.className='compact-list';
+      (items.length?items:['Nenhum achado registrado.']).forEach(item=>{const line=document.createElement('li');line.textContent=item;list.append(line)});
+      section.append(heading,list);parent.append(section)
+    }
+    function renderSafetyStatus(host,safety){
+      host.replaceChildren();const card=document.createElement('div'),title=document.createElement('strong'),list=document.createElement('ul');
+      card.className=`reasoning-status ${safety.level}`;title.textContent=`Triagem de segurança: ${safety.label}`;list.className='compact-list';
+      safety.reasons.forEach(reason=>{const item=document.createElement('li');item.textContent=reason;list.append(item)});
+      card.append(title,list);host.append(card)
+    }
+    function syndromeName(key){return reasoningDecision?.syndromes.find(item=>item.key===key)?.name||key}
+    function syndromeGovernance(syndrome){
+      if(!syndrome.moduleId)return 'Identidade do protótipo local · execução clínica automática bloqueada';
+      const sources=[...new Set([...(syndrome.sourceIds||[]),...(syndrome.contentSourceIds||[])])];
+      return `${syndrome.moduleId} · identidade ${syndrome.moduleVersion||syndrome.version||'não informada'} · conteúdo ${syndrome.contentVersion||'local'} (${syndrome.contentStatus||'não informado'}/${syndrome.contentRecordStatus||'não informado'}) · status ${syndrome.moduleStatus||syndrome.status||'não informado'} · terminologia ${syndrome.terminologyStatus||'não informada'} · fontes candidatas: ${sources.join(', ')||'não vinculadas'} · execução clínica automática bloqueada`
+    }
+    function syndromeAuditIdentity(item){
+      return {
+        key:item.key,
+        module_id:item.moduleId,
+        name:item.name,
+        entity_type:item.entityType,
+        entity_type_label:item.entityTypeLabel,
+        module_version:item.moduleVersion,
+        module_status:item.moduleStatus,
+        terminology_status:item.terminologyStatus,
+        content_status:item.contentStatus,
+        content_version:item.contentVersion,
+        content_record_status:item.contentRecordStatus,
+        content_source_ids:[...(item.contentSourceIds||[])],
+        source_ids:[...(item.sourceIds||[])],
+        compatibility:item.compatibility,
+        supports:[...item.supports],
+        against:[...item.against],
+        differential_rules:[...(item.differential?.rules||[])]
+      }
+    }
+    function showReasoningPanel(source='manual'){
+      reasoningDecision=analyzeReasoning();activeSyndromes=reasoningDecision.syndromes.map(item=>item.key);
+      renderSafetyStatus($('reasoning-safety-preview'),reasoningDecision.safety);$('problem-representation-preview').textContent=reasoningDecision.representation;
+      const host=$('syndrome-options');host.replaceChildren();
+      reasoningDecision.syndromes.forEach(syndrome=>{
+        const card=document.createElement('article'),label=document.createElement('label'),box=document.createElement('input'),copy=document.createElement('div'),title=document.createElement('h3'),level=document.createElement('p');
+        card.className='syndrome-card';box.type='checkbox';box.value=syndrome.key;box.checked=true;title.textContent=syndrome.name;level.textContent=`${syndrome.entityTypeLabel} · compatibilidade ${syndrome.compatibility} com os fatos registrados.`;
+        copy.append(title,level);appendCompactList(copy,'Governança do módulo',[syndromeGovernance(syndrome)]);appendCompactList(copy,'Achados que sustentam',syndrome.supports);if(syndrome.against.length)appendCompactList(copy,'Achados ausentes ou contrários',syndrome.against);
+        label.append(box,copy);card.append(label);host.append(card);
+        box.onchange=()=>{const any=document.querySelectorAll('#syndrome-options input:checked').length>0;$('continue-reasoning').disabled=!any;$('syndrome-error').textContent=any?'':'Confirme pelo menos uma classificação clínica para continuar.'}
+      });
+      $('continue-reasoning').textContent=reasoningDecision.safety.level==='immediate'?'Encerrar e revisar registro':'Continuar diferenciação';
+      recordAudit('reasoning_generated',{source,engine:'DecisionMedReasoning',engine_version:DecisionMedReasoning.version,representation:reasoningDecision.representation,safety:{...reasoningDecision.safety},syndromes:reasoningDecision.syndromes.map(syndromeAuditIdentity)});
+      $('question-panel').classList.add('hidden');$('route-panel').classList.add('hidden');$('reasoning-panel').classList.remove('hidden')
+    }
+    function renderReasoningOutput(result){
+      const host=$('reasoning-output');host.replaceChildren();const safetyHost=document.createElement('div');host.append(safetyHost);renderSafetyStatus(safetyHost,result.safety);
+      const representation=document.createElement('article'),representationTitle=document.createElement('h3'),representationText=document.createElement('p');
+      representation.className='syndrome-card';representationTitle.textContent='Representação do problema';representationText.textContent=result.representation;representation.append(representationTitle,representationText);host.append(representation);
+      const selected=result.syndromes.filter(syndrome=>activeSyndromes.includes(syndrome.key));
+      if(flowMode==='investigation'&&selected.length){
+        const rank={baixo:1,intermediário:2,alto:3},highest=Math.max(...selected.map(item=>rank[item.compatibility]||0)),leaders=selected.filter(item=>(rank[item.compatibility]||0)===highest);
+        const comparison=document.createElement('article'),title=document.createElement('h3'),text=document.createElement('p');
+        comparison.className='syndrome-card';title.textContent='Comparação qualitativa das hipóteses';text.textContent=`Maior compatibilidade com os fatos registrados: ${leaders.map(item=>item.name).join(' e ')} (${leaders[0].compatibility}). Esta classificação organiza achados; não é uma probabilidade calibrada nem confirma diagnóstico.`;
+        comparison.append(title,text);host.append(comparison)
+      }
+      selected.forEach(syndrome=>{
+        const card=document.createElement('article'),title=document.createElement('h3'),level=document.createElement('p'),grid=document.createElement('div');
+        const labels={assisted:'Classificação clínica provisória',direct:'Classificação selecionada para confirmação',investigation:'Hipótese comparada'};
+        card.className='syndrome-card';title.textContent=syndrome.name;level.textContent=`${labels[flowMode]||labels.assisted} · ${syndrome.entityTypeLabel.toLocaleLowerCase('pt-BR')} · compatibilidade ${syndrome.compatibility}.`;grid.className='reasoning-grid';
+        card.append(title,level);appendCompactList(card,'Governança do módulo',[syndromeGovernance(syndrome)]);if(syndrome.definition)appendCompactList(card,'Definição em revisão',[syndrome.definition]);if(syndrome.boundaries)appendCompactList(card,'Limites do módulo',[syndrome.boundaries]);appendCompactList(card,flowMode==='investigation'?'Achados que aumentam compatibilidade':'Achados que sustentam',syndrome.supports);appendCompactList(card,flowMode==='investigation'?'Achados que reduzem compatibilidade ou estão ausentes':'Achados ausentes ou contrários',syndrome.against);
+        if(flowMode==='investigation'){
+          appendCompactList(card,'Perguntas que diferenciam esta hipótese',DecisionMedReasoning.discriminatorQuestions([syndrome.key]).map(item=>`${item.text}${item.sourceIds?.length?` · Fontes candidatas: ${item.sourceIds.join(', ')}`:''}`))
+        }else{
+          appendCompactList(grid,'Hipóteses principais ou mais compatíveis',syndrome.differential.likely);appendCompactList(grid,'Graves que não podem ser perdidos',syndrome.differential.cannotMiss);appendCompactList(grid,'Alternativas que imitam o quadro',syndrome.differential.mimics);card.append(grid)
+        }
+        appendCompactList(card,'Red flags e critérios de interrupção',[...(syndrome.redFlags||[]),...(syndrome.stopConditions||[])]);appendCompactList(card,'Critérios e escalas em revisão',syndrome.diagnosticCriteria||[]);appendCompactList(card,'Exame físico orientado',syndrome.physicalExam);appendCompactList(card,flowMode==='investigation'?'Exames que ajudam a diferenciar e pergunta clínica':'Exames complementares e pergunta clínica',syndrome.tests.map(test=>`${test.name}: ${test.question} Quando: ${test.when}${test.limitations?` Limitações: ${test.limitations}`:''}${test.sourceIds?.length?` Fontes candidatas: ${test.sourceIds.join(', ')}`:''}`));host.append(card)
+      })
+    }
+    function renderSuggestedExams(result){
+      const host=$('suggested-exams');host.replaceChildren();const exams=new Map();
+      result.syndromes.filter(syndrome=>activeSyndromes.includes(syndrome.key)).forEach(syndrome=>{
+        syndrome.tests.forEach(test=>{
+          const key=`${test.name}::${test.question}`,entry=exams.get(key)||{...test,key,syndromes:[]};
+          entry.syndromes.push(syndrome.name);exams.set(key,entry)
+        })
+      });
+      if(!exams.size){
+        const card=document.createElement('article'),title=document.createElement('h3'),text=document.createElement('p');title.textContent='Nenhum exame automático indicado';text.textContent='Defina primeiro a pergunta clínica e a impressão profissional.';card.append(title,text);host.append(card);return
+      }
+      exams.forEach(exam=>{
+        const card=document.createElement('article'),header=document.createElement('div'),title=document.createElement('h3'),button=document.createElement('button'),question=document.createElement('p'),timing=document.createElement('p'),sources=document.createElement('p'),context=document.createElement('p'),status=document.createElement('p'),attached=resultAttachments.get(exam.key);
+        header.className='exam-card-head';title.textContent=exam.name;button.type='button';button.className='button secondary';button.dataset.examKey=exam.key;button.textContent=attached?'Substituir resultado':'Anexar resultado';
+        button.onclick=()=>{selectedSuggestedExam={key:exam.key,name:exam.name,question:exam.question,syndromes:[...new Set(exam.syndromes)]};$('exam-kind').value=inferExamKind(exam.name);$('exam-note').placeholder=`Registre o resultado ou achado de ${exam.name}.`;$('exam').click()};
+        question.textContent=`O que este exame decide: ${exam.question}`;timing.textContent=`Quando considerar: ${exam.when}`;sources.className='hint';sources.textContent=`Fontes candidatas do campo: ${(exam.sourceIds||[]).join(', ')||'ainda não vinculadas'}.`;context.className='hint';context.textContent=`Relacionado a: ${[...new Set(exam.syndromes)].join(', ')}.`;
+        status.className=attached?'exam-attached':'hint';status.textContent=attached?`Resultado anexado localmente · ${attached.mimeGroup} · ${(attached.size/1024).toFixed(1)} KB.`:'Resultado ainda não anexado.';
+        header.append(title,button);card.append(header,question,timing,sources,context,status);host.append(card)
+      })
+    }
+    function renderConductPlan(result){
+      const host=$('conduct-plan');host.replaceChildren();
+      const add=(title,text,className='')=>{const card=document.createElement('article'),heading=document.createElement('h3'),body=document.createElement('p');card.className=className;heading.textContent=title;body.textContent=text;card.append(heading,body);host.append(card)};
+      const safetyText={
+        immediate:'Interromper o fluxo clínico rotineiro e providenciar avaliação imediata conforme os recursos e protocolos locais.',
+        priority:'Priorizar avaliação presencial, sinais vitais, exame físico e definição do nível de cuidado.',
+        continue:'Prosseguir com avaliação clínica e exame físico dirigido, mantendo vigilância para novos sinais de alarme.'
+      };
+      add('1. Conduta de segurança',safetyText[result.safety.level]||safetyText.continue,result.safety.level);
+      const selected=result.syndromes.filter(syndrome=>activeSyndromes.includes(syndrome.key)),cannotMiss=[...new Set(selected.flatMap(syndrome=>syndrome.differential.cannotMiss))],examSteps=[...new Set(selected.flatMap(syndrome=>syndrome.physicalExam))],tests=[...new Set(selected.flatMap(syndrome=>syndrome.tests.map(test=>test.name)))],safetyConduct=[...new Set(selected.flatMap(syndrome=>syndrome.safetyConduct||[]))],initialTreatment=[...new Set(selected.flatMap(syndrome=>syndrome.initialTreatment||[]))],definitiveTreatment=[...new Set(selected.flatMap(syndrome=>syndrome.definitiveTreatment||[]))],postExam=[...new Set(selected.flatMap(syndrome=>syndrome.postExamReassessment||[]))],followup=[...new Set(selected.flatMap(syndrome=>syndrome.destinationReturnFollowup||[]))],draft=selected.some(syndrome=>syndrome.moduleStatus!=='validated'||syndrome.contentRecordStatus!=='validated');
+      add('2. Graves que precisam ser excluídos',cannotMiss.join('; ')||'Nenhuma hipótese grave catalogada para este módulo.');
+      add('3. Segurança específica do módulo',safetyConduct.join('; ')||'Aplicar protocolos locais e reavaliar sinais de alarme.');
+      add('4. Exame físico dirigido',examSteps.join('; ')||'Registrar exame físico orientado antes de definir tratamento.');
+      add('5. Exames que respondem à decisão',tests.join('; ')||'Nenhum exame complementar catalogado.');
+      add('6. Reavaliação pós-exames',postExam.join('; ')||'Registrar se cada resultado mantém, aumenta, reduz ou afasta cada hipótese.');
+      add('7. Tratamento inicial em revisão',initialTreatment.join('; ')||'Tratamento ainda não cadastrado.',draft?'priority':'');
+      add('8. Tratamento definitivo em revisão',definitiveTreatment.join('; ')||'Tratamento definitivo depende da impressão profissional e de validação clínica.',draft?'priority':'');
+      add('9. Destino, retorno e acompanhamento',followup.join('; ')||'Registrar nível de cuidado, prazo de retorno e sinais de alarme.');
+      if(draft)add('Gate clínico','Conteúdo em rascunho: estas etapas são uma estrutura para revisão profissional e não liberam prescrição, tratamento ou conduta automática.','priority')
+    }
+    function populateReassessmentOptions(result){
+      const labels=[];
+      result.syndromes.forEach(syndrome=>{
+        labels.push(syndrome.name,...syndrome.differential.likely,...syndrome.differential.cannotMiss,...syndrome.differential.mimics)
+      });
+      [$('reassessment-hypothesis'),$('impression-hypothesis')].forEach(select=>{
+        const previous=select.value;select.replaceChildren();const empty=document.createElement('option');empty.value='';empty.textContent='Selecione a hipótese';select.append(empty);
+        [...new Set(labels)].forEach(label=>{const option=document.createElement('option');option.value=label;option.textContent=label;select.append(option)});
+        if([...select.options].some(option=>option.value===previous))select.value=previous
+      })
+    }
+    function renderReassessments(){
+      const host=$('reassessment-list');host.replaceChildren();
+      reassessments.forEach(entry=>{
+        const card=document.createElement('article'),title=document.createElement('h3'),body=document.createElement('p');
+        title.textContent=entry.hypothesis;body.textContent=`${entry.impact} · ${entry.examName||entry.examKind}${entry.finding?` · ${entry.finding}`:''}`;card.append(title,body);host.append(card)
+      })
+    }
+    function renderComplaintChoices(){
+      const host=$('complaint-choices');host.replaceChildren();
+      complaintChoices.forEach(option=>{const button=document.createElement('button');button.type='button';button.className=`choice${$('complaint').value===option?' selected':''}`;button.textContent=option;button.onclick=()=>{$('complaint').value=option;$('begin').disabled=false;renderComplaintChoices()};host.append(button)})
+    }
+    function renderDirectSyndromeChoices(){
+      const host=$('direct-syndrome-choices');host.replaceChildren();
+      const query=normalizeSearch($('direct-search').value),catalog=DecisionMedReasoning.syndromeCatalog;
+      const matches=catalog.filter(item=>catalogSearchText(item).includes(query));
+      matches.slice(0,30).forEach(syndrome=>{const button=document.createElement('button');button.type='button';button.className=`choice${directSyndrome===syndrome.key?' selected':''}`;button.textContent=`${syndrome.name} · ${syndrome.entityTypeLabel} · ${syndrome.status}`;button.onclick=()=>{directSyndrome=syndrome.key;$('direct-syndrome').value=syndrome.key;$('begin-direct').disabled=false;renderDirectSyndromeChoices()};host.append(button)});
+      $('direct-search-status').textContent=`${matches.length} resultado(s) · exibindo até 30 por vez${directSyndrome?' · 1 selecionado':''}.`
+    }
+    function renderInvestigationSyndromeChoices(){
+      const host=$('investigation-syndrome-choices');host.replaceChildren();
+      const query=normalizeSearch($('investigation-search').value),catalog=DecisionMedReasoning.syndromeCatalog;
+      const matches=catalog.filter(item=>catalogSearchText(item).includes(query));
+      matches.slice(0,30).forEach(syndrome=>{
+        const button=document.createElement('button');button.type='button';button.className=`choice${investigationSyndromes.includes(syndrome.key)?' selected':''}`;button.textContent=`${syndrome.name} · ${syndrome.entityTypeLabel} · ${syndrome.status}`;
+        button.onclick=()=>{
+          if(investigationSyndromes.includes(syndrome.key))investigationSyndromes=investigationSyndromes.filter(key=>key!==syndrome.key);
+          else if(investigationSyndromes.length<3)investigationSyndromes.push(syndrome.key);
+          renderInvestigationSyndromeChoices()
+        };
+        host.append(button)
+      });
+      $('investigation-search-status').textContent=`${matches.length} resultado(s) · exibindo até 30 por vez.`;
+      const count=investigationSyndromes.length,ready=count>=2&&count<=3;
+      $('begin-investigation').disabled=!ready;
+      $('investigation-selection-status').textContent=count===0?'Selecione de 2 a 3 hipóteses concorrentes.':count===1?'Selecione mais uma hipótese para comparar.':count===3?'3 hipóteses selecionadas · limite do comparador atingido.':`${count} hipóteses selecionadas · pronto para comparar.`
+    }
+    function normalizeSearch(value){return String(value||'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLocaleLowerCase('pt-BR').trim()}
+    function catalogSearchText(item){return normalizeSearch([item.name,item.entityTypeLabel,item.primarySpecialty,item.moduleId].join(' '))}
+    $('direct-search').oninput=renderDirectSyndromeChoices;
+    $('investigation-search').oninput=renderInvestigationSyndromeChoices;
+    function chooseMode(mode){
+      flowMode=mode;$('mode-assisted').classList.toggle('selected',mode==='assisted');$('mode-direct').classList.toggle('selected',mode==='direct');$('mode-investigation').classList.toggle('selected',mode==='investigation');
+      $('assisted-fields').classList.toggle('hidden',mode!=='assisted');$('direct-fields').classList.toggle('hidden',mode!=='direct');$('investigation-fields').classList.toggle('hidden',mode!=='investigation');
+      const descriptions={
+        assisted:'Assistido: a queixa percorre triagem, anamnese, reconhecimento sindrômico, diferenciação, diagnóstico e gate de conduta.',
+        direct:'Direto: o profissional escolhe a síndrome clínica ou apresentação, confirma segurança e critérios por cliques e segue ao gate de conduta.',
+        investigation:'Investigação: o profissional seleciona de 2 a 3 hipóteses e o motor compara achados, perguntas discriminadoras e exames.'
+      };
+      $('mode-description').textContent=descriptions[mode]
+    }
+    $('mode-assisted').onclick=()=>chooseMode('assisted');
+    $('mode-direct').onclick=()=>chooseMode('direct');
+    $('mode-investigation').onclick=()=>chooseMode('investigation');
+    function isPositive(item,value){
+      if(item.detailOnValues)return item.detailOnValues.includes(value);
+      return !['Não','Nunca','Nenhum','Nada percebido','Não sabe informar','Não se aplica','Não foi medida'].includes(value)&&!value.startsWith('Não ')&&!value.startsWith('Nenhum');
+    }
+    function needsDetail(item,values){return values.some(value=>value.includes('Outro'))||(item.detailOnPositive&&values.some(value=>isPositive(item,value)))||(item.detailOnValues&&values.some(value=>item.detailOnValues.includes(value)))}
+    function appendSurgeryHelper(host,area){
+      const helper=document.createElement('div'),hint=document.createElement('p'),choices=document.createElement('div');
+      helper.className='helper';hint.className='hint';choices.className='choices';
+      hint.textContent='Escolha pela descrição comum. O nome técnico é apenas uma sugestão e precisa ser confirmado pelo profissional.';
+      commonSurgeries.forEach(([plain,technical])=>{const button=document.createElement('button');button.type='button';button.className='choice';button.textContent=plain;button.title=`Sugestão técnica: ${technical}`;button.onclick=()=>{const suggestion=`${plain} — sugestão técnica: ${technical} (confirmar)`;const entries=area.value.split(';').map(value=>value.trim()).filter(Boolean);if(!entries.includes(suggestion))entries.push(suggestion);area.value=entries.join('; ');area.dispatchEvent(new Event('input'))};choices.append(button)});
+      helper.append(hint,choices);host.append(helper)
+    }
+    function createAnswer(item){
+      const host=$('answer');host.replaceChildren();
+      const options=item.options||['Sim','Não','Não sabe informar','Não se aplica'];
+      const values=answerValues(),priorDetail=answerDetail(),choices=document.createElement('div');choices.className='choices';
+      options.forEach(option=>{const button=document.createElement('button');button.type='button';button.className=`choice${item.scale?' scale':''}${values.includes(option)?' selected':''}`;button.textContent=option;button.onclick=()=>{
+        let selected=answerValues(),detail=answerDetail();
+        if(item.multiple){
+          if(selected.includes(option))selected=selected.filter(value=>value!==option);
+          else if((item.exclusiveOptions||[]).includes(option))selected=[option];
+          else selected=[...selected.filter(value=>!(item.exclusiveOptions||[]).includes(value)),option];
+        }else selected=selected[0]===option?[]:[option];
+        if(!needsDetail(item,selected))detail='';
+        writeAnswer(selected,detail);createAnswer(item)
+      };choices.append(button)});
+      host.append(choices);
+      if(needsDetail(item,values)){
+        const detail=document.createElement('label'),area=document.createElement('textarea');
+        detail.className='detail';detail.textContent=item.detailLabel||'Qual? Descreva:';
+        area.id='response-detail';area.placeholder='Use palavras comuns; o profissional poderá confirmar o termo técnico.';area.value=priorDetail;
+        area.oninput=()=>{writeAnswer(values,area.value);updateQuestionValidation(item)};
+        detail.append(area);host.append(detail);
+        if(item.helper==='surgery')appendSurgeryHelper(host,area)
+      }
+      updateQuestionValidation(item)
+    }
+    function detailIsRequired(item,values){return item.detailRequired||values.some(value=>value.includes('Outro'))}
+    function questionIsComplete(item){const values=answerValues();if(!values.length)return false;return !(detailIsRequired(item,values)&&needsDetail(item,values)&&!answerDetail().trim())}
+    function updateQuestionValidation(item){
+      const values=answerValues(),detailMissing=detailIsRequired(item,values)&&values.length&&needsDetail(item,values)&&!answerDetail().trim();
+      $('next').disabled=!questionIsComplete(item);
+      $('answer-error').textContent=!values.length?'Selecione uma resposta para continuar.':detailMissing?'Informe o detalhe solicitado para continuar.':''
+    }
+    function rationaleFor(item){
+      if(item.section==='safety')return 'Para reconhecer instabilidade e sinais de alarme antes de continuar o raciocínio.';
+      if(item.section==='history'){
+        const reasons={
+          'history.surgery':'Cirurgias podem alterar anatomia, riscos e interpretação dos sintomas.',
+          'history.admission':'Internações anteriores ajudam a reconhecer recorrência e gravidade prévia.',
+          'history.allergy':'Alergias influenciam a segurança de exames e tratamentos futuros.',
+          'history.chronic':'Doenças crônicas modificam probabilidades, riscos e prioridades.',
+          'history.medication':'Medicamentos podem explicar sintomas, interagir com tratamentos ou exigir ajustes.',
+          'history.family':'Antecedentes familiares podem aumentar a suspeita de condições hereditárias.',
+          'history.habits':'Hábitos e exposições mudam fatores de risco e hipóteses clínicas.'
+        };
+        return reasons[item.id]||'Para completar os antecedentes que modificam o raciocínio clínico.'
+      }
+      if(item.section==='investigation')return 'Para detectar manifestações em outros sistemas que possam mudar a síndrome inicial.';
+      if(item.section==='discriminator')return `Porque esta resposta ajuda a separar ${syndromeName(item.module)} das hipóteses que podem imitar o quadro.`;
+      if(item.section==='module')return `Para caracterizar o padrão ${names[item.module].toLocaleLowerCase('pt-BR')} e identificar achados relevantes ou ausentes.`;
+      if(item.id.includes('started')||item.id.includes('onset')||item.id.includes('duration')||item.id.includes('pattern'))return 'O tempo de início e a evolução ajudam a separar padrões agudos, progressivos, recorrentes e persistentes.';
+      if(item.id.includes('location')||item.id.includes('quality')||item.id.includes('radiation')||item.id.includes('intensity'))return 'Localização, qualidade e intensidade definem o fenótipo do sintoma e reduzem ambiguidades.';
+      if(item.id.includes('trigger')||item.id.includes('modifier'))return 'Desencadeantes e fatores de melhora ou piora ajudam a diferenciar mecanismos possíveis.';
+      if(item.id.includes('associated'))return 'Sintomas associados podem revelar outro sistema envolvido e sinais de maior risco.';
+      return 'Esta resposta acrescenta um fato estruturado à representação do problema.'
+    }
+    function renderQuestion(){
+      const current=script[position];
+      $('stage').textContent=current.section==='safety'?'Triagem de segurança':current.section==='history'?'Histórico clínico essencial':current.section==='investigation'?'Investigação geral':current.section==='discriminator'?`${flowMode==='investigation'?'Comparação de hipóteses':'Pergunta discriminadora'} · ${syndromeName(current.module)}`:current.module==='general'?'Decálogo do sintoma':`${flowMode==='direct'?'Confirmação de critérios':flowMode==='investigation'?'Critério comparativo':'Módulo'} · ${names[current.module]}`;
+      $('question').textContent=current.text;$('counter').textContent=`Pergunta ${position+1} de ${script.length}`;$('question-rationale').textContent=rationaleFor(current);$('question-sources').textContent=current.sourceIds?.length?`Fontes candidatas: ${current.sourceIds.join(', ')}.`:'';
+      $('progress').replaceChildren(...script.map((_,n)=>{const bar=document.createElement('i');if(n<=position)bar.className='active';return bar}));
+      const finalLabels={assisted:'Gerar diferenciais',direct:'Revisar critérios',investigation:'Comparar hipóteses'};
+      $('previous').disabled=position===0;$('next').textContent=position===script.length-1?(!routingShown?'Escolher módulos':reasoningConfirmed?finalLabels[flowMode]||'Revisar':'Formar classificação clínica'):'Próxima';createAnswer(current)
+    }
+    function showRouting(){routingShown=true;routeModules();recordRouting();$('question-panel').classList.add('hidden');$('route-panel').classList.remove('hidden')}
+    function moduleQuestion(key,text,index){
+      const base={id:`module.${key}.${index+1}`,module:key,section:'module',text,options:['Sim','Não','Não sabe informar','Não se aplica'],detailOnPositive:true,detailRequired:true};
+      if(text==='O jato está normal?')return {...base,options:['Normal','Fraco','Interrompido','Gotejamento','Precisa fazer força','Não sabe informar'],detailOnPositive:false};
+      if(text==='Tem dormido bem?')return {...base,options:['Sim','Dificuldade para iniciar','Acorda durante a noite','Acorda muito cedo','Sono excessivo','Não sabe informar'],detailOnPositive:false};
+      if(text==='Em que situação piora?')return {...base,options:['Ao esforço','Em repouso','Ao deitar','Durante a noite','Com exposição / ambiente','Outro'],multiple:true,detailOnPositive:false};
+      if(text==='Tem tosse? Sai catarro? Qual aspecto?')return {...base,options:['Sem tosse','Tosse seca','Catarro claro','Catarro amarelo / verde','Catarro com sangue','Outro'],multiple:true,exclusiveOptions:['Sem tosse'],detailOnPositive:false};
+      if(text==='Onde dói exatamente?'||text==='Tem dor? Onde?')return {...base,options:['Parte superior','Parte inferior','Lado direito','Lado esquerdo','Centro','Difusa','Outro local'],multiple:true,detailOnPositive:false};
+      if(text==='Evacua quantas vezes?')return {...base,options:['Menos de 3 vezes por semana','1 vez ao dia','2 a 3 vezes ao dia','4 ou mais vezes ao dia','Varia muito','Não sabe informar'],detailOnPositive:false};
+      if(text==='Perdeu ou ganhou peso?')return {...base,options:['Sem mudança','Perdeu peso','Ganhou peso','Oscilou','Não sabe informar'],detailOnPositive:false};
+      if(text==='Mudou o volume da urina?')return {...base,options:['Não mudou','Aumentou','Diminuiu','Quase não urina','Não sabe informar'],detailOnPositive:false};
+      if(text==='Essa dor piora ao mexer ou melhora com repouso?')return {...base,options:['Piora ao mexer','Melhora com repouso','Piora em repouso','Sem relação percebida','Outro'],multiple:true,detailOnPositive:false};
+      return base
+    }
+    function initializeTargetedCase(mode,syndromeKeys,source='manual',caseMeta=null){
+      const selectedDefinitions=DecisionMedReasoning.syndromeCatalog.filter(item=>syndromeKeys.includes(item.key));
+      if(selectedDefinitions.length!==syndromeKeys.length)return;
+      flowMode=mode;
+      const moduleKeys=[...new Set(selectedDefinitions.flatMap(item=>item.modules))];
+      const safety=safetyQuestions.map(item=>({module:'safety',section:'safety',...item}));
+      const criteria=moduleKeys.flatMap(key=>(moduleQuestions[key]||[]).map((text,index)=>moduleQuestion(key,text,index)));
+      const discriminators=DecisionMedReasoning.discriminatorQuestions(syndromeKeys);
+      script=[...safety,...criteria,...discriminators];
+      resetCaseState(caseMeta);
+      routingShown=true;reasoningConfirmed=true;activeModules=[...moduleKeys];activeSyndromes=[...syndromeKeys];
+      moduleConfirmation={selected:[...moduleKeys],declined:[],manual:''};
+      const selectedNames=selectedDefinitions.map(item=>item.name);
+      $('complaint').value=mode==='direct'?`Confirmação direta: ${selectedNames[0]}`:`Comparação: ${selectedNames.join(' × ')}`;
+      $('note').value=caseMeta?.note||'';
+      reasoningDecision=analyzeReasoning();
+      recordAudit('case_started',{source,flow_mode:mode,trace_id:traceId,case_id:caseMeta?.id||null,case_label:caseMeta?.label||null,complaint:$('complaint').value,note:$('note').value.trim()});
+      recordAudit(mode==='direct'?'direct_syndrome_selected':'investigation_hypotheses_selected',{selected:[...syndromeKeys],names:[...selectedNames]});
+      recordAudit('sequence_generated',{engine:'DecisionMedSequences',engine_version:DecisionMedSequences.version,questions:script.map((item,index)=>({order:index+1,id:item.id,section:item.section,module:item.module,text:item.text}))});
+      recordAudit('modules_confirmed',{source,suggested:[...moduleKeys],selected:[...moduleKeys],declined:[],manually_added:null});
+      recordAudit('syndromes_confirmed',{source,selected:[...syndromeKeys],declined:[],safety_level:reasoningDecision.safety.level});
+      recordAudit('discriminators_generated',{source,engine_version:DecisionMedReasoning.version,syndromes:[...syndromeKeys],questions:discriminators.map((item,index)=>({order:index+1,id:item.id,text:item.text}))});
+      if(source==='manual'){$('start-panel').classList.add('hidden');$('question-panel').classList.remove('hidden');renderQuestion()}
+    }
+    function defaultGeneratedAnswer(item){
+      const defaults={
+        'symptom.started':'Hoje','symptom.onset':'Aos poucos','symptom.trigger':'Nada percebido','symptom.location':'Corpo todo','symptom.intensity':'4','symptom.pattern':'Vai e volta','symptom.modifiers':'Nada percebido','symptom.associated':'Nenhum','symptom.previous':'Nunca','symptom.trend':'Igual',
+        'history.surgery':'Não','history.admission':'Nunca','history.allergy':'Não conhece alergia','history.chronic':'Não','history.medication':'Não','history.family':'Nenhum conhecido','history.habits':['Não fuma','Não usa álcool'],
+        'review.other':'Não','review.systems':'Nenhuma','review.general':'Nenhum'
+      };
+      if(defaults[item.id])return defaults[item.id];
+      const preferred=['Não','Não se aplica','Não sabe informar','Normal','Sem tosse','Sem mudança','Não mudou','Sem relação percebida','1 vez ao dia','Difusa'];
+      return preferred.find(value=>(item.options||[]).includes(value))||(item.options||[])[0]
+    }
+    function generatedAnswer(item,scenario){
+      const raw=scenario.answers[item.id]??defaultGeneratedAnswer(item);
+      const values=Array.isArray(raw)?raw:raw&&typeof raw==='object'?[...raw.values]:[raw];
+      const valid=values.filter(value=>(item.options||[]).includes(value));
+      const selected=valid.length?valid:[defaultGeneratedAnswer(item)].flat().filter(value=>(item.options||[]).includes(value));
+      const suppliedDetail=raw&&typeof raw==='object'&&!Array.isArray(raw)?raw.detail||'':'';
+      const detail=suppliedDetail||(needsDetail(item,selected)?`Detalhe sintético para ${scenario.label}.`:'');
+      return {values:selected,detail}
+    }
+    function updateGeneratedCaseButton(){
+      const button=$('next-test-case');
+      if(!activeGeneratedCase){button.classList.add('hidden');return}
+      button.classList.remove('hidden');
+      if(nextCaseIndex>=caseQueue.length){button.textContent=`Sequência concluída ${caseQueue.length}/${caseQueue.length}`;button.disabled=true;return}
+      button.textContent=`Gerar próximo caso ${nextCaseIndex+1}/${caseQueue.length} · ${flowNames[caseQueue[nextCaseIndex].flowMode]}`;button.disabled=false
+    }
+    function fillGeneratedQuestions(items,startIndex,scenario){
+      items.forEach((item,itemIndex)=>{const index=startIndex+itemIndex,result=generatedAnswer(item,scenario);writeAnswer(result.values,result.detail,index);position=index;recordCurrentAnswer('case_generator')})
+    }
+    function recordGeneratedSafety(){
+      initialSafetyAssessment=DecisionMedReasoning.analyze({complaint:$('complaint').value,note:$('note').value.trim(),answers:reasoningAnswers().filter(answer=>answer.section==='safety'),selectedModules:[]}).safety;safetyCheckpointPassed=true;
+      recordAudit('safety_checkpoint',{source:'case_generator',engine_version:DecisionMedReasoning.version,level:initialSafetyAssessment.level,label:initialSafetyAssessment.label,reasons:[...initialSafetyAssessment.reasons],rule_ids:[...(initialSafetyAssessment.ruleIds||[])],rules:[...(initialSafetyAssessment.rules||[])]})
+    }
+    function recordGeneratedCoverage(scenario){
+      const missingExpected=scenario.expectedModules.filter(key=>!activeModules.includes(key));
+      recordAudit('generator_coverage_checked',{generator_version:DecisionMedCases.version,expected_modules:[...scenario.expectedModules],actual_modules:[...activeModules],missing_expected:missingExpected,status:missingExpected.length?'review_required':'covered'})
+    }
+    function recordGeneratedReasoning(){
+      reasoningDecision=analyzeReasoning();
+      recordAudit('reasoning_generated',{source:'case_generator',engine:'DecisionMedReasoning',engine_version:DecisionMedReasoning.version,representation:reasoningDecision.representation,safety:{...reasoningDecision.safety},syndromes:reasoningDecision.syndromes.filter(item=>activeSyndromes.includes(item.key)).map(syndromeAuditIdentity)})
+    }
+    async function runNextGeneratedCase(){
+      if(nextCaseIndex>=caseQueue.length)return;
+      const scenario=caseQueue[nextCaseIndex],positionInSuite=nextCaseIndex+1,total=caseQueue.length;
+      const caseMeta={id:scenario.id,label:scenario.label,position:positionInSuite,total,flowMode:scenario.flowMode,expectedModules:[...scenario.expectedModules],syndromeKeys:[...scenario.syndromeKeys],note:scenario.note,originalComplaint:scenario.complaint};
+      nextCaseIndex+=1;flowMode=scenario.flowMode;
+      if(flowMode==='assisted'){
+        $('complaint').value=scenario.complaint;$('note').value=scenario.note;renderComplaintChoices();
+        initializeCase(scenario.complaint,'case_generator',caseMeta);
+        fillGeneratedQuestions(script,0,scenario);recordGeneratedSafety();
+        routingShown=true;routeModules();recordRouting('case_generator');
+        activeModules=routeDecision.map(item=>item.key);moduleConfirmation={selected:[...activeModules],declined:[],manual:''};
+        recordAudit('modules_confirmed',{source:'case_generator',suggested:[...activeModules],selected:[...activeModules],declined:[],manually_added:null});recordGeneratedCoverage(scenario);
+        const modules=activeModules.flatMap(key=>moduleQuestions[key].map((text,index)=>moduleQuestion(key,text,index))),moduleStart=script.length;
+        script.push(...modules);answers.push(...Array(modules.length).fill(''));fillGeneratedQuestions(modules,moduleStart,scenario);
+        reasoningDecision=analyzeReasoning();activeSyndromes=reasoningDecision.syndromes.map(item=>item.key);reasoningConfirmed=true;recordGeneratedReasoning();
+        recordAudit('syndromes_confirmed',{source:'case_generator',selected:[...activeSyndromes],declined:[],safety_level:reasoningDecision.safety.level});
+        const discriminators=reasoningDecision.safety.level==='immediate'?[]:DecisionMedReasoning.discriminatorQuestions(activeSyndromes,script.map(item=>item.id)),discriminatorStart=script.length;
+        recordAudit('discriminators_generated',{source:'case_generator',engine_version:DecisionMedReasoning.version,syndromes:[...activeSyndromes],questions:discriminators.map((item,index)=>({order:index+1,id:item.id,text:item.text}))});
+        script.push(...discriminators);answers.push(...Array(discriminators.length).fill(''));fillGeneratedQuestions(discriminators,discriminatorStart,scenario)
+      }else{
+        initializeTargetedCase(flowMode,scenario.syndromeKeys,'case_generator',caseMeta);
+        fillGeneratedQuestions(script,0,scenario);recordGeneratedSafety();recordGeneratedCoverage(scenario);recordGeneratedReasoning()
+      }
+      $('start-panel').classList.add('hidden');$('question-panel').classList.add('hidden');$('route-panel').classList.add('hidden');updateGeneratedCaseButton();await review()
+    }
+    function updateCaseGeneratorPreview(){
+      if(caseQueue.length)return;
+      const count=Math.min(100,Math.max(1,Number.parseInt($('case-count').value,10)||1)),mode=$('case-mode').value,total=mode==='all'?count*3:count;
+      $('case-count').value=String(count);$('generate-case').textContent=`Gerar bateria 1/${total}`;
+      $('case-sequence-label').textContent=mode==='all'?`Pronto para percorrer ${total} casos: ${count} Assistidos, ${count} Diretos e ${count} de Investigação.`:`Pronto para percorrer ${count} casos do modo ${flowNames[mode]}.`
+    }
+    $('case-count').oninput=updateCaseGeneratorPreview;$('case-mode').onchange=updateCaseGeneratorPreview;
+    $('generate-case').onclick=()=>{caseQueue=DecisionMedCases.buildSuite($('case-count').value,$('case-mode').value);nextCaseIndex=0;void runNextGeneratedCase()};
+    $('next-test-case').onclick=()=>void runNextGeneratedCase();
+    $('begin').onclick=()=>{
+      const complaint=$('complaint').value;if(!complaint)return;flowMode='assisted';
+      initializeCase(complaint);$('start-panel').classList.add('hidden');$('question-panel').classList.remove('hidden');renderQuestion()
+    };
+    $('begin-direct').onclick=()=>{if(directSyndrome)initializeTargetedCase('direct',[directSyndrome])};
+    $('begin-investigation').onclick=()=>{if(investigationSyndromes.length>=2)initializeTargetedCase('investigation',investigationSyndromes)};
+    $('previous').onclick=()=>{if(position>0){position--;renderQuestion()}};
+    $('next').onclick=()=>{if(!questionIsComplete(script[position]))return;recordCurrentAnswer();if(script[position].section==='safety'&&script[position+1]?.section!=='safety'&&!safetyCheckpointPassed){showSafetyCheckpoint();return}if(position<script.length-1){position++;renderQuestion();return}if(!routingShown){showRouting();return}if(!reasoningConfirmed){showReasoningPanel();return}void review()};
+    $('back-to-safety').onclick=()=>{$('safety-panel').classList.add('hidden');$('question-panel').classList.remove('hidden');renderQuestion()};
+    $('continue-after-safety').onclick=()=>{safetyCheckpointPassed=true;$('safety-panel').classList.add('hidden');if(position<script.length-1){position++;$('question-panel').classList.remove('hidden');renderQuestion()}};
+    $('back-to-history').onclick=()=>{$('route-panel').classList.add('hidden');$('question-panel').classList.remove('hidden');renderQuestion()};
+    $('continue-modules').onclick=()=>{
+      const suggested=routeDecision.map(item=>item.key),selected=[...document.querySelectorAll('#route-modules input:checked')].map(input=>input.value),manual=$('manual-module').value;
+      moduleConfirmation={selected:[...selected],declined:suggested.filter(key=>!selected.includes(key)),manual};
+      if(manual&&!selected.includes(manual))selected.push(manual);
+      activeModules=[...selected];
+      moduleConfirmation.selected=[...activeModules];
+      recordAudit('modules_confirmed',{source:'manual',suggested,selected:[...activeModules],declined:[...moduleConfirmation.declined],manually_added:manual||null});
+      const modules=selected.flatMap(key=>moduleQuestions[key].map((text,index)=>moduleQuestion(key,text,index)));
+      $('route-panel').classList.add('hidden');if(!modules.length){showReasoningPanel();return}
+      script.push(...modules);answers.push(...Array(modules.length).fill(''));position++;$('question-panel').classList.remove('hidden');renderQuestion()
+    };
+    $('back-to-modules').onclick=()=>{$('reasoning-panel').classList.add('hidden');$('question-panel').classList.remove('hidden');renderQuestion()};
+    $('continue-reasoning').onclick=()=>{
+      const selected=[...document.querySelectorAll('#syndrome-options input:checked')].map(input=>input.value);
+      if(!selected.length){$('syndrome-error').textContent='Confirme pelo menos uma classificação clínica para continuar.';return}
+      activeSyndromes=[...selected];reasoningConfirmed=true;
+      recordAudit('syndromes_confirmed',{source:'manual',selected:[...activeSyndromes],declined:reasoningDecision.syndromes.map(item=>item.key).filter(key=>!activeSyndromes.includes(key)),safety_level:reasoningDecision.safety.level});
+      $('reasoning-panel').classList.add('hidden');
+      if(reasoningDecision.safety.level==='immediate'){void review();return}
+      const discriminators=DecisionMedReasoning.discriminatorQuestions(activeSyndromes,script.map(item=>item.id));
+      recordAudit('discriminators_generated',{engine_version:DecisionMedReasoning.version,syndromes:[...activeSyndromes],questions:discriminators.map((item,index)=>({order:index+1,id:item.id,text:item.text}))});
+      if(!discriminators.length){void review();return}
+      script.push(...discriminators);answers.push(...Array(discriminators.length).fill(''));position++;$('question-panel').classList.remove('hidden');renderQuestion()
+    };
+    async function sha256(value){
+      const digest=await globalThis.crypto.subtle.digest('SHA-256',new TextEncoder().encode(value));
+      return [...new Uint8Array(digest)].map(byte=>byte.toString(16).padStart(2,'0')).join('')
+    }
+    function buildAuditText(record,fingerprint){
+      const lines=[
+        'DECISIONMED · TRILHA DE AUDITORIA DA ANAMNESE',
+        `Identificador do caso: ${record.trace_id}`,
+        `Gerado em: ${record.generated_at}`,
+        `Origem: ${record.source==='case_generator'?'gerador local de casos':'preenchimento manual'}`,
+        `Porta de entrada: ${flowNames[record.flow_mode]||record.flow_mode}`,
+        `Motores: sequência ${record.engines.sequence} · roteamento ${record.engines.routing} · raciocínio ${record.engines.reasoning}`,
+        '',
+        'SEQUÊNCIA E RESPOSTAS CONFIRMADAS'
+      ];
+      record.current_answers.forEach(entry=>{
+        lines.push(`${String(entry.order).padStart(2,'0')}. [${entry.section}/${entry.module}] ${entry.question}`);
+        lines.push(`    Seleção: ${entry.selected.join(' | ')||'—'}`);
+        if(entry.detail)lines.push(`    Detalhe: ${entry.detail}`)
+      });
+      lines.push('','ROTEAMENTO GERADO');
+      record.routing.forEach(item=>lines.push(`- ${item.name}${item.priority?' [PRIORITÁRIO]':''}: ${item.reasons.join(' ')}`));
+      lines.push(
+        '',
+        `Módulos confirmados: ${record.module_confirmation.selected.map(key=>names[key]).join(', ')||'nenhum'}`,
+        `Módulos sugeridos e recusados: ${record.module_confirmation.declined.map(key=>names[key]).join(', ')||'nenhum'}`,
+        `Módulo acrescentado manualmente: ${record.module_confirmation.manual?names[record.module_confirmation.manual]:'nenhum'}`,
+        '',
+        'RACIOCÍNIO CLÍNICO E DIFERENCIAÇÃO',
+        `Triagem: ${record.clinical_reasoning.safety.label}`,
+        `Representação do problema: ${record.clinical_reasoning.representation}`
+      );
+      record.clinical_reasoning.syndromes.forEach(syndrome=>{
+        lines.push(`- ${syndrome.name} · ${syndrome.moduleId||'identidade local'} · versão ${syndrome.moduleVersion||'local'} · status ${syndrome.moduleStatus||'local_prototype'} · compatibilidade ${syndrome.compatibility}`);
+        lines.push(`  Sustentam: ${syndrome.supports.join(' | ')||'nenhum'}`);
+        lines.push(`  Contrários/ausentes: ${syndrome.against.join(' | ')||'nenhum'}`);
+        lines.push(`  Mais prováveis: ${syndrome.differential.likely.join(' | ')}`);
+        lines.push(`  Graves a excluir: ${syndrome.differential.cannotMiss.join(' | ')}`);
+        lines.push(`  Imitadores: ${syndrome.differential.mimics.join(' | ')}`)
+      });
+      if(record.result_attachments.length){
+        lines.push('','RESULTADOS DE EXAMES ANEXADOS');
+        record.result_attachments.forEach(entry=>lines.push(`- ${entry.exam_name}: ${entry.mime_group} · ${(entry.size_bytes/1024).toFixed(1)} KB · somente local`))
+      }
+      if(record.reassessments.length){
+        lines.push('','REAVALIAÇÃO PÓS-EXAMES');
+        record.reassessments.forEach(entry=>lines.push(`- ${entry.hypothesis}: ${entry.impact} · ${entry.examName||entry.examKind}${entry.finding?` · ${entry.finding}`:''}`))
+      }
+      if(record.diagnostic_impression){
+        lines.push('','IMPRESSÃO DIAGNÓSTICA PROFISSIONAL',`${record.diagnostic_impression.hypothesis}: ${record.diagnostic_impression.status}${record.diagnostic_impression.note?` · ${record.diagnostic_impression.note}`:''}`)
+      }
+      if(record.professional_conduct){
+        lines.push('','CONDUTA PROFISSIONAL',`Destino: ${record.professional_conduct.destination}`,`Ações: ${record.professional_conduct.actions.join(' | ')}`,`Plano: ${record.professional_conduct.note||'não detalhado'}`)
+      }
+      lines.push(
+        '',
+        'HISTÓRICO DE CONFIRMAÇÕES E ALTERAÇÕES'
+      );
+      record.events.forEach(event=>{
+        if(event.type==='answer_confirmed')lines.push(`${event.order}. ${event.timestamp} · ${event.question_id} · revisão ${event.revision} · ${event.selected.join(' | ')}${event.detail?` · detalhe: ${event.detail}`:''}`);
+        else if(event.type==='safety_checkpoint')lines.push(`${event.order}. ${event.timestamp} · triagem de segurança · ${event.level} · ${event.reasons.join(' | ')} · regras: ${(event.rule_ids||[]).join(', ')||'nenhuma'}`);
+        else if(event.type==='exam_result_attached')lines.push(`${event.order}. ${event.timestamp} · resultado anexado · ${event.exam_name} · ${event.mime_group} · somente local`);
+        else if(event.type==='routing_generated')lines.push(`${event.order}. ${event.timestamp} · roteamento ${event.engine_version} · ${event.suggestions.map(item=>item.name).join(', ')||'sem sugestão'} · regras: ${[...new Set(event.suggestions.flatMap(item=>item.rule_ids||[]))].join(', ')||'nenhuma'}`);
+        else if(event.type==='modules_confirmed')lines.push(`${event.order}. ${event.timestamp} · módulos confirmados · ${event.selected.map(key=>names[key]).join(', ')||'nenhum'}`);
+        else if(event.type==='reasoning_generated')lines.push(`${event.order}. ${event.timestamp} · raciocínio ${event.engine_version} · triagem ${event.safety.level} · ${event.syndromes.map(item=>item.name).join(', ')} · regras: ${[...new Set([...(event.safety.ruleIds||[]),...event.syndromes.flatMap(item=>(item.differential_rules||[]).map(rule=>rule.ruleId))])].join(', ')||'nenhuma'}`);
+        else if(event.type==='syndromes_confirmed')lines.push(`${event.order}. ${event.timestamp} · classificações clínicas confirmadas · ${event.selected.map(key=>syndromeName(key)).join(', ')}`);
+        else if(event.type==='discriminators_generated')lines.push(`${event.order}. ${event.timestamp} · perguntas discriminadoras geradas · ${event.questions.length}`);
+        else if(event.type==='exam_reassessment')lines.push(`${event.order}. ${event.timestamp} · reavaliação pós-exame · ${event.hypothesis} · ${event.impact}`);
+        else if(event.type==='diagnostic_impression_saved')lines.push(`${event.order}. ${event.timestamp} · impressão profissional · ${event.hypothesis} · ${event.status}`);
+        else if(event.type==='professional_conduct_saved')lines.push(`${event.order}. ${event.timestamp} · conduta profissional · ${event.destination} · ${event.actions.join(' | ')}`);
+        else if(event.type==='generator_coverage_checked')lines.push(`${event.order}. ${event.timestamp} · cobertura do caso · esperado: ${event.expected_modules.map(key=>names[key]).join(', ')} · obtido: ${event.actual_modules.map(key=>names[key]).join(', ')} · ${event.status}`);
+        else lines.push(`${event.order}. ${event.timestamp} · ${event.type}`)
+      });
+      lines.push('','INTEGRIDADE DO REGISTRO',`SHA-256: ${fingerprint}`,'O hash cobre o registro JSON desta trilha antes da exibição.');
+      return lines.join('\n')
+    }
+    async function review(){
+      const host=$('summary');host.replaceChildren();
+      const add=(title,text)=>{const card=document.createElement('article'),heading=document.createElement('h3'),body=document.createElement('p');heading.textContent=title;body.textContent=text||'Não informado';card.append(heading,body);host.append(card)};
+      reasoningDecision=analyzeReasoning();if(!activeSyndromes.length)activeSyndromes=reasoningDecision.syndromes.map(item=>item.key);
+      const confirmedReasoning={...reasoningDecision,syndromes:reasoningDecision.syndromes.filter(item=>activeSyndromes.includes(item.key))};
+      const answered=script.map((item,index)=>({item,answer:answers[index]})).filter(entry=>entry.answer);
+      const groupText=entries=>entries.map(entry=>`${entry.item.text} ${entry.answer}`).join(' ');
+      const safetyEntries=answered.filter(entry=>entry.item.section==='safety');
+      const symptomEntries=answered.filter(entry=>entry.item.section==='symptom');
+      const historyEntries=answered.filter(entry=>entry.item.section==='history');
+      const investigationEntries=answered.filter(entry=>entry.item.section==='investigation');
+      const discriminatorEntries=answered.filter(entry=>entry.item.section==='discriminator');
+      const lines=[`PORTA DE ENTRADA: ${flowNames[flowMode]||flowMode}.`,`QUEIXA PRINCIPAL: ${$('complaint').value}.`];
+      if($('note').value.trim())lines.push(`DESCRIÇÃO LIVRE: ${$('note').value.trim()}`);
+      if(safetyEntries.length)lines.push(`TRIAGEM INICIAL: ${groupText(safetyEntries)}`);
+      if(symptomEntries.length)lines.push(`HISTÓRIA DO SINTOMA: ${groupText(symptomEntries)}`);
+      if(historyEntries.length)lines.push(`ANTECEDENTES: ${groupText(historyEntries)}`);
+      if(investigationEntries.length)lines.push(`REVISÃO GERAL: ${groupText(investigationEntries)}`);
+      if(activeModules.length)lines.push(`MÓDULOS PERCORRIDOS: ${activeModules.map(key=>names[key]).join(', ')}.`);
+      for(const key of activeModules){const entries=answered.filter(entry=>entry.item.module===key);if(entries.length)lines.push(`${names[key].toLocaleUpperCase('pt-BR')}: ${groupText(entries)}`)}
+      if(routeDecision.length)lines.push(`ROTEAMENTO: ${routeDecision.map(item=>`${names[item.key]}${item.priority?' (revisão prioritária)':''}: ${item.reasons.join(' ')}`).join(' | ')}`);
+      if(discriminatorEntries.length)lines.push(`PERGUNTAS DISCRIMINADORAS: ${groupText(discriminatorEntries)}`);
+      lines.push(`TRIAGEM DE SEGURANÇA: ${confirmedReasoning.safety.label}. ${confirmedReasoning.safety.reasons.join(' ')}`);
+      lines.push(`REPRESENTAÇÃO DO PROBLEMA: ${confirmedReasoning.representation}`);
+      confirmedReasoning.syndromes.forEach(syndrome=>{
+        lines.push(`CLASSIFICAÇÃO CLÍNICA PROVISÓRIA — ${syndrome.entityTypeLabel.toLocaleUpperCase('pt-BR')}: ${syndrome.name}; compatibilidade ${syndrome.compatibility}. Sustentam: ${syndrome.supports.join(' ')} Contrários ou ausentes: ${syndrome.against.join(' ')||'nenhum registrado'}.`);
+        if(flowMode!=='investigation')lines.push(`DIAGNÓSTICO DIFERENCIAL — ${syndrome.name}: mais prováveis: ${syndrome.differential.likely.join(', ')}; graves que não podem ser perdidos: ${syndrome.differential.cannotMiss.join(', ')}; alternativas que imitam: ${syndrome.differential.mimics.join(', ')}.`);
+        else lines.push(`COMPARAÇÃO — ${syndrome.name}: aumentam compatibilidade: ${syndrome.supports.join(' ')} Reduzem compatibilidade ou estão ausentes: ${syndrome.against.join(' ')||'nenhum registrado'}.`);
+        lines.push(`EXAME FÍSICO ORIENTADO — ${syndrome.name}: ${syndrome.physicalExam.join('; ')}.`);
+        lines.push(`EXAMES COMPLEMENTARES ORIENTADOS — ${syndrome.name}: ${syndrome.tests.map(test=>`${test.name} — ${test.question} Quando: ${test.when}`).join('; ')}.`)
+      });
+      if(resultAttachments.size)lines.push(`RESULTADOS DE EXAMES ANEXADOS: ${[...resultAttachments.values()].map(entry=>`${entry.examName} (${entry.mimeGroup}, somente local)`).join('; ')}.`);
+      if(reassessments.length)lines.push(`REAVALIAÇÃO PÓS-EXAMES: ${reassessments.map(entry=>`${entry.hypothesis} — ${entry.impact} (${entry.examName||entry.examKind})${entry.finding?`: ${entry.finding}`:''}`).join(' | ')}.`);
+      if(diagnosticImpression)lines.push(`IMPRESSÃO DIAGNÓSTICA PROFISSIONAL: ${diagnosticImpression.hypothesis} — ${diagnosticImpression.status}${diagnosticImpression.note?`. ${diagnosticImpression.note}`:''}.`);
+      if(professionalConduct)lines.push(`CONDUTA PROFISSIONAL: ${professionalConduct.destination}. Ações: ${professionalConduct.actions.join(', ')}.${professionalConduct.note?` Plano: ${professionalConduct.note}`:''}`);
+      $('structured-summary').value=lines.join('\n\n');
+      const generatedAt=nowIso(),record={
+        schema_version:'decisionmed.intake-audit.v1',
+        trace_id:traceId,
+        generated_at:generatedAt,
+        source:activeGeneratedCase?'case_generator':'manual',
+        flow_mode:flowMode,
+        generated_case:activeGeneratedCase?{...activeGeneratedCase}:null,
+        engines:{sequence:DecisionMedSequences.version,routing:DecisionMedRouting.version,routing_rule_engine:DecisionMedRouting.ruleEngineVersion,routing_rule_catalog:DecisionMedRouting.ruleCatalogVersion,reasoning:DecisionMedReasoning.version,cases:DecisionMedCases.version},
+        complaint:$('complaint').value,
+        note:$('note').value.trim(),
+        current_answers:answered.map((entry,index)=>({order:script.indexOf(entry.item)+1,question_id:entry.item.id,section:entry.item.section,module:entry.item.module,question:entry.item.text,selected:answerValues(script.indexOf(entry.item)),detail:answerDetail(script.indexOf(entry.item))})),
+        routing:routeDecision.map(item=>({module:item.key,module_ids:[...item.moduleIds],name:names[item.key],priority:item.priority,reasons:[...item.reasons],rule_ids:[...item.ruleIds],rule_versions:[...item.ruleVersions],rule_statuses:[...item.ruleStatuses],source_ids:[...item.sourceIds],clinical_execution_allowed:false})),
+        module_confirmation:{selected:[...moduleConfirmation.selected],declined:[...moduleConfirmation.declined],manual:moduleConfirmation.manual},
+        clinical_reasoning:confirmedReasoning,
+        result_attachments:[...resultAttachments.values()].map(entry=>({exam_name:entry.examName,mime_group:entry.mimeGroup,size_bytes:entry.size,input_kind:entry.inputKind,local_only:true})),
+        reassessments:reassessments.map(entry=>({...entry})),
+        diagnostic_impression:diagnosticImpression?{...diagnosticImpression}:null,
+        professional_conduct:professionalConduct?{...professionalConduct,actions:[...professionalConduct.actions]}:null,
+        events:auditEvents.map(event=>({...event}))
+      };
+      const fingerprint=await sha256(JSON.stringify(record));
+      $('audit-trail').value=buildAuditText(record,fingerprint);
+      $('audit-fingerprint').textContent=`Identificador ${traceId} · SHA-256 ${fingerprint}`;
+      add('Porta de entrada',flowNames[flowMode]||flowMode);add('Queixa principal',$('complaint').value);if($('note').value)add('Descrição inicial',$('note').value);
+      if(activeGeneratedCase){
+        const missing=activeGeneratedCase.expectedModules.filter(key=>!activeModules.includes(key));
+        add('Caso sintético',`${activeGeneratedCase.position}/${activeGeneratedCase.total} · ${activeGeneratedCase.label}`);
+        add('Cobertura esperada do gerador',missing.length?`Revisar: não abriu ${missing.map(key=>names[key]).join(', ')}.`:`Confirmada: ${activeGeneratedCase.expectedModules.map(key=>names[key]).join(', ')}.`)
+      }
+      if(diagnosticImpression)add('Impressão diagnóstica profissional',`${diagnosticImpression.hypothesis} · ${diagnosticImpression.status}${diagnosticImpression.note?` · ${diagnosticImpression.note}`:''}`);
+      if(professionalConduct)add('Conduta profissional',`${professionalConduct.destination} · ${professionalConduct.actions.join(', ')}${professionalConduct.note?` · ${professionalConduct.note}`:''}`);
+      if(resultAttachments.size)add('Resultados anexados',[...resultAttachments.values()].map(entry=>`${entry.examName} (${entry.mimeGroup})`).join(', '));
+      const sequences={
+        assisted:activeModules.length?`Triagem de segurança → decálogo do sintoma → histórico clínico → revisão geral → ${activeModules.map(key=>names[key]).join(' → ')} → reconhecimento sindrômico → diagnóstico diferencial → gate de conduta`:'Triagem de segurança → decálogo do sintoma → histórico clínico → revisão geral → reconhecimento sindrômico → gate de conduta',
+        direct:`Triagem de segurança → escolha da classificação clínica → confirmação de critérios (${activeModules.map(key=>names[key]).join(', ')}) → gate de conduta`,
+        investigation:`Triagem de segurança → escolha de ${activeSyndromes.length} hipóteses → critérios compartilhados → perguntas discriminadoras → comparação de hipóteses → gate de conduta`
+      };
+      add('Sequência percorrida',sequences[flowMode]||sequences.assisted);
+      if(routeDecision.length)add('Justificativa do roteamento',routeDecision.map(item=>`${names[item.key]}${item.priority?' — revisão prioritária':''}: ${item.reasons.join(' ')}`).join(' | '));
+      answered.forEach(entry=>add(entry.item.text,entry.answer));
+      add('Conferência profissional','Termos técnicos sugeridos pelo formulário não foram confirmados automaticamente.');
+      const reasoningTitles={assisted:'Da classificação clínica aos diagnósticos diferenciais',direct:'Confirmação da classificação clínica selecionada',investigation:'Comparação estruturada das hipóteses'};
+      const reasoningDescriptions={
+        assisted:'As hipóteses abaixo organizam o raciocínio. Não confirmam doença e exigem exame físico, interpretação de exames e validação profissional.',
+        direct:'Os critérios presentes e ausentes conferem a classificação escolhida. A confirmação diagnóstica e a conduta continuam sob responsabilidade profissional.',
+        investigation:'A comparação é qualitativa e mostra o que aumenta ou reduz compatibilidade. Não representa probabilidade calibrada nem confirma diagnóstico.'
+      };
+      $('reasoning-title').textContent=reasoningTitles[flowMode]||reasoningTitles.assisted;$('reasoning-description').textContent=reasoningDescriptions[flowMode]||reasoningDescriptions.assisted;
+      renderReasoningOutput(confirmedReasoning);
+      renderSuggestedExams(confirmedReasoning);renderConductPlan(confirmedReasoning);populateReassessmentOptions(confirmedReasoning);renderReassessments();
+      $('question-panel').classList.add('hidden');$('route-panel').classList.add('hidden');$('reasoning-panel').classList.add('hidden');$('review-panel').classList.remove('hidden')
+    }
+    async function hydrateClinicalCatalog(){
+      const status=$('runtime-catalog-status');
+      try{
+        const [moduleResponse,ruleResponse,contentResponse]=await Promise.all([
+          fetch('/api/clinical-modules',{headers:{Accept:'application/json'}}),
+          fetch('/api/clinical-rules',{headers:{Accept:'application/json'}}),
+          fetch('/api/clinical-content',{headers:{Accept:'application/json'}})
+        ]);
+        if(!moduleResponse.ok||!ruleResponse.ok||!contentResponse.ok)throw new Error(`HTTP ${moduleResponse.status}/${ruleResponse.status}/${contentResponse.status}`);
+        const [catalog,ruleCatalog,contentCatalog]=await Promise.all([moduleResponse.json(),ruleResponse.json(),contentResponse.json()]);
+        const hydration=DecisionMedReasoning.configureCatalog(catalog.items);
+        const ruleHydration=DecisionMedRouting.configureRules(ruleCatalog.items);
+        const clinicalRuleHydration=DecisionMedReasoning.configureRules(ruleCatalog.items);
+        const contentHydration=DecisionMedReasoning.configureContent(contentCatalog.items);
+        renderDirectSyndromeChoices();renderInvestigationSyndromeChoices();
+        status.textContent=hydration.complete&&contentHydration.complete
+          ? `${catalog.count} módulos e ${contentHydration.matched} conteúdos estruturais em rascunho disponíveis nas três portas · ${ruleCatalog.count} regras declarativas (${ruleHydration.count} de rota, ${clinicalRuleHydration.support} de suporte, ${clinicalRuleHydration.alarm} de segurança) · versão ${catalog.release_version} · 4.500 casos determinísticos no catálogo de teste · execução clínica automática bloqueada.`
+          : `Catálogo carregado, mas a migração ficou incompleta: identidades ${hydration.matched}/${hydration.expected}, conteúdos ${contentHydration.matched}/${contentHydration.expected}. O fluxo exige revisão.`;
+      }catch(error){
+        DecisionMedReasoning.configureCatalog([]);
+        DecisionMedReasoning.configureContent([]);
+        DecisionMedReasoning.configureRules([]);
+        DecisionMedRouting.configureRules();
+        renderDirectSyndromeChoices();renderInvestigationSyndromeChoices();
+        status.textContent='Catálogo governado indisponível. As 14 identidades locais ficam disponíveis apenas para inspeção; triagem, raciocínio e execução clínica permanecem bloqueados.'
+      }
+    }
+    renderComplaintChoices();renderDirectSyndromeChoices();renderInvestigationSyndromeChoices();void hydrateClinicalCatalog();
+    function inferExamKind(name){
+      const normalized=name.toLocaleLowerCase('pt-BR');
+      if(normalized.includes('eletrocardiograma')||normalized.includes('traçado'))return 'Eletrocardiograma / traçado';
+      if(['troponina','marcador','hemograma','laborat','glicemia','urina','cultura'].some(term=>normalized.includes(term)))return 'Exame laboratorial';
+      if(['imagem','radiografia','ultrass','tomografia','ressonância','ecocardiograma','neuroimagem'].some(term=>normalized.includes(term)))return 'Imagem';
+      if(normalized.includes('laudo')||normalized.includes('relatório'))return 'Laudo ou relatório';
+      return 'Outro exame complementar'
+    }
+    function selectedExamFile(){return selectedExamInput==='photo'?$('exam-photo').files[0]:selectedExamInput==='file'?$('exam').files[0]:null}
+    function handleExamSelection(event,inputKind){
+      const file=event.target.files[0],preview=$('exam-preview');selectedExamInput=file?inputKind:'';
+      if(examPreviewUrl)URL.revokeObjectURL(examPreviewUrl);examPreviewUrl='';preview.removeAttribute('src');preview.classList.add('hidden');
+      if(!file){$('file').textContent='Nenhum arquivo selecionado. Nenhum upload foi feito.';return}
+      if(inputKind==='photo'&&!$('exam-kind').value)$('exam-kind').value='Imagem';
+      $('file').textContent=`${inputKind==='photo'?'Foto':'Arquivo'} anexado apenas neste navegador · ${(file.size/1024).toFixed(1)} KB · nenhum upload foi feito.`;
+      if(file.type.startsWith('image/')){examPreviewUrl=URL.createObjectURL(file);preview.src=examPreviewUrl;preview.classList.remove('hidden')}
+      if(selectedSuggestedExam){
+        const mimeGroup=file.type.startsWith('image/')?'imagem':file.type==='application/pdf'?'PDF':'arquivo';
+        resultAttachments.set(selectedSuggestedExam.key,{examName:selectedSuggestedExam.name,mimeGroup,size:file.size,inputKind});
+        recordAudit('exam_result_attached',{exam_name:selectedSuggestedExam.name,attachment_type:inputKind,mime_group:mimeGroup,size_bytes:file.size,local_only:true});
+        if(reasoningDecision)renderSuggestedExams(reasoningDecision)
+      }
+    }
+    $('generic-photo-action').onclick=()=>{selectedSuggestedExam=null};$('generic-file-action').onclick=()=>{selectedSuggestedExam=null};
+    $('exam').onchange=event=>handleExamSelection(event,'file');$('exam-photo').onchange=event=>handleExamSelection(event,'photo');
+    $('prepare').onclick=()=>{const kind=$('exam-kind').value,file=selectedExamFile(),status=$('exam-status');if(!kind||!file){status.textContent='Para preparar a reavaliação, informe o tipo de exame e anexe uma foto, imagem ou PDF.';status.classList.remove('hidden');$('add-reassessment').disabled=true;return}status.textContent=`${selectedSuggestedExam?.name||`Exame ${kind.toLocaleLowerCase('pt-BR')}`} anexado localmente para conferência profissional. Registre abaixo como o resultado altera cada hipótese.`;status.classList.remove('hidden');$('add-reassessment').disabled=false;recordAudit('exam_prepared',{exam_kind:kind,suggested_exam:selectedSuggestedExam?.name||null,attachment_type:selectedExamInput,mime_group:file.type.startsWith('image/')?'image':file.type==='application/pdf'?'pdf':'other',note_present:Boolean($('exam-note').value.trim()),local_only:true})};
+    $('add-reassessment').onclick=()=>{const hypothesis=$('reassessment-hypothesis').value,impact=$('reassessment-impact').value,error=$('reassessment-error');if(!hypothesis||!impact){error.textContent='Selecione a hipótese e o efeito do resultado.';return}const entry={timestamp:nowIso(),hypothesis,impact,examKind:$('exam-kind').value,examName:selectedSuggestedExam?.name||'',finding:$('exam-note').value.trim()};reassessments.push(entry);recordAudit('exam_reassessment',{...entry});error.textContent='Reavaliação registrada na trilha de auditoria.';$('reassessment-impact').value='';void review()};
+    $('save-impression').onclick=()=>{const hypothesis=$('impression-hypothesis').value,status=$('impression-status').value,error=$('impression-error');if(!hypothesis||!status){error.textContent='Selecione a hipótese e o estado da impressão diagnóstica.';return}diagnosticImpression={timestamp:nowIso(),hypothesis,status,note:$('impression-note').value.trim(),confirmed_by:'professional_user'};recordAudit('diagnostic_impression_saved',{...diagnosticImpression});error.textContent='Impressão registrada e incluída na auditoria.';void review()};
+    $('save-conduct').onclick=()=>{const destination=$('conduct-destination').value,actions=[...document.querySelectorAll('#conduct-actions input:checked')].map(input=>input.value),error=$('conduct-error');if(!destination||!actions.length){error.textContent='Selecione o destino e pelo menos uma ação de conduta.';return}professionalConduct={timestamp:nowIso(),destination,actions,note:$('conduct-note').value.trim(),confirmed_by:'professional_user'};recordAudit('professional_conduct_saved',{...professionalConduct,actions:[...actions]});error.textContent='Conduta profissional registrada e incluída na auditoria.';$('conduct-status').textContent='Conduta profissional registrada. Prescrição automática continua sujeita aos gates técnicos.';void review()};
+    $('check-conduct').onclick=async()=>{const status=$('conduct-status');status.textContent='Conferindo gates técnicos…';try{const response=await fetch('/api/readiness');if(!response.ok)throw new Error('readiness_unavailable');const readiness=await response.json();const gate=readiness.gates.find(item=>item.key==='clinical_validation');status.textContent=readiness.clinical_execution_allowed?'Catálogo clínico disponível segundo o serviço. A confirmação profissional continua obrigatória.':`Plano estrutural disponível; tratamento ou prescrição automáticos bloqueados por ${gate?.reason||'validação clínica humana pendente'}. A conduta profissional pode ser registrada acima.`}catch{status.textContent='Plano estrutural disponível, mas não foi possível conferir a liberação do catálogo clínico.'}};
     $('restart').onclick=()=>location.reload();
   </script>
 </body>

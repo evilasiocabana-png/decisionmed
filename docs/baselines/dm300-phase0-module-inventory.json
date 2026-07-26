@@ -1,0 +1,128 @@
+{
+  "baseline_id": "decisionmed.dm300.phase0",
+  "captured_on": "2026-07-26",
+  "platform_commit": "c2e0f6d3fe45c61fa088fecc38e6d0c1bb7258c2",
+  "branch": "main",
+  "reasoning_engine_version": "0.2.0",
+  "entry_count": 14,
+  "entries": [
+    {
+      "legacy_key": "cardiovascular_discomfort",
+      "display_name": "Síndrome torácica aguda",
+      "entity_type": "initial_syndrome",
+      "legacy_modules": ["cardiology"],
+      "migration": "preserve_key"
+    },
+    {
+      "legacy_key": "respiratory",
+      "display_name": "Dispneia ou sintomas respiratórios em investigação",
+      "entity_type": "clinical_presentation",
+      "legacy_modules": ["pulmonology"],
+      "migration": "preserve_key"
+    },
+    {
+      "legacy_key": "focal_neurologic",
+      "display_name": "Déficit neurológico focal agudo",
+      "entity_type": "clinical_presentation",
+      "legacy_modules": ["neurology"],
+      "migration": "preserve_key"
+    },
+    {
+      "legacy_key": "lower_urinary_tract",
+      "display_name": "Sintomas do trato urinário inferior (STUI)",
+      "entity_type": "clinical_presentation",
+      "legacy_modules": ["urology"],
+      "migration": "preserve_key"
+    },
+    {
+      "legacy_key": "abdominal",
+      "display_name": "Dor abdominal ou alteração gastrointestinal em investigação",
+      "entity_type": "clinical_presentation",
+      "legacy_modules": ["abdominal", "coloproctology"],
+      "migration": "preserve_key"
+    },
+    {
+      "legacy_key": "cutaneous",
+      "display_name": "Lesão cutânea em investigação",
+      "entity_type": "clinical_presentation",
+      "legacy_modules": ["dermatology"],
+      "migration": "preserve_key"
+    },
+    {
+      "legacy_key": "visual",
+      "display_name": "Alteração visual ou ocular em investigação",
+      "entity_type": "clinical_presentation",
+      "legacy_modules": ["ophthalmology"],
+      "migration": "preserve_key"
+    },
+    {
+      "legacy_key": "musculoskeletal",
+      "display_name": "Quadro musculoesquelético em investigação",
+      "entity_type": "clinical_presentation",
+      "legacy_modules": ["orthopedics"],
+      "migration": "preserve_key"
+    },
+    {
+      "legacy_key": "gynecologic_pelvic",
+      "display_name": "Dor pélvica ou alteração ginecológica em investigação",
+      "entity_type": "clinical_presentation",
+      "legacy_modules": ["gynecology"],
+      "migration": "preserve_key"
+    },
+    {
+      "legacy_key": "obstetric",
+      "display_name": "Sinais e sintomas obstétricos em investigação",
+      "entity_type": "clinical_presentation",
+      "legacy_modules": ["obstetrics"],
+      "migration": "preserve_key"
+    },
+    {
+      "legacy_key": "metabolic_endocrine",
+      "display_name": "Alteração metabólica ou endócrina em investigação",
+      "entity_type": "clinical_presentation",
+      "legacy_modules": ["endocrinology"],
+      "migration": "preserve_key"
+    },
+    {
+      "legacy_key": "systemic_inflammatory",
+      "display_name": "Suspeita de doença inflamatória sistêmica ou vasculite",
+      "entity_type": "clinical_presentation",
+      "legacy_modules": ["rheumatology"],
+      "migration": "preserve_key"
+    },
+    {
+      "legacy_key": "mental_health",
+      "display_name": "Alteração do humor, sono ou pensamento em investigação",
+      "entity_type": "clinical_presentation",
+      "legacy_modules": ["psychiatry"],
+      "migration": "preserve_key"
+    },
+    {
+      "legacy_key": "general_unclassified",
+      "display_name": "Quadro clínico ainda não classificado",
+      "entity_type": "clinical_presentation",
+      "legacy_modules": ["generalmedicine"],
+      "migration": "preserve_key"
+    }
+  ],
+  "baseline_tests": {
+    "python": {
+      "command": "python -m unittest discover -s tests -p \"test_*.py\"",
+      "passed": 250,
+      "failed": 0
+    },
+    "node": {
+      "command": "node --test tests/intake_routing.test.cjs",
+      "passed": 20,
+      "failed": 0
+    }
+  },
+  "runtime_invariants": [
+    "preserve_legacy_keys",
+    "preserve_three_entry_modes",
+    "preserve_local_attachment_flow",
+    "preserve_sha256_audit",
+    "preserve_professional_conduct_gate",
+    "do_not_modify_psychrx"
+  ]
+}
