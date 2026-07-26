@@ -33,6 +33,13 @@ As três portas usam o mesmo motor local e mantêm triagem de segurança, audito
 e validação profissional. A expansão do catálogo para 50, 150 e 300 módulos está
 definida em [DM-081](docs/DM-081_CLINICAL_REASONING_MODULE_ONTOLOGY.md).
 
+O resumo também executa uma orquestração complementar e preserva o raciocínio
+legado: Motor Sindrômico → Motor Diagnóstico → Motor Terapêutico → Gate de
+Confiança. A rota sem LLM exige score calibrado e governança completa; como o
+catálogo real continua em `draft`, a rota atual é “Caso complexo — LLM em
+standby”. Nenhuma LLM é chamada e nenhum token é consumido. O contrato completo
+está em [DM-309](docs/DM-309_CLINICAL_MOTOR_ORCHESTRATION.md).
+
 ## Catálogo científico separado
 
 O conhecimento científico é versionado no repositório privado

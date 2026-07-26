@@ -21,8 +21,8 @@ prescrição, tratamento e conduta automática deve permanecer ativo.
 | Referências | 300 módulos, 901 perguntas e 898 exames com fonte oficial candidata | 100% ligação candidata; 0% sustentação de campo validada |
 | Revisão clínica | 0/300 revisados, 0/300 validados; 300 em fila auditável | 0% |
 | Casos auditáveis | 4.500/4.500, 15 por módulo, com categorias, eventos e hash | 100% estrutural |
-| Testes automatizados | 273 Python, 28 JavaScript e validadores externos aprovados | 100% da bateria atual |
-| Validação visual | Assistido, Direto e Investigação verificados no Chrome; versão 0.22.0 verificada na API; três portas cobertas pela suíte JavaScript | smoke test atual aprovado |
+| Testes automatizados | 273 Python, 40 JavaScript, 249 do baseline PsychRx e validadores externos aprovados | 100% da bateria atual |
+| Validação visual | Assistido, Direto e Investigação verificados no navegador; motores clínicos e as duas rotas do gate conferidos; versão 0.22.0 verificada na API | smoke test atual aprovado |
 | Desempenho | carga governada completa em 2,015 s de mediana local | medido; gate técnico ativo |
 | Prontidão clínica real | sem curadoria/revisão humana e execução bloqueada | 0% |
 
@@ -39,12 +39,18 @@ Os percentuais são independentes e não podem ser somados em um percentual úni
 - `dm300-review-queue passed 300 pending-human-review`;
 - `dm300-load-benchmark passed median=2015.0ms`;
 - `python -m unittest discover -s tests -p 'test_*.py'`: 273 aprovados;
-- `node --test tests/intake_routing.test.cjs`: 28 aprovados;
+- `node --test tests/*.test.cjs`: 40 aprovados, incluindo 30 fixtures isoladas do gate;
+- baseline PsychRx: 249 testes aprovados sem alteração de seus arquivos;
 - GitHub Actions remoto: `tests` da plataforma e `validate-catalog` do pacote
   de conhecimento concluídos com sucesso após a publicação;
 - inspeção no Chrome: equivalente anginoso roteado para cardiologia; Assistido,
   Direto e Investigação chegaram ao resumo auditável exibindo conduta,
   tratamento, destino, fontes e botão de anexo por exame, sem erros de console.
+- inspeção da orquestração clínica: as três portas exibiram Motor Sindrômico,
+  Diagnóstico, Terapêutico e Gate; o catálogo real `draft` seguiu para “Caso
+  complexo — LLM em standby”; as fixtures governadas provaram a rota
+  determinística sem LLM e a rota complexa, sempre com zero tokens e sem
+  transmissão.
 
 ## Bloqueios reais de aceite clínico
 

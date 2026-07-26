@@ -22,8 +22,8 @@ jobs:
           node-version: "24"
       - name: Test DecisionMEd
         run: python -m unittest discover -s tests
-      - name: Test adaptive intake routing
-        run: node --test tests/intake_routing.test.cjs
+      - name: Test browser-side clinical engines
+        run: node --test tests/*.test.cjs
       - name: Compile DecisionMEd
         run: python -m compileall -q decisionmed
       - name: Test PsychRx baseline
