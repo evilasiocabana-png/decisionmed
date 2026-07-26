@@ -17,27 +17,27 @@ prescrição, tratamento e conduta automática deve permanecer ativo.
 | --- | --- | ---: |
 | Arquitetura | Ontologia, loader fechado, manifesto/hash, motor declarativo, API, auditoria e três portas | 100% estrutural |
 | Catálogo cadastrado | 300/300 identidades únicas e tipadas | 100% |
-| Conteúdo preenchido | 300 contratos estruturais; 50 módulos essenciais com definição, limites, tratamento inicial, tratamento definitivo e destino específicos em rascunho; 250 scaffolds genéricos | 100% estrutural; 50/300 com conteúdo clínico específico não revisado |
+| Conteúdo preenchido | 300 contratos estruturais; 150 módulos com definição, limites, tratamento inicial, tratamento definitivo e destino específicos em rascunho; 150 scaffolds genéricos | 100% estrutural; 150/300 com conteúdo clínico específico não revisado |
 | Referências | 300 módulos, 901 perguntas e 898 exames com fonte oficial candidata | 100% ligação candidata; 0% sustentação de campo validada |
 | Revisão clínica | 0/300 revisados, 0/300 validados; 300 em fila auditável | 0% |
 | Casos auditáveis | 4.500/4.500, 15 por módulo, com categorias, eventos e hash | 100% estrutural |
 | Testes automatizados | 273 Python, 28 JavaScript e validadores externos aprovados | 100% da bateria atual |
-| Validação visual | Gerador Assistido e modo Direto verificados no navegador com a versão 0.20.0; três portas cobertas pela suíte JavaScript | smoke test atual aprovado |
-| Desempenho | carga governada completa abaixo de 1 s de mediana local | medido; gate técnico ativo |
+| Validação visual | Gerador Assistido e modo Direto verificados no navegador; versão 0.21.0 verificada na API; três portas cobertas pela suíte JavaScript | smoke test atual aprovado |
+| Desempenho | carga governada completa em 1,315 s de mediana local | medido; gate técnico ativo |
 | Prontidão clínica real | sem curadoria/revisão humana e execução bloqueada | 0% |
 
 Os percentuais são independentes e não podem ser somados em um percentual único.
 
 ## Evidências técnicas
 
-- `catalog-valid decisionmed.knowledge 0.20.0 46 7 1 0 300 50 300 4500`;
-- `essential-overrides 50 of 50 missing []`: os primeiros 50 módulos possuem
+- `catalog-valid decisionmed.knowledge 0.21.0 46 7 1 0 300 50 300 4500`;
+- `batch150-overrides 150 of 150 missing []`: os primeiros 150 módulos possuem
   conteúdo clínico específico em rascunho;
 - `dm300-case-robot passed 300 4500 0`;
 - lotes de fonte candidata: 50 módulos/151 perguntas/150 exames; 150/451/450;
   300/901/898, todos com execução bloqueada;
 - `dm300-review-queue passed 300 pending-human-review`;
-- `dm300-load-benchmark passed` com mediana local inferior a 1 s;
+- `dm300-load-benchmark passed median=1314.5ms`;
 - `python -m unittest discover -s tests -p 'test_*.py'`: 273 aprovados;
 - `node --test tests/intake_routing.test.cjs`: 28 aprovados;
 - GitHub Actions remoto: `tests` da plataforma e `validate-catalog` do pacote
