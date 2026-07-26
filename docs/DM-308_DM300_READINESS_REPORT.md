@@ -38,6 +38,8 @@ Os percentuais são independentes e não podem ser somados em um percentual úni
 - `dm300-load-benchmark passed` com mediana local inferior a 1 s;
 - `python -m unittest discover -s tests -p 'test_*.py'`: 273 aprovados;
 - `node --test tests/intake_routing.test.cjs`: 28 aprovados;
+- GitHub Actions remoto: `tests` da plataforma e `validate-catalog` do pacote
+  de conhecimento concluídos com sucesso após a publicação;
 - inspeção no Chrome: três portas, status `draft`, busca progressiva e início
   da triagem sem erros de console.
 
