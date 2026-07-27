@@ -6,7 +6,7 @@
   <title>Novo caso | DecisionMEd</title>
   <style>
     :root{font-family:Inter,ui-sans-serif,system-ui,sans-serif;color:#192a40;background:#f4f7fb}*{box-sizing:border-box}body{margin:0;line-height:1.5}main{max-width:900px;margin:auto;padding:28px 20px 64px}.top{display:flex;justify-content:space-between;gap:16px;align-items:center}.top a{color:#08717d;text-decoration:none;font-weight:800}.tag{padding:6px 10px;border-radius:999px;background:#e3f4f3;color:#24616a;font-size:.76rem;font-weight:800;text-transform:uppercase;letter-spacing:.05em}.eyebrow{margin:34px 0 7px;color:#08717d;font-weight:850;text-transform:uppercase;letter-spacing:.1em;font-size:.78rem}h1{font-size:clamp(2rem,5vw,3.2rem);letter-spacing:-.05em;line-height:1.03;margin:0}p{color:#607287}.notice{background:#fff7df;border:1px solid #ecd489;border-left:4px solid #c98b16;border-radius:14px;padding:14px 17px;margin:22px 0;color:#624c13}.panel{background:#fff;border:1px solid #dce5ed;border-radius:20px;padding:clamp(20px,4vw,32px);box-shadow:0 18px 44px #1e365110;margin-top:20px}.panel h2{margin-top:0}.field{display:grid;gap:8px;margin:18px 0}.field label,.question{font-weight:780;color:#26394f}.field input,.field textarea,.field select{font:inherit;width:100%;border:1px solid #ccd9e4;border-radius:11px;padding:11px 12px;background:white}.field textarea{min-height:100px;resize:vertical}.hint{font-size:.85rem;margin:0}.validation{min-height:1.35rem;margin:10px 0 0;color:#9a4e13;font-size:.86rem}.module-list{display:grid;gap:10px;margin:18px 0}.module{border:1px solid #d7e2ea;border-radius:13px;padding:13px;background:#fbfdff;display:flex;gap:11px;align-items:flex-start}.module.priority{border-color:#d28a2e;background:#fff8e8;box-shadow:inset 4px 0 #d28a2e}.module input{margin-top:4px}.module small{color:#607287}.progress{display:flex;gap:6px;margin-bottom:23px}.progress i{height:7px;flex:1;background:#dce7ed;border-radius:99px}.progress i.active{background:#08717d}.answer{margin-top:18px;border:1px solid #d7e2ea;border-radius:13px;padding:14px;background:#fbfdff}.answer textarea,.answer select{font:inherit;width:100%;border:1px solid #ccd9e4;border-radius:9px;padding:9px;margin-top:8px}.choices{display:flex;flex-wrap:wrap;gap:8px}.choice{border:1px solid #b9cbd8;border-radius:999px;padding:9px 12px;background:white;color:#26394f;font:inherit;cursor:pointer}.choice.selected{background:#08717d;border-color:#08717d;color:white}.choice.scale{min-width:40px;padding:8px}.detail{display:grid;gap:6px;margin-top:14px}.helper{border-top:1px solid #d7e2ea;margin-top:13px;padding-top:13px}.helper .choice{border-radius:10px;text-align:left}.actions{display:flex;justify-content:space-between;gap:12px;margin-top:25px}.button{border:0;border-radius:11px;background:#08717d;color:white;padding:11px 16px;font:inherit;font-weight:800;cursor:pointer;text-decoration:none}.button.secondary{background:#e7eef3;color:#2b435b}.button:disabled{opacity:.45;cursor:not-allowed}.hidden{display:none}.summary{display:grid;gap:11px}.summary article{border:1px solid #d7e2ea;border-radius:12px;padding:13px}.summary h3{margin:0 0 6px;font-size:.94rem}.summary p{margin:0;font-size:.9rem}.file{font-size:.86rem;color:#35616d}.case-generator{border-top:1px solid #d7e2ea;margin-top:24px;padding-top:18px}.case-controls{display:grid;grid-template-columns:minmax(160px,1fr) minmax(130px,180px) minmax(190px,1fr);gap:12px;align-items:end}.case-controls .field{margin:0}.audit{border:1px solid #c8d9e4;border-radius:14px;padding:13px 16px;margin:20px 0;background:#f8fbfd}.audit summary{cursor:pointer;font-weight:800;color:#26394f}.audit textarea{min-height:360px;font-family:ui-monospace,SFMono-Regular,Consolas,monospace;font-size:.8rem}.fingerprint{overflow-wrap:anywhere;color:#35616d}.reasoning-status{border:1px solid #c8d9e4;border-left:5px solid #08717d;border-radius:13px;padding:13px 15px;margin:14px 0;background:#f7fbfc}.reasoning-status.priority{border-left-color:#c98b16;background:#fff9e8}.reasoning-status.immediate{border-left-color:#b42318;background:#fff1f0}.reasoning-status strong{display:block}.syndrome-list,.reasoning-output{display:grid;gap:13px}.syndrome-card{border:1px solid #d7e2ea;border-radius:14px;padding:15px;background:#fbfdff}.syndrome-card>label{display:flex;gap:10px;align-items:flex-start}.syndrome-card h3{margin:0;font-size:1rem}.syndrome-card p{margin:6px 0}.reasoning-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}.reasoning-grid section{border:1px solid #e0e8ef;border-radius:10px;padding:10px}.reasoning-grid h4{margin:0 0 6px;font-size:.85rem}.compact-list{margin:6px 0;padding-left:19px;color:#52667b;font-size:.86rem}.compact-list li+li{margin-top:4px}.reasoning-section{border-top:1px solid #d7e2ea;margin-top:22px;padding-top:18px}@media(max-width:700px){.reasoning-grid{grid-template-columns:1fr}}@media(max-width:650px){main{padding:20px 16px}.actions{flex-direction:column-reverse}.button{width:100%}.case-controls{grid-template-columns:1fr}}
-    .attachment-actions{display:flex;flex-wrap:wrap;gap:10px;margin:10px 0}.attachment-actions .button{display:inline-block}.exam-card-head{display:flex;align-items:center;justify-content:space-between;gap:14px;margin-bottom:6px}.exam-card-head h3{margin:0}.exam-card-head .button{flex:0 0 auto;padding:8px 12px}.exam-attached{color:#08717d;font-weight:750}.exam-preview{display:block;max-width:100%;max-height:320px;object-fit:contain;border:1px solid #d7e2ea;border-radius:12px;margin-top:10px}.conduct-plan{display:grid;gap:10px}.conduct-plan article{border-left:4px solid #08717d}.conduct-plan article.immediate{border-left-color:#b42318;background:#fff1f0}.conduct-plan article.priority{border-left-color:#c98b16;background:#fff9e8}@media(max-width:560px){.exam-card-head{align-items:flex-start;flex-direction:column}.exam-card-head .button{width:100%}}
+    .attachment-actions{display:flex;flex-wrap:wrap;gap:10px;margin:10px 0}.attachment-actions .button{display:inline-block}.exam-card-head{display:flex;align-items:center;justify-content:space-between;gap:14px;margin-bottom:6px}.exam-card-head h3{margin:0}.exam-card-head .button{flex:0 0 auto;padding:8px 12px}.exam-attached{color:#08717d;font-weight:750}.exam-preview{display:block;max-width:100%;max-height:320px;object-fit:contain;border:1px solid #d7e2ea;border-radius:12px;margin-top:10px}.conduct-plan{display:grid;gap:10px}.conduct-plan article{border-left:4px solid #08717d}.conduct-plan article.immediate{border-left-color:#b42318;background:#fff1f0}.conduct-plan article.priority{border-left-color:#c98b16;background:#fff9e8}.patient-context{border:1px solid #d7e2ea;border-radius:14px;padding:16px;margin:20px 0;background:#fbfdff}.patient-context legend{padding:0 8px;font-weight:850;color:#26394f}.patient-grid{display:grid;grid-template-columns:minmax(0,2fr) minmax(130px,1fr);gap:14px}.patient-grid .field{margin:0}.field input:focus-visible,.field textarea:focus-visible,.field select:focus-visible,.choice:focus-visible,.button:focus-visible{outline:3px solid #5bc0c8;outline-offset:2px}@media(max-width:650px){.patient-grid{grid-template-columns:1fr}}@media(max-width:560px){.exam-card-head{align-items:flex-start;flex-direction:column}.exam-card-head .button{width:100%}}
   </style>
 </head>
 <body>
@@ -15,7 +15,7 @@
     <p class="eyebrow">Novo caso</p>
     <h1>Comece pela queixa.</h1>
     <p>Primeiro, faça a triagem de segurança. Depois, percorra o decálogo do sintoma por cliques e confirme os módulos adequados ao caso.</p>
-    <div class="notice"><strong>Protótipo de referência.</strong> Não diagnostica, não prescreve, não transmite nem salva dados. Não informe identificadores de paciente.</div>
+    <div class="notice"><strong>Protótipo de referência.</strong> Não diagnostica nem prescreve. Nome, idade e respostas permanecem somente nesta aba; não são enviados nem salvos. Prefira iniciais ou um código e não informe CPF, telefone, endereço ou número de prontuário.</div>
 
     <section class="panel" id="start-panel">
       <h2>1. Escolha o caminho</h2>
@@ -26,9 +26,24 @@
       </div>
       <p class="hint" id="mode-description">Assistido: o sistema conduz. Direto: o médico conduz. Investigação: o motor compara hipóteses concorrentes.</p>
       <p class="hint" id="runtime-catalog-status" role="status">Carregando identidades clínicas governadas…</p>
+      <fieldset class="patient-context hidden" id="patient-context">
+        <legend>Dados do caso</legend>
+        <div class="patient-grid">
+          <div class="field">
+            <label for="patient-name">Nome, iniciais ou código do caso</label>
+            <input id="patient-name" type="text" required minlength="2" maxlength="120" autocomplete="off" autocapitalize="words" spellcheck="false" placeholder="Ex.: M. S. ou Paciente 01" aria-describedby="patient-help patient-error">
+          </div>
+          <div class="field">
+            <label for="patient-age">Idade (anos)</label>
+            <input id="patient-age" type="number" required min="0" max="130" step="1" inputmode="numeric" placeholder="Ex.: 54" aria-describedby="patient-help patient-error">
+          </div>
+        </div>
+        <p class="hint" id="patient-help">Use apenas a identificação mínima necessária. Estes dados não entram nos motores clínicos nem na LLM.</p>
+        <p class="validation" id="patient-error" role="status" aria-live="polite">Informe nome e idade para iniciar.</p>
+      </fieldset>
       <div class="hidden" id="assisted-fields">
         <div class="field"><label>Qual é a queixa principal?</label><div class="choices" id="complaint-choices"></div><input id="complaint" type="hidden"></div>
-        <div class="field" id="note-field"><label for="note">Descreva a queixa em suas palavras (opcional)</label><textarea id="note" placeholder="Não precisa usar termos técnicos. Não inclua informação identificável."></textarea></div>
+        <div class="field" id="note-field"><label for="note">Descreva a queixa em suas palavras (opcional)</label><textarea id="note" placeholder="Não precisa usar termos técnicos. Evite CPF, telefone, endereço ou número de prontuário."></textarea></div>
         <p class="hint">Após o decálogo e o histórico essencial, o motor local sugere os módulos adequados. O profissional sempre confirma a seleção.</p>
         <div class="actions"><span></span><button class="button" id="begin" disabled>Iniciar caminho assistido</button></div>
       </div>
@@ -191,6 +206,7 @@
     </section>
   </main>
   <script src="/intake-sequences.js"></script>
+  <script src="/intake-patient.js?v=1.0.0"></script>
   <script src="/intake-rule-engine.js?v=0.2.0"></script>
   <script src="/intake-routing-rules.js?v=0.1.0"></script>
   <script src="/intake-routing.js"></script>
@@ -293,11 +309,70 @@
     let reassessments=[],diagnosticImpression=null,professionalConduct=null;
     let selectedExamInput='',examPreviewUrl='',selectedSuggestedExam=null,resultAttachments=new Map();
     let flowMode='',directSyndrome='',investigationSyndromes=[];
+    let currentPatient=null,patientSynthetic=false;
     const complaintChoices=['Dor','Falta de ar','Tosse','Febre','Náusea / vômito','Alteração urinária','Alteração intestinal','Pele','Visão','Neurológica','Ginecológica','Gestação / pós-parto','Ossos / articulações','Humor / sono','Outro sintoma'];
     const flowNames={assisted:'Assistido',direct:'Direto',investigation:'Investigação'};
     const nowIso=()=>new Date().toISOString();
     function createTraceId(){return globalThis.crypto?.randomUUID?.()||`decisionmed-${Date.now()}-${Math.random().toString(16).slice(2)}`}
     function recordAudit(type,data={}){auditEvents.push({order:auditEvents.length+1,timestamp:nowIso(),type,...data})}
+    function patientInput(){
+      return {name:$('patient-name').value,ageYears:$('patient-age').value,synthetic:patientSynthetic}
+    }
+    function patientSelection(mode){
+      return {
+        complaint:$('complaint').value,
+        directSyndrome,
+        investigationSyndromes:[...investigationSyndromes]
+      }
+    }
+    function startValidation(mode){
+      return DecisionMedPatient.validateStart(mode,patientSelection(mode),patientInput())
+    }
+    function updateStartAvailability(){
+      const patientResult=DecisionMedPatient.validate(patientInput());
+      $('begin').disabled=!startValidation('assisted').valid;
+      $('begin-direct').disabled=!startValidation('direct').valid;
+      $('begin-investigation').disabled=!startValidation('investigation').valid;
+      const nameInvalid=patientResult.errors.some(error=>error.code.startsWith('patient_name'));
+      const ageInvalid=patientResult.errors.some(error=>error.code==='patient_age_invalid');
+      $('patient-name').setAttribute('aria-invalid',String(nameInvalid));
+      $('patient-age').setAttribute('aria-invalid',String(ageInvalid));
+      $('patient-error').textContent=patientResult.valid
+        ? startValidation(flowMode).selectionValid
+          ? 'Dados do caso e seleção clínica preenchidos. Pronto para iniciar.'
+          : 'Dados do caso preenchidos. Complete a seleção clínica da porta escolhida.'
+        : patientResult.errors.map(error=>error.message).join(' ');
+      return patientResult
+    }
+    function capturePatientForStart(mode){
+      const result=startValidation(mode);
+      updateStartAvailability();
+      if(!result.valid){
+        if(!result.patientValid){
+          const nameError=result.errors.some(error=>error.code.startsWith('patient_name'));
+          $(nameError?'patient-name':'patient-age').focus()
+        }
+        return false
+      }
+      currentPatient={...result.patient};
+      $('patient-name').value=currentPatient.name;
+      $('patient-age').value=String(currentPatient.ageYears);
+      return true
+    }
+    function patientAuditRecord(){
+      const record=DecisionMedPatient.toAuditRecord(currentPatient||patientInput());
+      if(!record)throw new Error('patient_context_invalid');
+      return {...record}
+    }
+    function applyGeneratedPatient(scenario){
+      const result=DecisionMedPatient.validate(scenario.patient);
+      if(!result.valid)throw new Error(`invalid_generated_patient:${scenario.id}`);
+      currentPatient={...result.patient,synthetic:true};patientSynthetic=true;
+      $('patient-name').value=currentPatient.name;$('patient-age').value=String(currentPatient.ageYears);
+      updateStartAvailability()
+    }
+    $('patient-name').oninput=()=>{patientSynthetic=false;currentPatient=null;updateStartAvailability()};
+    $('patient-age').oninput=()=>{patientSynthetic=false;currentPatient=null;updateStartAvailability()};
     function recordCurrentAnswer(source='manual'){
       const item=script[position],revision=auditEvents.filter(event=>event.type==='answer_confirmed'&&event.question_id===item.id).length+1;
       recordAudit('answer_confirmed',{source,revision,question_order:position+1,question_id:item.id,section:item.section,module:item.module,question:item.text,selected:answerValues(),detail:answerDetail()})
@@ -312,7 +387,7 @@
     function initializeCase(complaint,source='manual',caseMeta=null){
       script=[...safetyQuestions.map(item=>({module:'safety',section:'safety',...item})),...buildSymptomQuestions(complaint),...clinicalHistory.map(item=>({module:'general',section:'history',...item})),...generalInvestigations.map(item=>({module:'general',section:'investigation',...item}))];
       resetCaseState(caseMeta);
-      recordAudit('case_started',{source,flow_mode:flowMode||'assisted',trace_id:traceId,case_id:caseMeta?.id||null,case_label:caseMeta?.label||null,complaint,note:$('note').value.trim()});
+      recordAudit('case_started',{source,flow_mode:flowMode||'assisted',trace_id:traceId,case_id:caseMeta?.id||null,case_label:caseMeta?.label||null,patient:patientAuditRecord(),complaint,note:$('note').value.trim()});
       recordAudit('sequence_generated',{engine:'DecisionMedSequences',engine_version:DecisionMedSequences.version,questions:script.map((item,index)=>({order:index+1,id:item.id,section:item.section,module:item.module,text:item.text}))})
     }
     function answerParts(index=position){return (answers[index]||'').split(SEPARATOR).filter(Boolean)}
@@ -504,14 +579,15 @@
     }
     function renderComplaintChoices(){
       const host=$('complaint-choices');host.replaceChildren();
-      complaintChoices.forEach(option=>{const button=document.createElement('button');button.type='button';button.className=`choice${$('complaint').value===option?' selected':''}`;button.textContent=option;button.onclick=()=>{$('complaint').value=option;$('begin').disabled=false;renderComplaintChoices()};host.append(button)})
+      complaintChoices.forEach(option=>{const button=document.createElement('button');button.type='button';button.className=`choice${$('complaint').value===option?' selected':''}`;button.textContent=option;button.onclick=()=>{$('complaint').value=option;renderComplaintChoices()};host.append(button)});
+      updateStartAvailability()
     }
     function renderDirectSyndromeChoices(){
       const host=$('direct-syndrome-choices');host.replaceChildren();
       const query=normalizeSearch($('direct-search').value),catalog=DecisionMedReasoning.syndromeCatalog;
       const matches=catalog.filter(item=>catalogSearchText(item).includes(query));
-      matches.slice(0,30).forEach(syndrome=>{const button=document.createElement('button');button.type='button';button.className=`choice${directSyndrome===syndrome.key?' selected':''}`;button.textContent=`${syndrome.name} · ${syndrome.entityTypeLabel} · ${syndrome.status}`;button.onclick=()=>{directSyndrome=syndrome.key;$('direct-syndrome').value=syndrome.key;$('begin-direct').disabled=false;renderDirectSyndromeChoices()};host.append(button)});
-      $('direct-search-status').textContent=`${matches.length} resultado(s) · exibindo até 30 por vez${directSyndrome?' · 1 selecionado':''}.`
+      matches.slice(0,30).forEach(syndrome=>{const button=document.createElement('button');button.type='button';button.className=`choice${directSyndrome===syndrome.key?' selected':''}`;button.textContent=`${syndrome.name} · ${syndrome.entityTypeLabel} · ${syndrome.status}`;button.onclick=()=>{directSyndrome=syndrome.key;$('direct-syndrome').value=syndrome.key;renderDirectSyndromeChoices()};host.append(button)});
+      $('direct-search-status').textContent=`${matches.length} resultado(s) · exibindo até 30 por vez${directSyndrome?' · 1 selecionado':''}.`;updateStartAvailability()
     }
     function renderInvestigationSyndromeChoices(){
       const host=$('investigation-syndrome-choices');host.replaceChildren();
@@ -527,9 +603,9 @@
         host.append(button)
       });
       $('investigation-search-status').textContent=`${matches.length} resultado(s) · exibindo até 30 por vez.`;
-      const count=investigationSyndromes.length,ready=count>=2&&count<=3;
-      $('begin-investigation').disabled=!ready;
+      const count=investigationSyndromes.length;
       $('investigation-selection-status').textContent=count===0?'Selecione de 2 a 3 hipóteses concorrentes.':count===1?'Selecione mais uma hipótese para comparar.':count===3?'3 hipóteses selecionadas · limite do comparador atingido.':`${count} hipóteses selecionadas · pronto para comparar.`
+      updateStartAvailability()
     }
     function normalizeSearch(value){return String(value||'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLocaleLowerCase('pt-BR').trim()}
     function catalogSearchText(item){return normalizeSearch([item.name,item.entityTypeLabel,item.primarySpecialty,item.moduleId].join(' '))}
@@ -538,12 +614,13 @@
     function chooseMode(mode){
       flowMode=mode;$('mode-assisted').classList.toggle('selected',mode==='assisted');$('mode-direct').classList.toggle('selected',mode==='direct');$('mode-investigation').classList.toggle('selected',mode==='investigation');
       $('assisted-fields').classList.toggle('hidden',mode!=='assisted');$('direct-fields').classList.toggle('hidden',mode!=='direct');$('investigation-fields').classList.toggle('hidden',mode!=='investigation');
+      $('patient-context').classList.remove('hidden');
       const descriptions={
         assisted:'Assistido: a queixa percorre triagem, anamnese, reconhecimento sindrômico, diferenciação, diagnóstico e gate de conduta.',
         direct:'Direto: o profissional escolhe a síndrome clínica ou apresentação, confirma segurança e critérios por cliques e segue ao gate de conduta.',
         investigation:'Investigação: o profissional seleciona de 2 a 3 hipóteses e o motor compara achados, perguntas discriminadoras e exames.'
       };
-      $('mode-description').textContent=descriptions[mode]
+      $('mode-description').textContent=descriptions[mode];updateStartAvailability()
     }
     $('mode-assisted').onclick=()=>chooseMode('assisted');
     $('mode-direct').onclick=()=>chooseMode('direct');
@@ -678,7 +755,7 @@
       $('complaint').value=mode==='direct'?`Confirmação direta: ${selectedNames[0]}`:`Comparação: ${selectedNames.join(' × ')}`;
       $('note').value=caseMeta?.note||'';
       reasoningDecision=analyzeReasoning();
-      recordAudit('case_started',{source,flow_mode:mode,trace_id:traceId,case_id:caseMeta?.id||null,case_label:caseMeta?.label||null,complaint:$('complaint').value,note:$('note').value.trim()});
+      recordAudit('case_started',{source,flow_mode:mode,trace_id:traceId,case_id:caseMeta?.id||null,case_label:caseMeta?.label||null,patient:patientAuditRecord(),complaint:$('complaint').value,note:$('note').value.trim()});
       recordAudit(mode==='direct'?'direct_syndrome_selected':'investigation_hypotheses_selected',{selected:[...syndromeKeys],names:[...selectedNames]});
       recordAudit('sequence_generated',{engine:'DecisionMedSequences',engine_version:DecisionMedSequences.version,questions:script.map((item,index)=>({order:index+1,id:item.id,section:item.section,module:item.module,text:item.text}))});
       recordAudit('modules_confirmed',{source,suggested:[...moduleKeys],selected:[...moduleKeys],declined:[],manually_added:null});
@@ -735,7 +812,8 @@
     async function runNextGeneratedCase(){
       if(nextCaseIndex>=caseQueue.length)return;
       const scenario=caseQueue[nextCaseIndex],positionInSuite=nextCaseIndex+1,total=caseQueue.length;
-      const caseMeta={id:scenario.id,label:scenario.label,position:positionInSuite,total,flowMode:scenario.flowMode,expectedModules:[...scenario.expectedModules],syndromeKeys:[...scenario.syndromeKeys],note:scenario.note,originalComplaint:scenario.complaint};
+      applyGeneratedPatient(scenario);
+      const caseMeta={id:scenario.id,label:scenario.label,position:positionInSuite,total,flowMode:scenario.flowMode,patient:patientAuditRecord(),expectedModules:[...scenario.expectedModules],syndromeKeys:[...scenario.syndromeKeys],note:scenario.note,originalComplaint:scenario.complaint};
       nextCaseIndex+=1;flowMode=scenario.flowMode;
       if(flowMode==='assisted'){
         $('complaint').value=scenario.complaint;$('note').value=scenario.note;renderComplaintChoices();
@@ -796,11 +874,11 @@
     $('engine-gate-kind').onchange=()=>{engineGateQueue=[];nextEngineGateIndex=0;updateEngineGatePreview()};
     $('generate-engine-gate-case').onclick=()=>{if(!engineGateQueue.length){engineGateQueue=buildEngineGateQueue();nextEngineGateIndex=0}runNextEngineGateCase()};
     $('begin').onclick=()=>{
-      const complaint=$('complaint').value;if(!complaint)return;flowMode='assisted';
+      const complaint=$('complaint').value;if(!capturePatientForStart('assisted')||!complaint)return;flowMode='assisted';
       initializeCase(complaint);$('start-panel').classList.add('hidden');$('question-panel').classList.remove('hidden');renderQuestion()
     };
-    $('begin-direct').onclick=()=>{if(directSyndrome)initializeTargetedCase('direct',[directSyndrome])};
-    $('begin-investigation').onclick=()=>{if(investigationSyndromes.length>=2)initializeTargetedCase('investigation',investigationSyndromes)};
+    $('begin-direct').onclick=()=>{if(capturePatientForStart('direct')&&directSyndrome)initializeTargetedCase('direct',[directSyndrome])};
+    $('begin-investigation').onclick=()=>{if(capturePatientForStart('investigation')&&investigationSyndromes.length>=2)initializeTargetedCase('investigation',investigationSyndromes)};
     $('previous').onclick=()=>{if(position>0){position--;renderQuestion()}};
     $('next').onclick=()=>{if(!questionIsComplete(script[position]))return;recordCurrentAnswer();if(script[position].section==='safety'&&script[position+1]?.section!=='safety'&&!safetyCheckpointPassed){showSafetyCheckpoint();return}if(position<script.length-1){position++;renderQuestion();return}if(!routingShown){showRouting();return}if(!reasoningConfirmed){showReasoningPanel();return}void review()};
     $('back-to-safety').onclick=()=>{$('safety-panel').classList.add('hidden');$('question-panel').classList.remove('hidden');renderQuestion()};
@@ -841,6 +919,8 @@
         `Gerado em: ${record.generated_at}`,
         `Origem: ${record.source==='case_generator'?'gerador local de casos':'preenchimento manual'}`,
         `Porta de entrada: ${flowNames[record.flow_mode]||record.flow_mode}`,
+        `Paciente: ${record.patient.display_name}`,
+        `Idade: ${record.patient.age_years} anos${record.patient.synthetic?' · dado sintético':''}`,
         `Motores legados: sequência ${record.engines.sequence} · roteamento ${record.engines.routing} · raciocínio ${record.engines.reasoning}`,
         `Motores clínicos: sindrômico ${record.engines.syndromic} · diagnóstico ${record.engines.diagnostic} · terapêutico ${record.engines.therapeutic} · gate ${record.engines.confidence_gate} · LLM standby ${record.engines.llm_standby} · orquestrador ${record.engines.clinical_orchestrator}`,
         '',
@@ -923,6 +1003,7 @@
     async function review(){
       const host=$('summary');host.replaceChildren();
       const add=(title,text)=>{const card=document.createElement('article'),heading=document.createElement('h3'),body=document.createElement('p');heading.textContent=title;body.textContent=text||'Não informado';card.append(heading,body);host.append(card)};
+      const patient=patientAuditRecord();
       reasoningDecision=analyzeReasoning();if(!activeSyndromes.length)activeSyndromes=reasoningDecision.syndromes.map(item=>item.key);
       const confirmedReasoning={...reasoningDecision,syndromes:reasoningDecision.syndromes.filter(item=>activeSyndromes.includes(item.key))};
       const answered=script.map((item,index)=>({item,answer:answers[index]})).filter(entry=>entry.answer);
@@ -967,7 +1048,7 @@
       const historyEntries=answered.filter(entry=>entry.item.section==='history');
       const investigationEntries=answered.filter(entry=>entry.item.section==='investigation');
       const discriminatorEntries=answered.filter(entry=>entry.item.section==='discriminator');
-      const lines=[`PORTA DE ENTRADA: ${flowNames[flowMode]||flowMode}.`,`QUEIXA PRINCIPAL: ${$('complaint').value}.`];
+      const lines=[`PACIENTE: ${patient.display_name}.`,`IDADE: ${patient.age_years} anos.`,`PORTA DE ENTRADA: ${flowNames[flowMode]||flowMode}.`,`QUEIXA PRINCIPAL: ${$('complaint').value}.`];
       if($('note').value.trim())lines.push(`DESCRIÇÃO LIVRE: ${$('note').value.trim()}`);
       if(safetyEntries.length)lines.push(`TRIAGEM INICIAL: ${groupText(safetyEntries)}`);
       if(symptomEntries.length)lines.push(`HISTÓRIA DO SINTOMA: ${groupText(symptomEntries)}`);
@@ -995,14 +1076,15 @@
       if(professionalConduct)lines.push(`CONDUTA PROFISSIONAL: ${professionalConduct.destination}. Ações: ${professionalConduct.actions.join(', ')}.${professionalConduct.note?` Plano: ${professionalConduct.note}`:''}`);
       $('structured-summary').value=lines.join('\n\n');
       const generatedAt=nowIso(),record={
-        schema_version:'decisionmed.intake-audit.v2',
-        previous_schema_version:'decisionmed.intake-audit.v1',
+        schema_version:'decisionmed.intake-audit.v3',
+        previous_schema_version:'decisionmed.intake-audit.v2',
         trace_id:traceId,
         generated_at:generatedAt,
         source:activeGeneratedCase?'case_generator':'manual',
         flow_mode:flowMode,
         generated_case:activeGeneratedCase?{...activeGeneratedCase}:null,
-        engines:{sequence:DecisionMedSequences.version,routing:DecisionMedRouting.version,routing_rule_engine:DecisionMedRouting.ruleEngineVersion,routing_rule_catalog:DecisionMedRouting.ruleCatalogVersion,reasoning:DecisionMedReasoning.version,cases:DecisionMedCases.version,syndromic:DecisionMedSyndromicEngine.version,diagnostic:DecisionMedDiagnosticEngine.version,therapeutic:DecisionMedTherapeuticEngine.version,confidence_gate:DecisionMedConfidenceGate.version,llm_standby:DecisionMedLlmStandby.version,clinical_orchestrator:DecisionMedClinicalOrchestrator.version},
+        engines:{patient_context:DecisionMedPatient.version,sequence:DecisionMedSequences.version,routing:DecisionMedRouting.version,routing_rule_engine:DecisionMedRouting.ruleEngineVersion,routing_rule_catalog:DecisionMedRouting.ruleCatalogVersion,reasoning:DecisionMedReasoning.version,cases:DecisionMedCases.version,syndromic:DecisionMedSyndromicEngine.version,diagnostic:DecisionMedDiagnosticEngine.version,therapeutic:DecisionMedTherapeuticEngine.version,confidence_gate:DecisionMedConfidenceGate.version,llm_standby:DecisionMedLlmStandby.version,clinical_orchestrator:DecisionMedClinicalOrchestrator.version},
+        patient,
         complaint:$('complaint').value,
         note:$('note').value.trim(),
         current_answers:answered.map((entry,index)=>({order:script.indexOf(entry.item)+1,question_id:entry.item.id,section:entry.item.section,module:entry.item.module,question:entry.item.text,selected:answerValues(script.indexOf(entry.item)),detail:answerDetail(script.indexOf(entry.item))})),
@@ -1028,7 +1110,7 @@
       const fingerprint=await sha256(JSON.stringify(record));
       $('audit-trail').value=buildAuditText(record,fingerprint);
       $('audit-fingerprint').textContent=`Identificador ${traceId} · SHA-256 ${fingerprint}`;
-      add('Porta de entrada',flowNames[flowMode]||flowMode);add('Queixa principal',$('complaint').value);if($('note').value)add('Descrição inicial',$('note').value);
+      add('Paciente',`${patient.display_name} · ${patient.age_years} anos${patient.synthetic?' · caso sintético':''}`);add('Porta de entrada',flowNames[flowMode]||flowMode);add('Queixa principal',$('complaint').value);if($('note').value)add('Descrição inicial',$('note').value);
       if(activeGeneratedCase){
         const missing=activeGeneratedCase.expectedModules.filter(key=>!activeModules.includes(key));
         add('Caso sintético',`${activeGeneratedCase.position}/${activeGeneratedCase.total} · ${activeGeneratedCase.label}`);

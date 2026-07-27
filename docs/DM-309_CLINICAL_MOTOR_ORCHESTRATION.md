@@ -101,9 +101,10 @@ provar a rota. Mesmo nessa simulação:
 
 ## Auditoria
 
-O formulário usa `decisionmed.intake-audit.v2`, preserva a referência a
-`decisionmed.intake-audit.v1` e registra:
+O formulário usa `decisionmed.intake-audit.v3`, preserva a referência a
+`decisionmed.intake-audit.v2` e registra:
 
+- nome ou código do caso e idade, mantidos somente na aba;
 - fatos e IDs das perguntas;
 - versões e ordem dos motores;
 - classificações, hipóteses e critérios;

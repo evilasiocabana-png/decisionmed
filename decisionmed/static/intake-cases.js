@@ -8,7 +8,10 @@
 })(typeof globalThis === "object" ? globalThis : this, function createCaseGenerator() {
   "use strict";
 
-  const VERSION = "0.2.0";
+  const VERSION = "0.3.0";
+  const SYNTHETIC_AGES = Object.freeze([
+    62, 58, 34, 29, 51, 67, 46, 53, 38, 42, 31, 27, 45, 36, 54,
+  ]);
   const TEMPLATES = Object.freeze([
     {
       id: "cardiac-equivalent",
@@ -300,6 +303,23 @@
       : 1;
   }
 
+  function syntheticPatient(mode, index) {
+    const prefixes = {
+      assisted: "A",
+      direct: "D",
+      investigation: "I",
+    };
+    const cycle = Math.floor(index / TEMPLATES.length);
+    return {
+      name: `Paciente sintético ${prefixes[mode]}-${String(index + 1).padStart(3, "0")}`,
+      ageYears: Math.min(
+        95,
+        SYNTHETIC_AGES[index % SYNTHETIC_AGES.length] + cycle,
+      ),
+      synthetic: true,
+    };
+  }
+
   function buildAssistedCases(quantity = 1) {
     return Array.from({ length: safeQuantity(quantity) }, (_, index) => {
       const base = cloneTemplate(TEMPLATES[index % TEMPLATES.length], index);
@@ -308,6 +328,7 @@
         id: `assisted-${base.id}`,
         flowMode: "assisted",
         syndromeKeys: [],
+        patient: syntheticPatient("assisted", index),
       };
     });
   }
@@ -323,6 +344,7 @@
         flowMode: "direct",
         syndromeKeys: [syndromeKey],
         expectedModules: [...SYNDROME_MODULES[syndromeKey]],
+        patient: syntheticPatient("direct", index),
       };
     });
   }
@@ -337,6 +359,7 @@
         label: `Investigação · ${base.label}`,
         flowMode: "investigation",
         syndromeKeys,
+        patient: syntheticPatient("investigation", index),
         expectedModules: [
           ...new Set(syndromeKeys.flatMap((key) => SYNDROME_MODULES[key])),
         ],

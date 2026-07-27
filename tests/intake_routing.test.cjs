@@ -8,6 +8,7 @@ const ruleEngine = require("../decisionmed/static/intake-rule-engine.js");
 const routingRules = require("../decisionmed/static/intake-routing-rules.js");
 const routing = require("../decisionmed/static/intake-routing.js");
 const sequences = require("../decisionmed/static/intake-sequences.js");
+const patientContext = require("../decisionmed/static/intake-patient.js");
 const cases = require("../decisionmed/static/intake-cases.js");
 const reasoning = require("../decisionmed/static/intake-reasoning.js");
 
@@ -568,6 +569,71 @@ test("generated sequences are independent copies", () => {
   assert.ok(!second[0].options.includes("Mutação de teste"));
 });
 
+test("patient context normalizes identification and enforces age limits", () => {
+  const valid = patientContext.validate({
+    name: "  Ana   D'Ávila-Souza  ",
+    ageYears: "54",
+  });
+
+  assert.equal(valid.valid, true);
+  assert.deepEqual(
+    { ...valid.patient },
+    { name: "Ana D'Ávila-Souza", ageYears: 54, synthetic: false },
+  );
+  for (const ageYears of [0, 130]) {
+    assert.equal(
+      patientContext.validate({ name: "Paciente 01", ageYears }).valid,
+      true,
+    );
+  }
+  for (const ageYears of ["", "  ", -1, 131, 4.5, "abc"]) {
+    const result = patientContext.validate({ name: "Paciente 01", ageYears });
+    assert.equal(result.valid, false, String(ageYears));
+    assert.ok(
+      result.errors.some((error) => error.code === "patient_age_invalid"),
+      String(ageYears),
+    );
+  }
+});
+
+test("the same patient gate protects all three entry modes", () => {
+  const selections = {
+    assisted: { complaint: "Dor" },
+    direct: { directSyndrome: "cardiovascular_discomfort" },
+    investigation: {
+      investigationSyndromes: ["cardiovascular_discomfort", "respiratory"],
+    },
+  };
+  const validPatient = { name: "Paciente 01", ageYears: 54 };
+
+  for (const [mode, selection] of Object.entries(selections)) {
+    const missing = patientContext.validateStart(mode, selection, {
+      name: "",
+      ageYears: "",
+    });
+    assert.equal(missing.valid, false, mode);
+    assert.ok(
+      missing.errors.some((error) => error.code === "patient_name_required"),
+      mode,
+    );
+    assert.ok(
+      missing.errors.some((error) => error.code === "patient_age_invalid"),
+      mode,
+    );
+    assert.equal(
+      patientContext.validateStart(mode, selection, validPatient).valid,
+      true,
+      mode,
+    );
+  }
+
+  assert.deepEqual(patientContext.toAuditRecord(validPatient), {
+    display_name: "Paciente 01",
+    age_years: 54,
+    synthetic: false,
+  });
+});
+
 test("local case generator respects quantity and returns independent cases", () => {
   assert.equal(cases.buildCases(0).length, 1);
   assert.equal(cases.buildCases(7).length, 7);
@@ -576,11 +642,13 @@ test("local case generator respects quantity and returns independent cases", () 
   const firstSuite = cases.buildCases(20);
   const secondSuite = cases.buildCases(20);
   firstSuite[0].answers["symptom.started"] = "Mutação de teste";
+  firstSuite[0].patient.name = "Mutação de paciente";
 
   assert.notEqual(
     secondSuite[0].answers["symptom.started"],
     "Mutação de teste",
   );
+  assert.notEqual(secondSuite[0].patient.name, "Mutação de paciente");
   assert.equal(new Set(secondSuite.map((scenario) => scenario.id)).size, 20);
 });
 
@@ -602,9 +670,15 @@ test("case generator builds 15 cases for each of the three entry modes", () => {
     suite.every(
       (scenario) =>
         scenario.expectedModules.length &&
-        Array.isArray(scenario.syndromeKeys),
+        Array.isArray(scenario.syndromeKeys) &&
+        scenario.patient.synthetic === true &&
+        scenario.patient.name.startsWith("Paciente sintético ") &&
+        Number.isInteger(scenario.patient.ageYears) &&
+        scenario.patient.ageYears >= 0 &&
+        scenario.patient.ageYears <= 130,
     ),
   );
+  assert.deepEqual(cases.buildSuite(15, "all"), cases.buildSuite(15, "all"));
 });
 
 test("direct and investigation batteries use valid catalog syndromes", () => {
