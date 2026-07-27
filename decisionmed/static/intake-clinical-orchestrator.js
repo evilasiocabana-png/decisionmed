@@ -25,7 +25,7 @@
   ) {
     "use strict";
 
-    const VERSION = "1.0.0";
+    const VERSION = "1.1.0";
     if (!syndromicEngine || !diagnosticEngine || !therapeuticEngine || !confidenceGate || !llmStandby) {
       throw new Error("DecisionMed clinical motor dependency is unavailable");
     }
@@ -45,6 +45,9 @@
         reasoning: input.reasoning,
         syndromic,
         diagnostic,
+        reassessments: input.reassessments,
+        professionalImpression: input.professionalImpression,
+        knownSourceIds: input.knownSourceIds,
         professionalConfirmation: input.professionalConfirmation,
         clinicalExecutionAllowed: input.clinicalExecutionAllowed,
       });

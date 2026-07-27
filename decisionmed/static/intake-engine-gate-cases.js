@@ -93,6 +93,7 @@
       physicalExam: ["Exame físico dirigido sintético"],
       tests: [{ name: "Exame complementar sintético", question: "Este resultado diferencia a hipótese dominante?", when: "Quando indicado na fixture.", sourceIds: ["fixture.source.guideline"] }],
       safetyConduct: ["Reavaliar estabilidade clínica"],
+      symptomaticCare: ["Alívio sintomático sintético explicitamente separado"],
       initialTreatment: ["Medida inicial sintética para revisão"],
       definitiveTreatment: ["Tratamento definitivo sintético para revisão"],
       postExamReassessment: ["Reavaliar a hipótese após o resultado"],

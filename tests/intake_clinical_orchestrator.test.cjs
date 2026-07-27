@@ -101,6 +101,15 @@ test("syndromic treatment is never copied into diagnosis-specific plans", () => 
         (item) =>
           item.scope === "syndromic_shared_support" &&
           item.diagnosisSpecificTreatmentIncluded === false &&
+          item.preExamSymptomaticCareScope ===
+            "explicit_symptom_relief_for_professional_review" &&
+          item.preExamSymptomaticCareExplicitlySeparated === true &&
+          item.preExamSymptomaticCare.length > 0 &&
+          item.preExamInitialCareScope ===
+            "syndromic_initial_care_not_assumed_to_be_symptomatic" &&
+          item.preExamInitialCare.length > 0 &&
+          item.automaticTreatmentAllowed === false &&
+          item.automaticPrescriptionAllowed === false &&
           item.safety.length > 0 &&
           item.physicalExam.length > 0 &&
           item.tests.length > 0,
@@ -123,12 +132,19 @@ test("syndromic treatment is never copied into diagnosis-specific plans", () => 
       assert.deepEqual(item.initialTreatment, []);
       assert.deepEqual(item.definitiveTreatment, []);
       assert.deepEqual(item.treatmentSourceIds, []);
+      assert.equal(item.postExamTreatment.status, "unbound");
+      assert.deepEqual(item.postExamTreatment.initial, []);
+      assert.deepEqual(item.postExamTreatment.definitive, []);
+      assert.equal(item.postExamTreatment.requiresPostExamReassessment, true);
+      assert.equal(item.postExamTreatment.requiresProfessionalConfirmation, true);
       assert.deepEqual(item.sourceIds, []);
       assert.ok(item.syndromicSupportSourceIds.length > 0);
       assert.equal(item.status, "treatment_unbound_review_only");
     }
     assert.doesNotMatch(
-      JSON.stringify(result.therapeutic),
+      JSON.stringify(result.therapeutic.syndromicSupportPlans.map(
+        (item) => item.preExamSymptomaticCare,
+      )),
       /Medida inicial sintética|Tratamento definitivo sintético/,
     );
     assert.equal(result.therapeutic.automaticTreatmentAllowed, false);
@@ -164,6 +180,17 @@ test("diagnosis-specific treatment requires an explicit fully validated binding"
     reasoning: highFixtures[0].input.reasoning,
     syndromic: baseline.syndromic,
     diagnostic: diagnosticWithBinding,
+    reassessments: [{
+      hypothesis: candidate.name,
+      impact: "Aumenta compatibilidade",
+      examName: "Exame complementar sintético",
+      finding: "Achado sintético compatível",
+    }],
+    professionalImpression: {
+      hypothesis: candidate.name,
+      status: "Diagnóstico provável",
+    },
+    knownSourceIds: ["source.test.bound-treatment"],
     professionalConfirmation: true,
     clinicalExecutionAllowed: true,
   });
@@ -181,8 +208,73 @@ test("diagnosis-specific treatment requires an explicit fully validated binding"
   assert.deepEqual(boundPlan.treatmentSourceIds, [
     "source.test.bound-treatment",
   ]);
+  assert.equal(
+    boundPlan.postExamTreatment.status,
+    "ready_for_professional_review",
+  );
+  assert.deepEqual(boundPlan.postExamTreatment.initial, [
+    "Tratamento inicial explicitamente vinculado.",
+  ]);
+  assert.deepEqual(boundPlan.postExamTreatment.definitive, [
+    "Tratamento definitivo explicitamente vinculado.",
+  ]);
+  assert.deepEqual(boundPlan.postExamTreatment.sourceIds, [
+    "source.test.bound-treatment",
+  ]);
+  assert.equal(boundPlan.postExamTreatment.requiresPostExamReassessment, true);
+  assert.equal(boundPlan.postExamTreatment.requiresProfessionalConfirmation, true);
+  assert.equal(boundPlan.postExamTreatment.relevantReassessmentCount, 1);
+  assert.equal(boundPlan.postExamTreatment.reassessmentSupportsTreatment, true);
+  assert.equal(boundPlan.postExamTreatment.professionalImpressionMatches, true);
   assert.equal(bound.automaticTreatmentAllowed, false);
   assert.equal(bound.automaticPrescriptionAllowed, false);
+
+  const awaitingReassessment = therapeuticEngine.analyze({
+    reasoning: highFixtures[0].input.reasoning,
+    syndromic: baseline.syndromic,
+    diagnostic: diagnosticWithBinding,
+    reassessments: [],
+    professionalImpression: {
+      hypothesis: candidate.name,
+      status: "Diagnóstico provável",
+    },
+    knownSourceIds: ["source.test.bound-treatment"],
+    professionalConfirmation: true,
+    clinicalExecutionAllowed: true,
+  });
+  const awaitingPlan = awaitingReassessment.plan.find(
+    (item) => item.hypothesisKey === candidate.key,
+  );
+  assert.equal(
+    awaitingPlan.postExamTreatment.status,
+    "awaiting_post_exam_reassessment",
+  );
+  assert.deepEqual(awaitingPlan.postExamTreatment.initial, []);
+  assert.deepEqual(awaitingPlan.postExamTreatment.definitive, []);
+
+  const unknownSource = therapeuticEngine.analyze({
+    reasoning: highFixtures[0].input.reasoning,
+    syndromic: baseline.syndromic,
+    diagnostic: diagnosticWithBinding,
+    reassessments: [{
+      hypothesis: candidate.name,
+      impact: "Aumenta compatibilidade",
+      examName: "Exame complementar sintético",
+      finding: "Achado sintético compatível",
+    }],
+    professionalImpression: {
+      hypothesis: candidate.name,
+      status: "Diagnóstico provável",
+    },
+    knownSourceIds: [],
+    professionalConfirmation: true,
+    clinicalExecutionAllowed: true,
+  });
+  assert.equal(
+    unknownSource.plan.find((item) => item.hypothesisKey === candidate.key)
+      .postExamTreatment.status,
+    "unbound",
+  );
 
   const unvalidated = therapeuticEngine.analyze({
     reasoning: highFixtures[0].input.reasoning,
@@ -197,6 +289,17 @@ test("diagnosis-specific treatment requires an explicit fully validated binding"
         ...baseline.diagnostic.candidates.slice(1),
       ],
     },
+    reassessments: [{
+      hypothesis: candidate.name,
+      impact: "Aumenta compatibilidade",
+      examName: "Exame complementar sintético",
+      finding: "Achado sintético compatível",
+    }],
+    professionalImpression: {
+      hypothesis: candidate.name,
+      status: "Diagnóstico provável",
+    },
+    knownSourceIds: ["source.test.bound-treatment"],
     professionalConfirmation: true,
     clinicalExecutionAllowed: true,
   });
@@ -211,6 +314,9 @@ test("diagnosis-specific treatment requires an explicit fully validated binding"
   assert.deepEqual(rejectedPlan.initialTreatment, []);
   assert.deepEqual(rejectedPlan.definitiveTreatment, []);
   assert.deepEqual(rejectedPlan.treatmentSourceIds, []);
+  assert.equal(rejectedPlan.postExamTreatment.status, "unbound");
+  assert.deepEqual(rejectedPlan.postExamTreatment.initial, []);
+  assert.deepEqual(rejectedPlan.postExamTreatment.definitive, []);
 });
 
 test("tampering with canonical fixture facts invalidates the deterministic gate", () => {
@@ -327,8 +433,8 @@ test("orchestrator audit reconstructs versions, order, decisions, and LLM state"
     ],
   );
   assert.ok(result.audit.every((item) => item.version));
-  assert.equal(result.therapeutic.version, "1.1.0");
-  assert.equal(result.audit[2].version, "1.1.0");
+  assert.equal(result.therapeutic.version, "1.3.0");
+  assert.equal(result.audit[2].version, "1.3.0");
   assert.equal(result.audit[3].confidenceProvenance.validationSetId, "fixture.engine-gate.v1");
   assert.equal(result.audit[4].invoked, false);
   assert.equal(result.audit[4].transmitted, false);
