@@ -41,6 +41,9 @@ class DecisionMedRequestHandler(SimpleHTTPRequestHandler):
         if parsed.path == "/api/readiness":
             self._send_json(self._app_service.get_readiness())
             return
+        if parsed.path == "/api/evidence-sources":
+            self._send_json(self._app_service.evidence_source_catalog())
+            return
         if parsed.path == "/api/clinical-modules":
             self._send_json(self._app_service.clinical_module_catalog())
             return

@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
+from ipaddress import ip_address
 from typing import Any
 from urllib.parse import urlsplit
 
@@ -18,6 +19,62 @@ from .workflows import (
     WorkflowRegistry,
     build_default_workflow_registry,
 )
+
+
+_EVIDENCE_ORGANIZATIONS: dict[str, tuple[str, str]] = {
+    "aad": ("AAD", "American Academy of Dermatology"),
+    "aan": ("AAN", "American Academy of Neurology"),
+    "aaos": ("AAOS", "American Academy of Orthopaedic Surgeons"),
+    "aap": ("AAP", "American Academy of Pediatrics"),
+    "aasm": ("AASM", "American Academy of Sleep Medicine"),
+    "acc": (
+        "ACC/AHA",
+        "American College of Cardiology / American Heart Association",
+    ),
+    "acc-aha": (
+        "AHA/ACC",
+        "American Heart Association / American College of Cardiology",
+    ),
+    "acep": ("ACEP", "American College of Emergency Physicians"),
+    "acog": (
+        "ACOG",
+        "American College of Obstetricians and Gynecologists",
+    ),
+    "acr": ("ACR", "American College of Rheumatology"),
+    "ada": ("ADA", "American Diabetes Association"),
+    "aha": ("AHA", "American Heart Association"),
+    "aha-asa": (
+        "AHA/ASA",
+        "American Heart Association / American Stroke Association",
+    ),
+    "ash": ("ASH", "American Society of Hematology"),
+    "ats": ("ATS", "American Thoracic Society"),
+    "ats-idsa": (
+        "ATS/IDSA",
+        "American Thoracic Society / Infectious Diseases Society of America",
+    ),
+    "bts": ("BTS", "British Thoracic Society"),
+    "ers": ("ERS", "European Respiratory Society"),
+    "esc": ("ESC", "European Society of Cardiology"),
+    "gina": ("GINA", "Global Initiative for Asthma"),
+    "gold": (
+        "GOLD",
+        "Global Initiative for Chronic Obstructive Lung Disease",
+    ),
+    "kdigo": ("KDIGO", "Kidney Disease: Improving Global Outcomes"),
+    "ms-conitec": (
+        "MS/CONITEC",
+        "Ministério da Saúde / Comissão Nacional de Incorporação de "
+        "Tecnologias no Sistema Único de Saúde",
+    ),
+    "ncs": ("NCS", "Neurocritical Care Society"),
+    "nice": (
+        "NICE",
+        "National Institute for Health and Care Excellence",
+    ),
+    "sbc": ("SBC", "Sociedade Brasileira de Cardiologia"),
+    "who": ("WHO", "World Health Organization"),
+}
 
 
 @dataclass(frozen=True, slots=True)
@@ -492,6 +549,48 @@ class DecisionMedAppService:
             ],
         }
 
+    def evidence_source_catalog(self) -> dict[str, Any]:
+        """Expose safe, read-only source metadata for citation legends.
+
+        This catalog describes source bindings. It deliberately preserves the
+        governed status of each source and does not make any source or clinical
+        content runtime eligible.
+        """
+
+        if self._catalogs is None:
+            return {
+                "loaded": False,
+                "schema_version": None,
+                "release_version": None,
+                "count": 0,
+                "clinical_execution_allowed": False,
+                "items": [],
+            }
+
+        evidence = getattr(self._catalogs, "evidence", None)
+        sources = evidence.all() if evidence is not None else ()
+        citation_labels = _citation_labels(sources)
+        bindings = _evidence_bindings(self._catalogs, sources)
+        return {
+            "loaded": True,
+            "schema_version": getattr(
+                self._catalogs.manifest, "schema_version", None
+            ),
+            "release_version": getattr(
+                self._catalogs.manifest, "release_version", None
+            ),
+            "count": len(sources),
+            "clinical_execution_allowed": False,
+            "items": [
+                _evidence_source_to_public_dict(
+                    source,
+                    citation_labels[source.source_id],
+                    bindings[source.source_id],
+                )
+                for source in sources
+            ],
+        }
+
     def clinical_module(self, module_id_or_legacy_key: str) -> dict[str, Any]:
         clinical_modules = (
             getattr(self._catalogs, "clinical_modules", None)
@@ -843,6 +942,186 @@ def _clinical_rule_condition_to_dict(condition: Any) -> dict[str, Any]:
 
 def _public_locator(locator: str) -> str | None:
     parsed = urlsplit(locator)
-    if parsed.scheme in {"http", "https"} and parsed.netloc:
-        return locator
-    return None
+    if parsed.scheme.lower() not in {"http", "https"} or not parsed.netloc:
+        return None
+    if parsed.username is not None or parsed.password is not None:
+        return None
+    hostname = parsed.hostname
+    if hostname is None:
+        return None
+    normalized_hostname = hostname.rstrip(".").lower()
+    if (
+        normalized_hostname in {"localhost", "localhost.localdomain"}
+        or normalized_hostname.endswith(".localhost")
+        or normalized_hostname.endswith(".local")
+    ):
+        return None
+    try:
+        address = ip_address(normalized_hostname)
+    except ValueError:
+        pass
+    else:
+        if (
+            not address.is_global
+            or address.is_loopback
+            or address.is_private
+            or address.is_link_local
+        ):
+            return None
+    return locator
+
+
+def _citation_labels(sources: tuple[Any, ...]) -> dict[str, str]:
+    base_labels: dict[str, list[Any]] = {}
+    for source in sources:
+        abbreviation, _ = _evidence_organization(source.source_id)
+        base_label = f"{abbreviation} {source.publication_year}"
+        base_labels.setdefault(base_label, []).append(source)
+
+    labels: dict[str, str] = {}
+    for base_label, grouped_sources in base_labels.items():
+        ordered = sorted(grouped_sources, key=lambda item: item.source_id)
+        if len(ordered) == 1:
+            labels[ordered[0].source_id] = base_label
+            continue
+        for index, source in enumerate(ordered):
+            labels[source.source_id] = (
+                f"{base_label}{_alphabetic_suffix(index)}"
+            )
+    return labels
+
+
+def _alphabetic_suffix(index: int) -> str:
+    """Return deterministic bibliography suffixes: a..z, aa..az, ..."""
+
+    result = ""
+    value = index
+    while True:
+        value, remainder = divmod(value, 26)
+        result = chr(ord("a") + remainder) + result
+        if value == 0:
+            return result
+        value -= 1
+
+
+def _evidence_organization(source_id: str) -> tuple[str, str | None]:
+    prefix = source_id.partition(".")[0]
+    configured = _EVIDENCE_ORGANIZATIONS.get(prefix)
+    if configured is not None:
+        return configured
+    abbreviation = prefix.upper().replace("-", "/")
+    return abbreviation, None
+
+
+def _evidence_source_to_public_dict(
+    source: Any,
+    citation_label: str,
+    binding_scope: dict[str, Any],
+) -> dict[str, Any]:
+    _, publisher = _evidence_organization(source.source_id)
+    return {
+        "source_id": source.source_id,
+        "citation_label": citation_label,
+        "title": source.title,
+        "publisher": publisher,
+        "year": source.publication_year,
+        "publication_year": source.publication_year,
+        "version": source.version,
+        "status": source.status.value,
+        "locator": _public_locator(source.locator),
+        "evidence_type": source.evidence_type.value,
+        "evidence_quality": source.evidence_quality.value,
+        "recommendation_strength": source.recommendation_strength.value,
+        "specialties": list(source.specialties),
+        "reviewed_on": source.reviewed_on.isoformat(),
+        "review_due_on": (
+            source.review_due_on.isoformat()
+            if source.review_due_on is not None
+            else None
+        ),
+        "review_state": source.review_state,
+        "known_conflicts": source.known_conflicts,
+        "clinical_applicability": source.clinical_applicability,
+        "binding_scope": binding_scope,
+        "runtime_eligible": False,
+    }
+
+
+def _evidence_bindings(
+    catalogs: Any, sources: tuple[Any, ...]
+) -> dict[str, dict[str, Any]]:
+    source_ids = {source.source_id for source in sources}
+    module_ids: dict[str, set[str]] = {source_id: set() for source_id in source_ids}
+    content_module_ids: dict[str, set[str]] = {
+        source_id: set() for source_id in source_ids
+    }
+    rule_ids: dict[str, set[str]] = {source_id: set() for source_id in source_ids}
+    knowledge_counts = {source_id: 0 for source_id in source_ids}
+    safety_counts = {source_id: 0 for source_id in source_ids}
+
+    for module in _optional_registry_items(catalogs, "clinical_modules"):
+        _bind_identifier(
+            module_ids, getattr(module, "source_ids", ()), module.module_id
+        )
+
+    for content in _optional_registry_items(catalogs, "clinical_content"):
+        content_source_ids = set(getattr(content, "source_ids", ()))
+        for discriminator in getattr(content, "discriminators", ()):
+            content_source_ids.update(getattr(discriminator, "source_ids", ()))
+        for exam in getattr(content, "complementary_exams", ()):
+            content_source_ids.update(getattr(exam, "source_ids", ()))
+        _bind_identifier(
+            content_module_ids, content_source_ids, content.module_id
+        )
+
+    for rule in _optional_registry_items(catalogs, "clinical_rules"):
+        _bind_identifier(rule_ids, getattr(rule, "source_ids", ()), rule.rule_id)
+
+    for knowledge in _optional_registry_items(catalogs, "knowledge"):
+        for source_id in set(
+            getattr(knowledge, "evidence_source_ids", ())
+        ).intersection(source_ids):
+            knowledge_counts[source_id] += 1
+
+    for specification in _optional_registry_items(catalogs, "safety_checks"):
+        for source_id in set(
+            getattr(specification, "evidence_source_ids", ())
+        ).intersection(source_ids):
+            safety_counts[source_id] += 1
+
+    return {
+        source_id: {
+            "specialties": list(
+                next(
+                    source.specialties
+                    for source in sources
+                    if source.source_id == source_id
+                )
+            ),
+            "clinical_module_ids": sorted(module_ids[source_id]),
+            "clinical_content_module_ids": sorted(
+                content_module_ids[source_id]
+            ),
+            "clinical_rule_ids": sorted(rule_ids[source_id]),
+            "knowledge_object_count": knowledge_counts[source_id],
+            "safety_check_count": safety_counts[source_id],
+        }
+        for source_id in sorted(source_ids)
+    }
+
+
+def _optional_registry_items(catalogs: Any, attribute: str) -> tuple[Any, ...]:
+    registry = getattr(catalogs, attribute, None)
+    if registry is None:
+        return ()
+    items = registry.all()
+    return tuple(items)
+
+
+def _bind_identifier(
+    target: dict[str, set[str]],
+    bound_source_ids: Any,
+    identifier: str,
+) -> None:
+    for source_id in set(bound_source_ids).intersection(target):
+        target[source_id].add(identifier)

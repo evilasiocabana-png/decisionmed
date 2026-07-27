@@ -479,11 +479,16 @@ class DecisionMedWebTest(unittest.TestCase):
         self.assertIn(b"crypto.subtle.digest", body)
         self.assertIn(b"answer_confirmed", body)
         self.assertIn(b"modules_confirmed", body)
-        self.assertIn("Gerador local de casos".encode(), body)
+        self.assertIn("Laboratório de simulação".encode(), body)
         self.assertIn(b"case-mode", body)
         self.assertIn(b"case-count", body)
         self.assertIn(b"buildSuite", body)
-        self.assertIn(b"Gerar bateria 1/45", body)
+        self.assertIn("Iniciar simulação 1/45".encode(), body)
+        self.assertIn(b"/intake-sources.js", body)
+        self.assertIn(b"/api/evidence-sources", body)
+        self.assertIn(b"source-legend", body)
+        self.assertIn("FONTE ESPECÍFICA PENDENTE".encode(), body)
+        self.assertIn("CASO SINTÉTICO — NÃO É PACIENTE REAL".encode(), body)
         self.assertIn(b"next-test-case", body)
         self.assertIn(b"safety-panel", body)
         self.assertIn(b"syndrome-options", body)
@@ -562,6 +567,16 @@ class DecisionMedWebTest(unittest.TestCase):
         self.assertIn(b"buildCases", body)
         self.assertIn(b"cardiac-equivalent", body)
         self.assertIn(b"expectedModules", body)
+        self.assertNotIn(b"fetch(", body)
+
+    def test_source_presenter_is_served_locally(self) -> None:
+        status, headers, body = self.request("/intake-sources.js")
+
+        self.assertEqual(200, status)
+        self.assertIn("javascript", headers["content-type"])
+        self.assertIn(b"citationLabel", body)
+        self.assertIn(b"legendEntries", body)
+        self.assertIn(b"FONTE ESPEC", body)
         self.assertNotIn(b"fetch(", body)
 
     def test_syndromic_reasoning_engine_is_served_locally(self) -> None:

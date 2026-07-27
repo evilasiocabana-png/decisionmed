@@ -6,7 +6,7 @@
   <title>Novo caso | DecisionMEd</title>
   <style>
     :root{font-family:Inter,ui-sans-serif,system-ui,sans-serif;color:#192a40;background:#f4f7fb}*{box-sizing:border-box}body{margin:0;line-height:1.5}main{max-width:900px;margin:auto;padding:28px 20px 64px}.top{display:flex;justify-content:space-between;gap:16px;align-items:center}.top a{color:#08717d;text-decoration:none;font-weight:800}.tag{padding:6px 10px;border-radius:999px;background:#e3f4f3;color:#24616a;font-size:.76rem;font-weight:800;text-transform:uppercase;letter-spacing:.05em}.eyebrow{margin:34px 0 7px;color:#08717d;font-weight:850;text-transform:uppercase;letter-spacing:.1em;font-size:.78rem}h1{font-size:clamp(2rem,5vw,3.2rem);letter-spacing:-.05em;line-height:1.03;margin:0}p{color:#607287}.notice{background:#fff7df;border:1px solid #ecd489;border-left:4px solid #c98b16;border-radius:14px;padding:14px 17px;margin:22px 0;color:#624c13}.panel{background:#fff;border:1px solid #dce5ed;border-radius:20px;padding:clamp(20px,4vw,32px);box-shadow:0 18px 44px #1e365110;margin-top:20px}.panel h2{margin-top:0}.field{display:grid;gap:8px;margin:18px 0}.field label,.question{font-weight:780;color:#26394f}.field input,.field textarea,.field select{font:inherit;width:100%;border:1px solid #ccd9e4;border-radius:11px;padding:11px 12px;background:white}.field textarea{min-height:100px;resize:vertical}.hint{font-size:.85rem;margin:0}.validation{min-height:1.35rem;margin:10px 0 0;color:#9a4e13;font-size:.86rem}.module-list{display:grid;gap:10px;margin:18px 0}.module{border:1px solid #d7e2ea;border-radius:13px;padding:13px;background:#fbfdff;display:flex;gap:11px;align-items:flex-start}.module.priority{border-color:#d28a2e;background:#fff8e8;box-shadow:inset 4px 0 #d28a2e}.module input{margin-top:4px}.module small{color:#607287}.progress{display:flex;gap:6px;margin-bottom:23px}.progress i{height:7px;flex:1;background:#dce7ed;border-radius:99px}.progress i.active{background:#08717d}.answer{margin-top:18px;border:1px solid #d7e2ea;border-radius:13px;padding:14px;background:#fbfdff}.answer textarea,.answer select{font:inherit;width:100%;border:1px solid #ccd9e4;border-radius:9px;padding:9px;margin-top:8px}.choices{display:flex;flex-wrap:wrap;gap:8px}.choice{border:1px solid #b9cbd8;border-radius:999px;padding:9px 12px;background:white;color:#26394f;font:inherit;cursor:pointer}.choice.selected{background:#08717d;border-color:#08717d;color:white}.choice.scale{min-width:40px;padding:8px}.detail{display:grid;gap:6px;margin-top:14px}.helper{border-top:1px solid #d7e2ea;margin-top:13px;padding-top:13px}.helper .choice{border-radius:10px;text-align:left}.actions{display:flex;justify-content:space-between;gap:12px;margin-top:25px}.button{border:0;border-radius:11px;background:#08717d;color:white;padding:11px 16px;font:inherit;font-weight:800;cursor:pointer;text-decoration:none}.button.secondary{background:#e7eef3;color:#2b435b}.button:disabled{opacity:.45;cursor:not-allowed}.hidden{display:none}.summary{display:grid;gap:11px}.summary article{border:1px solid #d7e2ea;border-radius:12px;padding:13px}.summary h3{margin:0 0 6px;font-size:.94rem}.summary p{margin:0;font-size:.9rem}.file{font-size:.86rem;color:#35616d}.case-generator{border-top:1px solid #d7e2ea;margin-top:24px;padding-top:18px}.case-controls{display:grid;grid-template-columns:minmax(160px,1fr) minmax(130px,180px) minmax(190px,1fr);gap:12px;align-items:end}.case-controls .field{margin:0}.audit{border:1px solid #c8d9e4;border-radius:14px;padding:13px 16px;margin:20px 0;background:#f8fbfd}.audit summary{cursor:pointer;font-weight:800;color:#26394f}.audit textarea{min-height:360px;font-family:ui-monospace,SFMono-Regular,Consolas,monospace;font-size:.8rem}.fingerprint{overflow-wrap:anywhere;color:#35616d}.reasoning-status{border:1px solid #c8d9e4;border-left:5px solid #08717d;border-radius:13px;padding:13px 15px;margin:14px 0;background:#f7fbfc}.reasoning-status.priority{border-left-color:#c98b16;background:#fff9e8}.reasoning-status.immediate{border-left-color:#b42318;background:#fff1f0}.reasoning-status strong{display:block}.syndrome-list,.reasoning-output{display:grid;gap:13px}.syndrome-card{border:1px solid #d7e2ea;border-radius:14px;padding:15px;background:#fbfdff}.syndrome-card>label{display:flex;gap:10px;align-items:flex-start}.syndrome-card h3{margin:0;font-size:1rem}.syndrome-card p{margin:6px 0}.reasoning-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}.reasoning-grid section{border:1px solid #e0e8ef;border-radius:10px;padding:10px}.reasoning-grid h4{margin:0 0 6px;font-size:.85rem}.compact-list{margin:6px 0;padding-left:19px;color:#52667b;font-size:.86rem}.compact-list li+li{margin-top:4px}.reasoning-section{border-top:1px solid #d7e2ea;margin-top:22px;padding-top:18px}@media(max-width:700px){.reasoning-grid{grid-template-columns:1fr}}@media(max-width:650px){main{padding:20px 16px}.actions{flex-direction:column-reverse}.button{width:100%}.case-controls{grid-template-columns:1fr}}
-    .attachment-actions{display:flex;flex-wrap:wrap;gap:10px;margin:10px 0}.attachment-actions .button{display:inline-block}.exam-card-head{display:flex;align-items:center;justify-content:space-between;gap:14px;margin-bottom:6px}.exam-card-head h3{margin:0}.exam-card-head .button{flex:0 0 auto;padding:8px 12px}.exam-attached{color:#08717d;font-weight:750}.exam-preview{display:block;max-width:100%;max-height:320px;object-fit:contain;border:1px solid #d7e2ea;border-radius:12px;margin-top:10px}.conduct-plan{display:grid;gap:10px}.conduct-plan article{border-left:4px solid #08717d}.conduct-plan article.immediate{border-left-color:#b42318;background:#fff1f0}.conduct-plan article.priority{border-left-color:#c98b16;background:#fff9e8}.patient-context{border:1px solid #d7e2ea;border-radius:14px;padding:16px;margin:20px 0;background:#fbfdff}.patient-context legend{padding:0 8px;font-weight:850;color:#26394f}.patient-grid{display:grid;grid-template-columns:minmax(0,2fr) minmax(130px,1fr);gap:14px}.patient-grid .field{margin:0}.field input:focus-visible,.field textarea:focus-visible,.field select:focus-visible,.choice:focus-visible,.button:focus-visible{outline:3px solid #5bc0c8;outline-offset:2px}@media(max-width:650px){.patient-grid{grid-template-columns:1fr}}@media(max-width:560px){.exam-card-head{align-items:flex-start;flex-direction:column}.exam-card-head .button{width:100%}}
+    .attachment-actions{display:flex;flex-wrap:wrap;gap:10px;margin:10px 0}.attachment-actions .button{display:inline-block}.exam-card-head{display:flex;align-items:center;justify-content:space-between;gap:14px;margin-bottom:6px}.exam-card-head h3{margin:0}.exam-card-head .button{flex:0 0 auto;padding:8px 12px}.exam-attached{color:#08717d;font-weight:750}.exam-preview{display:block;max-width:100%;max-height:320px;object-fit:contain;border:1px solid #d7e2ea;border-radius:12px;margin-top:10px}.conduct-plan{display:grid;gap:10px}.conduct-plan article{border-left:4px solid #08717d}.conduct-plan article.immediate{border-left-color:#b42318;background:#fff1f0}.conduct-plan article.priority{border-left-color:#c98b16;background:#fff9e8}.patient-context{border:1px solid #d7e2ea;border-radius:14px;padding:16px;margin:20px 0;background:#fbfdff}.patient-context legend{padding:0 8px;font-weight:850;color:#26394f}.patient-grid{display:grid;grid-template-columns:minmax(0,2fr) minmax(130px,1fr);gap:14px}.patient-grid .field{margin:0}.field input:focus-visible,.field textarea:focus-visible,.field select:focus-visible,.choice:focus-visible,.button:focus-visible,.source-ref:focus-visible{outline:3px solid #5bc0c8;outline-offset:2px}.source-ref{display:inline-flex;white-space:normal;margin-left:5px;padding:2px 7px;border:1px solid #b9cbd8;border-radius:999px;background:#eef7f8;color:#0b6670;text-decoration:none;font-size:.72rem;font-weight:850;line-height:1.35;vertical-align:baseline}.source-ref.pending{border-color:#e1c36f;background:#fff8df;color:#785a12}.source-ref.case{border-color:#c8d9e4;background:#edf2f7;color:#475b70}.source-legend{margin:12px 0 0;border-top:1px dashed #c8d9e4;padding-top:9px}.source-legend summary{cursor:pointer;font-size:.82rem;font-weight:800;color:#365268}.source-legend-note{font-size:.78rem;color:#607287;margin:7px 0}.source-legend ol{margin:7px 0 0;padding-left:22px}.source-legend li{font-size:.78rem;color:#52667b;margin:7px 0}.source-legend a{color:#08717d}.source-scope{display:block;color:#7a5b15}.simulation-lab{border:2px dashed #c98b16;border-radius:14px;background:#fffaf0;padding:16px;margin-top:28px}.simulation-banner{position:sticky;top:8px;z-index:20;border:2px solid #b42318;border-radius:13px;background:#fff1f0;color:#7a1b16;padding:11px 14px;margin:14px 0;font-weight:900;box-shadow:0 8px 24px #7a1b1620}.simulation-card{border-color:#d6952c!important;background:#fffaf0!important}.simulation-label{color:#8b5c0c;font-weight:850}.status-copy{font-weight:750;color:#365268}@media(max-width:650px){.patient-grid{grid-template-columns:1fr}.source-ref{margin:3px 3px 3px 0}}@media(max-width:560px){.exam-card-head{align-items:flex-start;flex-direction:column}.exam-card-head .button{width:100%}}
   </style>
 </head>
 <body>
@@ -15,7 +15,8 @@
     <p class="eyebrow">Novo caso</p>
     <h1>Comece pela queixa.</h1>
     <p>Primeiro, faça a triagem de segurança. Depois, percorra o decálogo do sintoma por cliques e confirme os módulos adequados ao caso.</p>
-    <div class="notice"><strong>Protótipo de referência.</strong> Não diagnostica nem prescreve. Nome, idade e respostas permanecem somente nesta aba; não são enviados nem salvos. Prefira iniciais ou um código e não informe CPF, telefone, endereço ou número de prontuário.</div>
+    <div class="notice"><strong>Apoio clínico em revisão.</strong> Organiza o raciocínio e apresenta referências vinculadas, mas não diagnostica nem prescreve automaticamente. Nome, idade e respostas permanecem somente nesta aba; não são enviados nem salvos. Prefira iniciais ou um código e não informe CPF, telefone, endereço ou número de prontuário.</div>
+    <div class="simulation-banner hidden" id="simulation-banner" role="status" aria-live="polite"></div>
 
     <section class="panel" id="start-panel">
       <h2>1. Escolha o caminho</h2>
@@ -63,18 +64,18 @@
         <p class="hint">O motor reunirá as perguntas discriminadoras, o exame físico e os exames complementares que ajudam a aumentar ou reduzir a compatibilidade de cada hipótese.</p>
         <div class="actions"><span></span><button class="button" id="begin-investigation" disabled>Comparar hipóteses</button></div>
       </div>
-      <section class="case-generator" aria-labelledby="case-generator-title">
-        <h3 id="case-generator-title">Gerador local de casos para testar o motor</h3>
-        <p class="hint">Segue o padrão sequencial do PsychRx. Os casos são sintéticos, determinísticos e não usam IA.</p>
+      <section class="case-generator simulation-lab" aria-labelledby="case-generator-title">
+        <h3 id="case-generator-title">Laboratório de simulação — não usar para decisão clínica</h3>
+        <p class="hint"><strong>Ambiente de testes.</strong> Os casos são inteiramente sintéticos e servem para verificar roteamento, motores, fontes e auditoria. Nenhuma saída deve ser usada para diagnóstico, tratamento ou prescrição. Não usa IA.</p>
         <div class="case-controls">
           <div class="field"><label for="case-mode">Bateria</label><select id="case-mode"><option value="all">Todos os modos</option><option value="assisted">Assistido</option><option value="direct">Direto</option><option value="investigation">Investigação</option></select></div>
           <div class="field"><label for="case-count">Quantidade por modo</label><input id="case-count" type="number" min="1" max="100" value="15"></div>
-          <button class="button secondary" id="generate-case" type="button">Gerar bateria 1/45</button>
+          <button class="button secondary" id="generate-case" type="button">Iniciar simulação 1/45</button>
         </div>
         <p class="hint" id="case-sequence-label">Pronto para percorrer 45 casos: 15 Assistidos, 15 Diretos e 15 de Investigação.</p>
         <div class="reasoning-section" aria-labelledby="engine-gate-generator-title">
-          <h4 id="engine-gate-generator-title">Bateria do gate de confiança</h4>
-          <p class="hint">Fixtures isoladas do catálogo real: 15 calibradas e validadas somente para simulação, mais 15 complexas. Nenhuma permite prescrição ou chama LLM.</p>
+          <h4 id="engine-gate-generator-title">Bateria técnica do gate de confiança</h4>
+          <p class="hint">Fixtures isoladas do catálogo real: 15 calibradas somente para testar o contrato e 15 complexas. Todas são simulações; nenhuma valida o catálogo, permite prescrição ou chama LLM.</p>
           <div class="case-controls">
             <div class="field"><label for="engine-gate-kind">Rota</label><select id="engine-gate-kind"><option value="all">Ambas as rotas</option><option value="high">Alta confiança</option><option value="complex">Casos complexos</option></select></div>
             <div class="field"><label for="engine-gate-count">Quantidade por rota</label><input id="engine-gate-count" type="number" min="1" max="15" value="15"></div>
@@ -89,7 +90,7 @@
     <section class="panel hidden" id="question-panel">
       <div class="progress" id="progress"></div>
       <p class="eyebrow" id="stage"></p><h2 class="question" id="question"></h2><p class="hint" id="counter"></p>
-      <div class="reasoning-status"><strong>Por que estou perguntando?</strong><span id="question-rationale"></span><span id="question-sources" class="hint"></span></div>
+      <div class="reasoning-status"><strong>Por que estou perguntando?</strong><span id="question-rationale"></span><div id="question-sources" class="hint"></div></div>
       <div class="answer" id="answer"></div>
       <p class="validation" id="answer-error" role="status"></p>
       <div class="actions"><button class="button secondary" id="previous">Anterior</button><button class="button" id="next">Próxima</button></div>
@@ -210,11 +211,12 @@
   <script src="/intake-rule-engine.js?v=0.2.0"></script>
   <script src="/intake-routing-rules.js?v=0.1.0"></script>
   <script src="/intake-routing.js"></script>
-  <script src="/intake-cases.js"></script>
+  <script src="/intake-cases.js?v=0.4.0"></script>
+  <script src="/intake-sources.js?v=1.0.0"></script>
   <script src="/intake-reasoning.js?v=0.6.0"></script>
   <script src="/intake-syndromic-engine.js?v=1.0.0"></script>
   <script src="/intake-diagnostic-engine.js?v=1.0.0"></script>
-  <script src="/intake-therapeutic-engine.js?v=1.0.0"></script>
+  <script src="/intake-therapeutic-engine.js?v=1.1.0"></script>
   <script src="/intake-confidence-gate.js?v=1.0.0"></script>
   <script src="/intake-llm-standby.js?v=1.0.0"></script>
   <script src="/intake-clinical-orchestrator.js?v=1.0.0"></script>
@@ -310,11 +312,67 @@
     let selectedExamInput='',examPreviewUrl='',selectedSuggestedExam=null,resultAttachments=new Map();
     let flowMode='',directSyndrome='',investigationSyndromes=[];
     let currentPatient=null,patientSynthetic=false;
+    let legacyModuleSources=new Map(),sourceCatalogReady=false;
     const complaintChoices=['Dor','Falta de ar','Tosse','Febre','Náusea / vômito','Alteração urinária','Alteração intestinal','Pele','Visão','Neurológica','Ginecológica','Gestação / pós-parto','Ossos / articulações','Humor / sono','Outro sintoma'];
     const flowNames={assisted:'Assistido',direct:'Direto',investigation:'Investigação'};
     const nowIso=()=>new Date().toISOString();
     function createTraceId(){return globalThis.crypto?.randomUUID?.()||`decisionmed-${Date.now()}-${Math.random().toString(16).slice(2)}`}
     function recordAudit(type,data={}){auditEvents.push({order:auditEvents.length+1,timestamp:nowIso(),type,...data})}
+    function uniqueSourceIds(values=[]){return [...new Set((Array.isArray(values)?values:[]).filter(Boolean))]}
+    function displayStatus(code){return DecisionMedSources.displayStatus(code)}
+    function moduleSourceIds(key){return uniqueSourceIds(legacyModuleSources.get(key)||[])}
+    function sourceIdsForQuestion(item){
+      const direct=uniqueSourceIds(item?.sourceIds||[]);
+      return direct.length?direct:item?.module&&item.module!=='general'&&item.module!=='safety'?moduleSourceIds(item.module):[]
+    }
+    function appendCitationRefs(parent,sourceIds=[],options={}){
+      const kind=options.kind||'clinical',ids=uniqueSourceIds(sourceIds);
+      if(kind==='case'){
+        const marker=document.createElement('span');marker.className='source-ref case';marker.textContent='CASO';marker.setAttribute('aria-label','Informação fornecida ou gerada no caso');parent.append(marker);return
+      }
+      if(!ids.length){
+        const marker=document.createElement('span');marker.className='source-ref pending';marker.textContent='FONTE ESPECÍFICA PENDENTE';marker.setAttribute('aria-label','Fonte específica ainda não vinculada');parent.append(marker);return
+      }
+      ids.forEach(sourceId=>{
+        const source=DecisionMedSources.get(sourceId),ref=document.createElement(source?.locator?'a':'span');
+        ref.className='source-ref';ref.textContent=DecisionMedSources.citationLabel(sourceId);ref.setAttribute('aria-label',`Fonte ${DecisionMedSources.citationLabel(sourceId)}`);
+        if(source?.locator){ref.href=source.locator;ref.target='_blank';ref.rel='noreferrer noopener'}
+        parent.append(ref)
+      })
+    }
+    function appendSourceLegend(parent,sourceIds=[],options={}){
+      const ids=uniqueSourceIds(sourceIds),kind=options.kind||'clinical',details=document.createElement('details'),summary=document.createElement('summary'),note=document.createElement('p'),list=document.createElement('ol');
+      details.className='source-legend';summary.textContent=`Fontes citadas (${kind==='case'&&!ids.length?1:ids.length})`;note.className='source-legend-note';
+      note.textContent='As siglas indicam referências vinculadas ao conteúdo. Não significam que a recomendação foi validada para este paciente.';
+      if(options.open)details.open=true;
+      details.append(summary,note);
+      if(kind==='case'&&!ids.length){
+        const item=document.createElement('li');item.textContent='CASO — informação fornecida pelo usuário ou gerada no cenário sintético; não é afirmação extraída de diretriz.';list.append(item)
+      }else if(!ids.length){
+        const item=document.createElement('li');item.textContent='Fonte específica ainda não vinculada. Este conteúdo não pode ser tratado como recomendação clínica validada.';list.append(item)
+      }else{
+        DecisionMedSources.legendEntries(ids).forEach(source=>{
+          const item=document.createElement('li'),title=document.createElement(source.locator?'a':'strong'),meta=document.createElement('span'),scope=document.createElement('span');
+          title.textContent=`${source.citationLabel} — ${source.title}`;
+          if(source.locator){title.href=source.locator;title.target='_blank';title.rel='noreferrer noopener'}
+          meta.textContent=` ${[source.publisher,source.publicationYear?`ano ${source.publicationYear}`:'',source.version?`versão ${source.version}`:'',displayStatus(source.status)].filter(Boolean).join(' · ')}.`;
+          scope.className='source-scope';scope.textContent=options.bindingScope==='field_level'?'Vínculo direto com este campo; revisão profissional continua obrigatória.':'Fonte vinculada ao módulo; o suporte exato a cada frase ainda requer revisão clínica item a item.';
+          item.append(title,meta,scope);list.append(item)
+        })
+      }
+      details.append(list);parent.append(details)
+    }
+    function appendSourcedText(parent,text,sourceIds=[],options={}){
+      const body=document.createElement(options.tag||'p');body.append(document.createTextNode(String(text||'')));appendCitationRefs(body,sourceIds,options);parent.append(body);return body
+    }
+    function inlineCitation(sourceIds=[],kind='clinical'){return DecisionMedSources.citationText(sourceIds,kind)}
+    function textSourceLegend(sourceIds=[]){
+      const lines=['FONTES CITADAS','CASO — dado fornecido pelo usuário ou gerado no cenário sintético; não é uma afirmação extraída de diretriz.'];
+      const entries=DecisionMedSources.legendEntries(uniqueSourceIds(sourceIds));
+      if(!entries.length)lines.push('FONTE ESPECÍFICA PENDENTE — referência ainda não vinculada; não tratar como recomendação clínica validada.');
+      entries.forEach(source=>lines.push(`${source.citationLabel} — ${source.title}${source.publicationYear?` (${source.publicationYear})`:''}. ${displayStatus(source.status)}. Fonte vinculada ao módulo ou campo; revisão profissional obrigatória.`));
+      return lines.join('\n')
+    }
     function patientInput(){
       return {name:$('patient-name').value,ageYears:$('patient-age').value,synthetic:patientSynthetic}
     }
@@ -382,7 +440,16 @@
       if(examPreviewUrl)URL.revokeObjectURL(examPreviewUrl);examPreviewUrl='';
       if($('exam'))$('exam').value='';if($('exam-photo'))$('exam-photo').value='';if($('exam-preview')){$('exam-preview').removeAttribute('src');$('exam-preview').classList.add('hidden')}
       if($('conduct-destination'))$('conduct-destination').value='';if($('conduct-note'))$('conduct-note').value='';document.querySelectorAll('#conduct-actions input').forEach(input=>{input.checked=false});
-      traceId=createTraceId();auditEvents=[];activeGeneratedCase=caseMeta;
+      traceId=createTraceId();auditEvents=[];activeGeneratedCase=caseMeta;updateSimulationBanner();
+    }
+    function updateSimulationBanner(){
+      const banner=$('simulation-banner'),simulated=Boolean(activeGeneratedCase);
+      banner.classList.toggle('hidden',!simulated);
+      banner.textContent=simulated?`MODO SIMULAÇÃO · CASO SINTÉTICO ${activeGeneratedCase.position}/${activeGeneratedCase.total} · NÃO USAR CLINICAMENTE`:'';
+      $('save-impression').textContent=simulated?'Registrar impressão simulada':'Registrar impressão profissional';
+      $('save-conduct').textContent=simulated?'Registrar conduta simulada':'Registrar conduta profissional';
+      $('generic-photo-action').textContent=simulated?'Anexar foto de resultado simulado':'Tirar ou anexar foto de outro exame';
+      $('generic-file-action').textContent=simulated?'Anexar arquivo de resultado simulado':'Anexar outro arquivo ou PDF'
     }
     function initializeCase(complaint,source='manual',caseMeta=null){
       script=[...safetyQuestions.map(item=>({module:'safety',section:'safety',...item})),...buildSymptomQuestions(complaint),...clinicalHistory.map(item=>({module:'general',section:'history',...item})),...generalInvestigations.map(item=>({module:'general',section:'investigation',...item}))];
@@ -425,23 +492,33 @@
       recordAudit('safety_checkpoint',{source,engine_version:DecisionMedReasoning.version,level:initialSafetyAssessment.level,label:initialSafetyAssessment.label,reasons:[...initialSafetyAssessment.reasons],rule_ids:[...(initialSafetyAssessment.ruleIds||[])],rules:[...(initialSafetyAssessment.rules||[])]});
       $('question-panel').classList.add('hidden');$('safety-panel').classList.remove('hidden')
     }
-    function appendCompactList(parent,title,items){
+    function appendCompactList(parent,title,items,defaultSourceIds=[],options={}){
       const section=document.createElement('section'),heading=document.createElement('h4'),list=document.createElement('ul');
       heading.textContent=title;list.className='compact-list';
-      (items.length?items:['Nenhum achado registrado.']).forEach(item=>{const line=document.createElement('li');line.textContent=item;list.append(line)});
+      const values=items.length?items:['Nenhum achado registrado.'],used=[];
+      values.forEach(item=>{
+        const claim=item&&typeof item==='object'&&!Array.isArray(item)?item:{text:item,sourceIds:defaultSourceIds,bindingScope:options.bindingScope||'module_level',kind:options.kind||'clinical'};
+        const line=document.createElement('li');line.append(document.createTextNode(String(claim.text||'')));
+        if(options.cite||claim.sourceIds?.length||claim.kind==='case'){
+          appendCitationRefs(line,claim.sourceIds||defaultSourceIds,{kind:claim.kind||options.kind||'clinical'});
+          used.push(...(claim.sourceIds||defaultSourceIds))
+        }
+        list.append(line)
+      });
       section.append(heading,list);parent.append(section)
+      if(options.legend)appendSourceLegend(section,uniqueSourceIds(used.length?used:defaultSourceIds),{bindingScope:options.bindingScope||'module_level',kind:options.kind||'clinical',open:options.open})
     }
     function renderSafetyStatus(host,safety){
       host.replaceChildren();const card=document.createElement('div'),title=document.createElement('strong'),list=document.createElement('ul');
+      const sourceIds=uniqueSourceIds((safety.rules||[]).flatMap(rule=>rule.sourceIds||[]));
       card.className=`reasoning-status ${safety.level}`;title.textContent=`Triagem de segurança: ${safety.label}`;list.className='compact-list';
-      safety.reasons.forEach(reason=>{const item=document.createElement('li');item.textContent=reason;list.append(item)});
-      card.append(title,list);host.append(card)
+      safety.reasons.forEach(reason=>{const item=document.createElement('li');item.append(document.createTextNode(reason));appendCitationRefs(item,sourceIds);list.append(item)});
+      card.append(title,list);appendSourceLegend(card,sourceIds,{bindingScope:'module_level'});host.append(card)
     }
     function syndromeName(key){return reasoningDecision?.syndromes.find(item=>item.key===key)?.name||key}
     function syndromeGovernance(syndrome){
-      if(!syndrome.moduleId)return 'Identidade do protótipo local · execução clínica automática bloqueada';
-      const sources=[...new Set([...(syndrome.sourceIds||[]),...(syndrome.contentSourceIds||[])])];
-      return `${syndrome.moduleId} · identidade ${syndrome.moduleVersion||syndrome.version||'não informada'} · conteúdo ${syndrome.contentVersion||'local'} (${syndrome.contentStatus||'não informado'}/${syndrome.contentRecordStatus||'não informado'}) · status ${syndrome.moduleStatus||syndrome.status||'não informado'} · terminologia ${syndrome.terminologyStatus||'não informada'} · fontes candidatas: ${sources.join(', ')||'não vinculadas'} · execução clínica automática bloqueada`
+      if(!syndrome.moduleId)return 'Identidade local em revisão · execução clínica automática bloqueada';
+      return `Identidade ${syndrome.moduleVersion||syndrome.version||'não informada'} · ${displayStatus(syndrome.moduleStatus||syndrome.status)} · conteúdo ${syndrome.contentVersion||'local'}: ${displayStatus(syndrome.contentRecordStatus||syndrome.contentStatus)} · terminologia: ${displayStatus(syndrome.terminologyStatus)} · execução clínica automática bloqueada`
     }
     function syndromeAuditIdentity(item){
       return {
@@ -470,8 +547,10 @@
       const host=$('syndrome-options');host.replaceChildren();
       reasoningDecision.syndromes.forEach(syndrome=>{
         const card=document.createElement('article'),label=document.createElement('label'),box=document.createElement('input'),copy=document.createElement('div'),title=document.createElement('h3'),level=document.createElement('p');
-        card.className='syndrome-card';box.type='checkbox';box.value=syndrome.key;box.checked=true;title.textContent=syndrome.name;level.textContent=`${syndrome.entityTypeLabel} · compatibilidade ${syndrome.compatibility} com os fatos registrados.`;
-        copy.append(title,level);appendCompactList(copy,'Governança do módulo',[syndromeGovernance(syndrome)]);appendCompactList(copy,'Achados que sustentam',syndrome.supports);if(syndrome.against.length)appendCompactList(copy,'Achados ausentes ou contrários',syndrome.against);
+        const sources=uniqueSourceIds([...(syndrome.sourceIds||[]),...(syndrome.contentSourceIds||[])]);
+        card.className='syndrome-card';box.type='checkbox';box.value=syndrome.key;box.checked=true;title.textContent=syndrome.name;level.append(document.createTextNode(`${syndrome.entityTypeLabel} · compatibilidade ${syndrome.compatibility} com os fatos registrados.`));appendCitationRefs(level,[],{kind:'case'});
+        copy.append(title,level);appendCompactList(copy,'Governança do módulo',[syndromeGovernance(syndrome)]);appendCompactList(copy,'Achados que sustentam',syndrome.supports,[],{cite:true,kind:'case'});if(syndrome.against.length)appendCompactList(copy,'Achados ausentes ou contrários',syndrome.against,[],{cite:true,kind:'case'});
+        appendSourcedText(copy,'Base institucional vinculada a este módulo.',sources);appendSourceLegend(copy,sources,{bindingScope:'module_level'});
         label.append(box,copy);card.append(label);host.append(card);
         box.onchange=()=>{const any=document.querySelectorAll('#syndrome-options input:checked').length>0;$('continue-reasoning').disabled=!any;$('syndrome-error').textContent=any?'':'Confirme pelo menos uma classificação clínica para continuar.'}
       });
@@ -482,42 +561,64 @@
     function renderReasoningOutput(result){
       const host=$('reasoning-output');host.replaceChildren();const safetyHost=document.createElement('div');host.append(safetyHost);renderSafetyStatus(safetyHost,result.safety);
       const representation=document.createElement('article'),representationTitle=document.createElement('h3'),representationText=document.createElement('p');
-      representation.className='syndrome-card';representationTitle.textContent='Representação do problema';representationText.textContent=result.representation;representation.append(representationTitle,representationText);host.append(representation);
+      representation.className='syndrome-card';representationTitle.textContent='Representação do problema';representationText.append(document.createTextNode(result.representation));appendCitationRefs(representationText,[],{kind:'case'});representation.append(representationTitle,representationText);appendSourceLegend(representation,[],{kind:'case'});host.append(representation);
       const selected=result.syndromes.filter(syndrome=>activeSyndromes.includes(syndrome.key));
       if(flowMode==='investigation'&&selected.length){
         const rank={baixo:1,intermediário:2,alto:3},highest=Math.max(...selected.map(item=>rank[item.compatibility]||0)),leaders=selected.filter(item=>(rank[item.compatibility]||0)===highest);
         const comparison=document.createElement('article'),title=document.createElement('h3'),text=document.createElement('p');
-        comparison.className='syndrome-card';title.textContent='Comparação qualitativa das hipóteses';text.textContent=`Maior compatibilidade com os fatos registrados: ${leaders.map(item=>item.name).join(' e ')} (${leaders[0].compatibility}). Esta classificação organiza achados; não é uma probabilidade calibrada nem confirma diagnóstico.`;
-        comparison.append(title,text);host.append(comparison)
+        comparison.className='syndrome-card';title.textContent='Comparação qualitativa das hipóteses';text.append(document.createTextNode(`Maior compatibilidade com os fatos registrados: ${leaders.map(item=>item.name).join(' e ')} (${leaders[0].compatibility}). Esta classificação organiza achados; não é uma probabilidade calibrada nem confirma diagnóstico.`));appendCitationRefs(text,[],{kind:'case'});
+        comparison.append(title,text);appendSourceLegend(comparison,[],{kind:'case'});host.append(comparison)
       }
       selected.forEach(syndrome=>{
         const card=document.createElement('article'),title=document.createElement('h3'),level=document.createElement('p'),grid=document.createElement('div');
         const labels={assisted:'Classificação clínica provisória',direct:'Classificação selecionada para confirmação',investigation:'Hipótese comparada'};
-        card.className='syndrome-card';title.textContent=syndrome.name;level.textContent=`${labels[flowMode]||labels.assisted} · ${syndrome.entityTypeLabel.toLocaleLowerCase('pt-BR')} · compatibilidade ${syndrome.compatibility}.`;grid.className='reasoning-grid';
-        card.append(title,level);appendCompactList(card,'Governança do módulo',[syndromeGovernance(syndrome)]);if(syndrome.definition)appendCompactList(card,'Definição em revisão',[syndrome.definition]);if(syndrome.boundaries)appendCompactList(card,'Limites do módulo',[syndrome.boundaries]);appendCompactList(card,flowMode==='investigation'?'Achados que aumentam compatibilidade':'Achados que sustentam',syndrome.supports);appendCompactList(card,flowMode==='investigation'?'Achados que reduzem compatibilidade ou estão ausentes':'Achados ausentes ou contrários',syndrome.against);
+        const moduleSources=uniqueSourceIds([...(syndrome.sourceIds||[]),...(syndrome.contentSourceIds||[])]),fieldSources=[];
+        card.className='syndrome-card';title.textContent=syndrome.name;level.append(document.createTextNode(`${labels[flowMode]||labels.assisted} · ${syndrome.entityTypeLabel.toLocaleLowerCase('pt-BR')} · compatibilidade ${syndrome.compatibility}.`));appendCitationRefs(level,[],{kind:'case'});grid.className='reasoning-grid';
+        card.append(title,level);appendCompactList(card,'Governança do módulo',[syndromeGovernance(syndrome)]);if(syndrome.definition)appendCompactList(card,'Definição vinculada para revisão',[syndrome.definition],moduleSources,{cite:true});if(syndrome.boundaries)appendCompactList(card,'Limites do módulo',[syndrome.boundaries],moduleSources,{cite:true});appendCompactList(card,flowMode==='investigation'?'Achados que aumentam compatibilidade':'Achados que sustentam',syndrome.supports,[],{cite:true,kind:'case'});appendCompactList(card,flowMode==='investigation'?'Achados que reduzem compatibilidade ou estão ausentes':'Achados ausentes ou contrários',syndrome.against,[],{cite:true,kind:'case'});
         if(flowMode==='investigation'){
-          appendCompactList(card,'Perguntas que diferenciam esta hipótese',DecisionMedReasoning.discriminatorQuestions([syndrome.key]).map(item=>`${item.text}${item.sourceIds?.length?` · Fontes candidatas: ${item.sourceIds.join(', ')}`:''}`))
+          const questions=DecisionMedReasoning.discriminatorQuestions([syndrome.key]).map(item=>{fieldSources.push(...(item.sourceIds||[]));return {text:item.text,sourceIds:item.sourceIds||[],bindingScope:'field_level'}});
+          appendCompactList(card,'Perguntas que diferenciam esta hipótese',questions,[],{cite:true,bindingScope:'field_level'})
         }else{
-          appendCompactList(grid,'Hipóteses principais ou mais compatíveis',syndrome.differential.likely);appendCompactList(grid,'Graves que não podem ser perdidos',syndrome.differential.cannotMiss);appendCompactList(grid,'Alternativas que imitam o quadro',syndrome.differential.mimics);card.append(grid)
+          appendCompactList(grid,'Hipóteses principais ou mais compatíveis',syndrome.differential.likely,moduleSources,{cite:true});appendCompactList(grid,'Graves que não podem ser perdidos',syndrome.differential.cannotMiss,moduleSources,{cite:true});appendCompactList(grid,'Alternativas que imitam o quadro',syndrome.differential.mimics,moduleSources,{cite:true});card.append(grid)
         }
-        appendCompactList(card,'Red flags e critérios de interrupção',[...(syndrome.redFlags||[]),...(syndrome.stopConditions||[])]);appendCompactList(card,'Critérios e escalas em revisão',syndrome.diagnosticCriteria||[]);appendCompactList(card,'Exame físico orientado',syndrome.physicalExam);appendCompactList(card,flowMode==='investigation'?'Exames que ajudam a diferenciar e pergunta clínica':'Exames complementares e pergunta clínica',syndrome.tests.map(test=>`${test.name}: ${test.question} Quando: ${test.when}${test.limitations?` Limitações: ${test.limitations}`:''}${test.sourceIds?.length?` Fontes candidatas: ${test.sourceIds.join(', ')}`:''}`));host.append(card)
+        appendCompactList(card,'Red flags e critérios de interrupção',[...(syndrome.redFlags||[]),...(syndrome.stopConditions||[])],moduleSources,{cite:true});appendCompactList(card,'Critérios e escalas vinculados para revisão',syndrome.diagnosticCriteria||[],moduleSources,{cite:true});appendCompactList(card,'Exame físico orientado',syndrome.physicalExam,moduleSources,{cite:true});
+        const tests=syndrome.tests.map(test=>{fieldSources.push(...(test.sourceIds||[]));return {text:`${test.name}: ${test.question} Quando: ${test.when}${test.limitations?` Limitações: ${test.limitations}`:''}`,sourceIds:test.sourceIds||[],bindingScope:'field_level'}});
+        appendCompactList(card,flowMode==='investigation'?'Exames que ajudam a diferenciar e pergunta clínica':'Exames complementares e pergunta clínica',tests,[],{cite:true,bindingScope:'field_level'});
+        appendSourceLegend(card,moduleSources,{bindingScope:'module_level'});if(uniqueSourceIds(fieldSources).length)appendSourceLegend(card,fieldSources,{bindingScope:'field_level'});appendSourceLegend(card,[],{kind:'case'});host.append(card)
       })
     }
     function renderClinicalEngines(decision){
       const host=$('clinical-engines-output');host.replaceChildren();
       const add=(title,text,className='')=>{const card=document.createElement('article'),heading=document.createElement('h3'),body=document.createElement('p');card.className=`syndrome-card ${className}`.trim();heading.textContent=title;body.textContent=text;card.append(heading,body);host.append(card);return card};
-      const syndromes=decision.syndromic.classifications.map(item=>`${item.name} · compatibilidade ${item.compatibility}`).join('; ')||'Nenhuma classificação ativa.';
-      add('1. Motor Sindrômico',`${decision.syndromic.representation} Classificações: ${syndromes}`);
+      const engineSources=uniqueSourceIds(decision.syndromic.classifications.flatMap(item=>item.sourceIds||[]));
+      const syndromicCard=add('1. Motor Sindrômico',decision.syndromic.representation);
+      appendCitationRefs(syndromicCard.querySelector('p'),[],{kind:'case'});
+      appendCompactList(syndromicCard,'Classificações clínicas provisórias',decision.syndromic.classifications.map(item=>({text:`${item.name} · compatibilidade ${item.compatibility}`,sourceIds:item.sourceIds||[],kind:'case'})),[],{cite:true,kind:'case'});
+      appendSourceLegend(syndromicCard,[],{kind:'case'});appendSourceLegend(syndromicCard,engineSources,{bindingScope:'module_level'});
       const groups={more_likely:'Mais prováveis',cannot_miss:'Graves que não podem ser perdidas',mimic:'Alternativas que imitam'};
-      const diagnosticCard=add('2. Motor Diagnóstico',`${decision.diagnostic.status}. Evidências sindrômicas compartilhadas; a confirmação continua profissional.`);
-      appendCompactList(diagnosticCard,'Hipóteses organizadas',decision.diagnostic.candidates.map(item=>`${item.name} — ${groups[item.group]||item.group}`));
-      const therapeuticCard=add('3. Motor Terapêutico',`${decision.therapeutic.status}. ${decision.therapeutic.plan.length} plano(s) estrutural(is) por hipótese; tratamento e prescrição automáticos permanecem bloqueados.`);
-      appendCompactList(therapeuticCard,'Planos disponíveis para revisão',decision.therapeutic.plan.map(item=>`${item.hypothesisName} — ${item.status}`));
+      const diagnosticStatus=activeGeneratedCase&&decision.diagnostic.professionalImpression?'Impressão simulada registrada para testar o fluxo':displayStatus(decision.diagnostic.status);
+      const diagnosticCard=add('2. Motor Diagnóstico',`${diagnosticStatus}. Evidências sindrômicas compartilhadas; a confirmação continua profissional.`);
+      appendCompactList(diagnosticCard,'Hipóteses organizadas',decision.diagnostic.candidates.map(item=>({text:`${item.name} — ${groups[item.group]||item.group}`,sourceIds:engineSources,bindingScope:'module_level'})),engineSources,{cite:true});
+      appendSourceLegend(diagnosticCard,engineSources,{bindingScope:'module_level'});
+      const therapeuticCard=add('3. Motor Terapêutico',`${displayStatus(decision.therapeutic.status)}. O motor separa apoio sindrômico de tratamento diagnóstico-específico; tratamento e prescrição automáticos permanecem bloqueados.`);
+      const supportPlans=decision.therapeutic.syndromicSupportPlans||[decision.therapeutic.sharedSyndromicPlan||decision.therapeutic.syndromicPlan].filter(Boolean);
+      supportPlans.forEach(shared=>{
+        appendCompactList(therapeuticCard,`Segurança e estabilização sindrômicas — ${shared.syndromeName||'módulo ativo'}`,shared.safety||[],shared.sourceIds||engineSources,{cite:true});
+        appendCompactList(therapeuticCard,'Exame físico e exames orientados',[
+          ...(shared.physicalExam||[]),
+          ...(shared.tests||[]).map(test=>({text:`${test.name}: ${test.question}${test.when?` · Quando: ${test.when}`:''}`,sourceIds:test.sourceIds||shared.sourceIds||engineSources,bindingScope:'field_level'}))
+        ],shared.sourceIds||engineSources,{cite:true})
+      });
+      appendCompactList(therapeuticCard,'Hipóteses e vínculo terapêutico',decision.therapeutic.plan.map(item=>{
+        const binding=item.treatmentBindingStatus||item.bindingStatus||(item.status==='validated'?'validated':'unbound');
+        return {text:`${item.hypothesisName} — ${binding==='unbound'?'tratamento diagnóstico-específico ainda não vinculado':displayStatus(item.status)}`,sourceIds:item.sourceIds||engineSources,bindingScope:'module_level'}
+      }),engineSources,{cite:true});
+      appendSourceLegend(therapeuticCard,uniqueSourceIds([...supportPlans.flatMap(item=>item.sourceIds||[]),...engineSources]),{bindingScope:'module_level'});
       const deterministic=decision.gate.route==='deterministic_no_llm';
       const score=decision.gate.calibrated?`${(decision.gate.score*100).toFixed(1)}% calibrado`:'não calibrado';
       const gateCard=add('4. Gate de Confiança',`${deterministic?'Determinístico, sem LLM':'Caso complexo — LLM em standby'}. Confiança: ${score}; limiar estritamente maior que 95%.`,deterministic?'':'priority');
       appendCompactList(gateCard,deterministic?'Requisitos atendidos':'Motivos do bloqueio',decision.gate.reasons.length?decision.gate.reasons:['Todos os requisitos governados foram atendidos.']);
-      add('5. LLM',`${decision.llm.message} Provedor: nenhum; dados transmitidos: não; tokens consumidos: ${decision.llm.tokenUsage}.`)
+      add('5. LLM',`LLM desligada. Nenhum provedor configurado, nenhum dado transmitido e ${decision.llm.tokenUsage} tokens utilizados.`)
     }
     function renderSuggestedExams(result){
       const host=$('suggested-exams');host.replaceChildren();const exams=new Map();
@@ -532,32 +633,53 @@
       }
       exams.forEach(exam=>{
         const card=document.createElement('article'),header=document.createElement('div'),title=document.createElement('h3'),button=document.createElement('button'),question=document.createElement('p'),timing=document.createElement('p'),sources=document.createElement('p'),context=document.createElement('p'),status=document.createElement('p'),attached=resultAttachments.get(exam.key);
-        header.className='exam-card-head';title.textContent=exam.name;button.type='button';button.className='button secondary';button.dataset.examKey=exam.key;button.textContent=attached?'Substituir resultado':'Anexar resultado';
+        header.className='exam-card-head';title.textContent=exam.name;button.type='button';button.className='button secondary';button.dataset.examKey=exam.key;button.textContent=attached?(activeGeneratedCase?'Substituir resultado simulado':'Substituir resultado'):(activeGeneratedCase?'Anexar resultado simulado':'Anexar resultado');
         button.onclick=()=>{selectedSuggestedExam={key:exam.key,name:exam.name,question:exam.question,syndromes:[...new Set(exam.syndromes)]};$('exam-kind').value=inferExamKind(exam.name);$('exam-note').placeholder=`Registre o resultado ou achado de ${exam.name}.`;$('exam').click()};
-        question.textContent=`O que este exame decide: ${exam.question}`;timing.textContent=`Quando considerar: ${exam.when}`;sources.className='hint';sources.textContent=`Fontes candidatas do campo: ${(exam.sourceIds||[]).join(', ')||'ainda não vinculadas'}.`;context.className='hint';context.textContent=`Relacionado a: ${[...new Set(exam.syndromes)].join(', ')}.`;
+        question.append(document.createTextNode(`O que este exame decide: ${exam.question}`));appendCitationRefs(question,exam.sourceIds||[]);
+        timing.append(document.createTextNode(`Quando considerar: ${exam.when}`));appendCitationRefs(timing,exam.sourceIds||[]);
+        sources.className='hint';sources.textContent=(exam.sourceIds||[]).length?'Referências específicas vinculadas ao campo; confira a legenda abaixo.':'Fonte específica ainda não vinculada; este exame não deve ser tratado como recomendação validada.';
+        context.className='hint';context.append(document.createTextNode(`Relacionado a: ${[...new Set(exam.syndromes)].join(', ')}.`));appendCitationRefs(context,[],{kind:'case'});
         status.className=attached?'exam-attached':'hint';status.textContent=attached?`Resultado anexado localmente · ${attached.mimeGroup} · ${(attached.size/1024).toFixed(1)} KB.`:'Resultado ainda não anexado.';
-        header.append(title,button);card.append(header,question,timing,sources,context,status);host.append(card)
+        header.append(title,button);card.append(header,question,timing,sources,context,status);appendSourceLegend(card,exam.sourceIds||[],{bindingScope:'field_level'});host.append(card)
       })
     }
     function renderConductPlan(result){
       const host=$('conduct-plan');host.replaceChildren();
-      const add=(title,text,className='')=>{const card=document.createElement('article'),heading=document.createElement('h3'),body=document.createElement('p');card.className=className;heading.textContent=title;body.textContent=text;card.append(heading,body);host.append(card)};
+      const add=(title,items,sourceIds=[],className='',options={})=>{
+        const card=document.createElement('article'),heading=document.createElement('h3');card.className=className;heading.textContent=title;card.append(heading);
+        appendCompactList(card,options.listTitle||'Informações vinculadas',Array.isArray(items)?items:[items],sourceIds,{cite:true,kind:options.kind||'clinical',bindingScope:options.bindingScope||'module_level'});
+        appendSourceLegend(card,sourceIds,{bindingScope:options.bindingScope||'module_level',kind:options.kind||'clinical'});host.append(card)
+      };
       const safetyText={
         immediate:'Interromper o fluxo clínico rotineiro e providenciar avaliação imediata conforme os recursos e protocolos locais.',
         priority:'Priorizar avaliação presencial, sinais vitais, exame físico e definição do nível de cuidado.',
         continue:'Prosseguir com avaliação clínica e exame físico dirigido, mantendo vigilância para novos sinais de alarme.'
       };
-      add('1. Conduta de segurança',safetyText[result.safety.level]||safetyText.continue,result.safety.level);
-      const selected=result.syndromes.filter(syndrome=>activeSyndromes.includes(syndrome.key)),cannotMiss=[...new Set(selected.flatMap(syndrome=>syndrome.differential.cannotMiss))],examSteps=[...new Set(selected.flatMap(syndrome=>syndrome.physicalExam))],tests=[...new Set(selected.flatMap(syndrome=>syndrome.tests.map(test=>test.name)))],safetyConduct=[...new Set(selected.flatMap(syndrome=>syndrome.safetyConduct||[]))],initialTreatment=[...new Set(selected.flatMap(syndrome=>syndrome.initialTreatment||[]))],definitiveTreatment=[...new Set(selected.flatMap(syndrome=>syndrome.definitiveTreatment||[]))],postExam=[...new Set(selected.flatMap(syndrome=>syndrome.postExamReassessment||[]))],followup=[...new Set(selected.flatMap(syndrome=>syndrome.destinationReturnFollowup||[]))],draft=selected.some(syndrome=>syndrome.moduleStatus!=='validated'||syndrome.contentRecordStatus!=='validated');
-      add('2. Graves que precisam ser excluídos',cannotMiss.join('; ')||'Nenhuma hipótese grave catalogada para este módulo.');
-      add('3. Segurança específica do módulo',safetyConduct.join('; ')||'Aplicar protocolos locais e reavaliar sinais de alarme.');
-      add('4. Exame físico dirigido',examSteps.join('; ')||'Registrar exame físico orientado antes de definir tratamento.');
-      add('5. Exames que respondem à decisão',tests.join('; ')||'Nenhum exame complementar catalogado.');
-      add('6. Reavaliação pós-exames',postExam.join('; ')||'Registrar se cada resultado mantém, aumenta, reduz ou afasta cada hipótese.');
-      add('7. Tratamento inicial em revisão',initialTreatment.join('; ')||'Tratamento ainda não cadastrado.',draft?'priority':'');
-      add('8. Tratamento definitivo em revisão',definitiveTreatment.join('; ')||'Tratamento definitivo depende da impressão profissional e de validação clínica.',draft?'priority':'');
-      add('9. Destino, retorno e acompanhamento',followup.join('; ')||'Registrar nível de cuidado, prazo de retorno e sinais de alarme.');
-      if(draft)add('Gate clínico','Conteúdo em rascunho: estas etapas são uma estrutura para revisão profissional e não liberam prescrição, tratamento ou conduta automática.','priority')
+      const safetySources=uniqueSourceIds((result.safety.rules||[]).flatMap(rule=>rule.sourceIds||[]));
+      add('1. Conduta de segurança',safetyText[result.safety.level]||safetyText.continue,safetySources,result.safety.level);
+      const selected=result.syndromes.filter(syndrome=>activeSyndromes.includes(syndrome.key)),moduleSources=uniqueSourceIds(selected.flatMap(syndrome=>[...(syndrome.sourceIds||[]),...(syndrome.contentSourceIds||[])])),cannotMiss=[...new Set(selected.flatMap(syndrome=>syndrome.differential.cannotMiss))],examSteps=[...new Set(selected.flatMap(syndrome=>syndrome.physicalExam))],testClaims=selected.flatMap(syndrome=>syndrome.tests.map(test=>({text:`${test.name} — ${test.question}${test.when?` · Quando: ${test.when}`:''}`,sourceIds:test.sourceIds||[],bindingScope:'field_level'}))),safetyConduct=[...new Set(selected.flatMap(syndrome=>syndrome.safetyConduct||[]))],initialTreatment=[...new Set(selected.flatMap(syndrome=>syndrome.initialTreatment||[]))],definitiveTreatment=[...new Set(selected.flatMap(syndrome=>syndrome.definitiveTreatment||[]))],postExam=[...new Set(selected.flatMap(syndrome=>syndrome.postExamReassessment||[]))],followup=[...new Set(selected.flatMap(syndrome=>syndrome.destinationReturnFollowup||[]))],reviewPending=selected.some(syndrome=>syndrome.moduleStatus!=='validated'||syndrome.contentRecordStatus!=='validated');
+      add('2. Graves que precisam ser excluídos',cannotMiss.length?cannotMiss:['Nenhuma hipótese grave catalogada para este módulo.'],moduleSources);
+      add('3. Segurança específica do módulo',safetyConduct.length?safetyConduct:['Aplicar protocolos locais e reavaliar sinais de alarme.'],moduleSources);
+      add('4. Exame físico dirigido',examSteps.length?examSteps:['Registrar exame físico orientado antes de definir tratamento.'],moduleSources);
+      add('5. Exames que respondem à decisão',testClaims.length?testClaims:['Nenhum exame complementar catalogado.'],uniqueSourceIds(testClaims.flatMap(item=>item.sourceIds||[])), '',{bindingScope:'field_level'});
+      add('6. Reavaliação pós-exames',postExam.length?postExam:['Registrar se cada resultado mantém, aumenta, reduz ou afasta cada hipótese.'],moduleSources);
+      add('7. Tratamento inicial sindrômico vinculado',initialTreatment.length?initialTreatment:['Tratamento inicial ainda não cadastrado para este módulo.'],moduleSources,reviewPending?'priority':'');
+      add('8. Tratamento definitivo diagnóstico-específico',definitiveTreatment.length?definitiveTreatment:['Tratamento definitivo depende de vínculo diagnóstico-específico, revisão clínica e confirmação profissional.'],moduleSources,reviewPending?'priority':'');
+      add('9. Destino, retorno e acompanhamento',followup.length?followup:['Registrar nível de cuidado, prazo de retorno e sinais de alarme.'],moduleSources);
+      if(reviewPending)add('Gate clínico','Referências institucionais estão vinculadas ao módulo, mas a revisão clínica item a item permanece pendente. Prescrição, tratamento e conduta automáticos continuam bloqueados.',moduleSources,'priority');
+      const completion=activeGeneratedCase?.syntheticCompletion;
+      if(completion){
+        const card=document.createElement('article'),heading=document.createElement('h3'),warning=document.createElement('p'),completionSources=uniqueSourceIds(completion.sourceIds||[]);
+        card.className='simulation-card';heading.textContent='10. Conclusão integral do cenário sintético — somente teste';warning.className='simulation-label';warning.textContent='Os resultados, impressão e conduta abaixo são dados artificiais do teste. Não constituem decisão clínica nem confirmação profissional.';card.append(heading,warning);
+        appendCompactList(card,'Resultados complementares simulados',completion.postExam.results.map(item=>({text:`${item.name}: ${item.finding} ${item.interpretation}`,sourceIds:item.sourceIds||[],bindingScope:'field_level'})),[],{cite:true,bindingScope:'field_level'});
+        appendCompactList(card,'Reavaliação pós-exames',[completion.reassessment.summary],[],{cite:true,bindingScope:'module_level'});
+        appendCompactList(card,'Impressão simulada',[{text:`${completion.impression.label} · ${completion.impression.summary}`,sourceIds:completion.impression.sourceIds||[],bindingScope:'module_level'}],[],{cite:true});
+        appendCompactList(card,'Medidas imediatas simuladas',completion.conduct.immediate,[],{cite:true});
+        appendCompactList(card,'Tratamento mostrado para revisão profissional',completion.conduct.treatment,[],{cite:true});
+        appendCompactList(card,'Destino simulado',[completion.conduct.destination],[],{cite:true});
+        appendCompactList(card,'Sinais de retorno e acompanhamento',[...completion.conduct.returnPrecautions,...completion.conduct.followUp],[],{cite:true});
+        appendSourceLegend(card,completionSources,{bindingScope:'module_level',open:true});host.append(card)
+      }
     }
     function populateReassessmentOptions(result){
       const labels=[];
@@ -574,7 +696,7 @@
       const host=$('reassessment-list');host.replaceChildren();
       reassessments.forEach(entry=>{
         const card=document.createElement('article'),title=document.createElement('h3'),body=document.createElement('p');
-        title.textContent=entry.hypothesis;body.textContent=`${entry.impact} · ${entry.examName||entry.examKind}${entry.finding?` · ${entry.finding}`:''}`;card.append(title,body);host.append(card)
+        if(entry.simulationOnly)card.className='simulation-card';title.textContent=entry.simulationOnly?`${entry.hypothesis} · resultado simulado`:entry.hypothesis;body.append(document.createTextNode(`${entry.impact} · ${entry.examName||entry.examKind}${entry.finding?` · ${entry.finding}`:''}`));appendCitationRefs(body,entry.sourceIds||[],{kind:entry.sourceIds?.length?'clinical':'case'});card.append(title,body);appendSourceLegend(card,entry.sourceIds||[],{bindingScope:'field_level'});host.append(card)
       })
     }
     function renderComplaintChoices(){
@@ -586,7 +708,7 @@
       const host=$('direct-syndrome-choices');host.replaceChildren();
       const query=normalizeSearch($('direct-search').value),catalog=DecisionMedReasoning.syndromeCatalog;
       const matches=catalog.filter(item=>catalogSearchText(item).includes(query));
-      matches.slice(0,30).forEach(syndrome=>{const button=document.createElement('button');button.type='button';button.className=`choice${directSyndrome===syndrome.key?' selected':''}`;button.textContent=`${syndrome.name} · ${syndrome.entityTypeLabel} · ${syndrome.status}`;button.onclick=()=>{directSyndrome=syndrome.key;$('direct-syndrome').value=syndrome.key;renderDirectSyndromeChoices()};host.append(button)});
+      matches.slice(0,30).forEach(syndrome=>{const button=document.createElement('button');button.type='button';button.className=`choice${directSyndrome===syndrome.key?' selected':''}`;button.textContent=`${syndrome.name} · ${syndrome.entityTypeLabel} · ${displayStatus(syndrome.status)}`;button.onclick=()=>{directSyndrome=syndrome.key;$('direct-syndrome').value=syndrome.key;renderDirectSyndromeChoices()};host.append(button)});
       $('direct-search-status').textContent=`${matches.length} resultado(s) · exibindo até 30 por vez${directSyndrome?' · 1 selecionado':''}.`;updateStartAvailability()
     }
     function renderInvestigationSyndromeChoices(){
@@ -594,7 +716,7 @@
       const query=normalizeSearch($('investigation-search').value),catalog=DecisionMedReasoning.syndromeCatalog;
       const matches=catalog.filter(item=>catalogSearchText(item).includes(query));
       matches.slice(0,30).forEach(syndrome=>{
-        const button=document.createElement('button');button.type='button';button.className=`choice${investigationSyndromes.includes(syndrome.key)?' selected':''}`;button.textContent=`${syndrome.name} · ${syndrome.entityTypeLabel} · ${syndrome.status}`;
+        const button=document.createElement('button');button.type='button';button.className=`choice${investigationSyndromes.includes(syndrome.key)?' selected':''}`;button.textContent=`${syndrome.name} · ${syndrome.entityTypeLabel} · ${displayStatus(syndrome.status)}`;
         button.onclick=()=>{
           if(investigationSyndromes.includes(syndrome.key))investigationSyndromes=investigationSyndromes.filter(key=>key!==syndrome.key);
           else if(investigationSyndromes.length<3)investigationSyndromes.push(syndrome.key);
@@ -718,9 +840,9 @@
       return 'Esta resposta acrescenta um fato estruturado à representação do problema.'
     }
     function renderQuestion(){
-      const current=script[position];
+      const current=script[position],questionSources=sourceIdsForQuestion(current),question=$('question'),sourceHost=$('question-sources');
       $('stage').textContent=current.section==='safety'?'Triagem de segurança':current.section==='history'?'Histórico clínico essencial':current.section==='investigation'?'Investigação geral':current.section==='discriminator'?`${flowMode==='investigation'?'Comparação de hipóteses':'Pergunta discriminadora'} · ${syndromeName(current.module)}`:current.module==='general'?'Decálogo do sintoma':`${flowMode==='direct'?'Confirmação de critérios':flowMode==='investigation'?'Critério comparativo':'Módulo'} · ${names[current.module]}`;
-      $('question').textContent=current.text;$('counter').textContent=`Pergunta ${position+1} de ${script.length}`;$('question-rationale').textContent=rationaleFor(current);$('question-sources').textContent=current.sourceIds?.length?`Fontes candidatas: ${current.sourceIds.join(', ')}.`:'';
+      question.replaceChildren(document.createTextNode(current.text));appendCitationRefs(question,questionSources);$('counter').textContent=`Pergunta ${position+1} de ${script.length}`;$('question-rationale').textContent=rationaleFor(current);sourceHost.replaceChildren();appendCitationRefs(sourceHost,questionSources);appendSourceLegend(sourceHost,questionSources,{bindingScope:current.sourceIds?.length?'field_level':'module_level'});
       $('progress').replaceChildren(...script.map((_,n)=>{const bar=document.createElement('i');if(n<=position)bar.className='active';return bar}));
       const finalLabels={assisted:'Gerar diferenciais',direct:'Revisar critérios',investigation:'Comparar hipóteses'};
       $('previous').disabled=position===0;$('next').textContent=position===script.length-1?(!routingShown?'Escolher módulos':reasoningConfirmed?finalLabels[flowMode]||'Revisar':'Formar classificação clínica'):'Próxima';createAnswer(current)
@@ -791,8 +913,8 @@
       const button=$('next-test-case');
       if(!activeGeneratedCase){button.classList.add('hidden');return}
       button.classList.remove('hidden');
-      if(nextCaseIndex>=caseQueue.length){button.textContent=`Sequência concluída ${caseQueue.length}/${caseQueue.length}`;button.disabled=true;return}
-      button.textContent=`Gerar próximo caso ${nextCaseIndex+1}/${caseQueue.length} · ${flowNames[caseQueue[nextCaseIndex].flowMode]}`;button.disabled=false
+      if(nextCaseIndex>=caseQueue.length){button.textContent=`Simulação concluída ${caseQueue.length}/${caseQueue.length}`;button.disabled=true;return}
+      button.textContent=`Próximo caso simulado ${nextCaseIndex+1}/${caseQueue.length} · ${flowNames[caseQueue[nextCaseIndex].flowMode]}`;button.disabled=false
     }
     function fillGeneratedQuestions(items,startIndex,scenario){
       items.forEach((item,itemIndex)=>{const index=startIndex+itemIndex,result=generatedAnswer(item,scenario);writeAnswer(result.values,result.detail,index);position=index;recordCurrentAnswer('case_generator')})
@@ -809,11 +931,54 @@
       reasoningDecision=analyzeReasoning();
       recordAudit('reasoning_generated',{source:'case_generator',engine:'DecisionMedReasoning',engine_version:DecisionMedReasoning.version,representation:reasoningDecision.representation,safety:{...reasoningDecision.safety},syndromes:reasoningDecision.syndromes.filter(item=>activeSyndromes.includes(item.key)).map(syndromeAuditIdentity)})
     }
+    function applyGeneratedCompletion(scenario){
+      const completion=scenario.syntheticCompletion;
+      if(!completion||!DecisionMedCases.isSyntheticCompletionComplete(completion))throw new Error(`invalid_synthetic_completion:${scenario.id}`);
+      const impactLabels={increases:'Aumenta compatibilidade',reduces:'Diminui compatibilidade',maintains:'Mantém hipótese',changes:'Exige reformular a classificação clínica',insufficient:'Resultado inconclusivo'};
+      reassessments=completion.postExam.results.map(result=>({
+        hypothesis:completion.impression.label,
+        impact:impactLabels[completion.reassessment.direction]||'Resultado inconclusivo',
+        examName:result.name,
+        finding:`${result.finding} ${result.interpretation}`.trim(),
+        sourceIds:[...(result.sourceIds||[])],
+        simulationOnly:true
+      }));
+      diagnosticImpression={
+        hypothesis:completion.impression.label,
+        status:completion.impression.certainty==='probable'?'Diagnóstico provável':'Diagnóstico ainda indeterminado',
+        note:completion.impression.summary,
+        sourceIds:[...(completion.impression.sourceIds||[])],
+        simulationOnly:true,
+        professionalConfirmation:false
+      };
+      const actionGroups=[
+        ['Medidas imediatas de segurança',completion.conduct.immediate],
+        ['Tratamento para revisão profissional',completion.conduct.treatment],
+        ['Orientar sinais de alarme',completion.conduct.returnPrecautions],
+        ['Acompanhamento e retorno',completion.conduct.followUp]
+      ];
+      professionalConduct={
+        destination:completion.conduct.destination.text,
+        actions:actionGroups.filter(([,items])=>items.length).map(([label])=>label),
+        note:actionGroups.flatMap(([label,items])=>items.map(item=>`${label}: ${item.text}`)).join(' | '),
+        sourceIds:[...(completion.conduct.sourceIds||[])],
+        simulationOnly:true,
+        professionalConfirmation:false,
+        automaticTreatmentAllowed:false,
+        automaticPrescriptionAllowed:false
+      };
+      completion.postExam.results.forEach((result,index)=>recordAudit('exam_reassessment',{
+        source:'case_generator',simulation_only:true,hypothesis:completion.impression.label,impact:reassessments[index].impact,exam_name:result.name,finding:result.finding,source_ids:[...(result.sourceIds||[])]
+      }));
+      recordAudit('synthetic_completion_applied',{
+        source:'case_generator',simulation_only:true,schema_version:completion.schemaVersion,status:completion.status,post_exam_result_count:completion.postExam.results.length,impression_certainty:completion.impression.certainty,destination:completion.conduct.destination.text,source_ids:[...(completion.sourceIds||[])],clinical_execution_allowed:false,professional_confirmation:false,automatic_treatment_allowed:false,automatic_prescription_allowed:false
+      })
+    }
     async function runNextGeneratedCase(){
       if(nextCaseIndex>=caseQueue.length)return;
       const scenario=caseQueue[nextCaseIndex],positionInSuite=nextCaseIndex+1,total=caseQueue.length;
       applyGeneratedPatient(scenario);
-      const caseMeta={id:scenario.id,label:scenario.label,position:positionInSuite,total,flowMode:scenario.flowMode,patient:patientAuditRecord(),expectedModules:[...scenario.expectedModules],syndromeKeys:[...scenario.syndromeKeys],note:scenario.note,originalComplaint:scenario.complaint};
+      const caseMeta={id:scenario.id,label:scenario.label,position:positionInSuite,total,flowMode:scenario.flowMode,patient:patientAuditRecord(),expectedModules:[...scenario.expectedModules],syndromeKeys:[...scenario.syndromeKeys],note:scenario.note,originalComplaint:scenario.complaint,syntheticCompletion:{...scenario.syntheticCompletion}};
       nextCaseIndex+=1;flowMode=scenario.flowMode;
       if(flowMode==='assisted'){
         $('complaint').value=scenario.complaint;$('note').value=scenario.note;renderComplaintChoices();
@@ -833,12 +998,12 @@
         initializeTargetedCase(flowMode,scenario.syndromeKeys,'case_generator',caseMeta);
         fillGeneratedQuestions(script,0,scenario);recordGeneratedSafety();recordGeneratedCoverage(scenario);recordGeneratedReasoning()
       }
-      $('start-panel').classList.add('hidden');$('question-panel').classList.add('hidden');$('route-panel').classList.add('hidden');updateGeneratedCaseButton();await review()
+      applyGeneratedCompletion(scenario);$('start-panel').classList.add('hidden');$('question-panel').classList.add('hidden');$('route-panel').classList.add('hidden');updateGeneratedCaseButton();await review()
     }
     function updateCaseGeneratorPreview(){
       if(caseQueue.length)return;
       const count=Math.min(100,Math.max(1,Number.parseInt($('case-count').value,10)||1)),mode=$('case-mode').value,total=mode==='all'?count*3:count;
-      $('case-count').value=String(count);$('generate-case').textContent=`Gerar bateria 1/${total}`;
+      $('case-count').value=String(count);$('generate-case').textContent=`Iniciar simulação 1/${total}`;
       $('case-sequence-label').textContent=mode==='all'?`Pronto para percorrer ${total} casos: ${count} Assistidos, ${count} Diretos e ${count} de Investigação.`:`Pronto para percorrer ${count} casos do modo ${flowNames[mode]}.`
     }
     function buildEngineGateQueue(){
@@ -861,8 +1026,8 @@
       const add=(title,text)=>{const card=document.createElement('article'),heading=document.createElement('h3'),body=document.createElement('p');heading.textContent=title;body.textContent=text;card.append(heading,body);host.append(card)};
       add('Fixture governada',`${fixture.id} · ${flowNames[fixture.mode]} · somente simulação`);
       add('Sequência executada',decision.sequence.join(' → '));
-      add('Resultado do gate',decision.gate.route==='deterministic_no_llm'?'Determinístico, sem LLM':'Caso complexo — LLM em standby');
-      add('Segurança da IA',`disabled=${decision.llm.disabled} · provider=nenhum · invoked=${decision.llm.invoked} · transmitted=${decision.llm.transmitted} · tokens=${decision.llm.tokenUsage}`);
+      add('Resultado esperado do teste',decision.gate.route==='deterministic_no_llm'?'Alta confiança simulada por fixture governada — não liberada no catálogo clínico real':'Caso complexo simulado — LLM em standby');
+      add('Segurança da IA',`LLM desligada. Nenhum provedor configurado, nenhum dado transmitido e ${decision.llm.tokenUsage} tokens utilizados.`);
       add('Execução clínica pública','Bloqueada. Prescrição automática: bloqueada.');
       $('engine-gate-status').textContent=`Caso ${index}/${total} concluído · esperado ${fixture.expected.route} · obtido ${decision.gate.route}.`;
       $('generate-engine-gate-case').textContent=nextEngineGateIndex<total?`Próximo gate ${nextEngineGateIndex+1}/${total}`:'Finalizar bateria do gate'
@@ -914,7 +1079,7 @@
     }
     function buildAuditText(record,fingerprint){
       const lines=[
-        'DECISIONMED · TRILHA DE AUDITORIA DA ANAMNESE',
+        record.source==='case_generator'?'DECISIONMED · TRILHA DE AUDITORIA DA SIMULAÇÃO · NÃO USAR CLINICAMENTE':'DECISIONMED · TRILHA DE AUDITORIA DA ANAMNESE',
         `Identificador do caso: ${record.trace_id}`,
         `Gerado em: ${record.generated_at}`,
         `Origem: ${record.source==='case_generator'?'gerador local de casos':'preenchimento manual'}`,
@@ -972,10 +1137,10 @@
         record.reassessments.forEach(entry=>lines.push(`- ${entry.hypothesis}: ${entry.impact} · ${entry.examName||entry.examKind}${entry.finding?` · ${entry.finding}`:''}`))
       }
       if(record.diagnostic_impression){
-        lines.push('','IMPRESSÃO DIAGNÓSTICA PROFISSIONAL',`${record.diagnostic_impression.hypothesis}: ${record.diagnostic_impression.status}${record.diagnostic_impression.note?` · ${record.diagnostic_impression.note}`:''}`)
+        lines.push('',record.source==='case_generator'?'IMPRESSÃO DIAGNÓSTICA SIMULADA':'IMPRESSÃO DIAGNÓSTICA PROFISSIONAL',`${record.diagnostic_impression.hypothesis}: ${record.diagnostic_impression.status}${record.diagnostic_impression.note?` · ${record.diagnostic_impression.note}`:''}`)
       }
       if(record.professional_conduct){
-        lines.push('','CONDUTA PROFISSIONAL',`Destino: ${record.professional_conduct.destination}`,`Ações: ${record.professional_conduct.actions.join(' | ')}`,`Plano: ${record.professional_conduct.note||'não detalhado'}`)
+        lines.push('',record.source==='case_generator'?'CONDUTA SIMULADA':'CONDUTA PROFISSIONAL',`Destino: ${record.professional_conduct.destination}`,`Ações: ${record.professional_conduct.actions.join(' | ')}`,`Plano: ${record.professional_conduct.note||'não detalhado'}`)
       }
       lines.push(
         '',
@@ -1002,7 +1167,7 @@
     }
     async function review(){
       const host=$('summary');host.replaceChildren();
-      const add=(title,text)=>{const card=document.createElement('article'),heading=document.createElement('h3'),body=document.createElement('p');heading.textContent=title;body.textContent=text||'Não informado';card.append(heading,body);host.append(card)};
+      const add=(title,text,options={})=>{const card=document.createElement('article'),heading=document.createElement('h3'),body=document.createElement('p');if(options.className)card.className=options.className;heading.textContent=title;body.append(document.createTextNode(text||'Não informado'));if(options.cite!==false)appendCitationRefs(body,options.sourceIds||[],{kind:options.kind||'case'});card.append(heading,body);host.append(card)};
       const patient=patientAuditRecord();
       reasoningDecision=analyzeReasoning();if(!activeSyndromes.length)activeSyndromes=reasoningDecision.syndromes.map(item=>item.key);
       const confirmedReasoning={...reasoningDecision,syndromes:reasoningDecision.syndromes.filter(item=>activeSyndromes.includes(item.key))};
@@ -1014,12 +1179,13 @@
         diagnosticImpression:diagnosticImpression?{...diagnosticImpression}:null,
         professionalConduct:professionalConduct?{...professionalConduct,actions:[...professionalConduct.actions]}:null
       });
+      const realProfessionalConfirmation=Boolean(!activeGeneratedCase&&diagnosticImpression&&professionalConduct);
       clinicalEngineDecision=DecisionMedClinicalOrchestrator.run({
         reasoning:confirmedReasoning,
         selectedSyndromeKeys:[...activeSyndromes],
         reassessments:reassessments.map(entry=>({...entry})),
         professionalImpression:diagnosticImpression?{...diagnosticImpression}:null,
-        professionalConfirmation:Boolean(diagnosticImpression&&professionalConduct),
+        professionalConfirmation:realProfessionalConfirmation,
         clinicalExecutionAllowed:false
       });
       if(orchestrationSignature!==clinicalEngineSignature){
@@ -1039,41 +1205,49 @@
           reason_codes:[...clinicalEngineDecision.gate.reasonCodes],
           reasons:[...clinicalEngineDecision.gate.reasons],
           llm:{disabled:clinicalEngineDecision.llm.disabled,provider:clinicalEngineDecision.llm.provider,invoked:clinicalEngineDecision.llm.invoked,transmitted:clinicalEngineDecision.llm.transmitted,token_usage:clinicalEngineDecision.llm.tokenUsage},
-          professional_confirmation:Boolean(diagnosticImpression&&professionalConduct)
+          professional_confirmation:realProfessionalConfirmation,
+          simulation_only:Boolean(activeGeneratedCase)
         })
       }
-      const groupText=entries=>entries.map(entry=>`${entry.item.text} ${entry.answer}`).join(' ');
+      const groupText=entries=>entries.map(entry=>`${entry.item.text} ${entry.answer} ${inlineCitation([],'case')}`).join(' ');
       const safetyEntries=answered.filter(entry=>entry.item.section==='safety');
       const symptomEntries=answered.filter(entry=>entry.item.section==='symptom');
       const historyEntries=answered.filter(entry=>entry.item.section==='history');
       const investigationEntries=answered.filter(entry=>entry.item.section==='investigation');
       const discriminatorEntries=answered.filter(entry=>entry.item.section==='discriminator');
-      const lines=[`PACIENTE: ${patient.display_name}.`,`IDADE: ${patient.age_years} anos.`,`PORTA DE ENTRADA: ${flowNames[flowMode]||flowMode}.`,`QUEIXA PRINCIPAL: ${$('complaint').value}.`];
-      if($('note').value.trim())lines.push(`DESCRIÇÃO LIVRE: ${$('note').value.trim()}`);
+      const summarySources=uniqueSourceIds([
+        ...(confirmedReasoning.safety.rules||[]).flatMap(rule=>rule.sourceIds||[]),
+        ...confirmedReasoning.syndromes.flatMap(syndrome=>[...(syndrome.sourceIds||[]),...(syndrome.contentSourceIds||[]),...syndrome.tests.flatMap(test=>test.sourceIds||[])])
+      ]);
+      const lines=[`PACIENTE: ${patient.display_name}. ${inlineCitation([],'case')}`,`IDADE: ${patient.age_years} anos. ${inlineCitation([],'case')}`,`PORTA DE ENTRADA: ${flowNames[flowMode]||flowMode}.`,`QUEIXA PRINCIPAL: ${$('complaint').value}. ${inlineCitation([],'case')}`];
+      if($('note').value.trim())lines.push(`DESCRIÇÃO LIVRE: ${$('note').value.trim()} ${inlineCitation([],'case')}`);
       if(safetyEntries.length)lines.push(`TRIAGEM INICIAL: ${groupText(safetyEntries)}`);
       if(symptomEntries.length)lines.push(`HISTÓRIA DO SINTOMA: ${groupText(symptomEntries)}`);
       if(historyEntries.length)lines.push(`ANTECEDENTES: ${groupText(historyEntries)}`);
       if(investigationEntries.length)lines.push(`REVISÃO GERAL: ${groupText(investigationEntries)}`);
-      if(activeModules.length)lines.push(`MÓDULOS PERCORRIDOS: ${activeModules.map(key=>names[key]).join(', ')}.`);
-      for(const key of activeModules){const entries=answered.filter(entry=>entry.item.module===key);if(entries.length)lines.push(`${names[key].toLocaleUpperCase('pt-BR')}: ${groupText(entries)}`)}
-      if(routeDecision.length)lines.push(`ROTEAMENTO: ${routeDecision.map(item=>`${names[item.key]}${item.priority?' (revisão prioritária)':''}: ${item.reasons.join(' ')}`).join(' | ')}`);
+      if(activeModules.length)lines.push(`MÓDULOS PERCORRIDOS: ${activeModules.map(key=>names[key]).join(', ')}. ${inlineCitation([],'case')}`);
+      for(const key of activeModules){const entries=answered.filter(entry=>entry.item.module===key);if(entries.length)lines.push(`${names[key].toLocaleUpperCase('pt-BR')}: ${groupText(entries)} ${inlineCitation(moduleSourceIds(key))}`)}
+      if(routeDecision.length)lines.push(`ROTEAMENTO: ${routeDecision.map(item=>`${names[item.key]}${item.priority?' (revisão prioritária)':''}: ${item.reasons.join(' ')}`).join(' | ')} ${inlineCitation([],'case')}`);
       if(discriminatorEntries.length)lines.push(`PERGUNTAS DISCRIMINADORAS: ${groupText(discriminatorEntries)}`);
-      lines.push(`TRIAGEM DE SEGURANÇA: ${confirmedReasoning.safety.label}. ${confirmedReasoning.safety.reasons.join(' ')}`);
-      lines.push(`REPRESENTAÇÃO DO PROBLEMA: ${confirmedReasoning.representation}`);
+      const safetySourceIds=uniqueSourceIds((confirmedReasoning.safety.rules||[]).flatMap(rule=>rule.sourceIds||[]));
+      lines.push(`TRIAGEM DE SEGURANÇA: ${confirmedReasoning.safety.label}. ${confirmedReasoning.safety.reasons.join(' ')} ${inlineCitation(safetySourceIds)}`);
+      lines.push(`REPRESENTAÇÃO DO PROBLEMA: ${confirmedReasoning.representation} ${inlineCitation([],'case')}`);
       confirmedReasoning.syndromes.forEach(syndrome=>{
-        lines.push(`CLASSIFICAÇÃO CLÍNICA PROVISÓRIA — ${syndrome.entityTypeLabel.toLocaleUpperCase('pt-BR')}: ${syndrome.name}; compatibilidade ${syndrome.compatibility}. Sustentam: ${syndrome.supports.join(' ')} Contrários ou ausentes: ${syndrome.against.join(' ')||'nenhum registrado'}.`);
-        if(flowMode!=='investigation')lines.push(`DIAGNÓSTICO DIFERENCIAL — ${syndrome.name}: mais prováveis: ${syndrome.differential.likely.join(', ')}; graves que não podem ser perdidos: ${syndrome.differential.cannotMiss.join(', ')}; alternativas que imitam: ${syndrome.differential.mimics.join(', ')}.`);
-        else lines.push(`COMPARAÇÃO — ${syndrome.name}: aumentam compatibilidade: ${syndrome.supports.join(' ')} Reduzem compatibilidade ou estão ausentes: ${syndrome.against.join(' ')||'nenhum registrado'}.`);
-        lines.push(`EXAME FÍSICO ORIENTADO — ${syndrome.name}: ${syndrome.physicalExam.join('; ')}.`);
-        lines.push(`EXAMES COMPLEMENTARES ORIENTADOS — ${syndrome.name}: ${syndrome.tests.map(test=>`${test.name} — ${test.question} Quando: ${test.when}`).join('; ')}.`)
+        const syndromeSources=uniqueSourceIds([...(syndrome.sourceIds||[]),...(syndrome.contentSourceIds||[])]);
+        lines.push(`CLASSIFICAÇÃO CLÍNICA PROVISÓRIA — ${syndrome.entityTypeLabel.toLocaleUpperCase('pt-BR')}: ${syndrome.name} ${inlineCitation(syndromeSources)}; compatibilidade ${syndrome.compatibility}. Sustentam: ${syndrome.supports.join(' ')} Contrários ou ausentes: ${syndrome.against.join(' ')||'nenhum registrado'}. ${inlineCitation([],'case')}`);
+        if(flowMode!=='investigation')lines.push(`DIAGNÓSTICO DIFERENCIAL — ${syndrome.name}: mais prováveis: ${syndrome.differential.likely.join(', ')}; graves que não podem ser perdidos: ${syndrome.differential.cannotMiss.join(', ')}; alternativas que imitam: ${syndrome.differential.mimics.join(', ')}. ${inlineCitation(syndromeSources)}`);
+        else lines.push(`COMPARAÇÃO — ${syndrome.name}: aumentam compatibilidade: ${syndrome.supports.join(' ')} Reduzem compatibilidade ou estão ausentes: ${syndrome.against.join(' ')||'nenhum registrado'}. ${inlineCitation([],'case')}`);
+        lines.push(`EXAME FÍSICO ORIENTADO — ${syndrome.name}: ${syndrome.physicalExam.join('; ')}. ${inlineCitation(syndromeSources)}`);
+        lines.push(`EXAMES COMPLEMENTARES ORIENTADOS — ${syndrome.name}: ${syndrome.tests.map(test=>`${test.name} — ${test.question} Quando: ${test.when} ${inlineCitation(test.sourceIds||[])}`).join('; ')}.`)
       });
       lines.push(`MOTORES CLÍNICOS: ${clinicalEngineDecision.sequence.join(' → ')}.`);
       lines.push(`GATE DE CONFIANÇA: ${clinicalEngineDecision.gate.route==='deterministic_no_llm'?'Determinístico, sem LLM':'Caso complexo — LLM em standby'}. Score: ${clinicalEngineDecision.gate.calibrated?`${(clinicalEngineDecision.gate.score*100).toFixed(1)}% calibrado`:'não calibrado'}. Motivos: ${clinicalEngineDecision.gate.reasons.join('; ')||'todos os requisitos atendidos'}.`);
       lines.push(`LLM: standby; chamada não realizada; dados não transmitidos; tokens consumidos: ${clinicalEngineDecision.llm.tokenUsage}.`);
-      if(resultAttachments.size)lines.push(`RESULTADOS DE EXAMES ANEXADOS: ${[...resultAttachments.values()].map(entry=>`${entry.examName} (${entry.mimeGroup}, somente local)`).join('; ')}.`);
-      if(reassessments.length)lines.push(`REAVALIAÇÃO PÓS-EXAMES: ${reassessments.map(entry=>`${entry.hypothesis} — ${entry.impact} (${entry.examName||entry.examKind})${entry.finding?`: ${entry.finding}`:''}`).join(' | ')}.`);
-      if(diagnosticImpression)lines.push(`IMPRESSÃO DIAGNÓSTICA PROFISSIONAL: ${diagnosticImpression.hypothesis} — ${diagnosticImpression.status}${diagnosticImpression.note?`. ${diagnosticImpression.note}`:''}.`);
-      if(professionalConduct)lines.push(`CONDUTA PROFISSIONAL: ${professionalConduct.destination}. Ações: ${professionalConduct.actions.join(', ')}.${professionalConduct.note?` Plano: ${professionalConduct.note}`:''}`);
+      if(resultAttachments.size)lines.push(`RESULTADOS DE EXAMES ANEXADOS: ${[...resultAttachments.values()].map(entry=>`${entry.examName} (${entry.mimeGroup}, somente local)`).join('; ')}. ${inlineCitation([],'case')}`);
+      if(reassessments.length)lines.push(`REAVALIAÇÃO PÓS-EXAMES: ${reassessments.map(entry=>`${entry.hypothesis} — ${entry.impact} (${entry.examName||entry.examKind})${entry.finding?`: ${entry.finding}`:''}`).join(' | ')}. ${inlineCitation([],'case')}`);
+      if(diagnosticImpression)lines.push(`${activeGeneratedCase?'IMPRESSÃO DIAGNÓSTICA SIMULADA':'IMPRESSÃO DIAGNÓSTICA PROFISSIONAL'}: ${diagnosticImpression.hypothesis} — ${diagnosticImpression.status}${diagnosticImpression.note?`. ${diagnosticImpression.note}`:''}. ${inlineCitation([],'case')}`);
+      if(professionalConduct)lines.push(`${activeGeneratedCase?'CONDUTA SIMULADA':'CONDUTA PROFISSIONAL'}: ${professionalConduct.destination}. Ações: ${professionalConduct.actions.join(', ')}.${professionalConduct.note?` Plano: ${professionalConduct.note}`:''} ${inlineCitation([],'case')}`);
+      lines.push(textSourceLegend(summarySources));
       $('structured-summary').value=lines.join('\n\n');
       const generatedAt=nowIso(),record={
         schema_version:'decisionmed.intake-audit.v3',
@@ -1099,7 +1273,8 @@
           therapeutic:clinicalEngineDecision.therapeutic,
           confidence_gate:clinicalEngineDecision.gate,
           llm:clinicalEngineDecision.llm,
-          professional_confirmations:{diagnostic_impression:Boolean(diagnosticImpression),professional_conduct:Boolean(professionalConduct)}
+          professional_confirmations:{diagnostic_impression:Boolean(!activeGeneratedCase&&diagnosticImpression),professional_conduct:Boolean(!activeGeneratedCase&&professionalConduct)},
+          simulation_completion:activeGeneratedCase?{present:Boolean(diagnosticImpression&&professionalConduct),professional_confirmation:false}:null
         },
         result_attachments:[...resultAttachments.values()].map(entry=>({exam_name:entry.examName,mime_group:entry.mimeGroup,size_bytes:entry.size,input_kind:entry.inputKind,local_only:true})),
         reassessments:reassessments.map(entry=>({...entry})),
@@ -1110,14 +1285,14 @@
       const fingerprint=await sha256(JSON.stringify(record));
       $('audit-trail').value=buildAuditText(record,fingerprint);
       $('audit-fingerprint').textContent=`Identificador ${traceId} · SHA-256 ${fingerprint}`;
-      add('Paciente',`${patient.display_name} · ${patient.age_years} anos${patient.synthetic?' · caso sintético':''}`);add('Porta de entrada',flowNames[flowMode]||flowMode);add('Queixa principal',$('complaint').value);if($('note').value)add('Descrição inicial',$('note').value);
       if(activeGeneratedCase){
+        add('CASO SINTÉTICO — NÃO É PACIENTE REAL',`${activeGeneratedCase.position}/${activeGeneratedCase.total} · ${activeGeneratedCase.label} · saída destinada exclusivamente à verificação do software.`,{className:'simulation-card'});
         const missing=activeGeneratedCase.expectedModules.filter(key=>!activeModules.includes(key));
-        add('Caso sintético',`${activeGeneratedCase.position}/${activeGeneratedCase.total} · ${activeGeneratedCase.label}`);
         add('Cobertura esperada do gerador',missing.length?`Revisar: não abriu ${missing.map(key=>names[key]).join(', ')}.`:`Confirmada: ${activeGeneratedCase.expectedModules.map(key=>names[key]).join(', ')}.`)
       }
-      if(diagnosticImpression)add('Impressão diagnóstica profissional',`${diagnosticImpression.hypothesis} · ${diagnosticImpression.status}${diagnosticImpression.note?` · ${diagnosticImpression.note}`:''}`);
-      if(professionalConduct)add('Conduta profissional',`${professionalConduct.destination} · ${professionalConduct.actions.join(', ')}${professionalConduct.note?` · ${professionalConduct.note}`:''}`);
+      add('Paciente',`${patient.display_name} · ${patient.age_years} anos${patient.synthetic?' · caso sintético':''}`);add('Porta de entrada',flowNames[flowMode]||flowMode);add('Queixa principal',$('complaint').value);if($('note').value)add('Descrição inicial',$('note').value);
+      if(diagnosticImpression)add(activeGeneratedCase?'Impressão diagnóstica simulada':'Impressão diagnóstica profissional',`${diagnosticImpression.hypothesis} · ${diagnosticImpression.status}${diagnosticImpression.note?` · ${diagnosticImpression.note}`:''}`);
+      if(professionalConduct)add(activeGeneratedCase?'Conduta simulada':'Conduta profissional',`${professionalConduct.destination} · ${professionalConduct.actions.join(', ')}${professionalConduct.note?` · ${professionalConduct.note}`:''}`);
       if(resultAttachments.size)add('Resultados anexados',[...resultAttachments.values()].map(entry=>`${entry.examName} (${entry.mimeGroup})`).join(', '));
       const sequences={
         assisted:activeModules.length?`Triagem de segurança → decálogo do sintoma → histórico clínico → revisão geral → ${activeModules.map(key=>names[key]).join(' → ')} → reconhecimento sindrômico → diagnóstico diferencial → gate de conduta`:'Triagem de segurança → decálogo do sintoma → histórico clínico → revisão geral → reconhecimento sindrômico → gate de conduta',
@@ -1128,6 +1303,7 @@
       if(routeDecision.length)add('Justificativa do roteamento',routeDecision.map(item=>`${names[item.key]}${item.priority?' — revisão prioritária':''}: ${item.reasons.join(' ')}`).join(' | '));
       answered.forEach(entry=>add(entry.item.text,entry.answer));
       add('Conferência profissional','Termos técnicos sugeridos pelo formulário não foram confirmados automaticamente.');
+      appendSourceLegend(host,[],{kind:'case',open:true});appendSourceLegend(host,summarySources,{bindingScope:'module_level',open:true});
       const reasoningTitles={assisted:'Da classificação clínica aos diagnósticos diferenciais',direct:'Confirmação da classificação clínica selecionada',investigation:'Comparação estruturada das hipóteses'};
       const reasoningDescriptions={
         assisted:'As hipóteses abaixo organizam o raciocínio. Não confirmam doença e exigem exame físico, interpretação de exames e validação profissional.',
@@ -1143,25 +1319,31 @@
     async function hydrateClinicalCatalog(){
       const status=$('runtime-catalog-status');
       try{
-        const [moduleResponse,ruleResponse,contentResponse]=await Promise.all([
+        const [moduleResponse,ruleResponse,contentResponse,sourceResponse]=await Promise.all([
           fetch('/api/clinical-modules',{headers:{Accept:'application/json'}}),
           fetch('/api/clinical-rules',{headers:{Accept:'application/json'}}),
-          fetch('/api/clinical-content',{headers:{Accept:'application/json'}})
+          fetch('/api/clinical-content',{headers:{Accept:'application/json'}}),
+          fetch('/api/evidence-sources',{headers:{Accept:'application/json'}})
         ]);
-        if(!moduleResponse.ok||!ruleResponse.ok||!contentResponse.ok)throw new Error(`HTTP ${moduleResponse.status}/${ruleResponse.status}/${contentResponse.status}`);
-        const [catalog,ruleCatalog,contentCatalog]=await Promise.all([moduleResponse.json(),ruleResponse.json(),contentResponse.json()]);
+        if(!moduleResponse.ok||!ruleResponse.ok||!contentResponse.ok||!sourceResponse.ok)throw new Error(`HTTP ${moduleResponse.status}/${ruleResponse.status}/${contentResponse.status}/${sourceResponse.status}`);
+        const [catalog,ruleCatalog,contentCatalog,sourceCatalog]=await Promise.all([moduleResponse.json(),ruleResponse.json(),contentResponse.json(),sourceResponse.json()]);
+        const sourceHydration=DecisionMedSources.configure(sourceCatalog.items);
+        sourceCatalogReady=sourceHydration.count===sourceCatalog.count;
+        legacyModuleSources=new Map();
+        catalog.items.forEach(item=>(item.legacy_keys||[]).forEach(key=>legacyModuleSources.set(key,uniqueSourceIds((item.sources||[]).map(source=>source.source_id)))));
         const hydration=DecisionMedReasoning.configureCatalog(catalog.items);
         const ruleHydration=DecisionMedRouting.configureRules(ruleCatalog.items);
         const clinicalRuleHydration=DecisionMedReasoning.configureRules(ruleCatalog.items);
         const contentHydration=DecisionMedReasoning.configureContent(contentCatalog.items);
         renderDirectSyndromeChoices();renderInvestigationSyndromeChoices();
         status.textContent=hydration.complete&&contentHydration.complete
-          ? `${catalog.count} módulos e ${contentHydration.matched} conteúdos estruturais em rascunho disponíveis nas três portas · ${ruleCatalog.count} regras declarativas (${ruleHydration.count} de rota, ${clinicalRuleHydration.support} de suporte, ${clinicalRuleHydration.alarm} de segurança) · versão ${catalog.release_version} · 4.500 casos determinísticos no catálogo de teste · execução clínica automática bloqueada.`
+          ? `${catalog.count} módulos e ${contentHydration.matched} conteúdos estruturais disponíveis nas três portas · ${sourceCatalog.count} referências vinculadas com siglas e legenda (${sourceCatalogReady?'catálogo íntegro':'hidratação incompleta'}) · revisão clínica item a item pendente · ${ruleCatalog.count} regras declarativas (${ruleHydration.count} de rota, ${clinicalRuleHydration.support} de suporte, ${clinicalRuleHydration.alarm} de segurança) · versão ${catalog.release_version} · 4.500 cenários no catálogo de teste · execução clínica automática bloqueada.`
           : `Catálogo carregado, mas a migração ficou incompleta: identidades ${hydration.matched}/${hydration.expected}, conteúdos ${contentHydration.matched}/${contentHydration.expected}. O fluxo exige revisão.`;
       }catch(error){
         DecisionMedReasoning.configureCatalog([]);
         DecisionMedReasoning.configureContent([]);
         DecisionMedReasoning.configureRules([]);
+        DecisionMedSources.configure([]);legacyModuleSources=new Map();sourceCatalogReady=false;
         DecisionMedRouting.configureRules();
         renderDirectSyndromeChoices();renderInvestigationSyndromeChoices();
         status.textContent='Catálogo governado indisponível. As 14 identidades locais ficam disponíveis apenas para inspeção; triagem, raciocínio e execução clínica permanecem bloqueados.'

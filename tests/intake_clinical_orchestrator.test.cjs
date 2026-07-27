@@ -6,6 +6,7 @@ const fs = require("node:fs");
 const path = require("node:path");
 const orchestrator = require("../decisionmed/static/intake-clinical-orchestrator.js");
 const confidenceGate = require("../decisionmed/static/intake-confidence-gate.js");
+const therapeuticEngine = require("../decisionmed/static/intake-therapeutic-engine.js");
 const llmStandby = require("../decisionmed/static/intake-llm-standby.js");
 const engineCases = require("../decisionmed/static/intake-engine-gate-cases.js");
 const legacyCases = require("../decisionmed/static/intake-cases.js");
@@ -89,6 +90,127 @@ test("qualitative compatibility cannot become numeric confidence", () => {
   assert.equal(result.gate.calibrated, false);
   assert.equal(result.gate.compatibilityUsedAsProbability, false);
   assert.equal(result.gate.route, "complex_case_llm_standby");
+});
+
+test("syndromic treatment is never copied into diagnosis-specific plans", () => {
+  for (const fixture of highFixtures) {
+    const result = engineCases.runFixture(fixture.id).result;
+    assert.ok(result.therapeutic.syndromicSupportPlans.length > 0);
+    assert.ok(
+      result.therapeutic.syndromicSupportPlans.every(
+        (item) =>
+          item.scope === "syndromic_shared_support" &&
+          item.diagnosisSpecificTreatmentIncluded === false &&
+          item.safety.length > 0 &&
+          item.physicalExam.length > 0 &&
+          item.tests.length > 0,
+      ),
+    );
+    assert.equal(result.therapeutic.allTreatmentBindingsValidated, false);
+    assert.equal(
+      result.therapeutic.unboundTreatmentHypothesisKeys.length,
+      result.therapeutic.plan.length,
+    );
+    for (const item of result.therapeutic.plan) {
+      assert.equal(item.contentScope, "unbound");
+      assert.equal(item.supportScope, "syndromic_shared_support");
+      assert.ok(item.syndromicSupportPlanIds.length > 0);
+      assert.equal(item.treatmentBindingStatus, "unbound");
+      assert.equal(
+        item.treatmentBindingReason,
+        "missing_explicit_diagnostic_binding",
+      );
+      assert.deepEqual(item.initialTreatment, []);
+      assert.deepEqual(item.definitiveTreatment, []);
+      assert.deepEqual(item.treatmentSourceIds, []);
+      assert.deepEqual(item.sourceIds, []);
+      assert.ok(item.syndromicSupportSourceIds.length > 0);
+      assert.equal(item.status, "treatment_unbound_review_only");
+    }
+    assert.doesNotMatch(
+      JSON.stringify(result.therapeutic),
+      /Medida inicial sintética|Tratamento definitivo sintético/,
+    );
+    assert.equal(result.therapeutic.automaticTreatmentAllowed, false);
+    assert.equal(result.therapeutic.automaticPrescriptionAllowed, false);
+  }
+});
+
+test("diagnosis-specific treatment requires an explicit fully validated binding", () => {
+  const baseline = engineCases.runFixture(highFixtures[0].id).result;
+  const candidate = baseline.diagnostic.candidates[0];
+  const validatedBinding = {
+    scope: "diagnosis_specific",
+    status: "validated",
+    hypothesisKey: candidate.key,
+    hypothesisName: candidate.name,
+    moduleId: "module.test.bound-diagnosis",
+    contentVersion: "1.2.3",
+    moduleStatus: "validated",
+    contentRecordStatus: "validated",
+    sourceBindingValidated: true,
+    sourceIds: ["source.test.bound-treatment"],
+    initialTreatment: ["Tratamento inicial explicitamente vinculado."],
+    definitiveTreatment: ["Tratamento definitivo explicitamente vinculado."],
+  };
+  const diagnosticWithBinding = {
+    ...baseline.diagnostic,
+    candidates: [
+      { ...candidate, treatmentBinding: validatedBinding },
+      ...baseline.diagnostic.candidates.slice(1),
+    ],
+  };
+  const bound = therapeuticEngine.analyze({
+    reasoning: highFixtures[0].input.reasoning,
+    syndromic: baseline.syndromic,
+    diagnostic: diagnosticWithBinding,
+    professionalConfirmation: true,
+    clinicalExecutionAllowed: true,
+  });
+  const boundPlan = bound.plan.find((item) => item.hypothesisKey === candidate.key);
+  assert.equal(boundPlan.treatmentBindingStatus, "validated");
+  assert.equal(boundPlan.contentScope, "diagnosis_specific");
+  assert.equal(boundPlan.treatmentModuleId, "module.test.bound-diagnosis");
+  assert.equal(boundPlan.treatmentContentVersion, "1.2.3");
+  assert.deepEqual(boundPlan.initialTreatment, [
+    "Tratamento inicial explicitamente vinculado.",
+  ]);
+  assert.deepEqual(boundPlan.definitiveTreatment, [
+    "Tratamento definitivo explicitamente vinculado.",
+  ]);
+  assert.deepEqual(boundPlan.treatmentSourceIds, [
+    "source.test.bound-treatment",
+  ]);
+  assert.equal(bound.automaticTreatmentAllowed, false);
+  assert.equal(bound.automaticPrescriptionAllowed, false);
+
+  const unvalidated = therapeuticEngine.analyze({
+    reasoning: highFixtures[0].input.reasoning,
+    syndromic: baseline.syndromic,
+    diagnostic: {
+      ...diagnosticWithBinding,
+      candidates: [
+        {
+          ...candidate,
+          treatmentBinding: { ...validatedBinding, status: "in_review" },
+        },
+        ...baseline.diagnostic.candidates.slice(1),
+      ],
+    },
+    professionalConfirmation: true,
+    clinicalExecutionAllowed: true,
+  });
+  const rejectedPlan = unvalidated.plan.find(
+    (item) => item.hypothesisKey === candidate.key,
+  );
+  assert.equal(rejectedPlan.treatmentBindingStatus, "unbound");
+  assert.equal(
+    rejectedPlan.treatmentBindingReason,
+    "explicit_diagnostic_binding_not_validated",
+  );
+  assert.deepEqual(rejectedPlan.initialTreatment, []);
+  assert.deepEqual(rejectedPlan.definitiveTreatment, []);
+  assert.deepEqual(rejectedPlan.treatmentSourceIds, []);
 });
 
 test("tampering with canonical fixture facts invalidates the deterministic gate", () => {
@@ -205,6 +327,8 @@ test("orchestrator audit reconstructs versions, order, decisions, and LLM state"
     ],
   );
   assert.ok(result.audit.every((item) => item.version));
+  assert.equal(result.therapeutic.version, "1.1.0");
+  assert.equal(result.audit[2].version, "1.1.0");
   assert.equal(result.audit[3].confidenceProvenance.validationSetId, "fixture.engine-gate.v1");
   assert.equal(result.audit[4].invoked, false);
   assert.equal(result.audit[4].transmitted, false);
