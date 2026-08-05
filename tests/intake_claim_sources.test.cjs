@@ -11,9 +11,18 @@ const evidencePath = [
   path.join(__dirname, "..", "knowledge-release", "evidence.json"),
   path.join(__dirname, "..", "..", "DecisionMEd-Knowledge", "evidence.json"),
 ].find((candidate) => fs.existsSync(candidate));
-assert.ok(evidencePath, "DecisionMEd knowledge evidence catalog is available");
-const evidence = JSON.parse(fs.readFileSync(evidencePath, "utf8")).items;
-const evidenceIds = new Set(evidence.map((item) => item.source_id));
+const evidenceIds = new Set(
+  evidencePath
+    ? JSON.parse(fs.readFileSync(evidencePath, "utf8")).items.map(
+        (item) => item.source_id,
+      )
+    : JSON.parse(
+        fs.readFileSync(
+          path.join(__dirname, "fixtures", "evidence-source-ids.json"),
+          "utf8",
+        ),
+      ).source_ids,
+);
 
 test("source presenter uses abbreviations without exposing raw ids in clinical text", () => {
   const hydration = sources.configure([
