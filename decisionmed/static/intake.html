@@ -510,6 +510,19 @@
     .physical-exam-item>.hint{margin:-6px 0 8px}
     .physical-exam-choices .choice{min-height:36px;padding:7px 10px;font-size:.76rem}
     .physical-exam-item textarea{width:100%;min-height:76px;margin-top:10px;padding:10px;border:1px solid #cbd9e4;border-radius:10px;font:inherit;resize:vertical}
+    .phenotype-funnel{margin:18px 0 24px;padding:17px;border:1px solid #cfe1e7;border-radius:16px;background:#f6fbfc}
+    .phenotype-funnel h3{margin:0;color:var(--dm-navy)}
+    .phenotype-funnel>.hint{margin:4px 0 14px}
+    .phenotype-chip-list{display:flex;flex-wrap:wrap;gap:7px;margin:10px 0 15px}
+    .phenotype-chip{display:inline-flex;align-items:center;gap:5px;padding:6px 9px;border:1px solid #c8dbe2;border-radius:999px;background:#fff;color:#35586a;font-size:.76rem;font-weight:750}
+    .phenotype-chip b{color:var(--dm-brand-dark)}
+    .phenotype-candidates{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}
+    .phenotype-candidate{padding:11px 12px;border:1px solid #d7e4e9;border-radius:12px;background:#fff}
+    .phenotype-candidate strong{display:block;color:var(--dm-ink);font-size:.85rem}
+    .phenotype-candidate small{display:block;margin-top:4px;color:#60788a;line-height:1.4}
+    .phenotype-trace{margin:12px 0 0;padding-left:19px;color:#60788a;font-size:.76rem}
+    .phenotype-trace li+li{margin-top:3px}
+    .phenotype-boundary{margin-top:13px;padding-top:10px;border-top:1px solid #dce9ed;color:#557181;font-size:.76rem}
     @media(max-width:860px){
       .intake-hero{grid-template-columns:1fr;gap:18px}
       .trust-note{display:none}
@@ -517,6 +530,7 @@
       .workflow-step-label{display:none}
       .summary,.conduct-plan{grid-template-columns:1fr}
       #physical-exam-output{grid-template-columns:1fr}
+      .phenotype-candidates{grid-template-columns:1fr}
     }
     @media(max-width:650px){
       main{padding:14px 14px 92px}
@@ -701,8 +715,18 @@
 
     <section class="panel hidden" id="route-panel">
       <p class="eyebrow">Próxima etapa</p>
-      <h2>Áreas que vale investigar</h2>
-      <p>O formulário encontrou estas áreas a partir das respostas. Confirme, remova ou acrescente uma área antes de continuar.</p>
+      <h2>Do fenótipo às síndromes</h2>
+      <p>Os cliques anteriores formaram o fenótipo clínico. Ele reduz primeiro as síndromes possíveis; ainda não escolhe uma doença.</p>
+      <section class="phenotype-funnel" aria-labelledby="phenotype-funnel-title">
+        <h3 id="phenotype-funnel-title">Fenótipo clínico construído</h3>
+        <p class="hint">Somente achados marcados como presentes entram no filtro. Respostas negativas e não avaliadas permanecem registradas separadamente.</p>
+        <div class="phenotype-chip-list" id="phenotype-chip-list"></div>
+        <div class="phenotype-candidates" id="phenotype-syndrome-candidates"></div>
+        <ol class="phenotype-trace" id="phenotype-filter-trace"></ol>
+        <p class="phenotype-boundary" id="phenotype-filter-boundary"></p>
+      </section>
+      <h3>Áreas para as perguntas sindrômicas</h3>
+      <p>Confirme, remova ou acrescente uma área. A próxima rodada serve apenas para reconhecer a síndrome.</p>
       <div class="module-list" id="route-modules"></div>
       <div class="field"><label for="manual-module">Adicionar módulo manualmente (se necessário)</label><select id="manual-module"><option value="">Nenhum módulo adicional</option></select></div>
       <div class="actions"><button class="button secondary" id="back-to-history">Voltar</button><button class="button" id="continue-modules">Continuar com módulos</button></div>
@@ -812,12 +836,13 @@
   <script src="/intake-cases.js?v=0.4.0"></script>
   <script src="/intake-sources.js?v=1.0.0"></script>
   <script src="/intake-reasoning.js?v=0.6.0"></script>
+  <script src="/intake-phenotype-engine.js?v=1.0.0"></script>
   <script src="/intake-syndromic-engine.js?v=1.0.0"></script>
-  <script src="/intake-diagnostic-engine.js?v=1.0.0"></script>
+  <script src="/intake-diagnostic-engine.js?v=1.1.0"></script>
   <script src="/intake-therapeutic-engine.js?v=1.3.0"></script>
   <script src="/intake-confidence-gate.js?v=1.0.0"></script>
   <script src="/intake-llm-standby.js?v=1.0.0"></script>
-  <script src="/intake-clinical-orchestrator.js?v=1.1.0"></script>
+  <script src="/intake-clinical-orchestrator.js?v=1.2.0"></script>
   <script src="/intake-engine-gate-cases.js?v=1.0.0"></script>
   <script>
     function buildSymptomQuestions(complaint){return DecisionMedSequences.buildSymptomQuestions(complaint)}
@@ -905,6 +930,7 @@
     let auditEvents=[],traceId='',moduleConfirmation={selected:[],declined:[],manual:''};
     let caseQueue=[],nextCaseIndex=0,activeGeneratedCase=null,engineGateQueue=[],nextEngineGateIndex=0;
     let reasoningDecision=null,activeSyndromes=[],reasoningConfirmed=false,clinicalEngineDecision=null,clinicalEngineRevision=0,clinicalEngineSignature='';
+    let phenotypeDecision=null,phenotypeSyndromeCandidates=[],differentialAssessment=null,lastDifferentiationPlan=null;
     let safetyCheckpointPassed=false,initialSafetyAssessment=null;
     let reassessments=[],diagnosticImpression=null,professionalConduct=null,physicalExamFindings=new Map();
     let selectedExamInput='',examPreviewUrl='',selectedSuggestedExam=null,resultAttachments=new Map();
@@ -1252,7 +1278,7 @@
       recordAudit('answer_confirmed',{source,revision,question_order:position+1,question_id:item.id,section:item.section,module:item.module,question:item.text,selected:answerValues(),detail:answerDetail()})
     }
     function resetCaseState(caseMeta=null){
-      answers=Array(script.length).fill('');position=0;routingShown=false;routeDecision=[];activeModules=[];moduleConfirmation={selected:[],declined:[],manual:''};reasoningDecision=null;activeSyndromes=[];reasoningConfirmed=false;clinicalEngineDecision=null;clinicalEngineRevision=0;clinicalEngineSignature='';safetyCheckpointPassed=false;initialSafetyAssessment=null;reassessments=[];diagnosticImpression=null;professionalConduct=null;physicalExamFindings=new Map();selectedExamInput='';selectedSuggestedExam=null;resultAttachments=new Map();
+      answers=Array(script.length).fill('');position=0;routingShown=false;routeDecision=[];activeModules=[];moduleConfirmation={selected:[],declined:[],manual:''};reasoningDecision=null;activeSyndromes=[];reasoningConfirmed=false;clinicalEngineDecision=null;clinicalEngineRevision=0;clinicalEngineSignature='';phenotypeDecision=null;phenotypeSyndromeCandidates=[];differentialAssessment=null;lastDifferentiationPlan=null;safetyCheckpointPassed=false;initialSafetyAssessment=null;reassessments=[];diagnosticImpression=null;professionalConduct=null;physicalExamFindings=new Map();selectedExamInput='';selectedSuggestedExam=null;resultAttachments=new Map();
       if(examPreviewUrl)URL.revokeObjectURL(examPreviewUrl);examPreviewUrl='';
       if($('exam'))$('exam').value='';if($('exam-photo'))$('exam-photo').value='';if($('exam-preview')){$('exam-preview').removeAttribute('src');$('exam-preview').classList.add('hidden')}
       if($('conduct-destination'))$('conduct-destination').value='';if($('conduct-note'))$('conduct-note').value='';document.querySelectorAll('#conduct-actions input').forEach(input=>{input.checked=false});
@@ -1284,6 +1310,27 @@
         note:$('note').value
       });
     }
+    function phenotypeEngineInput(selectedModules=[]){
+      return {complaint:$('complaint').value,note:$('note').value.trim(),answers:reasoningAnswers(),selectedModules:[...selectedModules]}
+    }
+    function updatePhenotypeDecision(selectedModules=[]){
+      phenotypeDecision=DecisionMedPhenotypeEngine.rankSyndromes(phenotypeEngineInput(selectedModules));
+      phenotypeSyndromeCandidates=phenotypeDecision.candidates.map(item=>item.key);
+      return phenotypeDecision
+    }
+    function renderPhenotypeDecision(){
+      const chips=$('phenotype-chip-list'),candidates=$('phenotype-syndrome-candidates'),trace=$('phenotype-filter-trace'),boundary=$('phenotype-filter-boundary');
+      if(!chips||!candidates||!trace||!boundary)return;
+      chips.replaceChildren();candidates.replaceChildren();trace.replaceChildren();
+      const present=phenotypeDecision?.phenotype?.present||[];
+      if(!present.length){const empty=document.createElement('span');empty.className='hint';empty.textContent='Nenhum fenótipo positivo estruturado ainda.';chips.append(empty)}
+      present.slice(0,18).forEach(feature=>{const chip=document.createElement('span'),axis=document.createElement('b');chip.className='phenotype-chip';axis.textContent=feature.axisLabel;chip.append(axis,document.createTextNode(` · ${feature.label}`));chips.append(chip)});
+      const ranked=phenotypeDecision?.candidates||[];
+      if(!ranked.length){const empty=document.createElement('p');empty.className='hint';empty.textContent='O conjunto atual não reduziu o catálogo com segurança; será mantida a investigação clínica geral.';candidates.append(empty)}
+      ranked.forEach(item=>{const card=document.createElement('article'),title=document.createElement('strong'),detail=document.createElement('small');card.className='phenotype-candidate';title.textContent=`${item.order}. ${item.name}`;detail.textContent=`Correspondência ${item.compatibility} · ${item.matchCount} achado(s) relacionado(s). ${item.reasons.slice(0,2).join(' · ')}`;card.append(title,detail);candidates.append(card)});
+      (phenotypeDecision?.trace||[]).filter(item=>item.applied).slice(0,8).forEach(item=>{const line=document.createElement('li');line.textContent=`${item.label}: ${item.before} → ${item.after} classificações mantidas`;trace.append(line)});
+      boundary.textContent=`${phenotypeDecision?.stopRule||'A escolha da síndrome continua profissional.'} Não é probabilidade e não confirma diagnóstico.`
+    }
     function routeModules(){
       const suggested=suggestedModules(),host=$('route-modules'),manual=$('manual-module');
       routeDecision=suggested;
@@ -1297,10 +1344,16 @@
       recordAudit('routing_generated',{source,engine:'DecisionMedRouting',engine_version:DecisionMedRouting.version,rule_engine_version:DecisionMedRouting.ruleEngineVersion,rule_catalog_version:DecisionMedRouting.ruleCatalogVersion,rule_catalog_source:DecisionMedRouting.ruleCatalogSource,input:{complaint:$('complaint').value,note:$('note').value.trim(),selected_values:answers.flatMap((_,index)=>answerValues(index))},suggestions:routeDecision.map(item=>({module:item.key,module_ids:[...item.moduleIds],name:names[item.key],priority:item.priority,reasons:[...item.reasons],rule_ids:[...item.ruleIds],rule_versions:[...item.ruleVersions],rule_statuses:[...item.ruleStatuses],source_ids:[...item.sourceIds],clinical_execution_allowed:false}))})
     }
     function reasoningAnswers(){
-      return script.map((item,index)=>({id:item.id,section:item.section,module:item.module,question:item.text,values:answerValues(index),detail:answerDetail(index)})).filter(answer=>answer.values.length)
+      return script.map((item,index)=>({id:item.id,section:item.section,module:item.module,question:item.text,values:answerValues(index),detail:answerDetail(index),targetDiagnosis:item.targetDiagnosis||null,targetDiagnoses:[...(item.targetDiagnoses||[])],questionOrigin:item.questionOrigin||null})).filter(answer=>answer.values.length)
     }
     function analyzeReasoning(){
-      return DecisionMedReasoning.analyze({complaint:$('complaint').value,note:$('note').value.trim(),answers:reasoningAnswers(),selectedModules:[...activeModules],selectedSyndromeKeys:[...activeSyndromes]})
+      const selectedKeys=activeSyndromes.length?[...activeSyndromes]:reasoningConfirmed?[]:[...phenotypeSyndromeCandidates];
+      return DecisionMedReasoning.analyze({complaint:$('complaint').value,note:$('note').value.trim(),answers:reasoningAnswers(),selectedModules:[...activeModules],selectedSyndromeKeys:selectedKeys})
+    }
+    function plannedDiscriminators(syndromeKeys,answeredIds=[]){
+      const base=DecisionMedReasoning.discriminatorQuestions(syndromeKeys,answeredIds);
+      lastDifferentiationPlan=DecisionMedPhenotypeEngine.planDifferentiation({syndromeKeys:[...syndromeKeys],baseQuestions:base,answeredIds:[...answeredIds],maxQuestions:6});
+      return [...lastDifferentiationPlan.questions]
     }
     function showSafetyCheckpoint(source='manual'){
       initialSafetyAssessment=analyzeReasoning().safety;renderSafetyStatus($('safety-checkpoint'),initialSafetyAssessment);
@@ -1359,20 +1412,22 @@
       }
     }
     function showReasoningPanel(source='manual'){
+      if(!reasoningConfirmed){updatePhenotypeDecision(activeModules);renderPhenotypeDecision()}
       reasoningDecision=analyzeReasoning();activeSyndromes=reasoningDecision.syndromes.map(item=>item.key);
       renderSafetyStatus($('reasoning-safety-preview'),reasoningDecision.safety);$('problem-representation-preview').textContent=reasoningDecision.representation;
       const host=$('syndrome-options');host.replaceChildren();
       reasoningDecision.syndromes.forEach(syndrome=>{
         const card=document.createElement('article'),label=document.createElement('label'),box=document.createElement('input'),copy=document.createElement('div'),title=document.createElement('h3'),level=document.createElement('p');
         const sources=uniqueSourceIds([...(syndrome.sourceIds||[]),...(syndrome.contentSourceIds||[])]);
-        card.className='syndrome-card';box.type='checkbox';box.value=syndrome.key;box.checked=true;title.textContent=syndrome.name;level.append(document.createTextNode(`${syndrome.entityTypeLabel} · compatibilidade ${syndrome.compatibility} com os fatos registrados.`));appendCitationRefs(level,[],{kind:'case'});
+        const phenotypeCandidate=phenotypeDecision?.candidates?.find(item=>item.key===syndrome.key);
+        card.className='syndrome-card';box.type='checkbox';box.value=syndrome.key;box.checked=true;title.textContent=syndrome.name;level.append(document.createTextNode(`${syndrome.entityTypeLabel} · compatibilidade ${syndrome.compatibility} com os fatos registrados.${phenotypeCandidate?` Filtro fenotípico: ${phenotypeCandidate.matchCount} correspondência(s).`:''}`));appendCitationRefs(level,[],{kind:'case'});
         copy.append(title,level);appendCompactList(copy,'Governança do módulo',[syndromeGovernance(syndrome)]);appendCompactList(copy,'Achados que sustentam',syndrome.supports,[],{cite:true,kind:'case'});if(syndrome.against.length)appendCompactList(copy,'Achados ausentes ou contrários',syndrome.against,[],{cite:true,kind:'case'});
         appendSourcedText(copy,'Base institucional vinculada a este módulo.',sources);appendSourceLegend(copy,sources,{bindingScope:'module_level'});
         label.append(box,copy);card.append(label);host.append(card);
         box.onchange=()=>{const any=document.querySelectorAll('#syndrome-options input:checked').length>0;$('continue-reasoning').disabled=!any;$('syndrome-error').textContent=any?'':'Confirme pelo menos uma classificação clínica para continuar.'}
       });
       $('continue-reasoning').textContent=reasoningDecision.safety.level==='immediate'?'Encerrar e revisar registro':'Continuar diferenciação';
-      recordAudit('reasoning_generated',{source,engine:'DecisionMedReasoning',engine_version:DecisionMedReasoning.version,representation:reasoningDecision.representation,safety:{...reasoningDecision.safety},syndromes:reasoningDecision.syndromes.map(syndromeAuditIdentity)});
+      recordAudit('reasoning_generated',{source,engine:'DecisionMedReasoning',engine_version:DecisionMedReasoning.version,phenotype_engine_version:DecisionMedPhenotypeEngine.version,phenotype_candidates:(phenotypeDecision?.candidates||[]).map(item=>({key:item.key,name:item.name,order:item.order,compatibility:item.compatibility,match_count:item.matchCount,reasons:[...item.reasons]})),representation:reasoningDecision.representation,safety:{...reasoningDecision.safety},syndromes:reasoningDecision.syndromes.map(syndromeAuditIdentity)});
       $('question-panel').classList.add('hidden');$('route-panel').classList.add('hidden');$('reasoning-panel').classList.remove('hidden')
     }
     function renderReasoningOutput(result){
@@ -1412,9 +1467,10 @@
       appendCompactList(syndromicCard,'Classificações clínicas provisórias',decision.syndromic.classifications.map(item=>({text:`${item.name} · compatibilidade ${item.compatibility}`,sourceIds:item.sourceIds||[],kind:'case'})),[],{cite:true,kind:'case'});
       appendSourceLegend(syndromicCard,[],{kind:'case'});appendSourceLegend(syndromicCard,engineSources,{bindingScope:'module_level'});
       const groups={more_likely:'Mais prováveis',cannot_miss:'Graves que não podem ser perdidas',mimic:'Alternativas que imitam'};
+      const assessmentLabels={supported:'favorecida pelas respostas discriminadoras',less_compatible:'compatibilidade reduzida',cannot_miss_requires_exclusion:'permanece até exclusão segura',alarm:'sinal de alarme identificado',unresolved:'ainda não diferenciada'};
       const diagnosticStatus=activeGeneratedCase&&decision.diagnostic.professionalImpression?'Impressão simulada registrada para testar o fluxo':displayStatus(decision.diagnostic.status);
-      const diagnosticCard=add('2. Motor Diagnóstico',`${diagnosticStatus}. Evidências sindrômicas compartilhadas; a confirmação continua profissional.`);
-      appendCompactList(diagnosticCard,'Hipóteses organizadas',decision.diagnostic.candidates.map(item=>({text:`${item.name} — ${groups[item.group]||item.group}`,sourceIds:engineSources,bindingScope:'module_level'})),engineSources,{cite:true});
+      const diagnosticCard=add('2. Motor Diagnóstico',`${diagnosticStatus}. Depois da síndrome, somente perguntas com capacidade de diferenciar patologias entram no orçamento finito. A confirmação continua profissional.`);
+      appendCompactList(diagnosticCard,'Diferenciais após as perguntas complementares',decision.diagnostic.candidates.map(item=>({text:`${item.name} — ${groups[item.group]||item.group} · ${assessmentLabels[item.assessmentStatus]||'ainda não diferenciada'} · favorece ${item.criteria.present.length} / reduz ${item.criteria.absentOrContrary.length} / pendente ${item.criteria.pending.length}${item.cannotMissPreserved?' · grave preservada':''}`,sourceIds:item.sourceIds?.length?item.sourceIds:engineSources,bindingScope:'field_level'})),engineSources,{cite:true,bindingScope:'field_level'});
       appendSourceLegend(diagnosticCard,engineSources,{bindingScope:'module_level'});
       const therapeuticCard=add('3. Motor Terapêutico',`${displayStatus(decision.therapeutic.status)}. O motor separa apoio sindrômico de tratamento diagnóstico-específico; tratamento e prescrição automáticos permanecem bloqueados.`);
       const supportPlans=decision.therapeutic.syndromicSupportPlans||[decision.therapeutic.sharedSyndromicPlan||decision.therapeutic.syndromicPlan].filter(Boolean);
@@ -1753,7 +1809,11 @@
       const finalLabels={assisted:'Gerar diferenciais',direct:'Revisar critérios',investigation:'Comparar hipóteses'};
       $('previous').disabled=position===0;$('next').textContent=position===script.length-1?(!routingShown?'Escolher módulos':reasoningConfirmed?finalLabels[flowMode]||'Revisar':'Formar classificação clínica'):'Próxima';createAnswer(current)
     }
-    function showRouting(){routingShown=true;routeModules();recordRouting();$('question-panel').classList.add('hidden');$('route-panel').classList.remove('hidden')}
+    function showRouting(){
+      routingShown=true;routeModules();updatePhenotypeDecision(routeDecision.map(item=>item.key));renderPhenotypeDecision();recordRouting();
+      recordAudit('phenotype_filter_generated',{engine:'DecisionMedPhenotypeEngine',engine_version:DecisionMedPhenotypeEngine.version,features:(phenotypeDecision?.phenotype?.features||[]).map(item=>({id:item.id,axis:item.axis,label:item.label,polarity:item.polarity})),candidates:(phenotypeDecision?.candidates||[]).map(item=>({key:item.key,module_id:item.moduleId,name:item.name,order:item.order,compatibility:item.compatibility,match_count:item.matchCount,reasons:[...item.reasons]})),trace:(phenotypeDecision?.trace||[]).map(item=>({...item})),probability_calibrated:false});
+      $('question-panel').classList.add('hidden');$('route-panel').classList.remove('hidden')
+    }
     function moduleQuestion(key,text,index){
       const base={id:`module.${key}.${index+1}`,module:key,section:'module',text,options:['Sim','Não','Não sabe informar','Não se aplica'],affirmativeOptions:affirmativeAlternatives[text]||genericAffirmativeAlternatives,detailOnPositive:false,detailRequired:false};
       if(text==='O jato está normal?')return {...base,options:['Normal','Fraco','Interrompido','Gotejamento','Precisa fazer força','Não sabe informar'],detailOnPositive:false};
@@ -1767,16 +1827,24 @@
       if(text==='Essa dor piora ao mexer ou melhora com repouso?')return {...base,options:['Piora ao mexer','Melhora com repouso','Piora em repouso','Sem relação percebida','Outro'],multiple:true,detailOnPositive:false};
       return base
     }
+    function syndromicModuleQuestions(moduleKeys){
+      const keys=[...new Set(moduleKeys)].filter(key=>Array.isArray(moduleQuestions[key]));
+      if(!keys.length)return [];
+      const totalBudget=6,perModule=Math.max(1,Math.floor(totalBudget/keys.length));
+      return keys.flatMap(key=>moduleQuestions[key].slice(0,perModule).map((text,index)=>moduleQuestion(key,text,index))).slice(0,totalBudget)
+    }
     function initializeTargetedCase(mode,syndromeKeys,source='manual',caseMeta=null){
       const selectedDefinitions=DecisionMedReasoning.syndromeCatalog.filter(item=>syndromeKeys.includes(item.key));
       if(selectedDefinitions.length!==syndromeKeys.length)return;
       flowMode=mode;
       const moduleKeys=[...new Set(selectedDefinitions.flatMap(item=>item.modules))];
       const safety=safetyQuestions.map(item=>({module:'safety',section:'safety',...item}));
-      const criteria=moduleKeys.flatMap(key=>(moduleQuestions[key]||[]).map((text,index)=>moduleQuestion(key,text,index)));
-      const discriminators=DecisionMedReasoning.discriminatorQuestions(syndromeKeys);
+      const criteria=syndromicModuleQuestions(moduleKeys);
+      const discriminators=plannedDiscriminators(syndromeKeys);
+      const differentiationPlan=lastDifferentiationPlan;
       script=[...safety,...criteria,...discriminators];
       resetCaseState(caseMeta);
+      lastDifferentiationPlan=differentiationPlan;
       routingShown=true;reasoningConfirmed=true;activeModules=[...moduleKeys];activeSyndromes=[...syndromeKeys];
       moduleConfirmation={selected:[...moduleKeys],declined:[],manual:''};
       const selectedNames=selectedDefinitions.map(item=>item.name);
@@ -1788,7 +1856,7 @@
       recordAudit('sequence_generated',{engine:'DecisionMedSequences',engine_version:DecisionMedSequences.version,questions:script.map((item,index)=>({order:index+1,id:item.id,section:item.section,module:item.module,text:item.text}))});
       recordAudit('modules_confirmed',{source,suggested:[...moduleKeys],selected:[...moduleKeys],declined:[],manually_added:null});
       recordAudit('syndromes_confirmed',{source,selected:[...syndromeKeys],declined:[],safety_level:reasoningDecision.safety.level});
-      recordAudit('discriminators_generated',{source,engine_version:DecisionMedReasoning.version,syndromes:[...syndromeKeys],questions:discriminators.map((item,index)=>({order:index+1,id:item.id,text:item.text}))});
+      recordAudit('discriminators_generated',{source,engine_version:DecisionMedReasoning.version,phenotype_engine_version:DecisionMedPhenotypeEngine.version,syndromes:[...syndromeKeys],candidate_count:lastDifferentiationPlan?.candidateCount||0,question_budget:lastDifferentiationPlan?.budget||6,stop_rule:lastDifferentiationPlan?.stopRule||null,questions:discriminators.map((item,index)=>({order:index+1,id:item.id,text:item.text,target_diagnosis:item.targetDiagnosis||null,origin:item.questionOrigin||'confirmed_syndrome'}))});
       if(source==='manual'){$('start-panel').classList.add('hidden');$('question-panel').classList.remove('hidden');renderQuestion()}
     }
     function defaultGeneratedAnswer(item){
@@ -1893,12 +1961,15 @@
         routingShown=true;routeModules();recordRouting('case_generator');
         activeModules=routeDecision.map(item=>item.key);moduleConfirmation={selected:[...activeModules],declined:[],manual:''};
         recordAudit('modules_confirmed',{source:'case_generator',suggested:[...activeModules],selected:[...activeModules],declined:[],manually_added:null});recordGeneratedCoverage(scenario);
-        const modules=activeModules.flatMap(key=>moduleQuestions[key].map((text,index)=>moduleQuestion(key,text,index))),moduleStart=script.length;
+        const modules=syndromicModuleQuestions(activeModules),moduleStart=script.length;
+        recordAudit('syndromic_question_budget_created',{source:'case_generator',engine:'DecisionMedPhenotypeEngine',engine_version:DecisionMedPhenotypeEngine.version,modules:[...activeModules],question_budget:6,questions:modules.map((item,index)=>({order:index+1,id:item.id,text:item.text}))});
         script.push(...modules);answers.push(...Array(modules.length).fill(''));fillGeneratedQuestions(modules,moduleStart,scenario);
+        updatePhenotypeDecision(activeModules);
+        recordAudit('phenotype_filter_generated',{source:'case_generator',engine:'DecisionMedPhenotypeEngine',engine_version:DecisionMedPhenotypeEngine.version,features:(phenotypeDecision?.phenotype?.features||[]).map(item=>({id:item.id,axis:item.axis,label:item.label,polarity:item.polarity})),candidates:(phenotypeDecision?.candidates||[]).map(item=>({key:item.key,module_id:item.moduleId,name:item.name,order:item.order,compatibility:item.compatibility,match_count:item.matchCount,reasons:[...item.reasons]})),trace:(phenotypeDecision?.trace||[]).map(item=>({...item})),probability_calibrated:false});
         reasoningDecision=analyzeReasoning();activeSyndromes=reasoningDecision.syndromes.map(item=>item.key);reasoningConfirmed=true;recordGeneratedReasoning();
         recordAudit('syndromes_confirmed',{source:'case_generator',selected:[...activeSyndromes],declined:[],safety_level:reasoningDecision.safety.level});
-        const discriminators=reasoningDecision.safety.level==='immediate'?[]:DecisionMedReasoning.discriminatorQuestions(activeSyndromes,script.map(item=>item.id)),discriminatorStart=script.length;
-        recordAudit('discriminators_generated',{source:'case_generator',engine_version:DecisionMedReasoning.version,syndromes:[...activeSyndromes],questions:discriminators.map((item,index)=>({order:index+1,id:item.id,text:item.text}))});
+        const discriminators=reasoningDecision.safety.level==='immediate'?[]:plannedDiscriminators(activeSyndromes,script.map(item=>item.id)),discriminatorStart=script.length;
+        recordAudit('discriminators_generated',{source:'case_generator',engine_version:DecisionMedReasoning.version,phenotype_engine_version:DecisionMedPhenotypeEngine.version,syndromes:[...activeSyndromes],candidate_count:lastDifferentiationPlan?.candidateCount||0,question_budget:lastDifferentiationPlan?.budget||6,stop_rule:lastDifferentiationPlan?.stopRule||null,questions:discriminators.map((item,index)=>({order:index+1,id:item.id,text:item.text,target_diagnosis:item.targetDiagnosis||null,origin:item.questionOrigin||'confirmed_syndrome'}))});
         script.push(...discriminators);answers.push(...Array(discriminators.length).fill(''));fillGeneratedQuestions(discriminators,discriminatorStart,scenario)
       }else{
         initializeTargetedCase(flowMode,scenario.syndromeKeys,'case_generator',caseMeta);
@@ -1962,7 +2033,8 @@
       activeModules=[...selected];
       moduleConfirmation.selected=[...activeModules];
       recordAudit('modules_confirmed',{source:'manual',suggested,selected:[...activeModules],declined:[...moduleConfirmation.declined],manually_added:manual||null});
-      const modules=selected.flatMap(key=>moduleQuestions[key].map((text,index)=>moduleQuestion(key,text,index)));
+      const modules=syndromicModuleQuestions(selected);
+      recordAudit('syndromic_question_budget_created',{engine:'DecisionMedPhenotypeEngine',engine_version:DecisionMedPhenotypeEngine.version,modules:[...selected],question_budget:6,questions:modules.map((item,index)=>({order:index+1,id:item.id,text:item.text}))});
       $('route-panel').classList.add('hidden');if(!modules.length){showReasoningPanel();return}
       script.push(...modules);answers.push(...Array(modules.length).fill(''));position++;$('question-panel').classList.remove('hidden');renderQuestion()
     };
@@ -1974,8 +2046,8 @@
       recordAudit('syndromes_confirmed',{source:'manual',selected:[...activeSyndromes],declined:reasoningDecision.syndromes.map(item=>item.key).filter(key=>!activeSyndromes.includes(key)),safety_level:reasoningDecision.safety.level});
       $('reasoning-panel').classList.add('hidden');
       if(reasoningDecision.safety.level==='immediate'){void review();return}
-      const discriminators=DecisionMedReasoning.discriminatorQuestions(activeSyndromes,script.map(item=>item.id));
-      recordAudit('discriminators_generated',{engine_version:DecisionMedReasoning.version,syndromes:[...activeSyndromes],questions:discriminators.map((item,index)=>({order:index+1,id:item.id,text:item.text}))});
+      const discriminators=plannedDiscriminators(activeSyndromes,script.map(item=>item.id));
+      recordAudit('discriminators_generated',{engine_version:DecisionMedReasoning.version,phenotype_engine_version:DecisionMedPhenotypeEngine.version,syndromes:[...activeSyndromes],candidate_count:lastDifferentiationPlan?.candidateCount||0,question_budget:lastDifferentiationPlan?.budget||6,stop_rule:lastDifferentiationPlan?.stopRule||null,questions:discriminators.map((item,index)=>({order:index+1,id:item.id,text:item.text,target_diagnosis:item.targetDiagnosis||null,origin:item.questionOrigin||'confirmed_syndrome'}))});
       if(!discriminators.length){void review();return}
       script.push(...discriminators);answers.push(...Array(discriminators.length).fill(''));position++;$('question-panel').classList.remove('hidden');renderQuestion()
     };
@@ -1992,7 +2064,7 @@
         `Porta de entrada: ${flowNames[record.flow_mode]||record.flow_mode}`,
         `Paciente: ${record.patient.display_name}`,
         `Idade: ${record.patient.age_years} anos${record.patient.synthetic?' · dado sintético':''}`,
-        `Motores legados: sequência ${record.engines.sequence} · roteamento ${record.engines.routing} · raciocínio ${record.engines.reasoning}`,
+        `Motores de coleta: sequência ${record.engines.sequence} · roteamento ${record.engines.routing} · fenótipo ${record.engines.phenotype} · raciocínio ${record.engines.reasoning}`,
         `Motores clínicos: sindrômico ${record.engines.syndromic} · diagnóstico ${record.engines.diagnostic} · terapêutico ${record.engines.therapeutic} · gate ${record.engines.confidence_gate} · LLM standby ${record.engines.llm_standby} · orquestrador ${record.engines.clinical_orchestrator}`,
         '',
         'SEQUÊNCIA E RESPOSTAS CONFIRMADAS'
@@ -2058,6 +2130,8 @@
         else if(event.type==='exam_result_attached')lines.push(`${event.order}. ${event.timestamp} · resultado anexado · ${event.exam_name} · ${event.mime_group} · somente local`);
         else if(event.type==='routing_generated')lines.push(`${event.order}. ${event.timestamp} · roteamento ${event.engine_version} · ${event.suggestions.map(item=>item.name).join(', ')||'sem sugestão'} · regras: ${[...new Set(event.suggestions.flatMap(item=>item.rule_ids||[]))].join(', ')||'nenhuma'}`);
         else if(event.type==='modules_confirmed')lines.push(`${event.order}. ${event.timestamp} · módulos confirmados · ${event.selected.map(key=>names[key]).join(', ')||'nenhum'}`);
+        else if(event.type==='phenotype_filter_generated')lines.push(`${event.order}. ${event.timestamp} · filtro fenotípico ${event.engine_version} · ${(event.features||[]).filter(item=>item.polarity==='present').length} achados presentes · candidatos: ${(event.candidates||[]).map(item=>item.name).join(', ')||'nenhum'}`);
+        else if(event.type==='syndromic_question_budget_created')lines.push(`${event.order}. ${event.timestamp} · perguntas para reconhecer a síndrome · ${event.questions?.length||0}/${event.question_budget||6}`);
         else if(event.type==='reasoning_generated')lines.push(`${event.order}. ${event.timestamp} · raciocínio ${event.engine_version} · triagem ${event.safety.level} · ${event.syndromes.map(item=>item.name).join(', ')} · regras: ${[...new Set([...(event.safety.ruleIds||[]),...event.syndromes.flatMap(item=>(item.differential_rules||[]).map(rule=>rule.ruleId))])].join(', ')||'nenhuma'}`);
         else if(event.type==='syndromes_confirmed')lines.push(`${event.order}. ${event.timestamp} · classificações clínicas confirmadas · ${event.selected.map(key=>syndromeName(key)).join(', ')}`);
         else if(event.type==='discriminators_generated')lines.push(`${event.order}. ${event.timestamp} · perguntas discriminadoras geradas · ${event.questions.length}`);
@@ -2077,11 +2151,13 @@
       const patient=patientAuditRecord();
       reasoningDecision=analyzeReasoning();if(!activeSyndromes.length)activeSyndromes=reasoningDecision.syndromes.map(item=>item.key);
       const confirmedReasoning={...reasoningDecision,syndromes:reasoningDecision.syndromes.filter(item=>activeSyndromes.includes(item.key))};
+      differentialAssessment=DecisionMedPhenotypeEngine.analyzeDifferentials({syndromes:confirmedReasoning.syndromes,answers:reasoningAnswers()});
       renderSafetyStatus($('review-safety-summary'),confirmedReasoning.safety);
       const answered=script.map((item,index)=>({item,answer:answers[index]})).filter(entry=>entry.answer);
       const orchestrationSignature=JSON.stringify({
         answers:answered.map(entry=>({id:entry.item.id,answer:entry.answer})),
         syndromes:[...activeSyndromes],
+        differentialProfiles:differentialAssessment.profiles.map(item=>({key:item.key,status:item.assessmentStatus,present:[...item.present],absentOrContrary:[...item.absentOrContrary],alarms:[...item.alarms]})),
         physicalExamFindings:[...physicalExamFindings.values()].map(entry=>({...entry})),
         reassessments:reassessments.map(entry=>({...entry})),
         diagnosticImpression:diagnosticImpression?{...diagnosticImpression}:null,
@@ -2095,6 +2171,7 @@
       clinicalEngineDecision=DecisionMedClinicalOrchestrator.run({
         reasoning:confirmedReasoning,
         selectedSyndromeKeys:[...activeSyndromes],
+        diagnosticProfiles:differentialAssessment,
         reassessments:reassessments.map(entry=>({...entry})),
         professionalImpression:diagnosticImpression?{...diagnosticImpression}:null,
         knownSourceIds:[...knownEvidenceSourceIds],
@@ -2111,7 +2188,7 @@
           engine_versions:Object.fromEntries(clinicalEngineDecision.audit.map(item=>[item.engine,item.version])),
           fact_question_ids:answered.map(entry=>entry.item.id),
           syndrome_keys:clinicalEngineDecision.syndromic.classifications.map(item=>item.key),
-          diagnostic_candidates:clinicalEngineDecision.diagnostic.candidates.map(item=>({key:item.key,name:item.name,group:item.group,criteria:{present:[...item.criteria.present],absent_or_contrary:[...item.criteria.absentOrContrary],pending:[...item.criteria.pending],conflicting:[...item.criteria.conflicting]}})),
+          diagnostic_candidates:clinicalEngineDecision.diagnostic.candidates.map(item=>({key:item.key,name:item.name,group:item.group,assessment_status:item.assessmentStatus||'unresolved',cannot_miss_preserved:item.cannotMissPreserved===true,shared_syndromic_evidence:[...(item.sharedSyndromicEvidence||[])],criteria:{present:[...item.criteria.present],absent_or_contrary:[...item.criteria.absentOrContrary],pending:[...item.criteria.pending],conflicting:[...item.criteria.conflicting]}})),
           therapeutic_hypotheses:clinicalEngineDecision.therapeutic.plan.map(item=>({key:item.hypothesisKey,name:item.hypothesisName,status:item.status})),
           confidence:{threshold:clinicalEngineDecision.gate.threshold,comparison:clinicalEngineDecision.gate.comparison,score:clinicalEngineDecision.gate.score,calibrated:clinicalEngineDecision.gate.calibrated,provenance:clinicalEngineDecision.gate.provenance},
           route:clinicalEngineDecision.gate.route,
@@ -2171,7 +2248,7 @@
         source:activeGeneratedCase?'case_generator':'manual',
         flow_mode:flowMode,
         generated_case:activeGeneratedCase?{...activeGeneratedCase}:null,
-        engines:{patient_context:DecisionMedPatient.version,sequence:DecisionMedSequences.version,routing:DecisionMedRouting.version,routing_rule_engine:DecisionMedRouting.ruleEngineVersion,routing_rule_catalog:DecisionMedRouting.ruleCatalogVersion,reasoning:DecisionMedReasoning.version,cases:DecisionMedCases.version,syndromic:DecisionMedSyndromicEngine.version,diagnostic:DecisionMedDiagnosticEngine.version,therapeutic:DecisionMedTherapeuticEngine.version,confidence_gate:DecisionMedConfidenceGate.version,llm_standby:DecisionMedLlmStandby.version,clinical_orchestrator:DecisionMedClinicalOrchestrator.version},
+        engines:{patient_context:DecisionMedPatient.version,sequence:DecisionMedSequences.version,routing:DecisionMedRouting.version,routing_rule_engine:DecisionMedRouting.ruleEngineVersion,routing_rule_catalog:DecisionMedRouting.ruleCatalogVersion,phenotype:DecisionMedPhenotypeEngine.version,reasoning:DecisionMedReasoning.version,cases:DecisionMedCases.version,syndromic:DecisionMedSyndromicEngine.version,diagnostic:DecisionMedDiagnosticEngine.version,therapeutic:DecisionMedTherapeuticEngine.version,confidence_gate:DecisionMedConfidenceGate.version,llm_standby:DecisionMedLlmStandby.version,clinical_orchestrator:DecisionMedClinicalOrchestrator.version},
         patient,
         complaint:$('complaint').value,
         note:$('note').value.trim(),
@@ -2241,6 +2318,11 @@
       renderReviewSourceDrawers(confirmedReasoning);
       $('question-panel').classList.add('hidden');$('route-panel').classList.add('hidden');$('reasoning-panel').classList.add('hidden');$('review-panel').classList.remove('hidden')
     }
+    function configureFallbackPhenotype(){
+      const fallbackModules=DecisionMedReasoning.syndromeCatalog.map(item=>({module_id:item.moduleId||`local.${item.key}`,runtime_key:item.key,display_name:item.name,entity_type:item.entityType,primary_specialty:item.primarySpecialty||'internal-medicine',legacy_keys:[item.key]}));
+      const fallbackContent=DecisionMedReasoning.prototypeContent.map(item=>({...item,module_id:fallbackModules.find(module=>module.runtime_key===item.legacy_key)?.module_id||`local.${item.legacy_key}`}));
+      DecisionMedPhenotypeEngine.configureCatalog(fallbackModules,fallbackContent);DecisionMedPhenotypeEngine.configureRules([])
+    }
     async function hydrateClinicalCatalog(){
       const status=$('runtime-catalog-status');
       try{
@@ -2261,21 +2343,24 @@
         const ruleHydration=DecisionMedRouting.configureRules(ruleCatalog.items);
         const clinicalRuleHydration=DecisionMedReasoning.configureRules(ruleCatalog.items);
         const contentHydration=DecisionMedReasoning.configureContent(contentCatalog.items);
+        const phenotypeHydration=DecisionMedPhenotypeEngine.configureCatalog(catalog.items,contentCatalog.items);
+        const phenotypeRuleHydration=DecisionMedPhenotypeEngine.configureRules(ruleCatalog.items);
         renderDirectSyndromeChoices();renderInvestigationSyndromeChoices();
         status.textContent=hydration.complete&&contentHydration.complete
-          ? `${catalog.count} módulos e ${contentHydration.matched} conteúdos estruturais disponíveis nas três portas · ${sourceCatalog.count} referências vinculadas com siglas e legenda (${sourceCatalogReady?'catálogo íntegro':'hidratação incompleta'}) · revisão clínica item a item pendente · ${ruleCatalog.count} regras declarativas (${ruleHydration.count} de rota, ${clinicalRuleHydration.support} de suporte, ${clinicalRuleHydration.alarm} de segurança) · versão ${catalog.release_version} · 4.500 cenários no catálogo de teste · execução clínica automática bloqueada.`
+          ? `${catalog.count} módulos e ${contentHydration.matched} conteúdos estruturais disponíveis nas três portas · filtro fenotípico sobre ${phenotypeHydration.syndromicCount} classificações e ${phenotypeRuleHydration.count} regras clínicas · ${sourceCatalog.count} referências vinculadas com siglas e legenda (${sourceCatalogReady?'catálogo íntegro':'hidratação incompleta'}) · revisão clínica item a item pendente · ${ruleCatalog.count} regras declarativas (${ruleHydration.count} de rota, ${clinicalRuleHydration.support} de suporte, ${clinicalRuleHydration.alarm} de segurança) · versão ${catalog.release_version} · 4.500 cenários no catálogo de teste · execução clínica automática bloqueada.`
           : `Catálogo carregado, mas a migração ficou incompleta: identidades ${hydration.matched}/${hydration.expected}, conteúdos ${contentHydration.matched}/${contentHydration.expected}. O fluxo exige revisão.`;
       }catch(error){
         DecisionMedReasoning.configureCatalog([]);
         DecisionMedReasoning.configureContent([]);
         DecisionMedReasoning.configureRules([]);
+        configureFallbackPhenotype();
         DecisionMedSources.configure([]);legacyModuleSources=new Map();sourceCatalogReady=false;knownEvidenceSourceIds=[];
         DecisionMedRouting.configureRules();
         renderDirectSyndromeChoices();renderInvestigationSyndromeChoices();
         status.textContent='Catálogo governado indisponível. As 14 identidades locais ficam disponíveis apenas para inspeção; triagem, raciocínio e execução clínica permanecem bloqueados.'
       }
     }
-    initializeReviewWorkspace();initializeWorkflowObserver();renderComplaintChoices();renderDirectSyndromeChoices();renderInvestigationSyndromeChoices();void hydrateClinicalCatalog();
+    configureFallbackPhenotype();initializeReviewWorkspace();initializeWorkflowObserver();renderComplaintChoices();renderDirectSyndromeChoices();renderInvestigationSyndromeChoices();void hydrateClinicalCatalog();
     function inferExamKind(name){
       const normalized=name.toLocaleLowerCase('pt-BR');
       if(normalized.includes('eletrocardiograma')||normalized.includes('traçado'))return 'Eletrocardiograma / traçado';

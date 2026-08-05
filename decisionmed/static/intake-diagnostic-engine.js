@@ -5,7 +5,7 @@
 })(typeof globalThis === "object" ? globalThis : this, function createDiagnosticEngine() {
   "use strict";
 
-  const VERSION = "1.0.0";
+  const VERSION = "1.1.0";
 
   function unique(values) {
     return [...new Set(values.filter(Boolean))];
@@ -28,6 +28,70 @@
     const selectedKeys = new Set(syndromic.classifications.map((item) => item.key));
     const selected = (reasoning.syndromes || []).filter((item) => selectedKeys.has(item.key));
     const reassessments = normalizeReassessments(input.reassessments);
+    const suppliedProfiles = Array.isArray(input.diagnosticProfiles?.profiles)
+      ? input.diagnosticProfiles.profiles
+      : [];
+    const professionalImpression = input.professionalImpression || null;
+    if (suppliedProfiles.length) {
+      const candidates = suppliedProfiles.map((profile) => {
+        const relevantReassessments = reassessments.filter(
+          (entry) =>
+            entry.hypothesis === profile.name ||
+            (profile.originatingSyndromes || []).includes(entry.hypothesis),
+        );
+        const conflicts = relevantReassessments
+          .filter((entry) =>
+            /reformular|contradit|incompat/i.test(
+              `${entry.impact || ""} ${entry.finding || ""}`,
+            ),
+          )
+          .map(
+            (entry) => `${entry.examName || "Reavaliação"}: ${entry.impact || entry.finding}`,
+          );
+        return Object.freeze({
+          key: profile.key,
+          name: profile.name,
+          group: profile.group,
+          groupLabel: profile.groupLabel,
+          originatingSyndromes: Object.freeze(unique(profile.originatingSyndromes || [])),
+          sharedSyndromicEvidence: Object.freeze(
+            unique(profile.sharedSyndromicEvidence || []),
+          ),
+          criteria: Object.freeze({
+            present: Object.freeze(unique(profile.present || [])),
+            absentOrContrary: Object.freeze(unique(profile.absentOrContrary || [])),
+            pending: Object.freeze(unique(profile.pending || [])),
+            conflicting: Object.freeze(
+              unique([...(profile.alarms || []), ...conflicts]),
+            ),
+          }),
+          criteriaScope: "pathology_specific_where_bound",
+          referenceContraryFindings: Object.freeze([]),
+          reassessments: Object.freeze(relevantReassessments),
+          assessmentStatus: profile.assessmentStatus || "unresolved",
+          cannotMissPreserved: profile.cannotMissPreserved === true,
+          diagnosisModuleId: profile.diagnosisModuleId || null,
+          sourceIds: Object.freeze(unique(profile.sourceIds || [])),
+          automaticallyConfirmed: false,
+        });
+      });
+      return Object.freeze({
+        engine: "DecisionMedDiagnosticEngine",
+        version: VERSION,
+        candidates: Object.freeze(candidates),
+        professionalImpression: professionalImpression
+          ? Object.freeze({ ...professionalImpression })
+          : null,
+        confirmedByEngine: false,
+        status: professionalImpression
+          ? "professional_impression_recorded"
+          : "pathology_specific_differential_support",
+        discriminatorModel: "finite_phenotype_syndrome_pathology",
+        probabilityCalibrated: false,
+        disclaimer:
+          "O motor organiza efeitos qualitativos por patologia, preserva hipóteses graves e nunca confirma diagnóstico automaticamente.",
+      });
+    }
     const groups = [
       ["likely", "more_likely", "Mais provável"],
       ["cannotMiss", "cannot_miss", "Grave que não pode ser perdida"],
@@ -103,8 +167,6 @@
         automaticallyConfirmed: false,
       }),
     );
-    const professionalImpression = input.professionalImpression || null;
-
     return Object.freeze({
       engine: "DecisionMedDiagnosticEngine",
       version: VERSION,
