@@ -7,13 +7,11 @@ const path = require("node:path");
 const sources = require("../decisionmed/static/intake-sources.js");
 const cases = require("../decisionmed/static/intake-cases.js");
 
-const evidencePath = path.join(
-  __dirname,
-  "..",
-  "..",
-  "DecisionMEd-Knowledge",
-  "evidence.json",
-);
+const evidencePath = [
+  path.join(__dirname, "..", "knowledge-release", "evidence.json"),
+  path.join(__dirname, "..", "..", "DecisionMEd-Knowledge", "evidence.json"),
+].find((candidate) => fs.existsSync(candidate));
+assert.ok(evidencePath, "DecisionMEd knowledge evidence catalog is available");
 const evidence = JSON.parse(fs.readFileSync(evidencePath, "utf8")).items;
 const evidenceIds = new Set(evidence.map((item) => item.source_id));
 
