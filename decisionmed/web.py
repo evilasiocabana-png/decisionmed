@@ -3,6 +3,8 @@
 from __future__ import annotations
 
 import argparse
+import base64
+import hmac
 import importlib
 import json
 from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer
@@ -34,6 +36,8 @@ class DecisionMedRequestHandler(SimpleHTTPRequestHandler):
         parsed = urlparse(self.path)
         if parsed.path == "/health":
             self._send_json({"status": "ok", "mode": "read-only"})
+            return
+        if not self._authorize_request():
             return
         if parsed.path == "/api/app-state":
             self._send_json(self._app_service.get_app_state())
@@ -100,10 +104,13 @@ class DecisionMedRequestHandler(SimpleHTTPRequestHandler):
             self._send_json(schema)
             return
         if parsed.path == "/psychiatry":
-            self._redirect(self._psychiatry_url)
+            if self._psychiatry_url:
+                self._redirect(self._psychiatry_url)
+            else:
+                self._send_json({"error": "endpoint_not_available"}, status=404)
             return
         if parsed.path == "/":
-            self.path = "/index.html"
+            self.path = self._hosted_landing or "/index.html"
         super().do_GET()
 
     def end_headers(self) -> None:
@@ -113,6 +120,9 @@ class DecisionMedRequestHandler(SimpleHTTPRequestHandler):
         self.send_header("X-Frame-Options", "DENY")
         self.send_header("Referrer-Policy", "no-referrer")
         self.send_header("Permissions-Policy", "camera=(), microphone=(), geolocation=()")
+        if self._public_read_only:
+            self.send_header("Strict-Transport-Security", "max-age=31536000; includeSubDomains")
+            self.send_header("X-Robots-Tag", "noindex, nofollow, noarchive")
         self.send_header(
             "Content-Security-Policy",
             "default-src 'self'; base-uri 'none'; form-action 'none'; "
@@ -122,6 +132,11 @@ class DecisionMedRequestHandler(SimpleHTTPRequestHandler):
         super().end_headers()
 
     def do_POST(self) -> None:
+        if not self._authorize_request():
+            return
+        if self._public_read_only:
+            self._send_json({"error": "public_read_only"}, status=405)
+            return
         parsed = urlparse(self.path)
         try:
             payload = self._read_json()
@@ -152,8 +167,53 @@ class DecisionMedRequestHandler(SimpleHTTPRequestHandler):
         return self.server.app_service  # type: ignore[attr-defined]
 
     @property
-    def _psychiatry_url(self) -> str:
+    def _psychiatry_url(self) -> str | None:
         return self.server.psychiatry_url  # type: ignore[attr-defined]
+
+    @property
+    def _public_read_only(self) -> bool:
+        return bool(getattr(self.server, "public_read_only", False))
+
+    @property
+    def _hosted_landing(self) -> str | None:
+        return getattr(self.server, "hosted_landing", None)
+
+    @property
+    def _beta_credentials(self) -> tuple[str, str] | None:
+        return getattr(self.server, "beta_credentials", None)
+
+    def _authorize_request(self) -> bool:
+        credentials = self._beta_credentials
+        if credentials is None:
+            return True
+        header = self.headers.get("Authorization", "")
+        if not header.startswith("Basic "):
+            self._send_auth_required()
+            return False
+        try:
+            raw = base64.b64decode(header[6:], validate=True).decode("utf-8")
+            supplied_user, supplied_password = raw.split(":", 1)
+        except (ValueError, UnicodeDecodeError):
+            self._send_auth_required()
+            return False
+        expected_user, expected_password = credentials
+        authorized = hmac.compare_digest(supplied_user, expected_user) and hmac.compare_digest(
+            supplied_password,
+            expected_password,
+        )
+        if not authorized:
+            self._send_auth_required()
+        return authorized
+
+    def _send_auth_required(self) -> None:
+        body = json.dumps({"error": "beta_authentication_required"}).encode("utf-8")
+        self.send_response(401)
+        self.send_header("WWW-Authenticate", 'Basic realm="DecisionMed Beta", charset="UTF-8"')
+        self.send_header("Content-Type", "application/json; charset=utf-8")
+        self.send_header("Content-Length", str(len(body)))
+        self.send_header("Cache-Control", "no-store")
+        self.end_headers()
+        self.wfile.write(body)
 
     def _send_json(self, payload: dict[str, Any], status: int = 200) -> None:
         body = json.dumps(payload, ensure_ascii=False).encode("utf-8")
@@ -212,11 +272,26 @@ class RequestPayloadError(ValueError):
 def create_server(
     host: str = "127.0.0.1",
     port: int = 8765,
-    psychiatry_url: str = "http://127.0.0.1:8766/",
+    psychiatry_url: str | None = "http://127.0.0.1:8766/",
     app_service: DecisionMedAppService | None = None,
     knowledge_root: Path | None = None,
+    *,
+    allow_public_host: bool = False,
+    public_read_only: bool = False,
+    beta_credentials: tuple[str, str] | None = None,
+    hosted_landing: str | None = None,
 ) -> ThreadingHTTPServer:
-    _require_loopback_host(host)
+    _require_host(host, allow_public_host=allow_public_host)
+    if host == "0.0.0.0" and (
+        not allow_public_host or not public_read_only or beta_credentials is None
+    ):
+        raise ValueError(
+            "public binding requires read-only mode and beta authentication"
+        )
+    if beta_credentials is not None and (
+        not beta_credentials[0] or not beta_credentials[1]
+    ):
+        raise ValueError("beta credentials must not be empty")
     if app_service is not None and knowledge_root is not None:
         raise ValueError("provide app_service or knowledge_root, not both")
     server = ThreadingHTTPServer((host, port), DecisionMedRequestHandler)
@@ -229,6 +304,9 @@ def create_server(
         app_service = DecisionMedAppService(catalogs=catalogs)
     server.app_service = app_service  # type: ignore[attr-defined]
     server.psychiatry_url = psychiatry_url  # type: ignore[attr-defined]
+    server.public_read_only = public_read_only  # type: ignore[attr-defined]
+    server.beta_credentials = beta_credentials  # type: ignore[attr-defined]
+    server.hosted_landing = hosted_landing  # type: ignore[attr-defined]
     return server
 
 
@@ -248,8 +326,15 @@ def create_psychiatry_server(
 
 
 def _require_loopback_host(host: str) -> None:
-    if host not in {"127.0.0.1", "localhost"}:
-        raise ValueError("DecisionMEd without authentication must bind to loopback")
+    _require_host(host, allow_public_host=False)
+
+
+def _require_host(host: str, *, allow_public_host: bool) -> None:
+    allowed = {"127.0.0.1", "localhost"}
+    if allow_public_host:
+        allowed.add("0.0.0.0")
+    if host not in allowed:
+        raise ValueError("DecisionMEd without hosted safeguards must bind to loopback")
 
 
 def run(

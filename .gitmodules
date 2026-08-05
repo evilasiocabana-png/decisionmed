@@ -1,0 +1,4 @@
+[submodule "knowledge-release"]
+	path = knowledge-release
+	url = ../DecisionMEd-Knowledge
+	branch = main

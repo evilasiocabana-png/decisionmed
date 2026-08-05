@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: decisionmed
+    runtime: python
+    plan: free
+    branch: main
+    buildCommand: python -m compileall decisionmed
+    startCommand: python -m decisionmed.hosted
+    healthCheckPath: /health
+    autoDeployTrigger: checksPass
+    domains:
+      - decisionmed.psiquiatriaemfoco.com
+    envVars:
+      - key: DECISIONMED_BETA_USER
+        value: decisionmed
+      - key: DECISIONMED_BETA_PASSWORD
+        sync: false
