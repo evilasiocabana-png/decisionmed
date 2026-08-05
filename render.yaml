@@ -3,6 +3,7 @@ services:
     name: decisionmed
     runtime: python
     plan: free
+    repo: https://github.com/evilasiocabana-png/decisionmed
     branch: main
     buildCommand: python -m compileall decisionmed
     startCommand: python -m decisionmed.hosted
